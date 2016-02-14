@@ -1,0 +1,426 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		65149D9E1C6A46AD006E6235 /* b4u-HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65149D9D1C6A46AD006E6235 /* b4u-HomeViewController.swift */; };
+		65149DA01C6A4B2B006E6235 /* b4u-DrawerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65149D9F1C6A4B2B006E6235 /* b4u-DrawerTableViewController.swift */; };
+		6536E0941C68F3F000B273D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6536E0931C68F3F000B273D6 /* AppDelegate.swift */; };
+		6536E0991C68F3F000B273D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6536E0971C68F3F000B273D6 /* Main.storyboard */; };
+		6536E09C1C68F3F000B273D6 /* bro4u.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6536E09A1C68F3F000B273D6 /* bro4u.xcdatamodeld */; };
+		6536E09E1C68F3F000B273D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6536E09D1C68F3F000B273D6 /* Assets.xcassets */; };
+		6536E0A11C68F3F000B273D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6536E09F1C68F3F000B273D6 /* LaunchScreen.storyboard */; };
+		6536E0AB1C68FF5500B273D6 /* b4u-CategoryListTblViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6536E0AA1C68FF5500B273D6 /* b4u-CategoryListTblViewCell.swift */; };
+		6536E0BF1C690CFC00B273D6 /* bro4u-DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6536E0BE1C690CFC00B273D6 /* bro4u-DataManager.swift */; };
+		65B189AF1C6E4853000EDD00 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B189AE1C6E4853000EDD00 /* SWRevealViewController.m */; };
+		65B189B21C6E5CAC000EDD00 /* category.json in Resources */ = {isa = PBXBuildFile; fileRef = 65B189B11C6E5CAC000EDD00 /* category.json */; };
+		65B189B41C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B189B31C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift */; };
+		65B189BB1C6E6020000EDD00 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B189B61C6E6020000EDD00 /* Category+CoreDataProperties.swift */; };
+		65B189BC1C6E6020000EDD00 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B189B71C6E6020000EDD00 /* Category.swift */; };
+		65B189BD1C6E6020000EDD00 /* SubCategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B189B81C6E6020000EDD00 /* SubCategory+CoreDataProperties.swift */; };
+		65B189BE1C6E6020000EDD00 /* SubCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B189B91C6E6020000EDD00 /* SubCategory.swift */; };
+		65B189BF1C6E6020000EDD00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B189BA1C6E6020000EDD00 /* ViewController.swift */; };
+		65B189C11C6E6055000EDD00 /* bro4u-MainCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B189C01C6E6055000EDD00 /* bro4u-MainCategory.swift */; };
+		65B189C41C6E6657000EDD00 /* b4u-UIImageView-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B189C31C6E6657000EDD00 /* b4u-UIImageView-Extension.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		65149D9D1C6A46AD006E6235 /* b4u-HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-HomeViewController.swift"; sourceTree = "<group>"; };
+		65149D9F1C6A4B2B006E6235 /* b4u-DrawerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-DrawerTableViewController.swift"; sourceTree = "<group>"; };
+		6536E0901C68F3F000B273D6 /* bro4u.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bro4u.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6536E0931C68F3F000B273D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6536E0981C68F3F000B273D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6536E09B1C68F3F000B273D6 /* bro4u.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = bro4u.xcdatamodel; sourceTree = "<group>"; };
+		6536E09D1C68F3F000B273D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
+		6536E0A01C68F3F000B273D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6536E0A21C68F3F000B273D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6536E0AA1C68FF5500B273D6 /* b4u-CategoryListTblViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "b4u-CategoryListTblViewCell.swift"; path = "../b4u-CategoryListTblViewCell.swift"; sourceTree = "<group>"; };
+		6536E0BE1C690CFC00B273D6 /* bro4u-DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "bro4u-DataManager.swift"; sourceTree = "<group>"; };
+		65B189AC1C6E4852000EDD00 /* bro4u-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bro4u-Bridging-Header.h"; sourceTree = "<group>"; };
+		65B189AD1C6E4853000EDD00 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		65B189AE1C6E4853000EDD00 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		65B189B11C6E5CAC000EDD00 /* category.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = category.json; sourceTree = "<group>"; };
+		65B189B31C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "bro4u-CoreDataManager.swift"; sourceTree = "<group>"; };
+		65B189B61C6E6020000EDD00 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		65B189B71C6E6020000EDD00 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		65B189B81C6E6020000EDD00 /* SubCategory+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SubCategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		65B189B91C6E6020000EDD00 /* SubCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCategory.swift; sourceTree = "<group>"; };
+		65B189BA1C6E6020000EDD00 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		65B189C01C6E6055000EDD00 /* bro4u-MainCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "bro4u-MainCategory.swift"; sourceTree = "<group>"; };
+		65B189C31C6E6657000EDD00 /* b4u-UIImageView-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-UIImageView-Extension.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6536E08D1C68F3F000B273D6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		65149D9C1C6A4571006E6235 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				65149D9D1C6A46AD006E6235 /* b4u-HomeViewController.swift */,
+				65149D9F1C6A4B2B006E6235 /* b4u-DrawerTableViewController.swift */,
+				6536E0AA1C68FF5500B273D6 /* b4u-CategoryListTblViewCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		6536E0871C68F3F000B273D6 = {
+			isa = PBXGroup;
+			children = (
+				6536E0921C68F3F000B273D6 /* bro4u */,
+				6536E0911C68F3F000B273D6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6536E0911C68F3F000B273D6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6536E0901C68F3F000B273D6 /* bro4u.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6536E0921C68F3F000B273D6 /* bro4u */ = {
+			isa = PBXGroup;
+			children = (
+				65B189C21C6E6657000EDD00 /* Utilities */,
+				65B189B01C6E5B9C000EDD00 /* SupportingFiles */,
+				65B189AB1C6E4820000EDD00 /* SlideMenu */,
+				65149D9C1C6A4571006E6235 /* Home */,
+				6536E0BD1C690CBD00B273D6 /* DataManager */,
+				6536E0B41C690C6F00B273D6 /* Models */,
+				6536E0931C68F3F000B273D6 /* AppDelegate.swift */,
+				6536E0971C68F3F000B273D6 /* Main.storyboard */,
+				6536E09F1C68F3F000B273D6 /* LaunchScreen.storyboard */,
+				6536E0A21C68F3F000B273D6 /* Info.plist */,
+				6536E09A1C68F3F000B273D6 /* bro4u.xcdatamodeld */,
+			);
+			path = bro4u;
+			sourceTree = "<group>";
+		};
+		6536E0B41C690C6F00B273D6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				65B189B51C6E6020000EDD00 /* CoreDataModels */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6536E0BD1C690CBD00B273D6 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				6536E0BE1C690CFC00B273D6 /* bro4u-DataManager.swift */,
+				65B189B31C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		65B189AB1C6E4820000EDD00 /* SlideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				65B189AD1C6E4853000EDD00 /* SWRevealViewController.h */,
+				65B189AE1C6E4853000EDD00 /* SWRevealViewController.m */,
+				65B189AC1C6E4852000EDD00 /* bro4u-Bridging-Header.h */,
+			);
+			name = SlideMenu;
+			sourceTree = "<group>";
+		};
+		65B189B01C6E5B9C000EDD00 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				65B189B11C6E5CAC000EDD00 /* category.json */,
+				6536E09D1C68F3F000B273D6 /* Assets.xcassets */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		65B189B51C6E6020000EDD00 /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+				65B189B61C6E6020000EDD00 /* Category+CoreDataProperties.swift */,
+				65B189B71C6E6020000EDD00 /* Category.swift */,
+				65B189B81C6E6020000EDD00 /* SubCategory+CoreDataProperties.swift */,
+				65B189B91C6E6020000EDD00 /* SubCategory.swift */,
+				65B189BA1C6E6020000EDD00 /* ViewController.swift */,
+				65B189C01C6E6055000EDD00 /* bro4u-MainCategory.swift */,
+			);
+			path = CoreDataModels;
+			sourceTree = "<group>";
+		};
+		65B189C21C6E6657000EDD00 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				65B189C31C6E6657000EDD00 /* b4u-UIImageView-Extension.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6536E08F1C68F3F000B273D6 /* bro4u */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6536E0A51C68F3F000B273D6 /* Build configuration list for PBXNativeTarget "bro4u" */;
+			buildPhases = (
+				6536E08C1C68F3F000B273D6 /* Sources */,
+				6536E08D1C68F3F000B273D6 /* Frameworks */,
+				6536E08E1C68F3F000B273D6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = bro4u;
+			productName = bro4u;
+			productReference = 6536E0901C68F3F000B273D6 /* bro4u.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6536E0881C68F3F000B273D6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = AppLearn;
+				TargetAttributes = {
+					6536E08F1C68F3F000B273D6 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 6536E08B1C68F3F000B273D6 /* Build configuration list for PBXProject "bro4u" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6536E0871C68F3F000B273D6;
+			productRefGroup = 6536E0911C68F3F000B273D6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6536E08F1C68F3F000B273D6 /* bro4u */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6536E08E1C68F3F000B273D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6536E0A11C68F3F000B273D6 /* LaunchScreen.storyboard in Resources */,
+				6536E09E1C68F3F000B273D6 /* Assets.xcassets in Resources */,
+				6536E0991C68F3F000B273D6 /* Main.storyboard in Resources */,
+				65B189B21C6E5CAC000EDD00 /* category.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6536E08C1C68F3F000B273D6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6536E0BF1C690CFC00B273D6 /* bro4u-DataManager.swift in Sources */,
+				65B189BC1C6E6020000EDD00 /* Category.swift in Sources */,
+				65B189C41C6E6657000EDD00 /* b4u-UIImageView-Extension.swift in Sources */,
+				65B189BB1C6E6020000EDD00 /* Category+CoreDataProperties.swift in Sources */,
+				65149D9E1C6A46AD006E6235 /* b4u-HomeViewController.swift in Sources */,
+				65B189BE1C6E6020000EDD00 /* SubCategory.swift in Sources */,
+				6536E0AB1C68FF5500B273D6 /* b4u-CategoryListTblViewCell.swift in Sources */,
+				65B189BD1C6E6020000EDD00 /* SubCategory+CoreDataProperties.swift in Sources */,
+				6536E09C1C68F3F000B273D6 /* bro4u.xcdatamodeld in Sources */,
+				65B189BF1C6E6020000EDD00 /* ViewController.swift in Sources */,
+				65B189AF1C6E4853000EDD00 /* SWRevealViewController.m in Sources */,
+				65B189B41C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift in Sources */,
+				65B189C11C6E6055000EDD00 /* bro4u-MainCategory.swift in Sources */,
+				65149DA01C6A4B2B006E6235 /* b4u-DrawerTableViewController.swift in Sources */,
+				6536E0941C68F3F000B273D6 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6536E0971C68F3F000B273D6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6536E0981C68F3F000B273D6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6536E09F1C68F3F000B273D6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6536E0A01C68F3F000B273D6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6536E0A31C68F3F000B273D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6536E0A41C68F3F000B273D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6536E0A61C68F3F000B273D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = bro4u/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.applearn.bro4u;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bro4u/bro4u-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6536E0A71C68F3F000B273D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = bro4u/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.applearn.bro4u;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bro4u/bro4u-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6536E08B1C68F3F000B273D6 /* Build configuration list for PBXProject "bro4u" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6536E0A31C68F3F000B273D6 /* Debug */,
+				6536E0A41C68F3F000B273D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6536E0A51C68F3F000B273D6 /* Build configuration list for PBXNativeTarget "bro4u" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6536E0A61C68F3F000B273D6 /* Debug */,
+				6536E0A71C68F3F000B273D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6536E09A1C68F3F000B273D6 /* bro4u.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6536E09B1C68F3F000B273D6 /* bro4u.xcdatamodel */,
+			);
+			currentVersion = 6536E09B1C68F3F000B273D6 /* bro4u.xcdatamodel */;
+			path = bro4u.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 6536E0881C68F3F000B273D6 /* Project object */;
+}
