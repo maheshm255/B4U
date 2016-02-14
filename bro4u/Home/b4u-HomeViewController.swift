@@ -104,19 +104,20 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         self.pageControl.currentPage = 0
         self.pageControl.numberOfPages = 4
         
-        
+        self.scrollView.delaysContentTouches = true
         self.scrollView.scrollEnabled = false
         
         let leftSwipeGesture = UISwipeGestureRecognizer(target:self, action:"leftSwipe")
         leftSwipeGesture.delaysTouchesBegan  = true
         leftSwipeGesture.direction = UISwipeGestureRecognizerDirection.Left
         self.scrollView.addGestureRecognizer(leftSwipeGesture)
-        
+        leftSwipeGesture.cancelsTouchesInView = false
         
         let rightSwipeGesture = UISwipeGestureRecognizer(target:self, action:"rightSwipe")
         rightSwipeGesture.delaysTouchesBegan  = true
         rightSwipeGesture.direction = UISwipeGestureRecognizerDirection.Right
         self.scrollView.addGestureRecognizer(rightSwipeGesture)
+        rightSwipeGesture.cancelsTouchesInView = false
     }
     
     
@@ -182,5 +183,7 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         self.pageControl.currentPage = Int(currentPage);
         // Change the text accordingly
     }
+    
+    
 
 }
