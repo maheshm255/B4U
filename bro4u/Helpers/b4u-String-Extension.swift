@@ -1,11 +1,10 @@
 //
-//  cf-String-Extension.swift
-//  cf-support
+//  UIStringExtension.swift
+//  bro4u
 //
-//  Created by Tools Team India on 23/07/15.
-//  Copyright (c) 2015 Schneider Electric Pty Ltd. All rights reserved.
+//  Created by Mahesh Bajaj
+//  Copyright (c) All rights reserved.
 //
-
 import UIKit
 
 

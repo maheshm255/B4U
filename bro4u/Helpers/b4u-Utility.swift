@@ -1,16 +1,16 @@
 //
-//  cf-Utility.swift
-//  cf-support
+//  cf_Utility.swift
+//  bro4u
 //
-//  Created by Tools Team India on 03/08/15.
-//  Copyright (c) 2015 Schneider Electric Pty Ltd. All rights reserved.
+//  Created by Mahesh Bajaj
+//  Copyright (c) All rights reserved.
 //
 
 import UIKit
 
 let SE_COLOR_SPRUCE_GREEN:Int =  0x009530
 
-class cf_Utility: NSObject {
+class b4u_Utility: NSObject {
    
     
     /*

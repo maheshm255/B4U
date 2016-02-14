@@ -15,6 +15,8 @@
 		6536E09E1C68F3F000B273D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6536E09D1C68F3F000B273D6 /* Assets.xcassets */; };
 		6536E0A11C68F3F000B273D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6536E09F1C68F3F000B273D6 /* LaunchScreen.storyboard */; };
 		6536E0BF1C690CFC00B273D6 /* bro4u-DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6536E0BE1C690CFC00B273D6 /* bro4u-DataManager.swift */; };
+		657485B61C70FC6700504F58 /* b4u-RightMenuTblCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657485B51C70FC6700504F58 /* b4u-RightMenuTblCtrl.swift */; };
+		657485BC1C71035400504F58 /* b4u-LoginViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657485BB1C71035400504F58 /* b4u-LoginViewCtrl.swift */; };
 		65B189B21C6E5CAC000EDD00 /* category.json in Resources */ = {isa = PBXBuildFile; fileRef = 65B189B11C6E5CAC000EDD00 /* category.json */; };
 		65B189B41C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B189B31C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift */; };
 		65B189BB1C6E6020000EDD00 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B189B61C6E6020000EDD00 /* Category+CoreDataProperties.swift */; };
@@ -64,6 +66,8 @@
 		6536E0A01C68F3F000B273D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6536E0A21C68F3F000B273D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6536E0BE1C690CFC00B273D6 /* bro4u-DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "bro4u-DataManager.swift"; sourceTree = "<group>"; };
+		657485B51C70FC6700504F58 /* b4u-RightMenuTblCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-RightMenuTblCtrl.swift"; sourceTree = "<group>"; };
+		657485BB1C71035400504F58 /* b4u-LoginViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-LoginViewCtrl.swift"; sourceTree = "<group>"; };
 		65B189B11C6E5CAC000EDD00 /* category.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = category.json; sourceTree = "<group>"; };
 		65B189B31C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "bro4u-CoreDataManager.swift"; sourceTree = "<group>"; };
 		65B189B61C6E6020000EDD00 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 				65B18FE21C70BC36000EDD00 /* b4u-CategoryListTblViewCell.swift */,
 				65149D9D1C6A46AD006E6235 /* b4u-HomeViewController.swift */,
 				65149D9F1C6A4B2B006E6235 /* b4u-DrawerTableViewController.swift */,
+				657485B51C70FC6700504F58 /* b4u-RightMenuTblCtrl.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -164,6 +169,7 @@
 		6536E0921C68F3F000B273D6 /* bro4u */ = {
 			isa = PBXGroup;
 			children = (
+				657485B71C71032300504F58 /* Login */,
 				65F8B42E1C70BE6200D158FA /* Helpers */,
 				65B18A4F1C70BB28000EDD00 /* ThirdParty */,
 				65B18A4A1C70BA07000EDD00 /* WebServiceCalls */,
@@ -197,6 +203,38 @@
 				65B189B31C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift */,
 			);
 			path = DataManager;
+			sourceTree = "<group>";
+		};
+		657485B71C71032300504F58 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				657485B81C71032300504F58 /* Facebook */,
+				657485B91C71032300504F58 /* Google+ */,
+				657485BA1C71032300504F58 /* OTPLogin */,
+				657485BB1C71035400504F58 /* b4u-LoginViewCtrl.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		657485B81C71032300504F58 /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Facebook;
+			sourceTree = "<group>";
+		};
+		657485B91C71032300504F58 /* Google+ */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Google+";
+			sourceTree = "<group>";
+		};
+		657485BA1C71032300504F58 /* OTPLogin */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OTPLogin;
 			sourceTree = "<group>";
 		};
 		65B189B01C6E5B9C000EDD00 /* SupportingFiles */ = {
@@ -412,6 +450,7 @@
 				65B18A891C70BB28000EDD00 /* UIAlertView+AFNetworking.m in Sources */,
 				65B18A841C70BB28000EDD00 /* AFURLSessionManager.m in Sources */,
 				65149D9E1C6A46AD006E6235 /* b4u-HomeViewController.swift in Sources */,
+				657485B61C70FC6700504F58 /* b4u-RightMenuTblCtrl.swift in Sources */,
 				65B189BE1C6E6020000EDD00 /* SubCategory.swift in Sources */,
 				65F8B43A1C70BECD00D158FA /* b4u-UIColor-Extension.swift in Sources */,
 				65B18A861C70BB28000EDD00 /* SWRevealViewController.m in Sources */,
@@ -419,6 +458,7 @@
 				65B189BD1C6E6020000EDD00 /* SubCategory+CoreDataProperties.swift in Sources */,
 				6536E09C1C68F3F000B273D6 /* bro4u.xcdatamodeld in Sources */,
 				65B189B41C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift in Sources */,
+				657485BC1C71035400504F58 /* b4u-LoginViewCtrl.swift in Sources */,
 				65B189C11C6E6055000EDD00 /* bro4u-MainCategory.swift in Sources */,
 				65B18FE31C70BC36000EDD00 /* b4u-CategoryListTblViewCell.swift in Sources */,
 				65B18A4E1C70BA51000EDD00 /* b4u-WebApiCallManager.swift in Sources */,

@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  bro4u
 //
-//  Created by Tools Team India on 08/02/16.
-//  Copyright © 2016 AppLearn. All rights reserved.
+//  Created by Mahesh Bajaj
+//  Copyright (c) All rights reserved.
 //
 
 import UIKit

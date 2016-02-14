@@ -1,9 +1,9 @@
 //
 //  NSDateExtension.swift
-//  cf-support
+//  bro4u
 //
-//  Created by Navnit Mudaliar on 31/07/2015.
-//  Copyright (c) 2015 Schneider Electric Pty Ltd. All rights reserved.
+//  Created by Mahesh Bajaj
+//  Copyright (c) All rights reserved.
 //
 
 extension NSDate{

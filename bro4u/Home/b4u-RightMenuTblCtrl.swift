@@ -1,14 +1,13 @@
 //
-//  b4u-DrawerTableViewController.swift
+//  b4u-RightMenuTblCtrl.swift
 //  bro4u
 //
 //  Created by Mahesh Bajaj
 //  Copyright (c) All rights reserved.
 //
-
 import UIKit
 
-class b4u_DrawerTableViewController: UITableViewController {
+class b4u_RightMenuTblCtrl: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +17,9 @@ class b4u_DrawerTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+//        NSString *phoneNumber = [@"tel://" stringByAppendingString:mymobileNO.titleLabel.text];
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,16 +28,16 @@ class b4u_DrawerTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-//
-//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
+/*
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 0
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 0
+    }*/
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -84,12 +86,28 @@ class b4u_DrawerTableViewController: UITableViewController {
 
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
+    internal override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        if indexPath.row == 1
+        {
+            let url = NSURL(string:"tel://08030323232")!
+            
+            if UIApplication.sharedApplication().canOpenURL(url)
+            {
+                UIApplication.sharedApplication().openURL(url)
+            }else
+            {
+                print("Call is not supported")
+            }
+        }
+    }
+    
 }
