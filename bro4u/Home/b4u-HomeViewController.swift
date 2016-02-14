@@ -10,6 +10,7 @@ import UIKit
 
 class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate {
 
+    @IBOutlet weak var BtnRightMenu: UIBarButtonItem!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
@@ -18,14 +19,22 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
 
         // Do any additional setup after loading the view.
         
-        self.revealViewController().rearViewRevealWidth = 108
-        
+       
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            
+            
+            BtnRightMenu.target = self.revealViewController()
+            BtnRightMenu.action = "rightRevealToggle:"
+            //self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
+        self.revealViewController().rearViewRevealWidth = 108
+        
+        self.revealViewController().rightViewRevealWidth = 170
+
         self.createImagSlideShowUI()
         bro4u_DataManager.sharedInstance.readLocalFile("category")
     }

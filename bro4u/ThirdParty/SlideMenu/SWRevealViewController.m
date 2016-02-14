@@ -558,6 +558,11 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
     UITouch *touch = [touches anyObject];
     _beginPoint = [touch locationInView:self.view];
     _dragging = NO;
+    
+    
+    if ([touch.view class] == [UIScrollView class]) {
+        self.state = UIGestureRecognizerStateFailed;
+    }    NSLog(@"Touched view  %@",[touch.view class] );
 }
 
 
