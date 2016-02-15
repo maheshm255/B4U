@@ -11,6 +11,8 @@ class bro4u_DataManager: NSObject {
     
     
     var mainCategories:[bro4u_MainCategory] = Array()
+    var sliderImages:[b4u_SliderImage] = Array()
+
     class var sharedInstance: bro4u_DataManager {
         struct Singleton {
             
@@ -21,45 +23,45 @@ class bro4u_DataManager: NSObject {
         return Singleton.instance
     }
     
+//    
+//    func readLocalFile(fileName:String)
+//    {
+//        let path = NSBundle.mainBundle().pathForResource(fileName, ofType: "json")
+//        
+//        do {
+//            let text = try String(contentsOfFile:path!, encoding:NSUTF8StringEncoding)
+//            
+//            let data = text.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+//            
+//               do {
+//                
+//            if let jsonData = data {
+//                // Will return an object or nil if JSON decoding fails
+//               let resultObj =  try NSJSONSerialization.JSONObjectWithData(jsonData, options:NSJSONReadingOptions.AllowFragments)
+//                print(resultObj)
+//                
+//                self.parseCategoryData(resultObj as! Dictionary<String, AnyObject>)
+//
+//            }
+//            
+//               } catch  let error as NSError {
+//                debugPrint(error)
+//            }
+//
+//        } catch  let error as NSError {
+//            debugPrint(error)
+//        }
+//        
+//    }
     
-    func readLocalFile(fileName:String)
-    {
-        let path = NSBundle.mainBundle().pathForResource(fileName, ofType: "json")
-        
-        do {
-            let text = try String(contentsOfFile:path!, encoding:NSUTF8StringEncoding)
-            
-            let data = text.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-            
-               do {
-                
-            if let jsonData = data {
-                // Will return an object or nil if JSON decoding fails
-               let resultObj =  try NSJSONSerialization.JSONObjectWithData(jsonData, options:NSJSONReadingOptions.AllowFragments)
-                print(resultObj)
-                
-                self.parseCategoryData(resultObj as! Dictionary<String, AnyObject>)
-
-            }
-            
-               } catch  let error as NSError {
-                debugPrint(error)
-            }
-
-        } catch  let error as NSError {
-            debugPrint(error)
-        }
-        
-    }
-    
-    func parseCategoryData(dataDict:Dictionary<String, AnyObject>)
-    {
-        let manCategories:[Dictionary<String ,AnyObject>] = dataDict["main_cat"] as! [Dictionary<String ,AnyObject>]
-        
-        for (_ ,categotyDataDict) in manCategories.enumerate()
-        {
-            let cateGoryObj = bro4u_MainCategory(categoryDataDict:categotyDataDict)
-            mainCategories.append(cateGoryObj)
-        }
-    }
+//    func parseCategoryData(dataDict:Dictionary<String, AnyObject>)
+//    {
+//        let manCategories:[Dictionary<String ,AnyObject>] = dataDict["main_cat"] as! [Dictionary<String ,AnyObject>]
+//        
+//        for (_ ,categotyDataDict) in manCategories.enumerate()
+//        {
+//            let cateGoryObj = bro4u_MainCategory(categoryDataDict:categotyDataDict)
+//            mainCategories.append(cateGoryObj)
+//        }
+//    }
 }

@@ -13,6 +13,9 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    
+    @IBOutlet weak var tableViewCategory: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,8 +37,29 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         
         self.revealViewController().rightViewRevealWidth = 170
 
-        self.createImagSlideShowUI()
-        bro4u_DataManager.sharedInstance.readLocalFile("category")
+        
+       self.getData()
+      //  bro4u_DataManager.sharedInstance.readLocalFile("category")
+        
+        // latitude=12.9718915  ,  longitude=77.6411545  , search_keyword=ve
+
+//        var latt =  12.9718915
+//        var long = 77.6411545
+//        var searchStr = "plumber"
+//
+//        
+//        let params = "?latitude=\(latt)&longitude=\(long)&search_keyword=\(searchStr)"
+//        b4u_WebApiCallManager.sharedInstance.getApiCall(kSearchApi, params:params, result:{(resultObject) -> Void in
+//            
+//            print("Category Data Received")
+//            
+//            print(resultObject)
+//            self.createImagSlideShowUI()
+//            
+//            self.tableViewCategory.reloadData()
+//            
+//        })
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,6 +68,19 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     }
     
 
+    func getData()
+    {
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kHomeSCategory, params:"", result:{(resultObject) -> Void in
+            
+            print("Category Data Received")
+            
+            print(resultObject)
+            self.createImagSlideShowUI()
+
+            self.tableViewCategory.reloadData()
+            
+        })
+    }
     /*
     // MARK: - Navigation
 
@@ -85,32 +122,43 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         let scrollViewWidth:CGFloat = self.scrollView.frame.width
         let scrollViewHeight:CGFloat = self.scrollView.frame.height
         
+    
         
-        let imgOne = UIImageView(frame: CGRectMake(0, 0,scrollViewWidth, scrollViewHeight))
-        imgOne.downloadedFrom(link:"https://bro4u.com/images/mobile_banner/Laundry1.jpg", contentMode:UIViewContentMode.ScaleAspectFit)
-        imgOne.contentMode = UIViewContentMode.ScaleAspectFit
-        let imgTwo = UIImageView(frame: CGRectMake(scrollViewWidth, 0,scrollViewWidth, scrollViewHeight))
-        imgTwo.image = UIImage(named: "Slide 2")
-        imgTwo.contentMode = UIViewContentMode.ScaleAspectFit
-        
-        let imgThree = UIImageView(frame: CGRectMake(scrollViewWidth*2, 0,scrollViewWidth, scrollViewHeight))
-        imgThree.image = UIImage(named: "Slide 3")
-        imgThree.contentMode = UIViewContentMode.ScaleAspectFit
-        
-        let imgFour = UIImageView(frame: CGRectMake(scrollViewWidth*3, 0,scrollViewWidth, scrollViewHeight))
-        imgFour.image = UIImage(named: "Slide 4")
-        imgFour.contentMode = UIViewContentMode.ScaleAspectFit
-        
-        
-        self.scrollView.addSubview(imgOne)
-        self.scrollView.addSubview(imgTwo)
-        self.scrollView.addSubview(imgThree)
-        self.scrollView.addSubview(imgFour)
+        for (index ,sliderImageInfoObj)in bro4u_DataManager.sharedInstance.sliderImages.enumerate()
+        {
+            let sliderImg = UIImageView(frame: CGRectMake(scrollViewWidth*CGFloat(index), 0,scrollViewWidth, scrollViewHeight))
+            sliderImg.downloadedFrom(link:sliderImageInfoObj.imageName!, contentMode:UIViewContentMode.ScaleAspectFit)
+            self.scrollView.addSubview(sliderImg)
+
+        }
+//        let imgOne = UIImageView(frame: CGRectMake(0, 0,scrollViewWidth, scrollViewHeight))
+//        imgOne.downloadedFrom(link:"https://bro4u.com/images/mobile_banner/Laundry1.jpg", contentMode:UIViewContentMode.ScaleAspectFit)
+//        imgOne.contentMode = UIViewContentMode.ScaleAspectFit
+//        
+//        let imgTwo = UIImageView(frame: CGRectMake(scrollViewWidth, 0,scrollViewWidth, scrollViewHeight))
+//        imgTwo.image = UIImage(named: "Slide 2")
+//        imgTwo.contentMode = UIViewContentMode.ScaleAspectFit
+//        
+//        let imgThree = UIImageView(frame: CGRectMake(scrollViewWidth*2, 0,scrollViewWidth, scrollViewHeight))
+//        imgThree.image = UIImage(named: "Slide 3")
+//        imgThree.contentMode = UIViewContentMode.ScaleAspectFit
+//        
+//        let imgFour = UIImageView(frame: CGRectMake(scrollViewWidth*3, 0,scrollViewWidth, scrollViewHeight))
+//        imgFour.image = UIImage(named: "Slide 4"
+//        imgFour.contentMode = UIViewContentMode.ScaleAspectFit
+//        
+//        
+//        self.scrollView.addSubview(imgOne)
+//        self.scrollView.addSubview(imgTwo)
+//        self.scrollView.addSubview(imgThree)
+//        self.scrollView.addSubview(imgFour)
         //4
-        self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.width * 4, self.scrollView.frame.height)
+        
+        let totalImage = bro4u_DataManager.sharedInstance.sliderImages.count
+        self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.width * CGFloat(totalImage), self.scrollView.frame.height)
         self.scrollView.delegate = self
         self.pageControl.currentPage = 0
-        self.pageControl.numberOfPages = 4
+        self.pageControl.numberOfPages = totalImage
         
         self.scrollView.delaysContentTouches = true
         self.scrollView.scrollEnabled = false
