@@ -16,7 +16,17 @@ let b4uBaseUrl:String = "http://v2.20160301.testing.bro4u.com/api_v2/"
 
 let kHomeSCategory = "index.php/home_screen/home_banner"
 
+let kCategoryAndSubOptions = "index.php/categories/catAttr"
 
 //Parematers
 // latitude=12.9718915  ,  longitude=77.6411545  , search_keyword=ve
 let kSearchApi = "index.php/home_screen/search"
+
+//Parematers
+
+// cat_id=7 // user_id=15 // device_id==351867064476283
+let intermediateScreenAPi = "index.php/categories/intermediatory"
+
+//cat_id=3  // option_id= //field_name=
+
+let filterApi = "index.php/catalog/filter_v2"

@@ -16,8 +16,8 @@ class bro4u_MainCategory: NSObject {
     var interBanner:String?
     var mainCatDesc:String?
     var manCatName:String?
-    var manCatId:NSNumber?
-    var sortOrder:NSNumber?
+    var manCatId:String?
+    var sortOrder:String?
     var timeStamp:NSDate?
 
     
@@ -28,8 +28,8 @@ class bro4u_MainCategory: NSObject {
         interBanner = categoryDataDict["inter_banner"] as? String
         mainCatDesc = categoryDataDict["main_cat_desc"] as? String
         manCatName = categoryDataDict["main_cat_name"] as? String
-        manCatId = categoryDataDict["main_cat_id"] as? NSNumber
-        sortOrder = categoryDataDict["sort_order"] as? NSNumber
+        manCatId = categoryDataDict["main_cat_id"] as? String
+        sortOrder = categoryDataDict["sort_order"] as? String
 
     }
 }

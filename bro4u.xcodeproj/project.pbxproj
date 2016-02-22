@@ -7,15 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		65149D9E1C6A46AD006E6235 /* b4u-HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65149D9D1C6A46AD006E6235 /* b4u-HomeViewController.swift */; };
-		65149DA01C6A4B2B006E6235 /* b4u-DrawerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65149D9F1C6A4B2B006E6235 /* b4u-DrawerTableViewController.swift */; };
 		6536E0941C68F3F000B273D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6536E0931C68F3F000B273D6 /* AppDelegate.swift */; };
 		6536E0991C68F3F000B273D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6536E0971C68F3F000B273D6 /* Main.storyboard */; };
 		6536E09C1C68F3F000B273D6 /* bro4u.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6536E09A1C68F3F000B273D6 /* bro4u.xcdatamodeld */; };
 		6536E09E1C68F3F000B273D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6536E09D1C68F3F000B273D6 /* Assets.xcassets */; };
 		6536E0A11C68F3F000B273D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6536E09F1C68F3F000B273D6 /* LaunchScreen.storyboard */; };
 		6536E0BF1C690CFC00B273D6 /* bro4u-DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6536E0BE1C690CFC00B273D6 /* bro4u-DataManager.swift */; };
-		657485B61C70FC6700504F58 /* b4u-RightMenuTblCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657485B51C70FC6700504F58 /* b4u-RightMenuTblCtrl.swift */; };
 		657485BC1C71035400504F58 /* b4u-LoginViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657485BB1C71035400504F58 /* b4u-LoginViewCtrl.swift */; };
 		65B189B21C6E5CAC000EDD00 /* category.json in Resources */ = {isa = PBXBuildFile; fileRef = 65B189B11C6E5CAC000EDD00 /* category.json */; };
 		65B189B41C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B189B31C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift */; };
@@ -44,10 +41,32 @@
 		65B18A8D1C70BB28000EDD00 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B18A791C70BB28000EDD00 /* UIRefreshControl+AFNetworking.m */; };
 		65B18A8E1C70BB28000EDD00 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B18A7B1C70BB28000EDD00 /* UIWebView+AFNetworking.m */; };
 		65B18A901C70BBC1000EDD00 /* b4u-globalDefinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B18A8F1C70BBC1000EDD00 /* b4u-globalDefinations.swift */; };
-		65B18FE31C70BC36000EDD00 /* b4u-CategoryListTblViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B18FE21C70BC36000EDD00 /* b4u-CategoryListTblViewCell.swift */; };
 		65B49DB81C722C4A0083942D /* bro4u-MainCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B49DB71C722C4A0083942D /* bro4u-MainCategory.swift */; };
 		65B49DBC1C722CC70083942D /* b4u-SliderImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B49DBB1C722CC70083942D /* b4u-SliderImage.swift */; };
 		65B49DBE1C7244FE0083942D /* b4u-SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B49DBD1C7244FE0083942D /* b4u-SearchResult.swift */; };
+		65DE76D31C7777FE00017F96 /* b4u-Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE76D21C7777FE00017F96 /* b4u-Category.swift */; };
+		65DE76D51C7778E100017F96 /* b4u-AttributeOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE76D41C7778E100017F96 /* b4u-AttributeOptions.swift */; };
+		65DE76DF1C7780BD00017F96 /* b4u-CategoryListTblViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE76D81C7780BD00017F96 /* b4u-CategoryListTblViewCell.swift */; };
+		65DE76E01C7780BD00017F96 /* b4u-DrawerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE76D91C7780BD00017F96 /* b4u-DrawerTableViewController.swift */; };
+		65DE76E11C7780BD00017F96 /* b4u-HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE76DA1C7780BD00017F96 /* b4u-HomeViewController.swift */; };
+		65DE76E21C7780BD00017F96 /* b4u-RightMenuTblCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE76DB1C7780BD00017F96 /* b4u-RightMenuTblCtrl.swift */; };
+		65DE76E31C7780BD00017F96 /* b4u-SearchResultTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE76DD1C7780BD00017F96 /* b4u-SearchResultTblCell.swift */; };
+		65DE76E41C7780BD00017F96 /* b4u-SearchResultTblCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE76DE1C7780BD00017F96 /* b4u-SearchResultTblCtrl.swift */; };
+		65DE76E71C77837B00017F96 /* b4u-CategoryViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE76E61C77837B00017F96 /* b4u-CategoryViewCtrl.swift */; };
+		65DE76E91C77847A00017F96 /* b4u-CategoryTblViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE76E81C77847A00017F96 /* b4u-CategoryTblViewCtrl.swift */; };
+		65DE76EB1C77849B00017F96 /* b4u-CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE76EA1C77849B00017F96 /* b4u-CategoryTableViewCell.swift */; };
+		65DE77191C78569200017F96 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65DE77181C78569200017F96 /* GoogleSignIn.bundle */; };
+		65DE771B1C78577200017F96 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65DE771A1C78577200017F96 /* SystemConfiguration.framework */; };
+		65DE771D1C78577D00017F96 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65DE771C1C78577D00017F96 /* AddressBook.framework */; };
+		65DE771F1C78584800017F96 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65DE771E1C78584800017F96 /* GoogleService-Info.plist */; };
+		65DE77211C78672600017F96 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 65DE77201C78672600017F96 /* Podfile */; };
+		65DE79631C79448600017F96 /* b4u-CategoryTblHeaderVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE79621C79448600017F96 /* b4u-CategoryTblHeaderVIew.swift */; };
+		65DE79651C796AD200017F96 /* b4u_IntermediateScreenDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE79641C796AD200017F96 /* b4u_IntermediateScreenDataModel.swift */; };
+		65DE79681C79761F00017F96 /* b4u-IntermediateViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE79671C79761F00017F96 /* b4u-IntermediateViewCtrl.swift */; };
+		65DE796B1C79FCFF00017F96 /* b4u-FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE796A1C79FCFF00017F96 /* b4u-FilterViewController.swift */; };
+		65DE796E1C7A068600017F96 /* b4u-CatFilterAttributeOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE796D1C7A068600017F96 /* b4u-CatFilterAttributeOptions.swift */; };
+		65DE79701C7A07C900017F96 /* b4u-CatFilterAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE796F1C7A07C900017F96 /* b4u-CatFilterAttributes.swift */; };
+		65DE79721C7A1B6100017F96 /* b4u-catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE79711C7A1B6100017F96 /* b4u-catalog.swift */; };
 		65F8B4301C70BE6200D158FA /* b4u-UIImageView-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F8B42F1C70BE6200D158FA /* b4u-UIImageView-Extension.swift */; };
 		65F8B4371C70BECD00D158FA /* b4u-NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F8B4311C70BECD00D158FA /* b4u-NSDateExtension.swift */; };
 		65F8B4381C70BECD00D158FA /* b4u-progressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F8B4321C70BECD00D158FA /* b4u-progressIndicator.swift */; };
@@ -55,11 +74,12 @@
 		65F8B43A1C70BECD00D158FA /* b4u-UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F8B4341C70BECD00D158FA /* b4u-UIColor-Extension.swift */; };
 		65F8B43B1C70BECD00D158FA /* b4u-UIView-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F8B4351C70BECD00D158FA /* b4u-UIView-Extension.swift */; };
 		65F8B43C1C70BECD00D158FA /* b4u-Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F8B4361C70BECD00D158FA /* b4u-Utility.swift */; };
+		787E454DD19C7F7D70BF42BE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0420EA4B8348ACC0A89E7A7 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		65149D9D1C6A46AD006E6235 /* b4u-HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-HomeViewController.swift"; sourceTree = "<group>"; };
-		65149D9F1C6A4B2B006E6235 /* b4u-DrawerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-DrawerTableViewController.swift"; sourceTree = "<group>"; };
+		0B4AB3BBC76D5DA9D4D6646A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		4B48C7B178FB5F85A79C9741 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6536E0901C68F3F000B273D6 /* bro4u.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bro4u.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6536E0931C68F3F000B273D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6536E0981C68F3F000B273D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -68,7 +88,6 @@
 		6536E0A01C68F3F000B273D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6536E0A21C68F3F000B273D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6536E0BE1C690CFC00B273D6 /* bro4u-DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "bro4u-DataManager.swift"; sourceTree = "<group>"; };
-		657485B51C70FC6700504F58 /* b4u-RightMenuTblCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-RightMenuTblCtrl.swift"; sourceTree = "<group>"; };
 		657485BB1C71035400504F58 /* b4u-LoginViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-LoginViewCtrl.swift"; sourceTree = "<group>"; };
 		65B189B11C6E5CAC000EDD00 /* category.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = category.json; sourceTree = "<group>"; };
 		65B189B31C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "bro4u-CoreDataManager.swift"; sourceTree = "<group>"; };
@@ -118,10 +137,33 @@
 		65B18A7A1C70BB28000EDD00 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		65B18A7B1C70BB28000EDD00 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		65B18A8F1C70BBC1000EDD00 /* b4u-globalDefinations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-globalDefinations.swift"; sourceTree = "<group>"; };
-		65B18FE21C70BC36000EDD00 /* b4u-CategoryListTblViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-CategoryListTblViewCell.swift"; sourceTree = "<group>"; };
 		65B49DB71C722C4A0083942D /* bro4u-MainCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "bro4u-MainCategory.swift"; sourceTree = "<group>"; };
 		65B49DBB1C722CC70083942D /* b4u-SliderImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-SliderImage.swift"; sourceTree = "<group>"; };
 		65B49DBD1C7244FE0083942D /* b4u-SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-SearchResult.swift"; sourceTree = "<group>"; };
+		65DE76D21C7777FE00017F96 /* b4u-Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-Category.swift"; sourceTree = "<group>"; };
+		65DE76D41C7778E100017F96 /* b4u-AttributeOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-AttributeOptions.swift"; sourceTree = "<group>"; };
+		65DE76D81C7780BD00017F96 /* b4u-CategoryListTblViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-CategoryListTblViewCell.swift"; sourceTree = "<group>"; };
+		65DE76D91C7780BD00017F96 /* b4u-DrawerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-DrawerTableViewController.swift"; sourceTree = "<group>"; };
+		65DE76DA1C7780BD00017F96 /* b4u-HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-HomeViewController.swift"; sourceTree = "<group>"; };
+		65DE76DB1C7780BD00017F96 /* b4u-RightMenuTblCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-RightMenuTblCtrl.swift"; sourceTree = "<group>"; };
+		65DE76DD1C7780BD00017F96 /* b4u-SearchResultTblCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-SearchResultTblCell.swift"; sourceTree = "<group>"; };
+		65DE76DE1C7780BD00017F96 /* b4u-SearchResultTblCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-SearchResultTblCtrl.swift"; sourceTree = "<group>"; };
+		65DE76E61C77837B00017F96 /* b4u-CategoryViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-CategoryViewCtrl.swift"; sourceTree = "<group>"; };
+		65DE76E81C77847A00017F96 /* b4u-CategoryTblViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-CategoryTblViewCtrl.swift"; sourceTree = "<group>"; };
+		65DE76EA1C77849B00017F96 /* b4u-CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-CategoryTableViewCell.swift"; sourceTree = "<group>"; };
+		65DE77181C78569200017F96 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
+		65DE771A1C78577200017F96 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		65DE771C1C78577D00017F96 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		65DE771E1C78584800017F96 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		65DE77201C78672600017F96 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		65DE77221C7869B100017F96 /* libFBSDKCoreKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFBSDKCoreKit.a; path = "Pods/../build/Debug-iphoneos/libFBSDKCoreKit.a"; sourceTree = "<group>"; };
+		65DE79621C79448600017F96 /* b4u-CategoryTblHeaderVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-CategoryTblHeaderVIew.swift"; sourceTree = "<group>"; };
+		65DE79641C796AD200017F96 /* b4u_IntermediateScreenDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_IntermediateScreenDataModel.swift; sourceTree = "<group>"; };
+		65DE79671C79761F00017F96 /* b4u-IntermediateViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-IntermediateViewCtrl.swift"; sourceTree = "<group>"; };
+		65DE796A1C79FCFF00017F96 /* b4u-FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-FilterViewController.swift"; sourceTree = "<group>"; };
+		65DE796D1C7A068600017F96 /* b4u-CatFilterAttributeOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-CatFilterAttributeOptions.swift"; sourceTree = "<group>"; };
+		65DE796F1C7A07C900017F96 /* b4u-CatFilterAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-CatFilterAttributes.swift"; sourceTree = "<group>"; };
+		65DE79711C7A1B6100017F96 /* b4u-catalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-catalog.swift"; sourceTree = "<group>"; };
 		65F8B42D1C70BCD800D158FA /* bro4u-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "bro4u-Bridging-Header.h"; sourceTree = "<group>"; };
 		65F8B42F1C70BE6200D158FA /* b4u-UIImageView-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-UIImageView-Extension.swift"; sourceTree = "<group>"; };
 		65F8B4311C70BECD00D158FA /* b4u-NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-NSDateExtension.swift"; sourceTree = "<group>"; };
@@ -130,6 +172,7 @@
 		65F8B4341C70BECD00D158FA /* b4u-UIColor-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-UIColor-Extension.swift"; sourceTree = "<group>"; };
 		65F8B4351C70BECD00D158FA /* b4u-UIView-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-UIView-Extension.swift"; sourceTree = "<group>"; };
 		65F8B4361C70BECD00D158FA /* b4u-Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-Utility.swift"; sourceTree = "<group>"; };
+		B0420EA4B8348ACC0A89E7A7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,28 +180,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65DE771D1C78577D00017F96 /* AddressBook.framework in Frameworks */,
+				65DE771B1C78577200017F96 /* SystemConfiguration.framework in Frameworks */,
+				787E454DD19C7F7D70BF42BE /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		65149D9C1C6A4571006E6235 /* Home */ = {
+		4ACEA2003FD63043109FEF32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				65B18FE21C70BC36000EDD00 /* b4u-CategoryListTblViewCell.swift */,
-				65149D9D1C6A46AD006E6235 /* b4u-HomeViewController.swift */,
-				65149D9F1C6A4B2B006E6235 /* b4u-DrawerTableViewController.swift */,
-				657485B51C70FC6700504F58 /* b4u-RightMenuTblCtrl.swift */,
+				65DE77221C7869B100017F96 /* libFBSDKCoreKit.a */,
+				65DE771C1C78577D00017F96 /* AddressBook.framework */,
+				65DE771A1C78577200017F96 /* SystemConfiguration.framework */,
+				B0420EA4B8348ACC0A89E7A7 /* Pods.framework */,
 			);
-			path = Home;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		6536E0871C68F3F000B273D6 = {
 			isa = PBXGroup;
 			children = (
+				65DE77201C78672600017F96 /* Podfile */,
+				65DE771E1C78584800017F96 /* GoogleService-Info.plist */,
+				65DE77181C78569200017F96 /* GoogleSignIn.bundle */,
 				6536E0921C68F3F000B273D6 /* bro4u */,
 				6536E0911C68F3F000B273D6 /* Products */,
+				B4D74FF320FF35BA637DFE8F /* Pods */,
+				4ACEA2003FD63043109FEF32 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -173,12 +224,12 @@
 		6536E0921C68F3F000B273D6 /* bro4u */ = {
 			isa = PBXGroup;
 			children = (
+				65DE76D61C7780BD00017F96 /* UI */,
 				657485B71C71032300504F58 /* Login */,
 				65F8B42E1C70BE6200D158FA /* Helpers */,
 				65B18A4F1C70BB28000EDD00 /* ThirdParty */,
 				65B18A4A1C70BA07000EDD00 /* WebServiceCalls */,
 				65B189B01C6E5B9C000EDD00 /* SupportingFiles */,
-				65149D9C1C6A4571006E6235 /* Home */,
 				6536E0BD1C690CBD00B273D6 /* DataManager */,
 				6536E0B41C690C6F00B273D6 /* Models */,
 				6536E0931C68F3F000B273D6 /* AppDelegate.swift */,
@@ -195,9 +246,13 @@
 		6536E0B41C690C6F00B273D6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				65DE796C1C7A01F900017F96 /* Filters */,
 				65B49DB71C722C4A0083942D /* bro4u-MainCategory.swift */,
 				65B49DBB1C722CC70083942D /* b4u-SliderImage.swift */,
 				65B49DBD1C7244FE0083942D /* b4u-SearchResult.swift */,
+				65DE76D21C7777FE00017F96 /* b4u-Category.swift */,
+				65DE76D41C7778E100017F96 /* b4u-AttributeOptions.swift */,
+				65DE79641C796AD200017F96 /* b4u_IntermediateScreenDataModel.swift */,
 				65B189B51C6E6020000EDD00 /* CoreDataModels */,
 			);
 			path = Models;
@@ -351,6 +406,75 @@
 			path = "UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
+		65DE76D61C7780BD00017F96 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				65DE79691C79FA2B00017F96 /* Filters */,
+				65DE79661C7975D000017F96 /* InterMediateScreen */,
+				65DE76E51C7780ED00017F96 /* Category */,
+				65DE76D71C7780BD00017F96 /* Home */,
+				65DE76DC1C7780BD00017F96 /* Search */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		65DE76D71C7780BD00017F96 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				65DE76D81C7780BD00017F96 /* b4u-CategoryListTblViewCell.swift */,
+				65DE76D91C7780BD00017F96 /* b4u-DrawerTableViewController.swift */,
+				65DE76DA1C7780BD00017F96 /* b4u-HomeViewController.swift */,
+				65DE76DB1C7780BD00017F96 /* b4u-RightMenuTblCtrl.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		65DE76DC1C7780BD00017F96 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				65DE76DD1C7780BD00017F96 /* b4u-SearchResultTblCell.swift */,
+				65DE76DE1C7780BD00017F96 /* b4u-SearchResultTblCtrl.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		65DE76E51C7780ED00017F96 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				65DE76E61C77837B00017F96 /* b4u-CategoryViewCtrl.swift */,
+				65DE76E81C77847A00017F96 /* b4u-CategoryTblViewCtrl.swift */,
+				65DE76EA1C77849B00017F96 /* b4u-CategoryTableViewCell.swift */,
+				65DE79621C79448600017F96 /* b4u-CategoryTblHeaderVIew.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		65DE79661C7975D000017F96 /* InterMediateScreen */ = {
+			isa = PBXGroup;
+			children = (
+				65DE79671C79761F00017F96 /* b4u-IntermediateViewCtrl.swift */,
+			);
+			path = InterMediateScreen;
+			sourceTree = "<group>";
+		};
+		65DE79691C79FA2B00017F96 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				65DE796A1C79FCFF00017F96 /* b4u-FilterViewController.swift */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
+		65DE796C1C7A01F900017F96 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				65DE796D1C7A068600017F96 /* b4u-CatFilterAttributeOptions.swift */,
+				65DE796F1C7A07C900017F96 /* b4u-CatFilterAttributes.swift */,
+				65DE79711C7A1B6100017F96 /* b4u-catalog.swift */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
 		65F8B42E1C70BE6200D158FA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,6 +489,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		B4D74FF320FF35BA637DFE8F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4B48C7B178FB5F85A79C9741 /* Pods.debug.xcconfig */,
+				0B4AB3BBC76D5DA9D4D6646A /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -372,9 +505,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6536E0A51C68F3F000B273D6 /* Build configuration list for PBXNativeTarget "bro4u" */;
 			buildPhases = (
+				458A96AD39D9AF53AD73CB5F /* Check Pods Manifest.lock */,
 				6536E08C1C68F3F000B273D6 /* Sources */,
 				6536E08D1C68F3F000B273D6 /* Frameworks */,
 				6536E08E1C68F3F000B273D6 /* Resources */,
+				602C7F3564A55E5E69C9DAD9 /* Copy Pods Resources */,
+				9A6628D48768BF0DB326AABA /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -397,6 +533,7 @@
 				TargetAttributes = {
 					6536E08F1C68F3F000B273D6 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 8AJJ2NRX9T;
 					};
 				};
 			};
@@ -424,13 +561,64 @@
 			buildActionMask = 2147483647;
 			files = (
 				6536E0A11C68F3F000B273D6 /* LaunchScreen.storyboard in Resources */,
+				65DE77191C78569200017F96 /* GoogleSignIn.bundle in Resources */,
 				6536E09E1C68F3F000B273D6 /* Assets.xcassets in Resources */,
 				6536E0991C68F3F000B273D6 /* Main.storyboard in Resources */,
 				65B189B21C6E5CAC000EDD00 /* category.json in Resources */,
+				65DE77211C78672600017F96 /* Podfile in Resources */,
+				65DE771F1C78584800017F96 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		458A96AD39D9AF53AD73CB5F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		602C7F3564A55E5E69C9DAD9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A6628D48768BF0DB326AABA /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6536E08C1C68F3F000B273D6 /* Sources */ = {
@@ -439,24 +627,30 @@
 			files = (
 				65F8B43C1C70BECD00D158FA /* b4u-Utility.swift in Sources */,
 				65B18A8C1C70BB28000EDD00 /* UIProgressView+AFNetworking.m in Sources */,
+				65DE79631C79448600017F96 /* b4u-CategoryTblHeaderVIew.swift in Sources */,
 				65B18A8B1C70BB28000EDD00 /* UIImageView+AFNetworking.m in Sources */,
 				6536E0BF1C690CFC00B273D6 /* bro4u-DataManager.swift in Sources */,
 				65B189BC1C6E6020000EDD00 /* Category.swift in Sources */,
 				65F8B4391C70BECD00D158FA /* b4u-String-Extension.swift in Sources */,
+				65DE76E91C77847A00017F96 /* b4u-CategoryTblViewCtrl.swift in Sources */,
 				65B18A7E1C70BB28000EDD00 /* AFHTTPSessionManager.m in Sources */,
 				65B189BB1C6E6020000EDD00 /* Category+CoreDataProperties.swift in Sources */,
+				65DE79701C7A07C900017F96 /* b4u-CatFilterAttributes.swift in Sources */,
 				65B18A7F1C70BB28000EDD00 /* AFNetworkReachabilityManager.m in Sources */,
+				65DE76EB1C77849B00017F96 /* b4u-CategoryTableViewCell.swift in Sources */,
 				65B18A881C70BB28000EDD00 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				65DE76D31C7777FE00017F96 /* b4u-Category.swift in Sources */,
 				65B18A7C1C70BB28000EDD00 /* AFHTTPRequestOperation.m in Sources */,
+				65DE76D51C7778E100017F96 /* b4u-AttributeOptions.swift in Sources */,
+				65DE79721C7A1B6100017F96 /* b4u-catalog.swift in Sources */,
 				65B18A8E1C70BB28000EDD00 /* UIWebView+AFNetworking.m in Sources */,
+				65DE76E01C7780BD00017F96 /* b4u-DrawerTableViewController.swift in Sources */,
 				65B18A821C70BB28000EDD00 /* AFURLRequestSerialization.m in Sources */,
 				65B18A871C70BB28000EDD00 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				65F8B4381C70BECD00D158FA /* b4u-progressIndicator.swift in Sources */,
 				65B18A811C70BB28000EDD00 /* AFURLConnectionOperation.m in Sources */,
 				65B18A891C70BB28000EDD00 /* UIAlertView+AFNetworking.m in Sources */,
 				65B18A841C70BB28000EDD00 /* AFURLSessionManager.m in Sources */,
-				65149D9E1C6A46AD006E6235 /* b4u-HomeViewController.swift in Sources */,
-				657485B61C70FC6700504F58 /* b4u-RightMenuTblCtrl.swift in Sources */,
 				65B189BE1C6E6020000EDD00 /* SubCategory.swift in Sources */,
 				65F8B43A1C70BECD00D158FA /* b4u-UIColor-Extension.swift in Sources */,
 				65B18A861C70BB28000EDD00 /* SWRevealViewController.m in Sources */,
@@ -464,21 +658,29 @@
 				65B189BD1C6E6020000EDD00 /* SubCategory+CoreDataProperties.swift in Sources */,
 				65B49DB81C722C4A0083942D /* bro4u-MainCategory.swift in Sources */,
 				6536E09C1C68F3F000B273D6 /* bro4u.xcdatamodeld in Sources */,
+				65DE76E41C7780BD00017F96 /* b4u-SearchResultTblCtrl.swift in Sources */,
 				65B189B41C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift in Sources */,
 				657485BC1C71035400504F58 /* b4u-LoginViewCtrl.swift in Sources */,
-				65B18FE31C70BC36000EDD00 /* b4u-CategoryListTblViewCell.swift in Sources */,
 				65B49DBC1C722CC70083942D /* b4u-SliderImage.swift in Sources */,
+				65DE76DF1C7780BD00017F96 /* b4u-CategoryListTblViewCell.swift in Sources */,
+				65DE796E1C7A068600017F96 /* b4u-CatFilterAttributeOptions.swift in Sources */,
 				65B18A4E1C70BA51000EDD00 /* b4u-WebApiCallManager.swift in Sources */,
 				65B18A801C70BB28000EDD00 /* AFSecurityPolicy.m in Sources */,
-				65149DA01C6A4B2B006E6235 /* b4u-DrawerTableViewController.swift in Sources */,
+				65DE79651C796AD200017F96 /* b4u_IntermediateScreenDataModel.swift in Sources */,
 				65B18A901C70BBC1000EDD00 /* b4u-globalDefinations.swift in Sources */,
+				65DE79681C79761F00017F96 /* b4u-IntermediateViewCtrl.swift in Sources */,
 				65B18A7D1C70BB28000EDD00 /* AFHTTPRequestOperationManager.m in Sources */,
 				65B18A8A1C70BB28000EDD00 /* UIButton+AFNetworking.m in Sources */,
+				65DE76E11C7780BD00017F96 /* b4u-HomeViewController.swift in Sources */,
 				65B18A8D1C70BB28000EDD00 /* UIRefreshControl+AFNetworking.m in Sources */,
 				65F8B4301C70BE6200D158FA /* b4u-UIImageView-Extension.swift in Sources */,
 				65F8B4371C70BECD00D158FA /* b4u-NSDateExtension.swift in Sources */,
+				65DE796B1C79FCFF00017F96 /* b4u-FilterViewController.swift in Sources */,
 				6536E0941C68F3F000B273D6 /* AppDelegate.swift in Sources */,
+				65DE76E71C77837B00017F96 /* b4u-CategoryViewCtrl.swift in Sources */,
+				65DE76E31C7780BD00017F96 /* b4u-SearchResultTblCell.swift in Sources */,
 				65B18A831C70BB28000EDD00 /* AFURLResponseSerialization.m in Sources */,
+				65DE76E21C7780BD00017F96 /* b4u-RightMenuTblCtrl.swift in Sources */,
 				65B49DBE1C7244FE0083942D /* b4u-SearchResult.swift in Sources */,
 				65B18A851C70BB28000EDD00 /* KeychainWrapper.m in Sources */,
 			);
@@ -510,6 +712,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -528,6 +731,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -545,6 +749,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				"OTHER_LDFLAGS[arch=*]" = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -554,6 +760,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -572,6 +779,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -582,6 +790,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -589,11 +798,18 @@
 		};
 		6536E0A61C68F3F000B273D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B48C7B178FB5F85A79C9741 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = bro4u/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.applearn.bro4u;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "bro4u/bro4u-Bridging-Header.h";
@@ -603,11 +819,18 @@
 		};
 		6536E0A71C68F3F000B273D6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B4AB3BBC76D5DA9D4D6646A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = bro4u/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.applearn.bro4u;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "bro4u/bro4u-Bridging-Header.h";

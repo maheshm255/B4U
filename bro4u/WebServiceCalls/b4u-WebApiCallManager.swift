@@ -68,6 +68,14 @@ class b4u_WebApiCallManager: NSObject {
         {
         case kHomeSCategory:
             self.parseCategoryData(dataDict)
+        case kSearchApi:
+            self.pareseSearchData(dataDict)
+        case kCategoryAndSubOptions:
+            self.parseCategoryAndSubOptionsData(dataDict)
+        case intermediateScreenAPi:
+            self.parseIntermediateScreenData(dataDict)
+        case filterApi:
+            self.parseCatalogAttributes(dataDict)
         default:
             print(itemName)
         }
@@ -90,23 +98,45 @@ class b4u_WebApiCallManager: NSObject {
             bro4u_DataManager.sharedInstance.sliderImages.append(sliderImageObj)
         }
     }
-    
-    func getParamagerString(params:Dictionary<String ,AnyObject>?)->String
+ 
+    func pareseSearchData(dataDict:Dictionary<String, AnyObject>)
     {
-        var paramStr = ""
-        var count = 0
-        for (key ,value) in params!.enumerate()
+        let searchResult:[Dictionary<String ,AnyObject>] = dataDict["search_details"] as! [Dictionary<String ,AnyObject>]
+        
+        for (_ ,aSearchResultDataDict) in searchResult.enumerate()
         {
-            count++
-            if count == params!.count
-            {
-              paramStr = paramStr + "\(key)=\(value)"
-            }else
-            {
-                paramStr = paramStr + "\(key)=\(value)&"
-            }
+            let aSearchedObj = b4u_SearchResult(searchResultDaraDict:aSearchResultDataDict)
+            bro4u_DataManager.sharedInstance.searchResult.append(aSearchedObj)
         }
         
-        return paramStr
     }
+
+    
+    func parseCategoryAndSubOptionsData(dataDict:Dictionary<String, AnyObject>)
+    {
+        let categories:[Dictionary<String ,AnyObject>] = dataDict["categories"] as! [Dictionary<String ,AnyObject>]
+        
+        for (_ ,categoryDataDict) in categories.enumerate()
+        {
+            let categoryObj = b4u_Category(categoryDataDict:categoryDataDict)
+            bro4u_DataManager.sharedInstance.categoryAndSubOptions.append(categoryObj)
+        }
+    }
+    
+    
+    func parseIntermediateScreenData(dataDict:Dictionary<String, AnyObject>)
+    {
+      
+            let interMediateDataObj = b4u_IntermediateScreenDataModel(interMediateInfoDataDict: dataDict)
+            bro4u_DataManager.sharedInstance.interMediateScreenDataObj = interMediateDataObj
+    }
+    
+    func parseCatalogAttributes(dataDict:Dictionary<String, AnyObject>)
+    {
+        
+        let  filteredCatlog = b4u_catalog(catLogDataDict:dataDict)
+        bro4u_DataManager.sharedInstance.catlogFilterObj = filteredCatlog
+        
+    }
+    
 }

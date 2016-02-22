@@ -21,25 +21,22 @@ class b4u_SearchResult: NSObject {
     var mainCatId:String?
     var optionId:String?
     var optionName:String?
-    var sort_order:NSDate?
+    var sort_order:String?
     
     
-    init(sliderImageInfoDataDict:Dictionary<String ,AnyObject>) {
+    init(searchResultDaraDict:Dictionary<String ,AnyObject>) {
         
-//        active = sliderImageInfoDataDict["attr_id"] as? String
-//        bannerId = sliderImageInfoDataDict["attr_name"] as? String
-//        bannerTitle = sliderImageInfoDataDict["cat_desc"] as? String
-//        catId = sliderImageInfoDataDict["cat_icon"] as? String
-//        //  expiryDate = sliderImageInfoDataDict["cat_id"] as? String
-//        //expiryDateTime = sliderImageInfoDataDict["cat_name"] as? NSNumber
-//        imageName = sliderImageInfoDataDict["field_name"] as? String
-//        link = sliderImageInfoDataDict["main_cat_id"] as? String
-//        optionId = sliderImageInfoDataDict["option_id"] as? String
-//        sort = sliderImageInfoDataDict["option_name"] as? String
-//        //  startDateTime = sliderImageInfoDataDict["sort_order"] as? NSNumber
-//        //  timestamp = sliderImageInfoDataDict["timestamp"] as? NSNumber
-//        deviceType = sliderImageInfoDataDict["for"] as? String
-        
+        attrId = searchResultDaraDict["attr_id"] as? String
+        attrName = searchResultDaraDict["attr_name"] as? String
+        catDesc = searchResultDaraDict["cat_desc"] as? String
+        catIcon = searchResultDaraDict["cat_icon"] as? String
+        catId = searchResultDaraDict["cat_id"] as? String
+        catName = searchResultDaraDict["cat_name"] as? String
+        fieldName = searchResultDaraDict["field_name"] as? String
+        mainCatId = searchResultDaraDict["main_cat_id"] as? String
+        optionId = searchResultDaraDict["option_id"] as? String
+        optionName = searchResultDaraDict["option_name"] as? String
+        sort_order = searchResultDaraDict["sort_order"] as? String
         
     }
 

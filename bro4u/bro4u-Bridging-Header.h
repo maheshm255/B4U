@@ -8,3 +8,6 @@
 #import "KeychainWrapper.h"
 #import "UIImageView+AFNetworking.h"
 #import  "AFNetworkReachabilityManager.h"
+
+#import <Google/SignIn.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>

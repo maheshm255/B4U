@@ -12,6 +12,11 @@ class bro4u_DataManager: NSObject {
     
     var mainCategories:[bro4u_MainCategory] = Array()
     var sliderImages:[b4u_SliderImage] = Array()
+    var searchResult:[b4u_SearchResult] = Array()
+    var categoryAndSubOptions:[b4u_Category] = Array()
+
+    var interMediateScreenDataObj:b4u_IntermediateScreenDataModel?
+    var catlogFilterObj:b4u_catalog?
 
     class var sharedInstance: bro4u_DataManager {
         struct Singleton {
