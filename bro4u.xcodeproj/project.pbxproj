@@ -74,6 +74,13 @@
 		65F8B43A1C70BECD00D158FA /* b4u-UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F8B4341C70BECD00D158FA /* b4u-UIColor-Extension.swift */; };
 		65F8B43B1C70BECD00D158FA /* b4u-UIView-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F8B4351C70BECD00D158FA /* b4u-UIView-Extension.swift */; };
 		65F8B43C1C70BECD00D158FA /* b4u-Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F8B4361C70BECD00D158FA /* b4u-Utility.swift */; };
+		65FF8CDC1C7B6D73007588D0 /* b4u-ExpandableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF8CDB1C7B6D73007588D0 /* b4u-ExpandableTableView.swift */; };
+		65FF8CDE1C7B6D99007588D0 /* b4u-ExpandableTblHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF8CDD1C7B6D99007588D0 /* b4u-ExpandableTblHeaderView.swift */; };
+		65FF8CE01C7B8375007588D0 /* b4u-ExpandableTblViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF8CDF1C7B8375007588D0 /* b4u-ExpandableTblViewCell.swift */; };
+		65FF8D601C7E175C007588D0 /* b4u-DateAndTImeSelectionTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF8D5F1C7E175C007588D0 /* b4u-DateAndTImeSelectionTblCell.swift */; };
+		65FF8D621C7E2B86007588D0 /* b4u-TimeSlots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF8D611C7E2B86007588D0 /* b4u-TimeSlots.swift */; };
+		65FF8D651C7E9222007588D0 /* b4u-ServicePatnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF8D641C7E9222007588D0 /* b4u-ServicePatnerController.swift */; };
+		65FF8D681C7EC1A5007588D0 /* b4u-SugestedPartner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF8D671C7EC1A5007588D0 /* b4u-SugestedPartner.swift */; };
 		787E454DD19C7F7D70BF42BE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0420EA4B8348ACC0A89E7A7 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -172,6 +179,13 @@
 		65F8B4341C70BECD00D158FA /* b4u-UIColor-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-UIColor-Extension.swift"; sourceTree = "<group>"; };
 		65F8B4351C70BECD00D158FA /* b4u-UIView-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-UIView-Extension.swift"; sourceTree = "<group>"; };
 		65F8B4361C70BECD00D158FA /* b4u-Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-Utility.swift"; sourceTree = "<group>"; };
+		65FF8CDB1C7B6D73007588D0 /* b4u-ExpandableTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-ExpandableTableView.swift"; sourceTree = "<group>"; };
+		65FF8CDD1C7B6D99007588D0 /* b4u-ExpandableTblHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-ExpandableTblHeaderView.swift"; sourceTree = "<group>"; };
+		65FF8CDF1C7B8375007588D0 /* b4u-ExpandableTblViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-ExpandableTblViewCell.swift"; sourceTree = "<group>"; };
+		65FF8D5F1C7E175C007588D0 /* b4u-DateAndTImeSelectionTblCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-DateAndTImeSelectionTblCell.swift"; sourceTree = "<group>"; };
+		65FF8D611C7E2B86007588D0 /* b4u-TimeSlots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-TimeSlots.swift"; sourceTree = "<group>"; };
+		65FF8D641C7E9222007588D0 /* b4u-ServicePatnerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-ServicePatnerController.swift"; sourceTree = "<group>"; };
+		65FF8D671C7EC1A5007588D0 /* b4u-SugestedPartner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-SugestedPartner.swift"; sourceTree = "<group>"; };
 		B0420EA4B8348ACC0A89E7A7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -246,6 +260,7 @@
 		6536E0B41C690C6F00B273D6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				65FF8D661C7EBFDD007588D0 /* ServicePatners */,
 				65DE796C1C7A01F900017F96 /* Filters */,
 				65B49DB71C722C4A0083942D /* bro4u-MainCategory.swift */,
 				65B49DBB1C722CC70083942D /* b4u-SliderImage.swift */,
@@ -409,6 +424,7 @@
 		65DE76D61C7780BD00017F96 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				65FF8D631C7E91EF007588D0 /* ServicePatners */,
 				65DE79691C79FA2B00017F96 /* Filters */,
 				65DE79661C7975D000017F96 /* InterMediateScreen */,
 				65DE76E51C7780ED00017F96 /* Category */,
@@ -461,6 +477,10 @@
 			isa = PBXGroup;
 			children = (
 				65DE796A1C79FCFF00017F96 /* b4u-FilterViewController.swift */,
+				65FF8CDB1C7B6D73007588D0 /* b4u-ExpandableTableView.swift */,
+				65FF8CDD1C7B6D99007588D0 /* b4u-ExpandableTblHeaderView.swift */,
+				65FF8CDF1C7B8375007588D0 /* b4u-ExpandableTblViewCell.swift */,
+				65FF8D5F1C7E175C007588D0 /* b4u-DateAndTImeSelectionTblCell.swift */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -471,6 +491,7 @@
 				65DE796D1C7A068600017F96 /* b4u-CatFilterAttributeOptions.swift */,
 				65DE796F1C7A07C900017F96 /* b4u-CatFilterAttributes.swift */,
 				65DE79711C7A1B6100017F96 /* b4u-catalog.swift */,
+				65FF8D611C7E2B86007588D0 /* b4u-TimeSlots.swift */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -487,6 +508,22 @@
 				65F8B42F1C70BE6200D158FA /* b4u-UIImageView-Extension.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		65FF8D631C7E91EF007588D0 /* ServicePatners */ = {
+			isa = PBXGroup;
+			children = (
+				65FF8D641C7E9222007588D0 /* b4u-ServicePatnerController.swift */,
+			);
+			path = ServicePatners;
+			sourceTree = "<group>";
+		};
+		65FF8D661C7EBFDD007588D0 /* ServicePatners */ = {
+			isa = PBXGroup;
+			children = (
+				65FF8D671C7EC1A5007588D0 /* b4u-SugestedPartner.swift */,
+			);
+			path = ServicePatners;
 			sourceTree = "<group>";
 		};
 		B4D74FF320FF35BA637DFE8F /* Pods */ = {
@@ -629,23 +666,28 @@
 				65B18A8C1C70BB28000EDD00 /* UIProgressView+AFNetworking.m in Sources */,
 				65DE79631C79448600017F96 /* b4u-CategoryTblHeaderVIew.swift in Sources */,
 				65B18A8B1C70BB28000EDD00 /* UIImageView+AFNetworking.m in Sources */,
+				65FF8D621C7E2B86007588D0 /* b4u-TimeSlots.swift in Sources */,
 				6536E0BF1C690CFC00B273D6 /* bro4u-DataManager.swift in Sources */,
 				65B189BC1C6E6020000EDD00 /* Category.swift in Sources */,
 				65F8B4391C70BECD00D158FA /* b4u-String-Extension.swift in Sources */,
+				65FF8CE01C7B8375007588D0 /* b4u-ExpandableTblViewCell.swift in Sources */,
 				65DE76E91C77847A00017F96 /* b4u-CategoryTblViewCtrl.swift in Sources */,
 				65B18A7E1C70BB28000EDD00 /* AFHTTPSessionManager.m in Sources */,
 				65B189BB1C6E6020000EDD00 /* Category+CoreDataProperties.swift in Sources */,
 				65DE79701C7A07C900017F96 /* b4u-CatFilterAttributes.swift in Sources */,
 				65B18A7F1C70BB28000EDD00 /* AFNetworkReachabilityManager.m in Sources */,
 				65DE76EB1C77849B00017F96 /* b4u-CategoryTableViewCell.swift in Sources */,
+				65FF8D601C7E175C007588D0 /* b4u-DateAndTImeSelectionTblCell.swift in Sources */,
 				65B18A881C70BB28000EDD00 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				65DE76D31C7777FE00017F96 /* b4u-Category.swift in Sources */,
+				65FF8CDC1C7B6D73007588D0 /* b4u-ExpandableTableView.swift in Sources */,
 				65B18A7C1C70BB28000EDD00 /* AFHTTPRequestOperation.m in Sources */,
 				65DE76D51C7778E100017F96 /* b4u-AttributeOptions.swift in Sources */,
 				65DE79721C7A1B6100017F96 /* b4u-catalog.swift in Sources */,
 				65B18A8E1C70BB28000EDD00 /* UIWebView+AFNetworking.m in Sources */,
 				65DE76E01C7780BD00017F96 /* b4u-DrawerTableViewController.swift in Sources */,
 				65B18A821C70BB28000EDD00 /* AFURLRequestSerialization.m in Sources */,
+				65FF8CDE1C7B6D99007588D0 /* b4u-ExpandableTblHeaderView.swift in Sources */,
 				65B18A871C70BB28000EDD00 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				65F8B4381C70BECD00D158FA /* b4u-progressIndicator.swift in Sources */,
 				65B18A811C70BB28000EDD00 /* AFURLConnectionOperation.m in Sources */,
@@ -656,6 +698,7 @@
 				65B18A861C70BB28000EDD00 /* SWRevealViewController.m in Sources */,
 				65F8B43B1C70BECD00D158FA /* b4u-UIView-Extension.swift in Sources */,
 				65B189BD1C6E6020000EDD00 /* SubCategory+CoreDataProperties.swift in Sources */,
+				65FF8D681C7EC1A5007588D0 /* b4u-SugestedPartner.swift in Sources */,
 				65B49DB81C722C4A0083942D /* bro4u-MainCategory.swift in Sources */,
 				6536E09C1C68F3F000B273D6 /* bro4u.xcdatamodeld in Sources */,
 				65DE76E41C7780BD00017F96 /* b4u-SearchResultTblCtrl.swift in Sources */,
@@ -677,6 +720,7 @@
 				65F8B4371C70BECD00D158FA /* b4u-NSDateExtension.swift in Sources */,
 				65DE796B1C79FCFF00017F96 /* b4u-FilterViewController.swift in Sources */,
 				6536E0941C68F3F000B273D6 /* AppDelegate.swift in Sources */,
+				65FF8D651C7E9222007588D0 /* b4u-ServicePatnerController.swift in Sources */,
 				65DE76E71C77837B00017F96 /* b4u-CategoryViewCtrl.swift in Sources */,
 				65DE76E31C7780BD00017F96 /* b4u-SearchResultTblCell.swift in Sources */,
 				65B18A831C70BB28000EDD00 /* AFURLResponseSerialization.m in Sources */,

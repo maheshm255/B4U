@@ -98,8 +98,8 @@ extension NSDate{
     class func dateFormat()-> NSDateFormatter
     {
         let modifiedDateFormat:NSDateFormatter = NSDateFormatter()
-        modifiedDateFormat.dateFormat = "dd-MM-yyyy HH:mm"
-        modifiedDateFormat.timeZone = NSTimeZone(name: "UTC")
+        modifiedDateFormat.dateFormat = "dd-MM-yyyy"
+      //  modifiedDateFormat.timeZone = NSTimeZone(name: "UTC")
         
         return modifiedDateFormat
     }

@@ -76,6 +76,10 @@ class b4u_WebApiCallManager: NSObject {
             self.parseIntermediateScreenData(dataDict)
         case filterApi:
             self.parseCatalogAttributes(dataDict)
+        case kTimeSlotApi:
+            self.parsTimeSlotData(dataDict)
+        case kShowServicePatnerApi:
+            self.parseServicePatnerData(dataDict)
         default:
             print(itemName)
         }
@@ -136,6 +140,17 @@ class b4u_WebApiCallManager: NSObject {
         
         let  filteredCatlog = b4u_catalog(catLogDataDict:dataDict)
         bro4u_DataManager.sharedInstance.catlogFilterObj = filteredCatlog
+        
+    }
+    
+    func parsTimeSlotData(dataDict:Dictionary<String, AnyObject>)
+    {
+        
+       bro4u_DataManager.sharedInstance.timeSlots = b4u_TimeSlots(timeSlotArray:dataDict["timeslots"] as! [String])
+        
+    }
+    func parseServicePatnerData(dataDict:Dictionary<String, AnyObject>)
+    {
         
     }
     

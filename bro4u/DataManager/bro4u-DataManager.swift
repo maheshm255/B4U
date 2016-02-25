@@ -18,6 +18,8 @@ class bro4u_DataManager: NSObject {
     var interMediateScreenDataObj:b4u_IntermediateScreenDataModel?
     var catlogFilterObj:b4u_catalog?
 
+    var timeSlots:b4u_TimeSlots?
+
     class var sharedInstance: bro4u_DataManager {
         struct Singleton {
             

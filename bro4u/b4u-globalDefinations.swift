@@ -30,3 +30,13 @@ let intermediateScreenAPi = "index.php/categories/intermediatory"
 //cat_id=3  // option_id= //field_name=
 
 let filterApi = "index.php/catalog/filter_v2"
+
+//date = 29-01-2016
+let kTimeSlotApi = "index.php/categories/get_category_timeslots/3"
+
+
+//?cat_id=2&latitude=12.9718915&longitude=77.6411545
+let kShowServicePatnerApi1 = "index.php/catalog/browse/1"
+
+//cat_id=2&latitude=12.9718915&longitude=77.6411545
+let kShowServicePatnerApi = "index.php/catalog/browse"
