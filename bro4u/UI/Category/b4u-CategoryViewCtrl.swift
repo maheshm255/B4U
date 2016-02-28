@@ -16,7 +16,10 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
     @IBOutlet weak var catHorizontalScrollView: UIScrollView!
     @IBOutlet weak var catTblsScrollView: UIScrollView!
     
-    private var controllers:[b4u_CategoryTblViewCtrl] = Array()
+ //   private var controllers:[b4u_CategoryTblViewCtrl] = Array()
+    
+    private var controllers:[b4u_CategoryTblViewCtrl1] = Array()
+
     private var lastViewConstraint:NSArray?
     private var titles:[NSString] = Array()
     private var labels:[UILabel] = Array()
@@ -82,7 +85,10 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
             
             if let filteredCategoryData = self.filterContent(mainCategoryData)
             {
-                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("b4uCategoryTableView") as! b4u_CategoryTblViewCtrl
+//                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("b4uCategoryTableView") as! b4u_CategoryTblViewCtrl
+                
+        let vc =  self.storyboard?.instantiateViewControllerWithIdentifier("b4uCategoryTableViewCtrl") as! b4u_CategoryTblViewCtrl1
+                
                 vc.categoryAndSubOptions = filteredCategoryData
                 self.createTableViewScroll(vc, title:mainCategoryData.manCatName!, color:UIColor.grayColor())
             }
@@ -106,7 +112,7 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
     */
 
     
-    func createTableViewScroll(vc:b4u_CategoryTblViewCtrl , title:NSString , color:UIColor)
+    func createTableViewScroll(vc:b4u_CategoryTblViewCtrl1 , title:NSString , color:UIColor)
     {
         
         

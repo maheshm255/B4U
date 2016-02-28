@@ -151,7 +151,9 @@ class b4u_WebApiCallManager: NSObject {
     }
     func parseServicePatnerData(dataDict:Dictionary<String, AnyObject>)
     {
+        let suggestedPatnersObj = b4u_SuggestedPatnersResult(sugestedPartnersResultDict: dataDict)
         
+        bro4u_DataManager.sharedInstance.suggestedPatnersResult = suggestedPatnersObj
     }
     
 }

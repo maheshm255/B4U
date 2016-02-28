@@ -34,7 +34,8 @@ class b4u_IntermediateViewCtrl: UIViewController {
     
     var selectedCategoryObj:b4u_Category?
 
-    
+    var selectedAttributeOption:b4u_AttributeOptions?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

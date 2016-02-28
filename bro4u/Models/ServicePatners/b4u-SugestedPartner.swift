@@ -95,12 +95,12 @@ class b4u_SugestedPartner: NSObject {
         vendorId = sugestedPartnerDetailsDict["vendor_id"] as? String
         vendorMaxOfferAmount = sugestedPartnerDetailsDict["vendor_max_offer_amount"] as? String
         vendorName = sugestedPartnerDetailsDict["vendor_name"] as? String
-        banner = sugestedPartnerDetailsDict["banner"] as? String
-        banner = sugestedPartnerDetailsDict["banner"] as? String
-        banner = sugestedPartnerDetailsDict["banner"] as? String
-        banner = sugestedPartnerDetailsDict["banner"] as? String
-        banner = sugestedPartnerDetailsDict["banner"] as? String
-        banner = sugestedPartnerDetailsDict["banner"] as? String
+//        banner = sugestedPartnerDetailsDict["banner"] as? String
+//        banner = sugestedPartnerDetailsDict["banner"] as? String
+//        banner = sugestedPartnerDetailsDict["banner"] as? String
+//        banner = sugestedPartnerDetailsDict["banner"] as? String
+//        banner = sugestedPartnerDetailsDict["banner"] as? String
+//        banner = sugestedPartnerDetailsDict["banner"] as? String
 
     }
 

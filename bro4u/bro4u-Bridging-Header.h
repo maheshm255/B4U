@@ -11,3 +11,8 @@
 
 #import <Google/SignIn.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+
+#import "HMSegmentedControl.h"
+#import "PaymentsSDK.h"
+#import "PayU_iOS_CoreSDK.h"
+#import "PayUHeader.h"

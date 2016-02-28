@@ -19,6 +19,7 @@ class bro4u_DataManager: NSObject {
     var catlogFilterObj:b4u_catalog?
 
     var timeSlots:b4u_TimeSlots?
+    var suggestedPatnersResult:b4u_SuggestedPatnersResult?
 
     class var sharedInstance: bro4u_DataManager {
         struct Singleton {

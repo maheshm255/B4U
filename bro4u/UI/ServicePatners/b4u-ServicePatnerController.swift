@@ -8,8 +8,11 @@
 
 import UIKit
 
-class b4u_ServicePatnerController: UIViewController {
+class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITableViewDelegate{
 
+    @IBOutlet weak var viewMap: UIView!
+    @IBOutlet weak var viewFilter: UIView!
+    @IBOutlet weak var tableViewServicePatner: UITableView!
     var selectedCategoryObj:b4u_Category?
 
     override func viewDidLoad() {
@@ -51,11 +54,53 @@ class b4u_ServicePatnerController: UIViewController {
             let params = "?cat_id=\(catId)&latitude=\(latitude)&longitude=\(longitude)"
             b4u_WebApiCallManager.sharedInstance.getApiCall(kShowServicePatnerApi, params:params, result:{(resultObject) -> Void in
                 
-                
+                self.tableViewServicePatner.reloadData()
             })
         }
     }
     
   
+    
+    
+    internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return 1
+    }
+    internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCellWithIdentifier("servicePatnerCell") as! b4u_ServicePartnerTblViewCell
+        
+        
+        let aPatner:b4u_SugestedPartner = (bro4u_DataManager.sharedInstance.suggestedPatnersResult?.suggestedPatners![indexPath.section])!
+        
+         cell.imgViewProfilePic.downloadedFrom(link:aPatner.profilePic!, contentMode:UIViewContentMode.ScaleAspectFit)
+        
+          cell.lblVendorName.text = aPatner.vendorName
+          cell.lblDiscount.text = aPatner.offerPrice
+          cell.lblActualPrice.text = aPatner.custPrice
+          cell.lblVendorReiviews.text = aPatner.reviewCount
+          cell.lblVendorDistance.text = aPatner.distance
+        
+        cell.contentView.layer.borderColor = UIColor.grayColor().CGColor
+        cell.contentView.layer.borderWidth = 1.0
+        cell.contentView.layer.shadowColor = UIColor.blackColor().CGColor
+        cell.contentView.layer.shadowOpacity = 0.1
+        
+        return cell
+    }
+    internal func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
+        
+        if let suggestedPatners = bro4u_DataManager.sharedInstance.suggestedPatnersResult?.suggestedPatners
+        {
+            return suggestedPatners.count
+        }
+        return 0
 
+    }// Default is 1 if
+
+    internal func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+        {
+         return 182.0
+    }
 }

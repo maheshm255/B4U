@@ -150,11 +150,11 @@ class b4u_FilterViewController: UIViewController {
                 
                 cell = tableView.dequeueReusableCellWithIdentifier(radioBoxIdentifier, forIndexPath: indexPath) as! b4u_ExpandableTblViewCell
                 
-                cell.iconImgView?.image = UIImage(named:"grayArrow")
+                cell.iconImgView?.image = UIImage(named:"radioGray")
                 if selectedIndexPath["\(indexPath.section)"]?.count > 0
                 {
                     if (selectedIndexPath["\(indexPath.section)"]!.contains(indexPath)) {
-                        cell.iconImgView?.image = UIImage(named:"greenArrow")
+                        cell.iconImgView?.image = UIImage(named:"radioBlue")
                     }
                 }
                 cell.lblTitle?.text =  aItem.optionName
@@ -167,12 +167,12 @@ class b4u_FilterViewController: UIViewController {
                 
                 cell = tableView.dequeueReusableCellWithIdentifier(checkBoxCellIdentifier, forIndexPath: indexPath) as! b4u_ExpandableTblViewCell
                 
-                cell.iconImgView?.image = UIImage(named:"grayArrow")
+                cell.iconImgView?.image = UIImage(named:"squareGray")
                 
                 if selectedIndexPath["\(indexPath.section)"]?.count > 0
                 {
                     if (selectedIndexPath["\(indexPath.section)"]!.contains(indexPath)) {
-                        cell.iconImgView?.image = UIImage(named:"greenArrow")
+                        cell.iconImgView?.image = UIImage(named:"squareBlue")
                     }
                 }
                 cell.lblTitle?.text =  aItem.optionName
@@ -261,10 +261,10 @@ class b4u_FilterViewController: UIViewController {
                 if (selectedIndexPath["\(indexPath.section)"]!.contains(indexPath)) {
                     let i = selectedIndexPath["\(indexPath.section)"]?.indexOf(indexPath)
                     selectedIndexPath["\(indexPath.section)"]?.removeAtIndex(i!)
-                    cell.iconImgView.image = UIImage(named: "grayArrow")
+                    cell.iconImgView.image = UIImage(named: "squareGray")
                 }else
                 {
-                    cell.iconImgView.image = UIImage(named: "greenArrow")
+                    cell.iconImgView.image = UIImage(named: "squareBlue")
                     selectedIndexPath["\(indexPath.section)"]?.append(indexPath)
                     
                 }
@@ -272,7 +272,7 @@ class b4u_FilterViewController: UIViewController {
                 
             else
             {
-                cell.iconImgView.image = UIImage(named: "greenArrow")
+                cell.iconImgView.image = UIImage(named: "squareBlue")
                 
                 selectedIndexPath["\(indexPath.section)"] = [indexPath]
             }
@@ -286,7 +286,7 @@ class b4u_FilterViewController: UIViewController {
                 if (selectedIndexPath["\(indexPath.section)"]!.contains(indexPath)) {
                     let i = selectedIndexPath["\(indexPath.section)"]?.indexOf(indexPath)
                     selectedIndexPath["\(indexPath.section)"]?.removeAtIndex(i!)
-                    cell.iconImgView.image = UIImage(named: "grayArrow")
+                    cell.iconImgView.image = UIImage(named: "radioGray")
                 }
                 else
                 {
@@ -294,14 +294,14 @@ class b4u_FilterViewController: UIViewController {
                     
                     let previosuCell = tableView.cellForRowAtIndexPath(i!) as! b4u_ExpandableTblViewCell
 
-                    previosuCell.iconImgView.image = UIImage(named: "grayArrow")
+                    previosuCell.iconImgView.image = UIImage(named: "radioGray")
                     
-                    cell.iconImgView.image = UIImage(named: "greenArrow")
+                    cell.iconImgView.image = UIImage(named: "radioBlue")
                     selectedIndexPath["\(indexPath.section)"] = [indexPath]
                 }
             }else
             {
-                cell.iconImgView.image = UIImage(named: "greenArrow")
+                cell.iconImgView.image = UIImage(named: "radioBlue")
                 selectedIndexPath["\(indexPath.section)"] = [indexPath]
             }
         }
