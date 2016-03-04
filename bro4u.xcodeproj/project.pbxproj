@@ -112,12 +112,16 @@
 		65271F601C8368130022C888 /* b4u-DateTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65271F5F1C8368130022C888 /* b4u-DateTimeTableViewCell.swift */; };
 		65271F621C8368280022C888 /* b4u-CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65271F611C8368280022C888 /* b4u-CommentTableViewCell.swift */; };
 		65271F641C8370350022C888 /* b4u-AddAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65271F631C8370350022C888 /* b4u-AddAddressTableViewController.swift */; };
+		65271F8A1C84BF010022C888 /* b4u-CalanderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65271F891C84BF010022C888 /* b4u-CalanderViewController.swift */; };
 		6536E0941C68F3F000B273D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6536E0931C68F3F000B273D6 /* AppDelegate.swift */; };
 		6536E0991C68F3F000B273D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6536E0971C68F3F000B273D6 /* Main.storyboard */; };
 		6536E09C1C68F3F000B273D6 /* bro4u.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6536E09A1C68F3F000B273D6 /* bro4u.xcdatamodeld */; };
 		6536E09E1C68F3F000B273D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6536E09D1C68F3F000B273D6 /* Assets.xcassets */; };
 		6536E0A11C68F3F000B273D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6536E09F1C68F3F000B273D6 /* LaunchScreen.storyboard */; };
 		6536E0BF1C690CFC00B273D6 /* bro4u-DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6536E0BE1C690CFC00B273D6 /* bro4u-DataManager.swift */; };
+		656412411C88C1B600B8D5D4 /* b4u_ServicePatnerMapViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656412401C88C1B600B8D5D4 /* b4u_ServicePatnerMapViewCtrl.swift */; };
+		656412431C88C2A300B8D5D4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656412421C88C2A300B8D5D4 /* MapKit.framework */; };
+		656412451C88C2B400B8D5D4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656412441C88C2B400B8D5D4 /* CoreLocation.framework */; };
 		657485BC1C71035400504F58 /* b4u-LoginViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657485BB1C71035400504F58 /* b4u-LoginViewCtrl.swift */; };
 		65B189B21C6E5CAC000EDD00 /* category.json in Resources */ = {isa = PBXBuildFile; fileRef = 65B189B11C6E5CAC000EDD00 /* category.json */; };
 		65B189B41C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B189B31C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift */; };
@@ -359,6 +363,7 @@
 		65271F5F1C8368130022C888 /* b4u-DateTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-DateTimeTableViewCell.swift"; sourceTree = "<group>"; };
 		65271F611C8368280022C888 /* b4u-CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-CommentTableViewCell.swift"; sourceTree = "<group>"; };
 		65271F631C8370350022C888 /* b4u-AddAddressTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-AddAddressTableViewController.swift"; sourceTree = "<group>"; };
+		65271F891C84BF010022C888 /* b4u-CalanderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-CalanderViewController.swift"; sourceTree = "<group>"; };
 		6536E0901C68F3F000B273D6 /* bro4u.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bro4u.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6536E0931C68F3F000B273D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6536E0981C68F3F000B273D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -367,6 +372,9 @@
 		6536E0A01C68F3F000B273D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6536E0A21C68F3F000B273D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6536E0BE1C690CFC00B273D6 /* bro4u-DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "bro4u-DataManager.swift"; sourceTree = "<group>"; };
+		656412401C88C1B600B8D5D4 /* b4u_ServicePatnerMapViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ServicePatnerMapViewCtrl.swift; sourceTree = "<group>"; };
+		656412421C88C2A300B8D5D4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		656412441C88C2B400B8D5D4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		657485BB1C71035400504F58 /* b4u-LoginViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-LoginViewCtrl.swift"; sourceTree = "<group>"; };
 		65B189B11C6E5CAC000EDD00 /* category.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = category.json; sourceTree = "<group>"; };
 		65B189B31C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "bro4u-CoreDataManager.swift"; sourceTree = "<group>"; };
@@ -466,6 +474,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				656412451C88C2B400B8D5D4 /* CoreLocation.framework in Frameworks */,
+				656412431C88C2A300B8D5D4 /* MapKit.framework in Frameworks */,
 				65271F491C831B1E0022C888 /* libiOSCustomBrowser.a in Frameworks */,
 				65DE771D1C78577D00017F96 /* AddressBook.framework in Frameworks */,
 				65271F4A1C831B1E0022C888 /* libPayU_iOS_CoreSDK.a in Frameworks */,
@@ -481,6 +491,8 @@
 		4ACEA2003FD63043109FEF32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				656412441C88C2B400B8D5D4 /* CoreLocation.framework */,
+				656412421C88C2A300B8D5D4 /* MapKit.framework */,
 				65DE77221C7869B100017F96 /* libFBSDKCoreKit.a */,
 				65DE771C1C78577D00017F96 /* AddressBook.framework */,
 				65DE771A1C78577200017F96 /* SystemConfiguration.framework */,
@@ -721,6 +733,14 @@
 			path = Delivery;
 			sourceTree = "<group>";
 		};
+		65271F881C84BED70022C888 /* Calander */ = {
+			isa = PBXGroup;
+			children = (
+				65271F891C84BF010022C888 /* b4u-CalanderViewController.swift */,
+			);
+			path = Calander;
+			sourceTree = "<group>";
+		};
 		6536E0871C68F3F000B273D6 = {
 			isa = PBXGroup;
 			children = (
@@ -787,6 +807,14 @@
 				65B189B31C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift */,
 			);
 			path = DataManager;
+			sourceTree = "<group>";
+		};
+		6564123D1C88BDE500B8D5D4 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				656412401C88C1B600B8D5D4 /* b4u_ServicePatnerMapViewCtrl.swift */,
+			);
+			path = MapView;
 			sourceTree = "<group>";
 		};
 		657485B71C71032300504F58 /* Login */ = {
@@ -934,6 +962,7 @@
 		65DE76D61C7780BD00017F96 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				65271F881C84BED70022C888 /* Calander */,
 				65271E591C83056F0022C888 /* Payment */,
 				65FF8D631C7E91EF007588D0 /* ServicePatners */,
 				65DE79691C79FA2B00017F96 /* Filters */,
@@ -1025,6 +1054,7 @@
 		65FF8D631C7E91EF007588D0 /* ServicePatners */ = {
 			isa = PBXGroup;
 			children = (
+				6564123D1C88BDE500B8D5D4 /* MapView */,
 				65FF8D641C7E9222007588D0 /* b4u-ServicePatnerController.swift */,
 				65264F841C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift */,
 			);
@@ -1257,6 +1287,7 @@
 				65271F481C831B1E0022C888 /* iOSDefaultActivityIndicator.m in Sources */,
 				65B18A8B1C70BB28000EDD00 /* UIImageView+AFNetworking.m in Sources */,
 				65FF8D621C7E2B86007588D0 /* b4u-TimeSlots.swift in Sources */,
+				65271F8A1C84BF010022C888 /* b4u-CalanderViewController.swift in Sources */,
 				65271F5E1C8367FF0022C888 /* b4u-AddressTblCell.swift in Sources */,
 				6536E0BF1C690CFC00B273D6 /* bro4u-DataManager.swift in Sources */,
 				65271F4D1C831B1E0022C888 /* PayUSAGetHashes.m in Sources */,
@@ -1278,6 +1309,7 @@
 				65271F501C831B1E0022C888 /* PayUUICCDCViewController.m in Sources */,
 				65DE76D31C7777FE00017F96 /* b4u-Category.swift in Sources */,
 				65264F851C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift in Sources */,
+				656412411C88C1B600B8D5D4 /* b4u_ServicePatnerMapViewCtrl.swift in Sources */,
 				65271F571C831C130022C888 /* b4u-PaymentTblViewCell.swift in Sources */,
 				65FF8CDC1C7B6D73007588D0 /* b4u-ExpandableTableView.swift in Sources */,
 				65B18A7C1C70BB28000EDD00 /* AFHTTPRequestOperation.m in Sources */,
@@ -1465,6 +1497,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = bro4u/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1488,6 +1521,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = bro4u/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

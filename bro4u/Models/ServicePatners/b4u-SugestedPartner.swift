@@ -75,7 +75,7 @@ class b4u_SugestedPartner: NSObject {
         itemName = sugestedPartnerDetailsDict["item_name"] as? String
         itemType = sugestedPartnerDetailsDict["item_type"] as? String
         latitude = sugestedPartnerDetailsDict["latitude"] as? String
-        latitude = sugestedPartnerDetailsDict["longitude"] as? String
+        longitude = sugestedPartnerDetailsDict["longitude"] as? String
         manCatId = sugestedPartnerDetailsDict["main_cat_id"] as? String
         offerInPercent = sugestedPartnerDetailsDict["offer_in_percent"] as? String
         offerMessage = sugestedPartnerDetailsDict["offer_message"] as? String

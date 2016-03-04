@@ -324,6 +324,8 @@ class b4u_FilterViewController: UIViewController {
         btn.setTitle(currentDate, forState:UIControlState.Normal)
         
         self.callTimeSlotApi("26-02-2016")
+    
+       
     }
     
     func btnSelectTimeClicked(sender:AnyObject)

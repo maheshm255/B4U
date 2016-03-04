@@ -29,15 +29,21 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "servicePartnerMapViewCtrl"
+        {
+           // let ctrl = segue.destinationViewController as! b4u_ServicePatnerMapViewCtrl
+            
+        }
     }
-    */
+    
     
     //cat_id=2&latitude=12.9718915&longitude=77.6411545
 
