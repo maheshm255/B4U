@@ -21,6 +21,7 @@ class bro4u_DataManager: NSObject {
     var timeSlots:b4u_TimeSlots?
     var suggestedPatnersResult:b4u_SuggestedPatnersResult?
 
+    var selectedDate:NSDate?
     class var sharedInstance: bro4u_DataManager {
         struct Singleton {
             

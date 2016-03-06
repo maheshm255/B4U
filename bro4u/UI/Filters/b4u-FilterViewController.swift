@@ -15,13 +15,16 @@ enum inputType:String
     case textBoxGroup = "textboxgroup"
 }
 
-class b4u_FilterViewController: UIViewController {
+class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControllerDelegate , calendarDelegate,timeSlotDelegate {
 
     @IBOutlet weak var expandableTblView: b4u_ExpandableTableView!
-    
+
+    var dateBtn:UIButton?
+    var timeBtn:UIButton?
     var selectedCategoryObj:b4u_Category?
 
     var selectedIndexPath:Dictionary<String ,[NSIndexPath]> = Dictionary()
+    
     var inputArray:[AnyObject]?{
         
         var array:[b4u_CatFilterAttributes] = Array()
@@ -55,6 +58,8 @@ class b4u_FilterViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        bro4u_DataManager.sharedInstance.timeSlots = nil
         
         self.callFilterApi()
     }
@@ -202,6 +207,9 @@ class b4u_FilterViewController: UIViewController {
             
             cell.btnSelectTime.addTarget(self, action:"btnSelectTimeClicked:", forControlEvents:UIControlEvents.TouchUpInside)
             
+            self.dateBtn = cell.btnSelectDate
+            self.timeBtn = cell.btnSelectTime
+            
             return cell
 
         }
@@ -315,24 +323,88 @@ class b4u_FilterViewController: UIViewController {
     
     func btnSelectDateClicked(sender:AnyObject)
     {
+    
         let btn = sender as! UIButton
         
-        let dateFormat = NSDate.dateFormat() as NSDateFormatter
+        self.dateBtn = btn
+        let storyboard : UIStoryboard = self.storyboard!
         
-       let currentDate =  dateFormat.stringFromDate(NSDate())
+        let calendarController:b4u_CalendarViewCtrl = storyboard.instantiateViewControllerWithIdentifier("b4uCalendarViewCtrl") as! b4u_CalendarViewCtrl
         
-        btn.setTitle(currentDate, forState:UIControlState.Normal)
+        calendarController.modalPresentationStyle = .Popover
+        calendarController.preferredContentSize = CGSizeMake(300, 400)
+        calendarController.delegate = self
         
-        self.callTimeSlotApi("26-02-2016")
-    
-       
+        let popoverMenuViewController = calendarController.popoverPresentationController
+        popoverMenuViewController?.permittedArrowDirections = .Any
+        popoverMenuViewController?.delegate = self
+        popoverMenuViewController?.sourceView = sender as? UIView
+        popoverMenuViewController?.sourceRect = CGRect(
+            x: CGRectGetMidX(btn.frame),
+            y: CGRectGetMidY(btn.frame),
+            width: 1,
+            height: 1)
+        presentViewController(
+            calendarController,
+            animated: true,
+            completion: nil)
+
     }
     
+    func adaptivePresentationStyleForPresentationController(
+        controller: UIPresentationController) -> UIModalPresentationStyle {
+            return .None
+    }
     func btnSelectTimeClicked(sender:AnyObject)
     {
-        
+        if  bro4u_DataManager.sharedInstance.timeSlots?.timeSlots?.count > 0
+        {
+            let btn = sender as! UIButton
+            
+            
+            self.timeBtn = btn
+            let storyboard : UIStoryboard = self.storyboard!
+            
+            //        UIStoryboard(name:"Main",bundle: nil)
+            
+            let timeSlotController:b4u_TimeSlotViewCtrl = storyboard.instantiateViewControllerWithIdentifier("b4uTimeSlotCtrl") as! b4u_TimeSlotViewCtrl
+            
+            timeSlotController.modalPresentationStyle = .Popover
+            timeSlotController.preferredContentSize = CGSizeMake(150, 300)
+            
+            timeSlotController.delegate = self
+            //  timeSlotController.delegate = self
+            
+            let popoverMenuViewController = timeSlotController.popoverPresentationController
+            popoverMenuViewController?.permittedArrowDirections = .Up
+            popoverMenuViewController?.delegate = self
+            popoverMenuViewController?.sourceView = btn
+            popoverMenuViewController?.sourceRect = CGRect(
+                x: CGRectGetMidX(btn.bounds),
+                y: CGRectGetMidY(btn.frame),
+                width: 1,
+                height: 1)
+            presentViewController(
+                timeSlotController,
+                animated: true,
+                completion: nil)
+            
+        }
     }
     @IBAction func clearBtnClicked(sender: AnyObject) {
+        
+        if let tiemBtn = self.timeBtn
+        {
+            tiemBtn.setTitle("Select Time", forState:UIControlState.Normal)
+        }
+        
+        if let dateBtn = self.dateBtn
+        {
+            dateBtn.setTitle("Select Date", forState:UIControlState.Normal)
+            
+        }
+        
+        self.selectedIndexPath.removeAll()
     }
     @IBAction func showServicePatnerBtnClicked(sender: AnyObject) {
     }
@@ -352,5 +424,27 @@ class b4u_FilterViewController: UIViewController {
         }
     }
 
+    func didSelectDate(date:NSDate)
+    {
+        
+        let dateFormat = NSDate.dateFormat() as NSDateFormatter
+        
+        let currentDate =  dateFormat.stringFromDate(date)
+        
+        self.dateBtn!.setTitle(currentDate, forState:UIControlState.Normal)
+        
+        self.callTimeSlotApi(currentDate)
+        
+        if let tiemBtn = self.timeBtn
+        {
+            tiemBtn.setTitle("Select Time", forState:UIControlState.Normal)
 
+        }
+    }
+
+    func didSelectTimeSlot(tiemSlot:String)
+    {
+        self.timeBtn!.setTitle(tiemSlot, forState:UIControlState.Normal)
+
+    }
 }

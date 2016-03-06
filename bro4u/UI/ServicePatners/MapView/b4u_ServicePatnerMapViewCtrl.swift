@@ -21,15 +21,23 @@ class b4u_ServicePatnerMapViewCtrl: UIViewController ,MKMapViewDelegate{
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         self.zoomToRegion()
         
         let annotations = getMapAnnotations()
 
         // Add mappoints to Map
-        mapView.addAnnotations(annotations)
-        
         mapView.delegate = self
+
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            self.mapView.addAnnotations(annotations)
+
+            })
+        
+      
+        
+
+        
     
     }
 
@@ -43,9 +51,9 @@ class b4u_ServicePatnerMapViewCtrl: UIViewController ,MKMapViewDelegate{
     
     func zoomToRegion() {
         
-        let location = CLLocationCoordinate2D(latitude: 13.03297, longitude: 80.26518)
+        let location = CLLocationCoordinate2D(latitude: 12.9121, longitude:77.6076)
         
-        let region = MKCoordinateRegionMakeWithDistance(location, 5000.0, 5000.0)
+        let region = MKCoordinateRegionMakeWithDistance(location, 1000.0, 1000.0)
         
         mapView.setRegion(region, animated: true)
     }
@@ -53,9 +61,9 @@ class b4u_ServicePatnerMapViewCtrl: UIViewController ,MKMapViewDelegate{
     
     //MARK:- Annotations
     
-    func getMapAnnotations() -> [MKPointAnnotation] {
+    func getMapAnnotations() -> [MKPointAnnotation]
+    {
         var annotations:Array = [MKPointAnnotation]()
-        //load plist file
         
         if let suggestedPatners = bro4u_DataManager.sharedInstance.suggestedPatnersResult?.suggestedPatners{
             for aSuggestedPatner in suggestedPatners {
@@ -65,7 +73,7 @@ class b4u_ServicePatnerMapViewCtrl: UIViewController ,MKMapViewDelegate{
 
                 let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat!, long!)
                 information.coordinate = location
-               // information.title = item.valueForKey("title") as? String
+                information.title = "titrle"
                 annotations.append(information)
                 annotationTag++
             }
@@ -76,7 +84,8 @@ class b4u_ServicePatnerMapViewCtrl: UIViewController ,MKMapViewDelegate{
     
 
     //This Function is used for change the pin of Annotation
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
+    {
         if !(annotation is MKPointAnnotation) {
             return nil
         }
@@ -91,10 +100,10 @@ class b4u_ServicePatnerMapViewCtrl: UIViewController ,MKMapViewDelegate{
             anView!.canShowCallout = false
             
             //Top put image inside Anotation View
-            let image : UIImage = UIImage(named:"annotationViewImage")!
-            let myImageView = UIImageView(image: image)
-            myImageView.frame = CGRectMake(0,0,48,48); // Change the size of the image to fit the callout
-            
+//            let image : UIImage = UIImage(named:"user")!
+//            let myImageView = UIImageView(image: image)
+//            myImageView.frame = CGRectMake(0,0,48,48); // Change the size of the image to fit the callout
+//            
             //      anView!.leftCalloutAccessoryView = myImageView;
             
             //      anView!.rightCalloutAccessoryView = self.bookButton;

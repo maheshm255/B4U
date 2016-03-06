@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042700131C8B374A008440CC /* b4u_CalendarViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042700121C8B374A008440CC /* b4u_CalendarViewCtrl.swift */; };
+		042700231C8B37B6008440CC /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 042700161C8B37B6008440CC /* FSCalendar.m */; };
+		042700241C8B37B6008440CC /* FSCalendarHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 042700181C8B37B6008440CC /* FSCalendarHeader.m */; };
+		042700251C8B37B6008440CC /* FSCalendarPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0427001A1C8B37B6008440CC /* FSCalendarPage.m */; };
+		042700261C8B37B6008440CC /* FSCalendarUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0427001C1C8B37B6008440CC /* FSCalendarUnit.m */; };
+		042700271C8B37B6008440CC /* NSDate+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0427001E1C8B37B6008440CC /* NSDate+FSExtension.m */; };
+		042700281C8B37B6008440CC /* UIScrollView+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 042700201C8B37B6008440CC /* UIScrollView+FSExtension.m */; };
+		042700291C8B37B6008440CC /* UIView+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 042700221C8B37B6008440CC /* UIView+FSExtension.m */; };
+		0427002C1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0427002B1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift */; };
+		04E0C41B1C8BF6C4006450D1 /* CustomAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0C41A1C8BF6C4006450D1 /* CustomAnnotationView.xib */; };
 		65264F851C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65264F841C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift */; };
 		65264F871C81D80200859F5A /* b4u-SuggestedPatnersResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65264F861C81D80200859F5A /* b4u-SuggestedPatnersResult.swift */; };
 		65271E4E1C828F5E0022C888 /* b4u-CategoryTblViewCtrl1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65271E4D1C828F5E0022C888 /* b4u-CategoryTblViewCtrl1.swift */; };
@@ -112,7 +122,6 @@
 		65271F601C8368130022C888 /* b4u-DateTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65271F5F1C8368130022C888 /* b4u-DateTimeTableViewCell.swift */; };
 		65271F621C8368280022C888 /* b4u-CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65271F611C8368280022C888 /* b4u-CommentTableViewCell.swift */; };
 		65271F641C8370350022C888 /* b4u-AddAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65271F631C8370350022C888 /* b4u-AddAddressTableViewController.swift */; };
-		65271F8A1C84BF010022C888 /* b4u-CalanderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65271F891C84BF010022C888 /* b4u-CalanderViewController.swift */; };
 		6536E0941C68F3F000B273D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6536E0931C68F3F000B273D6 /* AppDelegate.swift */; };
 		6536E0991C68F3F000B273D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6536E0971C68F3F000B273D6 /* Main.storyboard */; };
 		6536E09C1C68F3F000B273D6 /* bro4u.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6536E09A1C68F3F000B273D6 /* bro4u.xcdatamodeld */; };
@@ -194,6 +203,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		042700121C8B374A008440CC /* b4u_CalendarViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = b4u_CalendarViewCtrl.swift; path = bro4u/UI/Calendar/b4u_CalendarViewCtrl.swift; sourceTree = SOURCE_ROOT; };
+		042700151C8B37B6008440CC /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendar.h; sourceTree = "<group>"; };
+		042700161C8B37B6008440CC /* FSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendar.m; sourceTree = "<group>"; };
+		042700171C8B37B6008440CC /* FSCalendarHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarHeader.h; sourceTree = "<group>"; };
+		042700181C8B37B6008440CC /* FSCalendarHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarHeader.m; sourceTree = "<group>"; };
+		042700191C8B37B6008440CC /* FSCalendarPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarPage.h; sourceTree = "<group>"; };
+		0427001A1C8B37B6008440CC /* FSCalendarPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarPage.m; sourceTree = "<group>"; };
+		0427001B1C8B37B6008440CC /* FSCalendarUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarUnit.h; sourceTree = "<group>"; };
+		0427001C1C8B37B6008440CC /* FSCalendarUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarUnit.m; sourceTree = "<group>"; };
+		0427001D1C8B37B6008440CC /* NSDate+FSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+FSExtension.h"; sourceTree = "<group>"; };
+		0427001E1C8B37B6008440CC /* NSDate+FSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FSExtension.m"; sourceTree = "<group>"; };
+		0427001F1C8B37B6008440CC /* UIScrollView+FSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+FSExtension.h"; sourceTree = "<group>"; };
+		042700201C8B37B6008440CC /* UIScrollView+FSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+FSExtension.m"; sourceTree = "<group>"; };
+		042700211C8B37B6008440CC /* UIView+FSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FSExtension.h"; sourceTree = "<group>"; };
+		042700221C8B37B6008440CC /* UIView+FSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FSExtension.m"; sourceTree = "<group>"; };
+		0427002B1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-TimeSlotViewCtrl.swift"; sourceTree = "<group>"; };
+		04E0C41A1C8BF6C4006450D1 /* CustomAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAnnotationView.xib; sourceTree = "<group>"; };
 		0B4AB3BBC76D5DA9D4D6646A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4B48C7B178FB5F85A79C9741 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		65264F841C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-ServicePartnerTblViewCell.swift"; sourceTree = "<group>"; };
@@ -363,7 +389,6 @@
 		65271F5F1C8368130022C888 /* b4u-DateTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-DateTimeTableViewCell.swift"; sourceTree = "<group>"; };
 		65271F611C8368280022C888 /* b4u-CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-CommentTableViewCell.swift"; sourceTree = "<group>"; };
 		65271F631C8370350022C888 /* b4u-AddAddressTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-AddAddressTableViewController.swift"; sourceTree = "<group>"; };
-		65271F891C84BF010022C888 /* b4u-CalanderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-CalanderViewController.swift"; sourceTree = "<group>"; };
 		6536E0901C68F3F000B273D6 /* bro4u.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bro4u.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6536E0931C68F3F000B273D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6536E0981C68F3F000B273D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -488,6 +513,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0427000F1C8B36EE008440CC /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				042700121C8B374A008440CC /* b4u_CalendarViewCtrl.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		042700141C8B37B6008440CC /* Calander */ = {
+			isa = PBXGroup;
+			children = (
+				042700151C8B37B6008440CC /* FSCalendar.h */,
+				042700161C8B37B6008440CC /* FSCalendar.m */,
+				042700171C8B37B6008440CC /* FSCalendarHeader.h */,
+				042700181C8B37B6008440CC /* FSCalendarHeader.m */,
+				042700191C8B37B6008440CC /* FSCalendarPage.h */,
+				0427001A1C8B37B6008440CC /* FSCalendarPage.m */,
+				0427001B1C8B37B6008440CC /* FSCalendarUnit.h */,
+				0427001C1C8B37B6008440CC /* FSCalendarUnit.m */,
+				0427001D1C8B37B6008440CC /* NSDate+FSExtension.h */,
+				0427001E1C8B37B6008440CC /* NSDate+FSExtension.m */,
+				0427001F1C8B37B6008440CC /* UIScrollView+FSExtension.h */,
+				042700201C8B37B6008440CC /* UIScrollView+FSExtension.m */,
+				042700211C8B37B6008440CC /* UIView+FSExtension.h */,
+				042700221C8B37B6008440CC /* UIView+FSExtension.m */,
+			);
+			path = Calander;
+			sourceTree = "<group>";
+		};
+		0427002A1C8B4395008440CC /* TimeSlotes */ = {
+			isa = PBXGroup;
+			children = (
+				0427002B1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift */,
+			);
+			path = TimeSlotes;
+			sourceTree = "<group>";
+		};
 		4ACEA2003FD63043109FEF32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -733,14 +795,6 @@
 			path = Delivery;
 			sourceTree = "<group>";
 		};
-		65271F881C84BED70022C888 /* Calander */ = {
-			isa = PBXGroup;
-			children = (
-				65271F891C84BF010022C888 /* b4u-CalanderViewController.swift */,
-			);
-			path = Calander;
-			sourceTree = "<group>";
-		};
 		6536E0871C68F3F000B273D6 = {
 			isa = PBXGroup;
 			children = (
@@ -812,6 +866,7 @@
 		6564123D1C88BDE500B8D5D4 /* MapView */ = {
 			isa = PBXGroup;
 			children = (
+				04E0C41A1C8BF6C4006450D1 /* CustomAnnotationView.xib */,
 				656412401C88C1B600B8D5D4 /* b4u_ServicePatnerMapViewCtrl.swift */,
 			);
 			path = MapView;
@@ -880,6 +935,7 @@
 		65B18A4F1C70BB28000EDD00 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				042700141C8B37B6008440CC /* Calander */,
 				65271E601C831B1E0022C888 /* Paytm */,
 				65271E6A1C831B1E0022C888 /* PayUmoney */,
 				65271E551C8304D60022C888 /* HMSegmentedControl */,
@@ -962,7 +1018,8 @@
 		65DE76D61C7780BD00017F96 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				65271F881C84BED70022C888 /* Calander */,
+				0427002A1C8B4395008440CC /* TimeSlotes */,
+				0427000F1C8B36EE008440CC /* Calendar */,
 				65271E591C83056F0022C888 /* Payment */,
 				65FF8D631C7E91EF007588D0 /* ServicePatners */,
 				65DE79691C79FA2B00017F96 /* Filters */,
@@ -1212,6 +1269,7 @@
 				65271F061C831B1E0022C888 /* CBAllPaymentOption.xib in Resources */,
 				65271F0A1C831B1E0022C888 /* CBApproveView_iPhone6p.xib in Resources */,
 				65271F1F1C831B1E0022C888 /* icon_otp_over.png in Resources */,
+				04E0C41B1C8BF6C4006450D1 /* CustomAnnotationView.xib in Resources */,
 				65DE771F1C78584800017F96 /* GoogleService-Info.plist in Resources */,
 				65271F041C831B1E0022C888 /* card.png in Resources */,
 				65271F191C831B1E0022C888 /* hdfc_bank.png in Resources */,
@@ -1287,10 +1345,10 @@
 				65271F481C831B1E0022C888 /* iOSDefaultActivityIndicator.m in Sources */,
 				65B18A8B1C70BB28000EDD00 /* UIImageView+AFNetworking.m in Sources */,
 				65FF8D621C7E2B86007588D0 /* b4u-TimeSlots.swift in Sources */,
-				65271F8A1C84BF010022C888 /* b4u-CalanderViewController.swift in Sources */,
 				65271F5E1C8367FF0022C888 /* b4u-AddressTblCell.swift in Sources */,
 				6536E0BF1C690CFC00B273D6 /* bro4u-DataManager.swift in Sources */,
 				65271F4D1C831B1E0022C888 /* PayUSAGetHashes.m in Sources */,
+				042700271C8B37B6008440CC /* NSDate+FSExtension.m in Sources */,
 				65B189BC1C6E6020000EDD00 /* Category.swift in Sources */,
 				65F8B4391C70BECD00D158FA /* b4u-String-Extension.swift in Sources */,
 				65271E5B1C8307820022C888 /* b4u-PaymentViewController.swift in Sources */,
@@ -1305,6 +1363,7 @@
 				65DE76EB1C77849B00017F96 /* b4u-CategoryTableViewCell.swift in Sources */,
 				65FF8D601C7E175C007588D0 /* b4u-DateAndTImeSelectionTblCell.swift in Sources */,
 				65271EFD1C831B1E0022C888 /* PaytmViewController.m in Sources */,
+				042700131C8B374A008440CC /* b4u_CalendarViewCtrl.swift in Sources */,
 				65B18A881C70BB28000EDD00 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				65271F501C831B1E0022C888 /* PayUUICCDCViewController.m in Sources */,
 				65DE76D31C7777FE00017F96 /* b4u-Category.swift in Sources */,
@@ -1322,6 +1381,7 @@
 				65FF8CDE1C7B6D99007588D0 /* b4u-ExpandableTblHeaderView.swift in Sources */,
 				65B18A871C70BB28000EDD00 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				65F8B4381C70BECD00D158FA /* b4u-progressIndicator.swift in Sources */,
+				042700251C8B37B6008440CC /* FSCalendarPage.m in Sources */,
 				65B18A811C70BB28000EDD00 /* AFURLConnectionOperation.m in Sources */,
 				65271E521C828FC30022C888 /* b4u-CategoryHeaderView.swift in Sources */,
 				65271F541C831B1E0022C888 /* PayUUIPaymentUIWebViewController.m in Sources */,
@@ -1334,13 +1394,16 @@
 				65F8B43A1C70BECD00D158FA /* b4u-UIColor-Extension.swift in Sources */,
 				65B18A861C70BB28000EDD00 /* SWRevealViewController.m in Sources */,
 				65264F871C81D80200859F5A /* b4u-SuggestedPatnersResult.swift in Sources */,
+				042700291C8B37B6008440CC /* UIView+FSExtension.m in Sources */,
 				65271E5D1C8307BB0022C888 /* b4u_PaymentBaseViewController.swift in Sources */,
 				65F8B43B1C70BECD00D158FA /* b4u-UIView-Extension.swift in Sources */,
 				65B189BD1C6E6020000EDD00 /* SubCategory+CoreDataProperties.swift in Sources */,
 				65FF8D681C7EC1A5007588D0 /* b4u-SugestedPartner.swift in Sources */,
+				042700261C8B37B6008440CC /* FSCalendarUnit.m in Sources */,
 				65B49DB81C722C4A0083942D /* bro4u-MainCategory.swift in Sources */,
 				6536E09C1C68F3F000B273D6 /* bro4u.xcdatamodeld in Sources */,
 				65DE76E41C7780BD00017F96 /* b4u-SearchResultTblCtrl.swift in Sources */,
+				0427002C1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift in Sources */,
 				65B189B41C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift in Sources */,
 				657485BC1C71035400504F58 /* b4u-LoginViewCtrl.swift in Sources */,
 				65271F621C8368280022C888 /* b4u-CommentTableViewCell.swift in Sources */,
@@ -1354,14 +1417,17 @@
 				65DE79681C79761F00017F96 /* b4u-IntermediateViewCtrl.swift in Sources */,
 				65B18A7D1C70BB28000EDD00 /* AFHTTPRequestOperationManager.m in Sources */,
 				65271E541C828FED0022C888 /* b4u-CategoryTblViewCell.swift in Sources */,
+				042700241C8B37B6008440CC /* FSCalendarHeader.m in Sources */,
 				65B18A8A1C70BB28000EDD00 /* UIButton+AFNetworking.m in Sources */,
 				65271E501C828F8B0022C888 /* b4u-CateforyTblView.swift in Sources */,
 				65DE76E11C7780BD00017F96 /* b4u-HomeViewController.swift in Sources */,
 				65B18A8D1C70BB28000EDD00 /* UIRefreshControl+AFNetworking.m in Sources */,
 				65F8B4301C70BE6200D158FA /* b4u-UIImageView-Extension.swift in Sources */,
 				65F8B4371C70BECD00D158FA /* b4u-NSDateExtension.swift in Sources */,
+				042700231C8B37B6008440CC /* FSCalendar.m in Sources */,
 				65271F4C1C831B1E0022C888 /* PayUMoneyViewController.m in Sources */,
 				65271F531C831B1E0022C888 /* PayUUIPaymentOptionViewController.m in Sources */,
+				042700281C8B37B6008440CC /* UIScrollView+FSExtension.m in Sources */,
 				65DE796B1C79FCFF00017F96 /* b4u-FilterViewController.swift in Sources */,
 				6536E0941C68F3F000B273D6 /* AppDelegate.swift in Sources */,
 				65FF8D651C7E9222007588D0 /* b4u-ServicePatnerController.swift in Sources */,
@@ -1497,7 +1563,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = bro4u/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1521,7 +1587,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = bro4u/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
