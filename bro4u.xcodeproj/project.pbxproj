@@ -200,6 +200,17 @@
 		65FF8D651C7E9222007588D0 /* b4u-ServicePatnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF8D641C7E9222007588D0 /* b4u-ServicePatnerController.swift */; };
 		65FF8D681C7EC1A5007588D0 /* b4u-SugestedPartner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF8D671C7EC1A5007588D0 /* b4u-SugestedPartner.swift */; };
 		787E454DD19C7F7D70BF42BE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0420EA4B8348ACC0A89E7A7 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		B71C28581C8C0C0C00873B5C /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C28481C8C0C0C00873B5C /* MyInfoViewController.swift */; };
+		B71C28591C8C0C0C00873B5C /* MyWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C284A1C8C0C0C00873B5C /* MyWalletViewController.swift */; };
+		B71C285A1C8C0C0C00873B5C /* MyAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C284B1C8C0C0C00873B5C /* MyAccountTableViewCell.swift */; };
+		B71C285B1C8C0C0C00873B5C /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C284C1C8C0C0C00873B5C /* MyAccountViewController.swift */; };
+		B71C285C1C8C0C0C00873B5C /* OfferZoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C284E1C8C0C0C00873B5C /* OfferZoneTableViewCell.swift */; };
+		B71C285D1C8C0C0C00873B5C /* OfferZoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C284F1C8C0C0C00873B5C /* OfferZoneViewController.swift */; };
+		B71C285E1C8C0C0C00873B5C /* MyOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C28511C8C0C0C00873B5C /* MyOrderViewController.swift */; };
+		B71C285F1C8C0C0C00873B5C /* OngoingOrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C28521C8C0C0C00873B5C /* OngoingOrdersTableViewCell.swift */; };
+		B71C28601C8C0C0C00873B5C /* PastOrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C28531C8C0C0C00873B5C /* PastOrdersTableViewCell.swift */; };
+		B71C28611C8C0C0C00873B5C /* ReferAndEarnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C28551C8C0C0C00873B5C /* ReferAndEarnViewController.swift */; };
+		B71C28621C8C0C0C00873B5C /* OrderConfirmedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C28571C8C0C0C00873B5C /* OrderConfirmedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -492,6 +503,17 @@
 		65FF8D641C7E9222007588D0 /* b4u-ServicePatnerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-ServicePatnerController.swift"; sourceTree = "<group>"; };
 		65FF8D671C7EC1A5007588D0 /* b4u-SugestedPartner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-SugestedPartner.swift"; sourceTree = "<group>"; };
 		B0420EA4B8348ACC0A89E7A7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B71C28481C8C0C0C00873B5C /* MyInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
+		B71C284A1C8C0C0C00873B5C /* MyWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWalletViewController.swift; sourceTree = "<group>"; };
+		B71C284B1C8C0C0C00873B5C /* MyAccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTableViewCell.swift; sourceTree = "<group>"; };
+		B71C284C1C8C0C0C00873B5C /* MyAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
+		B71C284E1C8C0C0C00873B5C /* OfferZoneTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferZoneTableViewCell.swift; sourceTree = "<group>"; };
+		B71C284F1C8C0C0C00873B5C /* OfferZoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferZoneViewController.swift; sourceTree = "<group>"; };
+		B71C28511C8C0C0C00873B5C /* MyOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrderViewController.swift; sourceTree = "<group>"; };
+		B71C28521C8C0C0C00873B5C /* OngoingOrdersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OngoingOrdersTableViewCell.swift; sourceTree = "<group>"; };
+		B71C28531C8C0C0C00873B5C /* PastOrdersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastOrdersTableViewCell.swift; sourceTree = "<group>"; };
+		B71C28551C8C0C0C00873B5C /* ReferAndEarnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferAndEarnViewController.swift; sourceTree = "<group>"; };
+		B71C28571C8C0C0C00873B5C /* OrderConfirmedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1018,6 +1040,11 @@
 		65DE76D61C7780BD00017F96 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B71C28461C8C0C0C00873B5C /* MyAccount Screen */,
+				B71C284D1C8C0C0C00873B5C /* OfferZone */,
+				B71C28501C8C0C0C00873B5C /* Order Screen */,
+				B71C28541C8C0C0C00873B5C /* ReferAndEarn */,
+				B71C28561C8C0C0C00873B5C /* Thanks Screen */,
 				0427002A1C8B4395008440CC /* TimeSlotes */,
 				0427000F1C8B36EE008440CC /* Calendar */,
 				65271E591C83056F0022C888 /* Payment */,
@@ -1134,6 +1161,68 @@
 				0B4AB3BBC76D5DA9D4D6646A /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B71C28461C8C0C0C00873B5C /* MyAccount Screen */ = {
+			isa = PBXGroup;
+			children = (
+				B71C28471C8C0C0C00873B5C /* My Info */,
+				B71C28491C8C0C0C00873B5C /* My Wallet */,
+				B71C284B1C8C0C0C00873B5C /* MyAccountTableViewCell.swift */,
+				B71C284C1C8C0C0C00873B5C /* MyAccountViewController.swift */,
+			);
+			path = "MyAccount Screen";
+			sourceTree = "<group>";
+		};
+		B71C28471C8C0C0C00873B5C /* My Info */ = {
+			isa = PBXGroup;
+			children = (
+				B71C28481C8C0C0C00873B5C /* MyInfoViewController.swift */,
+			);
+			path = "My Info";
+			sourceTree = "<group>";
+		};
+		B71C28491C8C0C0C00873B5C /* My Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				B71C284A1C8C0C0C00873B5C /* MyWalletViewController.swift */,
+			);
+			path = "My Wallet";
+			sourceTree = "<group>";
+		};
+		B71C284D1C8C0C0C00873B5C /* OfferZone */ = {
+			isa = PBXGroup;
+			children = (
+				B71C284E1C8C0C0C00873B5C /* OfferZoneTableViewCell.swift */,
+				B71C284F1C8C0C0C00873B5C /* OfferZoneViewController.swift */,
+			);
+			path = OfferZone;
+			sourceTree = "<group>";
+		};
+		B71C28501C8C0C0C00873B5C /* Order Screen */ = {
+			isa = PBXGroup;
+			children = (
+				B71C28511C8C0C0C00873B5C /* MyOrderViewController.swift */,
+				B71C28521C8C0C0C00873B5C /* OngoingOrdersTableViewCell.swift */,
+				B71C28531C8C0C0C00873B5C /* PastOrdersTableViewCell.swift */,
+			);
+			path = "Order Screen";
+			sourceTree = "<group>";
+		};
+		B71C28541C8C0C0C00873B5C /* ReferAndEarn */ = {
+			isa = PBXGroup;
+			children = (
+				B71C28551C8C0C0C00873B5C /* ReferAndEarnViewController.swift */,
+			);
+			path = ReferAndEarn;
+			sourceTree = "<group>";
+		};
+		B71C28561C8C0C0C00873B5C /* Thanks Screen */ = {
+			isa = PBXGroup;
+			children = (
+				B71C28571C8C0C0C00873B5C /* OrderConfirmedViewController.swift */,
+			);
+			path = "Thanks Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1345,6 +1434,7 @@
 				65271F481C831B1E0022C888 /* iOSDefaultActivityIndicator.m in Sources */,
 				65B18A8B1C70BB28000EDD00 /* UIImageView+AFNetworking.m in Sources */,
 				65FF8D621C7E2B86007588D0 /* b4u-TimeSlots.swift in Sources */,
+				B71C285E1C8C0C0C00873B5C /* MyOrderViewController.swift in Sources */,
 				65271F5E1C8367FF0022C888 /* b4u-AddressTblCell.swift in Sources */,
 				6536E0BF1C690CFC00B273D6 /* bro4u-DataManager.swift in Sources */,
 				65271F4D1C831B1E0022C888 /* PayUSAGetHashes.m in Sources */,
@@ -1368,28 +1458,36 @@
 				65271F501C831B1E0022C888 /* PayUUICCDCViewController.m in Sources */,
 				65DE76D31C7777FE00017F96 /* b4u-Category.swift in Sources */,
 				65264F851C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift in Sources */,
+				B71C28611C8C0C0C00873B5C /* ReferAndEarnViewController.swift in Sources */,
 				656412411C88C1B600B8D5D4 /* b4u_ServicePatnerMapViewCtrl.swift in Sources */,
 				65271F571C831C130022C888 /* b4u-PaymentTblViewCell.swift in Sources */,
 				65FF8CDC1C7B6D73007588D0 /* b4u-ExpandableTableView.swift in Sources */,
+				B71C28621C8C0C0C00873B5C /* OrderConfirmedViewController.swift in Sources */,
 				65B18A7C1C70BB28000EDD00 /* AFHTTPRequestOperation.m in Sources */,
 				65DE76D51C7778E100017F96 /* b4u-AttributeOptions.swift in Sources */,
+				B71C28601C8C0C0C00873B5C /* PastOrdersTableViewCell.swift in Sources */,
 				65DE79721C7A1B6100017F96 /* b4u-catalog.swift in Sources */,
 				65B18A8E1C70BB28000EDD00 /* UIWebView+AFNetworking.m in Sources */,
 				65DE76E01C7780BD00017F96 /* b4u-DrawerTableViewController.swift in Sources */,
 				65271F551C831B1E0022C888 /* PayUUIStoredCardViewController.m in Sources */,
 				65B18A821C70BB28000EDD00 /* AFURLRequestSerialization.m in Sources */,
 				65FF8CDE1C7B6D99007588D0 /* b4u-ExpandableTblHeaderView.swift in Sources */,
+				B71C285C1C8C0C0C00873B5C /* OfferZoneTableViewCell.swift in Sources */,
 				65B18A871C70BB28000EDD00 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				65F8B4381C70BECD00D158FA /* b4u-progressIndicator.swift in Sources */,
 				042700251C8B37B6008440CC /* FSCalendarPage.m in Sources */,
 				65B18A811C70BB28000EDD00 /* AFURLConnectionOperation.m in Sources */,
 				65271E521C828FC30022C888 /* b4u-CategoryHeaderView.swift in Sources */,
+				B71C28591C8C0C0C00873B5C /* MyWalletViewController.swift in Sources */,
 				65271F541C831B1E0022C888 /* PayUUIPaymentUIWebViewController.m in Sources */,
 				65B18A891C70BB28000EDD00 /* UIAlertView+AFNetworking.m in Sources */,
+				B71C285D1C8C0C0C00873B5C /* OfferZoneViewController.swift in Sources */,
 				65271E581C8304D60022C888 /* HMSegmentedControl.m in Sources */,
 				65271F4F1C831B1E0022C888 /* PayUSAOneTapToken.m in Sources */,
 				65271F5C1C8367DB0022C888 /* b4u-DeliveryViewController.swift in Sources */,
 				65B18A841C70BB28000EDD00 /* AFURLSessionManager.m in Sources */,
+				B71C285B1C8C0C0C00873B5C /* MyAccountViewController.swift in Sources */,
+				B71C285F1C8C0C0C00873B5C /* OngoingOrdersTableViewCell.swift in Sources */,
 				65B189BE1C6E6020000EDD00 /* SubCategory.swift in Sources */,
 				65F8B43A1C70BECD00D158FA /* b4u-UIColor-Extension.swift in Sources */,
 				65B18A861C70BB28000EDD00 /* SWRevealViewController.m in Sources */,
@@ -1414,11 +1512,13 @@
 				65B18A801C70BB28000EDD00 /* AFSecurityPolicy.m in Sources */,
 				65DE79651C796AD200017F96 /* b4u_IntermediateScreenDataModel.swift in Sources */,
 				65B18A901C70BBC1000EDD00 /* b4u-globalDefinations.swift in Sources */,
+				B71C28581C8C0C0C00873B5C /* MyInfoViewController.swift in Sources */,
 				65DE79681C79761F00017F96 /* b4u-IntermediateViewCtrl.swift in Sources */,
 				65B18A7D1C70BB28000EDD00 /* AFHTTPRequestOperationManager.m in Sources */,
 				65271E541C828FED0022C888 /* b4u-CategoryTblViewCell.swift in Sources */,
 				042700241C8B37B6008440CC /* FSCalendarHeader.m in Sources */,
 				65B18A8A1C70BB28000EDD00 /* UIButton+AFNetworking.m in Sources */,
+				B71C285A1C8C0C0C00873B5C /* MyAccountTableViewCell.swift in Sources */,
 				65271E501C828F8B0022C888 /* b4u-CateforyTblView.swift in Sources */,
 				65DE76E11C7780BD00017F96 /* b4u-HomeViewController.swift in Sources */,
 				65B18A8D1C70BB28000EDD00 /* UIRefreshControl+AFNetworking.m in Sources */,
