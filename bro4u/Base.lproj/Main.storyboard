@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XP6-lF-vG6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XP6-lF-vG6">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -3674,8 +3674,6 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="bookingLbl" destination="4x9-gy-hlp" id="4J8-ms-IIX"/>
-                                            <outlet property="callBro4UAction" destination="6wO-uW-C2g" id="MtW-4x-9xD"/>
-                                            <outlet property="cancelBtnAction" destination="MJI-y6-ZJi" id="jep-UD-KBY"/>
                                             <outlet property="dateLbl" destination="vZT-dl-1p7" id="qYP-Bg-PmO"/>
                                             <outlet property="dateTimeLbl" destination="63V-RW-s36" id="OT4-Ha-MC9"/>
                                             <outlet property="headerLabel" destination="ECP-F5-ZLj" id="j5k-Yp-twk"/>
@@ -3983,11 +3981,6 @@
                                                 <constraint firstItem="xEj-Yy-jUX" firstAttribute="leading" secondItem="eha-Gs-UQV" secondAttribute="trailing" constant="29" id="wPq-1C-BjL"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="accountItemImageView" destination="IjW-U8-P7P" id="RdR-Af-rpX"/>
-                                            <outlet property="accountItemSubTitleLbl" destination="eha-Gs-UQV" id="cDc-7k-6Vo"/>
-                                            <outlet property="accountItemTitleLbl" destination="rTL-ED-sVy" id="CKA-G0-wLE"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

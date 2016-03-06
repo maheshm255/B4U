@@ -55,8 +55,8 @@ class b4u_MyAccountViewController: UIViewController {
     var cellIdentifier = ""
     var cell  = UITableViewCell()
     
-    cellIdentifier = "myAccountCell"
-    cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MyAccountTableViewCell
+//    cellIdentifier = "myAccountCell"
+//    cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MyAccountTableViewCell
     
     return cell
   }
