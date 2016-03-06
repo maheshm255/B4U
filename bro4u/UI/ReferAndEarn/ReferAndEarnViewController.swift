@@ -42,4 +42,7 @@ class ReferAndEarnViewController: UIViewController {
     }
     */
 
+    @IBAction func cancelBtnClicked(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion:nil)
+    }
 }

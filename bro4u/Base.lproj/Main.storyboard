@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XP6-lF-vG6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XP6-lF-vG6">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -591,6 +591,9 @@
                                                 <constraint firstItem="Pxd-8a-XiG" firstAttribute="top" secondItem="a9Y-ri-sN0" secondAttribute="top" id="PVE-CF-xZG"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Qfr-KM-4yB" kind="show" id="2ra-St-gcJ"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="100" id="Kvw-dO-tLP">
                                         <rect key="frame" x="0.0" y="344" width="600" height="100"/>
@@ -602,7 +605,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TRf-nP-lH4">
                                                     <rect key="frame" x="0.0" y="0.0" width="108" height="86"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shareAndEarn" translatesAutoresizingMaskIntoConstraints="NO" id="trh-wX-8ei">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="trh-wX-8ei">
                                                             <rect key="frame" x="27" y="8" width="54" height="54"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="54" id="DQB-B3-GU3"/>
@@ -632,6 +635,9 @@
                                                 <constraint firstItem="TRf-nP-lH4" firstAttribute="top" secondItem="84g-wg-eu5" secondAttribute="top" id="Lrz-8p-NPA"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="LDm-xm-E6T" kind="show" id="O7V-LW-WjP"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="100" id="gr9-xD-xjs">
                                         <rect key="frame" x="0.0" y="444" width="600" height="100"/>
@@ -673,6 +679,9 @@
                                                 <constraint firstItem="GvD-So-y3g" firstAttribute="top" secondItem="Ds3-mw-BVN" secondAttribute="top" id="d1x-al-id8"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="heD-OB-A9i" kind="show" id="EsL-pz-bw3"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1532,7 +1541,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Gu-Z5-k2n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2709" y="4143"/>
+            <point key="canvasLocation" x="3521" y="4143"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="krb-AU-7DG">
@@ -1882,7 +1891,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vdo-RG-9nd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3604" y="4143"/>
+            <point key="canvasLocation" x="4416" y="4143"/>
         </scene>
         <!--Add Address-->
         <scene sceneID="bzD-EZ-Mma">
@@ -2543,7 +2552,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8W-bP-NHd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4253" y="4134"/>
+            <point key="canvasLocation" x="5065" y="4134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Jz5-C0-7Wb">
@@ -2723,10 +2732,10 @@
             </objects>
             <point key="canvasLocation" x="4130" y="1623"/>
         </scene>
-        <!--Refer And Earn View Controller-->
+        <!--Share & Earn-->
         <scene sceneID="Zyu-p2-eQ9">
             <objects>
-                <viewController storyboardIdentifier="ReferAndEarnViewControllerID" id="Kdh-Kg-R0Q" customClass="ReferAndEarnViewController" customModule="ThanksScreen" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReferAndEarnViewControllerID" id="Kdh-Kg-R0Q" customClass="ReferAndEarnViewController" customModule="bro4u" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Edh-4c-1ZQ"/>
                         <viewControllerLayoutGuide type="bottom" id="S1r-nr-nve"/>
@@ -2735,10 +2744,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="0M3-z5-QLS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="loginBackGround" translatesAutoresizingMaskIntoConstraints="NO" id="0M3-z5-QLS">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gift" translatesAutoresizingMaskIntoConstraints="NO" id="MBX-Lg-ff0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="gift" translatesAutoresizingMaskIntoConstraints="NO" id="MBX-Lg-ff0">
                                 <rect key="frame" x="237" y="94" width="130" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="xQx-tW-9Eu"/>
@@ -2790,7 +2799,7 @@
                                     <action selector="referFriendsAction:" destination="Kdh-Kg-R0Q" eventType="touchUpInside" id="0pj-IQ-Tg2"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zw5-qW-LoP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zw5-qW-LoP">
                                 <rect key="frame" x="20" y="251" width="560" height="131"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="560" id="1jv-12-8hd"/>
@@ -2836,13 +2845,20 @@
                                 <exclude reference="0MJ-Vv-JX9"/>
                                 <exclude reference="AP8-wO-VT6"/>
                                 <exclude reference="lJ8-Dp-Oky"/>
-                                <exclude reference="zMH-iN-HrX"/>
                                 <exclude reference="nhP-fM-5KX"/>
-                                <exclude reference="LTY-Wb-wgB"/>
+                                <exclude reference="zMH-iN-HrX"/>
                                 <exclude reference="Ihm-Xh-5Cf"/>
+                                <exclude reference="LTY-Wb-wgB"/>
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Share &amp; Earn" id="NP1-si-9YD">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="sOi-Gl-acu">
+                            <connections>
+                                <action selector="cancelBtnClicked:" destination="Kdh-Kg-R0Q" id="2q1-EQ-t92"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="codeShareLbl" destination="jbJ-ql-cGZ" id="APt-3X-S36"/>
                         <outlet property="shareTextLbl" destination="Zw5-qW-LoP" id="cMK-74-ttl"/>
@@ -2850,12 +2866,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vdk-CS-2lz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-332" y="4028"/>
+            <point key="canvasLocation" x="142" y="4028"/>
         </scene>
         <!--Order Confirmed View Controller-->
         <scene sceneID="pqh-fo-cSd">
             <objects>
-                <viewController storyboardIdentifier="OrderConfirmedViewControllerID" id="wwg-Fp-Wbt" customClass="OrderConfirmedViewController" customModule="ThanksScreen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OrderConfirmedViewControllerID" id="wwg-Fp-Wbt" customClass="OrderConfirmedViewController" customModule="bro4u" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c04-4b-eQc"/>
                         <viewControllerLayoutGuide type="bottom" id="KfF-bb-7VO"/>
@@ -3198,12 +3214,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Prm-1Q-aOz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="364" y="4028"/>
+            <point key="canvasLocation" x="1176" y="4028"/>
         </scene>
         <!--My Order View Controller-->
         <scene sceneID="jQt-Yf-4cK">
             <objects>
-                <viewController storyboardIdentifier="MyOrderID" id="Qfr-KM-4yB" customClass="MyOrderViewController" customModule="ThanksScreen" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyOrderID" id="Qfr-KM-4yB" customClass="MyOrderViewController" customModule="bro4u" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Upt-IP-91l"/>
                         <viewControllerLayoutGuide type="bottom" id="8bh-0Y-3co"/>
@@ -3306,8 +3322,8 @@
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="iHy-oo-d5w"/>
                                                             <exclude reference="IXJ-dX-hYR"/>
+                                                            <exclude reference="iHy-oo-d5w"/>
                                                         </mask>
                                                     </variation>
                                                 </label>
@@ -3358,8 +3374,8 @@
                                                     </state>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="Zdg-fK-laa"/>
                                                             <exclude reference="0v7-Rz-jO5"/>
+                                                            <exclude reference="Zdg-fK-laa"/>
                                                         </mask>
                                                     </variation>
                                                     <connections>
@@ -3396,8 +3412,8 @@
                                                     </state>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="fms-DQ-s8v"/>
                                                             <exclude reference="5fD-LT-gGR"/>
+                                                            <exclude reference="fms-DQ-s8v"/>
                                                         </mask>
                                                     </variation>
                                                     <connections>
@@ -3617,41 +3633,41 @@
                                                     <exclude reference="qcP-a6-hvc"/>
                                                     <exclude reference="ujl-Ri-jtv"/>
                                                     <exclude reference="R3Q-7B-l8y"/>
-                                                    <exclude reference="ac6-Hb-Diw"/>
                                                     <exclude reference="YRi-9L-nSs"/>
+                                                    <exclude reference="ac6-Hb-Diw"/>
                                                     <exclude reference="3DL-Kr-7GJ"/>
                                                     <exclude reference="cU7-eN-Bxo"/>
-                                                    <exclude reference="mI4-eG-28p"/>
-                                                    <exclude reference="aj0-nb-AlP"/>
                                                     <exclude reference="Ybs-dj-LUI"/>
+                                                    <exclude reference="aj0-nb-AlP"/>
+                                                    <exclude reference="mI4-eG-28p"/>
                                                     <exclude reference="vNg-oE-98A"/>
-                                                    <exclude reference="nFI-g4-zmb"/>
-                                                    <exclude reference="kX9-LL-3Rp"/>
                                                     <exclude reference="Hvw-y7-YSh"/>
-                                                    <exclude reference="wfp-i8-5Dh"/>
                                                     <exclude reference="IRp-eb-8jz"/>
-                                                    <exclude reference="ofW-Z2-7b4"/>
+                                                    <exclude reference="kX9-LL-3Rp"/>
+                                                    <exclude reference="nFI-g4-zmb"/>
+                                                    <exclude reference="wfp-i8-5Dh"/>
                                                     <exclude reference="7uV-Nl-n2D"/>
                                                     <exclude reference="doX-6l-cow"/>
+                                                    <exclude reference="ofW-Z2-7b4"/>
                                                     <exclude reference="5PN-uX-Vw9"/>
                                                     <exclude reference="bqd-oL-g5p"/>
-                                                    <exclude reference="TBy-3V-Y2r"/>
                                                     <exclude reference="0Vd-mO-KKn"/>
                                                     <exclude reference="2LX-Eo-KGR"/>
+                                                    <exclude reference="TBy-3V-Y2r"/>
+                                                    <exclude reference="3EK-KA-qQJ"/>
                                                     <exclude reference="GEH-jW-edi"/>
                                                     <exclude reference="UaO-V9-3vB"/>
                                                     <exclude reference="sQm-tN-MVM"/>
-                                                    <exclude reference="3EK-KA-qQJ"/>
-                                                    <exclude reference="anT-bb-S9A"/>
                                                     <exclude reference="53h-mJ-ORh"/>
                                                     <exclude reference="LK7-bV-1Nx"/>
-                                                    <exclude reference="Odd-v8-bX9"/>
+                                                    <exclude reference="anT-bb-S9A"/>
                                                     <exclude reference="D7Z-1R-ktZ"/>
+                                                    <exclude reference="Odd-v8-bX9"/>
                                                     <exclude reference="g6J-tJ-ek3"/>
-                                                    <exclude reference="iz1-0n-Ud6"/>
-                                                    <exclude reference="Rxi-ky-K12"/>
                                                     <exclude reference="CbT-fR-EdB"/>
                                                     <exclude reference="Hm3-VT-s0F"/>
+                                                    <exclude reference="Rxi-ky-K12"/>
+                                                    <exclude reference="iz1-0n-Ud6"/>
                                                     <exclude reference="Fxu-Z6-dPw"/>
                                                 </mask>
                                             </variation>
@@ -3849,12 +3865,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ij3-Mh-JxE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1060" y="4028"/>
+            <point key="canvasLocation" x="1872" y="4028"/>
         </scene>
-        <!--My Account View Controller-->
+        <!--4u My Account View Controller-->
         <scene sceneID="2wn-6p-f1h">
             <objects>
-                <viewController storyboardIdentifier="MyAccountViewControllerID" id="heD-OB-A9i" customClass="MyAccountViewController" customModule="ThanksScreen" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyAccountViewControllerID" id="heD-OB-A9i" customClass="b4u_MyAccountViewController" customModule="bro4u" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Je1-gJ-4xq"/>
                         <viewControllerLayoutGuide type="bottom" id="8Iz-Wl-oT4"/>
@@ -3863,7 +3879,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="5Oh-n4-oER">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myOrdersBackground" translatesAutoresizingMaskIntoConstraints="NO" id="5Oh-n4-oER">
                                 <rect key="frame" x="0.0" y="0.0" width="605" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="ZxR-6p-mqP"/>
@@ -3899,7 +3915,7 @@
                                 <rect key="frame" x="0.0" y="216" width="600" height="384"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyAccountTableViewCellID" rowHeight="104" id="GQs-aP-xAd" customClass="MyAccountTableViewCell" customModule="ThanksScreen">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myAccountCell" rowHeight="104" id="GQs-aP-xAd" customClass="MyAccountTableViewCellID">
                                         <rect key="frame" x="0.0" y="28" width="600" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GQs-aP-xAd" id="Cxk-um-ZaI">
@@ -4126,7 +4142,7 @@
         <!--My Info View Controller-->
         <scene sceneID="c3R-xd-4Az">
             <objects>
-                <viewController storyboardIdentifier="MyInfoViewControllerID" id="BAS-3H-Kt6" customClass="MyInfoViewController" customModule="ThanksScreen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyInfoViewControllerID" id="BAS-3H-Kt6" customClass="MyInfoViewController" customModule="bro4u" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LiM-CX-Lca"/>
                         <viewControllerLayoutGuide type="bottom" id="bYo-bg-iJh"/>
@@ -4476,6 +4492,24 @@
             </objects>
             <point key="canvasLocation" x="-332" y="5537"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BHf-gW-FuS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LDm-xm-E6T" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DBg-6J-rHV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Kdh-Kg-R0Q" kind="relationship" relationship="rootViewController" id="NZn-Tf-2UY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fQG-e7-eOa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-670" y="4028"/>
+        </scene>
     </scenes>
     <resources>
         <image name="King" width="32" height="32"/>
@@ -4497,13 +4531,14 @@
         <image name="infoBtn" width="42" height="42"/>
         <image name="leftArrow" width="7" height="12"/>
         <image name="like" width="25" height="25"/>
-        <image name="loginBackground" width="320" height="480"/>
+        <image name="loginBackGround" width="320" height="480"/>
         <image name="logo" width="320" height="480"/>
         <image name="menu" width="22" height="22"/>
         <image name="minues" width="24" height="24"/>
         <image name="myAccount" width="31" height="31"/>
         <image name="myOrder" width="21" height="28"/>
         <image name="myOrderBackGround" width="320" height="480"/>
+        <image name="myOrdersBackground" width="480" height="183"/>
         <image name="myWallet" width="27" height="26"/>
         <image name="plus" width="24" height="24"/>
         <image name="purpleArrow" width="32" height="32"/>
@@ -4512,7 +4547,6 @@
         <image name="reOrder" width="32" height="19"/>
         <image name="services" width="35" height="35"/>
         <image name="share" width="36" height="31"/>
-        <image name="shareAndEarn" width="103" height="89"/>
         <image name="share_gray" width="17" height="17"/>
         <image name="unCheckedRadioButton" width="320" height="480"/>
         <image name="user" width="30" height="30"/>

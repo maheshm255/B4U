@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyAccountViewController: UIViewController {
+class b4u_MyAccountViewController: UIViewController {
 
   @IBOutlet var nameLbl: UILabel!
   @IBOutlet var walletBalanceLbl: UILabel!
@@ -55,7 +55,7 @@ class MyAccountViewController: UIViewController {
     var cellIdentifier = ""
     var cell  = UITableViewCell()
     
-    cellIdentifier = "MyAccountTableViewCellID"
+    cellIdentifier = "myAccountCell"
     cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MyAccountTableViewCell
     
     return cell
