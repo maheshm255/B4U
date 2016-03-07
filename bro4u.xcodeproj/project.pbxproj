@@ -17,6 +17,10 @@
 		042700291C8B37B6008440CC /* UIView+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 042700221C8B37B6008440CC /* UIView+FSExtension.m */; };
 		0427002C1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0427002B1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift */; };
 		04E0C41B1C8BF6C4006450D1 /* CustomAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0C41A1C8BF6C4006450D1 /* CustomAnnotationView.xib */; };
+		04E0C4441C8C711F006450D1 /* b4u-LocationViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0C4431C8C711F006450D1 /* b4u-LocationViewCtrl.swift */; };
+		04E0C44A1C8C99A7006450D1 /* GooglePlacesAutocomplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0C4471C8C99A7006450D1 /* GooglePlacesAutocomplete.swift */; };
+		04E0C44B1C8C99A7006450D1 /* GooglePlacesAutocomplete.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0C4481C8C99A7006450D1 /* GooglePlacesAutocomplete.xib */; };
+		04E0C44C1C8C99A7006450D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0C4491C8C99A7006450D1 /* ViewController.swift */; };
 		65264F851C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65264F841C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift */; };
 		65264F871C81D80200859F5A /* b4u-SuggestedPatnersResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65264F861C81D80200859F5A /* b4u-SuggestedPatnersResult.swift */; };
 		65271E4E1C828F5E0022C888 /* b4u-CategoryTblViewCtrl1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65271E4D1C828F5E0022C888 /* b4u-CategoryTblViewCtrl1.swift */; };
@@ -177,7 +181,6 @@
 		65DE771B1C78577200017F96 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65DE771A1C78577200017F96 /* SystemConfiguration.framework */; };
 		65DE771D1C78577D00017F96 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65DE771C1C78577D00017F96 /* AddressBook.framework */; };
 		65DE771F1C78584800017F96 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65DE771E1C78584800017F96 /* GoogleService-Info.plist */; };
-		65DE77211C78672600017F96 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 65DE77201C78672600017F96 /* Podfile */; };
 		65DE79631C79448600017F96 /* b4u-CategoryTblHeaderVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE79621C79448600017F96 /* b4u-CategoryTblHeaderVIew.swift */; };
 		65DE79651C796AD200017F96 /* b4u_IntermediateScreenDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE79641C796AD200017F96 /* b4u_IntermediateScreenDataModel.swift */; };
 		65DE79681C79761F00017F96 /* b4u-IntermediateViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE79671C79761F00017F96 /* b4u-IntermediateViewCtrl.swift */; };
@@ -199,7 +202,7 @@
 		65FF8D621C7E2B86007588D0 /* b4u-TimeSlots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF8D611C7E2B86007588D0 /* b4u-TimeSlots.swift */; };
 		65FF8D651C7E9222007588D0 /* b4u-ServicePatnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF8D641C7E9222007588D0 /* b4u-ServicePatnerController.swift */; };
 		65FF8D681C7EC1A5007588D0 /* b4u-SugestedPartner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF8D671C7EC1A5007588D0 /* b4u-SugestedPartner.swift */; };
-		787E454DD19C7F7D70BF42BE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0420EA4B8348ACC0A89E7A7 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		787E454DD19C7F7D70BF42BE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0420EA4B8348ACC0A89E7A7 /* Pods.framework */; };
 		B71C28581C8C0C0C00873B5C /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C28481C8C0C0C00873B5C /* MyInfoViewController.swift */; };
 		B71C28591C8C0C0C00873B5C /* MyWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C284A1C8C0C0C00873B5C /* MyWalletViewController.swift */; };
 		B71C285A1C8C0C0C00873B5C /* MyAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C284B1C8C0C0C00873B5C /* MyAccountTableViewCell.swift */; };
@@ -231,6 +234,11 @@
 		042700221C8B37B6008440CC /* UIView+FSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FSExtension.m"; sourceTree = "<group>"; };
 		0427002B1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-TimeSlotViewCtrl.swift"; sourceTree = "<group>"; };
 		04E0C41A1C8BF6C4006450D1 /* CustomAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAnnotationView.xib; sourceTree = "<group>"; };
+		04E0C4431C8C711F006450D1 /* b4u-LocationViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-LocationViewCtrl.swift"; sourceTree = "<group>"; };
+		04E0C4461C8C99A7006450D1 /* GooglePlacesAutocomplete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooglePlacesAutocomplete.h; sourceTree = "<group>"; };
+		04E0C4471C8C99A7006450D1 /* GooglePlacesAutocomplete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesAutocomplete.swift; sourceTree = "<group>"; };
+		04E0C4481C8C99A7006450D1 /* GooglePlacesAutocomplete.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GooglePlacesAutocomplete.xib; sourceTree = "<group>"; };
+		04E0C4491C8C99A7006450D1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0B4AB3BBC76D5DA9D4D6646A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4B48C7B178FB5F85A79C9741 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		65264F841C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-ServicePartnerTblViewCell.swift"; sourceTree = "<group>"; };
@@ -478,7 +486,6 @@
 		65DE771A1C78577200017F96 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		65DE771C1C78577D00017F96 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		65DE771E1C78584800017F96 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		65DE77201C78672600017F96 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		65DE77221C7869B100017F96 /* libFBSDKCoreKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFBSDKCoreKit.a; path = "Pods/../build/Debug-iphoneos/libFBSDKCoreKit.a"; sourceTree = "<group>"; };
 		65DE79621C79448600017F96 /* b4u-CategoryTblHeaderVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-CategoryTblHeaderVIew.swift"; sourceTree = "<group>"; };
 		65DE79641C796AD200017F96 /* b4u_IntermediateScreenDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_IntermediateScreenDataModel.swift; sourceTree = "<group>"; };
@@ -570,6 +577,26 @@
 				0427002B1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift */,
 			);
 			path = TimeSlotes;
+			sourceTree = "<group>";
+		};
+		04E0C4421C8C70E6006450D1 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				04E0C4451C8C99A7006450D1 /* l */,
+				04E0C4431C8C711F006450D1 /* b4u-LocationViewCtrl.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		04E0C4451C8C99A7006450D1 /* l */ = {
+			isa = PBXGroup;
+			children = (
+				04E0C4461C8C99A7006450D1 /* GooglePlacesAutocomplete.h */,
+				04E0C4471C8C99A7006450D1 /* GooglePlacesAutocomplete.swift */,
+				04E0C4481C8C99A7006450D1 /* GooglePlacesAutocomplete.xib */,
+				04E0C4491C8C99A7006450D1 /* ViewController.swift */,
+			);
+			path = l;
 			sourceTree = "<group>";
 		};
 		4ACEA2003FD63043109FEF32 /* Frameworks */ = {
@@ -820,7 +847,6 @@
 		6536E0871C68F3F000B273D6 = {
 			isa = PBXGroup;
 			children = (
-				65DE77201C78672600017F96 /* Podfile */,
 				65DE771E1C78584800017F96 /* GoogleService-Info.plist */,
 				65DE77181C78569200017F96 /* GoogleSignIn.bundle */,
 				6536E0921C68F3F000B273D6 /* bro4u */,
@@ -1040,6 +1066,7 @@
 		65DE76D61C7780BD00017F96 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				04E0C4421C8C70E6006450D1 /* Location */,
 				B71C28461C8C0C0C00873B5C /* MyAccount Screen */,
 				B71C284D1C8C0C0C00873B5C /* OfferZone */,
 				B71C28501C8C0C0C00873B5C /* Order Screen */,
@@ -1289,6 +1316,7 @@
 			files = (
 				65271F421C831B1E0022C888 /* slider.png in Resources */,
 				65271F261C831B1E0022C888 /* kotaknet.png in Resources */,
+				04E0C44B1C8C99A7006450D1 /* GooglePlacesAutocomplete.xib in Resources */,
 				65271F0C1C831B1E0022C888 /* CBBankPageLoading_iPhone6.xib in Resources */,
 				65271F441C831B1E0022C888 /* trusticon.png in Resources */,
 				65271F2C1C831B1E0022C888 /* lock.png in Resources */,
@@ -1351,7 +1379,6 @@
 				65271F1C1C831B1E0022C888 /* icicicc.png in Resources */,
 				65271F021C831B1E0022C888 /* axis.png in Resources */,
 				65271F361C831B1E0022C888 /* password_icon_large.png in Resources */,
-				65DE77211C78672600017F96 /* Podfile in Resources */,
 				65271F0E1C831B1E0022C888 /* CBCustomActivityIndicator.xib in Resources */,
 				65271F341C831B1E0022C888 /* otpicon.png in Resources */,
 				65271EFE1C831B1E0022C888 /* amex.png in Resources */,
@@ -1444,6 +1471,7 @@
 				65271E5B1C8307820022C888 /* b4u-PaymentViewController.swift in Sources */,
 				65FF8CE01C7B8375007588D0 /* b4u-ExpandableTblViewCell.swift in Sources */,
 				65271F521C831B1E0022C888 /* PayUUINetBankingViewController.m in Sources */,
+				04E0C4441C8C711F006450D1 /* b4u-LocationViewCtrl.swift in Sources */,
 				65DE76E91C77847A00017F96 /* b4u-CategoryTblViewCtrl.swift in Sources */,
 				65271E4E1C828F5E0022C888 /* b4u-CategoryTblViewCtrl1.swift in Sources */,
 				65B18A7E1C70BB28000EDD00 /* AFHTTPSessionManager.m in Sources */,
@@ -1505,6 +1533,7 @@
 				65B189B41C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift in Sources */,
 				657485BC1C71035400504F58 /* b4u-LoginViewCtrl.swift in Sources */,
 				65271F621C8368280022C888 /* b4u-CommentTableViewCell.swift in Sources */,
+				04E0C44C1C8C99A7006450D1 /* ViewController.swift in Sources */,
 				65B49DBC1C722CC70083942D /* b4u-SliderImage.swift in Sources */,
 				65DE76DF1C7780BD00017F96 /* b4u-CategoryListTblViewCell.swift in Sources */,
 				65DE796E1C7A068600017F96 /* b4u-CatFilterAttributeOptions.swift in Sources */,
@@ -1527,6 +1556,7 @@
 				042700231C8B37B6008440CC /* FSCalendar.m in Sources */,
 				65271F4C1C831B1E0022C888 /* PayUMoneyViewController.m in Sources */,
 				65271F531C831B1E0022C888 /* PayUUIPaymentOptionViewController.m in Sources */,
+				04E0C44A1C8C99A7006450D1 /* GooglePlacesAutocomplete.swift in Sources */,
 				042700281C8B37B6008440CC /* UIScrollView+FSExtension.m in Sources */,
 				65DE796B1C79FCFF00017F96 /* b4u-FilterViewController.swift in Sources */,
 				6536E0941C68F3F000B273D6 /* AppDelegate.swift in Sources */,
