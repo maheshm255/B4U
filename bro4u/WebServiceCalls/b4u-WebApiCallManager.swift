@@ -24,8 +24,18 @@ class b4u_WebApiCallManager: NSObject {
     
     func getApiCall(apiPath:String ,params:String ,result:AnyObject->()){
         
-            let requestUrl = b4uBaseUrl + apiPath + params
-            let sessionManager = AFHTTPSessionManager();
+        var requestUrl = ""
+        if apiPath == kLocationSearchUrl
+        {
+            
+            requestUrl  = apiPath + params
+            
+        }else
+        {
+            requestUrl  = b4uBaseUrl + apiPath + params
+            
+        }
+        let sessionManager = AFHTTPSessionManager();
         
             sessionManager.responseSerializer = AFHTTPResponseSerializer()
 
@@ -54,6 +64,7 @@ class b4u_WebApiCallManager: NSObject {
                     
                     print("Session Error: \(error.description)")
                     
+                    
                     result(error)
                     
             }
@@ -80,6 +91,9 @@ class b4u_WebApiCallManager: NSObject {
             self.parsTimeSlotData(dataDict)
         case kShowServicePatnerApi:
             self.parseServicePatnerData(dataDict)
+            
+        case kLocationSearchUrl:
+            self.parseLocationSearchData(dataDict)
         default:
             print(itemName)
         }
@@ -154,6 +168,18 @@ class b4u_WebApiCallManager: NSObject {
         let suggestedPatnersObj = b4u_SuggestedPatnersResult(sugestedPartnersResultDict: dataDict)
         
         bro4u_DataManager.sharedInstance.suggestedPatnersResult = suggestedPatnersObj
+    }
+    
+    func parseLocationSearchData(dataDict:Dictionary<String, AnyObject>)
+    {
+        let locationPredicton:[Dictionary<String ,AnyObject>] = dataDict["predictions"] as! [Dictionary<String ,AnyObject>]
+        
+        bro4u_DataManager.sharedInstance.locationSearchPredictions.removeAll()
+        for (_ ,locationDataDict) in locationPredicton.enumerate()
+        {
+            let locationPredictionObj = b4u_LocationSearchModel(locationDataDict:locationDataDict)
+            bro4u_DataManager.sharedInstance.locationSearchPredictions.append(locationPredictionObj)
+        }
     }
     
 }

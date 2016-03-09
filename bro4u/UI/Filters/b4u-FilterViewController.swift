@@ -22,9 +22,8 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     var dateBtn:UIButton?
     var timeBtn:UIButton?
     var selectedCategoryObj:b4u_Category?
-
     var selectedIndexPath:Dictionary<String ,[NSIndexPath]> = Dictionary()
-    
+    var numberOfItems:Int = 0
     var inputArray:[AnyObject]?{
         
         var array:[b4u_CatFilterAttributes] = Array()
@@ -60,7 +59,6 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         // Do any additional setup after loading the view.
         
         bro4u_DataManager.sharedInstance.timeSlots = nil
-        
         self.callFilterApi()
     }
 
@@ -190,6 +188,16 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                 
                 cell = tableView.dequeueReusableCellWithIdentifier(checkBoxCellIdentifier, forIndexPath: indexPath) as! b4u_ExpandableTblViewCell
                 cell.lblTitle?.text =  aItem.optionName
+                
+                cell.btnMinus.addTarget(self, action:"minusBtnClicked:", forControlEvents:.TouchUpInside)
+                
+                
+                cell.btnPlus.addTarget(self, action:"plusBtnClicked:", forControlEvents:.TouchUpInside)
+                
+                cell.btnPlus.tag = indexPath.section
+                cell.btnMinus.tag = indexPath.section
+                
+                cell.lblCount.text = "\(numberOfItems)"
                 
             }
             return cell
@@ -355,6 +363,41 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         controller: UIPresentationController) -> UIModalPresentationStyle {
             return .None
     }
+    
+    
+    func minusBtnClicked(sender:AnyObject)
+    {
+        if numberOfItems > 0
+        {
+            numberOfItems--
+            
+            self.expandableTblView.reloadData()
+        }
+    }
+    
+    func plusBtnClicked(sender:AnyObject)
+    {
+        let btn = sender as! UIButton
+        numberOfItems++
+        
+//        if  selectedIndexPath["\(btn.tag)"]?.count > 0
+//        {
+//       
+//        }
+//            
+//        else
+//        {
+//            cell.iconImgView.image = UIImage(named: "squareBlue")
+//            
+//            selectedIndexPath["\(indexPath.section)"] = [indexPath]
+//        }
+
+        
+        
+        
+        self.expandableTblView.reloadData()
+    }
+    
     func btnSelectTimeClicked(sender:AnyObject)
     {
         if  bro4u_DataManager.sharedInstance.timeSlots?.timeSlots?.count > 0
@@ -406,7 +449,114 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         
         self.selectedIndexPath.removeAll()
     }
-    @IBAction func showServicePatnerBtnClicked(sender: AnyObject) {
+    
+    
+    func callServicePatnerApi()
+    {
+        
+    
+        
+       guard let selectedDate = bro4u_DataManager.sharedInstance.selectedDate , let selectedTimeSlot = bro4u_DataManager.sharedInstance.selectedTimeSlot else
+        {
+               print("Select Date And Time")
+               return
+        }
+        
+        if let aSelectedCatObj = selectedCategoryObj
+        {
+            let catId = aSelectedCatObj.catId!
+            let latitude =  "12.9718915"
+            let longitude = "77.6411545"
+            
+            var params = "?cat_id=\(catId)&latitude=\(latitude)&longitude=\(longitude)"
+
+            
+            
+            
+            let dateStr = NSDate.dateFormat().stringFromDate(selectedDate)
+            
+            params = params + "&service_date=\(dateStr)"
+            
+            params = params + "&service_time=\(selectedTimeSlot)"
+        
+            
+            print(selectedIndexPath)
+            
+            
+            let keys = selectedIndexPath.keys
+            
+            for (_ , key) in keys.enumerate()
+            {
+                print(key)
+                
+                
+               let catFilterAttributes:b4u_CatFilterAttributes =   self.inputArray![Int(key)!] as! b4u_CatFilterAttributes
+                
+                if catFilterAttributes.inputType == inputType.checkBox.rawValue
+                {
+                    for (_ , indexPath) in (selectedIndexPath[key]?.enumerate())!
+                    {
+                        let attributeOption:b4u_CatFilterAttributeOptions =  catFilterAttributes.catFilterAttributeOptions![indexPath.row]
+                        
+                        params = params + "&\(catFilterAttributes.fieldName!)[]=\(attributeOption.optionId!)"
+                        
+                        print(attributeOption)
+                    }
+                }
+                
+                if catFilterAttributes.inputType == inputType.radio.rawValue
+                {
+                    for (_ , indexPath) in (selectedIndexPath[key]?.enumerate())!
+                    {
+                        let attributeOption:b4u_CatFilterAttributeOptions =  catFilterAttributes.catFilterAttributeOptions![indexPath.row]
+                        
+                        params = params + "&\(catFilterAttributes.fieldName!)=\(attributeOption.optionId!)"
+                        
+                        
+                    }
+                }
+                if catFilterAttributes.inputType == inputType.textBoxGroup.rawValue
+                {
+                    for (_ , indexPath) in (selectedIndexPath[key]?.enumerate())!
+                    {
+                        
+                        let attributeOption:b4u_CatFilterAttributeOptions =  catFilterAttributes.catFilterAttributeOptions![indexPath.row]
+                        
+                        params = params + "&\(catFilterAttributes.fieldName!)_\(numberOfItems)=\(attributeOption.optionId!)"
+                        
+                        
+                    }
+                }
+                
+            }
+            
+            bro4u_DataManager.sharedInstance.suggestedPatnersResult = nil
+            b4u_WebApiCallManager.sharedInstance.getApiCall(kShowServicePatnerApi, params:params, result:{(resultObject) -> Void in
+                
+                
+                
+                self.performSelectorOnMainThread("moveToSuggestedPatner", withObject:nil, waitUntilDone:true)
+
+            })
+        }
+    }
+    
+    
+    func moveToSuggestedPatner()
+    {
+        if let suggestedPatners = bro4u_DataManager.sharedInstance.suggestedPatnersResult?.suggestedPatners
+        {
+            self.performSegueWithIdentifier("servicePatnerSegue", sender:nil)
+            
+        }else
+        {
+            //TODO
+        }
+    }
+    
+    @IBAction func showServicePatnerBtnClicked(sender: AnyObject)
+    {
+        self.callServicePatnerApi()
     }
     
     // MARK: - Navigation
@@ -424,6 +574,10 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         }
     }
 
+    
+
+    
+    
     func didSelectDate(date:NSDate)
     {
         
@@ -438,7 +592,6 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         if let tiemBtn = self.timeBtn
         {
             tiemBtn.setTitle("Select Time", forState:UIControlState.Normal)
-
         }
     }
 

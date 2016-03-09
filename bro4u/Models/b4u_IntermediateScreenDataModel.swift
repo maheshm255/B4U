@@ -37,6 +37,16 @@ class b4u_IntermediateScreenDataModel: NSObject {
         interMessges?.append(interArray.first!["1"]! as! String)
         interMessges?.append(interArray.first!["2"]! as! String)
         interMessges?.append(interArray.first!["3"]! as! String)
+        
+        let termsAndCond:[String] = interMediateInfoDataDict["terms_conditions"] as! [String]
+        
+        if termsAndCond.count > 0
+        {
+            for(_ ,termsAndCondStr) in termsAndCond.enumerate()
+            {
+                termsAndConditions?.append(termsAndCondStr)
+            }
+        }
 
     }
 }

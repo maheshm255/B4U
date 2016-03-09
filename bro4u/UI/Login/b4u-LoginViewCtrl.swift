@@ -9,10 +9,13 @@
 import UIKit
 import FBSDKLoginKit
 
-class b4u_LoginViewCtrl: UIViewController ,GIDSignInDelegate,GIDSignInUIDelegate{
+class b4u_LoginViewCtrl: UIViewController ,GIDSignInDelegate,GIDSignInUIDelegate ,UITextFieldDelegate{
+    @IBOutlet weak var tfEnerMobileNumber: UITextField!
 
+   
     @IBOutlet var fbLoginButton: FBSDKLoginButton!
 
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +31,7 @@ class b4u_LoginViewCtrl: UIViewController ,GIDSignInDelegate,GIDSignInUIDelegate
 
         FBSDKSettings.setAppID("194765280880394")
     }
+    @IBOutlet weak var btnOTPLogin: UIButton!
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -50,6 +54,46 @@ class b4u_LoginViewCtrl: UIViewController ,GIDSignInDelegate,GIDSignInUIDelegate
         self.dismissViewControllerAnimated(true, completion:nil)
     }
     
+    @IBAction func goBtnClicked(sender: AnyObject)
+    {
+        // ?req_id=10&device_id=asdfasdf&mobile=9740201846
+
+        if self.tfEnerMobileNumber.tag == 1
+        {
+            let phoneNo = tfEnerMobileNumber.text!
+            
+            if  phoneNo.validPhoneNumber
+            {
+                let reqId = 10
+                
+                let deviceId = b4u_Utility.getUUIDFromVendorIdentifier
+                
+                let params =  "?req_id=\(reqId)&device_id=\(deviceId)&mobile=\(phoneNo)"
+                
+                b4u_WebApiCallManager.sharedInstance.getApiCall(kOTPlogin, params:params, result:{(resultObject) -> Void in
+                    
+                    if resultObject as! String == "Success"
+                    {
+                        self.tfEnerMobileNumber.placeholder = "Enter OTP Received"
+                        self.tfEnerMobileNumber.tag = 2
+                    }else
+                    {
+                        
+                    }
+                    
+                })
+            }else
+            {
+                print("phone number is not valid")
+            }
+            
+        }else if self.tfEnerMobileNumber.tag == 2
+        {
+            
+        }
+        
+    }
+    
     //Google Sign In
     func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
         withError error: NSError!) {
@@ -63,6 +107,11 @@ class b4u_LoginViewCtrl: UIViewController ,GIDSignInDelegate,GIDSignInUIDelegate
             } else {
                 
             }
+    }
+    
+    @IBAction func btnOTPLoginClicked(sender: AnyObject)
+    {
+        self.btnOTPLogin.hidden = true
     }
     
 }

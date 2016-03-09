@@ -7,8 +7,9 @@
 //
 import UIKit
 
-class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate {
+class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate ,locationDelegate{
 
+    @IBOutlet weak var btnCurrentLocation: UIButton!
     @IBOutlet weak var BtnRightMenu: UIBarButtonItem!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -45,6 +46,24 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
 
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let currentLocality = bro4u_DataManager.sharedInstance.currentLocality
+        {
+            if let loclity = currentLocality.locality , subLocality = currentLocality.subLocality
+             {
+                self.btnCurrentLocation.setTitle("\(subLocality),\(loclity)", forState:.Normal)
+ 
+            }
+
+        }else
+        {
+            self.btnCurrentLocation.setTitle("Current Location", forState:.Normal)
+
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -85,9 +104,19 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
             }
             
         }
+        else if segue.identifier == "locationCtrlSegue"
+        {
+            
+            bro4u_DataManager.sharedInstance.locationSearchPredictions.removeAll()
+            let locatinCtrlObj = segue.destinationViewController as! b4u_LocationViewCtrl
+
+            locatinCtrlObj.delegate = self
+        }
     }
     
 
+    
+    //MARK: TableView Delegate and DataSource
     
     internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -217,4 +246,12 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     
     
 
+    func userSelectedLocation(locationStr:String)
+    {
+      self.btnCurrentLocation.setTitle(locationStr, forState:.Normal)
+    }
+    @IBAction func locationBtnSelected(sender: AnyObject)
+    {
+        self.performSegueWithIdentifier("locationCtrlSegue", sender:nil)
+    }
 }

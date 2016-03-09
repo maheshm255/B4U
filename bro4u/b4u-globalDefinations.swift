@@ -11,6 +11,9 @@ import Foundation
 //Base URL
 let b4uBaseUrl:String = "http://v2.20160301.testing.bro4u.com/api_v2/"
 
+// Location search URL 
+
+let kLocationSearchUrl = "https://maps.googleapis.com/maps/api/place/autocomplete/json?radius=50&components=country:Ind&sensor=false&key=AIzaSyBSW-tlNvpkH2NiXl17nxIfXqIv27oZNKs"
 
 // REST APIS FUNCTIONS
 
@@ -40,3 +43,9 @@ let kShowServicePatnerApi1 = "index.php/catalog/browse/1"
 
 //cat_id=2&latitude=12.9718915&longitude=77.6411545
 let kShowServicePatnerApi = "index.php/catalog/browse"
+
+// OPT Login
+
+// ?req_id=10&device_id=asdfasdf&mobile=9740201846
+
+let kOTPlogin = "/index.php/my-account"

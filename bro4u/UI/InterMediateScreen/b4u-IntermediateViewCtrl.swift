@@ -49,10 +49,14 @@ class b4u_IntermediateViewCtrl: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func tAndCBtnClicked(sender: AnyObject) {
+    @IBAction func tAndCBtnClicked(sender: AnyObject)
+    {
+       // TO DO
     }
 
-    @IBAction func tapToCopyBtnClicked(sender: AnyObject) {
+    @IBAction func tapToCopyBtnClicked(sender: AnyObject)
+    {
+        //TO DO
     }
     
     // MARK: - Navigation
@@ -83,10 +87,39 @@ class b4u_IntermediateViewCtrl: UIViewController {
             let deviceId = b4u_Utility.getUUIDFromVendorIdentifier()
             
             
-            let params = "?cat_id=\(catId)&user_id=\(userId)&device_id=\(deviceId)"
+            var params = "?cat_id=\(catId)&user_id=\(userId)&device_id=\(deviceId)"
+            
+         
+            
+            
+            if  let aSelectedAttributeOption = selectedAttributeOption
+            {
+                if let optionId = aSelectedAttributeOption.optionId
+                {
+                    params = params + "&option_id=\(optionId)"
+                }
+                
+                if let fieldName = aSelectedAttributeOption.fieldName
+                {
+                    params = params + "&field_name=\(fieldName)"
+                    
+                }
+            }else
+            {
+                if let optionId = aSelectedCatObj.optionId
+                {
+                    params = params + "&option_id=\(optionId)"
+                }
+                
+                if let fieldName = aSelectedCatObj.fieldName
+                {
+                    params = params + "&field_name=\(fieldName)"
+                    
+                }
+            }
             b4u_WebApiCallManager.sharedInstance.getApiCall(intermediateScreenAPi, params:params, result:{(resultObject) -> Void in
                 
-                self.updateUI()
+                self.performSelectorOnMainThread("updateUI", withObject:nil, waitUntilDone:true)
             })
         }
       
@@ -113,6 +146,11 @@ class b4u_IntermediateViewCtrl: UIViewController {
 
             
             self.navigationItem.title = aDataModel.catName
+            
+            if aDataModel.termsAndConditions?.count <= 0
+            {
+                self.btnTermsAndConditions.hidden = true
+            }
         }
     }
 }

@@ -16,6 +16,8 @@
 		042700281C8B37B6008440CC /* UIScrollView+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 042700201C8B37B6008440CC /* UIScrollView+FSExtension.m */; };
 		042700291C8B37B6008440CC /* UIView+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 042700221C8B37B6008440CC /* UIView+FSExtension.m */; };
 		0427002C1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0427002B1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift */; };
+		04E07A561C900476009AD223 /* b4u-LocationSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E07A551C900476009AD223 /* b4u-LocationSearchModel.swift */; };
+		04E07A591C901961009AD223 /* b4u-LoginViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E07A581C901961009AD223 /* b4u-LoginViewCtrl.swift */; };
 		04E0C41B1C8BF6C4006450D1 /* CustomAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0C41A1C8BF6C4006450D1 /* CustomAnnotationView.xib */; };
 		04E0C4441C8C711F006450D1 /* b4u-LocationViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0C4431C8C711F006450D1 /* b4u-LocationViewCtrl.swift */; };
 		04E0C44A1C8C99A7006450D1 /* GooglePlacesAutocomplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0C4471C8C99A7006450D1 /* GooglePlacesAutocomplete.swift */; };
@@ -135,7 +137,6 @@
 		656412411C88C1B600B8D5D4 /* b4u_ServicePatnerMapViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656412401C88C1B600B8D5D4 /* b4u_ServicePatnerMapViewCtrl.swift */; };
 		656412431C88C2A300B8D5D4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656412421C88C2A300B8D5D4 /* MapKit.framework */; };
 		656412451C88C2B400B8D5D4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656412441C88C2B400B8D5D4 /* CoreLocation.framework */; };
-		657485BC1C71035400504F58 /* b4u-LoginViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657485BB1C71035400504F58 /* b4u-LoginViewCtrl.swift */; };
 		65B189B21C6E5CAC000EDD00 /* category.json in Resources */ = {isa = PBXBuildFile; fileRef = 65B189B11C6E5CAC000EDD00 /* category.json */; };
 		65B189B41C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B189B31C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift */; };
 		65B189BB1C6E6020000EDD00 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B189B61C6E6020000EDD00 /* Category+CoreDataProperties.swift */; };
@@ -233,6 +234,8 @@
 		042700211C8B37B6008440CC /* UIView+FSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FSExtension.h"; sourceTree = "<group>"; };
 		042700221C8B37B6008440CC /* UIView+FSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FSExtension.m"; sourceTree = "<group>"; };
 		0427002B1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-TimeSlotViewCtrl.swift"; sourceTree = "<group>"; };
+		04E07A551C900476009AD223 /* b4u-LocationSearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-LocationSearchModel.swift"; sourceTree = "<group>"; };
+		04E07A581C901961009AD223 /* b4u-LoginViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-LoginViewCtrl.swift"; sourceTree = "<group>"; };
 		04E0C41A1C8BF6C4006450D1 /* CustomAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAnnotationView.xib; sourceTree = "<group>"; };
 		04E0C4431C8C711F006450D1 /* b4u-LocationViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-LocationViewCtrl.swift"; sourceTree = "<group>"; };
 		04E0C4461C8C99A7006450D1 /* GooglePlacesAutocomplete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooglePlacesAutocomplete.h; sourceTree = "<group>"; };
@@ -419,7 +422,6 @@
 		656412401C88C1B600B8D5D4 /* b4u_ServicePatnerMapViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ServicePatnerMapViewCtrl.swift; sourceTree = "<group>"; };
 		656412421C88C2A300B8D5D4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		656412441C88C2B400B8D5D4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		657485BB1C71035400504F58 /* b4u-LoginViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-LoginViewCtrl.swift"; sourceTree = "<group>"; };
 		65B189B11C6E5CAC000EDD00 /* category.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = category.json; sourceTree = "<group>"; };
 		65B189B31C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "bro4u-CoreDataManager.swift"; sourceTree = "<group>"; };
 		65B189B61C6E6020000EDD00 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -577,6 +579,14 @@
 				0427002B1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift */,
 			);
 			path = TimeSlotes;
+			sourceTree = "<group>";
+		};
+		04E07A571C901961009AD223 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				04E07A581C901961009AD223 /* b4u-LoginViewCtrl.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		04E0C4421C8C70E6006450D1 /* Location */ = {
@@ -868,7 +878,6 @@
 			isa = PBXGroup;
 			children = (
 				65DE76D61C7780BD00017F96 /* UI */,
-				657485B71C71032300504F58 /* Login */,
 				65F8B42E1C70BE6200D158FA /* Helpers */,
 				65B18A4F1C70BB28000EDD00 /* ThirdParty */,
 				65B18A4A1C70BA07000EDD00 /* WebServiceCalls */,
@@ -898,6 +907,7 @@
 				65DE76D41C7778E100017F96 /* b4u-AttributeOptions.swift */,
 				65DE79641C796AD200017F96 /* b4u_IntermediateScreenDataModel.swift */,
 				65B189B51C6E6020000EDD00 /* CoreDataModels */,
+				04E07A551C900476009AD223 /* b4u-LocationSearchModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -918,38 +928,6 @@
 				656412401C88C1B600B8D5D4 /* b4u_ServicePatnerMapViewCtrl.swift */,
 			);
 			path = MapView;
-			sourceTree = "<group>";
-		};
-		657485B71C71032300504F58 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				657485B81C71032300504F58 /* Facebook */,
-				657485B91C71032300504F58 /* Google+ */,
-				657485BA1C71032300504F58 /* OTPLogin */,
-				657485BB1C71035400504F58 /* b4u-LoginViewCtrl.swift */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		657485B81C71032300504F58 /* Facebook */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Facebook;
-			sourceTree = "<group>";
-		};
-		657485B91C71032300504F58 /* Google+ */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Google+";
-			sourceTree = "<group>";
-		};
-		657485BA1C71032300504F58 /* OTPLogin */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = OTPLogin;
 			sourceTree = "<group>";
 		};
 		65B189B01C6E5B9C000EDD00 /* SupportingFiles */ = {
@@ -1066,6 +1044,7 @@
 		65DE76D61C7780BD00017F96 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				04E07A571C901961009AD223 /* Login */,
 				04E0C4421C8C70E6006450D1 /* Location */,
 				B71C28461C8C0C0C00873B5C /* MyAccount Screen */,
 				B71C284D1C8C0C0C00873B5C /* OfferZone */,
@@ -1287,7 +1266,7 @@
 				TargetAttributes = {
 					6536E08F1C68F3F000B273D6 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 8AJJ2NRX9T;
+						DevelopmentTeam = A4BFLTQ7EF;
 					};
 				};
 			};
@@ -1531,7 +1510,6 @@
 				65DE76E41C7780BD00017F96 /* b4u-SearchResultTblCtrl.swift in Sources */,
 				0427002C1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift in Sources */,
 				65B189B41C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift in Sources */,
-				657485BC1C71035400504F58 /* b4u-LoginViewCtrl.swift in Sources */,
 				65271F621C8368280022C888 /* b4u-CommentTableViewCell.swift in Sources */,
 				04E0C44C1C8C99A7006450D1 /* ViewController.swift in Sources */,
 				65B49DBC1C722CC70083942D /* b4u-SliderImage.swift in Sources */,
@@ -1546,6 +1524,7 @@
 				65B18A7D1C70BB28000EDD00 /* AFHTTPRequestOperationManager.m in Sources */,
 				65271E541C828FED0022C888 /* b4u-CategoryTblViewCell.swift in Sources */,
 				042700241C8B37B6008440CC /* FSCalendarHeader.m in Sources */,
+				04E07A591C901961009AD223 /* b4u-LoginViewCtrl.swift in Sources */,
 				65B18A8A1C70BB28000EDD00 /* UIButton+AFNetworking.m in Sources */,
 				B71C285A1C8C0C0C00873B5C /* MyAccountTableViewCell.swift in Sources */,
 				65271E501C828F8B0022C888 /* b4u-CateforyTblView.swift in Sources */,
@@ -1559,6 +1538,7 @@
 				04E0C44A1C8C99A7006450D1 /* GooglePlacesAutocomplete.swift in Sources */,
 				042700281C8B37B6008440CC /* UIScrollView+FSExtension.m in Sources */,
 				65DE796B1C79FCFF00017F96 /* b4u-FilterViewController.swift in Sources */,
+				04E07A561C900476009AD223 /* b4u-LocationSearchModel.swift in Sources */,
 				6536E0941C68F3F000B273D6 /* AppDelegate.swift in Sources */,
 				65FF8D651C7E9222007588D0 /* b4u-ServicePatnerController.swift in Sources */,
 				65271F4E1C831B1E0022C888 /* PayUSAGetTransactionID.m in Sources */,

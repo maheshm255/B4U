@@ -30,4 +30,9 @@ extension String {
     func replaceAll(find:String, with:String) -> String {
         return stringByReplacingOccurrencesOfString(find, withString: with, options: .CaseInsensitiveSearch, range: nil)
     }
+    
+    public var validPhoneNumber:Bool {
+        let result = NSTextCheckingResult.phoneNumberCheckingResultWithRange(NSMakeRange(0, self.characters.count), phoneNumber: self)
+        return result.resultType == NSTextCheckingType.PhoneNumber
+    }
 }

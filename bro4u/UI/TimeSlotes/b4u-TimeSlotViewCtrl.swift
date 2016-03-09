@@ -65,6 +65,7 @@ class b4u_TimeSlotViewCtrl: UITableViewController {
     {
         let timeSlot:String =  (bro4u_DataManager.sharedInstance.timeSlots?.timeSlots![indexPath.row])!
 
+        bro4u_DataManager.sharedInstance.selectedTimeSlot = timeSlot
         delegate?.didSelectTimeSlot(timeSlot)
         
         self.dismissViewControllerAnimated(true, completion:nil)

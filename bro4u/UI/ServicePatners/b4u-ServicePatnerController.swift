@@ -20,7 +20,7 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
 
         // Do any additional setup after loading the view.
         
-        self.callServicePatnerApi()
+       // self.callServicePatnerApi()
     }
 
     override func didReceiveMemoryWarning() {
