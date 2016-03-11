@@ -52,6 +52,23 @@ class b4u_IntermediateViewCtrl: UIViewController {
     @IBAction func tAndCBtnClicked(sender: AnyObject)
     {
        // TO DO
+        
+        let alerController = UIAlertController(title:"Terms & Conditions", message:"", preferredStyle:.Alert)
+        
+        
+         let controller = self.storyboard?.instantiateViewControllerWithIdentifier("tAndCtrl") as! b4u_termsAndCondViewController
+        alerController.setValue(controller, forKey:"contentViewController")
+        
+
+        let alertAction = UIAlertAction(title:"Got IT!", style:UIAlertActionStyle.Default, handler: {(alertAction)-> Void in
+        
+            
+            alerController.dismissViewControllerAnimated(true, completion:nil)
+        })
+        
+        alerController.addAction(alertAction)
+        
+        self.presentViewController(alerController, animated:true, completion:nil)
     }
 
     @IBAction func tapToCopyBtnClicked(sender: AnyObject)

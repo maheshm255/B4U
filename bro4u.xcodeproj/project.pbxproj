@@ -23,6 +23,7 @@
 		04E0C44A1C8C99A7006450D1 /* GooglePlacesAutocomplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0C4471C8C99A7006450D1 /* GooglePlacesAutocomplete.swift */; };
 		04E0C44B1C8C99A7006450D1 /* GooglePlacesAutocomplete.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0C4481C8C99A7006450D1 /* GooglePlacesAutocomplete.xib */; };
 		04E0C44C1C8C99A7006450D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0C4491C8C99A7006450D1 /* ViewController.swift */; };
+		04E7D9201C929CFE002C70A9 /* b4u-termsAndCondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7D91F1C929CFE002C70A9 /* b4u-termsAndCondViewController.swift */; };
 		65264F851C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65264F841C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift */; };
 		65264F871C81D80200859F5A /* b4u-SuggestedPatnersResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65264F861C81D80200859F5A /* b4u-SuggestedPatnersResult.swift */; };
 		65271E4E1C828F5E0022C888 /* b4u-CategoryTblViewCtrl1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65271E4D1C828F5E0022C888 /* b4u-CategoryTblViewCtrl1.swift */; };
@@ -184,7 +185,7 @@
 		65DE771F1C78584800017F96 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65DE771E1C78584800017F96 /* GoogleService-Info.plist */; };
 		65DE79631C79448600017F96 /* b4u-CategoryTblHeaderVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE79621C79448600017F96 /* b4u-CategoryTblHeaderVIew.swift */; };
 		65DE79651C796AD200017F96 /* b4u_IntermediateScreenDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE79641C796AD200017F96 /* b4u_IntermediateScreenDataModel.swift */; };
-		65DE79681C79761F00017F96 /* b4u-IntermediateViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE79671C79761F00017F96 /* b4u-IntermediateViewCtrl.swift */; };
+		65DE79681C79761F00017F96 /* b4u_IntermediateViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE79671C79761F00017F96 /* b4u_IntermediateViewCtrl.swift */; };
 		65DE796B1C79FCFF00017F96 /* b4u-FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE796A1C79FCFF00017F96 /* b4u-FilterViewController.swift */; };
 		65DE796E1C7A068600017F96 /* b4u-CatFilterAttributeOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE796D1C7A068600017F96 /* b4u-CatFilterAttributeOptions.swift */; };
 		65DE79701C7A07C900017F96 /* b4u-CatFilterAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE796F1C7A07C900017F96 /* b4u-CatFilterAttributes.swift */; };
@@ -242,6 +243,7 @@
 		04E0C4471C8C99A7006450D1 /* GooglePlacesAutocomplete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesAutocomplete.swift; sourceTree = "<group>"; };
 		04E0C4481C8C99A7006450D1 /* GooglePlacesAutocomplete.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GooglePlacesAutocomplete.xib; sourceTree = "<group>"; };
 		04E0C4491C8C99A7006450D1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		04E7D91F1C929CFE002C70A9 /* b4u-termsAndCondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-termsAndCondViewController.swift"; sourceTree = "<group>"; };
 		0B4AB3BBC76D5DA9D4D6646A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4B48C7B178FB5F85A79C9741 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		65264F841C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-ServicePartnerTblViewCell.swift"; sourceTree = "<group>"; };
@@ -491,7 +493,7 @@
 		65DE77221C7869B100017F96 /* libFBSDKCoreKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFBSDKCoreKit.a; path = "Pods/../build/Debug-iphoneos/libFBSDKCoreKit.a"; sourceTree = "<group>"; };
 		65DE79621C79448600017F96 /* b4u-CategoryTblHeaderVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-CategoryTblHeaderVIew.swift"; sourceTree = "<group>"; };
 		65DE79641C796AD200017F96 /* b4u_IntermediateScreenDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_IntermediateScreenDataModel.swift; sourceTree = "<group>"; };
-		65DE79671C79761F00017F96 /* b4u-IntermediateViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-IntermediateViewCtrl.swift"; sourceTree = "<group>"; };
+		65DE79671C79761F00017F96 /* b4u_IntermediateViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_IntermediateViewCtrl.swift; sourceTree = "<group>"; };
 		65DE796A1C79FCFF00017F96 /* b4u-FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-FilterViewController.swift"; sourceTree = "<group>"; };
 		65DE796D1C7A068600017F96 /* b4u-CatFilterAttributeOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-CatFilterAttributeOptions.swift"; sourceTree = "<group>"; };
 		65DE796F1C7A07C900017F96 /* b4u-CatFilterAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-CatFilterAttributes.swift"; sourceTree = "<group>"; };
@@ -1099,7 +1101,8 @@
 		65DE79661C7975D000017F96 /* InterMediateScreen */ = {
 			isa = PBXGroup;
 			children = (
-				65DE79671C79761F00017F96 /* b4u-IntermediateViewCtrl.swift */,
+				65DE79671C79761F00017F96 /* b4u_IntermediateViewCtrl.swift */,
+				04E7D91F1C929CFE002C70A9 /* b4u-termsAndCondViewController.swift */,
 			);
 			path = InterMediateScreen;
 			sourceTree = "<group>";
@@ -1520,10 +1523,11 @@
 				65DE79651C796AD200017F96 /* b4u_IntermediateScreenDataModel.swift in Sources */,
 				65B18A901C70BBC1000EDD00 /* b4u-globalDefinations.swift in Sources */,
 				B71C28581C8C0C0C00873B5C /* MyInfoViewController.swift in Sources */,
-				65DE79681C79761F00017F96 /* b4u-IntermediateViewCtrl.swift in Sources */,
+				65DE79681C79761F00017F96 /* b4u_IntermediateViewCtrl.swift in Sources */,
 				65B18A7D1C70BB28000EDD00 /* AFHTTPRequestOperationManager.m in Sources */,
 				65271E541C828FED0022C888 /* b4u-CategoryTblViewCell.swift in Sources */,
 				042700241C8B37B6008440CC /* FSCalendarHeader.m in Sources */,
+				04E7D9201C929CFE002C70A9 /* b4u-termsAndCondViewController.swift in Sources */,
 				04E07A591C901961009AD223 /* b4u-LoginViewCtrl.swift in Sources */,
 				65B18A8A1C70BB28000EDD00 /* UIButton+AFNetworking.m in Sources */,
 				B71C285A1C8C0C0C00873B5C /* MyAccountTableViewCell.swift in Sources */,
