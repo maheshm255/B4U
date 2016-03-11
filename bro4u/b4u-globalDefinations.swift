@@ -53,9 +53,9 @@ let kOTPlogin = "/index.php/my-account"
 
 //Rahul Added
 
-let kMyInfoIndex = "index.php/categories/catAttr"
+let kMyInfoIndex = "index.php/my_account/user_details?user_id=1"
 let kMyWalletIndex = "index.php/categories/catAttr"
-let kMyAccountIndex = "index.php/categories/catAttr"
+let kMyAccountIndex = "index.php/my_account/get_user?user_id=8"
 let kOfferZoneIndex = "index.php/categories/catAttr"
 let kMyOrdersIndex = "index.php/categories/catAttr"
 let kReferAndEarnIndex = "index.php/categories/catAttr"

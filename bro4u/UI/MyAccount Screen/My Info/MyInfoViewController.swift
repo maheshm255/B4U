@@ -45,11 +45,11 @@ class MyInfoViewController: UIViewController {
 
         // Do any additional setup after loading the view.
       
-      self.getMyInfoData()
+      self.getData()
 
     }
   
-  func getMyInfoData()
+  func getData()
   {
     b4u_WebApiCallManager.sharedInstance.getApiCall(kMyInfoIndex, params:"", result:{(resultObject) -> Void in
       

@@ -14,11 +14,66 @@ class b4u_MyAccountViewController: UIViewController {
   @IBOutlet var walletBalanceLbl: UILabel!
   @IBOutlet var userImageView: UIImageView!
   
-  
+    var modelArr:[b4u_MyAccountModel] = Array()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        
+        self.getData()
+        
+    }
+    
+    func getData()
+    {
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyAccountIndex, params:"", result:{(resultObject) -> Void in
+            
+            print("My Account Data Received")
+            
+            print(resultObject)
+            
+            self.congigureUI()
+            
+            
+        })
+    }
+    
+    
+    func congigureUI()
+    {
+        
+        for (_ , mainData) in bro4u_DataManager.sharedInstance.myAccountData.enumerate()
+        {
+            
+            
+            if let filteredData = self.filterContent(mainData)
+            {
+                //                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("b4uCategoryTableView") as! b4u_CategoryTblViewCtrl
+                
+                let vc =  self.storyboard?.instantiateViewControllerWithIdentifier("MyAccountViewControllerID") as! b4u_MyAccountViewController
+                
+                vc.modelArr = filteredData
+            }
+        }
+        
+    }
+    
+    //Need to Implement
+    private func filterContent(mainModelObj:b4u_MyAccountModel) -> [b4u_MyAccountModel]?
+    {
+        let filteredItems:[b4u_MyAccountModel]?
+        if bro4u_DataManager.sharedInstance.myAccountData.count > 0
+        {
+            
+            return nil
+            
+        }else
+        {
+            return nil
+        }
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,11 +97,11 @@ class b4u_MyAccountViewController: UIViewController {
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int
   {
-    return 1
+    return 4
   }
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
   {
-    return 4
+    return 1
   }
   
   
@@ -55,8 +110,8 @@ class b4u_MyAccountViewController: UIViewController {
     var cellIdentifier = ""
     var cell  = UITableViewCell()
     
-//    cellIdentifier = "myAccountCell"
-//    cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MyAccountTableViewCell
+    cellIdentifier = "MyAccountTableViewCellID"
+    cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MyAccountTableViewCell
     
     return cell
   }

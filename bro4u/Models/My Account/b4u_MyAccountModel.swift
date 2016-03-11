@@ -10,4 +10,22 @@ import UIKit
 
 class b4u_MyAccountModel: NSObject {
 
+    var userID:String?
+    var fullName:String?
+    var emailID:String?
+    var mobileNumber:String?
+    var profile_pic:String?
+    var walletBalance:String?
+    
+    
+    init(dataDict:Dictionary<String ,AnyObject>) {
+        
+        userID = dataDict["user_id"] as? String
+        fullName = dataDict["full_name"] as? String
+        emailID = dataDict["email"] as? String
+        mobileNumber = dataDict["mobile"] as? String
+        walletBalance = dataDict["wallet_balance"] as? String
+
+    }
+
 }
