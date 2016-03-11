@@ -15,7 +15,7 @@ class b4u_MyAccountModel: NSObject {
     var emailID:String?
     var mobileNumber:String?
     var profile_pic:String?
-    var walletBalance:String?
+    var walletBalance:NSNumber?
     
     
     init(dataDict:Dictionary<String ,AnyObject>) {
@@ -24,7 +24,7 @@ class b4u_MyAccountModel: NSObject {
         fullName = dataDict["full_name"] as? String
         emailID = dataDict["email"] as? String
         mobileNumber = dataDict["mobile"] as? String
-        walletBalance = dataDict["wallet_balance"] as? String
+        walletBalance = dataDict["wallet_balance"] as? NSNumber
 
     }
 

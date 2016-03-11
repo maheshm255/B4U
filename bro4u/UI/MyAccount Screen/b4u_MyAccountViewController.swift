@@ -14,7 +14,7 @@ class b4u_MyAccountViewController: UIViewController {
   @IBOutlet var walletBalanceLbl: UILabel!
   @IBOutlet var userImageView: UIImageView!
   
-    var modelArr:[b4u_MyAccountModel] = Array()
+   var modelArr:[b4u_MyAccountModel] = Array()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,7 @@ class b4u_MyAccountViewController: UIViewController {
         
     }
     
+    @IBOutlet weak var tableView: UITableView!
     func getData()
     {
         b4u_WebApiCallManager.sharedInstance.getApiCall(kMyAccountIndex, params:"", result:{(resultObject) -> Void in
@@ -33,56 +34,31 @@ class b4u_MyAccountViewController: UIViewController {
             
             print(resultObject)
             
-            self.congigureUI()
+            self.updateUI()
             
             
         })
     }
     
     
-    func congigureUI()
+    func updateUI()
     {
-        
-        for (_ , mainData) in bro4u_DataManager.sharedInstance.myAccountData.enumerate()
+        if let accountDetails = bro4u_DataManager.sharedInstance.myAccountData
         {
-            
-            
-            if let filteredData = self.filterContent(mainData)
-            {
-                //                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("b4uCategoryTableView") as! b4u_CategoryTblViewCtrl
-                
-                let vc =  self.storyboard?.instantiateViewControllerWithIdentifier("MyAccountViewControllerID") as! b4u_MyAccountViewController
-                
-                vc.modelArr = filteredData
-            }
+            self.walletBalanceLbl.text = "\( accountDetails.walletBalance!)"
+            self.nameLbl.text = accountDetails.fullName
+            self.tableView.reloadData()
         }
-        
     }
     
-    //Need to Implement
-    private func filterContent(mainModelObj:b4u_MyAccountModel) -> [b4u_MyAccountModel]?
-    {
-        let filteredItems:[b4u_MyAccountModel]?
-        if bro4u_DataManager.sharedInstance.myAccountData.count > 0
-        {
-            
-            return nil
-            
-        }else
-        {
-            return nil
-        }
-        
-        
-    }
-
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -90,7 +66,7 @@ class b4u_MyAccountViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
   
   //Tableview Data Source
@@ -122,18 +98,21 @@ class b4u_MyAccountViewController: UIViewController {
     return 105.0;
   }
   
+//  
+//  func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+//    
+//    cell.contentView.backgroundColor = UIColor.clearColor()
+//    let whiteRoundedView : UIView = UIView(frame: CGRectMake(0, 10, self.view.frame.size.width, 90))
+//    whiteRoundedView.layer.backgroundColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [1.0, 1.0, 1.0, 1.0])
+//    whiteRoundedView.layer.masksToBounds = false
+//    whiteRoundedView.layer.cornerRadius = 3.0
+//    whiteRoundedView.layer.shadowOffset = CGSizeMake(-1, 1)
+//    whiteRoundedView.layer.shadowOpacity = 0.5
+//    cell.contentView.addSubview(whiteRoundedView)
+//    cell.contentView.sendSubviewToBack(whiteRoundedView)
+//  }
   
-  func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-    
-    cell.contentView.backgroundColor = UIColor.clearColor()
-    let whiteRoundedView : UIView = UIView(frame: CGRectMake(0, 10, self.view.frame.size.width, 90))
-    whiteRoundedView.layer.backgroundColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [1.0, 1.0, 1.0, 1.0])
-    whiteRoundedView.layer.masksToBounds = false
-    whiteRoundedView.layer.cornerRadius = 3.0
-    whiteRoundedView.layer.shadowOffset = CGSizeMake(-1, 1)
-    whiteRoundedView.layer.shadowOpacity = 0.5
-    cell.contentView.addSubview(whiteRoundedView)
-    cell.contentView.sendSubviewToBack(whiteRoundedView)
-  }
-  
+    @IBAction func cancelBtnClicked(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion:nil)
+    }
 }

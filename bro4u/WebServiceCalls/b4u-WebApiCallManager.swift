@@ -94,6 +94,9 @@ class b4u_WebApiCallManager: NSObject {
             
         case kLocationSearchUrl:
             self.parseLocationSearchData(dataDict)
+            
+        case kMyAccountIndex:
+            self.pasrseUserDatails(dataDict)
         default:
             print(itemName)
         }
@@ -180,6 +183,16 @@ class b4u_WebApiCallManager: NSObject {
             let locationPredictionObj = b4u_LocationSearchModel(locationDataDict:locationDataDict)
             bro4u_DataManager.sharedInstance.locationSearchPredictions.append(locationPredictionObj)
         }
+    }
+    
+    func pasrseUserDatails(dataDict:Dictionary<String, AnyObject>)
+    {
+        
+        let userDetails:Dictionary<String,AnyObject> = dataDict["user_details"] as! Dictionary<String,AnyObject>
+        
+        let myAccountDetailObj = b4u_MyAccountModel(dataDict:userDetails)
+        
+        bro4u_DataManager.sharedInstance.myAccountData = myAccountDetailObj
     }
     
 }
