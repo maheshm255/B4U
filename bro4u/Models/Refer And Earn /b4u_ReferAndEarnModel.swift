@@ -1,5 +1,5 @@
 //
-//  bro4u_OfferZoneModel.swift
+//  b4u_ReferAndEarnModel.swift
 //  bro4u
 //
 //  Created by MSP-User3 on 11/03/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class bro4u_OfferZoneModel: NSObject {
+class b4u_ReferAndEarnModel: NSObject {
 
   var banner:String?
   var catIcon:String?

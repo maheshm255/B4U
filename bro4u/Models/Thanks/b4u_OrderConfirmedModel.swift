@@ -1,5 +1,5 @@
 //
-//  bro4u_ReferAndEarnModel.swift
+//  b4u_OrderConfirmedModel.swift
 //  bro4u
 //
 //  Created by MSP-User3 on 11/03/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class bro4u_ReferAndEarnModel: NSObject {
+class b4u_OrderConfirmedModel: NSObject {
 
   var banner:String?
   var catIcon:String?

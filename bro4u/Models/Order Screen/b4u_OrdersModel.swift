@@ -1,5 +1,5 @@
 //
-//  bro4u_MyInfoModel.swift
+//  b4u_OrdersModel.swift
 //  bro4u
 //
 //  Created by MSP-User3 on 11/03/16.
@@ -8,9 +8,8 @@
 
 import UIKit
 
-class bro4u_MyInfoModel: NSObject {
+class b4u_OrdersModel: NSObject {
 
-  
   var banner:String?
   var catIcon:String?
   var interBanner:String?
