@@ -205,6 +205,15 @@
 		65FF8D651C7E9222007588D0 /* b4u-ServicePatnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF8D641C7E9222007588D0 /* b4u-ServicePatnerController.swift */; };
 		65FF8D681C7EC1A5007588D0 /* b4u-SugestedPartner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF8D671C7EC1A5007588D0 /* b4u-SugestedPartner.swift */; };
 		787E454DD19C7F7D70BF42BE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0420EA4B8348ACC0A89E7A7 /* Pods.framework */; };
+		B34EAD821C9297DA00FCB0F5 /* bro4u_MyInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD811C9297DA00FCB0F5 /* bro4u_MyInfoModel.swift */; };
+		B34EAD841C9297FC00FCB0F5 /* bro4u_MyWalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD831C9297FC00FCB0F5 /* bro4u_MyWalletModel.swift */; };
+		B34EAD8A1C92987E00FCB0F5 /* bro4u_OfferZoneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD891C92987E00FCB0F5 /* bro4u_OfferZoneModel.swift */; };
+		B34EAD8C1C92989C00FCB0F5 /* bro4u_OrdersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD8B1C92989C00FCB0F5 /* bro4u_OrdersModel.swift */; };
+		B34EAD8E1C9298B500FCB0F5 /* bro4u_ReferAndEarnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD8D1C9298B500FCB0F5 /* bro4u_ReferAndEarnModel.swift */; };
+		B34EAD901C9298DC00FCB0F5 /* bro4u_OrderConfirmedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD8F1C9298DC00FCB0F5 /* bro4u_OrderConfirmedModel.swift */; };
+		B34EAD941C929A3D00FCB0F5 /* b4u_NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD931C929A3D00FCB0F5 /* b4u_NotificationViewController.swift */; };
+		B34EAD961C929A5900FCB0F5 /* b4u_NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD951C929A5900FCB0F5 /* b4u_NotificationModel.swift */; };
+		B34EAD981C929EA000FCB0F5 /* b4u_NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD971C929EA000FCB0F5 /* b4u_NotificationTableViewCell.swift */; };
 		B71C28581C8C0C0C00873B5C /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C28481C8C0C0C00873B5C /* MyInfoViewController.swift */; };
 		B71C28591C8C0C0C00873B5C /* MyWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C284A1C8C0C0C00873B5C /* MyWalletViewController.swift */; };
 		B71C285A1C8C0C0C00873B5C /* MyAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C284B1C8C0C0C00873B5C /* MyAccountTableViewCell.swift */; };
@@ -514,6 +523,15 @@
 		65FF8D641C7E9222007588D0 /* b4u-ServicePatnerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-ServicePatnerController.swift"; sourceTree = "<group>"; };
 		65FF8D671C7EC1A5007588D0 /* b4u-SugestedPartner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-SugestedPartner.swift"; sourceTree = "<group>"; };
 		B0420EA4B8348ACC0A89E7A7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B34EAD811C9297DA00FCB0F5 /* bro4u_MyInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bro4u_MyInfoModel.swift; sourceTree = "<group>"; };
+		B34EAD831C9297FC00FCB0F5 /* bro4u_MyWalletModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bro4u_MyWalletModel.swift; sourceTree = "<group>"; };
+		B34EAD891C92987E00FCB0F5 /* bro4u_OfferZoneModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bro4u_OfferZoneModel.swift; sourceTree = "<group>"; };
+		B34EAD8B1C92989C00FCB0F5 /* bro4u_OrdersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bro4u_OrdersModel.swift; sourceTree = "<group>"; };
+		B34EAD8D1C9298B500FCB0F5 /* bro4u_ReferAndEarnModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bro4u_ReferAndEarnModel.swift; sourceTree = "<group>"; };
+		B34EAD8F1C9298DC00FCB0F5 /* bro4u_OrderConfirmedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bro4u_OrderConfirmedModel.swift; sourceTree = "<group>"; };
+		B34EAD931C929A3D00FCB0F5 /* b4u_NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_NotificationViewController.swift; sourceTree = "<group>"; };
+		B34EAD951C929A5900FCB0F5 /* b4u_NotificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_NotificationModel.swift; sourceTree = "<group>"; };
+		B34EAD971C929EA000FCB0F5 /* b4u_NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		B71C28481C8C0C0C00873B5C /* MyInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
 		B71C284A1C8C0C0C00873B5C /* MyWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWalletViewController.swift; sourceTree = "<group>"; };
 		B71C284B1C8C0C0C00873B5C /* MyAccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTableViewCell.swift; sourceTree = "<group>"; };
@@ -900,6 +918,12 @@
 		6536E0B41C690C6F00B273D6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B34EAD781C92971E00FCB0F5 /* My Account */,
+				B34EAD7B1C92971E00FCB0F5 /* Offer Zone */,
+				B34EAD7C1C92971E00FCB0F5 /* Order Screen */,
+				B34EAD7D1C92971E00FCB0F5 /* Refer And Earn  */,
+				B34EAD7E1C92971E00FCB0F5 /* Thanks */,
+				B34EAD911C9299CA00FCB0F5 /* Notification */,
 				65FF8D661C7EBFDD007588D0 /* ServicePatners */,
 				65DE796C1C7A01F900017F96 /* Filters */,
 				65B49DB71C722C4A0083942D /* bro4u-MainCategory.swift */,
@@ -1053,6 +1077,7 @@
 				B71C28501C8C0C0C00873B5C /* Order Screen */,
 				B71C28541C8C0C0C00873B5C /* ReferAndEarn */,
 				B71C28561C8C0C0C00873B5C /* Thanks Screen */,
+				B34EAD921C9299F500FCB0F5 /* Notification */,
 				0427002A1C8B4395008440CC /* TimeSlotes */,
 				0427000F1C8B36EE008440CC /* Calendar */,
 				65271E591C83056F0022C888 /* Payment */,
@@ -1161,6 +1186,80 @@
 				65264F861C81D80200859F5A /* b4u-SuggestedPatnersResult.swift */,
 			);
 			path = ServicePatners;
+			sourceTree = "<group>";
+		};
+		B34EAD781C92971E00FCB0F5 /* My Account */ = {
+			isa = PBXGroup;
+			children = (
+				B34EAD791C92971E00FCB0F5 /* My Info */,
+				B34EAD7A1C92971E00FCB0F5 /* My Wallet */,
+			);
+			path = "My Account";
+			sourceTree = "<group>";
+		};
+		B34EAD791C92971E00FCB0F5 /* My Info */ = {
+			isa = PBXGroup;
+			children = (
+				B34EAD811C9297DA00FCB0F5 /* bro4u_MyInfoModel.swift */,
+			);
+			path = "My Info";
+			sourceTree = "<group>";
+		};
+		B34EAD7A1C92971E00FCB0F5 /* My Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				B34EAD831C9297FC00FCB0F5 /* bro4u_MyWalletModel.swift */,
+			);
+			path = "My Wallet";
+			sourceTree = "<group>";
+		};
+		B34EAD7B1C92971E00FCB0F5 /* Offer Zone */ = {
+			isa = PBXGroup;
+			children = (
+				B34EAD891C92987E00FCB0F5 /* bro4u_OfferZoneModel.swift */,
+			);
+			path = "Offer Zone";
+			sourceTree = "<group>";
+		};
+		B34EAD7C1C92971E00FCB0F5 /* Order Screen */ = {
+			isa = PBXGroup;
+			children = (
+				B34EAD8B1C92989C00FCB0F5 /* bro4u_OrdersModel.swift */,
+			);
+			path = "Order Screen";
+			sourceTree = "<group>";
+		};
+		B34EAD7D1C92971E00FCB0F5 /* Refer And Earn  */ = {
+			isa = PBXGroup;
+			children = (
+				B34EAD8D1C9298B500FCB0F5 /* bro4u_ReferAndEarnModel.swift */,
+			);
+			path = "Refer And Earn ";
+			sourceTree = "<group>";
+		};
+		B34EAD7E1C92971E00FCB0F5 /* Thanks */ = {
+			isa = PBXGroup;
+			children = (
+				B34EAD8F1C9298DC00FCB0F5 /* bro4u_OrderConfirmedModel.swift */,
+			);
+			path = Thanks;
+			sourceTree = "<group>";
+		};
+		B34EAD911C9299CA00FCB0F5 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				B34EAD951C929A5900FCB0F5 /* b4u_NotificationModel.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		B34EAD921C9299F500FCB0F5 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				B34EAD931C929A3D00FCB0F5 /* b4u_NotificationViewController.swift */,
+				B34EAD971C929EA000FCB0F5 /* b4u_NotificationTableViewCell.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		B4D74FF320FF35BA637DFE8F /* Pods */ = {
@@ -1437,8 +1536,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B34EAD901C9298DC00FCB0F5 /* bro4u_OrderConfirmedModel.swift in Sources */,
 				65F8B43C1C70BECD00D158FA /* b4u-Utility.swift in Sources */,
 				65B18A8C1C70BB28000EDD00 /* UIProgressView+AFNetworking.m in Sources */,
+				B34EAD8C1C92989C00FCB0F5 /* bro4u_OrdersModel.swift in Sources */,
 				65DE79631C79448600017F96 /* b4u-CategoryTblHeaderVIew.swift in Sources */,
 				65271F481C831B1E0022C888 /* iOSDefaultActivityIndicator.m in Sources */,
 				65B18A8B1C70BB28000EDD00 /* UIImageView+AFNetworking.m in Sources */,
@@ -1449,6 +1550,7 @@
 				65271F4D1C831B1E0022C888 /* PayUSAGetHashes.m in Sources */,
 				042700271C8B37B6008440CC /* NSDate+FSExtension.m in Sources */,
 				65B189BC1C6E6020000EDD00 /* Category.swift in Sources */,
+				B34EAD981C929EA000FCB0F5 /* b4u_NotificationTableViewCell.swift in Sources */,
 				65F8B4391C70BECD00D158FA /* b4u-String-Extension.swift in Sources */,
 				65271E5B1C8307820022C888 /* b4u-PaymentViewController.swift in Sources */,
 				65FF8CE01C7B8375007588D0 /* b4u-ExpandableTblViewCell.swift in Sources */,
@@ -1474,6 +1576,7 @@
 				65FF8CDC1C7B6D73007588D0 /* b4u-ExpandableTableView.swift in Sources */,
 				B71C28621C8C0C0C00873B5C /* OrderConfirmedViewController.swift in Sources */,
 				65B18A7C1C70BB28000EDD00 /* AFHTTPRequestOperation.m in Sources */,
+				B34EAD941C929A3D00FCB0F5 /* b4u_NotificationViewController.swift in Sources */,
 				65DE76D51C7778E100017F96 /* b4u-AttributeOptions.swift in Sources */,
 				B71C28601C8C0C0C00873B5C /* PastOrdersTableViewCell.swift in Sources */,
 				65DE79721C7A1B6100017F96 /* b4u-catalog.swift in Sources */,
@@ -1495,6 +1598,7 @@
 				65271E581C8304D60022C888 /* HMSegmentedControl.m in Sources */,
 				65271F4F1C831B1E0022C888 /* PayUSAOneTapToken.m in Sources */,
 				65271F5C1C8367DB0022C888 /* b4u-DeliveryViewController.swift in Sources */,
+				B34EAD821C9297DA00FCB0F5 /* bro4u_MyInfoModel.swift in Sources */,
 				65B18A841C70BB28000EDD00 /* AFURLSessionManager.m in Sources */,
 				B71C285B1C8C0C0C00873B5C /* b4u_MyAccountViewController.swift in Sources */,
 				B71C285F1C8C0C0C00873B5C /* OngoingOrdersTableViewCell.swift in Sources */,
@@ -1516,6 +1620,7 @@
 				65271F621C8368280022C888 /* b4u-CommentTableViewCell.swift in Sources */,
 				04E0C44C1C8C99A7006450D1 /* ViewController.swift in Sources */,
 				65B49DBC1C722CC70083942D /* b4u-SliderImage.swift in Sources */,
+				B34EAD841C9297FC00FCB0F5 /* bro4u_MyWalletModel.swift in Sources */,
 				65DE76DF1C7780BD00017F96 /* b4u-CategoryListTblViewCell.swift in Sources */,
 				65DE796E1C7A068600017F96 /* b4u-CatFilterAttributeOptions.swift in Sources */,
 				65B18A4E1C70BA51000EDD00 /* b4u-WebApiCallManager.swift in Sources */,
@@ -1531,6 +1636,7 @@
 				04E07A591C901961009AD223 /* b4u-LoginViewCtrl.swift in Sources */,
 				65B18A8A1C70BB28000EDD00 /* UIButton+AFNetworking.m in Sources */,
 				B71C285A1C8C0C0C00873B5C /* MyAccountTableViewCell.swift in Sources */,
+				B34EAD8A1C92987E00FCB0F5 /* bro4u_OfferZoneModel.swift in Sources */,
 				65271E501C828F8B0022C888 /* b4u-CateforyTblView.swift in Sources */,
 				65DE76E11C7780BD00017F96 /* b4u-HomeViewController.swift in Sources */,
 				65B18A8D1C70BB28000EDD00 /* UIRefreshControl+AFNetworking.m in Sources */,
@@ -1539,6 +1645,7 @@
 				042700231C8B37B6008440CC /* FSCalendar.m in Sources */,
 				65271F4C1C831B1E0022C888 /* PayUMoneyViewController.m in Sources */,
 				65271F531C831B1E0022C888 /* PayUUIPaymentOptionViewController.m in Sources */,
+				B34EAD961C929A5900FCB0F5 /* b4u_NotificationModel.swift in Sources */,
 				04E0C44A1C8C99A7006450D1 /* GooglePlacesAutocomplete.swift in Sources */,
 				042700281C8B37B6008440CC /* UIScrollView+FSExtension.m in Sources */,
 				65DE796B1C79FCFF00017F96 /* b4u-FilterViewController.swift in Sources */,
