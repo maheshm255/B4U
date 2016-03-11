@@ -1,5 +1,5 @@
 //
-//  bro4u_OrderConfirmedModel.swift
+//  b4u_MyWalletModel.swift
 //  bro4u
 //
 //  Created by MSP-User3 on 11/03/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class bro4u_OrderConfirmedModel: NSObject {
+class b4u_MyWalletModel: NSObject {
 
   var banner:String?
   var catIcon:String?

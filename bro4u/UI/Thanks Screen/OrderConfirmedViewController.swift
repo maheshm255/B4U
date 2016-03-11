@@ -10,7 +10,11 @@ import UIKit
 
 class OrderConfirmedViewController: UIViewController {
 
-  @IBOutlet var userImageView: UIImageView!
+  @IBOutlet var bro4ULogoImageView: UIImageView!
+  @IBOutlet var headerLbl: UILabel!
+  @IBOutlet var subHeaderLbl: UILabel!
+
+  @IBOutlet var vendorImageView: UIImageView!
   @IBOutlet var titleLbl: UILabel!
   @IBOutlet var subTitleLbl: UILabel!
   @IBOutlet var dateLbl: UILabel!
@@ -18,6 +22,7 @@ class OrderConfirmedViewController: UIViewController {
   @IBOutlet var orderIDLbl: UILabel!
   @IBOutlet var serviceStatusLbl: UILabel!
   @IBOutlet var orderedAtDateLbl: UILabel!
+  @IBOutlet var amountLbl: UILabel!
   
   
   

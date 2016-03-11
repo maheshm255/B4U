@@ -50,7 +50,7 @@ class b4u_NotificationViewController: UIViewController ,UITableViewDelegate,UITa
   
   func setUpCell(cell: b4u_NotificationTableViewCell , indexPath: NSIndexPath ){
     
-    cell.label.text = self.dataSource.objectAtIndex(indexPath.row) as? String
+    cell.notificationTxtLbl.text = self.dataSource.objectAtIndex(indexPath.row) as? String
     
   }
   
@@ -63,8 +63,6 @@ class b4u_NotificationViewController: UIViewController ,UITableViewDelegate,UITa
     
     
     let cell = tableView.dequeueReusableCellWithIdentifier("NotificationTableViewCellID") as! b4u_NotificationTableViewCell
-    //    tableView.rowHeight = UITableViewAutomaticDimension
-    //    tableView.estimatedRowHeight = 160.0
     self.setUpCell(cell, indexPath: indexPath)
     
     return cell

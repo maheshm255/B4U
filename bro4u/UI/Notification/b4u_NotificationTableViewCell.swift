@@ -10,7 +10,8 @@ import UIKit
 
 class b4u_NotificationTableViewCell: UITableViewCell {
 
-  @IBOutlet var label: UILabel!
+  @IBOutlet var notificationTxtLbl: UILabel!
+  @IBOutlet var dateTimeLbl: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
