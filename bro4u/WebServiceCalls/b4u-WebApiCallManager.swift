@@ -96,6 +96,9 @@ class b4u_WebApiCallManager: NSObject {
             
         case kMyAccountIndex:
             self.pasrseUserDatails(dataDict)
+            
+        case kReOrderIndex:
+            self.pasrseReOrderData(dataDict)
         default:
             print(itemName)
         }
@@ -200,6 +203,19 @@ class b4u_WebApiCallManager: NSObject {
         let myAccountDetailObj = b4u_MyAccountModel(dataDict:userDetails)
         
         bro4u_DataManager.sharedInstance.myAccountData = myAccountDetailObj
+    }
+    
+    func pasrseReOrderData(dataDict:Dictionary<String, AnyObject>)
+    {
+        
+        let reOrederDataArray:[Dictionary<String ,AnyObject>] = dataDict["order"] as! [Dictionary<String ,AnyObject>]
+        
+        bro4u_DataManager.sharedInstance.myReorderData.removeAll()
+        for (_ ,orderDataDict) in reOrederDataArray.enumerate()
+        {
+            let reOrderModel = b4u_ReOrderModel(dataDict: orderDataDict)
+            bro4u_DataManager.sharedInstance.myReorderData.append(reOrderModel)
+        }
     }
     
 }

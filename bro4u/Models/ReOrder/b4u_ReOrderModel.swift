@@ -40,8 +40,8 @@ class b4u_ReOrderModel: NSObject {
     var vendorID:NSNumber?
     var itemName:NSString?
     var subTotal:NSNumber?
-    var metaItemReOrder:b4u_ReOrder_MetaItemModel?
-    var SelectionReorder:b4u_ReorderSelectionModel?
+    var metaItemReOrder:[b4u_ReOrder_MetaItemModel]?
+    var SelectionReorder:[b4u_ReorderSelectionModel]?
 
     
     init(dataDict:Dictionary<String ,AnyObject>) {
@@ -75,9 +75,32 @@ class b4u_ReOrderModel: NSObject {
         vendorID = dataDict["vendor_id"] as? NSNumber
         itemName = dataDict["item_name"] as? String
         subTotal = dataDict["sub_total"] as? NSNumber
-        metaItemReOrder = dataDict["item_meta"] as? b4u_ReOrder_MetaItemModel
-        SelectionReorder = dataDict["selection"] as? b4u_ReorderSelectionModel
+        
+        self.metaItemReOrder = Array()
+        
+        if let itemDartaArray:[Dictionary<String ,AnyObject>] = dataDict["item_meta"] as? [Dictionary<String ,AnyObject>]
+        {
+            for (_ ,orderItemDataDict) in itemDartaArray.enumerate()
+            {
+                let reOrderModel = b4u_ReOrder_MetaItemModel(dataDict:orderItemDataDict)
+                self.metaItemReOrder?.append(reOrderModel)
+            }
+            
+        }
+        SelectionReorder = Array()
+        
+        if let selectionDartaArray:[Dictionary<String ,AnyObject>] = dataDict["selection"] as? [Dictionary<String ,AnyObject>]
+        {
+            
+            for (_ ,orderItemDataDict) in selectionDartaArray.enumerate()
+            {
+                let reOrderModel = b4u_ReorderSelectionModel(dataDict:orderItemDataDict);
+                self.SelectionReorder?.append(reOrderModel)
+            }
 
+        }
+        
+      
         
     }
 
