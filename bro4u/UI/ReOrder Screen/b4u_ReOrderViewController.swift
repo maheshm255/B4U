@@ -10,6 +10,9 @@ import UIKit
 
 class b4u_ReOrderViewController: UIViewController {
 
+    
+    var myReOrderModelArr:[b4u_ReOrderModel] = Array()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,7 +40,7 @@ class b4u_ReOrderViewController: UIViewController {
     func congigureUI()
     {
         
-        for (_ , mainData) in bro4u_DataManager.sharedInstance.myInfoData.enumerate()
+        for (_ , mainData) in bro4u_DataManager.sharedInstance.myReorderData.enumerate()
         {
             
             
@@ -45,7 +48,7 @@ class b4u_ReOrderViewController: UIViewController {
             {
                 //                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("b4uCategoryTableView") as! b4u_CategoryTblViewCtrl
                 
-                let vc =  self.storyboard?.instantiateViewControllerWithIdentifier("MyInfoViewControllerID") as! MyInfoViewController
+                let vc =  self.storyboard?.instantiateViewControllerWithIdentifier("b4u_ReOrderViewControllerID") as! b4u_ReOrderViewController
                 
                 vc.myInfoModelArr = filteredData
             }
