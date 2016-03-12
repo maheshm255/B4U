@@ -26,6 +26,8 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         
        // self.callServicePatnerApi()
         
+        self.edgesForExtendedLayout = UIRectEdge.None
+
         self.getAllServicePatners()
         self.checkLoadMoreCondition()
     }
@@ -112,23 +114,34 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         let cell = tableView.dequeueReusableCellWithIdentifier("servicePatnerCell") as! b4u_ServicePartnerTblViewCell
         
         
-//        let aPatner:b4u_SugestedPartner = (bro4u_DataManager.sharedInstance.suggestedPatnersResult?.suggestedPatners![indexPath.section])!
-
         let aPatner:b4u_SugestedPartner = self.allPatners[indexPath.section]
-
         
-         cell.imgViewProfilePic.downloadedFrom(link:aPatner.profilePic!, contentMode:UIViewContentMode.ScaleAspectFit)
         
-          cell.lblVendorName.text = aPatner.vendorName
-          cell.lblDiscount.text = aPatner.offerPrice
-          cell.lblActualPrice.text = aPatner.custPrice
-          cell.lblVendorReiviews.text = aPatner.reviewCount
-          cell.lblVendorDistance.text = aPatner.distance
+        cell.imgViewProfilePic.downloadedFrom(link:aPatner.profilePic!, contentMode:UIViewContentMode.ScaleAspectFit)
+        
+        cell.lblVendorName.text = aPatner.vendorName
+        cell.lblDiscount.text = aPatner.offerPrice
+        cell.lblActualPrice.text = aPatner.custPrice
+        cell.lblVendorReiviews.text = aPatner.reviewCount
+        cell.lblVendorDistance.text = aPatner.distance
         
         cell.contentView.layer.borderColor = UIColor.grayColor().CGColor
         cell.contentView.layer.borderWidth = 1.0
         cell.contentView.layer.shadowColor = UIColor.blackColor().CGColor
         cell.contentView.layer.shadowOpacity = 0.1
+        
+        
+        if aPatner.premiumPartner == "yes"
+        {
+            cell.btnKing.hidden = false
+        }else
+        {
+            cell.btnKing.hidden = true
+ 
+        }
+        
+        cell.btnLike.addTarget(self, action:"btnShare:", forControlEvents:UIControlEvents.TouchUpInside)
+        cell.btnLike.tag = indexPath.section
         
         return cell
     }
@@ -143,6 +156,14 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
 
     }// Default is 1 if
 
+    func btnShare(sender: AnyObject)
+    {
+        let textToShare = "Look at this awesome website for aspiring iOS Developers!"
+        let myWebsite = NSURL(string: "http://www.codingexplorer.com/")
+        let itemArr : NSArray = [textToShare,myWebsite!]
+        let shareCntrlr = UIActivityViewController(activityItems: itemArr as [AnyObject], applicationActivities: nil)
+        presentViewController(shareCntrlr, animated: true, completion: nil)
+    }
     @IBAction func btnLoadMoreClicked(sender: AnyObject)
     {
         self.callServicePatnerApi()
@@ -150,5 +171,20 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
     internal func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
         {
          return 182.0
+    }
+    
+      func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    {
+        return 0.001
+    }
+      func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
+    {
+        if section == 0
+        {
+            return 0.001
+
+        }
+        return 4.0
+
     }
 }
