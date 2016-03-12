@@ -40,38 +40,9 @@ class b4u_ReOrderViewController: UIViewController {
     func congigureUI()
     {
         
-        for (_ , mainData) in bro4u_DataManager.sharedInstance.myReorderData.enumerate()
-        {
-            
-            
-            if let filteredData = self.filterContent(mainData)
-            {
-                //                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("b4uCategoryTableView") as! b4u_CategoryTblViewCtrl
-                
-                let vc =  self.storyboard?.instantiateViewControllerWithIdentifier("b4u_ReOrderViewControllerID") as! b4u_ReOrderViewController
-                
-                vc.myReOrderModelArr = filteredData
-            }
-        }
         
     }
-    
-    //Need to Implement
-    private func filterContent(mainModelObj:b4u_MyInfoModel) -> [b4u_MyInfoModel]?
-    {
-        let filteredItems:[b4u_MyInfoModel]?
-        if bro4u_DataManager.sharedInstance.myInfoData.count > 0
-        {
-            
-            return nil
-            
-        }else
-        {
-            return nil
-        }
-        
-        
-    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -93,17 +64,18 @@ class b4u_ReOrderViewController: UIViewController {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        var cellIdentifier = ""
-        var cell  = UITableViewCell()
         
-        cellIdentifier = "ReOrderTableViewCellID"
-        cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! b4u_ReOrderTableViewCell
+       let cellIdentifier = "ReOrderTableViewCellID"
+       let  cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! b4u_ReOrderTableViewCell
         
         return cell
     }
     
     
-    
+    @IBAction func btnCancelClicked(sender:AnyObject)
+    {
+       self.dismissViewControllerAnimated(true, completion:nil)
+    }
 //    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 //        return 105.0;
 //    }

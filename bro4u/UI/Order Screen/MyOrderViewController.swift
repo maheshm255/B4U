@@ -40,19 +40,7 @@ class MyOrderViewController: UIViewController {
     func congigureUI()
     {
         
-        for (_ , mainData) in bro4u_DataManager.sharedInstance.orderData.enumerate()
-        {
-            
-            
-            if let filteredData = self.filterContent(mainData)
-            {
-                //                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("b4uCategoryTableView") as! b4u_CategoryTblViewCtrl
-                
-                let vc =  self.storyboard?.instantiateViewControllerWithIdentifier("MyOrderViewControllerID") as! MyOrderViewController
-                
-                vc.myOrderModelArr = filteredData
-            }
-        }
+     
         
     }
     

@@ -51,8 +51,8 @@ class ReferAndEarnViewController: UIViewController {
     {
         if let referAndEarnDetails = bro4u_DataManager.sharedInstance.referAndEarnData
         {
-            self.codeShareLbl.text = "\( referAndEarnDetails.walletBalance!)"
-            self.shareTextLbl.text = referAndEarnDetails.fullName
+//            self.codeShareLbl.text = "\( referAndEarnDetails.walletBalance!)"
+//            self.shareTextLbl.text = referAndEarnDetails.fullName
         }
     }
 
