@@ -33,7 +33,6 @@ class b4u_WebApiCallManager: NSObject {
         }else
         {
             requestUrl  = b4uBaseUrl + apiPath + params
-            
         }
         let sessionManager = AFHTTPSessionManager();
         
@@ -97,6 +96,9 @@ class b4u_WebApiCallManager: NSObject {
             
         case kMyAccountIndex:
             self.pasrseUserDatails(dataDict)
+            
+        case kReOrderIndex:
+            self.pasrseReOrderData(dataDict)
         default:
             print(itemName)
         }
@@ -168,9 +170,17 @@ class b4u_WebApiCallManager: NSObject {
     }
     func parseServicePatnerData(dataDict:Dictionary<String, AnyObject>)
     {
-        let suggestedPatnersObj = b4u_SuggestedPatnersResult(sugestedPartnersResultDict: dataDict)
         
-        bro4u_DataManager.sharedInstance.suggestedPatnersResult = suggestedPatnersObj
+        if let suggestedPatnersModel =  bro4u_DataManager.sharedInstance.suggestedPatnersResult
+        {
+         
+             suggestedPatnersModel.parseMoreResult(dataDict)
+        }else
+        {
+            let suggestedPatnersObj = b4u_SuggestedPatnersResult(sugestedPartnersResultDict: dataDict)
+            
+            bro4u_DataManager.sharedInstance.suggestedPatnersResult = suggestedPatnersObj
+        }
     }
     
     func parseLocationSearchData(dataDict:Dictionary<String, AnyObject>)
@@ -193,6 +203,19 @@ class b4u_WebApiCallManager: NSObject {
         let myAccountDetailObj = b4u_MyAccountModel(dataDict:userDetails)
         
         bro4u_DataManager.sharedInstance.myAccountData = myAccountDetailObj
+    }
+    
+    func pasrseReOrderData(dataDict:Dictionary<String, AnyObject>)
+    {
+        
+        let reOrederDataArray:[Dictionary<String ,AnyObject>] = dataDict["order"] as! [Dictionary<String ,AnyObject>]
+        
+        bro4u_DataManager.sharedInstance.myReorderData.removeAll()
+        for (_ ,orderDataDict) in reOrederDataArray.enumerate()
+        {
+            let reOrderModel = b4u_ReOrderModel(dataDict: orderDataDict)
+            bro4u_DataManager.sharedInstance.myReorderData.append(reOrderModel)
+        }
     }
     
 }

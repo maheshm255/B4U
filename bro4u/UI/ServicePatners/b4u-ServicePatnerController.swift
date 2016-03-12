@@ -10,25 +10,57 @@ import UIKit
 
 class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITableViewDelegate{
 
+    @IBOutlet weak var btnLoadMore: UIButton!
+    @IBOutlet weak var viewLoadMore: UIView!
     @IBOutlet weak var viewMap: UIView!
     @IBOutlet weak var viewFilter: UIView!
     @IBOutlet weak var tableViewServicePatner: UITableView!
     var selectedCategoryObj:b4u_Category?
 
+    var allPatners:[b4u_SugestedPartner] = Array()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
        // self.callServicePatnerApi()
+        
+        self.getAllServicePatners()
+        self.checkLoadMoreCondition()
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
+    func getAllServicePatners()
+    {
+        if let patnersResult = bro4u_DataManager.sharedInstance.suggestedPatnersResult
+        {
+            self.allPatners.removeAll()
+            self.allPatners = patnersResult.suggestedPatners! + patnersResult.otherPatners!
+
+        }
+    }
+    func checkLoadMoreCondition()
+    {
+        if let patnersResult = bro4u_DataManager.sharedInstance.suggestedPatnersResult
+        {
+            if patnersResult.pageLoad == "yes"
+            {
+                self.btnLoadMore.setTitle("See \(patnersResult.nextPageSize!) more patners"
+, forState:UIControlState.Normal)
+            }else
+            {
+                self.viewLoadMore.hidden = true;
+            }
+        }
+
+    }
     
     // MARK: - Navigation
 
@@ -50,16 +82,19 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
     
     func callServicePatnerApi()
     {
-        if let aSelectedCatObj = selectedCategoryObj
+
+        if let aSelectedCatObj = selectedCategoryObj , patnersResult = bro4u_DataManager.sharedInstance.suggestedPatnersResult
         {
             let catId = aSelectedCatObj.catId!
             let latitude =  "12.9718915"
             let longitude = "77.6411545"
+            let nextPage = patnersResult.nextPage
             
-            
-            let params = "?cat_id=\(catId)&latitude=\(latitude)&longitude=\(longitude)"
+            let params = "/\(nextPage!)?cat_id=\(catId)&latitude=\(latitude)&longitude=\(longitude)"
             b4u_WebApiCallManager.sharedInstance.getApiCall(kShowServicePatnerApi, params:params, result:{(resultObject) -> Void in
                 
+                self.getAllServicePatners()
+                self.checkLoadMoreCondition()
                 self.tableViewServicePatner.reloadData()
             })
         }
@@ -77,7 +112,10 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         let cell = tableView.dequeueReusableCellWithIdentifier("servicePatnerCell") as! b4u_ServicePartnerTblViewCell
         
         
-        let aPatner:b4u_SugestedPartner = (bro4u_DataManager.sharedInstance.suggestedPatnersResult?.suggestedPatners![indexPath.section])!
+//        let aPatner:b4u_SugestedPartner = (bro4u_DataManager.sharedInstance.suggestedPatnersResult?.suggestedPatners![indexPath.section])!
+
+        let aPatner:b4u_SugestedPartner = self.allPatners[indexPath.section]
+
         
          cell.imgViewProfilePic.downloadedFrom(link:aPatner.profilePic!, contentMode:UIViewContentMode.ScaleAspectFit)
         
@@ -97,14 +135,18 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
     internal func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         
-        if let suggestedPatners = bro4u_DataManager.sharedInstance.suggestedPatnersResult?.suggestedPatners
-        {
-            return suggestedPatners.count
-        }
+//        if let suggestedPatners = bro4u_DataManager.sharedInstance.suggestedPatnersResult?.suggestedPatners
+//        {
+            return self.allPatners.count
+//        }
         return 0
 
     }// Default is 1 if
 
+    @IBAction func btnLoadMoreClicked(sender: AnyObject)
+    {
+        self.callServicePatnerApi()
+    }
     internal func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
         {
          return 182.0
