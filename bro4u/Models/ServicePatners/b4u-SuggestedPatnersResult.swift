@@ -12,6 +12,12 @@ class b4u_SuggestedPatnersResult: NSObject {
 
     
     var suggestedPatners:[b4u_SugestedPartner]?
+    var otherPatners:[b4u_SugestedPartner]?
+    
+    var nextPage:NSNumber?
+    var nextPageSize:NSNumber?
+    var pageLoad:String?
+    var totalRows:NSNumber?
     
     init(sugestedPartnersResultDict:Dictionary<String ,AnyObject>) {
         
@@ -29,5 +35,39 @@ class b4u_SuggestedPatnersResult: NSObject {
                     
                 }
         }
+        
+        let results = sugestedPartnersResultDict["catlog"]!["results"]
+        
+        self.nextPage = results!!["next_page"] as? NSNumber
+        self.nextPageSize = results!!["next_page_size"] as? NSNumber
+        self.pageLoad = results!!["page_load"] as? String
+        self.totalRows = results!!["total_rows"] as? NSNumber
+        
+         self.otherPatners = Array()
+        
+        }
+    
+    
+    func parseMoreResult(partnersResultDict:Dictionary<String ,AnyObject>)
+    {
+        let results = partnersResultDict["catlog"]!["results"]
+        
+        self.nextPage = results!!["next_page"] as? NSNumber
+        self.nextPageSize = results!!["next_page_size"] as? NSNumber
+        self.pageLoad = results!!["page_load"] as? String
+        self.totalRows = results!!["total_rows"] as? NSNumber
+        
+        if let othersPatnerdDataDict = results!!["data"] as? [Dictionary<String ,AnyObject>]
+        {
+            
+            for (_ ,otherPatnersDict) in othersPatnerdDataDict.enumerate()
+            {
+                let aPatner  = b4u_SugestedPartner(sugestedPartnerDetailsDict: otherPatnersDict)
+                
+                self.otherPatners?.append(aPatner)
+                
+            }
+        }
+
     }
 }
