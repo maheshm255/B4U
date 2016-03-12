@@ -56,8 +56,23 @@ let kOTPlogin = "/index.php/my-account"
 let kMyInfoIndex = "index.php/my_account/user_details?user_id=1"
 let kMyWalletIndex = "index.php/categories/catAttr"
 let kMyAccountIndex = "index.php/my_account/get_user?user_id=8"
-let kOfferZoneIndex = "index.php/categories/catAttr"
+let kMyAccountUpdateProfileIndex = "index.php/my_account/update_user_account?user_id=1&email=akshay.hh@gmail.com&mobile=34564564&name=test&dob=2015-12-13&gender=male"
+let kOfferZoneIndex = "index.php/coupon/offer_zone?device_id=kdsflasdf&user_id=1"
 let kMyOrdersIndex = "index.php/categories/catAttr"
 let kReferAndEarnIndex = "index.php/categories/catAttr"
 let kOrderConfirmedIndex = "index.php/categories/catAttr"
 let kOrderNotificationIndex = "index.php/categories/catAttr"
+let kAboutUsIndex = "index.php/page/about"
+
+
+
+
+
+
+
+
+
+
+
+
+

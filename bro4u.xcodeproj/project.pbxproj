@@ -209,7 +209,6 @@
 		B34EAD841C9297FC00FCB0F5 /* b4u_MyWalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD831C9297FC00FCB0F5 /* b4u_MyWalletModel.swift */; };
 		B34EAD8A1C92987E00FCB0F5 /* b4u_OfferZoneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD891C92987E00FCB0F5 /* b4u_OfferZoneModel.swift */; };
 		B34EAD8C1C92989C00FCB0F5 /* b4u_OrdersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD8B1C92989C00FCB0F5 /* b4u_OrdersModel.swift */; };
-		B34EAD8E1C9298B500FCB0F5 /* b4u_ReferAndEarnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD8D1C9298B500FCB0F5 /* b4u_ReferAndEarnModel.swift */; };
 		B34EAD901C9298DC00FCB0F5 /* b4u_OrderConfirmedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD8F1C9298DC00FCB0F5 /* b4u_OrderConfirmedModel.swift */; };
 		B34EAD941C929A3D00FCB0F5 /* b4u_NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD931C929A3D00FCB0F5 /* b4u_NotificationViewController.swift */; };
 		B34EAD961C929A5900FCB0F5 /* b4u_NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD951C929A5900FCB0F5 /* b4u_NotificationModel.swift */; };
@@ -226,6 +225,8 @@
 		B71C28601C8C0C0C00873B5C /* PastOrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C28531C8C0C0C00873B5C /* PastOrdersTableViewCell.swift */; };
 		B71C28611C8C0C0C00873B5C /* ReferAndEarnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C28551C8C0C0C00873B5C /* ReferAndEarnViewController.swift */; };
 		B71C28621C8C0C0C00873B5C /* OrderConfirmedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C28571C8C0C0C00873B5C /* OrderConfirmedViewController.swift */; };
+		B720379F1C93BE3200C1FF50 /* b4u_ReOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B720379D1C93BE3200C1FF50 /* b4u_ReOrderTableViewCell.swift */; };
+		B72037A01C93BE3200C1FF50 /* b4u_ReOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B720379E1C93BE3200C1FF50 /* b4u_ReOrderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -545,6 +546,8 @@
 		B71C28531C8C0C0C00873B5C /* PastOrdersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastOrdersTableViewCell.swift; sourceTree = "<group>"; };
 		B71C28551C8C0C0C00873B5C /* ReferAndEarnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferAndEarnViewController.swift; sourceTree = "<group>"; };
 		B71C28571C8C0C0C00873B5C /* OrderConfirmedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmedViewController.swift; sourceTree = "<group>"; };
+		B720379D1C93BE3200C1FF50 /* b4u_ReOrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ReOrderTableViewCell.swift; sourceTree = "<group>"; };
+		B720379E1C93BE3200C1FF50 /* b4u_ReOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ReOrderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1080,6 +1083,7 @@
 				B71C28541C8C0C0C00873B5C /* ReferAndEarn */,
 				B71C28561C8C0C0C00873B5C /* Thanks Screen */,
 				B34EAD921C9299F500FCB0F5 /* Notification */,
+				B720379C1C93BE3200C1FF50 /* ReOrder Screen */,
 				0427002A1C8B4395008440CC /* TimeSlotes */,
 				0427000F1C8B36EE008440CC /* Calendar */,
 				65271E591C83056F0022C888 /* Payment */,
@@ -1336,6 +1340,15 @@
 			path = "Thanks Screen";
 			sourceTree = "<group>";
 		};
+		B720379C1C93BE3200C1FF50 /* ReOrder Screen */ = {
+			isa = PBXGroup;
+			children = (
+				B720379D1C93BE3200C1FF50 /* b4u_ReOrderTableViewCell.swift */,
+				B720379E1C93BE3200C1FF50 /* b4u_ReOrderViewController.swift */,
+			);
+			path = "ReOrder Screen";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1552,6 +1565,7 @@
 				6536E0BF1C690CFC00B273D6 /* bro4u-DataManager.swift in Sources */,
 				65271F4D1C831B1E0022C888 /* PayUSAGetHashes.m in Sources */,
 				042700271C8B37B6008440CC /* NSDate+FSExtension.m in Sources */,
+				B72037A01C93BE3200C1FF50 /* b4u_ReOrderViewController.swift in Sources */,
 				65B189BC1C6E6020000EDD00 /* Category.swift in Sources */,
 				B34EAD981C929EA000FCB0F5 /* b4u_NotificationTableViewCell.swift in Sources */,
 				65F8B4391C70BECD00D158FA /* b4u-String-Extension.swift in Sources */,
@@ -1564,6 +1578,7 @@
 				65B18A7E1C70BB28000EDD00 /* AFHTTPSessionManager.m in Sources */,
 				65B189BB1C6E6020000EDD00 /* Category+CoreDataProperties.swift in Sources */,
 				65DE79701C7A07C900017F96 /* b4u-CatFilterAttributes.swift in Sources */,
+				B720379F1C93BE3200C1FF50 /* b4u_ReOrderTableViewCell.swift in Sources */,
 				65B18A7F1C70BB28000EDD00 /* AFNetworkReachabilityManager.m in Sources */,
 				65DE76EB1C77849B00017F96 /* b4u-CategoryTableViewCell.swift in Sources */,
 				65FF8D601C7E175C007588D0 /* b4u-DateAndTImeSelectionTblCell.swift in Sources */,

@@ -20,7 +20,6 @@ class MyInfoViewController: UIViewController {
   @IBOutlet var userImageView: UIImageView!
   
   var myInfoModelArr:[b4u_MyInfoModel] = Array()
-  var indicatorcolor:UIView!
 
   
   @IBAction func dateBtnAction(sender: AnyObject) {
@@ -66,7 +65,6 @@ class MyInfoViewController: UIViewController {
   
   func congigureUI()
   {
-    indicatorcolor=UIView();
     
     for (_ , mainData) in bro4u_DataManager.sharedInstance.myInfoData.enumerate()
     {
