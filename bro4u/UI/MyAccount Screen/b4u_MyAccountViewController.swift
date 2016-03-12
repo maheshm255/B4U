@@ -13,7 +13,8 @@ class b4u_MyAccountViewController: UIViewController {
   @IBOutlet var nameLbl: UILabel!
   @IBOutlet var walletBalanceLbl: UILabel!
   @IBOutlet var userImageView: UIImageView!
-  
+    @IBOutlet weak var tableView: UITableView!
+
    var modelArr:[b4u_MyAccountModel] = Array()
 
     override func viewDidLoad() {
@@ -25,7 +26,6 @@ class b4u_MyAccountViewController: UIViewController {
         
     }
     
-    @IBOutlet weak var tableView: UITableView!
     func getData()
     {
         b4u_WebApiCallManager.sharedInstance.getApiCall(kMyAccountIndex, params:"", result:{(resultObject) -> Void in

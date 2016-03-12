@@ -26,8 +26,62 @@ class b4u_NotificationViewController: UIViewController ,UITableViewDelegate,UITa
       "Hi Handy Fix, Order ID 30053 has been cancelled by customer.We apologize for inconvenience caused",
       "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which lo  oks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."
     ];
-    
+    self.getData()
+
   }
+    
+    
+    func getData()
+    {
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyInfoIndex, params:"", result:{(resultObject) -> Void in
+            
+            print("My Info Data Received")
+            
+            print(resultObject)
+            
+            self.congigureUI()
+            
+            
+        })
+    }
+    
+    
+    func congigureUI()
+    {
+        
+        for (_ , mainData) in bro4u_DataManager.sharedInstance.myInfoData.enumerate()
+        {
+            
+            
+            if let filteredData = self.filterContent(mainData)
+            {
+                //                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("b4uCategoryTableView") as! b4u_CategoryTblViewCtrl
+                
+                let vc =  self.storyboard?.instantiateViewControllerWithIdentifier("MyInfoViewControllerID") as! MyInfoViewController
+                
+                vc.myInfoModelArr = filteredData
+            }
+        }
+        
+    }
+    
+    //Need to Implement
+    private func filterContent(mainModelObj:b4u_MyInfoModel) -> [b4u_MyInfoModel]?
+    {
+        let filteredItems:[b4u_MyInfoModel]?
+        if bro4u_DataManager.sharedInstance.myInfoData.count > 0
+        {
+            
+            return nil
+            
+        }else
+        {
+            return nil
+        }
+        
+        
+    }
+
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()

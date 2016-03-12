@@ -227,6 +227,9 @@
 		B71C28621C8C0C0C00873B5C /* OrderConfirmedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C28571C8C0C0C00873B5C /* OrderConfirmedViewController.swift */; };
 		B720379F1C93BE3200C1FF50 /* b4u_ReOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B720379D1C93BE3200C1FF50 /* b4u_ReOrderTableViewCell.swift */; };
 		B72037A01C93BE3200C1FF50 /* b4u_ReOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B720379E1C93BE3200C1FF50 /* b4u_ReOrderViewController.swift */; };
+		B7DC0EDF1C942A3300A5577C /* b4u_ReOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DC0EDE1C942A3300A5577C /* b4u_ReOrderModel.swift */; };
+		B7DC0EE11C942F2200A5577C /* b4u_ReOrder_MetaItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DC0EE01C942F2200A5577C /* b4u_ReOrder_MetaItemModel.swift */; };
+		B7DC0EE31C942F4300A5577C /* b4u_ReorderSelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DC0EE21C942F4300A5577C /* b4u_ReorderSelectionModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -548,6 +551,9 @@
 		B71C28571C8C0C0C00873B5C /* OrderConfirmedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmedViewController.swift; sourceTree = "<group>"; };
 		B720379D1C93BE3200C1FF50 /* b4u_ReOrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ReOrderTableViewCell.swift; sourceTree = "<group>"; };
 		B720379E1C93BE3200C1FF50 /* b4u_ReOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ReOrderViewController.swift; sourceTree = "<group>"; };
+		B7DC0EDE1C942A3300A5577C /* b4u_ReOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ReOrderModel.swift; sourceTree = "<group>"; };
+		B7DC0EE01C942F2200A5577C /* b4u_ReOrder_MetaItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ReOrder_MetaItemModel.swift; sourceTree = "<group>"; };
+		B7DC0EE21C942F4300A5577C /* b4u_ReorderSelectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ReorderSelectionModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -973,6 +979,7 @@
 		6536E0B41C690C6F00B273D6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B7DC0EDD1C942A0E00A5577C /* ReOrder */,
 				B34EAD781C92971E00FCB0F5 /* My Account */,
 				B34EAD7B1C92971E00FCB0F5 /* Offer Zone */,
 				B34EAD7C1C92971E00FCB0F5 /* Order Screen */,
@@ -1349,6 +1356,16 @@
 			path = "ReOrder Screen";
 			sourceTree = "<group>";
 		};
+		B7DC0EDD1C942A0E00A5577C /* ReOrder */ = {
+			isa = PBXGroup;
+			children = (
+				B7DC0EDE1C942A3300A5577C /* b4u_ReOrderModel.swift */,
+				B7DC0EE01C942F2200A5577C /* b4u_ReOrder_MetaItemModel.swift */,
+				B7DC0EE21C942F4300A5577C /* b4u_ReorderSelectionModel.swift */,
+			);
+			path = ReOrder;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1619,6 +1636,7 @@
 				B71C285F1C8C0C0C00873B5C /* OngoingOrdersTableViewCell.swift in Sources */,
 				65B189BE1C6E6020000EDD00 /* SubCategory.swift in Sources */,
 				65F8B43A1C70BECD00D158FA /* b4u-UIColor-Extension.swift in Sources */,
+				B7DC0EDF1C942A3300A5577C /* b4u_ReOrderModel.swift in Sources */,
 				65B18A861C70BB28000EDD00 /* SWRevealViewController.m in Sources */,
 				65264F871C81D80200859F5A /* b4u-SuggestedPatnersResult.swift in Sources */,
 				042700291C8B37B6008440CC /* UIView+FSExtension.m in Sources */,
@@ -1667,7 +1685,9 @@
 				B34EAD961C929A5900FCB0F5 /* b4u_NotificationModel.swift in Sources */,
 				04E0C44A1C8C99A7006450D1 /* GooglePlacesAutocomplete.swift in Sources */,
 				042700281C8B37B6008440CC /* UIScrollView+FSExtension.m in Sources */,
+				B7DC0EE11C942F2200A5577C /* b4u_ReOrder_MetaItemModel.swift in Sources */,
 				65DE796B1C79FCFF00017F96 /* b4u-FilterViewController.swift in Sources */,
+				B7DC0EE31C942F4300A5577C /* b4u_ReorderSelectionModel.swift in Sources */,
 				04E07A561C900476009AD223 /* b4u-LocationSearchModel.swift in Sources */,
 				6536E0941C68F3F000B273D6 /* AppDelegate.swift in Sources */,
 				65FF8D651C7E9222007588D0 /* b4u-ServicePatnerController.swift in Sources */,

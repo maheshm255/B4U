@@ -10,6 +10,26 @@ import UIKit
 
 class b4u_ReOrderTableViewCell: UITableViewCell {
 
+   
+    @IBOutlet weak var vendorImageView: UIImageView!
+    @IBOutlet var titleLbl: UILabel!
+    @IBOutlet var subTitleLbl: UILabel!
+    @IBOutlet var dateLbl: UILabel!
+    @IBOutlet var orderIDLbl: UILabel!
+    @IBOutlet var timeSlotLbl: NSLayoutConstraint!
+    @IBOutlet var amountLbl: UILabel!
+    
+    
+    
+    @IBAction func viewDetailAction(sender: AnyObject) {
+    }
+    
+    @IBAction func deleteAction(sender: AnyObject) {
+    }
+    
+    @IBAction func reOrderAction(sender: AnyObject) {
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
