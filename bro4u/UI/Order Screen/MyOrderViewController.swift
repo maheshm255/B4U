@@ -11,7 +11,8 @@ import UIKit
 class MyOrderViewController: UIViewController {
 
   
-  
+    var myOrderModelArr:[b4u_MyInfoModel] = Array()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,9 +24,9 @@ class MyOrderViewController: UIViewController {
     
     func getData()
     {
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyInfoIndex, params:"", result:{(resultObject) -> Void in
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyOrdersIndex, params:"", result:{(resultObject) -> Void in
             
-            print("My Info Data Received")
+            print("My Order Data Received")
             
             print(resultObject)
             
@@ -39,7 +40,7 @@ class MyOrderViewController: UIViewController {
     func congigureUI()
     {
         
-        for (_ , mainData) in bro4u_DataManager.sharedInstance.myInfoData.enumerate()
+        for (_ , mainData) in bro4u_DataManager.sharedInstance.orderData.enumerate()
         {
             
             
@@ -47,30 +48,14 @@ class MyOrderViewController: UIViewController {
             {
                 //                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("b4uCategoryTableView") as! b4u_CategoryTblViewCtrl
                 
-                let vc =  self.storyboard?.instantiateViewControllerWithIdentifier("MyInfoViewControllerID") as! MyInfoViewController
+                let vc =  self.storyboard?.instantiateViewControllerWithIdentifier("MyOrderViewControllerID") as! MyOrderViewController
                 
-                vc.myInfoModelArr = filteredData
+                vc.myOrderModelArr = filteredData
             }
         }
         
     }
     
-    //Need to Implement
-    private func filterContent(mainModelObj:b4u_MyInfoModel) -> [b4u_MyInfoModel]?
-    {
-        let filteredItems:[b4u_MyInfoModel]?
-        if bro4u_DataManager.sharedInstance.myInfoData.count > 0
-        {
-            
-            return nil
-            
-        }else
-        {
-            return nil
-        }
-        
-        
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

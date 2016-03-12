@@ -38,8 +38,9 @@ class bro4u_DataManager: NSObject {
     var myWalletData:[b4u_MyWalletModel] = Array()
     var myAccountData:b4u_MyAccountModel?
     var offerZoneData:[b4u_OfferZoneModel] = Array()
-//    var referAndEarnData:[b4u_ReferAndEarnModel] = Array()
+    var referAndEarnData:b4u_ReferAndEarnModel?
     var orderConfirmedData:[b4u_OrderConfirmedModel] = Array()
+    var orderData:[b4u_OrdersModel] = Array()
     var notificationData:[b4u_NotificationModel] = Array()
     var myReorderData:[b4u_ReOrderModel] = Array()
 

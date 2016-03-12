@@ -10,26 +10,78 @@ import UIKit
 
 class b4u_OrdersModel: NSObject {
 
-  var banner:String?
-  var catIcon:String?
-  var interBanner:String?
-  var mainCatDesc:String?
-  var manCatName:String?
-  var manCatId:String?
-  var sortOrder:String?
-  var timeStamp:NSDate?
-  
-  
-  init(categoryDataDict:Dictionary<String ,AnyObject>) {
+    var catID:String?
+    var catName:String?
+    var orderID:String?
+    var zipcode:NSNumber?
+    var deductedFromWallet:String?
+    var itemID:String?
+    var paymentType:String?
+    var customerName:String?
+    var email:String?
+    var mobile:String?
+    var paymentStatus:String?
+    var serviceAddress:String?
+    var priorDays:NSNumber?
+    var serviceDate:NSNumber?
+    var profilePic:String?
+    var timestamp:String?
+    var serviceTime:String?
+    var totalCost:NSNumber?
+    var finalAmountPaid:NSNumber?
+    var materialCharges:NSNumber?
+    var netAmountPaid:NSNumber?
+    var statusCode:NSNumber?
+    var statusDesc:String?
+    var vendorName:String?
+    var vendorMobile:String?
+    var vendorEmail:String?
+    var vendorID:NSNumber?
+    var statusUpdated:String?
+    var onGoing:String?
+    var actualPrice:NSNumber?
+    var offerPrice:NSNumber?
+    var finalTotal:NSNumber?
+    var statusNumber:NSNumber?
+    var metaItemReOrder:b4u_ReOrder_MetaItemModel?
     
-    banner = categoryDataDict["banner"] as? String
-    catIcon = categoryDataDict["cat_icon"] as? String
-    interBanner = categoryDataDict["inter_banner"] as? String
-    mainCatDesc = categoryDataDict["main_cat_desc"] as? String
-    manCatName = categoryDataDict["main_cat_name"] as? String
-    manCatId = categoryDataDict["main_cat_id"] as? String
-    sortOrder = categoryDataDict["sort_order"] as? String
     
-  }
+    init(dataDict:Dictionary<String ,AnyObject>) {
+        
+        catID = dataDict["cat_id"] as? String
+        catName = dataDict["cat_name"] as? String
+        orderID = dataDict["order_id"] as? String
+        zipcode = dataDict["zipcode"] as? NSNumber
+        deductedFromWallet = dataDict["deducted_from_wallet"] as? String
+        itemID = dataDict["item_id"] as? String
+        paymentType = dataDict["payment_type"] as? String
+        customerName = dataDict["customer_name"] as? String
+        email = dataDict["email"] as? String
+        mobile = dataDict["mobile"] as? String
+        paymentStatus = dataDict["payment_status"] as? String
+        serviceAddress = dataDict["service_address"] as? String
+        priorDays = dataDict["prior_days"] as? NSNumber
+        serviceDate = dataDict["service_date"] as? NSNumber
+        profilePic = dataDict["profile_pic"] as? String
+        timestamp = dataDict["timestamp"] as? String
+        serviceTime = dataDict["service_time"] as? String
+        totalCost = dataDict["total_cost"] as? NSNumber
+        finalAmountPaid = dataDict["final_amount_paid"] as? NSNumber
+        materialCharges = dataDict["material_charges"] as? NSNumber
+        netAmountPaid = dataDict["net_amount_paid"] as? NSNumber
+        statusCode = dataDict["status_code"] as? NSNumber
+        statusDesc = dataDict["status_desc"] as? String
+        vendorName = dataDict["vendor_name"] as? String
+        vendorMobile = dataDict["vendor_mobile"] as? String
+        vendorEmail = dataDict["vendor_email"] as? String
+        vendorID = dataDict["vendor_id"] as? NSNumber
+        statusUpdated = dataDict["status_updated"] as? String
+        onGoing = dataDict["on_going"] as? String
+        actualPrice = dataDict["actual_price"] as? NSNumber
+        offerPrice = dataDict["offer_price"] as? NSNumber
+        finalTotal = dataDict["final_total"] as? NSNumber
+        statusNumber = dataDict["status_number"] as? NSNumber
+        metaItemReOrder = dataDict["item_meta"] as? b4u_ReOrder_MetaItemModel
+    }
 
 }

@@ -10,25 +10,24 @@ import UIKit
 
 class b4u_ReferAndEarnModel: NSObject {
 
-  var banner:String?
-  var catIcon:String?
-  var interBanner:String?
-  var mainCatDesc:String?
-  var manCatName:String?
-  var manCatId:String?
-  var sortOrder:String?
-  var timeStamp:NSDate?
+  var referralAmount:NSNumber?
+  var offerAmount:NSNumber?
+  var referralSettingID:NSNumber?
+  var referralCode:NSNumber?
+  var totalEarned:NSNumber?
+  var terms1:String?
+  var terms2:String?
   
   
   init(categoryDataDict:Dictionary<String ,AnyObject>) {
     
-    banner = categoryDataDict["banner"] as? String
-    catIcon = categoryDataDict["cat_icon"] as? String
-    interBanner = categoryDataDict["inter_banner"] as? String
-    mainCatDesc = categoryDataDict["main_cat_desc"] as? String
-    manCatName = categoryDataDict["main_cat_name"] as? String
-    manCatId = categoryDataDict["main_cat_id"] as? String
-    sortOrder = categoryDataDict["sort_order"] as? String
+    referralAmount = categoryDataDict["referral_amount"] as? NSNumber
+    offerAmount = categoryDataDict["offer_amount"] as? NSNumber
+    referralSettingID = categoryDataDict["referral_setting_id"] as? NSNumber
+    referralCode = categoryDataDict["referral_code"] as? NSNumber
+    totalEarned = categoryDataDict["total_earned"] as? NSNumber
+    terms1 = categoryDataDict["terms_1"] as? String
+    terms2 = categoryDataDict["terms_2"] as? String
     
   }
 

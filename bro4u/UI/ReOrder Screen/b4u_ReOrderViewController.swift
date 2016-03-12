@@ -50,7 +50,7 @@ class b4u_ReOrderViewController: UIViewController {
                 
                 let vc =  self.storyboard?.instantiateViewControllerWithIdentifier("b4u_ReOrderViewControllerID") as! b4u_ReOrderViewController
                 
-                vc.myInfoModelArr = filteredData
+                vc.myReOrderModelArr = filteredData
             }
         }
         
