@@ -6055,7 +6055,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="239" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="58U-Ni-8Qz">
                                 <rect key="frame" x="8" y="64" width="586" height="536"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReOrderTableViewCellID" rowHeight="239" id="k1R-Sn-F7u" customClass="b4u_ReOrderTableViewCell" customModule="ThanksScreen">
                                         <rect key="frame" x="0.0" y="50" width="586" height="239"/>
@@ -6070,7 +6070,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="MEg-E0-FZf"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
                                                         <rect key="frame" x="119" y="8" width="76" height="21"/>
@@ -6094,7 +6094,7 @@
                                                         <constraint firstAttribute="width" constant="106" id="kMu-BT-rhY"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
                                                         <rect key="frame" x="159" y="68" width="105" height="21"/>
@@ -6110,6 +6110,9 @@
                                                     <state key="normal" title="REORDER">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="reOrderAction:" destination="k1R-Sn-F7u" eventType="touchUpInside" id="MNh-j9-n4K"/>
+                                                    </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="72K-32-1Cf">
                                                     <rect key="frame" x="16" y="19" width="65" height="63"/>
@@ -6189,6 +6192,9 @@
                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                         <rect key="frame" x="15" y="217" width="104" height="34"/>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="viewDetailAction:" destination="k1R-Sn-F7u" eventType="touchUpInside" id="F03-0v-eaI"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 pm to 3 pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PC8-Qq-IcT">
                                                     <rect key="frame" x="466" y="78" width="118" height="21"/>
@@ -6196,7 +6202,7 @@
                                                         <constraint firstAttribute="width" constant="118" id="mdm-cy-uye"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
@@ -6221,6 +6227,9 @@
                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                         <rect key="frame" x="15" y="217" width="104" height="34"/>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="deleteAction:" destination="k1R-Sn-F7u" eventType="touchUpInside" id="le1-Kg-Avp"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -6283,6 +6292,15 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="amountLbl" destination="zal-AR-9M6" id="TwU-2R-diH"/>
+                                            <outlet property="dateLbl" destination="bfT-Ev-30v" id="jId-rp-J2m"/>
+                                            <outlet property="orderIDLbl" destination="L4M-Xc-ohm" id="I2Q-6X-hLK"/>
+                                            <outlet property="subTitleLbl" destination="gju-1f-BOP" id="Jfv-Aw-mUy"/>
+                                            <outlet property="timeSlotLbl" destination="bxl-ug-Ozs" id="uz9-6O-cc8"/>
+                                            <outlet property="titleLbl" destination="gqc-v5-mbV" id="UBB-PL-nZb"/>
+                                            <outlet property="vendorImageView" destination="72K-32-1Cf" id="11y-X7-JDT"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

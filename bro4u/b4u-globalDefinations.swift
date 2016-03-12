@@ -53,22 +53,55 @@ let kOTPlogin = "/index.php/my-account"
 
 //Rahul Added
 
+//Splash Screen
+let kSplashIndex = "/index.php/apitoken/add_device?device_id=34234234&gcm_id=23434fser34f&token_request=alsdkfjaklsdjf"
+
+//My Info Window inside My Account
 let kMyInfoIndex = "index.php/my_account/user_details?user_id=1"
-let kMyWalletIndex = "index.php/categories/catAttr"
+
+//My wallet balance
+let kMyWalletIndex = "index.php/wallet?user_id=1"
+
+//Apply Wallet Coupon
+let kApplyWalletCouponIndex = "index.php/referral/process_referral?user_id=1&device_id=359299050718035&referral_code=6"
+
+//My Account Window
 let kMyAccountIndex = "index.php/my_account/get_user?user_id=8"
+
+//Update My Info Window
 let kMyAccountUpdateProfileIndex = "index.php/my_account/update_user_account?user_id=1&email=akshay.hh@gmail.com&mobile=34564564&name=test&dob=2015-12-13&gender=male"
+
 let kOfferZoneIndex = "index.php/coupon/offer_zone?device_id=kdsflasdf&user_id=1"
-let kMyOrdersIndex = "index.php/categories/catAttr"
-let kReferAndEarnIndex = "index.php/categories/catAttr"
+
+//My Orders
+let kMyOrdersIndex = "index.php/order/my_orders?user_id=1"
+
+//Refer And Earn
+let kReferAndEarnIndex = "index.php/referral/fetch_referral_settings?user_id=1"
+
 let kOrderConfirmedIndex = "index.php/categories/catAttr"
-let kOrderNotificationIndex = "index.php/categories/catAttr"
+
+//Notification Window
+let kOrderNotificationIndex = "index.php/my_account/get_notifications?device_id=asdkfi&user_id=1626"
+
+//About Us Window
 let kAboutUsIndex = "index.php/page/about"
 
+//Reorder Order
+let kReOrderIndex = "index.php/order/re_orders?user_id=1"
+
+//Reorder Delete
+let kReOrderDeleteIndex = "index.php/order/thrash_reorder/13555"
 
 
+//ReSchedule Order
+let kReScheduleOrderIndex = "index.php/order/reschedule_order?order_id=23810&user_id=1626&date=2016-01-24&service_time=9AM-11AM"
 
+//Time Slots of Order
+let kReScheduleOrderTimeSlotIndex = "index.php/order/preferred_time?vendor_id=87&item_id=1710&date=2015-10-5"
 
-
+//Cancel Order
+let kCancelOrderIndex = "index.php/order/cancel_order?order_id=14348&user_id=1626&vendor_id=132&cancel_message=test+message"
 
 
 
