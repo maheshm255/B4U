@@ -99,9 +99,6 @@ class b4u_ReOrderModel: NSObject {
             }
 
         }
-        
-      
-        
     }
 
 }

@@ -227,10 +227,12 @@
 		B71C28621C8C0C0C00873B5C /* OrderConfirmedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C28571C8C0C0C00873B5C /* OrderConfirmedViewController.swift */; };
 		B720379F1C93BE3200C1FF50 /* b4u_ReOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B720379D1C93BE3200C1FF50 /* b4u_ReOrderTableViewCell.swift */; };
 		B72037A01C93BE3200C1FF50 /* b4u_ReOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B720379E1C93BE3200C1FF50 /* b4u_ReOrderViewController.swift */; };
+		B7BB86651C95888C003D5F44 /* MyAccount.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7BB86641C95888C003D5F44 /* MyAccount.plist */; };
 		B7DC0EDF1C942A3300A5577C /* b4u_ReOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DC0EDE1C942A3300A5577C /* b4u_ReOrderModel.swift */; };
 		B7DC0EE11C942F2200A5577C /* b4u_ReOrder_MetaItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DC0EE01C942F2200A5577C /* b4u_ReOrder_MetaItemModel.swift */; };
 		B7DC0EE31C942F4300A5577C /* b4u_ReorderSelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DC0EE21C942F4300A5577C /* b4u_ReorderSelectionModel.swift */; };
 		B7DC0EE41C9447E100A5577C /* b4u_ReferAndEarnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD8D1C9298B500FCB0F5 /* b4u_ReferAndEarnModel.swift */; };
+		B7FF16E21C95E15500B299C0 /* b4u_PaymentGatewayOffersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FF16E11C95E15500B299C0 /* b4u_PaymentGatewayOffersModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -552,9 +554,11 @@
 		B71C28571C8C0C0C00873B5C /* OrderConfirmedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmedViewController.swift; sourceTree = "<group>"; };
 		B720379D1C93BE3200C1FF50 /* b4u_ReOrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ReOrderTableViewCell.swift; sourceTree = "<group>"; };
 		B720379E1C93BE3200C1FF50 /* b4u_ReOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ReOrderViewController.swift; sourceTree = "<group>"; };
+		B7BB86641C95888C003D5F44 /* MyAccount.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyAccount.plist; sourceTree = "<group>"; };
 		B7DC0EDE1C942A3300A5577C /* b4u_ReOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ReOrderModel.swift; sourceTree = "<group>"; };
 		B7DC0EE01C942F2200A5577C /* b4u_ReOrder_MetaItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ReOrder_MetaItemModel.swift; sourceTree = "<group>"; };
 		B7DC0EE21C942F4300A5577C /* b4u_ReorderSelectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ReorderSelectionModel.swift; sourceTree = "<group>"; };
+		B7FF16E11C95E15500B299C0 /* b4u_PaymentGatewayOffersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_PaymentGatewayOffersModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1240,6 +1244,7 @@
 			isa = PBXGroup;
 			children = (
 				B34EAD8B1C92989C00FCB0F5 /* b4u_OrdersModel.swift */,
+				B7FF16E11C95E15500B299C0 /* b4u_PaymentGatewayOffersModel.swift */,
 			);
 			path = "Order Screen";
 			sourceTree = "<group>";
@@ -1293,6 +1298,7 @@
 				B71C28491C8C0C0C00873B5C /* My Wallet */,
 				B71C284B1C8C0C0C00873B5C /* MyAccountTableViewCell.swift */,
 				B71C284C1C8C0C0C00873B5C /* b4u_MyAccountViewController.swift */,
+				B7BB86641C95888C003D5F44 /* MyAccount.plist */,
 			);
 			path = "MyAccount Screen";
 			sourceTree = "<group>";
@@ -1501,6 +1507,7 @@
 				65271F0A1C831B1E0022C888 /* CBApproveView_iPhone6p.xib in Resources */,
 				65271F1F1C831B1E0022C888 /* icon_otp_over.png in Resources */,
 				04E0C41B1C8BF6C4006450D1 /* CustomAnnotationView.xib in Resources */,
+				B7BB86651C95888C003D5F44 /* MyAccount.plist in Resources */,
 				65DE771F1C78584800017F96 /* GoogleService-Info.plist in Resources */,
 				65271F041C831B1E0022C888 /* card.png in Resources */,
 				65271F191C831B1E0022C888 /* hdfc_bank.png in Resources */,
@@ -1574,6 +1581,7 @@
 				65F8B43C1C70BECD00D158FA /* b4u-Utility.swift in Sources */,
 				65B18A8C1C70BB28000EDD00 /* UIProgressView+AFNetworking.m in Sources */,
 				B34EAD8C1C92989C00FCB0F5 /* b4u_OrdersModel.swift in Sources */,
+				B7FF16E21C95E15500B299C0 /* b4u_PaymentGatewayOffersModel.swift in Sources */,
 				65DE79631C79448600017F96 /* b4u-CategoryTblHeaderVIew.swift in Sources */,
 				65271F481C831B1E0022C888 /* iOSDefaultActivityIndicator.m in Sources */,
 				65B18A8B1C70BB28000EDD00 /* UIImageView+AFNetworking.m in Sources */,

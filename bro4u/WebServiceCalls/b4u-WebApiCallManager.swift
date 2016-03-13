@@ -90,13 +90,18 @@ class b4u_WebApiCallManager: NSObject {
             self.parsTimeSlotData(dataDict)
         case kShowServicePatnerApi:
             self.parseServicePatnerData(dataDict)
-            
         case kLocationSearchUrl:
             self.parseLocationSearchData(dataDict)
-            
         case kMyAccountIndex:
             self.pasrseUserDatails(dataDict)
-            
+        case kMyOrdersIndex:
+            self.pasrseMyOrdersData(dataDict)
+        case kMyWalletIndex:
+            self.pasrseMyWalletData(dataDict)
+        case kMyInfoIndex:
+            self.pasrseMyInfoData(dataDict)
+        case kOrderNotificationIndex:
+            self.pasrseNotificationData(dataDict)
         case kReOrderIndex:
             self.pasrseReOrderData(dataDict)
         default:
@@ -215,6 +220,78 @@ class b4u_WebApiCallManager: NSObject {
         {
             let reOrderModel = b4u_ReOrderModel(dataDict: orderDataDict)
             bro4u_DataManager.sharedInstance.myReorderData.append(reOrderModel)
+        }
+    }
+    //rahul Code
+    func pasrseMyOrdersData(dataDict:Dictionary<String, AnyObject>)
+    {
+        
+        let parentArray1:[Dictionary<String ,AnyObject>] = dataDict["orders"] as! [Dictionary<String ,AnyObject>]
+        
+        bro4u_DataManager.sharedInstance.orderData.removeAll()
+        bro4u_DataManager.sharedInstance.paymentGatewayOffersData.removeAll()
+
+        for (_ ,dataDict) in parentArray1.enumerate()
+        {
+            let parentObj = b4u_OrdersModel(dataDict:dataDict)
+            bro4u_DataManager.sharedInstance.orderData.append(parentObj)
+        }
+        
+        let parentArray2:[Dictionary<String ,AnyObject>] = dataDict["payment_gateway_offers"] as! [Dictionary<String ,AnyObject>]
+        
+        for (_ ,dataDict) in parentArray2.enumerate()
+        {
+            let parentObj = b4u_PaymentGatewayOffersModel(dataDict:dataDict)
+            bro4u_DataManager.sharedInstance.paymentGatewayOffersData.append(parentObj)
+        }
+    }
+    
+    func pasrseMyWalletData(dataDict:Dictionary<String, AnyObject>)
+    {
+        
+        let parentArray1:[Dictionary<String ,AnyObject>] = dataDict["wallet_activities"] as! [Dictionary<String ,AnyObject>]
+        
+        bro4u_DataManager.sharedInstance.myWalletData.removeAll()
+        for (_ ,dataDict) in parentArray1.enumerate()
+        {
+            let parentObj = b4u_MyWalletModel(dataDict: dataDict)
+            bro4u_DataManager.sharedInstance.myWalletData.append(parentObj)
+        }
+        //Need to check and Impliment
+//        let parentArray2:[Dictionary<String ,AnyObject>] = dataDict["wallet_balance"] as! [Dictionary<String ,AnyObject>]
+//        
+//        bro4u_DataManager.sharedInstance.myWalletData.removeAll()
+//        for (_ ,dataDict) in parentArray1.enumerate()
+//        {
+//            let parentObj = b4u_MyWalletModel(dataDict: dataDict)
+//            bro4u_DataManager.sharedInstance.myWalletData.append(parentObj)
+//        }
+
+    }
+    
+    func pasrseMyInfoData(dataDict:Dictionary<String, AnyObject>)
+    {
+        
+        let parentArray:[Dictionary<String ,AnyObject>] = dataDict["userdetails"] as! [Dictionary<String ,AnyObject>]
+        
+        bro4u_DataManager.sharedInstance.myInfoData.removeAll()
+        for (_ ,dataDict) in parentArray.enumerate()
+        {
+            let parentObj = b4u_MyInfoModel(dataDict: dataDict)
+            bro4u_DataManager.sharedInstance.myInfoData.append(parentObj)
+        }
+    }
+    
+    func pasrseNotificationData(dataDict:Dictionary<String, AnyObject>)
+    {
+        
+        let parentArray:[Dictionary<String ,AnyObject>] = dataDict["notifications"] as! [Dictionary<String ,AnyObject>]
+        
+        bro4u_DataManager.sharedInstance.notificationData.removeAll()
+        for (_ ,dataDict) in parentArray.enumerate()
+        {
+            let parentObj = b4u_NotificationModel(dataDict: dataDict)
+            bro4u_DataManager.sharedInstance.notificationData.append(parentObj)
         }
     }
     
