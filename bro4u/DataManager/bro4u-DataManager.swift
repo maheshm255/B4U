@@ -32,6 +32,9 @@ class bro4u_DataManager: NSObject {
     var currentLocality:CLPlacemark?
 
     var userSelectedLocatinStr:String?
+    
+    
+    var address:[b4u_AddressDetails] = Array()
   
   //Rahul Added
     var myInfoData:[b4u_MyInfoModel] = Array()

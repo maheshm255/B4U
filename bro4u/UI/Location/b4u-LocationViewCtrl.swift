@@ -227,4 +227,7 @@ class b4u_LocationViewCtrl: UIViewController ,UITableViewDelegate,UITableViewDat
         self.dismissViewControllerAnimated(true, completion:nil)
     }
     
+    
+  
+
 }

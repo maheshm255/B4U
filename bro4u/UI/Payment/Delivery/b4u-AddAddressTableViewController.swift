@@ -8,16 +8,25 @@
 
 import UIKit
 
-class b4u_AddAddressTableViewController: UITableViewController {
+
+class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate {
 
     @IBOutlet weak var tfCurrentPlace: UITextField!
     @IBOutlet weak var tfCurrentLocation: UITextField!
     @IBOutlet weak var tfFullAddress: UITextField!
     @IBOutlet weak var imgViewAddressSelected: UIImageView!
+    
+    
     @IBOutlet weak var tfMobileNumber: UITextField!
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfYourName: UITextField!
     @IBOutlet weak var imgViewContactInfoSelected: UIImageView!
+    
+    
+    
+    var addressModel:b4u_AddressDetails?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,8 +35,26 @@ class b4u_AddAddressTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+     
+        
+
     }
 
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        if let placeObj = bro4u_DataManager.sharedInstance.currentLocality
+        {
+            if let locality = placeObj.locality , subLocality = placeObj.subLocality
+            {
+                tfCurrentLocation.text  = locality
+                tfCurrentPlace.text  =   subLocality
+            }
+            
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -107,5 +134,131 @@ class b4u_AddAddressTableViewController: UITableViewController {
     @IBAction func BtnSaveAddressPressed(sender: AnyObject)
     {
         
+        addressModel = b4u_AddressDetails()
+        
+        
+        let user_id = "5"
+        let streetName = tfFullAddress.text
+        let locality = tfCurrentPlace.text
+        let cityId = "5"
+        let name = tfYourName.text
+        let mobile = tfMobileNumber.text
+        var email = ""
+        
+        if  tfEmail.text!.isEmail
+        {
+            email =  tfEmail.text!
+        }
+        
+        var latitude:String?
+        var longitude:String?
+        if let  currentLocaiton = bro4u_DataManager.sharedInstance.currenLocation
+        {
+             latitude = "\(currentLocaiton.coordinate.latitude)"
+             longitude = "\(currentLocaiton.coordinate.longitude)"
+            
+            addressModel?.currentLocation  = currentLocaiton
+
+        }
+  
+        
+        
+        addressModel?.name  = name!
+        addressModel?.email  = email
+        addressModel?.phoneNumber  = mobile!
+
+        addressModel?.fullAddress  = streetName!
+        addressModel?.curretPlace  = locality!
+        
+        
+        let params = "?user_id=\(user_id)&street_name=\(streetName!)&locality=\(locality!)&city_id=\(cityId)&name=\(name!)&latitude=\(latitude!)&longitude=\(longitude!)&mobile=\(mobile!)&email=\(email)"
+        
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kSaveAddress, params:params, result:{(resultObject) -> Void in
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                
+                self.updateUI(resultObject as! String)
+            })
+    
+        })
     }
+    
+    func updateUI(result:String)
+    {
+        if result == "Success"
+        {
+            bro4u_DataManager.sharedInstance.address.append(self.addressModel!)
+            self.dismissViewControllerAnimated(true, completion:nil)
+        
+        }else
+        {
+            print("Server Not Able to save the address")
+        }
+    }
+    // MARK: TextField Delegate Methods
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool
+    {
+        return true
+    }
+    func textFieldDidBeginEditing(textField: UITextField)
+    {
+       if textField == tfCurrentLocation
+       {
+           self.performSegueWithIdentifier("locationCtrlSegue1", sender:nil)
+
+        }
+    }
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool
+    {
+        return true
+    }
+    func textFieldDidEndEditing(textField: UITextField)
+    {
+        textField.resignFirstResponder()
+    }
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
+    {
+//        if (textField.text!.length >= CASE_SUBJECT_MAX_LENGTH && range.length == 0)
+//        {
+//            return false // return NO to not change text
+//        }
+//        else
+//        {
+            return true
+       // }
+        //return !(string == " ")
+    }
+    func textFieldShouldClear(textField: UITextField) -> Bool
+    {
+        return true;
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool
+    {
+        
+        
+        return true;
+    }
+    
+
+    
+    func userSelectedLocation(locationStr:String)
+    {
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "locationCtrlSegue1"
+        {
+            
+            bro4u_DataManager.sharedInstance.locationSearchPredictions.removeAll()
+            let locatinCtrlObj = segue.destinationViewController as! b4u_LocationViewCtrl
+            
+            locatinCtrlObj.delegate = self
+        }
+    }
+    
 }

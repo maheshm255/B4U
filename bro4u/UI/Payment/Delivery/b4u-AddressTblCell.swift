@@ -15,12 +15,16 @@ class b4u_AddressTblCell: UITableViewCell {
     @IBOutlet weak var viewAddress2: UIView!
     @IBOutlet weak var viewAddress1: UIView!
     @IBOutlet weak var btnDeleteAddress2: UIButton!
-    @IBOutlet weak var btnDeleteAddress1: NSLayoutConstraint!
+    
+    @IBOutlet weak var btnDeleteAddress1: UIButton!
+    
     @IBOutlet weak var imgViewSelecteAddress2: UIImageView!
     @IBOutlet weak var lblAddress2: UILabel!
     @IBOutlet weak var lblAddress1: UILabel!
     @IBOutlet weak var imgViewAddressSelect: NSLayoutConstraint!
     @IBOutlet weak var imgViewSelect: UIImageView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

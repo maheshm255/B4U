@@ -50,6 +50,11 @@ let kShowServicePatnerApi = "index.php/catalog/browse"
 
 let kOTPlogin = "/index.php/my-account"
 
+//user_id=5&street_name=test_street&locality=test_locality&latitude=12.4435&longitude=23.34556&city_id=5&name=test&mobile=9896969696&email=test@test.com
+
+let kSaveAddress = "/index.php/address/insert_address"
+
+
 
 //Rahul Added
 
@@ -103,8 +108,7 @@ let kReScheduleOrderTimeSlotIndex = "index.php/order/preferred_time?vendor_id=87
 //Cancel Order
 let kCancelOrderIndex = "index.php/order/cancel_order?order_id=14348&user_id=1626&vendor_id=132&cancel_message=test+message"
 
-
-
+//
 
 
 

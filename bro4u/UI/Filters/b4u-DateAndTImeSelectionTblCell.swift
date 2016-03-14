@@ -10,6 +10,7 @@ import UIKit
 
 class b4u_DateAndTImeSelectionTblCell: UITableViewCell {
 
+    @IBOutlet weak var imgViewSelection: UIImageView!
     @IBOutlet weak var btnSelectTime: UIButton!
     @IBOutlet weak var btnSelectDate: UIButton!
     override func awakeFromNib() {
