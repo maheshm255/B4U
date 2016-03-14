@@ -48,56 +48,38 @@ class MyInfoViewController: UIViewController {
 
     }
   
-  func getData()
-  {
-    b4u_WebApiCallManager.sharedInstance.getApiCall(kMyInfoIndex, params:"", result:{(resultObject) -> Void in
-      
-      print("My Info Data Received")
-      
-      print(resultObject)
-      
-      self.congigureUI()
-      
-      
-    })
-  }
-
-  
-  func congigureUI()
-  {
-    
-    for (_ , mainData) in bro4u_DataManager.sharedInstance.myInfoData.enumerate()
+    func getData()
     {
-      
-      
-      if let filteredData = self.filterContent(mainData)
-      {
-        //                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("b4uCategoryTableView") as! b4u_CategoryTblViewCtrl
-        
-        let vc =  self.storyboard?.instantiateViewControllerWithIdentifier("MyInfoViewControllerID") as! MyInfoViewController
-        
-        vc.myInfoModelArr = filteredData
-      }
-    }
-    
-  }
-
-//Need to Implement
-  private func filterContent(mainModelObj:b4u_MyInfoModel) -> [b4u_MyInfoModel]?
-  {
-    let filteredItems:[b4u_MyInfoModel]?
-    if bro4u_DataManager.sharedInstance.myInfoData.count > 0
-    {
-
-      return nil
-      
-    }else
-    {
-      return nil
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyInfoIndex, params:"", result:{(resultObject) -> Void in
+            
+            print("My Info Data Received")
+            
+            print(resultObject)
+            
+            self.updateUI()
+        })
     }
     
     
-  }
+    func updateUI()
+    {
+//        if let modelDetails = bro4u_DataManager.sharedInstance.myInfoData
+//        {
+//            self.nameTxtFld = "\( modelDetails.fullName!)"
+//            self.nameLbl.text = accountDetails.fullName
+//            self.tableView.reloadData()
+//            @IBOutlet var nameTxtFld: UITextField!
+//            @IBOutlet var mobileNoTxtFld: UITextField!
+//            @IBOutlet var emailTxtFld: UITextField!
+//            @IBOutlet var maleBtn: UIButton!
+//            @IBOutlet var femaleBtn: UIButton!
+//            @IBOutlet var dateBtn: UIButton!
+//            @IBOutlet var userNameLbl: UILabel!
+//            @IBOutlet var userImageView: UIImageView!
+//
+//        }
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

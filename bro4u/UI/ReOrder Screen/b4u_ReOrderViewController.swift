@@ -26,7 +26,7 @@ class b4u_ReOrderViewController: UIViewController {
     {
         b4u_WebApiCallManager.sharedInstance.getApiCall(kReOrderIndex, params:"", result:{(resultObject) -> Void in
             
-            print("My Info Data Received")
+            print("Re Order Data Received")
             
             print(resultObject)
             
@@ -39,10 +39,32 @@ class b4u_ReOrderViewController: UIViewController {
     
     func congigureUI()
     {
+      for (_ , mainData) in bro4u_DataManager.sharedInstance.myReorderData.enumerate()
+      {
         
         
+        if let filteredData = self.filterContent(mainData)
+        {
+          let vc =  self.storyboard?.instantiateViewControllerWithIdentifier("ReOrderViewControllerID") as! b4u_ReOrderViewController
+          
+          vc.myReOrderModelArr = filteredData
+        }
+      }
+      
+
+      
     }
 
+  
+    private func filterContent(mainModelObj:b4u_ReOrderModel) -> [b4u_ReOrderModel]?
+    {
+      let filteredItems:[b4u_ReOrderModel]?
+//      if bro4u_DataManager.sharedInstance.myReorderData.count > 0
+//      {
+//        return filteredItems
+//      }
+      return nil
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

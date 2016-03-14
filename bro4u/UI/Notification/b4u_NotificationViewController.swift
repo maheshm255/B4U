@@ -33,13 +33,13 @@ class b4u_NotificationViewController: UIViewController ,UITableViewDelegate,UITa
     
     func getData()
     {
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyInfoIndex, params:"", result:{(resultObject) -> Void in
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kOrderNotificationIndex, params:"", result:{(resultObject) -> Void in
             
-            print("My Info Data Received")
+            print("Notification Received")
             
             print(resultObject)
             
-            self.congigureUI()
+//            self.congigureUI()
             
             
         })
@@ -123,21 +123,21 @@ class b4u_NotificationViewController: UIViewController ,UITableViewDelegate,UITa
   }
   
   
-  func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-    
-    cell.contentView.backgroundColor = UIColor.clearColor()
-    let whiteRoundedView : UIView = UIView(frame: CGRectMake(0, 10, self.view.frame.size.width, tableView.rowHeight-1))
-    whiteRoundedView.layer.backgroundColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [1.0, 1.0, 1.0, 1.0])
-    whiteRoundedView.layer.masksToBounds = false
-    whiteRoundedView.layer.cornerRadius = 3.0
-    whiteRoundedView.layer.shadowOffset = CGSizeMake(-1, 1)
-    whiteRoundedView.layer.shadowOpacity = 0.5
-    cell.contentView.addSubview(whiteRoundedView)
-    cell.contentView.sendSubviewToBack(whiteRoundedView)
-    
-    
-  }
-
+//  func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+//    
+//    cell.contentView.backgroundColor = UIColor.clearColor()
+//    let whiteRoundedView : UIView = UIView(frame: CGRectMake(0, 10, self.view.frame.size.width, tableView.rowHeight-1))
+//    whiteRoundedView.layer.backgroundColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [1.0, 1.0, 1.0, 1.0])
+//    whiteRoundedView.layer.masksToBounds = false
+//    whiteRoundedView.layer.cornerRadius = 3.0
+//    whiteRoundedView.layer.shadowOffset = CGSizeMake(-1, 1)
+//    whiteRoundedView.layer.shadowOpacity = 0.5
+//    cell.contentView.addSubview(whiteRoundedView)
+//    cell.contentView.sendSubviewToBack(whiteRoundedView)
+//    
+//    
+//  }
+//
     /*
     // MARK: - Navigation
 

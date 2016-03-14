@@ -10,26 +10,22 @@ import UIKit
 
 class b4u_MyWalletModel: NSObject {
 
-  var banner:String?
-  var catIcon:String?
-  var interBanner:String?
-  var mainCatDesc:String?
-  var manCatName:String?
-  var manCatId:String?
-  var sortOrder:String?
-  var timeStamp:NSDate?
+  var activityID:NSNumber?
+  var userID:NSNumber?
+  var amount:NSNumber?
+  var activityType:String?
+  var comments:String?
+  var timestamp:String?
   
   
-  init(categoryDataDict:Dictionary<String ,AnyObject>) {
+  init(dataDict:Dictionary<String ,AnyObject>) {
     
-    banner = categoryDataDict["banner"] as? String
-    catIcon = categoryDataDict["cat_icon"] as? String
-    interBanner = categoryDataDict["inter_banner"] as? String
-    mainCatDesc = categoryDataDict["main_cat_desc"] as? String
-    manCatName = categoryDataDict["main_cat_name"] as? String
-    manCatId = categoryDataDict["main_cat_id"] as? String
-    sortOrder = categoryDataDict["sort_order"] as? String
-    
+    activityID = dataDict["activity_id"] as? NSNumber
+    userID = dataDict["user_id"] as? NSNumber
+    amount = dataDict["amount"] as? NSNumber
+    activityType = dataDict["activity_type"] as? String
+    comments = dataDict["comments"] as? String
+    timestamp = dataDict["timestamp"] as? String
   }
 
 }

@@ -21,9 +21,9 @@ class OfferZoneViewController: UIViewController {
     
     func getData()
     {
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyInfoIndex, params:"", result:{(resultObject) -> Void in
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kOfferZoneIndex, params:"", result:{(resultObject) -> Void in
             
-            print("My Info Data Received")
+            print("Offer Zone Data Received")
             
             print(resultObject)
             
@@ -107,5 +107,9 @@ class OfferZoneViewController: UIViewController {
         return cell
     }
     
-    
+  
+  @IBAction func cancelBtnClicked(sender: AnyObject) {
+    self.dismissViewControllerAnimated(true, completion:nil)
+  }
+
 }

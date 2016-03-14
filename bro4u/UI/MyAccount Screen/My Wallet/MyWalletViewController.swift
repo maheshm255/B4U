@@ -33,7 +33,7 @@ class MyWalletViewController: UIViewController {
       {
         b4u_WebApiCallManager.sharedInstance.getApiCall(kMyWalletIndex, params:"", result:{(resultObject) -> Void in
           
-          print("My Info Data Received")
+          print("Wallet Data Received")
           
           print(resultObject)
           
@@ -94,5 +94,10 @@ class MyWalletViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+  
+  @IBAction func cancelBtnClicked(sender: AnyObject) {
+    self.dismissViewControllerAnimated(true, completion:nil)
+  }
+
 
 }

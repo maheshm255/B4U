@@ -10,25 +10,14 @@ import UIKit
 
 class b4u_NotificationModel: NSObject {
 
-  var banner:String?
-  var catIcon:String?
-  var interBanner:String?
-  var mainCatDesc:String?
-  var manCatName:String?
-  var manCatId:String?
-  var sortOrder:String?
-  var timeStamp:NSDate?
+  var notifyDesc:String?
+  var timestamp:String?
   
   
-  init(categoryDataDict:Dictionary<String ,AnyObject>) {
+  init(dataDict:Dictionary<String ,AnyObject>) {
     
-    banner = categoryDataDict["banner"] as? String
-    catIcon = categoryDataDict["cat_icon"] as? String
-    interBanner = categoryDataDict["inter_banner"] as? String
-    mainCatDesc = categoryDataDict["main_cat_desc"] as? String
-    manCatName = categoryDataDict["main_cat_name"] as? String
-    manCatId = categoryDataDict["main_cat_id"] as? String
-    sortOrder = categoryDataDict["sort_order"] as? String
+    notifyDesc = dataDict["notify_desc"] as? String
+    timestamp = dataDict["timestamp"] as? String
     
   }
 

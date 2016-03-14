@@ -13,17 +13,25 @@ class b4u_MyAccountViewController: UIViewController {
   @IBOutlet var nameLbl: UILabel!
   @IBOutlet var walletBalanceLbl: UILabel!
   @IBOutlet var userImageView: UIImageView!
-    @IBOutlet weak var tableView: UITableView!
-
+  @IBOutlet weak var tableView: UITableView!
+  
+   var pListArray: NSArray = []
    var modelArr:[b4u_MyAccountModel] = Array()
-
+   var walletBalanceValue: NSNumber = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
+        self.readPlist()
         self.getData()
         
+    }
+    
+    func readPlist(){
+        
+        let path = NSBundle.mainBundle().pathForResource("MyAccount", ofType: "plist")
+         pListArray = NSArray(contentsOfFile: path!)!
     }
     
     func getData()
@@ -35,8 +43,6 @@ class b4u_MyAccountViewController: UIViewController {
             print(resultObject)
             
             self.updateUI()
-            
-            
         })
     }
     
@@ -45,7 +51,8 @@ class b4u_MyAccountViewController: UIViewController {
     {
         if let accountDetails = bro4u_DataManager.sharedInstance.myAccountData
         {
-            self.walletBalanceLbl.text = "\( accountDetails.walletBalance!)"
+            walletBalanceValue = accountDetails.walletBalance!
+            self.walletBalanceLbl.text = "Wallet Balance Rs. \( accountDetails.walletBalance!)"
             self.nameLbl.text = accountDetails.fullName
             self.tableView.reloadData()
         }
@@ -73,7 +80,7 @@ class b4u_MyAccountViewController: UIViewController {
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int
   {
-    return 4
+    return pListArray.count
   }
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
   {
@@ -84,10 +91,22 @@ class b4u_MyAccountViewController: UIViewController {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
   {
     var cellIdentifier = ""
-    var cell  = UITableViewCell()
+    var cell  = MyAccountTableViewCell()
     
     cellIdentifier = "MyAccountTableViewCellID"
     cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MyAccountTableViewCell
+    
+    let dict = pListArray.objectAtIndex(indexPath.section) as! NSDictionary
+    
+    cell.accountItemTitleLbl.text = dict.objectForKey("title") as? String//
+    if(indexPath.section == 1){
+        cell.accountItemSubTitleLbl.text = "\(dict.objectForKey("subTitle")!) \(walletBalanceValue)"
+    }
+    else{
+        cell.accountItemSubTitleLbl.text = dict.objectForKey("subTitle") as? String //
+    }
+    
+    cell.accountItemImageView.image = UIImage(named: (dict.objectForKey("icon") as? String)!)
     
     return cell
   }
@@ -98,7 +117,35 @@ class b4u_MyAccountViewController: UIViewController {
     return 105.0;
   }
   
-//  
+    
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        var destination = UIViewController()
+        if cell != nil {
+            // Set the CellID
+            switch(indexPath.section){
+            case 0:
+                destination = storyboard.instantiateViewControllerWithIdentifier("MyOrderViewControllerID") as! MyOrderViewController
+
+            case 1:
+                destination = storyboard.instantiateViewControllerWithIdentifier("MyWalletViewControllerID") as! MyWalletViewController
+
+            case 2:
+                destination = storyboard.instantiateViewControllerWithIdentifier("MyInfoViewControllerID") as! MyInfoViewController
+
+            case 3:
+                destination = storyboard.instantiateViewControllerWithIdentifier("NotificationViewControllerID") as! b4u_NotificationViewController
+
+            default:
+                break
+                
+            }
+            navigationController?.pushViewController(destination, animated: true)
+
+        }
+    }
+//
 //  func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
 //    
 //    cell.contentView.backgroundColor = UIColor.clearColor()

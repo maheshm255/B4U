@@ -77,15 +77,17 @@ class MyOrderViewController: UIViewController {
   {
     var cellIdentifier = ""
     var cell  = UITableViewCell()
-    
+
     if indexPath.row == 0 && indexPath.section == 0
     {
+//       cell = OngoingOrdersTableViewCell()
       cellIdentifier = "OngoingOrdersTableViewCellID"
       cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! OngoingOrdersTableViewCell
 
     }
     else if indexPath.row == 0 && indexPath.section == 1
     {
+//        cell = PastOrdersTableViewCell()
       cellIdentifier = "PastOrdersTableViewCellID"
       cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PastOrdersTableViewCell
     }
@@ -96,6 +98,21 @@ class MyOrderViewController: UIViewController {
   }
   
   
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        
+        if indexPath.section == 0
+        {
+            return 350;
+        }
+        else if indexPath.section == 1
+        {
+            return 221;
+        }
+        
+        return 0
+    }
+
 //  func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 //    let  headerCell = tableView.dequeueReusableCellWithIdentifier("OngoingOrdersTableViewCellID") as! OngoingOrdersTableViewCell
 //    headerCell.backgroundColor = UIColor.yellowColor()
@@ -125,5 +142,10 @@ class MyOrderViewController: UIViewController {
     
     return vw
   }
+  
+  @IBAction func cancelBtnClicked(sender: AnyObject) {
+    self.dismissViewControllerAnimated(true, completion:nil)
+  }
+
   
 }
