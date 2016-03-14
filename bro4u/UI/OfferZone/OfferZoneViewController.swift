@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OfferZoneViewController: UIViewController {
+class OfferZoneViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,24 +89,39 @@ class OfferZoneViewController: UIViewController {
     
     
      func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 7
     }
     
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return 1
     }
     
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let textCellIdentifier = "OfferZoneTableViewCellID"
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath)
-        
+      
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.grayColor().CGColor
-        
+
+      
         return cell
     }
+  
+  func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     
+    if section == 0
+    {
+      return 1.0;
+    }
+    else
+    {
+      return 10.0;
+    }
+
+  }
+
+
   
   @IBAction func cancelBtnClicked(sender: AnyObject) {
     self.dismissViewControllerAnimated(true, completion:nil)
