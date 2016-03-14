@@ -8,17 +8,33 @@
 
 import UIKit
 
-class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource ,calendarDelegate,timeSlotDelegate ,UIPopoverPresentationControllerDelegate{
+
+protocol deliveryViewDelegate
+{
+    func proceedToPayment()
+}
+class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource ,calendarDelegate,timeSlotDelegate ,UIPopoverPresentationControllerDelegate ,UITextViewDelegate{
 
     
+    @IBOutlet weak var tableView: UITableView!
     var dateBtn:UIButton?
     var timeBtn:UIButton?
     var dateAndTimeSelectImgView:UIImageView?
+    var textViewComment: UITextView!
+
+    
+    var currentSelectedAddress:b4u_AddressDetails?
+    
+    var comments:String?
+    
+    var delegate:deliveryViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.getData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,7 +42,27 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
         // Dispose of any resources that can be recreated.
     }
     
+    override func  viewWillAppear(animated: Bool) {
+     super.viewWillAppear(animated)
+        self.tableView.reloadData()
 
+    }
+
+    
+    
+    func getData()
+    {
+        
+        let userId = "1"
+        let params = "?user_id=\(userId)"
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kGetAddress, params:params, result:{(resultObject) -> Void in
+            
+            print("address Received")
+       
+            
+            self.tableView.reloadData()
+        })
+    }
     /*
     // MARK: - Navigation
 
@@ -85,12 +121,91 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! b4u_AddressTblCell
             
             cell.addAddressBtn.addTarget(self, action:"btnAddAddressSelected", forControlEvents:UIControlEvents.TouchUpInside)
+            
+            let address1Gesture = UITapGestureRecognizer(target:self, action:"address1Selected")
+            address1Gesture.numberOfTapsRequired = 1
+            cell.viewAddress1.addGestureRecognizer(address1Gesture)
+        
+            let address2Gesture = UITapGestureRecognizer(target:self, action:"address2Selected")
+            address2Gesture.numberOfTapsRequired = 1
+            cell.viewAddress2.addGestureRecognizer(address2Gesture)
+            
+            
+            
+            if bro4u_DataManager.sharedInstance.address.count > 0
+            {
+                cell.imgViewSelect?.image = UIImage(named:"shareGreen")
+
+                 if bro4u_DataManager.sharedInstance.address.count == 2
+                 {
+                    
+                    let addressDetailsModel:b4u_AddressDetails = bro4u_DataManager.sharedInstance.address[1]
+                    cell.viewAddress2.hidden = false
+                    
+                    cell.lblAddress2.text = addressDetailsModel.fullAddress!
+                    
+                    cell.addAddressBtn.enabled = false
+                    
+                    cell.btnDeleteAddress2.addTarget(self, action:"deleteAddress2", forControlEvents:.TouchUpInside)
+                    
+                    cell.viewAddress1.hidden = false
+                    let addressDetailsModel1:b4u_AddressDetails = bro4u_DataManager.sharedInstance.address[0]
+                    cell.lblAddress1.text = addressDetailsModel1.fullAddress!
+                    
+                    cell.btnDeleteAddress1.addTarget(self, action:"deleteAddress1", forControlEvents:.TouchUpInside)
+                    
+                    if self.currentSelectedAddress == addressDetailsModel
+                    {
+                        cell.imgViewSelecteAddress2.image = UIImage(named:"radioBlue")
+                        cell.imgViewSelectAddress1.image = UIImage(named:"radioGray")
+
+                    }else if self.currentSelectedAddress == addressDetailsModel1
+                    {
+                        cell.imgViewSelecteAddress2.image = UIImage(named:"radioGray")
+                        cell.imgViewSelectAddress1.image = UIImage(named:"radioBlue")
+                    }
+                    
+                 }else
+                 {
+                    cell.viewAddress1.hidden = false
+                    cell.viewAddress2.hidden = true
+                    let addressDetailsModel:b4u_AddressDetails = bro4u_DataManager.sharedInstance.address[0]
+                    cell.lblAddress1.text = addressDetailsModel.fullAddress!
+                    
+                    cell.btnDeleteAddress1.addTarget(self, action:"deleteAddress1", forControlEvents:.TouchUpInside)
+                    
+                    cell.addAddressBtn.enabled = true
+                    
+                    self.currentSelectedAddress = addressDetailsModel
+                    
+                    cell.imgViewSelectAddress1.image = UIImage(named:"radioBlue")
+                    
+
+                    //radioGray
+                }
+
+            }else
+            {
+                cell.viewAddress1.hidden = true
+                cell.viewAddress2.hidden = true
+                cell.addAddressBtn.enabled = true
+                
+                cell.imgViewSelect?.image = UIImage(named:"shareGray")
+
+
+            }
             return cell
             
         case 2 :
             let cellIdentifier = "commentsCell"
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! b4u_CommentTableViewCell
             
+           //  self.textViewComment = cell.textViewComment
+            
+              cell.textViewComment.delegate = self
+            
+         
+           
             return cell
             
         default:
@@ -119,7 +234,7 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
 
             
         case 2 :
-            return 50.0
+            return 100.0
 
             
         default:
@@ -133,6 +248,36 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
         
     }
     
+    
+    func address1Selected()
+    {
+        //let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow:0, inSection:1))
+        
+        self.currentSelectedAddress = bro4u_DataManager.sharedInstance.address[0]
+        
+        self.tableView.reloadData()
+    }
+   
+    func address2Selected()
+    {
+        self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow:0, inSection:1))
+        
+        self.currentSelectedAddress = bro4u_DataManager.sharedInstance.address[1]
+        self.tableView.reloadData()
+
+    }
+    
+    func deleteAddress2()
+    {
+        bro4u_DataManager.sharedInstance.address.removeAtIndex(1)
+        self.tableView.reloadData()
+    }
+    func deleteAddress1()
+    {
+        bro4u_DataManager.sharedInstance.address.removeAtIndex(0)
+        self.tableView.reloadData()
+
+    }
     func selectDate(sender: AnyObject)
     {
         
@@ -199,7 +344,9 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
         
 
     }
-    @IBAction func proceedToPaymetnBtnClicked(sender: AnyObject) {
+    @IBAction func proceedToPaymetnBtnClicked(sender: AnyObject)
+    {
+        self.delegate?.proceedToPayment()
     }
     
     
@@ -252,4 +399,45 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
         controller: UIPresentationController) -> UIModalPresentationStyle {
             return .None
     }
+    
+    
+    // MARK:  UITextView delegages
+    
+    
+    func textViewShouldBeginEditing(textView: UITextView) -> Bool
+    {
+        
+        return true
+    }
+    func textViewShouldEndEditing(textView: UITextView) -> Bool
+    {
+        return true
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        if textView.textColor == UIColor.lightGrayColor() {
+            textView.text = nil
+            textView.textColor = UIColor.blackColor()
+        }
+    }
+    func textViewDidEndEditing(textView: UITextView)
+    {
+        if textView.text.isEmpty {
+            textView.text = "Special Comments"
+            textView.textColor = UIColor.lightGrayColor()
+        }
+        textView.resignFirstResponder()
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool
+    {
+     
+            return true
+    }
+    
+    func textViewDidChange(textView: UITextView)
+    {
+        
+    }
+
 }

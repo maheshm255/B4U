@@ -8,7 +8,7 @@
 
 import UIKit
 
-class b4u_PaymentBaseViewController: UIViewController {
+class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate{
 
     @IBOutlet weak var viewSegmentCtrl: UIView!
     var segmentedControl:HMSegmentedControl?
@@ -156,7 +156,7 @@ class b4u_PaymentBaseViewController: UIViewController {
             let viewHeight = CGRectGetHeight(self.viewParent.frame)
             
             deliveryViewCtrl = self.storyboard?.instantiateViewControllerWithIdentifier("deliveryViewCtrl") as? b4u_DeliveryViewController
-            
+            deliveryViewCtrl?.delegate = self
             
             self.deliveryViewCtrl!.view.translatesAutoresizingMaskIntoConstraints = false
             
@@ -221,5 +221,14 @@ class b4u_PaymentBaseViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //MARKS: Delivery Delegate
+    
+    func proceedToPayment()
+    {
+        self.segmentedControl?.selectedSegmentIndex = 2
+
+        self.addPaymentViewControl()
+    }
 
 }

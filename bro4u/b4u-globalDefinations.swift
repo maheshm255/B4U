@@ -54,6 +54,8 @@ let kOTPlogin = "/index.php/my-account"
 
 let kSaveAddress = "/index.php/address/insert_address"
 
+//?user_id=5
+let kGetAddress = "index.php/address/view_all_address"
 
 
 //Rahul Added

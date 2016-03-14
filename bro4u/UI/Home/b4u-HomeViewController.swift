@@ -47,6 +47,8 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     }
 
     
+    
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         

@@ -108,7 +108,8 @@ class b4u_WebApiCallManager: NSObject {
           self.pasrseOfferZoneData(dataDict)
         case kReferAndEarnIndex:
           self.pasrseReferAndEarnData(dataDict)
-
+        case kGetAddress:
+            self.pasrseAddressData(dataDict)
         default:
             print(itemName)
         }
@@ -314,4 +315,19 @@ class b4u_WebApiCallManager: NSObject {
 
   }
 
+    func pasrseAddressData(dataDict:Dictionary<String, AnyObject>)
+    {
+        
+        if let addressDataDict:[Dictionary<String ,AnyObject>] = dataDict["addresses"] as? [Dictionary<String ,AnyObject>]
+        {
+            
+            for (_ ,dataDict) in addressDataDict.enumerate()
+            {
+                let addressModelObj = b4u_AddressDetails(addressDataDict:dataDict)
+                bro4u_DataManager.sharedInstance.address.append(addressModelObj)
+            }
+        }
+        
+        
+    }
 }

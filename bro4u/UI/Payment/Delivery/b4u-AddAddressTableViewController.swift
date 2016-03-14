@@ -54,6 +54,7 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
             }
             
         }
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -136,8 +137,7 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
         
         addressModel = b4u_AddressDetails()
         
-        
-        let user_id = "5"
+        let user_id = "1"
         let streetName = tfFullAddress.text
         let locality = tfCurrentPlace.text
         let cityId = "5"
@@ -150,8 +150,8 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
             email =  tfEmail.text!
         }
         
-        var latitude:String?
-        var longitude:String?
+        var latitude:String = "12.213"
+        var longitude:String = "66.234"
         if let  currentLocaiton = bro4u_DataManager.sharedInstance.currenLocation
         {
              latitude = "\(currentLocaiton.coordinate.latitude)"
@@ -171,7 +171,7 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
         addressModel?.curretPlace  = locality!
         
         
-        let params = "?user_id=\(user_id)&street_name=\(streetName!)&locality=\(locality!)&city_id=\(cityId)&name=\(name!)&latitude=\(latitude!)&longitude=\(longitude!)&mobile=\(mobile!)&email=\(email)"
+        let params = "?user_id=\(user_id)&street_name=\(streetName!)&locality=\(locality!)&city_id=\(cityId)&name=\(name!)&latitude=\(latitude)&longitude=\(longitude)&mobile=\(mobile!)&email=\(email)"
         
         b4u_WebApiCallManager.sharedInstance.getApiCall(kSaveAddress, params:params, result:{(resultObject) -> Void in
             
