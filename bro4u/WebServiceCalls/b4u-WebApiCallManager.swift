@@ -87,13 +87,13 @@ class b4u_WebApiCallManager: NSObject {
         case filterApi:
             self.parseCatalogAttributes(dataDict)
         case kTimeSlotApi:
-            self.parsTimeSlotData(dataDict)
+            self.parseTimeSlotData(dataDict)
         case kShowServicePatnerApi:
             self.parseServicePatnerData(dataDict)
         case kLocationSearchUrl:
             self.parseLocationSearchData(dataDict)
         case kMyAccountIndex:
-            self.pasrseUserDatails(dataDict)
+            self.pasrseAccountData(dataDict)
         case kMyOrdersIndex:
             self.pasrseMyOrdersData(dataDict)
         case kMyWalletIndex:
@@ -104,6 +104,11 @@ class b4u_WebApiCallManager: NSObject {
             self.pasrseNotificationData(dataDict)
         case kReOrderIndex:
             self.pasrseReOrderData(dataDict)
+        case kOfferZoneIndex:
+          self.pasrseOfferZoneData(dataDict)
+        case kReferAndEarnIndex:
+          self.pasrseReferAndEarnData(dataDict)
+
         default:
             print(itemName)
         }
@@ -167,7 +172,7 @@ class b4u_WebApiCallManager: NSObject {
         
     }
     
-    func parsTimeSlotData(dataDict:Dictionary<String, AnyObject>)
+    func parseTimeSlotData(dataDict:Dictionary<String, AnyObject>)
     {
         
        bro4u_DataManager.sharedInstance.timeSlots = b4u_TimeSlots(timeSlotArray:dataDict["timeslots"] as! [String])
@@ -200,11 +205,11 @@ class b4u_WebApiCallManager: NSObject {
         }
     }
     
-    func pasrseUserDatails(dataDict:Dictionary<String, AnyObject>)
+    func pasrseAccountData(dataDict:Dictionary<String, AnyObject>)
     {
         
         let userDetails:Dictionary<String,AnyObject> = dataDict["user_details"] as! Dictionary<String,AnyObject>
-        
+
         let myAccountDetailObj = b4u_MyAccountModel(dataDict:userDetails)
         
         bro4u_DataManager.sharedInstance.myAccountData = myAccountDetailObj
@@ -257,16 +262,7 @@ class b4u_WebApiCallManager: NSObject {
             let parentObj = b4u_MyWalletModel(dataDict: dataDict)
             bro4u_DataManager.sharedInstance.myWalletData.append(parentObj)
         }
-        //Need to check and Impliment
-//        let parentArray2:[Dictionary<String ,AnyObject>] = dataDict["wallet_balance"] as! [Dictionary<String ,AnyObject>]
-//        
-//        bro4u_DataManager.sharedInstance.myWalletData.removeAll()
-//        for (_ ,dataDict) in parentArray1.enumerate()
-//        {
-//            let parentObj = b4u_MyWalletModel(dataDict: dataDict)
-//            bro4u_DataManager.sharedInstance.myWalletData.append(parentObj)
-//        }
-
+        bro4u_DataManager.sharedInstance.walletBalanceData = dataDict["wallet_balance"] as? NSNumber
     }
     
     func pasrseMyInfoData(dataDict:Dictionary<String, AnyObject>)
@@ -294,5 +290,28 @@ class b4u_WebApiCallManager: NSObject {
             bro4u_DataManager.sharedInstance.notificationData.append(parentObj)
         }
     }
-    
+  
+    func pasrseOfferZoneData(dataDict:Dictionary<String, AnyObject>)
+    {
+      
+      let parentArray:[Dictionary<String ,AnyObject>] = dataDict["offers"] as! [Dictionary<String ,AnyObject>]
+      
+      bro4u_DataManager.sharedInstance.offerZoneData.removeAll()
+      for (_ ,dataDict) in parentArray.enumerate()
+      {
+        let parentObj = b4u_OfferZoneModel(dataDict: dataDict)
+        bro4u_DataManager.sharedInstance.offerZoneData.append(parentObj)
+      }
+    }
+
+  func pasrseReferAndEarnData(dataDict:Dictionary<String, AnyObject>)
+  {
+  
+    let parentDict:Dictionary<String ,AnyObject> = dataDict["referral_data"] as! Dictionary<String ,AnyObject>
+    let parentObj = b4u_ReferAndEarnModel(dataDict: parentDict)
+
+    bro4u_DataManager.sharedInstance.referAndEarnData = parentObj
+
+  }
+
 }

@@ -33,9 +33,9 @@ class b4u_NotificationViewController: UIViewController ,UITableViewDelegate,UITa
     
     func getData()
     {
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyInfoIndex, params:"", result:{(resultObject) -> Void in
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kOrderNotificationIndex, params:"", result:{(resultObject) -> Void in
             
-            print("My Info Data Received")
+            print("Notification Received")
             
             print(resultObject)
             

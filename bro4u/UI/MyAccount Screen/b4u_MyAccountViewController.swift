@@ -43,8 +43,6 @@ class b4u_MyAccountViewController: UIViewController {
             print(resultObject)
             
             self.updateUI()
-            
-            
         })
     }
     
@@ -102,7 +100,7 @@ class b4u_MyAccountViewController: UIViewController {
     
     cell.accountItemTitleLbl.text = dict.objectForKey("title") as? String//
     if(indexPath.section == 1){
-        cell.accountItemSubTitleLbl.text = "\(dict.objectForKey("subTitle")) \(walletBalanceValue)"
+        cell.accountItemSubTitleLbl.text = "\(dict.objectForKey("subTitle")!) \(walletBalanceValue)"
     }
     else{
         cell.accountItemSubTitleLbl.text = dict.objectForKey("subTitle") as? String //

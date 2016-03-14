@@ -26,7 +26,6 @@ class b4u_MyWalletModel: NSObject {
     activityType = dataDict["activity_type"] as? String
     comments = dataDict["comments"] as? String
     timestamp = dataDict["timestamp"] as? String
-    
   }
 
 }

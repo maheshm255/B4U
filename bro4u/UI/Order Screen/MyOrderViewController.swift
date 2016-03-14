@@ -143,4 +143,9 @@ class MyOrderViewController: UIViewController {
     return vw
   }
   
+  @IBAction func cancelBtnClicked(sender: AnyObject) {
+    self.dismissViewControllerAnimated(true, completion:nil)
+  }
+
+  
 }

@@ -10,26 +10,24 @@ import UIKit
 
 class b4u_OfferZoneModel: NSObject {
 
-  var banner:String?
-  var catIcon:String?
-  var interBanner:String?
-  var mainCatDesc:String?
-  var manCatName:String?
-  var manCatId:String?
-  var sortOrder:String?
-  var timeStamp:NSDate?
+  var couponCode:String?
+  var header:String?
+  var descriptionValue:String?
+  var catID:String?
+  var catName:String?
+  var optionID:String?
+  var fieldName:String?
   
   
-  init(categoryDataDict:Dictionary<String ,AnyObject>) {
+  init(dataDict:Dictionary<String ,AnyObject>) {
     
-    banner = categoryDataDict["banner"] as? String
-    catIcon = categoryDataDict["cat_icon"] as? String
-    interBanner = categoryDataDict["inter_banner"] as? String
-    mainCatDesc = categoryDataDict["main_cat_desc"] as? String
-    manCatName = categoryDataDict["main_cat_name"] as? String
-    manCatId = categoryDataDict["main_cat_id"] as? String
-    sortOrder = categoryDataDict["sort_order"] as? String
-    
+    couponCode = dataDict["coupon_code"] as? String
+    header = dataDict["header"] as? String
+    descriptionValue = dataDict["description"] as? String
+    catID = dataDict["cat_id"] as? String
+    catName = dataDict["cat_name"] as? String
+    optionID = dataDict["option_id"] as? String
+    fieldName = dataDict["field_name"] as? String
   }
 
 }

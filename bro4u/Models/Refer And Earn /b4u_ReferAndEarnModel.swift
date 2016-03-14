@@ -19,15 +19,15 @@ class b4u_ReferAndEarnModel: NSObject {
   var terms2:String?
   
   
-  init(categoryDataDict:Dictionary<String ,AnyObject>) {
+  init(dataDict:Dictionary<String ,AnyObject>) {
     
-    referralAmount = categoryDataDict["referral_amount"] as? NSNumber
-    offerAmount = categoryDataDict["offer_amount"] as? NSNumber
-    referralSettingID = categoryDataDict["referral_setting_id"] as? NSNumber
-    referralCode = categoryDataDict["referral_code"] as? NSNumber
-    totalEarned = categoryDataDict["total_earned"] as? NSNumber
-    terms1 = categoryDataDict["terms_1"] as? String
-    terms2 = categoryDataDict["terms_2"] as? String
+    referralAmount = dataDict["referral_amount"] as? NSNumber
+    offerAmount = dataDict["offer_amount"] as? NSNumber
+    referralSettingID = dataDict["referral_setting_id"] as? NSNumber
+    referralCode = dataDict["referral_code"] as? NSNumber
+    totalEarned = dataDict["total_earned"] as? NSNumber
+    terms1 = dataDict["terms_1"] as? String
+    terms2 = dataDict["terms_2"] as? String
     
   }
 
