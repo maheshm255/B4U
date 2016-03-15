@@ -24,7 +24,7 @@ class b4u_ReOrderModel: NSObject {
     var mobile:String?
     var paymentStatus:String?
     var serviceAddress:String?
-    var serviceDate:NSNumber?
+    var serviceDate:String?
     var statusDesc:String?
     var timestamp:String?
     var serviceTime:String?
@@ -36,9 +36,9 @@ class b4u_ReOrderModel: NSObject {
     var profilePic:String?
     var priorDays:NSNumber?
     var actualPrice:NSNumber?
-    var vendorEmail:NSString?
+    var vendorEmail:String?
     var vendorID:NSNumber?
-    var itemName:NSString?
+    var itemName:String?
     var subTotal:NSNumber?
     var metaItemReOrder:[b4u_ReOrder_MetaItemModel]?
     var SelectionReorder:[b4u_ReorderSelectionModel]?
@@ -59,7 +59,7 @@ class b4u_ReOrderModel: NSObject {
         mobile = dataDict["mobile"] as? String
         paymentStatus = dataDict["payment_status"] as? String
         serviceAddress = dataDict["service_address"] as? String
-        serviceDate = dataDict["service_date"] as? NSNumber
+        serviceDate = dataDict["service_date"] as? String
         statusDesc = dataDict["status_desc"] as? String
         timestamp = dataDict["timestamp"] as? String
         serviceTime = dataDict["service_time"] as? String
@@ -71,7 +71,7 @@ class b4u_ReOrderModel: NSObject {
         profilePic = dataDict["profile_pic"] as? String
         priorDays = dataDict["prior_days"] as? NSNumber
         actualPrice = dataDict["actual_price"] as? NSNumber
-        vendorEmail = dataDict["vendor_email"] as? NSString
+        vendorEmail = dataDict["vendor_email"] as? String
         vendorID = dataDict["vendor_id"] as? NSNumber
         itemName = dataDict["item_name"] as? String
         subTotal = dataDict["sub_total"] as? NSNumber

@@ -98,7 +98,7 @@ let kAboutUsIndex = "index.php/page/about"
 let kReOrderIndex = "index.php/order/re_orders?user_id=1"
 
 //Reorder Delete
-let kReOrderDeleteIndex = "index.php/order/thrash_reorder/13555"
+let kReOrderDeleteIndex = "index.php/order/thrash_reorder"
 
 
 //ReSchedule Order
