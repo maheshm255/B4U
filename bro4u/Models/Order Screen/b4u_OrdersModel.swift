@@ -23,7 +23,7 @@ class b4u_OrdersModel: NSObject {
     var paymentStatus:String?
     var serviceAddress:String?
     var priorDays:NSNumber?
-    var serviceDate:NSNumber?
+    var serviceDate:String?
     var profilePic:String?
     var timestamp:String?
     var serviceTime:String?
@@ -36,14 +36,15 @@ class b4u_OrdersModel: NSObject {
     var vendorName:String?
     var vendorMobile:String?
     var vendorEmail:String?
-    var vendorID:NSNumber?
+    var vendorID:String?
     var statusUpdated:String?
     var onGoing:String?
     var actualPrice:NSNumber?
     var offerPrice:NSNumber?
     var finalTotal:NSNumber?
     var statusNumber:NSNumber?
-    var metaItemReOrder:b4u_ReOrder_MetaItemModel?
+    var metaItemReOrder:[b4u_ReOrder_MetaItemModel]?
+
     
     
     init(dataDict:Dictionary<String ,AnyObject>) {
@@ -61,7 +62,7 @@ class b4u_OrdersModel: NSObject {
         paymentStatus = dataDict["payment_status"] as? String
         serviceAddress = dataDict["service_address"] as? String
         priorDays = dataDict["prior_days"] as? NSNumber
-        serviceDate = dataDict["service_date"] as? NSNumber
+        serviceDate = dataDict["service_date"] as? String
         profilePic = dataDict["profile_pic"] as? String
         timestamp = dataDict["timestamp"] as? String
         serviceTime = dataDict["service_time"] as? String
@@ -74,14 +75,27 @@ class b4u_OrdersModel: NSObject {
         vendorName = dataDict["vendor_name"] as? String
         vendorMobile = dataDict["vendor_mobile"] as? String
         vendorEmail = dataDict["vendor_email"] as? String
-        vendorID = dataDict["vendor_id"] as? NSNumber
+        vendorID = dataDict["vendor_id"] as? String
         statusUpdated = dataDict["status_updated"] as? String
         onGoing = dataDict["on_going"] as? String
         actualPrice = dataDict["actual_price"] as? NSNumber
         offerPrice = dataDict["offer_price"] as? NSNumber
         finalTotal = dataDict["final_total"] as? NSNumber
         statusNumber = dataDict["status_number"] as? NSNumber
-        metaItemReOrder = dataDict["item_meta"] as? b4u_ReOrder_MetaItemModel
+        
+        self.metaItemReOrder = Array()
+        
+        if let itemDartaArray:[Dictionary<String ,AnyObject>] = dataDict["item_meta"] as? [Dictionary<String ,AnyObject>]
+        {
+            for (_ ,orderItemDataDict) in itemDartaArray.enumerate()
+            {
+                let reOrderModel = b4u_ReOrder_MetaItemModel(dataDict:orderItemDataDict)
+                self.metaItemReOrder?.append(reOrderModel)
+            }
+            
+        }
+
+       
     }
 
 }

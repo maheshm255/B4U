@@ -28,57 +28,35 @@ class MyWalletViewController: UIViewController {
         self.getData()
         
       }
-      
-      func getData()
-      {
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyWalletIndex, params:"", result:{(resultObject) -> Void in
-          
-          print("Wallet Data Received")
-          
-          print(resultObject)
-          
-          self.congigureUI()
-          
-          
-        })
-      }
-      
-      
-      func congigureUI()
-      {
-        indicatorcolor=UIView();
+    
+    func getData()
+    {
+
+      if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
         
-        for (_ , mainData) in bro4u_DataManager.sharedInstance.myWalletData.enumerate()
-        {
-          
-          
-          if let filteredData = self.filterContent(mainData)
-          {
-            
-            let vc =  self.storyboard?.instantiateViewControllerWithIdentifier("MyWalletViewControllerID") as! MyWalletViewController
-            
-            vc.myModelArr = filteredData
-          }
-        }
+        var filedName = loginInfoData.userId! //Need to use later
         
-      }
-      
-      //Need to Implement
-      private func filterContent(mainModelObj:b4u_MyWalletModel) -> [b4u_MyWalletModel]?
-      {
-        let filteredItems:[b4u_MyWalletModel]?
-        if bro4u_DataManager.sharedInstance.myWalletData.count > 0
-        {
-          
-          return nil
-          
-        }else
-        {
-          return nil
-        }
-        
-        
-      }
+       }
+    
+    
+    let params = "?user_id=\(1)"
+    b4u_WebApiCallManager.sharedInstance.getApiCall(kMyWalletIndex , params:params, result:{(resultObject) -> Void in
+    
+    print(" Wallet Balance Data Received")
+    
+    print(resultObject)
+    
+    self.congigureUI()
+    
+    })
+    
+    
+   }
+
+    func congigureUI()
+    {
+
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

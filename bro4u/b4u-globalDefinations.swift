@@ -8,6 +8,12 @@
 
 import Foundation
 
+
+enum orderTypes
+{
+    case kOnGoingOrders
+    case kCompetedOrders
+}
 //Base URL
 let b4uBaseUrl:String = "http://v2.20160301.testing.bro4u.com/api_v2/"
 
@@ -81,15 +87,15 @@ let kMyAccountUpdateProfileIndex = "index.php/my_account/update_user_account?use
 let kOfferZoneIndex = "index.php/coupon/offer_zone?device_id=kdsflasdf&user_id=1"
 
 //My Orders
-let kMyOrdersIndex = "index.php/order/my_orders?user_id=1"
+let kMyOrdersIndex = "index.php/order/my_orders"
 
 //Refer And Earn
-let kReferAndEarnIndex = "index.php/referral/fetch_referral_settings?user_id=1"
+let kReferAndEarnIndex = "index.php/referral/fetch_referral_settings"
 
 let kOrderConfirmedIndex = "index.php/categories/catAttr"
 
 //Notification Window
-let kOrderNotificationIndex = "index.php/my_account/get_notifications?device_id=asdkfi&user_id=1626"
+let kOrderNotificationIndex = "index.php/my_account/get_notifications"
 
 //About Us Window
 let kAboutUsIndex = "index.php/page/about"
@@ -108,7 +114,9 @@ let kReScheduleOrderIndex = "index.php/order/reschedule_order?order_id=23810&use
 let kReScheduleOrderTimeSlotIndex = "index.php/order/preferred_time?vendor_id=87&item_id=1710&date=2015-10-5"
 
 //Cancel Order
-let kCancelOrderIndex = "index.php/order/cancel_order?order_id=14348&user_id=1626&vendor_id=132&cancel_message=test+message"
+
+//order_id=14348&user_id=1626&vendor_id=132&cancel_message=test+message
+let kCancelOrderIndex = "index.php/order/cancel_order"
 
 //
 

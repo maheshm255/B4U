@@ -24,4 +24,16 @@ class b4u_NotificationTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func configureData(notificationDataModel:b4u_NotificationModel)
+    {
+        if let notificationTxt = notificationDataModel.notifyDesc
+        {
+            self.notificationTxtLbl.text = notificationTxt
+        }
+        if let dateTime = notificationDataModel.timestamp
+        {
+            self.dateTimeLbl.text = dateTime
+        }
+    }
+
 }

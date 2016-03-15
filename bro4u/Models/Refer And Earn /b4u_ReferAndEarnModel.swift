@@ -10,10 +10,10 @@ import UIKit
 
 class b4u_ReferAndEarnModel: NSObject {
 
-  var referralAmount:NSNumber?
-  var offerAmount:NSNumber?
-  var referralSettingID:NSNumber?
-  var referralCode:NSNumber?
+  var referralAmount:String?
+  var offerAmount:String?
+  var referralSettingID:String?
+  var referralCode:String?
   var totalEarned:NSNumber?
   var terms1:String?
   var terms2:String?
@@ -21,10 +21,10 @@ class b4u_ReferAndEarnModel: NSObject {
   
   init(dataDict:Dictionary<String ,AnyObject>) {
     
-    referralAmount = dataDict["referral_amount"] as? NSNumber
-    offerAmount = dataDict["offer_amount"] as? NSNumber
-    referralSettingID = dataDict["referral_setting_id"] as? NSNumber
-    referralCode = dataDict["referral_code"] as? NSNumber
+    referralAmount = dataDict["referral_amount"] as? String
+    offerAmount = dataDict["offer_amount"] as? String
+    referralSettingID = dataDict["referral_setting_id"] as? String
+    referralCode = dataDict["referral_code"] as? String
     totalEarned = dataDict["total_earned"] as? NSNumber
     terms1 = dataDict["terms_1"] as? String
     terms2 = dataDict["terms_2"] as? String
