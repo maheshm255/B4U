@@ -217,6 +217,8 @@
 		B34EAD961C929A5900FCB0F5 /* b4u_NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD951C929A5900FCB0F5 /* b4u_NotificationModel.swift */; };
 		B34EAD981C929EA000FCB0F5 /* b4u_NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD971C929EA000FCB0F5 /* b4u_NotificationTableViewCell.swift */; };
 		B34EAD9A1C92CBB600FCB0F5 /* b4u_MyAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD991C92CBB600FCB0F5 /* b4u_MyAccountModel.swift */; };
+		B701BBBF1C98845F0095FEF1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B701BBBE1C98845F0095FEF1 /* MBProgressHUD.m */; };
+		B701BBC21C9884A80095FEF1 /* b4u_AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B701BBC11C9884A80095FEF1 /* b4u_AboutUsViewController.swift */; };
 		B71C28581C8C0C0C00873B5C /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C28481C8C0C0C00873B5C /* MyInfoViewController.swift */; };
 		B71C28591C8C0C0C00873B5C /* MyWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C284A1C8C0C0C00873B5C /* MyWalletViewController.swift */; };
 		B71C285A1C8C0C0C00873B5C /* MyAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C284B1C8C0C0C00873B5C /* MyAccountTableViewCell.swift */; };
@@ -547,6 +549,9 @@
 		B34EAD951C929A5900FCB0F5 /* b4u_NotificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_NotificationModel.swift; sourceTree = "<group>"; };
 		B34EAD971C929EA000FCB0F5 /* b4u_NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		B34EAD991C92CBB600FCB0F5 /* b4u_MyAccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = b4u_MyAccountModel.swift; path = "bro4u/Models/My Account/b4u_MyAccountModel.swift"; sourceTree = SOURCE_ROOT; };
+		B701BBBD1C98845F0095FEF1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		B701BBBE1C98845F0095FEF1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		B701BBC11C9884A80095FEF1 /* b4u_AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_AboutUsViewController.swift; sourceTree = "<group>"; };
 		B71C28481C8C0C0C00873B5C /* MyInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
 		B71C284A1C8C0C0C00873B5C /* MyWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWalletViewController.swift; sourceTree = "<group>"; };
 		B71C284B1C8C0C0C00873B5C /* MyAccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTableViewCell.swift; sourceTree = "<group>"; };
@@ -1028,6 +1033,7 @@
 		65B18A4F1C70BB28000EDD00 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				B701BBBC1C98845F0095FEF1 /* Progress Indicator */,
 				042700141C8B37B6008440CC /* Calander */,
 				65271E601C831B1E0022C888 /* Paytm */,
 				65271E6A1C831B1E0022C888 /* PayUmoney */,
@@ -1111,6 +1117,7 @@
 		65DE76D61C7780BD00017F96 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B701BBC01C98847A0095FEF1 /* About Us */,
 				04E07A571C901961009AD223 /* Login */,
 				04E0C4421C8C70E6006450D1 /* Location */,
 				B71C28461C8C0C0C00873B5C /* MyAccount Screen */,
@@ -1316,6 +1323,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B701BBBC1C98845F0095FEF1 /* Progress Indicator */ = {
+			isa = PBXGroup;
+			children = (
+				B701BBBD1C98845F0095FEF1 /* MBProgressHUD.h */,
+				B701BBBE1C98845F0095FEF1 /* MBProgressHUD.m */,
+			);
+			path = "Progress Indicator";
+			sourceTree = "<group>";
+		};
+		B701BBC01C98847A0095FEF1 /* About Us */ = {
+			isa = PBXGroup;
+			children = (
+				B701BBC11C9884A80095FEF1 /* b4u_AboutUsViewController.swift */,
+			);
+			path = "About Us";
+			sourceTree = "<group>";
+		};
 		B71C28461C8C0C0C00873B5C /* MyAccount Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -1347,8 +1371,8 @@
 		B71C284D1C8C0C0C00873B5C /* OfferZone */ = {
 			isa = PBXGroup;
 			children = (
-				B71C284E1C8C0C0C00873B5C /* OfferZoneTableViewCell.swift */,
 				B71C284F1C8C0C0C00873B5C /* OfferZoneViewController.swift */,
+				B71C284E1C8C0C0C00873B5C /* OfferZoneTableViewCell.swift */,
 			);
 			path = OfferZone;
 			sourceTree = "<group>";
@@ -1603,6 +1627,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B34EAD901C9298DC00FCB0F5 /* b4u_OrderConfirmedModel.swift in Sources */,
+				B701BBC21C9884A80095FEF1 /* b4u_AboutUsViewController.swift in Sources */,
 				65F8B43C1C70BECD00D158FA /* b4u-Utility.swift in Sources */,
 				65B18A8C1C70BB28000EDD00 /* UIProgressView+AFNetworking.m in Sources */,
 				B34EAD8C1C92989C00FCB0F5 /* b4u_OrdersModel.swift in Sources */,
@@ -1627,6 +1652,7 @@
 				65DE76E91C77847A00017F96 /* b4u-CategoryTblViewCtrl.swift in Sources */,
 				65271E4E1C828F5E0022C888 /* b4u-CategoryTblViewCtrl1.swift in Sources */,
 				65B18A7E1C70BB28000EDD00 /* AFHTTPSessionManager.m in Sources */,
+				B701BBBF1C98845F0095FEF1 /* MBProgressHUD.m in Sources */,
 				65B189BB1C6E6020000EDD00 /* Category+CoreDataProperties.swift in Sources */,
 				65DE79701C7A07C900017F96 /* b4u-CatFilterAttributes.swift in Sources */,
 				B720379F1C93BE3200C1FF50 /* b4u_ReOrderTableViewCell.swift in Sources */,

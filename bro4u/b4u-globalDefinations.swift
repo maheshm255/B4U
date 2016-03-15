@@ -21,6 +21,11 @@ let b4uBaseUrl:String = "http://v2.20160301.testing.bro4u.com/api_v2/"
 
 let kLocationSearchUrl = "https://maps.googleapis.com/maps/api/place/autocomplete/json?radius=50&components=country:Ind&sensor=false&key=AIzaSyBSW-tlNvpkH2NiXl17nxIfXqIv27oZNKs"
 
+
+// About US URL
+
+let kAboutUsUrl = "http://v2.20160301.testing.bro4u.com/api_v2/index.php/page/about"
+
 // REST APIS FUNCTIONS
 
 let kHomeSCategory = "index.php/home_screen/home_banner"
