@@ -12,7 +12,7 @@ class ReferAndEarnViewController: UIViewController {
 
   @IBOutlet var codeShareLbl: UILabel!
   @IBOutlet var shareTextLbl: UILabel!
-  
+    
   @IBAction func TAndCAction(sender: AnyObject) {
   }
   
@@ -24,35 +24,38 @@ class ReferAndEarnViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
         self.getData()
         
     }
     
     func getData()
     {
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kReferAndEarnIndex, params:"", result:{(resultObject) -> Void in
+        if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+            
+            var filedName = loginInfoData.userId! //Need to use later
+
+        }
+        
+        
+        let params = "?user_id=\(1)"
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kReferAndEarnIndex , params:params, result:{(resultObject) -> Void in
             
             print(" Refer And Earn Data Received")
             
             print(resultObject)
             
             self.congigureUI()
-            
-            
+
         })
-    }
-    
-    
-    
-    
+
+        
+     }
     
     func congigureUI()
     {
-        if let referAndEarnDetails = bro4u_DataManager.sharedInstance.referAndEarnData
+        if let referAndEarnData = bro4u_DataManager.sharedInstance.referAndEarnData
         {
-//            self.codeShareLbl.text = "\( referAndEarnDetails.walletBalance!)"
-//            self.shareTextLbl.text = referAndEarnDetails.fullName
+            shareTextLbl.text = "Share this code to gift your friend Rs. \(referAndEarnData.offerAmount!) and you earn Rs. \(referAndEarnData.referralAmount!) on their first service experience. Keep refering to earn a lot of free service"
         }
     }
 

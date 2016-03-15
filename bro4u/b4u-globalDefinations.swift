@@ -87,10 +87,10 @@ let kMyAccountUpdateProfileIndex = "index.php/my_account/update_user_account?use
 let kOfferZoneIndex = "index.php/coupon/offer_zone?device_id=kdsflasdf&user_id=1"
 
 //My Orders
-let kMyOrdersIndex = "index.php/order/my_orders?user_id=1"
+let kMyOrdersIndex = "index.php/order/my_orders"
 
 //Refer And Earn
-let kReferAndEarnIndex = "index.php/referral/fetch_referral_settings?user_id=1"
+let kReferAndEarnIndex = "index.php/referral/fetch_referral_settings"
 
 let kOrderConfirmedIndex = "index.php/categories/catAttr"
 

@@ -26,14 +26,20 @@ class MyOrderViewController: UIViewController {
     
     func getData()
     {
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyOrdersIndex, params:"", result:{(resultObject) -> Void in
+        if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
             
-            print("My Order Data Received")
+            var filedName = loginInfoData.userId! //Need to use later
+            
+        }
+        
+        let params = "?user_id=\(1)"
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyOrdersIndex , params:params, result:{(resultObject) -> Void in
+            
+            print(" Orders Data Received")
             
             print(resultObject)
             
             self.congigureUI()
-            
             
         })
     }
