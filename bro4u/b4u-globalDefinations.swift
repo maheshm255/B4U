@@ -8,6 +8,12 @@
 
 import Foundation
 
+
+enum orderTypes
+{
+    case kOnGoingOrders
+    case kCompetedOrders
+}
 //Base URL
 let b4uBaseUrl:String = "http://v2.20160301.testing.bro4u.com/api_v2/"
 
@@ -108,7 +114,9 @@ let kReScheduleOrderIndex = "index.php/order/reschedule_order?order_id=23810&use
 let kReScheduleOrderTimeSlotIndex = "index.php/order/preferred_time?vendor_id=87&item_id=1710&date=2015-10-5"
 
 //Cancel Order
-let kCancelOrderIndex = "index.php/order/cancel_order?order_id=14348&user_id=1626&vendor_id=132&cancel_message=test+message"
+
+//order_id=14348&user_id=1626&vendor_id=132&cancel_message=test+message
+let kCancelOrderIndex = "index.php/order/cancel_order"
 
 //
 

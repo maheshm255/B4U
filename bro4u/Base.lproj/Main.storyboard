@@ -4042,7 +4042,7 @@
                                                         <action selector="rescheduledBtnAction:" destination="GUK-Si-YaO" eventType="touchUpInside" id="rv0-VN-BRb"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bro4ULogo" translatesAutoresizingMaskIntoConstraints="NO" id="yHu-Oq-ghq">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bro4ULogo" translatesAutoresizingMaskIntoConstraints="NO" id="yHu-Oq-ghq" userLabel="Vendor Image View">
                                                     <rect key="frame" x="21" y="19" width="70" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="fB3-dd-Qi1"/>
@@ -4252,7 +4252,7 @@
                                             <outlet property="subTitleLbl" destination="BaO-bb-DTN" id="VI7-jf-VYJ"/>
                                             <outlet property="tiltleLbl" destination="6G6-iZ-BFV" id="7as-It-RTs"/>
                                             <outlet property="timeSlotLbl" destination="8lY-EK-i4L" id="dqP-pG-w9w"/>
-                                            <outlet property="userImageView" destination="yHu-Oq-ghq" id="ILZ-qW-izL"/>
+                                            <outlet property="vendorImageView" destination="yHu-Oq-ghq" id="fmq-rU-Y3X"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PastOrdersTableViewCellID" rowHeight="186" id="XgN-w3-kga" customClass="PastOrdersTableViewCell" customModule="bro4u">
@@ -4321,7 +4321,7 @@
                                                     <color key="textColor" red="0.23137254900000001" green="0.74117647060000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bro4ULogo" translatesAutoresizingMaskIntoConstraints="NO" id="y6C-tR-keZ">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bro4ULogo" translatesAutoresizingMaskIntoConstraints="NO" id="y6C-tR-keZ" userLabel="Vendor Image View">
                                                     <rect key="frame" x="21" y="19" width="75" height="75"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="75" id="A1O-Na-Wew"/>
@@ -4409,7 +4409,7 @@
                                             <outlet property="subTitleLbl" destination="Xta-1Q-62n" id="tQL-O7-5Kk"/>
                                             <outlet property="timeSlotLbl" destination="gMo-i6-nWf" id="lVr-d8-23D"/>
                                             <outlet property="titleLbl" destination="4vR-Om-dJ6" id="WJd-ho-46P"/>
-                                            <outlet property="userImageView" destination="y6C-tR-keZ" id="keK-jP-qhE"/>
+                                            <outlet property="vendorImageView" destination="y6C-tR-keZ" id="8yL-FS-gmo"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -4436,6 +4436,9 @@
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
+                    <connections>
+                        <outlet property="orderTableView" destination="lC1-nr-5f8" id="yfm-bZ-ytg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ij3-Mh-JxE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

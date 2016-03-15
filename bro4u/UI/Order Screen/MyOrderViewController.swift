@@ -10,9 +10,11 @@ import UIKit
 
 class MyOrderViewController: UIViewController {
 
+    @IBOutlet weak var orderTableView: UITableView!
   
-    var myOrderModelArr:[b4u_MyInfoModel] = Array()
-
+    var onGoingOrderArray:[b4u_OrdersModel]?
+    var pastOrdersArray:[b4u_OrdersModel]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,61 +42,113 @@ class MyOrderViewController: UIViewController {
     func congigureUI()
     {
         
-     
+        self.onGoingOrderArray = self.filterContent("Completed", orderType:orderTypes.kOnGoingOrders)
+
+        self.pastOrdersArray = self.filterContent("Completed", orderType:orderTypes.kCompetedOrders)
+
+     //   self.onGoingOrderArray = self.filterContent("Completed", scope:"")
+        
+        print(onGoingOrderArray)
+        orderTableView.reloadData()
         
     }
     
+    private func filterContent(searchText:String , orderType:orderTypes)->[b4u_OrdersModel]?
+        
+    {
+        let allOreders =  bro4u_DataManager.sharedInstance.orderData
+        
+        var filteredItems:[b4u_OrdersModel]?
+        if ( allOreders.count > 0)
+        {
+            
+            filteredItems =   allOreders.filter({m in
+                
+                if let orderDesc = m.statusDesc
+                    
+                {
+                    switch orderType
+                    {
+                    case .kOnGoingOrders:
+                        return orderDesc.contains(searchText)
+                    case .kCompetedOrders:
+                        return !orderDesc.contains(searchText)
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+                    }
+                    
+                }else
+                    
+                {
+                    return false
+                }
+                
+            })
+            
+        }
+        
+        return filteredItems
     }
     
+    
+    override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+    // Dispose of any resources that can be recreated.
+}
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-  
-  //Tableview Data Source
-  
+/*
+// MARK: - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+// Get the new view controller using segue.destinationViewController.
+// Pass the selected object to the new view controller.
+}
+*/
+
+//Tableview Data Source
+
   func numberOfSectionsInTableView(tableView: UITableView) -> Int
   {
     return 2
   }
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
   {
-    return 1
+    if section == 0 && self.onGoingOrderArray?.count>0 {
+        return (self.onGoingOrderArray?.count)!
+
+    }
+    else if section == 1 && self.pastOrdersArray?.count>0{
+        return (self.pastOrdersArray?.count)!
+    }
+    
+    return 0
   }
   
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
   {
     var cellIdentifier = ""
-    var cell  = UITableViewCell()
-
-    if indexPath.row == 0 && indexPath.section == 0
-    {
-//       cell = OngoingOrdersTableViewCell()
-      cellIdentifier = "OngoingOrdersTableViewCellID"
-      cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! OngoingOrdersTableViewCell
-
-    }
-    else if indexPath.row == 0 && indexPath.section == 1
-    {
-//        cell = PastOrdersTableViewCell()
-      cellIdentifier = "PastOrdersTableViewCellID"
-      cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PastOrdersTableViewCell
-    }
-
+    let reOrderModel:b4u_OrdersModel?
     
+    if indexPath.section == 0
+    {
+      cellIdentifier = "OngoingOrdersTableViewCellID"
+      let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! OngoingOrdersTableViewCell
+    
+      cell.configureData(self.onGoingOrderArray![indexPath.row])
 
-    return cell
+      return cell
+    }
+    else{
+        cellIdentifier = "PastOrdersTableViewCellID"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PastOrdersTableViewCell
+        
+        cell.configureData(self.pastOrdersArray![indexPath.row])
+
+        return cell
+
+    }
   }
   
   
@@ -112,6 +166,8 @@ class MyOrderViewController: UIViewController {
         
         return 0
     }
+    
+    
 
 //  func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 //    let  headerCell = tableView.dequeueReusableCellWithIdentifier("OngoingOrdersTableViewCellID") as! OngoingOrdersTableViewCell
