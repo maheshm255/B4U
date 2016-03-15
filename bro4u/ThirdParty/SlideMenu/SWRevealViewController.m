@@ -95,6 +95,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
         [self reloadShadow];
 
         [self addSubview:_frontView];
+        
     }
     return self;
 }
@@ -741,6 +742,11 @@ const int FrontViewPositionNone = 0xff;
     [self _setFrontViewPosition:initialPosition withDuration:0.0];
 }
 
+ - (void)viewDidLoad
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushCategroyScreen:) name:@"categoryScreenPush" object:nil];
+
+}
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -953,6 +959,11 @@ const int FrontViewPositionNone = 0xff;
     [self revealToggleAnimated:YES];
 }
 
+- (void)pushCategroyScreen:(NSNotification *)notification
+{
+    [self revealToggleAnimated:YES];
+
+}
 
 - (IBAction)rightRevealToggle:(id)sender
 {    

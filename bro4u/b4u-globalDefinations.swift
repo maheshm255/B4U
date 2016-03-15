@@ -114,4 +114,8 @@ let kCancelOrderIndex = "index.php/order/cancel_order?order_id=14348&user_id=162
 
 
 
+// Notification 
+
+let kPushServicesScreen = "categoryScreenPush"
+
 

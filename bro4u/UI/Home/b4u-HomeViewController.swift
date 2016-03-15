@@ -22,6 +22,8 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
 
         // Do any additional setup after loading the view.
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"pushCategoryScreen", name:kPushServicesScreen, object: nil)
+
        
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -33,6 +35,8 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
             BtnRightMenu.action = "rightRevealToggle:"
             
             //self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            
+
         }
         
         self.revealViewController().rearViewRevealWidth = 108
@@ -161,6 +165,7 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         }
         
         let totalImage = bro4u_DataManager.sharedInstance.sliderImages.count
+        
         self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.width * CGFloat(totalImage), self.scrollView.frame.height)
         self.scrollView.delegate = self
         self.pageControl.currentPage = 0
@@ -197,8 +202,10 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     func moveToNextPage (){
         
         // Move to next page
+        let totalImage = bro4u_DataManager.sharedInstance.sliderImages.count
+
         let pageWidth:CGFloat = CGRectGetWidth(self.scrollView.frame)
-        let maxWidth:CGFloat = pageWidth * 4
+        let maxWidth:CGFloat = pageWidth * CGFloat(totalImage)
         let contentOffset:CGFloat = self.scrollView.contentOffset.x
         
         var slideToX = contentOffset + pageWidth
@@ -255,5 +262,11 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     @IBAction func locationBtnSelected(sender: AnyObject)
     {
         self.performSegueWithIdentifier("locationCtrlSegue", sender:nil)
+    }
+    
+    
+    func pushCategoryScreen()
+    {
+        self.performSegueWithIdentifier("categoryScreenSegue", sender:nil)
     }
 }

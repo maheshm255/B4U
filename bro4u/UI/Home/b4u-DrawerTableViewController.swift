@@ -82,7 +82,7 @@ class b4u_DrawerTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -90,6 +90,15 @@ class b4u_DrawerTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+
+    
+    override  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        if indexPath.row == 1
+        {
+            NSNotificationCenter.defaultCenter().postNotificationName(kPushServicesScreen, object:nil)
+            
+        }
+    }
 
 }
