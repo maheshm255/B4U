@@ -29,6 +29,10 @@ class b4u_LoginViewCtrl: UIViewController ,GIDSignInDelegate,GIDSignInUIDelegate
         
         GIDSignIn.sharedInstance().uiDelegate = self
 
+        
+      //  GIDSignIn.sharedInstance().signOut()
+        
+        
         FBSDKSettings.setAppID("194765280880394")
     }
     @IBOutlet weak var btnOTPLogin: UIButton!
@@ -76,9 +80,10 @@ class b4u_LoginViewCtrl: UIViewController ,GIDSignInDelegate,GIDSignInUIDelegate
                     {
                         self.tfEnerMobileNumber.placeholder = "Enter OTP Received"
                         self.tfEnerMobileNumber.tag = 2
+                        self.tfEnerMobileNumber.text = ""
                     }else
                     {
-                        
+                        print("Fail to generate OPT")
                     }
                     
                 })
@@ -89,7 +94,24 @@ class b4u_LoginViewCtrl: UIViewController ,GIDSignInDelegate,GIDSignInUIDelegate
             
         }else if self.tfEnerMobileNumber.tag == 2
         {
-            
+            if let userEnterOTP = self.tfEnerMobileNumber.text ,loginInfo = bro4u_DataManager.sharedInstance.loginInfo
+            {
+                
+                if userEnterOTP == loginInfo.otp!
+                {
+                   print("Login Success")
+                    
+                    NSUserDefaults.standardUserDefaults().setBool(true, forKey:"isUserLogined")
+                    
+                    self.dismissViewControllerAnimated(true, completion:nil)
+                }
+                else
+                {
+                    print("Wrong OTP Entered")
+                    NSUserDefaults.standardUserDefaults().setBool(true, forKey:"False")
+
+                }
+            }
         }
         
     }
@@ -99,13 +121,27 @@ class b4u_LoginViewCtrl: UIViewController ,GIDSignInDelegate,GIDSignInUIDelegate
         withError error: NSError!) {
             if (error == nil) {
                 // Perform any operations on signed in user here.
-                let userId = user.userID                  // For client-side use only!
-                let idToken = user.authentication.idToken // Safe to send to the server
-                let name = user.profile.name
-                let email = user.profile.email
+                
+                
+                let loginInfoObj = b4u_LoginInfo()
+                
+                loginInfoObj.userId = user.userID
+                loginInfoObj.googleAuthToken = user.authentication.idToken
+                loginInfoObj.fullName = user.profile.name
+                loginInfoObj.email = user.profile.email
+                loginInfoObj.loginType = "googleSignIn"
+                
+                bro4u_DataManager.sharedInstance.loginInfo = loginInfoObj
+                
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey:"isUserLogined")
+                self.dismissViewControllerAnimated(true, completion:nil)
+
                 // ...
             } else {
                 
+                bro4u_DataManager.sharedInstance.loginInfo = nil
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey:"False")
+
             }
     }
     

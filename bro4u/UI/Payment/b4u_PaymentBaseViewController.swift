@@ -68,7 +68,10 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate{
         
       self.viewSegmentCtrl.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[view]|", options:[], metrics: nil, views: ["view":self.segmentedControl!]))
         
-        self.configureSegmentDefaultIndex(true)  //TODO - integrate with user login functunality
+        let hasLoggedInd:Bool = NSUserDefaults.standardUserDefaults().boolForKey("isUserLogined")
+     
+    
+        self.configureSegmentDefaultIndex(hasLoggedInd)
     }
     
     

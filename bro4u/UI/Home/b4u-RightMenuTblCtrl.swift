@@ -21,6 +21,20 @@ class b4u_RightMenuTblCtrl: UITableViewController {
 //        NSString *phoneNumber = [@"tel://" stringByAppendingString:mymobileNO.titleLabel.text];
 //        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
     }
+    
+    @IBOutlet weak var lblLogin: UILabel!
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+       
+        let hasLoggedInd:Bool = NSUserDefaults.standardUserDefaults().boolForKey("isUserLogined")
+        if hasLoggedInd
+        {
+            lblLogin.text = "Logout"
+        }else
+        {
+            lblLogin.text = "Login"
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -84,7 +98,7 @@ class b4u_RightMenuTblCtrl: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -92,7 +106,7 @@ class b4u_RightMenuTblCtrl: UITableViewController {
     // Get the new view controller using segue.destinationViewController.
     // Pass the selected object to the new view controller.
     }
-    */
+
     
     internal override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
@@ -107,6 +121,31 @@ class b4u_RightMenuTblCtrl: UITableViewController {
             {
                 print("Call is not supported")
             }
+        }
+        
+        else if(indexPath.row == 6)
+        {
+            let hasLoggedInd:Bool = NSUserDefaults.standardUserDefaults().boolForKey("isUserLogined")
+            if hasLoggedInd
+            {
+                if bro4u_DataManager.sharedInstance.loginInfo?.loginType == "OTP"
+                {
+                                       
+                }else if bro4u_DataManager.sharedInstance.loginInfo?.loginType == "googleSignIn"
+                {
+                      GIDSignIn.sharedInstance().signOut()
+                }
+                
+                NSUserDefaults.standardUserDefaults().removeObjectForKey("isUserLogined")
+                lblLogin.text = "Login"
+                bro4u_DataManager.sharedInstance.loginInfo = nil
+                print("Logge Out Successfully")
+                
+            }else
+            {
+                self.performSegueWithIdentifier("loginSegue", sender:nil)
+            }
+            
         }
     }
     

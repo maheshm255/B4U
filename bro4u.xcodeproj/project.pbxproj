@@ -23,6 +23,8 @@
 		04E0C44A1C8C99A7006450D1 /* GooglePlacesAutocomplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0C4471C8C99A7006450D1 /* GooglePlacesAutocomplete.swift */; };
 		04E0C44B1C8C99A7006450D1 /* GooglePlacesAutocomplete.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0C4481C8C99A7006450D1 /* GooglePlacesAutocomplete.xib */; };
 		04E0C44C1C8C99A7006450D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0C4491C8C99A7006450D1 /* ViewController.swift */; };
+		04E747021C96D4C400521674 /* b4u-LoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E747011C96D4C400521674 /* b4u-LoginInfo.swift */; };
+		04E747041C96DC5F00521674 /* b4u-RightMenuTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E747031C96DC5F00521674 /* b4u-RightMenuTblCell.swift */; };
 		04E7D9201C929CFE002C70A9 /* b4u-termsAndCondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7D91F1C929CFE002C70A9 /* b4u-termsAndCondViewController.swift */; };
 		04F026461C9594F900C99548 /* b4u-AddressDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F026451C9594F900C99548 /* b4u-AddressDetails.swift */; };
 		65264F851C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65264F841C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift */; };
@@ -261,6 +263,8 @@
 		04E0C4471C8C99A7006450D1 /* GooglePlacesAutocomplete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesAutocomplete.swift; sourceTree = "<group>"; };
 		04E0C4481C8C99A7006450D1 /* GooglePlacesAutocomplete.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GooglePlacesAutocomplete.xib; sourceTree = "<group>"; };
 		04E0C4491C8C99A7006450D1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		04E747011C96D4C400521674 /* b4u-LoginInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-LoginInfo.swift"; sourceTree = "<group>"; };
+		04E747031C96DC5F00521674 /* b4u-RightMenuTblCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-RightMenuTblCell.swift"; sourceTree = "<group>"; };
 		04E7D91F1C929CFE002C70A9 /* b4u-termsAndCondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-termsAndCondViewController.swift"; sourceTree = "<group>"; };
 		04F026451C9594F900C99548 /* b4u-AddressDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-AddressDetails.swift"; sourceTree = "<group>"; };
 		0B4AB3BBC76D5DA9D4D6646A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -647,6 +651,14 @@
 			path = l;
 			sourceTree = "<group>";
 		};
+		04E746FE1C96D48800521674 /* LoginInfo */ = {
+			isa = PBXGroup;
+			children = (
+				04E747011C96D4C400521674 /* b4u-LoginInfo.swift */,
+			);
+			path = LoginInfo;
+			sourceTree = "<group>";
+		};
 		04F026441C9594CE00C99548 /* Address */ = {
 			isa = PBXGroup;
 			children = (
@@ -944,8 +956,8 @@
 		6536E0B41C690C6F00B273D6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				04E746FE1C96D48800521674 /* LoginInfo */,
 				04F026441C9594CE00C99548 /* Address */,
-				B7DC0EDD1C942A0E00A5577C /* ReOrder */,
 				B34EAD781C92971E00FCB0F5 /* My Account */,
 				B34EAD7B1C92971E00FCB0F5 /* Offer Zone */,
 				B34EAD7C1C92971E00FCB0F5 /* Order Screen */,
@@ -1128,6 +1140,7 @@
 				65DE76D91C7780BD00017F96 /* b4u-DrawerTableViewController.swift */,
 				65DE76DA1C7780BD00017F96 /* b4u-HomeViewController.swift */,
 				65DE76DB1C7780BD00017F96 /* b4u-RightMenuTblCtrl.swift */,
+				04E747031C96DC5F00521674 /* b4u-RightMenuTblCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1664,6 +1677,7 @@
 				65F8B43A1C70BECD00D158FA /* b4u-UIColor-Extension.swift in Sources */,
 				B7DC0EDF1C942A3300A5577C /* b4u_ReOrderModel.swift in Sources */,
 				65B18A861C70BB28000EDD00 /* SWRevealViewController.m in Sources */,
+				04E747021C96D4C400521674 /* b4u-LoginInfo.swift in Sources */,
 				65264F871C81D80200859F5A /* b4u-SuggestedPatnersResult.swift in Sources */,
 				042700291C8B37B6008440CC /* UIView+FSExtension.m in Sources */,
 				65271E5D1C8307BB0022C888 /* b4u_PaymentBaseViewController.swift in Sources */,
@@ -1701,6 +1715,7 @@
 				65B18A8D1C70BB28000EDD00 /* UIRefreshControl+AFNetworking.m in Sources */,
 				65F8B4301C70BE6200D158FA /* b4u-UIImageView-Extension.swift in Sources */,
 				65F8B4371C70BECD00D158FA /* b4u-NSDateExtension.swift in Sources */,
+				04E747041C96DC5F00521674 /* b4u-RightMenuTblCell.swift in Sources */,
 				042700231C8B37B6008440CC /* FSCalendar.m in Sources */,
 				65271F4C1C831B1E0022C888 /* PayUMoneyViewController.m in Sources */,
 				65271F531C831B1E0022C888 /* PayUUIPaymentOptionViewController.m in Sources */,
@@ -1845,6 +1860,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = bro4u/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1869,6 +1885,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = bro4u/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

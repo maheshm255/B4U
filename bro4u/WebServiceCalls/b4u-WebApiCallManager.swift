@@ -110,6 +110,8 @@ class b4u_WebApiCallManager: NSObject {
           self.pasrseReferAndEarnData(dataDict)
         case kGetAddress:
             self.pasrseAddressData(dataDict)
+        case kOTPlogin:
+            self.pasrseOTPLoginInfo(dataDict)
         default:
             print(itemName)
         }
@@ -328,6 +330,18 @@ class b4u_WebApiCallManager: NSObject {
             }
         }
         
+        
+    }
+    
+    
+    func pasrseOTPLoginInfo(dataDict:Dictionary<String, AnyObject>)
+    {
+        
+        let loginInfoDataDict:Dictionary<String ,AnyObject> = dataDict["user"] as! Dictionary<String ,AnyObject>
+        let loginInfoObject = b4u_LoginInfo(loginInfoDataDict:loginInfoDataDict)
+        loginInfoObject.loginType = "OTP"
+        
+        bro4u_DataManager.sharedInstance.loginInfo = loginInfoObject
         
     }
 }
