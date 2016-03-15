@@ -21,7 +21,12 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
 
     var dateBtn:UIButton?
     var timeBtn:UIButton?
-    var selectedCategoryObj:b4u_Category?
+    
+   var selectedCategoryObj:b4u_Category?
+    
+    var selectedImgSlide:b4u_SliderImage?
+
+    
     var selectedIndexPath:Dictionary<String ,[NSIndexPath]> = Dictionary()
     var numberOfItems:Int = 0
     var inputArray:[AnyObject]?{
@@ -79,6 +84,18 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             
             
             let params = "?cat_id=\(catId)&option_id=\(optionId)&field_name=\(filedName)"
+            b4u_WebApiCallManager.sharedInstance.getApiCall(filterApi, params:params, result:{(resultObject) -> Void in
+                
+                self.updateUI()
+                
+            })
+        }else if let aSelectedSlideImg = self.selectedImgSlide
+        {
+            let catId = aSelectedSlideImg.catId!
+            let optionId =  aSelectedSlideImg.optionId!
+            
+            
+            let params = "?cat_id=\(catId)&option_id=\(optionId)"
             b4u_WebApiCallManager.sharedInstance.getApiCall(filterApi, params:params, result:{(resultObject) -> Void in
                 
                 self.updateUI()
@@ -454,93 +471,103 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     func callServicePatnerApi()
     {
         
-    
-        
        guard let selectedDate = bro4u_DataManager.sharedInstance.selectedDate , let selectedTimeSlot = bro4u_DataManager.sharedInstance.selectedTimeSlot else
         {
                print("Select Date And Time")
                return
         }
         
+        var catId:String?
         if let aSelectedCatObj = selectedCategoryObj
         {
-            let catId = aSelectedCatObj.catId!
-            let latitude =  "12.9718915"
-            let longitude = "77.6411545"
-            
-            var params = "?cat_id=\(catId)&latitude=\(latitude)&longitude=\(longitude)"
+            catId = aSelectedCatObj.catId
+        }else if let aSlidingImgObj = self.selectedImgSlide
+        {
+            catId = aSlidingImgObj.catId
 
-            
-            
-            
-            let dateStr = NSDate.dateFormat().stringFromDate(selectedDate)
-            
-            params = params + "&service_date=\(dateStr)"
-            
-            params = params + "&service_time=\(selectedTimeSlot)"
-        
-            
-            print(selectedIndexPath)
-            
-            
-            let keys = selectedIndexPath.keys
-            
-            for (_ , key) in keys.enumerate()
-            {
-                print(key)
-                
-                
-               let catFilterAttributes:b4u_CatFilterAttributes =   self.inputArray![Int(key)!] as! b4u_CatFilterAttributes
-                
-                if catFilterAttributes.inputType == inputType.checkBox.rawValue
-                {
-                    for (_ , indexPath) in (selectedIndexPath[key]?.enumerate())!
-                    {
-                        let attributeOption:b4u_CatFilterAttributeOptions =  catFilterAttributes.catFilterAttributeOptions![indexPath.row]
-                        
-                        params = params + "&\(catFilterAttributes.fieldName!)[]=\(attributeOption.optionId!)"
-                        
-                        print(attributeOption)
-                    }
-                }
-                
-                if catFilterAttributes.inputType == inputType.radio.rawValue
-                {
-                    for (_ , indexPath) in (selectedIndexPath[key]?.enumerate())!
-                    {
-                        let attributeOption:b4u_CatFilterAttributeOptions =  catFilterAttributes.catFilterAttributeOptions![indexPath.row]
-                        
-                        params = params + "&\(catFilterAttributes.fieldName!)=\(attributeOption.optionId!)"
-                        
-                        
-                    }
-                }
-                if catFilterAttributes.inputType == inputType.textBoxGroup.rawValue
-                {
-                    for (_ , indexPath) in (selectedIndexPath[key]?.enumerate())!
-                    {
-                        
-                        let attributeOption:b4u_CatFilterAttributeOptions =  catFilterAttributes.catFilterAttributeOptions![indexPath.row]
-                        
-                        params = params + "&\(catFilterAttributes.fieldName!)_\(numberOfItems)=\(attributeOption.optionId!)"
-                        
-                        
-                    }
-                }
-                
-            }
-            
-            bro4u_DataManager.sharedInstance.suggestedPatnersResult = nil
-            b4u_WebApiCallManager.sharedInstance.getApiCall(kShowServicePatnerApi, params:params, result:{(resultObject) -> Void in
-                
-                
-                
-                self.performSelectorOnMainThread("moveToSuggestedPatner", withObject:nil, waitUntilDone:true)
-
-            })
         }
+        
+        self.servicePatnerAPIRequest(catId!, selectedDate:selectedDate, selectedTimeSlot: selectedTimeSlot)
     }
     
+        
+  func servicePatnerAPIRequest(catId:String ,selectedDate:NSDate ,selectedTimeSlot:String )
+    {
+        let catId = catId
+        let latitude =  "12.9718915"
+        let longitude = "77.6411545"
+        
+        var params = "?cat_id=\(catId)&latitude=\(latitude)&longitude=\(longitude)"
+        
+        
+        
+        
+        let dateStr = NSDate.dateFormat().stringFromDate(selectedDate)
+        
+        params = params + "&service_date=\(dateStr)"
+        
+        params = params + "&service_time=\(selectedTimeSlot)"
+        
+        
+        print(selectedIndexPath)
+        
+        
+        let keys = selectedIndexPath.keys
+        
+        for (_ , key) in keys.enumerate()
+        {
+            print(key)
+            
+            
+            let catFilterAttributes:b4u_CatFilterAttributes =   self.inputArray![Int(key)!] as! b4u_CatFilterAttributes
+            
+            if catFilterAttributes.inputType == inputType.checkBox.rawValue
+            {
+                for (_ , indexPath) in (selectedIndexPath[key]?.enumerate())!
+                {
+                    let attributeOption:b4u_CatFilterAttributeOptions =  catFilterAttributes.catFilterAttributeOptions![indexPath.row]
+                    
+                    params = params + "&\(catFilterAttributes.fieldName!)[]=\(attributeOption.optionId!)"
+                    
+                    print(attributeOption)
+                }
+            }
+            
+            if catFilterAttributes.inputType == inputType.radio.rawValue
+            {
+                for (_ , indexPath) in (selectedIndexPath[key]?.enumerate())!
+                {
+                    let attributeOption:b4u_CatFilterAttributeOptions =  catFilterAttributes.catFilterAttributeOptions![indexPath.row]
+                    
+                    params = params + "&\(catFilterAttributes.fieldName!)=\(attributeOption.optionId!)"
+                    
+                    
+                }
+            }
+            if catFilterAttributes.inputType == inputType.textBoxGroup.rawValue
+            {
+                for (_ , indexPath) in (selectedIndexPath[key]?.enumerate())!
+                {
+                    
+                    let attributeOption:b4u_CatFilterAttributeOptions =  catFilterAttributes.catFilterAttributeOptions![indexPath.row]
+                    
+                    params = params + "&\(catFilterAttributes.fieldName!)_\(numberOfItems)=\(attributeOption.optionId!)"
+                    
+                    
+                }
+            }
+            
+        }
+        
+        bro4u_DataManager.sharedInstance.suggestedPatnersResult = nil
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kShowServicePatnerApi, params:params, result:{(resultObject) -> Void in
+            
+            
+            
+            self.performSelectorOnMainThread("moveToSuggestedPatner", withObject:nil, waitUntilDone:true)
+            
+        })
+    }
     
     func moveToSuggestedPatner()
     {

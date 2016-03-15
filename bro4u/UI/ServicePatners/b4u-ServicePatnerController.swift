@@ -17,6 +17,8 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
     @IBOutlet weak var tableViewServicePatner: UITableView!
     var selectedCategoryObj:b4u_Category?
 
+    var selectedImgSlide:b4u_SliderImage?
+
     var allPatners:[b4u_SugestedPartner] = Array()
     
     override func viewDidLoad() {
@@ -87,21 +89,32 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
 
         if let aSelectedCatObj = selectedCategoryObj , patnersResult = bro4u_DataManager.sharedInstance.suggestedPatnersResult
         {
-            let catId = aSelectedCatObj.catId!
-            let latitude =  "12.9718915"
-            let longitude = "77.6411545"
-            let nextPage = patnersResult.nextPage
-            
-            let params = "/\(nextPage!)?cat_id=\(catId)&latitude=\(latitude)&longitude=\(longitude)"
-            b4u_WebApiCallManager.sharedInstance.getApiCall(kShowServicePatnerApi, params:params, result:{(resultObject) -> Void in
-                
-                self.getAllServicePatners()
-                self.checkLoadMoreCondition()
-                self.tableViewServicePatner.reloadData()
-            })
+      
+            self.serviceAPIRequest(aSelectedCatObj.catId!, nextPage:patnersResult.nextPage!)
+        }else if let aSelectedImgObj = self.selectedImgSlide , patnersResult = bro4u_DataManager.sharedInstance.suggestedPatnersResult
+        {
+            self.serviceAPIRequest(aSelectedImgObj.catId!, nextPage:patnersResult.nextPage!)
+
         }
     }
     
+    
+    func serviceAPIRequest(catId:String , nextPage:NSNumber)
+    {
+        let catId = catId
+
+        let latitude =  "12.9718915"
+        let longitude = "77.6411545"
+        let nextPage = nextPage
+        
+        let params = "/\(nextPage)?cat_id=\(catId)&latitude=\(latitude)&longitude=\(longitude)"
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kShowServicePatnerApi, params:params, result:{(resultObject) -> Void in
+            
+            self.getAllServicePatners()
+            self.checkLoadMoreCondition()
+            self.tableViewServicePatner.reloadData()
+        })
+    }
   
     
     

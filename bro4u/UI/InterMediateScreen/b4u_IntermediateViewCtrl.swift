@@ -9,7 +9,7 @@
 import UIKit
 
 class b4u_IntermediateViewCtrl: UIViewController {
-
+    
     @IBOutlet weak var imgViewBanner: UIImageView!
     
     
@@ -19,7 +19,7 @@ class b4u_IntermediateViewCtrl: UIViewController {
     @IBOutlet weak var imgViewIcon2: UIImageView!
     @IBOutlet weak var imgViewIcon1: UIImageView!
     
-  
+    
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblMessage1: UILabel!
     @IBOutlet weak var lblMessage3: UILabel!
@@ -27,23 +27,25 @@ class b4u_IntermediateViewCtrl: UIViewController {
     @IBOutlet weak var lblOffer: UILabel!
     @IBOutlet weak var lblOfferMessage: UILabel!
     @IBOutlet weak var lblCoupan: UILabel!
-
+    
     
     @IBOutlet weak var btnTermsAndConditions: UIButton!
     @IBOutlet weak var btnTapToCopy: UIButton!
     
     var selectedCategoryObj:b4u_Category?
-
+    
+    var selectedImgSlide:b4u_SliderImage?
+    
     var selectedAttributeOption:b4u_AttributeOptions?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         self.callInterMediateApi()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -51,17 +53,17 @@ class b4u_IntermediateViewCtrl: UIViewController {
     
     @IBAction func tAndCBtnClicked(sender: AnyObject)
     {
-       // TO DO
+        // TO DO
         
         let alerController = UIAlertController(title:"Terms & Conditions", message:"", preferredStyle:.Alert)
         
         
-         let controller = self.storyboard?.instantiateViewControllerWithIdentifier("tAndCtrl") as! b4u_termsAndCondViewController
+        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("tAndCtrl") as! b4u_termsAndCondViewController
         alerController.setValue(controller, forKey:"contentViewController")
         
-
-        let alertAction = UIAlertAction(title:"Got IT!", style:UIAlertActionStyle.Default, handler: {(alertAction)-> Void in
         
+        let alertAction = UIAlertAction(title:"Got IT!", style:UIAlertActionStyle.Default, handler: {(alertAction)-> Void in
+            
             
             alerController.dismissViewControllerAnimated(true, completion:nil)
         })
@@ -70,14 +72,14 @@ class b4u_IntermediateViewCtrl: UIViewController {
         
         self.presentViewController(alerController, animated:true, completion:nil)
     }
-
+    
     @IBAction func tapToCopyBtnClicked(sender: AnyObject)
     {
         //TO DO
     }
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
@@ -88,10 +90,12 @@ class b4u_IntermediateViewCtrl: UIViewController {
             let filterCtrl = segue.destinationViewController as! b4u_FilterViewController
             
             filterCtrl.selectedCategoryObj = self.selectedCategoryObj
+            
+            filterCtrl.selectedImgSlide = self.selectedImgSlide
         }
     }
-
-
+    
+    
     
     
     func callInterMediateApi()
@@ -103,11 +107,7 @@ class b4u_IntermediateViewCtrl: UIViewController {
             let userId = "15" //TODO
             let deviceId = b4u_Utility.getUUIDFromVendorIdentifier()
             
-            
             var params = "?cat_id=\(catId)&user_id=\(userId)&device_id=\(deviceId)"
-            
-         
-            
             
             if  let aSelectedAttributeOption = selectedAttributeOption
             {
@@ -138,15 +138,27 @@ class b4u_IntermediateViewCtrl: UIViewController {
                 
                 self.performSelectorOnMainThread("updateUI", withObject:nil, waitUntilDone:true)
             })
+        }else if let aSelectedImgObj = self.selectedImgSlide
+        {
+            let catId = aSelectedImgObj.catId!
+            let userId = "15" //TODO
+            let deviceId = b4u_Utility.getUUIDFromVendorIdentifier()
+            
+            let params = "?cat_id=\(catId)&user_id=\(userId)&device_id=\(deviceId)"
+            
+            b4u_WebApiCallManager.sharedInstance.getApiCall(intermediateScreenAPi, params:params, result:{(resultObject) -> Void in
+                
+                self.performSelectorOnMainThread("updateUI", withObject:nil, waitUntilDone:true)
+            })
         }
-      
+        
     }
     @IBAction func cancelButttonClicked(sender: AnyObject) {
         
         self.dismissViewControllerAnimated(true, completion:nil)
     }
     
-  
+    
     func updateUI()
     {
         if let aDataModel = bro4u_DataManager.sharedInstance.interMediateScreenDataObj
@@ -160,7 +172,7 @@ class b4u_IntermediateViewCtrl: UIViewController {
             self.lblCoupan.text = aDataModel.couponCode
             
             self.imgViewBanner.downloadedFrom(link:aDataModel.interBanner!, contentMode:UIViewContentMode.ScaleToFill)
-
+            
             
             self.navigationItem.title = aDataModel.catName
             

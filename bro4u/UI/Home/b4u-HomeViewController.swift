@@ -17,6 +17,8 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     
     @IBOutlet weak var tableViewCategory: UITableView!
     
+    var selectedImgSliderObj:b4u_SliderImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -117,6 +119,17 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
             let locatinCtrlObj = segue.destinationViewController as! b4u_LocationViewCtrl
 
             locatinCtrlObj.delegate = self
+        }else if segue.identifier == "interMediateSegue1"
+        {
+           
+                let selectedImgSlideObj = sender as! b4u_SliderImage
+                
+                let navCtrl = segue.destinationViewController as! UINavigationController
+                
+                let intermediateScreenCtrlObj = navCtrl.topViewController as! b4u_IntermediateViewCtrl
+            
+                intermediateScreenCtrlObj.selectedImgSlide = selectedImgSlideObj
+                
         }
     }
     
@@ -154,14 +167,22 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         let scrollViewWidth:CGFloat = self.scrollView.frame.width
         let scrollViewHeight:CGFloat = self.scrollView.frame.height
         
-    
-        
         for (index ,sliderImageInfoObj)in bro4u_DataManager.sharedInstance.sliderImages.enumerate()
         {
             let sliderImg = UIImageView(frame: CGRectMake(scrollViewWidth*CGFloat(index), 0,scrollViewWidth, scrollViewHeight))
+            
+              sliderImg.userInteractionEnabled = true
+              sliderImg.tag = index
+            
             sliderImg.downloadedFrom(link:sliderImageInfoObj.imageName!, contentMode:UIViewContentMode.ScaleAspectFit)
             self.scrollView.addSubview(sliderImg)
 
+            let slideImgTapGesture:UITapGestureRecognizer = UITapGestureRecognizer(target:self, action:"imageSlideClicked:")
+            
+            slideImgTapGesture.numberOfTapsRequired = 1;
+            
+            sliderImg.addGestureRecognizer(slideImgTapGesture)
+            
         }
         
         let totalImage = bro4u_DataManager.sharedInstance.sliderImages.count
@@ -187,7 +208,15 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         rightSwipeGesture.cancelsTouchesInView = false
     }
     
-    
+    func imageSlideClicked(gesttureObj:UITapGestureRecognizer)
+    {
+        print(gesttureObj.view?.tag)
+        
+        let sliderImgObj:b4u_SliderImage =  bro4u_DataManager.sharedInstance.sliderImages[(gesttureObj.view?.tag)!]
+        
+        self.performSegueWithIdentifier("interMediateSegue1", sender: sliderImgObj)
+
+    }
     
     func leftSwipe()
     {
