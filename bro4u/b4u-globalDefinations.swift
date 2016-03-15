@@ -95,7 +95,7 @@ let kReferAndEarnIndex = "index.php/referral/fetch_referral_settings"
 let kOrderConfirmedIndex = "index.php/categories/catAttr"
 
 //Notification Window
-let kOrderNotificationIndex = "index.php/my_account/get_notifications?device_id=asdkfi&user_id=1626"
+let kOrderNotificationIndex = "index.php/my_account/get_notifications"
 
 //About Us Window
 let kAboutUsIndex = "index.php/page/about"
