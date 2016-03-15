@@ -10,9 +10,11 @@ import UIKit
 
 class b4u_ReOrderViewController: UIViewController {
 
+    @IBOutlet weak var reOrderTableView: UITableView!
     
     var myReOrderModelArr:[b4u_ReOrderModel] = Array()
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,32 +41,11 @@ class b4u_ReOrderViewController: UIViewController {
     
     func congigureUI()
     {
-      for (_ , mainData) in bro4u_DataManager.sharedInstance.myReorderData.enumerate()
-      {
-        
-        
-        if let filteredData = self.filterContent(mainData)
-        {
-          let vc =  self.storyboard?.instantiateViewControllerWithIdentifier("ReOrderViewControllerID") as! b4u_ReOrderViewController
-          
-          vc.myReOrderModelArr = filteredData
-        }
-      }
-      
-
-      
+    
+    reOrderTableView.reloadData()
     }
 
   
-    private func filterContent(mainModelObj:b4u_ReOrderModel) -> [b4u_ReOrderModel]?
-    {
-      let filteredItems:[b4u_ReOrderModel]?
-//      if bro4u_DataManager.sharedInstance.myReorderData.count > 0
-//      {
-//        return filteredItems
-//      }
-      return nil
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -76,7 +57,7 @@ class b4u_ReOrderViewController: UIViewController {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return 3
+        return bro4u_DataManager.sharedInstance.myReorderData.count
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -90,9 +71,25 @@ class b4u_ReOrderViewController: UIViewController {
        let cellIdentifier = "ReOrderTableViewCellID"
        let  cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! b4u_ReOrderTableViewCell
         
+        let reOrderModel:b4u_ReOrderModel = bro4u_DataManager.sharedInstance.myReorderData[indexPath.section]
+        
+        cell.configureData(reOrderModel)
         return cell
     }
     
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        if section == 0
+        {
+            return 1.0;
+        }
+        else
+        {
+            return 10.0;
+        }
+        
+    }
+
     
     @IBAction func btnCancelClicked(sender:AnyObject)
     {
