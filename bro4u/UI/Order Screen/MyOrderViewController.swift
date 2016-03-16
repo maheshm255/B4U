@@ -135,7 +135,6 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
   {
     var cellIdentifier = ""
-    let reOrderModel:b4u_OrdersModel?
     
     if indexPath.section == 0
     {
@@ -163,47 +162,48 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if indexPath.section == 0
         {
-            return 350;
+            return 304;
         }
         else if indexPath.section == 1
         {
-            return 221;
+            return 186;
         }
         
         return 0
     }
     
-    
 
-//  func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//    let  headerCell = tableView.dequeueReusableCellWithIdentifier("OngoingOrdersTableViewCellID") as! OngoingOrdersTableViewCell
-//    headerCell.backgroundColor = UIColor.yellowColor()
-//    
-//    switch (section) {
-//    case 0:
-//      headerCell.headerLabel.text = "Ongoing Orders(1)";
-//      //return sectionHeaderView
-////    case 1:
-////      headerCell.headerLabel.text = "Past Orders(1)";
-////      //return sectionHeaderView
-////    case 2:
-////      headerCell.headerLabel.text = "South America";
-////      //return sectionHeaderView
-//    default:
-//      headerCell.headerLabel.text = "Past Orders(1)";
-//    }
-//    
-//    return headerCell
-//  }
-  
-  
+
   func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    let vw = UIView()
     
-    vw.backgroundColor = UIColor.yellowColor()
+    let headerView = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 50))
+    headerView.backgroundColor = UIColor(colorLiteralRed: 255/255.0, green: 231/255.0, blue: 146/255.0, alpha: 1)
     
-    return vw
+    let label = UILabel(frame: CGRectMake(10.0, 0.0, tableView.frame.size.width, 50.0)) // Doesn't care about x, y offset
+    label.textColor = UIColor.blackColor()
+    label.textAlignment = NSTextAlignment.Center
+    headerView.addSubview(label)
+
+    switch (section) {
+    case 0:
+      if self.onGoingOrderArray?.count>0{
+        label.text = "ONGOING ORDERS (\(self.onGoingOrderArray!.count))"
+      }
+
+    case 1:
+      if self.onGoingOrderArray?.count>0{
+        label.text = "PAST ORDERS (\(self.pastOrdersArray!.count))"
+      }
+    
+    default:
+      break
+
+    }
+    
+    return headerView
   }
+  
+  
   
   @IBAction func cancelBtnClicked(sender: AnyObject) {
     self.dismissViewControllerAnimated(true, completion:nil)
