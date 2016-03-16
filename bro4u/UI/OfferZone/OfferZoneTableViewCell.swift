@@ -29,5 +29,23 @@ class OfferZoneTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
+    func configureData(offerZoneDataModel:b4u_OfferZoneModel)
+    {
+        if let header = offerZoneDataModel.header
+        {
+            self.titleOfferLbl.text = header
+        }
+        if let descriptionValue = offerZoneDataModel.descriptionValue
+        {
+            self.titleDetailLbl.text = descriptionValue
+        }
+        if let couponCode = offerZoneDataModel.couponCode
+        {
+            self.offerCodeLbl.text = couponCode
+        }
+    }
+
 
 }

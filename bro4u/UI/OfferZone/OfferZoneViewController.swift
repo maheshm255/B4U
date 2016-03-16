@@ -10,6 +10,8 @@ import UIKit
 
 class OfferZoneViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
+    @IBOutlet weak var offerZoneTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,14 +23,24 @@ class OfferZoneViewController: UIViewController,UITableViewDataSource,UITableVie
     
     func getData()
     {
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kOfferZoneIndex, params:"", result:{(resultObject) -> Void in
+        
+        if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
             
-            print("Offer Zone Data Received")
+            var filedName = loginInfoData.userId! //Need to use later
+            
+        }
+        let deviceID = "kdsflasdf"
+        let user_id = "1"
+        
+        let params = "?device_id=\(deviceID)&user_id=\(user_id)"
+        
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kOfferZoneIndex , params:params, result:{(resultObject) -> Void in
+            
+            print(" Offer Zone Data Received")
             
             print(resultObject)
             
             self.congigureUI()
-            
             
         })
     }
@@ -36,39 +48,9 @@ class OfferZoneViewController: UIViewController,UITableViewDataSource,UITableVie
     
     func congigureUI()
     {
-        
-        for (_ , mainData) in bro4u_DataManager.sharedInstance.myInfoData.enumerate()
-        {
-            
-            
-            if let filteredData = self.filterContent(mainData)
-            {
-                //                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("b4uCategoryTableView") as! b4u_CategoryTblViewCtrl
-                
-                let vc =  self.storyboard?.instantiateViewControllerWithIdentifier("MyInfoViewControllerID") as! MyInfoViewController
-                
-                vc.myInfoModelArr = filteredData
-            }
-        }
-        
+        offerZoneTableView.reloadData()
     }
     
-    //Need to Implement
-    private func filterContent(mainModelObj:b4u_MyInfoModel) -> [b4u_MyInfoModel]?
-    {
-        let filteredItems:[b4u_MyInfoModel]?
-        if bro4u_DataManager.sharedInstance.myInfoData.count > 0
-        {
-            
-            return nil
-            
-        }else
-        {
-            return nil
-        }
-        
-        
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -88,8 +70,8 @@ class OfferZoneViewController: UIViewController,UITableViewDataSource,UITableVie
 
     
     
-     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 7
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return bro4u_DataManager.sharedInstance.offerZoneData.count
     }
     
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -99,8 +81,12 @@ class OfferZoneViewController: UIViewController,UITableViewDataSource,UITableVie
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let textCellIdentifier = "OfferZoneTableViewCellID"
-        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! OfferZoneTableViewCell
       
+        let offerZoneModel:b4u_OfferZoneModel = bro4u_DataManager.sharedInstance.offerZoneData[indexPath.section]
+
+        cell.configureData(offerZoneModel)
+
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.grayColor().CGColor
 
