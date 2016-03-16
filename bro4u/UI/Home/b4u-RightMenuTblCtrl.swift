@@ -6,6 +6,7 @@
 //  Copyright (c) All rights reserved.
 //
 import UIKit
+import FBSDKLoginKit
 
 class b4u_RightMenuTblCtrl: UITableViewController {
 
@@ -134,6 +135,10 @@ class b4u_RightMenuTblCtrl: UITableViewController {
                 }else if bro4u_DataManager.sharedInstance.loginInfo?.loginType == "googleSignIn"
                 {
                       GIDSignIn.sharedInstance().signOut()
+                }else if  bro4u_DataManager.sharedInstance.loginInfo?.loginType == "facebook"
+                {
+                    FBSDKLoginManager().logOut()
+                    
                 }
                 
                 NSUserDefaults.standardUserDefaults().removeObjectForKey("isUserLogined")
