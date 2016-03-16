@@ -112,6 +112,9 @@ class b4u_WebApiCallManager: NSObject {
             self.pasrseAddressData(dataDict)
         case kOTPlogin:
             self.pasrseOTPLoginInfo(dataDict)
+        case kOrderConfirmedIndex:
+            self.pasrseOrderConfirmData(dataDict)
+
         default:
             print(itemName)
         }
@@ -316,6 +319,30 @@ class b4u_WebApiCallManager: NSObject {
     bro4u_DataManager.sharedInstance.referAndEarnData = parentObj
 
   }
+    
+    func pasrseOrderConfirmData(dataDict:Dictionary<String, AnyObject>)
+    {
+        
+        let parentArray1:[Dictionary<String ,AnyObject>] = dataDict["order"] as! [Dictionary<String ,AnyObject>]
+        
+        bro4u_DataManager.sharedInstance.orderData.removeAll()
+        bro4u_DataManager.sharedInstance.paymentGatewayOffersData.removeAll()
+        
+        for (_ ,dataDict) in parentArray1.enumerate()
+        {
+            let parentObj = b4u_OrdersModel(dataDict:dataDict)
+            bro4u_DataManager.sharedInstance.orderData.append(parentObj)
+        }
+        
+        let parentArray2:[Dictionary<String ,AnyObject>] = dataDict["payment_gateway_offers"] as! [Dictionary<String ,AnyObject>]
+        
+        for (_ ,dataDict) in parentArray2.enumerate()
+        {
+            let parentObj = b4u_PaymentGatewayOffersModel(dataDict:dataDict)
+            bro4u_DataManager.sharedInstance.paymentGatewayOffersData.append(parentObj)
+        }
+    }
+
 
     func pasrseAddressData(dataDict:Dictionary<String, AnyObject>)
     {
