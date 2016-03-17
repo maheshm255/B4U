@@ -122,8 +122,20 @@ class b4u_RightMenuTblCtrl: UITableViewController {
             {
                 print("Call is not supported")
             }
+        } //Rahul
+        else if indexPath.row == 4
+        {
+         
+          let url = NSURL(string:"https://itunes.apple.com/de/app/x-gift/id839686104?mt=8&uo=4")!
+          
+          if UIApplication.sharedApplication().canOpenURL(url)
+          {
+            UIApplication.sharedApplication().openURL(url)
+          }else
+          {
+            print("No App available")
+          }
         }
-        
         else if(indexPath.row == 6)
         {
             let hasLoggedInd:Bool = NSUserDefaults.standardUserDefaults().boolForKey("isUserLogined")

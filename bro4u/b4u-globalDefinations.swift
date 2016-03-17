@@ -97,7 +97,7 @@ let kMyOrdersIndex = "index.php/order/my_orders"
 //Refer And Earn
 let kReferAndEarnIndex = "index.php/referral/fetch_referral_settings"
 
-let kOrderConfirmedIndex = "index.php/categories/catAttr"
+let kOrderConfirmedIndex = "index.php/order/view_order"
 
 //Notification Window
 let kOrderNotificationIndex = "index.php/my_account/get_notifications"
