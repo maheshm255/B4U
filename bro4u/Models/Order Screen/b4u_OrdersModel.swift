@@ -45,9 +45,10 @@ class b4u_OrdersModel: NSObject {
     var statusNumber:NSNumber?
     var metaItemReOrder:[b4u_ReOrder_MetaItemModel]?
 
-    
+    var paymentGateWayes:[b4u_PaymentGatewayOffersModel]?
     
     init(dataDict:Dictionary<String ,AnyObject>) {
+        
         
         catID = dataDict["cat_id"] as? String
         catName = dataDict["cat_name"] as? String
@@ -94,8 +95,18 @@ class b4u_OrdersModel: NSObject {
             }
             
         }
+        
+        self.paymentGateWayes = Array()
 
-       
+        if let parentArray2:[Dictionary<String ,AnyObject>] = dataDict["payment_gateway_offers"] as? [Dictionary<String ,AnyObject>]
+        {
+            for (_ ,dataDict) in parentArray2.enumerate()
+            {
+                let parentObj = b4u_PaymentGatewayOffersModel(dataDict:dataDict)
+                
+                self.paymentGateWayes?.append(parentObj)
+            }
+        }
     }
 
 }
