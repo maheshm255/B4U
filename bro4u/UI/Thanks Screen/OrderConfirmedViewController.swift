@@ -49,14 +49,22 @@ class OrderConfirmedViewController: UIViewController {
     
     func getData()
     {
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyInfoIndex, params:"", result:{(resultObject) -> Void in
+        if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
             
-            print("My Info Data Received")
+            var filedName = loginInfoData.userId! //Need to use later
+            
+        }
+        
+        let user_id = 15
+        let order_id = 8765
+        let params = "?order_id=\(order_id)&user_id=\(user_id)"
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kOrderConfirmedIndex , params:params, result:{(resultObject) -> Void in
+            
+            print(" Order Confirmed  Data Received")
             
             print(resultObject)
             
             self.congigureUI()
-            
             
         })
     }
@@ -65,37 +73,45 @@ class OrderConfirmedViewController: UIViewController {
     func congigureUI()
     {
         
-        for (_ , mainData) in bro4u_DataManager.sharedInstance.myInfoData.enumerate()
+        let currentOrder =  bro4u_DataManager.sharedInstance.orderData[0]
+
+        if let vendorName = currentOrder.vendorName
         {
-            
-            
-            if let filteredData = self.filterContent(mainData)
-            {
-                //                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("b4uCategoryTableView") as! b4u_CategoryTblViewCtrl
-                
-                let vc =  self.storyboard?.instantiateViewControllerWithIdentifier("MyInfoViewControllerID") as! MyInfoViewController
-                
-                vc.myInfoModelArr = filteredData
-            }
+            self.titleLbl.text = vendorName
         }
-        
-    }
-    
-    //Need to Implement
-    private func filterContent(mainModelObj:b4u_MyInfoModel) -> [b4u_MyInfoModel]?
-    {
-        let filteredItems:[b4u_MyInfoModel]?
-        if bro4u_DataManager.sharedInstance.myInfoData.count > 0
+        if let categoryName = currentOrder.catName
         {
-            
-            return nil
-            
-        }else
-        {
-            return nil
+            self.subTitleLbl.text = categoryName
         }
-        
-        
+        if let serviceDate = currentOrder.serviceDate
+        {
+            self.dateLbl.text = serviceDate
+        }
+        if let serviceTime = currentOrder.serviceTime
+        {
+            self.timeSlotLbl.text = serviceTime
+        }
+        if let serviceTime = currentOrder.serviceTime
+        {
+            self.timeSlotLbl.text = serviceTime
+        }
+        if let vendorImageUrl = currentOrder.profilePic
+        {
+            self.vendorImageView.downloadedFrom(link:vendorImageUrl, contentMode:UIViewContentMode.ScaleToFill)
+        }
+        if let orderID = currentOrder.orderID
+        {
+            self.orderIDLbl.text = "#\(orderID)"
+        }
+        if let orderStatus = currentOrder.statusDesc
+        {
+            self.serviceStatusLbl.text = orderStatus
+        }
+        if let price = currentOrder.finalTotal //Need to check Key
+        {
+            self.amountLbl.text = "Rs. \(price).00"
+        }
+
     }
 
     override func didReceiveMemoryWarning() {

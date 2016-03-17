@@ -34,6 +34,14 @@ class b4u_LoginViewCtrl: UIViewController ,GIDSignInDelegate,GIDSignInUIDelegate
         
         
         FBSDKSettings.setAppID("194765280880394")
+        
+        fbLoginButton.delegate = self
+        fbLoginButton.readPermissions = ["public_profile"]
+
+       // fbLoginButton.
+       // FBSDKLoginManager().logOut()
+
+
     }
     @IBOutlet weak var btnOTPLogin: UIButton!
 
@@ -156,6 +164,7 @@ class b4u_LoginViewCtrl: UIViewController ,GIDSignInDelegate,GIDSignInUIDelegate
 extension b4u_LoginViewCtrl : FBSDKLoginButtonDelegate {
     func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
         print("loginButtonWillLogin")
+        
         return true
     }
     
@@ -165,5 +174,49 @@ extension b4u_LoginViewCtrl : FBSDKLoginButtonDelegate {
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         print("didCompleteWithResult")
+        
+        self.getFaceBookProfileInfo()
     }
+
+
+func getFaceBookProfileInfo()
+{
+    let requestMe:FBSDKGraphRequest = FBSDKGraphRequest(graphPath:"me", parameters:nil)
+    let graphRequestConnection:FBSDKGraphRequestConnection  = FBSDKGraphRequestConnection()
+    
+    graphRequestConnection.addRequest(requestMe, completionHandler:({ (connection, result, error) -> Void in
+        
+        if ((error) != nil)
+        {
+            // Process error
+            print("Error: \(error)")
+        }
+        else
+        {
+            
+            print(result) // This works
+          
+           print(FBSDKAccessToken.currentAccessToken())
+            
+            let loginInfoObj = b4u_LoginInfo()
+            
+            loginInfoObj.userId = result.valueForKey("id")as! String!
+            //loginInfoObj.googleAuthToken = user.authentication.idToken
+            loginInfoObj.fullName = result.valueForKey("name") as! String
+        //    loginInfoObj.email = user.profile.email
+            loginInfoObj.loginType = "facebook"
+            
+            bro4u_DataManager.sharedInstance.loginInfo = loginInfoObj
+            
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey:"isUserLogined")
+            self.dismissViewControllerAnimated(true, completion:nil)
+            
+            
+        }
+        }))
+    
+    
+    graphRequestConnection.start()
+}
+
 }
