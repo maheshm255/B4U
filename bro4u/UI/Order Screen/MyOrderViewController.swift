@@ -162,11 +162,11 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if indexPath.section == 0
         {
-            return 304;
+            return 285;
         }
         else if indexPath.section == 1
         {
-            return 186;
+            return 160;
         }
         
         return 0
