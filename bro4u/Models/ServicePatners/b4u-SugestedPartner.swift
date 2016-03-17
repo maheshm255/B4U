@@ -19,7 +19,7 @@ class b4u_SugestedPartner: NSObject {
     var custPrice:String?
     var defaultBanner:String?
     var deliveryCharge:String?
-    var distance:String?
+    var distance:NSNumber?
     var imgAltText:String?
     var itemDesc:String?
     var itemId:String?
@@ -66,7 +66,7 @@ class b4u_SugestedPartner: NSObject {
         custPrice = sugestedPartnerDetailsDict["cust_price"] as? String
         defaultBanner = sugestedPartnerDetailsDict["default_banner"] as? String
         deliveryCharge = sugestedPartnerDetailsDict["delivery_charge"] as? String
-        distance = sugestedPartnerDetailsDict["distance"] as? String
+        distance = sugestedPartnerDetailsDict["distance"] as? NSNumber
         itemDesc = sugestedPartnerDetailsDict["item_desc"] as? String
         imgAltText = sugestedPartnerDetailsDict["image_alt_text"] as? String
         itemDesc = sugestedPartnerDetailsDict["item_desc"] as? String

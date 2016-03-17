@@ -136,12 +136,12 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         cell.lblDiscount.text = aPatner.offerPrice
         cell.lblActualPrice.text = aPatner.custPrice
         cell.lblVendorReiviews.text = aPatner.reviewCount
-        cell.lblVendorDistance.text = aPatner.distance
+        cell.lblVendorDistance.text = "\(aPatner.distance!) Kms away"
         
-        cell.contentView.layer.borderColor = UIColor.grayColor().CGColor
-        cell.contentView.layer.borderWidth = 1.0
-        cell.contentView.layer.shadowColor = UIColor.blackColor().CGColor
-        cell.contentView.layer.shadowOpacity = 0.1
+//        cell.contentView.layer.borderColor = UIColor.grayColor().CGColor
+//        //cell.contentView.layer.borderWidth = 1.0
+//        cell.contentView.layer.shadowColor = UIColor.blackColor().CGColor
+//        cell.contentView.layer.shadowOpacity = 0.1
         
         
         if aPatner.premiumPartner == "yes"
@@ -188,16 +188,21 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
     
       func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-        return 0.001
-    }
-      func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
-    {
         if section == 0
         {
-            return 0.001
-
+            return 1.0
+            
         }
-        return 4.0
-
+        return 10.0
     }
+//      func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
+//    {
+//        if section == 0
+//        {
+//            return 0.001
+//
+//        }
+//        return 4.0
+//
+//    }
 }
