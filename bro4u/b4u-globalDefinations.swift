@@ -14,6 +14,13 @@ enum orderTypes
     case kOnGoingOrders
     case kCompetedOrders
 }
+
+enum loginFormScreen
+{
+    case kRightMenu
+    case kPaymentScreen
+    case kNone
+}
 //Base URL
 let b4uBaseUrl:String = "http://v2.20160301.testing.bro4u.com/api_v2/"
 

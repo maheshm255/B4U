@@ -15,6 +15,7 @@ class b4u_LoginViewCtrl: UIViewController ,GIDSignInDelegate,GIDSignInUIDelegate
    
     @IBOutlet var fbLoginButton: FBSDKLoginButton!
 
+    var loginForm:loginFormScreen = loginFormScreen.kNone
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,7 +112,7 @@ class b4u_LoginViewCtrl: UIViewController ,GIDSignInDelegate,GIDSignInUIDelegate
                     
                     NSUserDefaults.standardUserDefaults().setBool(true, forKey:"isUserLogined")
                     
-                    self.dismissViewControllerAnimated(true, completion:nil)
+                        self.disMissSelf()
                 }
                 else
                 {
@@ -142,8 +143,8 @@ class b4u_LoginViewCtrl: UIViewController ,GIDSignInDelegate,GIDSignInUIDelegate
                 bro4u_DataManager.sharedInstance.loginInfo = loginInfoObj
                 
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey:"isUserLogined")
-                self.dismissViewControllerAnimated(true, completion:nil)
 
+                self.disMissSelf()
                 // ...
             } else {
                 
@@ -158,6 +159,23 @@ class b4u_LoginViewCtrl: UIViewController ,GIDSignInDelegate,GIDSignInUIDelegate
         self.btnOTPLogin.hidden = true
     }
     
+    
+    func disMissSelf()
+    {
+        switch self.loginForm
+        {
+        case  loginFormScreen.kRightMenu :
+            
+        self.dismissViewControllerAnimated(true, completion:nil)
+
+        case  loginFormScreen.kPaymentScreen :
+            print("payment screen")
+        case  loginFormScreen.kNone :
+            print("Logint from not set")
+
+        }
+
+    }
 }
 
 
@@ -209,8 +227,7 @@ func getFaceBookProfileInfo()
             bro4u_DataManager.sharedInstance.loginInfo = loginInfoObj
             
             NSUserDefaults.standardUserDefaults().setBool(true, forKey:"isUserLogined")
-            self.dismissViewControllerAnimated(true, completion:nil)
-            
+            self.disMissSelf()
             
         }
         }))
@@ -219,4 +236,6 @@ func getFaceBookProfileInfo()
     graphRequestConnection.start()
 }
 
+    
+    
 }

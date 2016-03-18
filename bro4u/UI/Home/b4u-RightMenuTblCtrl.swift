@@ -106,6 +106,17 @@ class b4u_RightMenuTblCtrl: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     // Get the new view controller using segue.destinationViewController.
     // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "loginSegue"
+        {
+            let navCtrl = segue.destinationViewController as! UINavigationController
+            
+            let loginCtrl = navCtrl.topViewController as! b4u_LoginViewCtrl
+            
+            loginCtrl.loginForm = loginFormScreen.kRightMenu
+            
+        }
+        
     }
 
     
