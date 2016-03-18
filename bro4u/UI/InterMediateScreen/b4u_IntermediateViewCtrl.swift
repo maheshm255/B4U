@@ -11,11 +11,7 @@ import UIKit
 class b4u_IntermediateViewCtrl: UIViewController {
     
     @IBOutlet weak var imgViewBanner: UIImageView!
-    
-    
-    
-    
-    @IBOutlet weak var imgViewIcon3: UIImageView!
+     @IBOutlet weak var imgViewIcon3: UIImageView!
     @IBOutlet weak var imgViewIcon2: UIImageView!
     @IBOutlet weak var imgViewIcon1: UIImageView!
     

@@ -108,7 +108,7 @@ class b4u_CategoryTblViewCtrl1: UIViewController,UITableViewDataSource,UITableVi
 
          let imgViewIcon:UIImageView = UIImageView()
         
-        imgViewIcon.frame = CGRectMake(10, 10, 50,CGRectGetHeight(headerView.frame)-20)
+        imgViewIcon.frame = CGRectMake(10, 18, 35,CGRectGetHeight(headerView.frame)-35)
         
          imgViewIcon.downloadedFrom(link:categoryObj.catIcon!, contentMode:UIViewContentMode.ScaleAspectFit)
 
@@ -116,7 +116,7 @@ class b4u_CategoryTblViewCtrl1: UIViewController,UITableViewDataSource,UITableVi
         headerView.addSubview(imgViewIcon)
 
         
-        let label = UILabel(frame:CGRectMake(CGRectGetWidth(imgViewIcon.frame) + 20, 0, CGRectGetWidth(headerView.frame),CGRectGetHeight(headerView.frame)))
+        let label = UILabel(frame:CGRectMake(CGRectGetWidth(imgViewIcon.frame) + 30, 0, CGRectGetWidth(headerView.frame),CGRectGetHeight(headerView.frame)))
         
         label.textAlignment = NSTextAlignment.Left
         label.font = UIFont(name: "HelveticaNeue-neue", size: 14)

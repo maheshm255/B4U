@@ -190,7 +190,7 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
             titleLabel.frame=CGRectMake(x, 16, lblWidth, 34)
             titleLabel.textAlignment=NSTextAlignment.Center
             titleLabel.tag=i+1
-            titleLabel.textColor=UIColor.redColor()
+            titleLabel.textColor=UIColor.whiteColor()
             
             //Bottom
             bottomView=UIView()
@@ -217,7 +217,7 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
         
         if(titles.count != 0){
             indicatorcolor.frame=CGRectMake(labels[0].frame.origin.x, 61, labels[0].intrinsicContentSize().width+32, 3)
-            indicatorcolor.backgroundColor = UIColor.greenColor()
+            indicatorcolor.backgroundColor = UIColor.blueColor()
             catHorizontalScrollView.addSubview(indicatorcolor)
         }
         
