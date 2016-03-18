@@ -44,6 +44,8 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate{
 
         
         self.segmentedControl = HMSegmentedControl()
+        
+        
         self.segmentedControl = HMSegmentedControl(sectionTitles: segmentTitles)
         //self.segmentedControl!.frame = CGRectMake(0, 0, viewWidth, 40);
        // self.segmentedControl!.autoresizingMask = [.FlexibleRightMargin,.FlexibleWidth]
@@ -52,7 +54,8 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate{
         self.segmentedControl!.backgroundColor = UIColor(red: 0/255.0, green: 162/255.0, blue: 221/255.0, alpha: 1.0)
         self.segmentedControl!.selectionIndicatorColor = UIColor(red: 241/255.0, green: 244/255.0, blue: 169/255.0, alpha: 1.0)
         self.segmentedControl!.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
-        self.segmentedControl!.touchEnabled = true;
+        
+        self.segmentedControl!.touchEnabled = false;
 
         self.segmentedControl!.translatesAutoresizingMaskIntoConstraints = false
         
