@@ -69,7 +69,10 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
             
             print(resultObject)
             
-            self.congigureUI()
+            dispatch_async(dispatch_get_main_queue(), {
+                self.congigureUI()
+
+            })
             
             
         })
@@ -98,6 +101,12 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
         self.catTblsScrollView.scrollEnabled=true
         self.catTblsScrollView.delegate = self
         self.createHorizontalScroller()
+        
+        self.imgViewIconBottom.downloadedFrom(link:(self.selectedMainCategory?.interBanner)!, contentMode:UIViewContentMode.ScaleToFill)
+
+        
+        self.imgViewIconTop.downloadedFrom(link:(self.selectedMainCategory?.catIcon)!, contentMode:UIViewContentMode.ScaleAspectFit)
+
     }
     
     
@@ -247,7 +256,7 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
             
             self.catHorizontalScrollView.setContentOffset(CGPointMake(-(self.view.center.x-50)+self.labels[sender.view!.tag-1].center.x-self.labels[sender.view!.tag-1].frame.size.width/2, 0), animated: true)
             
-            self.imgViewIconBottom.backgroundColor =  self.currentColor
+           // self.imgViewIconBottom.backgroundColor =  self.currentColor
             
             self.imgViewIconBottom.downloadedFrom(link:(self.selectedMainCategory?.interBanner)!, contentMode:UIViewContentMode.ScaleToFill)
             self.imgViewIconTop.downloadedFrom(link:(self.selectedMainCategory?.catIcon)!, contentMode:UIViewContentMode.ScaleAspectFit)
