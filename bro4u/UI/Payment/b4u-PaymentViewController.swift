@@ -8,6 +8,13 @@
 
 import UIKit
 
+enum paymentOption{
+   case kNone
+   case kPaytem
+   case kPayUMoney
+   case kNetBanking
+   case kCOD
+}
 class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate {
 
     var itemDict : NSDictionary = ["Paytm":"10% Cashback","payUmoney":"1% instant off",
@@ -15,6 +22,7 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         "Cash On Service":"Pay cash on service"]
     var radioButtonSelected:NSIndexPath!
     
+    var selectedPaymentOption:paymentOption = paymentOption.kNone
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -87,12 +95,14 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     
     @IBAction func placeOrder(sender: AnyObject){
         
-        //  let paytmViewController :PaytmViewController = PaytmViewController()
-        //  self.navigationController?.pushViewController(paytmViewController, animated: true)
-        //    let payUmoneyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PaymentSCVC") as? PayUMoneyViewController
-        
-        let payUmoneyViewController :PayUMoneyViewController = PayUMoneyViewController()
-        self.navigationController?.pushViewController(payUmoneyViewController, animated: true)
+          let paytmViewController :PaytmViewController = PaytmViewController()
+          self.navigationController?.pushViewController(paytmViewController, animated: true)
+//            let payUmoneyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PaymentSCVC") as? PayUMoneyViewController
+//
+//        self.performSegueWithIdentifier("paymentSegue", sender:nil)
+
+//        let payUmoneyViewController :PayUMoneyViewController = PayUMoneyViewController()
+//        self.navigationController?.pushViewController(paytmViewController, animated: true)
         
     }
 
