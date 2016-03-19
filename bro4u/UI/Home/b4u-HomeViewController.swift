@@ -177,11 +177,11 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
             sliderImg.downloadedFrom(link:sliderImageInfoObj.imageName!, contentMode:UIViewContentMode.ScaleAspectFit)
             self.scrollView.addSubview(sliderImg)
 
-            let slideImgTapGesture:UITapGestureRecognizer = UITapGestureRecognizer(target:self, action:"imageSlideClicked:")
-            
-            slideImgTapGesture.numberOfTapsRequired = 1;
-            
-            sliderImg.addGestureRecognizer(slideImgTapGesture)
+//            let slideImgTapGesture:UITapGestureRecognizer = UITapGestureRecognizer(target:self, action:"imageSlideClicked:")
+//            
+//            slideImgTapGesture.numberOfTapsRequired = 1;
+//            
+//            sliderImg.addGestureRecognizer(slideImgTapGesture)
             
         }
         

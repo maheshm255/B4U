@@ -2709,8 +2709,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="placeOrder:" destination="94o-BS-nuJ" eventType="touchUpOutside" id="SxG-2H-htz"/>
-                                    <segue destination="wwg-Fp-Wbt" kind="show" identifier="orderConfirmationSegue" id="xqt-Iy-8t4"/>
+                                    <action selector="placeOrder:" destination="94o-BS-nuJ" eventType="touchUpInside" id="X02-s4-wZe"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT PAYMENT METHOD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XZ-k2-q3E">
@@ -2840,10 +2839,32 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Etz-00-82b"/>
+                    <connections>
+                        <segue destination="wwg-Fp-Wbt" kind="show" identifier="orderConfirmationSegue" id="Cvn-sz-2cJ"/>
+                        <segue destination="quf-5X-FTE" kind="show" identifier="paymentSegue" id="rXd-nU-CwY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8W-bP-NHd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5467" y="2828"/>
+        </scene>
+        <!--Paytm View Controller-->
+        <scene sceneID="gma-za-gWk">
+            <objects>
+                <viewController id="quf-5X-FTE" customClass="PaytmViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rl0-Up-p7l"/>
+                        <viewControllerLayoutGuide type="bottom" id="iO9-ft-iKx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0hX-iS-cBX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gaw-dU-9qj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5614" y="3574"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Jz5-C0-7Wb">
@@ -3458,7 +3479,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Prm-1Q-aOz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7059" y="2869"/>
+            <point key="canvasLocation" x="6216" y="2817"/>
         </scene>
         <!--My Order View Controller-->
         <scene sceneID="jQt-Yf-4cK">
