@@ -206,6 +206,8 @@ extension b4u_LoginViewCtrl : FBSDKLoginButtonDelegate {
         print("didCompleteWithResult")
         
         self.getFaceBookProfileInfo()
+        
+        delegate?.loginFailed()
     }
 
 

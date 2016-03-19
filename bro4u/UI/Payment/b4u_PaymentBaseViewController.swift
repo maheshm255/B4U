@@ -24,9 +24,15 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
 
         // Do any additional setup after loading the view.
         
-        self.cofigureUI()
+      //  self.cofigureUI()
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.cofigureUI()
+
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
