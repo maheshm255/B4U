@@ -8,7 +8,7 @@
 
 import UIKit
 
-class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate{
+class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,loginDelegate{
 
     @IBOutlet weak var viewSegmentCtrl: UIView!
     var segmentedControl:HMSegmentedControl?
@@ -127,7 +127,9 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate{
             
             loginViewCtrl = self.storyboard?.instantiateViewControllerWithIdentifier("loginOptionViewControlller") as? b4u_LoginViewCtrl
             
+            loginViewCtrl?.loginForm = loginFormScreen.kPaymentScreen
             
+            loginViewCtrl?.delegate = self
             self.loginViewCtrl!.view.translatesAutoresizingMaskIntoConstraints = false
             
             let metricDict = ["w":viewWidth,"h":viewHeight]
@@ -237,4 +239,14 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate{
         self.addPaymentViewControl()
     }
 
+    func proceedToDelivery()
+    {
+        self.segmentedControl?.selectedSegmentIndex = 1
+        self.addDeliveryViewControl()
+    }
+    
+    func loginFailed()
+    {
+        
+    }
 }

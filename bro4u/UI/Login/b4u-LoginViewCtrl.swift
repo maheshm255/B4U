@@ -9,6 +9,14 @@
 import UIKit
 import FBSDKLoginKit
 
+protocol loginDelegate
+{
+    func proceedToDelivery()
+    
+    func loginFailed()
+
+}
+
 class b4u_LoginViewCtrl: UIViewController ,GIDSignInDelegate,GIDSignInUIDelegate ,UITextFieldDelegate{
     @IBOutlet weak var tfEnerMobileNumber: UITextField!
 
@@ -16,7 +24,8 @@ class b4u_LoginViewCtrl: UIViewController ,GIDSignInDelegate,GIDSignInUIDelegate
     @IBOutlet var fbLoginButton: FBSDKLoginButton!
 
     var loginForm:loginFormScreen = loginFormScreen.kNone
-   
+    var delegate:loginDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -169,6 +178,9 @@ class b4u_LoginViewCtrl: UIViewController ,GIDSignInDelegate,GIDSignInUIDelegate
         self.dismissViewControllerAnimated(true, completion:nil)
 
         case  loginFormScreen.kPaymentScreen :
+            
+            delegate?.proceedToDelivery()
+            
             print("payment screen")
         case  loginFormScreen.kNone :
             print("Logint from not set")
@@ -220,7 +232,7 @@ func getFaceBookProfileInfo()
             
             loginInfoObj.userId = result.valueForKey("id")as! String!
             //loginInfoObj.googleAuthToken = user.authentication.idToken
-            loginInfoObj.fullName = result.valueForKey("name") as! String
+            loginInfoObj.fullName = result.valueForKey("name") as? String
         //    loginInfoObj.email = user.profile.email
             loginInfoObj.loginType = "facebook"
             
