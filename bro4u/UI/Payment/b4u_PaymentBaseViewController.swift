@@ -8,7 +8,7 @@
 
 import UIKit
 
-class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,loginDelegate{
+class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,loginViewDelegate{
 
     @IBOutlet weak var viewSegmentCtrl: UIView!
     var segmentedControl:HMSegmentedControl?
@@ -24,13 +24,12 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
 
         // Do any additional setup after loading the view.
         
-      //  self.cofigureUI()
+        self.cofigureUI()
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.cofigureUI()
 
     }
     override func didReceiveMemoryWarning() {
@@ -155,28 +154,81 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
 //        }
 
         
-        let loginView:b4u_loginView = b4u_loginView()
+//        let loginView:b4u_loginView = b4u_loginView()
+//        
+//        loginView.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        loginView.backgroundColor = UIColor.redColor();
+//        self.view.addSubview(loginView);
+//        
+//        
+//        let constX:NSLayoutConstraint = NSLayoutConstraint(item: loginView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0);
+//        self.view.addConstraint(constX);
+//        //
+//        //
+//        let constY:NSLayoutConstraint = NSLayoutConstraint(item: loginView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0);
+//        self.view.addConstraint(constY);
+//        //
+//        //
+//        let constTrayling:NSLayoutConstraint = NSLayoutConstraint(item: loginView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0);
+//        self.view.addConstraint(constTrayling);
+//        //
+//        //
+//        let constBottom:NSLayoutConstraint = NSLayoutConstraint(item: loginView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0);
+//        self.view.addConstraint(constBottom);
+        
+        
+        
+         let loginView:b4u_loginView  =  (UINib(nibName: "b4u-loginView", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as? b4u_loginView)!
+        
         
         loginView.translatesAutoresizingMaskIntoConstraints = false
+       // loginView.frame = self.view.bounds
+       // loginView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
         
-        loginView.backgroundColor = UIColor.redColor();
-        self.view.addSubview(loginView);
+        loginView.setup()
+        
+        loginView.delegate = self
+        
+        let viewWidth = CGRectGetWidth(self.viewParent.frame)
+        let viewHeight = CGRectGetHeight(self.viewParent.frame)
         
         
-        let constX:NSLayoutConstraint = NSLayoutConstraint(item: loginView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0);
-        self.view.addConstraint(constX);
-        //
-        //
-        let constY:NSLayoutConstraint = NSLayoutConstraint(item: loginView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0);
-        self.view.addConstraint(constY);
-        //
-        //
-        let constTrayling:NSLayoutConstraint = NSLayoutConstraint(item: loginView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0);
-        self.view.addConstraint(constTrayling);
-        //
-        //
-        let constBottom:NSLayoutConstraint = NSLayoutConstraint(item: loginView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0);
-        self.view.addConstraint(constBottom);
+        let metricDict = ["w":viewWidth,"h":viewHeight]
+        
+        self.viewParent.addSubview(loginView)
+        
+        // - Generic cnst
+        
+        loginView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[view(h)]", options:[], metrics: metricDict, views: ["view":loginView]))
+        
+        loginView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[view(w)]", options:[], metrics: metricDict, views: ["view":loginView]))
+        
+        self.viewParent.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[view]|", options:[], metrics: nil, views: ["view":loginView]))
+        
+        self.viewParent.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[view]|", options:[], metrics: nil, views: ["view":loginView]))
+        
+        
+        
+////
+//        let horizontalConstraint = NSLayoutConstraint(item: loginView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem:self.view, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0)
+//        
+//        self.view.addConstraint(horizontalConstraint)
+//        
+//        
+//        let trailingConstraint = NSLayoutConstraint(item: loginView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem:self.view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant:0)
+//        self.view.addConstraint(trailingConstraint)
+//        
+//        
+//        let topConstraint = NSLayoutConstraint(item: loginView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top , multiplier:1, constant:40)
+//        
+//        self.view.addConstraint(topConstraint)
+////
+//    
+//
+//        let bottomConstraint = NSLayoutConstraint(item: loginView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem:self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0)
+//        self.view.addConstraint(bottomConstraint)
+      
     }
     
     func addDeliveryViewControl()
@@ -267,15 +319,16 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
 
         self.addPaymentViewControl()
     }
-
-    func proceedToDelivery()
+    
+    func loginSuccessFull()
     {
         self.segmentedControl?.selectedSegmentIndex = 1
         self.addDeliveryViewControl()
     }
-    
     func loginFailed()
     {
-        self.cofigureUI()
+        
     }
 }
+
+

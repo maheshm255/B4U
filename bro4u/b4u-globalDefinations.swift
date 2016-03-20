@@ -138,4 +138,5 @@ let kCancelOrderIndex = "index.php/order/cancel_order"
 
 let kPushServicesScreen = "categoryScreenPush"
 
+let kLoginDismissed = "kLoginDismissed"
 

@@ -169,9 +169,13 @@ class b4u_RightMenuTblCtrl: UITableViewController {
                 bro4u_DataManager.sharedInstance.loginInfo = nil
                 print("LoggeOut Successfully")
                 
+                NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
+
             }else
             {
-                self.performSegueWithIdentifier("loginSegue", sender:nil)
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.performSegueWithIdentifier("loginSegue", sender:nil)
+                })
             }
             
         }

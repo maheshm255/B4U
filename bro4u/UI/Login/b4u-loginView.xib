@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="b4u_loginView" customModule="bro4u" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginBackGround" translatesAutoresizingMaskIntoConstraints="NO" id="8Nd-sU-DbD">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
+                <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="gjB-44-jjT" customClass="GIDSignInButton">
+                    <rect key="frame" x="173" y="238" width="255" height="25"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="255" id="JdD-kq-5Gp"/>
+                        <constraint firstAttribute="height" constant="25" id="dEK-Wc-hIF"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1C-o6-et8" customClass="FBSDKLoginButton">
+                    <rect key="frame" x="175" y="178" width="250" height="40"/>
+                    <color key="backgroundColor" red="0.03734517809" green="0.27453828920000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="Rb5-AK-xJb"/>
+                        <constraint firstAttribute="height" constant="40" id="V2F-3h-MKn"/>
+                    </constraints>
+                    <state key="normal" title="FACEBOOK">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOGIN USING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qCe-yc-IDu">
+                    <rect key="frame" x="247" y="137" width="106" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asI-U8-Z76">
+                    <rect key="frame" x="288" y="273" width="24" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ql1-Bp-YEu">
+                    <rect key="frame" x="375" y="304" width="50" height="30"/>
+                    <color key="backgroundColor" red="0.32275062920000003" green="0.60171979870000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="fm1-Km-uuY"/>
+                    </constraints>
+                    <state key="normal" title="GO">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="goBtnClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="OR0-Bq-XZc"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter mobile number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dcy-G0-rEO">
+                    <rect key="frame" x="175" y="304" width="200" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="KUM-XS-rFL"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ma7-e0-bBe">
+                    <rect key="frame" x="175" y="304" width="250" height="40"/>
+                    <color key="backgroundColor" red="0.32275062919463088" green="0.60171979865771807" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="MOz-qn-Okh"/>
+                        <constraint firstAttribute="height" constant="40" id="Wc0-B3-vbM"/>
+                    </constraints>
+                    <state key="normal" title="OTP LOGIN">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="OtpBntClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="yA7-gO-LRc"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="dcy-G0-rEO" firstAttribute="leading" secondItem="Ma7-e0-bBe" secondAttribute="leading" id="2Rt-cY-ziJ"/>
+                <constraint firstItem="8Nd-sU-DbD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4dk-K7-0FE"/>
+                <constraint firstItem="n1C-o6-et8" firstAttribute="top" secondItem="qCe-yc-IDu" secondAttribute="bottom" constant="20" id="AZY-3Y-LNh"/>
+                <constraint firstItem="Ql1-Bp-YEu" firstAttribute="leading" secondItem="dcy-G0-rEO" secondAttribute="trailing" id="BEe-rp-mCi"/>
+                <constraint firstItem="asI-U8-Z76" firstAttribute="top" secondItem="gjB-44-jjT" secondAttribute="bottom" constant="10" id="CJx-dE-z0P"/>
+                <constraint firstItem="gjB-44-jjT" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-50" id="H3a-Du-Ecg"/>
+                <constraint firstAttribute="trailing" secondItem="8Nd-sU-DbD" secondAttribute="trailing" id="HE4-at-dIt"/>
+                <constraint firstItem="gjB-44-jjT" firstAttribute="top" secondItem="n1C-o6-et8" secondAttribute="bottom" constant="20" id="LHI-A6-Mls"/>
+                <constraint firstAttribute="bottom" secondItem="8Nd-sU-DbD" secondAttribute="bottom" id="QvQ-u6-IRc"/>
+                <constraint firstItem="asI-U8-Z76" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="SU3-ph-4aN"/>
+                <constraint firstItem="Ma7-e0-bBe" firstAttribute="top" secondItem="asI-U8-Z76" secondAttribute="bottom" constant="10" id="ULR-BH-g0Q"/>
+                <constraint firstItem="8Nd-sU-DbD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bO3-na-sNl"/>
+                <constraint firstItem="qCe-yc-IDu" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="f2I-l6-Dix"/>
+                <constraint firstItem="Ql1-Bp-YEu" firstAttribute="top" secondItem="dcy-G0-rEO" secondAttribute="top" id="j23-xk-FTF"/>
+                <constraint firstItem="Ql1-Bp-YEu" firstAttribute="bottom" secondItem="dcy-G0-rEO" secondAttribute="bottom" id="qxJ-6X-B7b"/>
+                <constraint firstItem="Ma7-e0-bBe" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="tZZ-cB-XNc"/>
+                <constraint firstItem="gjB-44-jjT" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="v2v-uX-Ucq"/>
+                <constraint firstItem="dcy-G0-rEO" firstAttribute="top" secondItem="asI-U8-Z76" secondAttribute="bottom" constant="10" id="y8o-16-GdV"/>
+                <constraint firstItem="n1C-o6-et8" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="znt-Db-IxZ"/>
+            </constraints>
+            <connections>
+                <outlet property="btnGoogleSing" destination="gjB-44-jjT" id="zKZ-Be-XGV"/>
+                <outlet property="btnOTP" destination="Ma7-e0-bBe" id="dfh-g9-4Nf"/>
+                <outlet property="fbloginBtn" destination="n1C-o6-et8" id="LkY-m0-uNA"/>
+                <outlet property="goBtnClicked" destination="Ql1-Bp-YEu" id="ASe-ed-Ai8"/>
+                <outlet property="tfOTPNumber" destination="dcy-G0-rEO" id="Zce-nL-Yez"/>
+            </connections>
+            <point key="canvasLocation" x="91" y="256"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="loginBackGround" width="320" height="480"/>
+    </resources>
+</document>

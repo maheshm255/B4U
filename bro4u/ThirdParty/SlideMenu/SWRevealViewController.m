@@ -746,6 +746,8 @@ const int FrontViewPositionNone = 0xff;
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushCategroyScreen:) name:@"categoryScreenPush" object:nil];
 
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginScreenDismissed:) name:@"kLoginDismissed" object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -965,11 +967,18 @@ const int FrontViewPositionNone = 0xff;
 
 }
 
+
+
 - (IBAction)rightRevealToggle:(id)sender
 {    
     [self rightRevealToggleAnimated:YES];
 }
 
+- (void)loginScreenDismissed:(NSNotification *)notification
+{
+    [self rightRevealToggleAnimated:YES];
+    
+}
 
 #pragma mark - UserInteractionEnabling
 
