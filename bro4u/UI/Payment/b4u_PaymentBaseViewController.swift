@@ -122,38 +122,61 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     
     func addLoginViewControl()
     {
-        if let aLoginViewCtrl = self.loginViewCtrl
-        {
-            self.viewParent.bringSubviewToFront(aLoginViewCtrl.view)
-        }else
-        {
-            
-            let viewWidth = CGRectGetWidth(self.viewParent.frame)
-            let viewHeight = CGRectGetHeight(self.viewParent.frame)
-            
-            loginViewCtrl = self.storyboard?.instantiateViewControllerWithIdentifier("loginOptionViewControlller") as? b4u_LoginViewCtrl
-            
-            loginViewCtrl?.loginForm = loginFormScreen.kPaymentScreen
-            
-            loginViewCtrl?.delegate = self
-            self.loginViewCtrl!.view.translatesAutoresizingMaskIntoConstraints = false
-            
-            let metricDict = ["w":viewWidth,"h":viewHeight]
-            
-            self.viewParent.addSubview((self.loginViewCtrl?.view)!)
-            
-            // - Generic cnst
-            
-            self.loginViewCtrl!.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[view(h)]", options:[], metrics: metricDict, views: ["view":self.loginViewCtrl!.view]))
-            
-            self.loginViewCtrl!.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[view(w)]", options:[], metrics: metricDict, views: ["view":self.loginViewCtrl!.view]))
-            
-            self.viewParent.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[view]|", options:[], metrics: nil, views: ["view":self.loginViewCtrl!.view]))
-            
-            self.viewParent.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[view]|", options:[], metrics: nil, views: ["view":self.loginViewCtrl!.view]))
+//        if let aLoginViewCtrl = self.loginViewCtrl
+//        {
+//            self.viewParent.bringSubviewToFront(aLoginViewCtrl.view)
+//        }else
+//        {
+//            
+//            let viewWidth = CGRectGetWidth(self.viewParent.frame)
+//            let viewHeight = CGRectGetHeight(self.viewParent.frame)
+//            
+//            loginViewCtrl = self.storyboard?.instantiateViewControllerWithIdentifier("loginOptionViewControlller") as? b4u_LoginViewCtrl
+//            
+//            loginViewCtrl?.loginForm = loginFormScreen.kPaymentScreen
+//            
+//            loginViewCtrl?.delegate = self
+//            self.loginViewCtrl!.view.translatesAutoresizingMaskIntoConstraints = false
+//            
+//            let metricDict = ["w":viewWidth,"h":viewHeight]
+//            
+//            self.viewParent.addSubview((self.loginViewCtrl?.view)!)
+//            
+//            // - Generic cnst
+//            
+//            self.loginViewCtrl!.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[view(h)]", options:[], metrics: metricDict, views: ["view":self.loginViewCtrl!.view]))
+//            
+//            self.loginViewCtrl!.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[view(w)]", options:[], metrics: metricDict, views: ["view":self.loginViewCtrl!.view]))
+//            
+//            self.viewParent.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[view]|", options:[], metrics: nil, views: ["view":self.loginViewCtrl!.view]))
+//            
+//            self.viewParent.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[view]|", options:[], metrics: nil, views: ["view":self.loginViewCtrl!.view]))
+//
+//        }
 
-        }
-
+        
+        let loginView:b4u_loginView = b4u_loginView()
+        
+        loginView.translatesAutoresizingMaskIntoConstraints = false
+        
+        loginView.backgroundColor = UIColor.redColor();
+        self.view.addSubview(loginView);
+        
+        
+        let constX:NSLayoutConstraint = NSLayoutConstraint(item: loginView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0);
+        self.view.addConstraint(constX);
+        //
+        //
+        let constY:NSLayoutConstraint = NSLayoutConstraint(item: loginView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0);
+        self.view.addConstraint(constY);
+        //
+        //
+        let constTrayling:NSLayoutConstraint = NSLayoutConstraint(item: loginView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0);
+        self.view.addConstraint(constTrayling);
+        //
+        //
+        let constBottom:NSLayoutConstraint = NSLayoutConstraint(item: loginView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0);
+        self.view.addConstraint(constBottom);
     }
     
     func addDeliveryViewControl()
@@ -253,6 +276,6 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     
     func loginFailed()
     {
-        
+        self.cofigureUI()
     }
 }

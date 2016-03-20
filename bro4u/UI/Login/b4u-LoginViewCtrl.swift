@@ -51,6 +51,32 @@ class b4u_LoginViewCtrl: UIViewController ,GIDSignInDelegate,GIDSignInUIDelegate
        // fbLoginButton.
        // FBSDKLoginManager().logOut()
 
+     //   FBSDKLoginManager().fromViewController = nil;
+        
+        
+        let loginView:b4u_loginView = b4u_loginView()
+        
+        loginView.translatesAutoresizingMaskIntoConstraints = false
+
+       loginView.backgroundColor = UIColor.redColor();
+        self.view.addSubview(loginView);
+        
+        
+        let constX:NSLayoutConstraint = NSLayoutConstraint(item: loginView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0);
+        self.view.addConstraint(constX);
+        //
+        //
+        let constY:NSLayoutConstraint = NSLayoutConstraint(item: loginView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0);
+        self.view.addConstraint(constY);
+        //
+        //
+        let constTrayling:NSLayoutConstraint = NSLayoutConstraint(item: loginView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0);
+        self.view.addConstraint(constTrayling);
+        //
+        //
+        let constBottom:NSLayoutConstraint = NSLayoutConstraint(item: loginView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0);
+        self.view.addConstraint(constBottom);
+        
 
     }
     @IBOutlet weak var btnOTPLogin: UIButton!

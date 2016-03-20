@@ -167,7 +167,7 @@ class b4u_RightMenuTblCtrl: UITableViewController {
                 NSUserDefaults.standardUserDefaults().removeObjectForKey("isUserLogined")
                 lblLogin.text = "Login"
                 bro4u_DataManager.sharedInstance.loginInfo = nil
-                print("Logge Out Successfully")
+                print("LoggeOut Successfully")
                 
             }else
             {
