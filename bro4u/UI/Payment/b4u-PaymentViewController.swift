@@ -93,20 +93,20 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         
     }
     
-    @IBAction func placeOrder(sender: AnyObject){
-        
-//          let paytmViewController :PaytmViewController = PaytmViewController()
-//          self.navigationController?.pushViewController(paytmViewController, animated: true)
-//            let payUmoneyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PaymentSCVC") as? PayUMoneyViewController
+//    @IBAction func placeOrder(sender: AnyObject){
+//        
+////          let paytmViewController :PaytmViewController = PaytmViewController()
+////          self.navigationController?.pushViewController(paytmViewController, animated: true)
+////            let payUmoneyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PaymentSCVC") as? PayUMoneyViewController
+////
+////        self.performSegueWithIdentifier("paymentSegue", sender:nil)
 //
-//        self.performSegueWithIdentifier("paymentSegue", sender:nil)
-
-//        let payUmoneyViewController :PayUMoneyViewController = PayUMoneyViewController()
-//        self.navigationController?.pushViewController(paytmViewController, animated: true)
-        
-        let payUmoneyViewController :PayUMoneyWebPaymentViewController = PayUMoneyWebPaymentViewController()
-        self.navigationController?.pushViewController(payUmoneyViewController, animated: true)
-    }
+////        let payUmoneyViewController :PayUMoneyViewController = PayUMoneyViewController()
+////        self.navigationController?.pushViewController(paytmViewController, animated: true)
+//        
+//        let payUmoneyViewController :PayUMoneyWebPaymentViewController = PayUMoneyWebPaymentViewController()
+//        self.navigationController?.pushViewController(payUmoneyViewController, animated: true)
+//    }
 
     
 }

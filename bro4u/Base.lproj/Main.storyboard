@@ -2707,7 +2707,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="placeOrder:" destination="94o-BS-nuJ" eventType="touchUpInside" id="Zvn-dS-QCr"/>
+                                    <segue destination="Pa3-5d-guV" kind="showDetail" id="nzV-WP-lmE"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT PAYMENT METHOD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XZ-k2-q3E">
@@ -5899,7 +5899,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="z4i-k8-Vxf" secondAttribute="trailing" id="73J-7d-Zuf"/>
                             <constraint firstItem="VH9-Sz-PGK" firstAttribute="top" secondItem="z4i-k8-Vxf" secondAttribute="bottom" id="Ebt-ia-UTs"/>
-                            <constraint firstItem="z4i-k8-Vxf" firstAttribute="top" secondItem="0xX-On-FiU" secondAttribute="bottom" id="hOO-qS-bws"/>
+                            <constraint firstItem="z4i-k8-Vxf" firstAttribute="top" secondItem="0xX-On-FiU" secondAttribute="bottom" constant="44" id="hOO-qS-bws"/>
                             <constraint firstItem="z4i-k8-Vxf" firstAttribute="leading" secondItem="7at-bM-2I1" secondAttribute="leading" id="ssf-jJ-vFu"/>
                         </constraints>
                     </view>
@@ -6208,5 +6208,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="W5U-K3-ziD"/>
         <segue reference="iYf-9b-F9y"/>
+        <segue reference="nzV-WP-lmE"/>
     </inferredMetricsTieBreakers>
 </document>
