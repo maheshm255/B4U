@@ -22,3 +22,6 @@
 #import <HNKGooglePlacesAutocomplete/HNKGooglePlacesAutocomplete.h>
 
 #import "MBProgressHUD.h"
+
+//For Web Payment
+#import "PayUMoneyWebPaymentViewController.h"

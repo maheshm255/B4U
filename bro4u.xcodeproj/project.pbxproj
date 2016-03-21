@@ -234,6 +234,7 @@
 		B71C28621C8C0C0C00873B5C /* OrderConfirmedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C28571C8C0C0C00873B5C /* OrderConfirmedViewController.swift */; };
 		B720379F1C93BE3200C1FF50 /* b4u_ReOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B720379D1C93BE3200C1FF50 /* b4u_ReOrderTableViewCell.swift */; };
 		B72037A01C93BE3200C1FF50 /* b4u_ReOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B720379E1C93BE3200C1FF50 /* b4u_ReOrderViewController.swift */; };
+		B72E46271CA04E9300D2E67F /* PayUMoneyWebPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B72E46261CA04E9300D2E67F /* PayUMoneyWebPaymentViewController.m */; };
 		B7BB86651C95888C003D5F44 /* MyAccount.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7BB86641C95888C003D5F44 /* MyAccount.plist */; };
 		B7DC0EDF1C942A3300A5577C /* b4u_ReOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DC0EDE1C942A3300A5577C /* b4u_ReOrderModel.swift */; };
 		B7DC0EE11C942F2200A5577C /* b4u_ReOrder_MetaItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DC0EE01C942F2200A5577C /* b4u_ReOrder_MetaItemModel.swift */; };
@@ -569,6 +570,8 @@
 		B71C28571C8C0C0C00873B5C /* OrderConfirmedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmedViewController.swift; sourceTree = "<group>"; };
 		B720379D1C93BE3200C1FF50 /* b4u_ReOrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ReOrderTableViewCell.swift; sourceTree = "<group>"; };
 		B720379E1C93BE3200C1FF50 /* b4u_ReOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ReOrderViewController.swift; sourceTree = "<group>"; };
+		B72E46251CA04E9300D2E67F /* PayUMoneyWebPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayUMoneyWebPaymentViewController.h; sourceTree = "<group>"; };
+		B72E46261CA04E9300D2E67F /* PayUMoneyWebPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayUMoneyWebPaymentViewController.m; sourceTree = "<group>"; };
 		B7BB86641C95888C003D5F44 /* MyAccount.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyAccount.plist; sourceTree = "<group>"; };
 		B7DC0EDE1C942A3300A5577C /* b4u_ReOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ReOrderModel.swift; sourceTree = "<group>"; };
 		B7DC0EE01C942F2200A5577C /* b4u_ReOrder_MetaItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ReOrder_MetaItemModel.swift; sourceTree = "<group>"; };
@@ -748,6 +751,7 @@
 		65271E6A1C831B1E0022C888 /* PayUmoney */ = {
 			isa = PBXGroup;
 			children = (
+				B72E46241CA04E9300D2E67F /* PayUMoney Web */,
 				65271E6B1C831B1E0022C888 /* iOSCustomBrowser */,
 				65271EC81C831B1E0022C888 /* iOSDefaultActivityIndicator.h */,
 				65271EC91C831B1E0022C888 /* iOSDefaultActivityIndicator.m */,
@@ -1418,6 +1422,15 @@
 			path = "ReOrder Screen";
 			sourceTree = "<group>";
 		};
+		B72E46241CA04E9300D2E67F /* PayUMoney Web */ = {
+			isa = PBXGroup;
+			children = (
+				B72E46251CA04E9300D2E67F /* PayUMoneyWebPaymentViewController.h */,
+				B72E46261CA04E9300D2E67F /* PayUMoneyWebPaymentViewController.m */,
+			);
+			path = "PayUMoney Web";
+			sourceTree = "<group>";
+		};
 		B7DC0EDD1C942A0E00A5577C /* ReOrder */ = {
 			isa = PBXGroup;
 			children = (
@@ -1703,6 +1716,7 @@
 				65271F4F1C831B1E0022C888 /* PayUSAOneTapToken.m in Sources */,
 				65271F5C1C8367DB0022C888 /* b4u-DeliveryViewController.swift in Sources */,
 				B34EAD821C9297DA00FCB0F5 /* b4u_MyInfoModel.swift in Sources */,
+				B72E46271CA04E9300D2E67F /* PayUMoneyWebPaymentViewController.m in Sources */,
 				65B18A841C70BB28000EDD00 /* AFURLSessionManager.m in Sources */,
 				B71C285B1C8C0C0C00873B5C /* b4u_MyAccountViewController.swift in Sources */,
 				B71C285F1C8C0C0C00873B5C /* OngoingOrdersTableViewCell.swift in Sources */,
