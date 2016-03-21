@@ -275,6 +275,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
 
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         

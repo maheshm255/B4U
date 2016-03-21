@@ -32,14 +32,24 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
     
     //   var categoryScrollView:UIScrollView!
     
+    var selectedIndex:Int?
+    
     var indicatorcolor:UIView!
     
     var lastOffset:CGFloat!
     
-    var currentPage:Int{    // The index of the current page (readonly)
+    var currentPage:Int{// The index of the current page (readonly)
+        
         get{
-            let page = Int((self.catTblsScrollView.contentOffset.x / view.bounds.size.width))
-            return page
+            if let aSelectedIndex = self.selectedIndex
+            {
+                return aSelectedIndex
+            }else
+            {
+                let page = Int((self.catTblsScrollView.contentOffset.x / view.bounds.size.width))
+                return page
+            }
+          
         }
     }
     
@@ -49,7 +59,8 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
 
         // Do any additional setup after loading the view.
         
-        
+        self.addLoadingIndicator()
+
         self.getCategoryData()
       
 
@@ -63,6 +74,8 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
     
     func getCategoryData()
     {
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
         b4u_WebApiCallManager.sharedInstance.getApiCall(kCategoryAndSubOptions, params:"", result:{(resultObject) -> Void in
             
             print("Category Data Received")
@@ -70,6 +83,9 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
             print(resultObject)
             
             dispatch_async(dispatch_get_main_queue(), {
+                
+                b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
                 self.congigureUI()
 
             })
@@ -80,6 +96,7 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
 
     func congigureUI()
     {
+        
         indicatorcolor=UIView();
 
        for (_ , mainCategoryData) in bro4u_DataManager.sharedInstance.mainCategories.enumerate()
@@ -102,13 +119,39 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
         self.catTblsScrollView.delegate = self
         self.createHorizontalScroller()
         
-        self.imgViewIconBottom.downloadedFrom(link:(self.selectedMainCategory?.interBanner)!, contentMode:UIViewContentMode.ScaleToFill)
+        
+        if let selectedCategory = self.selectedMainCategory
+        {
+            self.imgViewIconBottom.downloadedFrom(link:(selectedCategory.interBanner)!, contentMode:UIViewContentMode.ScaleToFill)
+            
+            
+            self.imgViewIconTop.downloadedFrom(link:(selectedCategory.catIcon)!, contentMode:UIViewContentMode.ScaleAspectFit)
+        }
+     
 
         
-        self.imgViewIconTop.downloadedFrom(link:(self.selectedMainCategory?.catIcon)!, contentMode:UIViewContentMode.ScaleAspectFit)
+        UIView.animateWithDuration(0.5, delay: 0.4,
+            options: .Repeat, animations: {
+                
+                self.updateUI()
+                self.scrollToPage(self.catTblsScrollView, page:self.selectedIndex!, animated:true)
+                
+            }, completion: nil)
+        
+        
+      
 
     }
     
+     func scrollToPage(scrollView: UIScrollView, page: Int, animated: Bool) {
+        var frame: CGRect = scrollView.frame
+        frame.origin.x = frame.size.width * CGFloat(page);
+        scrollView.scrollRectToVisible(frame, animated: animated)
+        
+        scrollView.setContentOffset(CGPointMake(frame.origin.x, 0), animated:true)
+        
+        selectedIndex = nil
+    }
     
     /*
     // MARK: - Navigation
@@ -318,5 +361,11 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
         }
         
         
+    }
+    
+    func addLoadingIndicator () {
+        self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+        self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+        b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
     }
 }

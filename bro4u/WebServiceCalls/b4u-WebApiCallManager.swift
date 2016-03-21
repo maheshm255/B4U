@@ -155,6 +155,7 @@ class b4u_WebApiCallManager: NSObject {
     {
         let categories:[Dictionary<String ,AnyObject>] = dataDict["categories"] as! [Dictionary<String ,AnyObject>]
         
+        bro4u_DataManager.sharedInstance.categoryAndSubOptions.removeAll()
         for (_ ,categoryDataDict) in categories.enumerate()
         {
             let categoryObj = b4u_Category(categoryDataDict:categoryDataDict)

@@ -24,6 +24,8 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
 
         // Do any additional setup after loading the view.
         
+        
+        self.addLoadingIndicator()
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"pushCategoryScreen", name:kPushServicesScreen, object: nil)
 
        
@@ -82,10 +84,14 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     
     func getData()
     {
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         b4u_WebApiCallManager.sharedInstance.getApiCall(kHomeSCategory, params:"", result:{(resultObject) -> Void in
             
             print("Category Data Received")
             
+            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
+            self.tableViewCategory.backgroundColor = UIColor.whiteColor()
             print(resultObject)
             self.createImagSlideShowUI()
 
@@ -109,6 +115,8 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
                 let categoryViewCtrlObj = segue.destinationViewController as! b4u_CategoryViewCtrl
                 
                 categoryViewCtrlObj.selectedMainCategory = bro4u_DataManager.sharedInstance.mainCategories[indexPath.row]
+                
+                categoryViewCtrlObj.selectedIndex = indexPath.row
             }
             
         }
@@ -297,5 +305,11 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     func pushCategoryScreen()
     {
         self.performSegueWithIdentifier("categoryScreenSegue", sender:nil)
+    }
+    
+    func addLoadingIndicator () {
+        self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+        self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+        b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
     }
 }

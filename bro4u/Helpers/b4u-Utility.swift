@@ -12,6 +12,21 @@ let SE_COLOR_SPRUCE_GREEN:Int =  0x009530
 
 class b4u_Utility: NSObject {
    
+    lazy  var activityIndicator : b4u_ActivityIndicator = {
+        let image : UIImage = UIImage(named: "spinner")!
+        return b4u_ActivityIndicator(image: image)
+    }()
+    
+    
+    class var sharedInstance: b4u_Utility {
+        struct Singleton {
+            
+            static let instance = b4u_Utility()
+        }
+        
+        return Singleton.instance
+    }
+    
     
     /*
        Argument      : nil

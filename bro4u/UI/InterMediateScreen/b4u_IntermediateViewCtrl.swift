@@ -38,7 +38,8 @@ class b4u_IntermediateViewCtrl: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
+        self.addLoadingIndicator()
+
         self.callInterMediateApi()
     }
     
@@ -99,6 +100,8 @@ class b4u_IntermediateViewCtrl: UIViewController {
         
         if let aSelectedCatObj = selectedCategoryObj
         {
+            b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
             let catId = aSelectedCatObj.catId!
             let userId = "15" //TODO
             let deviceId = b4u_Utility.getUUIDFromVendorIdentifier()
@@ -136,6 +139,8 @@ class b4u_IntermediateViewCtrl: UIViewController {
             })
         }else if let aSelectedImgObj = self.selectedImgSlide
         {
+            b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
             let catId = aSelectedImgObj.catId!
             let userId = "15" //TODO
             let deviceId = b4u_Utility.getUUIDFromVendorIdentifier()
@@ -157,6 +162,8 @@ class b4u_IntermediateViewCtrl: UIViewController {
     
     func updateUI()
     {
+        b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
         if let aDataModel = bro4u_DataManager.sharedInstance.interMediateScreenDataObj
         {
             self.lblTitle.text = aDataModel.catName
@@ -177,5 +184,12 @@ class b4u_IntermediateViewCtrl: UIViewController {
                 self.btnTermsAndConditions.hidden = true
             }
         }
+    }
+    
+    
+    func addLoadingIndicator () {
+        self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+        self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+        b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
     }
 }
