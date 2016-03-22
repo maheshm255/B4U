@@ -62,7 +62,8 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        self.addLoadingIndicator()
+
         bro4u_DataManager.sharedInstance.timeSlots = nil
         self.callFilterApi()
     }
@@ -78,6 +79,8 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         
         if let aSelectedCatObj = selectedCategoryObj
         {
+            b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
             let catId = aSelectedCatObj.catId!
             let optionId =  aSelectedCatObj.optionId!
             let filedName = aSelectedCatObj.fieldName!
@@ -91,6 +94,8 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             })
         }else if let aSelectedSlideImg = self.selectedImgSlide
         {
+            b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
             let catId = aSelectedSlideImg.catId!
             let optionId =  aSelectedSlideImg.optionId!
             
@@ -117,6 +122,8 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     }
     func updateUI()
     {
+        b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
         self.expandableTblView.reloadData()
     }
     // MARK: UITableViewDataSource
@@ -362,7 +369,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         calendarController.delegate = self
         
         let popoverMenuViewController = calendarController.popoverPresentationController
-        popoverMenuViewController?.permittedArrowDirections = .Any
+         popoverMenuViewController?.permittedArrowDirections = .Any
         popoverMenuViewController?.delegate = self
         popoverMenuViewController?.sourceView = sender as? UIView
         popoverMenuViewController?.sourceRect = CGRect(
@@ -374,6 +381,10 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             calendarController,
             animated: true,
             completion: nil)
+        
+        
+      //  UIPopoverArrowDirection(rawValue: 0)
+
 
     }
     
@@ -383,6 +394,31 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     }
     
     
+    func showQuicBookingView()
+    {
+        let storyboard : UIStoryboard = self.storyboard!
+        
+        let quickBookViewCtrl:b4u_QuickBookOrderCtrl = storyboard.instantiateViewControllerWithIdentifier("quickBookViewCtrl") as! b4u_QuickBookOrderCtrl
+        
+        quickBookViewCtrl.modalPresentationStyle = .Popover
+        quickBookViewCtrl.preferredContentSize = CGSizeMake(300, 400)
+       // quickBookViewCtrl.delegate = self
+        
+        let popoverMenuViewController = quickBookViewCtrl.popoverPresentationController
+        popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
+        popoverMenuViewController?.delegate = self
+        popoverMenuViewController?.sourceView = self.view
+        popoverMenuViewController?.sourceRect = CGRect(
+            x: CGRectGetMidX(self.view.frame),
+            y: CGRectGetMidY(self.view.frame),
+            width: 1,
+            height: 1)
+        presentViewController(
+           quickBookViewCtrl,
+            animated: true,
+            completion: nil)
+
+    }
     func minusBtnClicked(sender:AnyObject)
     {
         if numberOfItems > 0
@@ -561,6 +597,9 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         }
         
         bro4u_DataManager.sharedInstance.suggestedPatnersResult = nil
+        
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
         b4u_WebApiCallManager.sharedInstance.getApiCall(kShowServicePatnerApi, params:params, result:{(resultObject) -> Void in
             
             
@@ -572,13 +611,17 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     
     func moveToSuggestedPatner()
     {
-        if let suggestedPatners = bro4u_DataManager.sharedInstance.suggestedPatnersResult?.suggestedPatners
+        b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
+        if bro4u_DataManager.sharedInstance.suggestedPatnersResult?.suggestedPatners?.count == 0
         {
             self.performSegueWithIdentifier("servicePatnerSegue", sender:nil)
             
         }else
         {
             //TODO
+            
+            self.showQuicBookingView()
         }
     }
     
@@ -629,5 +672,9 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
 
     }
     
-    
+    func addLoadingIndicator () {
+        self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+        self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+        b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
+    }
 }

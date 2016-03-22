@@ -1199,7 +1199,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="YZ8-zO-QoW" customClass="b4u_ExpandableTableView" customModule="bro4u" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="YZ8-zO-QoW" customClass="b4u_ExpandableTableView" customModule="bro4u" customModuleProvider="target">
                                 <rect key="frame" x="5" y="10" width="590" height="540"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -2860,6 +2860,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oei-ps-g9E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6953" y="4965"/>
+        </scene>
+        <!--4u Quick Book Order Ctrl-->
+        <scene sceneID="zRB-Lt-QeR">
+            <objects>
+                <viewController storyboardIdentifier="quickBookViewCtrl" id="xVU-lz-YsE" customClass="b4u_QuickBookOrderCtrl" customModule="bro4u" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9n9-rN-wHb"/>
+                        <viewControllerLayoutGuide type="bottom" id="nhS-TZ-XS0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BKP-gi-EkU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our service patners are unavailable on the selected slot .Please try different slot." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pS8-eI-8P4">
+                                <rect key="frame" x="20" y="20" width="560" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gst-ju-D7M">
+                                <rect key="frame" x="20" y="71" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raise a request below &amp; we will arrange is quickly." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0g-ca-Xxa">
+                                <rect key="frame" x="20" y="102" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="pS8-eI-8P4" secondAttribute="trailing" constant="20" id="2s4-Dv-jIU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gst-ju-D7M" secondAttribute="trailing" id="5qz-uH-9gb"/>
+                            <constraint firstItem="gst-ju-D7M" firstAttribute="leading" secondItem="BKP-gi-EkU" secondAttribute="leadingMargin" id="CGH-Ui-47A"/>
+                            <constraint firstItem="pS8-eI-8P4" firstAttribute="top" secondItem="9n9-rN-wHb" secondAttribute="bottom" id="VaC-I9-wC4"/>
+                            <constraint firstItem="p0g-ca-Xxa" firstAttribute="leading" secondItem="BKP-gi-EkU" secondAttribute="leadingMargin" id="X0y-q8-e6Y"/>
+                            <constraint firstItem="pS8-eI-8P4" firstAttribute="leading" secondItem="BKP-gi-EkU" secondAttribute="leading" constant="20" id="dHI-dF-sd9"/>
+                            <constraint firstItem="p0g-ca-Xxa" firstAttribute="top" secondItem="gst-ju-D7M" secondAttribute="bottom" constant="10" id="kv9-uW-x32"/>
+                            <constraint firstItem="gst-ju-D7M" firstAttribute="top" secondItem="pS8-eI-8P4" secondAttribute="bottom" constant="10" id="mRf-IV-Wgv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p0g-ca-Xxa" secondAttribute="trailing" id="qYt-Ja-WZn"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mwi-qJ-f1F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3354" y="947"/>
         </scene>
         <!--Data Source-->
         <scene sceneID="61D-Ih-Y3N">

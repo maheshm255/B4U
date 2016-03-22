@@ -28,6 +28,7 @@
 		04E7D9201C929CFE002C70A9 /* b4u-termsAndCondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7D91F1C929CFE002C70A9 /* b4u-termsAndCondViewController.swift */; };
 		04F026461C9594F900C99548 /* b4u-AddressDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F026451C9594F900C99548 /* b4u-AddressDetails.swift */; };
 		04FC92DC1CA04F5F002F90AC /* b4u-ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC92DB1CA04F5F002F90AC /* b4u-ActivityIndicator.swift */; };
+		04FC933D1CA10EAF002F90AC /* b4u-QuickBookOrderCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC933C1CA10EAF002F90AC /* b4u-QuickBookOrderCtrl.swift */; };
 		04FE41611C9E57C800A168FF /* b4u-loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE41601C9E57C800A168FF /* b4u-loginView.swift */; };
 		04FE418F1C9E706B00A168FF /* b4u-loginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FE418E1C9E706B00A168FF /* b4u-loginView.xib */; };
 		65264F851C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65264F841C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift */; };
@@ -274,6 +275,7 @@
 		04E7D91F1C929CFE002C70A9 /* b4u-termsAndCondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-termsAndCondViewController.swift"; sourceTree = "<group>"; };
 		04F026451C9594F900C99548 /* b4u-AddressDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-AddressDetails.swift"; sourceTree = "<group>"; };
 		04FC92DB1CA04F5F002F90AC /* b4u-ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-ActivityIndicator.swift"; sourceTree = "<group>"; };
+		04FC933C1CA10EAF002F90AC /* b4u-QuickBookOrderCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-QuickBookOrderCtrl.swift"; sourceTree = "<group>"; };
 		04FE41601C9E57C800A168FF /* b4u-loginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-loginView.swift"; sourceTree = "<group>"; };
 		04FE418E1C9E706B00A168FF /* b4u-loginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "b4u-loginView.xib"; sourceTree = "<group>"; };
 		0B4AB3BBC76D5DA9D4D6646A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -1202,6 +1204,7 @@
 				65FF8CDD1C7B6D99007588D0 /* b4u-ExpandableTblHeaderView.swift */,
 				65FF8CDF1C7B8375007588D0 /* b4u-ExpandableTblViewCell.swift */,
 				65FF8D5F1C7E175C007588D0 /* b4u-DateAndTImeSelectionTblCell.swift */,
+				04FC933C1CA10EAF002F90AC /* b4u-QuickBookOrderCtrl.swift */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -1790,6 +1793,7 @@
 				65DE76E21C7780BD00017F96 /* b4u-RightMenuTblCtrl.swift in Sources */,
 				65B49DBE1C7244FE0083942D /* b4u-SearchResult.swift in Sources */,
 				65B18A851C70BB28000EDD00 /* KeychainWrapper.m in Sources */,
+				04FC933D1CA10EAF002F90AC /* b4u-QuickBookOrderCtrl.swift in Sources */,
 				65271F511C831B1E0022C888 /* PayUUIEMIViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
