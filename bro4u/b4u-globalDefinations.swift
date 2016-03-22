@@ -113,7 +113,7 @@ let kOrderNotificationIndex = "index.php/my_account/get_notifications"
 let kAboutUsIndex = "index.php/page/about"
 
 //Reorder Order
-let kReOrderIndex = "index.php/order/re_orders?user_id=1"
+let kReOrderIndex = "index.php/order/re_orders"
 
 //Reorder Delete
 let kReOrderDeleteIndex = "index.php/order/thrash_reorder"

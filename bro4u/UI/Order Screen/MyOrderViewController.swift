@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyOrderViewController: UIViewController {
+class MyOrderViewController: UIViewController,UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var orderTableView: UITableView!
   
@@ -211,6 +211,8 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
   
   @IBAction func cancelBtnClicked(sender: AnyObject) {
     self.dismissViewControllerAnimated(true, completion:nil)
+    
+
   }
 
   
@@ -219,5 +221,105 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
     b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
   }
+  
+  @IBAction func cancelBtnAction(sender: AnyObject) {
+    self.showAlertView("Cancel")
+
+    
+    //    let tableView = self.superview?.superview as! UITableView
+    //
+    //    let indexPath = tableView.indexPathForCell(self)
+    //
+    //    let orderModel:b4u_OrdersModel = bro4u_DataManager.sharedInstance.orderData[indexPath!.row]
+    //    var metaDataModel:b4u_ReOrder_MetaItemModel?
+    //    if orderModel.metaItemReOrder?.count > 0{
+    //
+    //        metaDataModel = orderModel.metaItemReOrder?.first
+    //
+    //        let params = "?order_id=\(orderModel.orderID!)&user_id=\(metaDataModel!.userID!)&vendor_id=\(orderModel.vendorID!)&cancel_message=\("Text")"//Need to pass the textfield Message from popup
+    //
+    //        b4u_WebApiCallManager.sharedInstance.getApiCall(kCancelOrderIndex, params:params, result:{(resultObject) -> Void in
+    //
+    //        })
+    //    }
+    //
+    //
+    //    tableView.reloadData()
+  }
+  
+  @IBAction func trackBtnAction(sender: AnyObject) {
+ 
+    self.showAlertView("Track")
+
+  
+  }
+  
+  
+  @IBAction func rescheduledBtnAction(sender: AnyObject) {
+  
+    self.showAlertView("Reschedule")
+
+  }
+  
+  
+  @IBAction func callBro4uAction(sender: AnyObject) {
+  }
+  
+  
+  @IBAction func payOnlineAction(sender: AnyObject) {
+  
+    self.showAlertView("PayOnline")
+
+  }
+  
+
+  func showAlertView(btnTapped: String)
+  {
+    let storyboard : UIStoryboard = self.storyboard!
+    var alertViewCtrl:UIViewController  = UIViewController()
+    
+    if btnTapped == "Cancel"{
+      alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("CancelOrderViewControllerID") as! b4u_CancelOrderViewController
+
+    }
+    else if btnTapped == "Track"{
+    
+      alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("TrackOrderViewControllerID") as! b4u_TrackOrderViewController
+
+    }
+    else if btnTapped == "Reschedule"{
+      
+      alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("RescheduleOrderViewControllerID") as! b4u_RescheduleOrderViewController
+      
+    }
+    else if btnTapped == "PayOnline"{
+      
+      alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("PayOnlineOrderViewControllerID") as! b4u_PayOnlineOrderViewController
+      
+    }
+
+
+    
+    
+    alertViewCtrl.modalPresentationStyle = .Popover
+    alertViewCtrl.preferredContentSize = CGSizeMake(300, 250)
+    // quickBookViewCtrl.delegate = self
+    
+    let popoverMenuViewController = alertViewCtrl.popoverPresentationController
+    popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
+    popoverMenuViewController?.delegate = self
+    popoverMenuViewController?.sourceView = self.view
+    popoverMenuViewController?.sourceRect = CGRect(
+      x: CGRectGetMidX(self.view.frame),
+      y: CGRectGetMidY(self.view.frame),
+      width: 1,
+      height: 1)
+    presentViewController(
+      alertViewCtrl,
+      animated: true,
+      completion: nil)
+    
+  }
+
 
 }

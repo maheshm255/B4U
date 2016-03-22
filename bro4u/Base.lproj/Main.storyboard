@@ -2887,19 +2887,19 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our service partners are unavailable on the selected slot .Please try different slot." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pS8-eI-8P4">
                                 <rect key="frame" x="20" y="70" width="560" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gst-ju-D7M">
                                 <rect key="frame" x="288" y="121" width="24" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raise a request below &amp; we will arrange it quickly." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0g-ca-Xxa">
                                 <rect key="frame" x="40" y="152" width="520" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mobile number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U7q-GF-4ct">
@@ -3649,7 +3649,7 @@
                                                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="cancelBtnAction:" destination="GUK-Si-YaO" eventType="touchUpInside" id="BLs-Ct-FD9"/>
+                                                        <action selector="cancelBtnAction:" destination="Qfr-KM-4yB" eventType="touchUpInside" id="dLH-Z7-S5b"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WqE-Gs-JBB">
@@ -3664,7 +3664,7 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="rescheduledBtnAction:" destination="GUK-Si-YaO" eventType="touchUpInside" id="rv0-VN-BRb"/>
+                                                        <action selector="rescheduledBtnAction:" destination="Qfr-KM-4yB" eventType="touchUpInside" id="kym-Df-tIC"/>
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bro4ULogo" translatesAutoresizingMaskIntoConstraints="NO" id="yHu-Oq-ghq" userLabel="Vendor Image View">
@@ -3760,7 +3760,7 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="trackBtnAction:" destination="GUK-Si-YaO" eventType="touchUpInside" id="5nY-67-gon"/>
+                                                        <action selector="trackBtnAction:" destination="Qfr-KM-4yB" eventType="touchUpInside" id="2Hb-lx-Wdh"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Handy Fix" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BaO-bb-DTN">
@@ -3769,6 +3769,20 @@
                                                     <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VC7-MA-nQX">
+                                                    <rect key="frame" x="8" y="217" width="278" height="45"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="callBro4uAction:" destination="Qfr-KM-4yB" eventType="touchUpInside" id="vNq-D5-o0l"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fta-NL-FS0">
+                                                    <rect key="frame" x="308" y="217" width="274" height="46"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="payOnlineAction:" destination="Qfr-KM-4yB" eventType="touchUpInside" id="yjt-U2-iDJ"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="k33-ZN-cM0" secondAttribute="trailing" constant="8" id="3l4-TP-t6S"/>
@@ -5250,12 +5264,12 @@
         <!--Track Order-->
         <scene sceneID="5JE-eG-PpE">
             <objects>
-                <viewController title="Track Order" id="Eaq-oD-Zvg" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TrackOrderViewControllerID" title="Track Order" id="Eaq-oD-Zvg" customClass="b4u_TrackOrderViewController" customModule="bro4u" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CC7-eu-SCx"/>
                         <viewControllerLayoutGuide type="bottom" id="GaG-pw-jbV"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="iXx-D2-wIN">
+                    <view key="view" opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" id="iXx-D2-wIN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -5280,6 +5294,13 @@
                                         <color key="textColor" red="0.31098612310000001" green="0.74352222629999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9d-eq-aGo">
+                                        <rect key="frame" x="267" y="12" width="20" height="22"/>
+                                        <state key="normal" image="crossGrey"/>
+                                        <connections>
+                                            <action selector="btnCloseClicked:" destination="Eaq-oD-Zvg" eventType="touchUpInside" id="scE-02-WxO"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -5293,7 +5314,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="sMz-71-Doo" firstAttribute="centerX" secondItem="iXx-D2-wIN" secondAttribute="centerX" id="gFs-ib-nFv"/>
                             <constraint firstItem="sMz-71-Doo" firstAttribute="centerY" secondItem="iXx-D2-wIN" secondAttribute="centerY" id="j2a-0H-G5W"/>
@@ -5307,7 +5328,7 @@
         <!--Reschedule Order-->
         <scene sceneID="WL8-Ou-4DD">
             <objects>
-                <viewController title="Reschedule Order" id="HXQ-JV-TKT" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RescheduleOrderViewControllerID" title="Reschedule Order" id="HXQ-JV-TKT" customClass="b4u_RescheduleOrderViewController" customModule="bro4u" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LNw-Mv-aZK"/>
                         <viewControllerLayoutGuide type="bottom" id="mPK-bw-TZ7"/>
@@ -5359,6 +5380,9 @@
                                         <state key="normal" title="CLOSE">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="btnCloseClicked:" destination="HXQ-JV-TKT" eventType="touchUpInside" id="Not-vH-c0x"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zGb-2D-dni">
                                         <rect key="frame" x="180" y="82" width="98" height="30"/>
@@ -5426,7 +5450,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kgJ-OF-WSJ" firstAttribute="centerY" secondItem="zps-py-xnD" secondAttribute="centerY" id="6PQ-Dq-Wbc"/>
                             <constraint firstItem="kgJ-OF-WSJ" firstAttribute="centerX" secondItem="zps-py-xnD" secondAttribute="centerX" id="MXf-9b-nE8"/>
@@ -5440,17 +5464,17 @@
         <!--Cancel Order-->
         <scene sceneID="Fxj-GV-14F">
             <objects>
-                <viewController title="Cancel Order" id="anS-Vx-VHc" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CancelOrderViewControllerID" title="Cancel Order" id="anS-Vx-VHc" customClass="b4u_CancelOrderViewController" customModule="bro4u" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5OA-17-i09"/>
                         <viewControllerLayoutGuide type="bottom" id="TGf-u2-3uR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rXQ-S2-yba">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="250"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1u-qS-3wz">
-                                <rect key="frame" x="150" y="175" width="300" height="250"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="250"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Cancellation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJ8-l4-GPU">
                                         <rect key="frame" x="86" y="26" width="129" height="18"/>
@@ -5483,6 +5507,9 @@
                                         <state key="normal" title="CLOSE">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="btnCloseClicked:" destination="anS-Vx-VHc" eventType="touchUpInside" id="3FN-Zc-MXo"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ly-op-VO5">
                                         <rect key="frame" x="118" y="139" width="160" height="30"/>
@@ -5495,6 +5522,9 @@
                                         <state key="normal" title="CANCEL ORDER">
                                             <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="btnCancelOrderClicked:" destination="anS-Vx-VHc" eventType="touchUpInside" id="22m-cf-11k"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="call" translatesAutoresizingMaskIntoConstraints="NO" id="iwh-Ux-PXJ">
                                         <rect key="frame" x="86" y="214" width="16" height="16"/>
@@ -5515,6 +5545,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5IQ-az-kUK">
+                                        <rect key="frame" x="8" y="198" width="284" height="45"/>
+                                        <connections>
+                                            <action selector="btnCallBro4UClicked:" destination="anS-Vx-VHc" eventType="touchUpInside" id="Wh3-tJ-UoM"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -5532,8 +5568,12 @@
                                     <constraint firstAttribute="bottom" secondItem="iwh-Ux-PXJ" secondAttribute="bottom" constant="20" id="C5D-oa-W0l"/>
                                     <constraint firstItem="cMz-Y9-1ai" firstAttribute="top" secondItem="4ly-op-VO5" secondAttribute="bottom" constant="20" id="DsM-M4-KX9"/>
                                     <constraint firstAttribute="width" constant="300" id="FL4-TM-mSF"/>
+                                    <constraint firstAttribute="bottom" secondItem="5IQ-az-kUK" secondAttribute="bottom" constant="7" id="Inc-kq-LhK"/>
                                     <constraint firstAttribute="trailing" secondItem="Hpz-ue-BCc" secondAttribute="trailing" constant="84" id="JFn-Rm-dbl"/>
+                                    <constraint firstAttribute="trailing" secondItem="5IQ-az-kUK" secondAttribute="trailing" constant="8" id="S1e-Bv-esm"/>
+                                    <constraint firstItem="5IQ-az-kUK" firstAttribute="leading" secondItem="f1u-qS-3wz" secondAttribute="leading" constant="8" id="anT-G5-SCQ"/>
                                     <constraint firstItem="Hpz-ue-BCc" firstAttribute="top" secondItem="cMz-Y9-1ai" secondAttribute="bottom" constant="21" id="bTH-Nl-0zR"/>
+                                    <constraint firstItem="5IQ-az-kUK" firstAttribute="top" secondItem="cMz-Y9-1ai" secondAttribute="bottom" constant="8" id="cRG-LP-YFw"/>
                                     <constraint firstItem="5Tn-Ni-k9V" firstAttribute="top" secondItem="vbK-TE-DR3" secondAttribute="bottom" constant="13" id="eJ0-GY-Hfr"/>
                                     <constraint firstItem="5Tn-Ni-k9V" firstAttribute="leading" secondItem="f1u-qS-3wz" secondAttribute="leading" constant="17" id="f8a-ZF-mLU"/>
                                     <constraint firstItem="vbK-TE-DR3" firstAttribute="leading" secondItem="f1u-qS-3wz" secondAttribute="leading" id="fda-WA-W3x"/>
@@ -5546,12 +5586,16 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="f1u-qS-3wz" firstAttribute="centerX" secondItem="rXQ-S2-yba" secondAttribute="centerX" id="gPO-Fl-SLO"/>
                             <constraint firstItem="f1u-qS-3wz" firstAttribute="centerY" secondItem="rXQ-S2-yba" secondAttribute="centerY" id="zao-pu-gRr"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="250"/>
+                    <connections>
+                        <outlet property="txtViewReason" destination="5Tn-Ni-k9V" id="6ch-2R-ILJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ku4-mS-Agw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -5560,7 +5604,7 @@
         <!--Pay Online-->
         <scene sceneID="EYN-Xp-3cT">
             <objects>
-                <viewController title="Pay Online" id="LDM-3v-xqf" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PayOnlineOrderViewControllerID" title="Pay Online" id="LDM-3v-xqf" customClass="b4u_PayOnlineOrderViewController" customModule="bro4u" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="flX-MO-VZ0"/>
                         <viewControllerLayoutGuide type="bottom" id="k41-2z-FUQ"/>
@@ -5649,6 +5693,13 @@
                                         </constraints>
                                         <state key="normal" image="radioGray"/>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4d-Rd-dgp">
+                                        <rect key="frame" x="272" y="7" width="20" height="22"/>
+                                        <state key="normal" image="crossGrey"/>
+                                        <connections>
+                                            <action selector="btnCloseClicked:" destination="LDM-3v-xqf" eventType="touchUpInside" id="4VY-bH-9ET"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -5689,7 +5740,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wej-Uz-Kx0" firstAttribute="centerY" secondItem="Nxb-8N-izp" secondAttribute="centerY" id="h5O-NO-dYl"/>
                             <constraint firstItem="wej-Uz-Kx0" firstAttribute="centerX" secondItem="Nxb-8N-izp" secondAttribute="centerX" id="rG1-gX-f2X"/>
