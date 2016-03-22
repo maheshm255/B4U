@@ -33,7 +33,8 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+      self.addLoadingIndicator()
+
         self.getData()
     }
 
@@ -52,7 +53,8 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
     
     func getData()
     {
-        
+      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
         let userId = "1"
         let params = "?user_id=\(userId)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kGetAddress, params:params, result:{(resultObject) -> Void in
@@ -61,6 +63,8 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
        
             
             self.tableView.reloadData()
+          b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
         })
     }
     /*
@@ -439,5 +443,12 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
     {
         
     }
+  
+  func addLoadingIndicator () {
+    self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+    self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+    b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
+  }
+
 
 }

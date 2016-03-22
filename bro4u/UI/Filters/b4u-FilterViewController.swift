@@ -66,6 +66,8 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
 
         bro4u_DataManager.sharedInstance.timeSlots = nil
         self.callFilterApi()
+      b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
     }
 
     override func didReceiveMemoryWarning() {

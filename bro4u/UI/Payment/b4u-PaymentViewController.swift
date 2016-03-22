@@ -24,7 +24,11 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     
     var selectedPaymentOption:paymentOption = paymentOption.kNone
     override func viewDidLoad() {
+      
+      self.addLoadingIndicator()
+      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         super.viewDidLoad()
+      b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
 
         // Do any additional setup after loading the view.
     }
@@ -108,5 +112,11 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
 //        self.navigationController?.pushViewController(payUmoneyViewController, animated: true)
 //    }
 
-    
+  func addLoadingIndicator () {
+    self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+    self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+    b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
+  }
+
+  
 }

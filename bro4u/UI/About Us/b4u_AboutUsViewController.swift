@@ -16,9 +16,12 @@ class b4u_AboutUsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+      self.addLoadingIndicator()
+      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
         aboutWebView.loadRequest(NSURLRequest(URL: NSURL(string: kAboutUsUrl)!))
         MBProgressHUD.showHUDAddedTo(navigationController?.view, animated: true)
+      b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
 
     }
 
@@ -65,5 +68,12 @@ extension b4u_AboutUsViewController : UIWebViewDelegate {
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
         print("Failed to load for \(error)")
     }
+  
+  func addLoadingIndicator () {
+    self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+    self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+    b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
+  }
+
 }
 

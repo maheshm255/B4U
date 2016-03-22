@@ -19,7 +19,8 @@ class b4u_NotificationViewController: UIViewController ,UITableViewDelegate,UITa
     self.title = "Notification"
     mainTableView.rowHeight = UITableViewAutomaticDimension
     mainTableView.estimatedRowHeight = 160.0
-    
+    self.addLoadingIndicator()
+
     self.getData()
 
   }
@@ -27,7 +28,8 @@ class b4u_NotificationViewController: UIViewController ,UITableViewDelegate,UITa
     
     func getData()
     {
-        
+      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
         if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
             
             var filedName = loginInfoData.userId! //Need to use later
@@ -53,8 +55,10 @@ class b4u_NotificationViewController: UIViewController ,UITableViewDelegate,UITa
     func congigureUI()
     {
       mainTableView.reloadData()
+      b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
     }
-    
+  
 
   
   override func didReceiveMemoryWarning() {
@@ -99,5 +103,12 @@ class b4u_NotificationViewController: UIViewController ,UITableViewDelegate,UITa
 
     return cell
   }
+  
+  func addLoadingIndicator () {
+    self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+    self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+    b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
+  }
+
   
 }
