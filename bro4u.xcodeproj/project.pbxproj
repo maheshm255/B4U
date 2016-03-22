@@ -225,6 +225,8 @@
 		B36939881CA1440B000266A5 /* b4u_TrackOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36939871CA1440B000266A5 /* b4u_TrackOrderViewController.swift */; };
 		B369398A1CA14423000266A5 /* b4u_RescheduleOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36939891CA14423000266A5 /* b4u_RescheduleOrderViewController.swift */; };
 		B369398C1CA14446000266A5 /* b4u_PayOnlineOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B369398B1CA14446000266A5 /* b4u_PayOnlineOrderViewController.swift */; };
+		B36939921CA175F9000266A5 /* b4u_OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36939911CA175F9000266A5 /* b4u_OrderDetailViewController.swift */; };
+		B36939941CA17617000266A5 /* B4u_Term&ConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36939931CA17617000266A5 /* B4u_Term&ConditionViewController.swift */; };
 		B701BBBF1C98845F0095FEF1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B701BBBE1C98845F0095FEF1 /* MBProgressHUD.m */; };
 		B701BBC21C9884A80095FEF1 /* b4u_AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B701BBC11C9884A80095FEF1 /* b4u_AboutUsViewController.swift */; };
 		B71C28581C8C0C0C00873B5C /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C28481C8C0C0C00873B5C /* MyInfoViewController.swift */; };
@@ -566,6 +568,8 @@
 		B36939871CA1440B000266A5 /* b4u_TrackOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_TrackOrderViewController.swift; sourceTree = "<group>"; };
 		B36939891CA14423000266A5 /* b4u_RescheduleOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_RescheduleOrderViewController.swift; sourceTree = "<group>"; };
 		B369398B1CA14446000266A5 /* b4u_PayOnlineOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_PayOnlineOrderViewController.swift; sourceTree = "<group>"; };
+		B36939911CA175F9000266A5 /* b4u_OrderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_OrderDetailViewController.swift; sourceTree = "<group>"; };
+		B36939931CA17617000266A5 /* B4u_Term&ConditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "B4u_Term&ConditionViewController.swift"; sourceTree = "<group>"; };
 		B701BBBD1C98845F0095FEF1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		B701BBBE1C98845F0095FEF1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		B701BBC11C9884A80095FEF1 /* b4u_AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_AboutUsViewController.swift; sourceTree = "<group>"; };
@@ -729,6 +733,7 @@
 		65271E591C83056F0022C888 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
+				B36939901CA175D0000266A5 /* Order Detail */,
 				65271F5A1C8367DB0022C888 /* Delivery */,
 				65271E5A1C8307820022C888 /* b4u-PaymentViewController.swift */,
 				65271E5C1C8307BB0022C888 /* b4u_PaymentBaseViewController.swift */,
@@ -1370,6 +1375,22 @@
 			path = "Pay Online";
 			sourceTree = "<group>";
 		};
+		B369398F1CA17525000266A5 /* Term And Condition */ = {
+			isa = PBXGroup;
+			children = (
+				B36939931CA17617000266A5 /* B4u_Term&ConditionViewController.swift */,
+			);
+			path = "Term And Condition";
+			sourceTree = "<group>";
+		};
+		B36939901CA175D0000266A5 /* Order Detail */ = {
+			isa = PBXGroup;
+			children = (
+				B36939911CA175F9000266A5 /* b4u_OrderDetailViewController.swift */,
+			);
+			path = "Order Detail";
+			sourceTree = "<group>";
+		};
 		B4D74FF320FF35BA637DFE8F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1450,6 +1471,7 @@
 		B71C28541C8C0C0C00873B5C /* ReferAndEarn */ = {
 			isa = PBXGroup;
 			children = (
+				B369398F1CA17525000266A5 /* Term And Condition */,
 				B71C28551C8C0C0C00873B5C /* ReferAndEarnViewController.swift */,
 			);
 			path = ReferAndEarn;
@@ -1777,6 +1799,7 @@
 				B7DC0EDF1C942A3300A5577C /* b4u_ReOrderModel.swift in Sources */,
 				65B18A861C70BB28000EDD00 /* SWRevealViewController.m in Sources */,
 				04E747021C96D4C400521674 /* b4u-LoginInfo.swift in Sources */,
+				B36939941CA17617000266A5 /* B4u_Term&ConditionViewController.swift in Sources */,
 				B369398C1CA14446000266A5 /* b4u_PayOnlineOrderViewController.swift in Sources */,
 				65264F871C81D80200859F5A /* b4u-SuggestedPatnersResult.swift in Sources */,
 				042700291C8B37B6008440CC /* UIView+FSExtension.m in Sources */,
@@ -1786,6 +1809,7 @@
 				65FF8D681C7EC1A5007588D0 /* b4u-SugestedPartner.swift in Sources */,
 				042700261C8B37B6008440CC /* FSCalendarUnit.m in Sources */,
 				65B49DB81C722C4A0083942D /* bro4u-MainCategory.swift in Sources */,
+				B36939921CA175F9000266A5 /* b4u_OrderDetailViewController.swift in Sources */,
 				6536E09C1C68F3F000B273D6 /* bro4u.xcdatamodeld in Sources */,
 				65DE76E41C7780BD00017F96 /* b4u-SearchResultTblCtrl.swift in Sources */,
 				0427002C1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift in Sources */,

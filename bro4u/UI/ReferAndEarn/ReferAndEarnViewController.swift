@@ -8,13 +8,11 @@
 
 import UIKit
 
-class ReferAndEarnViewController: UIViewController {
+class ReferAndEarnViewController: UIViewController,UIPopoverPresentationControllerDelegate {
 
   @IBOutlet var codeShareLbl: UILabel!
   @IBOutlet var shareTextLbl: UILabel!
     
-  @IBAction func TAndCAction(sender: AnyObject) {
-  }
   
   
   @IBAction func referFriendsAction(sender: AnyObject) {
@@ -91,6 +89,40 @@ class ReferAndEarnViewController: UIViewController {
     self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
     self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
     b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
+  }
+  
+
+  @IBAction func TAndCAction(sender: AnyObject) {
+    self.showAlertView()
+
+  }
+
+
+  func showAlertView()
+  {
+    let storyboard : UIStoryboard = self.storyboard!
+    var alertViewCtrl:UIViewController  = UIViewController()
+    
+    alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("Term_ConditionViewControllerID") as! B4u_Term_ConditionViewController
+    
+    alertViewCtrl.modalPresentationStyle = .Popover
+    alertViewCtrl.preferredContentSize = CGSizeMake(300, 250)
+    // quickBookViewCtrl.delegate = self
+    
+    let popoverMenuViewController = alertViewCtrl.popoverPresentationController
+    popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
+    popoverMenuViewController?.delegate = self
+    popoverMenuViewController?.sourceView = self.view
+    popoverMenuViewController?.sourceRect = CGRect(
+      x: CGRectGetMidX(self.view.frame),
+      y: CGRectGetMidY(self.view.frame),
+      width: 1,
+      height: 1)
+    presentViewController(
+      alertViewCtrl,
+      animated: true,
+      completion: nil)
+    
   }
 
 }

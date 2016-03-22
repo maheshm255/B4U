@@ -15,7 +15,7 @@ enum paymentOption{
    case kNetBanking
    case kCOD
 }
-class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate {
+class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate {
 
     var itemDict : NSDictionary = ["Paytm":"10% Cashback","payUmoney":"1% instant off",
         "Net banking/Credit/Debit":"Use Credit/Debit or Net banking",
@@ -116,6 +116,39 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
     self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
     b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
+  }
+
+  @IBAction func showDetailBtnClicked(sender: AnyObject) {
+    
+    self.showAlertView()
+  }
+
+  
+  func showAlertView()
+  {
+    let storyboard : UIStoryboard = self.storyboard!
+    var alertViewCtrl:UIViewController  = UIViewController()
+    
+      alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("OrderDetailViewControllerID") as! b4u_OrderDetailViewController
+    
+    alertViewCtrl.modalPresentationStyle = .Popover
+    alertViewCtrl.preferredContentSize = CGSizeMake(300, 250)
+    // quickBookViewCtrl.delegate = self
+    
+    let popoverMenuViewController = alertViewCtrl.popoverPresentationController
+    popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
+    popoverMenuViewController?.delegate = self
+    popoverMenuViewController?.sourceView = self.view
+    popoverMenuViewController?.sourceRect = CGRect(
+      x: CGRectGetMidX(self.view.frame),
+      y: CGRectGetMidY(self.view.frame),
+      width: 1,
+      height: 1)
+    presentViewController(
+      alertViewCtrl,
+      animated: true,
+      completion: nil)
+    
   }
 
   
