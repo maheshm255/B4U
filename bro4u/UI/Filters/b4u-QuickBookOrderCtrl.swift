@@ -22,6 +22,9 @@ class b4u_QuickBookOrderCtrl: UIViewController {
     }
     
 
+    @IBOutlet weak var tfName: UITextField!
+    @IBOutlet weak var btnBookRequest: UIButton!
+    @IBOutlet weak var tfMobileNumber: UITextField!
     /*
     // MARK: - Navigation
 
@@ -31,5 +34,13 @@ class b4u_QuickBookOrderCtrl: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func cancelBtnClicked(sender: AnyObject) {
+        
+        self.dismissViewControllerAnimated(true, completion:nil)
+    }
 
+    @IBAction func btnBookRequestClicked(sender: AnyObject)
+    {
+        
+    }
 }
