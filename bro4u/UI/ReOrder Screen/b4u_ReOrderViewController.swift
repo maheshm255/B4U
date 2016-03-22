@@ -36,7 +36,7 @@ class b4u_ReOrderViewController: UIViewController {
         }
 
         
-        let params = "?user_id=\(1)"
+        let params = "?user_id=\(1626)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kReOrderIndex , params:params, result:{(resultObject) -> Void in
             
             print(" ReOrder Data Received")
