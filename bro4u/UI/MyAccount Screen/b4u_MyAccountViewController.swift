@@ -23,6 +23,8 @@ class b4u_MyAccountViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        self.addLoadingIndicator()
+
         self.readPlist()
         self.getData()
         
@@ -36,6 +38,8 @@ class b4u_MyAccountViewController: UIViewController {
     
     func getData()
     {
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
         b4u_WebApiCallManager.sharedInstance.getApiCall(kMyAccountIndex, params:"", result:{(resultObject) -> Void in
             
             print("My Account Data Received")
@@ -56,9 +60,11 @@ class b4u_MyAccountViewController: UIViewController {
             self.nameLbl.text = accountDetails.fullName
             self.tableView.reloadData()
         }
+       b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
     }
-    
-   
+  
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -162,4 +168,11 @@ class b4u_MyAccountViewController: UIViewController {
     @IBAction func cancelBtnClicked(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion:nil)
     }
+  
+  func addLoadingIndicator () {
+    self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+    self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+    b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
+  }
+
 }

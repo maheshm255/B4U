@@ -43,19 +43,23 @@ class MyInfoViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-      
+      self.addLoadingIndicator()
+
       self.getData()
 
     }
   
     func getData()
     {
+      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
         b4u_WebApiCallManager.sharedInstance.getApiCall(kMyInfoIndex, params:"", result:{(resultObject) -> Void in
             
             print("My Info Data Received")
             
             print(resultObject)
-            
+            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
             self.updateUI()
         })
     }
@@ -96,5 +100,12 @@ class MyInfoViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+  
+  func addLoadingIndicator () {
+    self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+    self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+    b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
+  }
+
 
 }

@@ -19,13 +19,16 @@ class MyOrderViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
+      self.addLoadingIndicator()
+
         self.getData()
         
     }
     
     func getData()
     {
+      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
         if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
             
             var filedName = loginInfoData.userId! //Need to use later
@@ -56,9 +59,10 @@ class MyOrderViewController: UIViewController {
         
         print(onGoingOrderArray)
         orderTableView.reloadData()
-        
+        b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
     }
-    
+  
     private func filterContent(searchText:String , orderType:orderTypes)->[b4u_OrdersModel]?
         
     {
@@ -210,4 +214,10 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
   }
 
   
+  func addLoadingIndicator () {
+    self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+    self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+    b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
+  }
+
 }

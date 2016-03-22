@@ -62,9 +62,13 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+      self.addLoadingIndicator()
+      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
         bro4u_DataManager.sharedInstance.timeSlots = nil
         self.callFilterApi()
+      b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -629,5 +633,11 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
 
     }
     
-    
+  
+  func addLoadingIndicator () {
+    self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+    self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+    b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
+  }
+
 }

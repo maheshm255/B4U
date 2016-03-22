@@ -16,14 +16,16 @@ class OfferZoneViewController: UIViewController,UITableViewDataSource,UITableVie
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
+      self.addLoadingIndicator()
+
         self.getData()
         
     }
     
     func getData()
     {
-        
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
         if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
             
             var filedName = loginInfoData.userId! //Need to use later
@@ -39,7 +41,7 @@ class OfferZoneViewController: UIViewController,UITableViewDataSource,UITableVie
             print(" Offer Zone Data Received")
             
             print(resultObject)
-            
+            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
             self.congigureUI()
             
         })
@@ -112,5 +114,12 @@ class OfferZoneViewController: UIViewController,UITableViewDataSource,UITableVie
   @IBAction func cancelBtnClicked(sender: AnyObject) {
     self.dismissViewControllerAnimated(true, completion:nil)
   }
+  
+  func addLoadingIndicator () {
+    self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+    self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+    b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
+  }
+
 
 }

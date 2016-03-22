@@ -29,12 +29,16 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
        // self.callServicePatnerApi()
         
         self.edgesForExtendedLayout = UIRectEdge.None
+      self.addLoadingIndicator()
+      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
         self.getAllServicePatners()
         self.checkLoadMoreCondition()
+      b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
     }
 
-    
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -205,4 +209,11 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
 //        return 4.0
 //
 //    }
+  
+  func addLoadingIndicator () {
+    self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+    self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+    b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
+  }
+
 }
