@@ -420,6 +420,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             completion: nil)
 
     }
+  
     func minusBtnClicked(sender:AnyObject)
     {
         if numberOfItems > 0
@@ -602,10 +603,8 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
         b4u_WebApiCallManager.sharedInstance.getApiCall(kShowServicePatnerApi, params:params, result:{(resultObject) -> Void in
-            
-            
-            
-            self.performSelectorOnMainThread("moveToSuggestedPatner", withObject:nil, waitUntilDone:true)
+          
+        self.performSelectorOnMainThread("moveToSuggestedPatner", withObject:nil, waitUntilDone:true)
             
         })
     }
@@ -645,11 +644,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             servicePatnerCtrl.selectedCategoryObj  = self.selectedCategoryObj
         }
     }
-
-    
-
-    
-    
+  
     func didSelectDate(date:NSDate)
     {
         

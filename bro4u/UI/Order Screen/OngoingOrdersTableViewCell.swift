@@ -25,44 +25,8 @@ class OngoingOrdersTableViewCell: UITableViewCell {
   
   
   
-  @IBAction func cancelBtnAction(sender: AnyObject) {
   
-    let tableView = self.superview?.superview as! UITableView
-    
-    let indexPath = tableView.indexPathForCell(self)
-    
-    let orderModel:b4u_OrdersModel = bro4u_DataManager.sharedInstance.orderData[indexPath!.row]
-    var metaDataModel:b4u_ReOrder_MetaItemModel?
-    if orderModel.metaItemReOrder?.count > 0{
-        
-        metaDataModel = orderModel.metaItemReOrder?.first
-        
-        let params = "?order_id=\(orderModel.orderID!)&user_id=\(metaDataModel!.userID!)&vendor_id=\(orderModel.vendorID!)&cancel_message=\("Text")"//Need to pass the textfield Message from popup
-        
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kCancelOrderIndex, params:params, result:{(resultObject) -> Void in
 
-        })
-    }
-
-
-    tableView.reloadData()
-  }
-  
-  @IBAction func trackBtnAction(sender: AnyObject) {
-  }
-  
-  
-  @IBAction func rescheduledBtnAction(sender: AnyObject) {
-  }
-  
-  
-  @IBAction func callBro4uAction(sender: AnyObject) {
-  }
-  
-  
-  @IBAction func payOnlineAction(sender: AnyObject) {
-  }
-  
   
   
   @IBOutlet var headerLabel: UILabel!
@@ -116,5 +80,8 @@ class OngoingOrdersTableViewCell: UITableViewCell {
             self.priceLbl.text = "Rs. \(price).00"
         }
     }
+  
+  
+
 
 }
