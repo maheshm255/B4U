@@ -16,6 +16,8 @@ class b4u_LoginInfo: NSObject {
     var email:String?
     var fullName:String?
     var landLine:String?
+    var firstName:String?
+    var lastName:String?
 
     var mobile:String?
     var otp:String?

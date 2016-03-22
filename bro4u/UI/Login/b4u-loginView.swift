@@ -74,7 +74,7 @@ class b4u_loginView: UIView ,FBSDKLoginButtonDelegate ,GIDSignInDelegate,GIDSign
         FBSDKSettings.setAppID("194765280880394")
         
         fbloginBtn!.delegate = self
-        fbloginBtn!.readPermissions = ["public_profile"]
+        fbloginBtn!.readPermissions = ["public_profile", "email", "user_friends"]//["public_profile","email"]
         
         tfOTPNumber.keyboardType = UIKeyboardType.NumberPad
     }
@@ -312,7 +312,7 @@ class b4u_loginView: UIView ,FBSDKLoginButtonDelegate ,GIDSignInDelegate,GIDSign
     
     func getFaceBookProfileInfo()
     {
-        let requestMe:FBSDKGraphRequest = FBSDKGraphRequest(graphPath:"me", parameters:nil)
+        let requestMe:FBSDKGraphRequest = FBSDKGraphRequest(graphPath:"me", parameters:["fields": "id, name, first_name, last_name, email"])
         let graphRequestConnection:FBSDKGraphRequestConnection  = FBSDKGraphRequestConnection()
         
         graphRequestConnection.addRequest(requestMe, completionHandler:({ (connection, result, error) -> Void in
@@ -337,7 +337,10 @@ class b4u_loginView: UIView ,FBSDKLoginButtonDelegate ,GIDSignInDelegate,GIDSign
                 loginInfoObj.userId = result.valueForKey("id")as! String!
                 //loginInfoObj.googleAuthToken = user.authentication.idToken
                 loginInfoObj.fullName = result.valueForKey("name") as? String
-                //    loginInfoObj.email = user.profile.email
+                loginInfoObj.email = result.valueForKey("email") as? String
+                loginInfoObj.firstName = result.valueForKey("first_name") as? String
+                loginInfoObj.lastName = result.valueForKey("last_name") as? String
+
                 loginInfoObj.loginType = "facebook"
                 
                 bro4u_DataManager.sharedInstance.loginInfo = loginInfoObj

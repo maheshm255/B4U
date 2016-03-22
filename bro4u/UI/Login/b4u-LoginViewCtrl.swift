@@ -93,5 +93,36 @@ class b4u_LoginViewCtrl: UIViewController ,loginViewDelegate {
 
         self.dismissViewControllerAnimated(true, completion:nil)
     }
+    
+    
+    func getData()
+    {
+        
+        //?req_id=3&email=harshal.zope1990%40gmail.com&first_name=Harshal&last_name=Zope&image=%22https%3A%2F%2Fgraph.facebook.com%2F836148279808264%2Fpicture%3Ftype%3Dlarge%22
+
+        if let loginInfoObj = bro4u_DataManager.sharedInstance.loginInfo
+        {
+            if loginInfoObj.loginType != "OTP"
+            {
+                let reqId =   loginInfoObj.userId
+                let email =   loginInfoObj.email
+                let firstName  = loginInfoObj.fullName
+                let lastName =   loginInfoObj.fullName
+                
+                
+                let params = "?req_id=\(reqId!)&email=\(email!)&first_name=\(firstName!)&last_name=\(lastName!)"
+                
+                    b4u_WebApiCallManager.sharedInstance.getApiCall(kSocialLogin, params:params, result:{(resultObject) -> Void in
+                    
+                    print("login user Data Received")
+                    
+                    
+                })
+            }
+        }
+        
+        
+ 
+    }
 }
 

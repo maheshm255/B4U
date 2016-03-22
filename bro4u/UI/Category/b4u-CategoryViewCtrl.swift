@@ -58,6 +58,7 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        selectedIndex = 0
         
         self.addLoadingIndicator()
 
