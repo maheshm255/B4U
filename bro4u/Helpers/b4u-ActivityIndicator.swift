@@ -23,7 +23,7 @@ class b4u_ActivityIndicator: UIView {
     
     init(image : UIImage) {
         
-        let frame : CGRect = CGRectMake(0.0, 0.0, image.size.width, image.size.height)
+        let frame : CGRect = CGRectMake(0.0, 0.0, image.size.width/4, image.size.height/4)
         
         super.init(frame: frame)
         
@@ -31,7 +31,7 @@ class b4u_ActivityIndicator: UIView {
         
         let image1: UIImage = UIImage(named: "spinnerUp")!
         let imgView:UIImageView = UIImageView(image:image1)
-        imgView.frame = CGRectMake(0, 0, image1.size.width, image1.size.height)
+        imgView.frame = CGRectMake(0, 0, image1.size.width/4, image1.size.height/4)
         self.addSubview(imgView)
         
         animationLayer.frame = frame
