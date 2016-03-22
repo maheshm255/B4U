@@ -68,13 +68,20 @@ let kShowServicePatnerApi = "index.php/catalog/browse"
 
 let kOTPlogin = "/index.php/my-account"
 
-//user_id=5&street_name=test_street&locality=test_locality&latitude=12.4435&longitude=23.34556&city_id=5&name=test&mobile=9896969696&email=test@test.com
+//?req_id=3&email=harshal.zope1990%40gmail.com&first_name=Harshal&last_name=Zope&image=%22https%3A%2F%2Fgraph.facebook.com%2F836148279808264%2Fpicture%3Ftype%3Dlarge%22
 
+let kSocialLogin = "/index.php/my-account"
+
+//user_id=5&street_name=test_street&locality=test_locality&latitude=12.4435&longitude=23.34556&city_id=5&name=test&mobile=9896969696&email=test@test.com
 let kSaveAddress = "/index.php/address/insert_address"
 
 //?user_id=5
 let kGetAddress = "index.php/address/view_all_address"
 
+
+//?name=Harshal&mobile=9740201846&address=kasturi+nagar+bangalore&latitude=33.4534&longitude=23.34434&service_date=21-1-2016&service_time=12PM-2PM&imei=398454&cat_id=12&user_id=3&selection=[{%22field_name%22:%22option_value%22,%22field_name%22:%22option_value%22}]
+
+let kQuickOrderBook = "/index.php/order/fast_enquiry"
 
 //Rahul Added
 
