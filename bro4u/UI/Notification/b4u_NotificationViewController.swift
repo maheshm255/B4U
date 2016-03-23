@@ -101,6 +101,9 @@ class b4u_NotificationViewController: UIViewController ,UITableViewDelegate,UITa
 
     cell.configureData(notificationModelObj)
 
+    cell.layer.borderWidth = 1.0
+    cell.layer.borderColor = UIColor.grayColor().CGColor
+
     return cell
   }
   

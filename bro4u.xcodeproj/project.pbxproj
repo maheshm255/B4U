@@ -1548,7 +1548,7 @@
 				TargetAttributes = {
 					6536E08F1C68F3F000B273D6 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = A4BFLTQ7EF;
+						DevelopmentTeam = TNM968QS47;
 					};
 				};
 			};
@@ -1991,6 +1991,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = bro4u/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
@@ -2004,6 +2005,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.applearn.bro4u;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "bro4u/bro4u-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -2018,6 +2020,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = bro4u/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
@@ -2030,6 +2033,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.applearn.bro4u;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "bro4u/bro4u-Bridging-Header.h";
 			};
 			name = Release;
