@@ -613,7 +613,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     {
         b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
 
-        if bro4u_DataManager.sharedInstance.suggestedPatnersResult?.suggestedPatners?.count >= 0
+        if bro4u_DataManager.sharedInstance.suggestedPatnersResult?.suggestedPatners?.count == 0
         {
             self.performSegueWithIdentifier("servicePatnerSegue", sender:nil)
             

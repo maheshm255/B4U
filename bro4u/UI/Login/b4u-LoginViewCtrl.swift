@@ -52,9 +52,9 @@ class b4u_LoginViewCtrl: UIViewController ,loginViewDelegate {
     
     func loginSuccessFull()
     {
-        NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
-
-      self.dismissViewControllerAnimated(true, completion:nil)
+        
+        self.getData()
+    
     }
     func loginFailed()
     {
@@ -106,16 +106,19 @@ class b4u_LoginViewCtrl: UIViewController ,loginViewDelegate {
             {
                 let reqId =   loginInfoObj.userId
                 let email =   loginInfoObj.email
-                let firstName  = loginInfoObj.fullName
-                let lastName =   loginInfoObj.fullName
+                let firstName  = loginInfoObj.firstName
+                let lastName =   loginInfoObj.lastName
+                let image = ""
                 
-                
-                let params = "?req_id=\(reqId!)&email=\(email!)&first_name=\(firstName!)&last_name=\(lastName!)"
+                let params = "?req_id=\(reqId!)&email=\(email!)&first_name=\(firstName!)&last_name=\(lastName!)&image=\(image)"
                 
                     b4u_WebApiCallManager.sharedInstance.getApiCall(kSocialLogin, params:params, result:{(resultObject) -> Void in
                     
                     print("login user Data Received")
                     
+                        NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
+                        
+                        self.dismissViewControllerAnimated(true, completion:nil)
                     
                 })
             }

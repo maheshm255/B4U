@@ -70,7 +70,7 @@ let kOTPlogin = "/index.php/my-account"
 
 //?req_id=3&email=harshal.zope1990%40gmail.com&first_name=Harshal&last_name=Zope&image=%22https%3A%2F%2Fgraph.facebook.com%2F836148279808264%2Fpicture%3Ftype%3Dlarge%22
 
-let kSocialLogin = "/index.php/my-account"
+let kSocialLogin = "index.php/my-account"
 
 //user_id=5&street_name=test_street&locality=test_locality&latitude=12.4435&longitude=23.34556&city_id=5&name=test&mobile=9896969696&email=test@test.com
 let kSaveAddress = "/index.php/address/insert_address"

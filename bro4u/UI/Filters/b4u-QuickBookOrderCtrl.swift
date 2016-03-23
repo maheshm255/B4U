@@ -10,10 +10,17 @@ import UIKit
 
 class b4u_QuickBookOrderCtrl: UIViewController {
 
+    @IBOutlet weak var tfName: UITextField!
+    @IBOutlet weak var btnBookRequest: UIButton!
+    @IBOutlet weak var tfMobileNumber: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        tfName.keyboardType = UIKeyboardType.Alphabet
+        tfMobileNumber.keyboardType = UIKeyboardType.NumberPad
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,9 +29,7 @@ class b4u_QuickBookOrderCtrl: UIViewController {
     }
     
 
-    @IBOutlet weak var tfName: UITextField!
-    @IBOutlet weak var btnBookRequest: UIButton!
-    @IBOutlet weak var tfMobileNumber: UITextField!
+
     /*
     // MARK: - Navigation
 
@@ -42,5 +47,24 @@ class b4u_QuickBookOrderCtrl: UIViewController {
     @IBAction func btnBookRequestClicked(sender: AnyObject)
     {
         
+        //?name=Harshal&mobile=9740201846&address=kasturi+nagar+bangalore&latitude=33.4534&longitude=23.34434&service_date=21-1-2016&service_time=12PM-2PM&imei=398454&cat_id=12&user_id=3&selection=[{%22field_name%22:%22option_value%22,%22field_name%22:%22option_value%22}]
+        
+        let name =   self.tfName.text!
+        let mobileNum =  self.tfMobileNumber.text!
+        let address = "aa"
+        let latt = "17.1"
+        let long = "88.0"
+        let serviceDate =  NSDate.dateFormat().stringFromDate(bro4u_DataManager.sharedInstance.selectedDate!)
+        let serviceTime = bro4u_DataManager.sharedInstance.selectedTimeSlot!
+        let imei = b4u_Utility.getUUIDFromVendorIdentifier()
+        let selection = ""
+        
+        
+        let params = "?name=\(name)&mobile=\(mobileNum)&address=\(address)&latitude=\(latt)&longitude=\(long)&service_date=\(serviceDate)&service_time=\(serviceTime)&imei=\(imei)&selection=\(selection)"
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kQuickOrderBook, params:params, result:{(resultObject) -> Void in
+            
+            self.dismissViewControllerAnimated(true, completion:nil)
+            
+        })
     }
 }

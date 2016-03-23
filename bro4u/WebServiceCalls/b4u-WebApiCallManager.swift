@@ -24,6 +24,9 @@ class b4u_WebApiCallManager: NSObject {
     
     func getApiCall(apiPath:String ,params:String ,result:AnyObject->()){
         
+        
+       
+        
         var requestUrl = ""
         if apiPath == kLocationSearchUrl
         {

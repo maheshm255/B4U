@@ -368,19 +368,58 @@ class b4u_loginView: UIView ,FBSDKLoginButtonDelegate ,GIDSignInDelegate,GIDSign
                 // Perform any operations on signed in user here.
                 
                 
-                let loginInfoObj = b4u_LoginInfo()
+                let url = NSURL(string:  "https://www.googleapis.com/oauth2/v3/userinfo?access_token=\(user.authentication.accessToken)")
+                let session = NSURLSession.sharedSession()
+                session.dataTaskWithURL(url!) {(data, response, error) -> Void in
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                    do {
+                        let userData = try NSJSONSerialization.JSONObjectWithData(data!, options:[]) as? [String:AnyObject]
+                        /*
+                        Get the account information you want here from the dictionary
+                        Possible values are
+                        "id": "...",
+                        "email": "...",
+                        "verified_email": ...,
+                        "name": "...",
+                        "given_name": "...",
+                        "family_name": "...",
+                        "link": "https://plus.google.com/...",
+                        "picture": "https://lh5.googleuserco...",
+                        "gender": "...",
+                        "locale": "..."
+                        
+                        so in my case:
+                        */
+                        let loginInfoObj = b4u_LoginInfo()
+                        
+                        loginInfoObj.userId = user.userID
+                        loginInfoObj.googleAuthToken = user.authentication.idToken
+                        loginInfoObj.fullName = user.profile.name
+                        loginInfoObj.email = user.profile.email
+                        loginInfoObj.loginType = "googleSignIn"
+                        
+                        loginInfoObj.firstName = userData!["given_name"] as? String
+                        loginInfoObj.lastName = userData!["family_name"] as? String
+                        
+                        bro4u_DataManager.sharedInstance.loginInfo = loginInfoObj
+                        
+                        NSUserDefaults.standardUserDefaults().setBool(true, forKey:"isUserLogined")
+                        
+                        self.delegate?.loginSuccessFull()
+                        
+                    } catch {
+                        NSLog("Account Information could not be loaded")
+                        
+                        bro4u_DataManager.sharedInstance.loginInfo = nil
+                        NSUserDefaults.standardUserDefaults().setBool(true, forKey:"False")
+                        self.delegate?.loginFailed()
+
+                    }
+                    }.resume()
                 
-                loginInfoObj.userId = user.userID
-                loginInfoObj.googleAuthToken = user.authentication.idToken
-                loginInfoObj.fullName = user.profile.name
-                loginInfoObj.email = user.profile.email
-                loginInfoObj.loginType = "googleSignIn"
                 
-                bro4u_DataManager.sharedInstance.loginInfo = loginInfoObj
                 
-                NSUserDefaults.standardUserDefaults().setBool(true, forKey:"isUserLogined")
-                
-               delegate?.loginSuccessFull()
+           
                 // ...
             } else {
                 

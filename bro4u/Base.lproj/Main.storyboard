@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XP6-lF-vG6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XP6-lF-vG6">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
@@ -189,7 +189,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OV1-tc-RQm">
-                                        <rect key="frame" x="20" y="142" width="198" height="1"/>
+                                        <rect key="frame" x="20" y="142" width="192" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="E67-io-16r"/>
@@ -202,9 +202,12 @@
                                             <constraint firstAttribute="height" constant="1" id="SNt-9L-K5C"/>
                                         </constraints>
                                     </imageView>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KtQ-62-gXU">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KtQ-62-gXU">
                                         <rect key="frame" x="5" y="5" width="590" height="117"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="AxB-bw-B3y"/>
+                                        </connections>
                                     </scrollView>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Ab2-Gl-kRC">
                                         <rect key="frame" x="280" y="83" width="39" height="37"/>
@@ -214,7 +217,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.88235294117647056" green="0.90196078431372551" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="aLD-4X-Gnv" firstAttribute="leading" secondItem="OV1-tc-RQm" secondAttribute="trailing" constant="31.5" id="1C2-0N-mCu"/>
+                                    <constraint firstItem="aLD-4X-Gnv" firstAttribute="leading" secondItem="OV1-tc-RQm" secondAttribute="trailing" constant="37.5" id="1C2-0N-mCu"/>
                                     <constraint firstItem="uCF-cL-Vy4" firstAttribute="leading" secondItem="aLD-4X-Gnv" secondAttribute="trailing" constant="38" id="LjE-zh-69Y"/>
                                     <constraint firstItem="KtQ-62-gXU" firstAttribute="top" secondItem="SNh-rm-FIz" secondAttribute="top" constant="5" id="Ned-Iz-Hck"/>
                                     <constraint firstItem="uCF-cL-Vy4" firstAttribute="centerY" secondItem="aLD-4X-Gnv" secondAttribute="centerY" id="SQX-gS-iKs"/>
@@ -1199,7 +1202,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="YZ8-zO-QoW" customClass="b4u_ExpandableTableView" customModule="bro4u" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="YZ8-zO-QoW" customClass="b4u_ExpandableTableView" customModule="bro4u" customModuleProvider="target">
                                 <rect key="frame" x="5" y="10" width="590" height="540"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -2418,7 +2421,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call Bro4u" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTM-pK-vdR">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call Bro4u" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTM-pK-vdR">
                                                     <rect key="frame" x="449" y="2" width="141" height="39"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="141" id="71z-AP-bhg"/>

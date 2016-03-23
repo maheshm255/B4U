@@ -29,8 +29,16 @@ class b4u_termsAndCondViewController: UIViewController {
         if let tAndCOb = bro4u_DataManager.sharedInstance.interMediateScreenDataObj?.termsAndConditions
         {
             lblCondition1.text = tAndCOb[0]
-            lblCondition2.text = tAndCOb[1]
-            lblCondition3.text = tAndCOb[2]
+            
+            if tAndCOb.count > 1
+            {
+                lblCondition2.text = tAndCOb[1]
+            }
+            
+            if tAndCOb.count > 2
+            {
+                lblCondition3.text = tAndCOb[2]
+            }
             
             
         }

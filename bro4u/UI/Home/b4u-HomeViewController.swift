@@ -107,6 +107,8 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
+//        NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
+
         
         if segue.identifier == "categoryScreenSegue"
         {
@@ -182,14 +184,14 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
               sliderImg.userInteractionEnabled = true
               sliderImg.tag = index
             
-            sliderImg.downloadedFrom(link:sliderImageInfoObj.imageName!, contentMode:UIViewContentMode.ScaleAspectFit)
+            sliderImg.downloadedFrom(link:sliderImageInfoObj.imageName!, contentMode:UIViewContentMode.ScaleAspectFill)
             self.scrollView.addSubview(sliderImg)
 
-//            let slideImgTapGesture:UITapGestureRecognizer = UITapGestureRecognizer(target:self, action:"imageSlideClicked:")
-//            
-//            slideImgTapGesture.numberOfTapsRequired = 1;
-//            
-//            sliderImg.addGestureRecognizer(slideImgTapGesture)
+            let slideImgTapGesture:UITapGestureRecognizer = UITapGestureRecognizer(target:self, action:"imageSlideClicked:")
+            
+            slideImgTapGesture.numberOfTapsRequired = 1;
+            
+            sliderImg.addGestureRecognizer(slideImgTapGesture)
             
         }
         
@@ -200,20 +202,20 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         self.pageControl.currentPage = 0
         self.pageControl.numberOfPages = totalImage
         
-        self.scrollView.delaysContentTouches = true
-        self.scrollView.scrollEnabled = false
+//        self.scrollView.delaysContentTouches = true
+        self.scrollView.scrollEnabled = true
         
-        let leftSwipeGesture = UISwipeGestureRecognizer(target:self, action:"leftSwipe")
-        leftSwipeGesture.delaysTouchesBegan  = true
-        leftSwipeGesture.direction = UISwipeGestureRecognizerDirection.Left
-        self.scrollView.addGestureRecognizer(leftSwipeGesture)
-        leftSwipeGesture.cancelsTouchesInView = false
-        
-        let rightSwipeGesture = UISwipeGestureRecognizer(target:self, action:"rightSwipe")
-        rightSwipeGesture.delaysTouchesBegan  = true
-        rightSwipeGesture.direction = UISwipeGestureRecognizerDirection.Right
-        self.scrollView.addGestureRecognizer(rightSwipeGesture)
-        rightSwipeGesture.cancelsTouchesInView = false
+//        let leftSwipeGesture = UISwipeGestureRecognizer(target:self, action:"leftSwipe")
+//        leftSwipeGesture.delaysTouchesBegan  = true
+//        leftSwipeGesture.direction = UISwipeGestureRecognizerDirection.Left
+//        self.scrollView.addGestureRecognizer(leftSwipeGesture)
+//        leftSwipeGesture.cancelsTouchesInView = false
+//        
+//        let rightSwipeGesture = UISwipeGestureRecognizer(target:self, action:"rightSwipe")
+//        rightSwipeGesture.delaysTouchesBegan  = true
+//        rightSwipeGesture.direction = UISwipeGestureRecognizerDirection.Right
+//        self.scrollView.addGestureRecognizer(rightSwipeGesture)
+//        rightSwipeGesture.cancelsTouchesInView = false
     }
     
     func imageSlideClicked(gesttureObj:UITapGestureRecognizer)
@@ -290,8 +292,13 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         // Change the text accordingly
     }
     
-    
-
+     internal func scrollViewDidEndDecelerating(scrollView: UIScrollView) // called when scroll view grinds to a halt
+     {
+        let pageWidth:CGFloat = CGRectGetWidth(scrollView.frame)
+        let currentPage:CGFloat = floor((scrollView.contentOffset.x-pageWidth/2)/pageWidth)+1
+        // Change the indicator
+        self.pageControl.currentPage = Int(currentPage);
+    }
     func userSelectedLocation(locationStr:String)
     {
       self.btnCurrentLocation.setTitle(locationStr, forState:.Normal)
