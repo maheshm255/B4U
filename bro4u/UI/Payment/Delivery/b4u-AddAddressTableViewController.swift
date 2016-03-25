@@ -247,6 +247,24 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
         
     }
     
+    func userCurrentLocaion()
+    {
+        if let currentLocality = bro4u_DataManager.sharedInstance.currentLocality
+        {
+            if let loclity = currentLocality.locality , subLocality = currentLocality.subLocality
+            {
+//                self.btnCurrentLocation.setTitle("\(subLocality),\(loclity)", forState:.Normal)
+                
+            }
+            
+        }else
+        {
+//            self.btnCurrentLocation.setTitle("Current Location", forState:.Normal)
+            
+        }
+    }
+
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

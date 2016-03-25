@@ -104,13 +104,14 @@ class b4u_LoginViewCtrl: UIViewController ,loginViewDelegate {
         {
             if loginInfoObj.loginType != "OTP"
             {
-                let reqId =   loginInfoObj.userId
+                
+                let reqId =   "3"
                 let email =   loginInfoObj.email
                 let firstName  = loginInfoObj.firstName
                 let lastName =   loginInfoObj.lastName
                 let image = ""
                 
-                let params = "?req_id=\(reqId!)&email=\(email!)&first_name=\(firstName!)&last_name=\(lastName!)&image=\(image)"
+                let params = "?req_id=\(reqId)&email=\(email!)&first_name=\(firstName!)&last_name=\(lastName!)&image=\(image)"
                 
                     b4u_WebApiCallManager.sharedInstance.getApiCall(kSocialLogin, params:params, result:{(resultObject) -> Void in
                     

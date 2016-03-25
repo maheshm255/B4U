@@ -43,4 +43,13 @@ extension String {
         } catch {
             return false
         }
-    }}
+    }
+
+//    func stringByAddingPercentEncodingForURLQueryParameter() -> String? {
+//        let allowedCharacters = NSCharacterSet.URLQueryParameterAllowedCharacterSet()
+//        return stringByAddingPercentEncodingWithAllowedCharacters(allowedCharacters)
+//    }
+
+}
+
+

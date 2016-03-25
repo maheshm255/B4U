@@ -14,6 +14,7 @@ import MapKit
 protocol locationDelegate
 {
     func userSelectedLocation(locationStr:String)
+    func userCurrentLocaion()
 }
 class b4u_LocationViewCtrl: UIViewController ,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate ,CLLocationManagerDelegate {
 
@@ -29,38 +30,23 @@ class b4u_LocationViewCtrl: UIViewController ,UITableViewDelegate,UITableViewDat
     
     var map:MKMapView?
     
-//    @property (nonatomic, strong) CLLocationManager *locationManager;
-//    @property (nonatomic, strong) CLGeocoder *geocoder;
-//    @property (nonatomic, strong) MKPlacemark *placemark;
-//    
-   // var searchQuery : HNKGooglePlacesAutocompleteQuery?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-   //  self.searchQuery = HNKGooglePlacesAutocompleteQuery.sharedQuery
-        
     
-        
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager!.desiredAccuracy = kCLLocationAccuracyBest
         locationManager!.requestWhenInUseAuthorization()
-       // locationManager!.startUpdatingLocation()
-        
-//        map = MKMapView()
-//        map?.delegate = self
-//        
-//        self.view.addSubview(map!)
-//        if CLLocationManager.authorizationStatus() == .NotDetermined {
-//            locationManager!.requestWhenInUseAuthorization()
-//        }
-        
+
         if CLLocationManager.authorizationStatus() == .NotDetermined {
             locationManager!.requestAlwaysAuthorization()
         }
+        
+        let tapGestureReconizer = UITapGestureRecognizer(target:self, action:"viewCurrentLoaitonTaped:")
+        tapGestureReconizer.numberOfTapsRequired = 1
+        self.viewCurronLocation.addGestureRecognizer(tapGestureReconizer)
     }
     
 
@@ -69,6 +55,12 @@ class b4u_LocationViewCtrl: UIViewController ,UITableViewDelegate,UITableViewDat
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func viewCurrentLoaitonTaped(gesture:UITapGestureRecognizer)
+    {
+        delegate?.userCurrentLocaion()
+        self.dismissViewControllerAnimated(true, completion:nil)
+    }
     // MARK: Location Manage Delegates
 
     
@@ -77,6 +69,8 @@ class b4u_LocationViewCtrl: UIViewController ,UITableViewDelegate,UITableViewDat
         
         bro4u_DataManager.sharedInstance.currenLocation = manager.location
 
+        
+        print("\(manager.location?.coordinate.latitude )  ....  \(manager.location?.coordinate.longitude )")
         CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error) ->Void in
             
 
@@ -96,6 +90,8 @@ class b4u_LocationViewCtrl: UIViewController ,UITableViewDelegate,UITableViewDat
                 bro4u_DataManager.sharedInstance.currentLocality = nil
             }
         })
+        
+        self.locationManager?.stopUpdatingLocation()
     }
     
     
@@ -161,31 +157,29 @@ class b4u_LocationViewCtrl: UIViewController ,UITableViewDelegate,UITableViewDat
        // searchBar.setShowsCancelButton(true, animated:true)
       return true
     }
-    internal func searchBarTextDidBeginEditing(searchBar: UISearchBar) // called when text starts editing
+    
+    internal func searchBar(searchBar: UISearchBar, textDidChange searchText: String) // called when text changes (including clear)
     {
         
         
+        if let  currentLocaiton = bro4u_DataManager.sharedInstance.currenLocation
+        {
+            // input=New&location=12.96,77.563123&
         
-//        
-//         self.searchQuery.fetchPlacesForSearchQuery(searchBar.text ,^(places, error)
-//            {
-//            
-//            }
-//        )
-//        [self.searchQuery fetchPlacesForSearchQuery: searchText
-////            completion:^(NSArray *places, NSError *error) {
-//            if (error) {
-//            NSLog(@"ERROR: %@", error);
-//            [self handleSearchError:error];
-//            } else {
-//            self.searchResults = places;
-//            [self.tableView reloadData];
-//            }
-//            }];
         
-//        
-//        fetchPlacesForSearchQuery:(NSString *)searchQuery
-//        completion:(HNKGooglePlacesAutocompleteQueryCallback)completion;
+
+            let input = searchBar.text!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+            let latt =  currentLocaiton.coordinate.latitude
+            let long = currentLocaiton.coordinate.longitude
+            
+            let params = "&input=\(input)&location=\(latt),\(long)"
+            
+            b4u_WebApiCallManager.sharedInstance.getApiCall(kLocationSearchUrl, params:params, result:{(resultObject) -> Void in
+                
+                self.tableView.reloadData()
+                
+            })
+        }
     }
     
     internal  func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool // return NO to not resign first responder
@@ -196,7 +190,7 @@ class b4u_LocationViewCtrl: UIViewController ,UITableViewDelegate,UITableViewDat
     {
         
     }
-    
+  
     internal  func searchBarSearchButtonClicked(searchBar: UISearchBar) // called when keyboard search button pressed
     {
         
@@ -205,7 +199,7 @@ class b4u_LocationViewCtrl: UIViewController ,UITableViewDelegate,UITableViewDat
             // input=New&location=12.96,77.563123&
             
             
-            let input = searchBar.text!
+            let input = searchBar.text!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
             let latt =  currentLocaiton.coordinate.latitude
             let long = currentLocaiton.coordinate.longitude
             

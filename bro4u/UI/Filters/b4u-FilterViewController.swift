@@ -22,9 +22,12 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     var dateBtn:UIButton?
     var timeBtn:UIButton?
     
-   var selectedCategoryObj:b4u_Category?
+    var selectedCategoryObj:b4u_Category?
     
     var selectedImgSlide:b4u_SliderImage?
+
+    
+    var sectionNumberForRadioInputs = Set<Int>();
 
     
     var selectedIndexPath:Dictionary<String ,[NSIndexPath]> = Dictionary()
@@ -179,6 +182,8 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                 cell = tableView.dequeueReusableCellWithIdentifier(radioBoxIdentifier, forIndexPath: indexPath) as! b4u_ExpandableTblViewCell
                 
                 cell.iconImgView?.image = UIImage(named:"radioGray")
+                
+                self.sectionNumberForRadioInputs.insert(indexPath.section)
                 if selectedIndexPath["\(indexPath.section)"]?.count > 0
                 {
                     if (selectedIndexPath["\(indexPath.section)"]!.contains(indexPath)) {
@@ -267,7 +272,16 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         {
       
         let catFilterAttributes:b4u_CatFilterAttributes = self.inputArray![section] as! b4u_CatFilterAttributes
+            
+            
         label.text =  catFilterAttributes.attrName!
+            
+            
+            
+            if catFilterAttributes.inputType == inputType.radio.rawValue
+            {
+                self.sectionNumberForRadioInputs.insert(section)
+            }
        
         }else
         {
@@ -504,18 +518,28 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         }
         
         self.selectedIndexPath.removeAll()
+        
+        bro4u_DataManager.sharedInstance.selectedDate = nil
+        bro4u_DataManager.sharedInstance.selectedTimeSlot = nil
+        
+        self.expandableTblView.reloadData()
     }
     
     
     func callServicePatnerApi()
     {
         
-       guard let selectedDate = bro4u_DataManager.sharedInstance.selectedDate , let selectedTimeSlot = bro4u_DataManager.sharedInstance.selectedTimeSlot else
+        guard let selectedDate = bro4u_DataManager.sharedInstance.selectedDate , let selectedTimeSlot = bro4u_DataManager.sharedInstance.selectedTimeSlot else
         {
-               print("Select Date And Time")
-               return
+            print("Select Date And Time")
+            
+            self.view.makeToast(message:"Please select your preferred time.", duration:1.0 , position: HRToastPositionDefault)
+
+            return
         }
         
+        
+
         var catId:String?
         if let aSelectedCatObj = selectedCategoryObj
         {
@@ -613,7 +637,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     {
         b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
 
-        if bro4u_DataManager.sharedInstance.suggestedPatnersResult?.suggestedPatners?.count == 0
+        if bro4u_DataManager.sharedInstance.suggestedPatnersResult?.suggestedPatners?.count >= 0
         {
             self.performSegueWithIdentifier("servicePatnerSegue", sender:nil)
             
@@ -627,7 +651,26 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     
     @IBAction func showServicePatnerBtnClicked(sender: AnyObject)
     {
-        self.callServicePatnerApi()
+        var selectedSectons = Set<Int>();
+
+        for (_ , section) in self.selectedIndexPath.keys.enumerate()
+        {
+            selectedSectons.insert(Int(section)!)
+        }
+        
+        if  self.sectionNumberForRadioInputs.isSubsetOf(selectedSectons)
+        {
+            self.callServicePatnerApi()
+        }else
+        {
+            // TODO 
+            
+            print("ALL mandatory radio box are not selected")
+            
+            self.view.makeToast(message:"Please select all the filters", duration:1.0 , position: HRToastPositionDefault)
+
+        }
+        
     }
     
     // MARK: - Navigation

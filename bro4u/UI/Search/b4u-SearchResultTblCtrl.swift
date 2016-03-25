@@ -69,13 +69,15 @@ class b4u_SearchResultTblCtrl: UITableViewController ,UISearchResultsUpdating,UI
         
         let latt =  12.9718915
         let long = 77.6411545
-        let searchStr = searchKeyword
-        
-        
+        let searchStr = searchKeyword.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+
         let params = "?latitude=\(latt)&longitude=\(long)&search_keyword=\(searchStr)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kSearchApi, params:params, result:{(resultObject) -> Void in
             
-            self.tableView.reloadData()
+            
+            dispatch_async(dispatch_get_main_queue(),{
+                self.tableView.reloadData()
+            })
         })
     }
     // MARK: - Table view data source
@@ -102,6 +104,12 @@ class b4u_SearchResultTblCtrl: UITableViewController ,UISearchResultsUpdating,UI
     }
 
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        
+        
+        self.performSegueWithIdentifier("interMediateSegue1", sender:nil)
+
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -137,15 +145,42 @@ class b4u_SearchResultTblCtrl: UITableViewController ,UISearchResultsUpdating,UI
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        
+        if segue.identifier == "interMediateSegue1"
+        {
+            if let indexPath = self.tableView.indexPathForSelectedRow
+            {
+                let searchObject = bro4u_DataManager.sharedInstance.searchResult[indexPath.row]
+                
+                let categoryObj:b4u_Category = b4u_Category()
+                
+                categoryObj.catDesc = searchObject.catDesc
+                categoryObj.catIcon = searchObject.catIcon
+                categoryObj.catId = searchObject.catId
+                categoryObj.catName = searchObject.catName
+                categoryObj.fieldName = searchObject.fieldName
+                categoryObj.mainCatId = searchObject.mainCatId
+                categoryObj.optionId = searchObject.optionId
+                categoryObj.optionName = searchObject.optionName
+                categoryObj.sort_order = searchObject.sort_order
+                
+                let intermediateScreenCtrlObj = segue.destinationViewController as! b4u_IntermediateViewCtrl
+                
+                intermediateScreenCtrlObj.selectedCategoryObj = categoryObj
+                
+            }
+        }
+
     }
-    */
+
     @IBAction func cancelBtnClicked(sender: AnyObject) {
         
         self.dismissViewControllerAnimated(true, completion:nil)
@@ -163,10 +198,23 @@ class b4u_SearchResultTblCtrl: UITableViewController ,UISearchResultsUpdating,UI
 
     }
     
+    internal func searchBar(searchBar: UISearchBar, textDidChange searchText: String) // called when text changes (including clear)
+    {
+        let searchString = searchController.searchBar.text!
+        
+        if searchString.length > 0
+        {
+            self.callSearchApi(searchString)
+            
+        }
+        
+    }
+
+    
      internal func searchBarSearchButtonClicked(searchBar: UISearchBar)
      {
         
-        let searchString = searchController.searchBar.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        let searchString = searchController.searchBar.text!
         
         if searchString.length > 0
         {

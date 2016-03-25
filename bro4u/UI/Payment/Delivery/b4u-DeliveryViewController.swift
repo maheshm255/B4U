@@ -12,6 +12,9 @@ import UIKit
 protocol deliveryViewDelegate
 {
     func proceedToPayment()
+    
+    func kbUP(notification:NSNotification)
+    func kbDown(notification:NSNotification)
 }
 class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource ,calendarDelegate,timeSlotDelegate ,UIPopoverPresentationControllerDelegate ,UITextViewDelegate{
 
@@ -33,11 +36,31 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keybShow:",
+            name: UIKeyboardWillShowNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keybHide:",
+            name: UIKeyboardWillHideNotification, object: nil)
+        
       self.addLoadingIndicator()
 
         self.getData()
     }
 
+    
+    func keybShow(notification: NSNotification) {
+        print("kb show")
+        
+        self.delegate?.kbUP(notification)
+    }
+    
+    
+    func keybHide(notification: NSNotification) {
+        print("kb hide")
+        
+        self.delegate?.kbDown(notification)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -436,13 +459,14 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool
     {
      
-            return true
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
-    func textViewDidChange(textView: UITextView)
-    {
-        
-    }
+  
   
   func addLoadingIndicator () {
     self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
@@ -450,5 +474,6 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
     b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
   }
 
+   
 
 }

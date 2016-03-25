@@ -60,19 +60,7 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let currentLocality = bro4u_DataManager.sharedInstance.currentLocality
-        {
-            if let loclity = currentLocality.locality , subLocality = currentLocality.subLocality
-             {
-                self.btnCurrentLocation.setTitle("\(subLocality),\(loclity)", forState:.Normal)
  
-            }
-
-        }else
-        {
-            self.btnCurrentLocation.setTitle("Current Location", forState:.Normal)
-
-        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -318,5 +306,22 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
         self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
         b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
+    }
+    
+    func userCurrentLocaion()
+    {
+        if let currentLocality = bro4u_DataManager.sharedInstance.currentLocality
+        {
+            if let loclity = currentLocality.locality , subLocality = currentLocality.subLocality
+            {
+                self.btnCurrentLocation.setTitle("\(subLocality),\(loclity)", forState:.Normal)
+                
+            }
+            
+        }else
+        {
+            self.btnCurrentLocation.setTitle("Current Location", forState:.Normal)
+            
+        }
     }
 }

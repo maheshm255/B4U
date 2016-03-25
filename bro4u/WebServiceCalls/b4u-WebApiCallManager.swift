@@ -117,7 +117,8 @@ class b4u_WebApiCallManager: NSObject {
             self.pasrseOTPLoginInfo(dataDict)
         case kOrderConfirmedIndex:
             self.pasrseOrderConfirmData(dataDict)
-
+        case kSocialLogin:
+            self.parseSocialLogin(dataDict)
         default:
             print(itemName)
         }
@@ -145,6 +146,7 @@ class b4u_WebApiCallManager: NSObject {
     {
         let searchResult:[Dictionary<String ,AnyObject>] = dataDict["search_details"] as! [Dictionary<String ,AnyObject>]
         
+        bro4u_DataManager.sharedInstance.searchResult.removeAll()
         for (_ ,aSearchResultDataDict) in searchResult.enumerate()
         {
             let aSearchedObj = b4u_SearchResult(searchResultDaraDict:aSearchResultDataDict)
@@ -368,4 +370,26 @@ class b4u_WebApiCallManager: NSObject {
         }
         
     }
+    
+    
+    func parseSocialLogin(dataDict:Dictionary<String, AnyObject>)
+    {
+        
+        if  let loginInfoDataArray:[Dictionary<String ,AnyObject>] = dataDict["userdata"] as? [Dictionary<String ,AnyObject>]
+        {
+            let dataDict = loginInfoDataArray.first!
+            if let loginInfoOBj = bro4u_DataManager.sharedInstance.loginInfo
+            {
+                loginInfoOBj.userId = dataDict["user_id"] as? String
+            }else
+            {
+                let loginInfoObject = b4u_LoginInfo(loginInfoDataDict: dataDict)
+                loginInfoObject.loginType = "OTP"
+                
+                bro4u_DataManager.sharedInstance.loginInfo = loginInfoObject
+            }
+        }
+        
+    }
+    
 }

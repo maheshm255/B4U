@@ -23,6 +23,9 @@ class b4u_Category: NSObject {
     var showDropDown:String?
     var attributeOptins:[b4u_AttributeOptions]?
     
+    override init() {
+        
+    }
     init(categoryDataDict:Dictionary<String ,AnyObject>) {
         
         catDesc = categoryDataDict["cat_desc"] as? String
