@@ -126,6 +126,11 @@ class b4u_loginView: UIView ,FBSDKLoginButtonDelegate ,GIDSignInDelegate,GIDSign
                     
                     NSUserDefaults.standardUserDefaults().setBool(true, forKey:"isUserLogined")
                     
+                    
+                    let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(bro4u_DataManager.sharedInstance.loginInfo!)
+
+                    
+                    NSUserDefaults.standardUserDefaults().setObject(archivedObject, forKey:"loginInfo")
                     //self.disMissSelf()
                     
                     tfOTPNumber.resignFirstResponder()
@@ -135,7 +140,7 @@ class b4u_loginView: UIView ,FBSDKLoginButtonDelegate ,GIDSignInDelegate,GIDSign
                 {
                     print("Wrong OTP Entered")
                     NSUserDefaults.standardUserDefaults().setBool(true, forKey:"False")
-                    
+                    //TODO remove nsuderdefaultloginobject
                     delegate?.loginFailed()
                     
                 }
@@ -345,7 +350,6 @@ class b4u_loginView: UIView ,FBSDKLoginButtonDelegate ,GIDSignInDelegate,GIDSign
                 
                 bro4u_DataManager.sharedInstance.loginInfo = loginInfoObj
                 
-                NSUserDefaults.standardUserDefaults().setBool(true, forKey:"isUserLogined")
                 self.delegate?.loginSuccessFull()
 
                 
@@ -403,7 +407,6 @@ class b4u_loginView: UIView ,FBSDKLoginButtonDelegate ,GIDSignInDelegate,GIDSign
                         
                         bro4u_DataManager.sharedInstance.loginInfo = loginInfoObj
                         
-                        NSUserDefaults.standardUserDefaults().setBool(true, forKey:"isUserLogined")
                         
                         self.delegate?.loginSuccessFull()
                         

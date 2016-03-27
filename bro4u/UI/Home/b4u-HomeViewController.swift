@@ -95,7 +95,6 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-//        NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
 
         
         if segue.identifier == "categoryScreenSegue"

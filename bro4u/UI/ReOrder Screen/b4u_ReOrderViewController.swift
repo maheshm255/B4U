@@ -14,19 +14,48 @@ class b4u_ReOrderViewController: UIViewController {
     
     var myReOrderModelArr:[b4u_ReOrderModel] = Array()
     
-    
+    @IBOutlet weak var viewUserNotLoggedIn: UIView!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        self.addLoadingIndicator()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"loginDismissed", name:kUserDataReceived, object:nil);
 
-        self.getData()
+        self.validateUser()
         
     }
     
+    
+    func validateUser()
+    {
+        reOrderTableView.hidden = true
+        
+        let isUserLoggedIn =   NSUserDefaults.standardUserDefaults().objectForKey("isUserLogined")
+        
+        if let hasLogin:Bool = isUserLoggedIn as? Bool
+        {
+            if hasLogin
+            {
+                self.viewUserNotLoggedIn.hidden = true
+                
+                // Do any additional setup after loading the view.
+                self.addLoadingIndicator()
+                
+                self.getData()
+            }
+        }else
+        {
+            self.viewUserNotLoggedIn.hidden = false
+            reOrderTableView.hidden = true
+        }
+        
+    }
+
+    
+    
     func getData()
     {
+        
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
         if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
@@ -52,6 +81,8 @@ class b4u_ReOrderViewController: UIViewController {
     func congigureUI()
     {
     
+        reOrderTableView.hidden = false
+
     reOrderTableView.reloadData()
     
     b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
@@ -142,4 +173,15 @@ class b4u_ReOrderViewController: UIViewController {
     b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
   }
 
+    @IBAction func okButtonClicked(sender: AnyObject)
+    {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.performSegueWithIdentifier("reOrderloginSegue", sender:nil)
+        })
+    }
+    
+    func loginDismissed()
+    {
+        self.validateUser()
+    }
 }

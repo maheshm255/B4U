@@ -113,15 +113,34 @@ class b4u_LoginViewCtrl: UIViewController ,loginViewDelegate {
                 
                 let params = "?req_id=\(reqId)&email=\(email!)&first_name=\(firstName!)&last_name=\(lastName!)&image=\(image)"
                 
-                    b4u_WebApiCallManager.sharedInstance.getApiCall(kSocialLogin, params:params, result:{(resultObject) -> Void in
+                b4u_WebApiCallManager.sharedInstance.getApiCall(kSocialLogin, params:params, result:{(resultObject) -> Void in
                     
                     print("login user Data Received")
                     
-                        NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
-                        
-                        self.dismissViewControllerAnimated(true, completion:nil)
+                    NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
+                    
+                  
+                    let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(bro4u_DataManager.sharedInstance.loginInfo!)
+
+                    
+                NSUserDefaults.standardUserDefaults().setObject(archivedObject, forKey:"loginInfo")
+                    
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey:"isUserLogined")
+
+                    NSNotificationCenter.defaultCenter().postNotificationName(kUserDataReceived, object:nil)
+
+                    self.dismissViewControllerAnimated(true, completion:nil)
                     
                 })
+            }else
+            {
+                NSNotificationCenter.defaultCenter().postNotificationName(kUserDataReceived, object:nil)
+
+                
+                NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
+
+                self.dismissViewControllerAnimated(true, completion:nil)
+
             }
         }
         

@@ -20,6 +20,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        let isUserLoggedIn =   NSUserDefaults.standardUserDefaults().objectForKey("isUserLogined")
+        
+        if let hasLogin:Bool = isUserLoggedIn as? Bool
+        {
+            if hasLogin
+            {
+                
+            if let unarchivedObject =
+                    
+                    NSUserDefaults.standardUserDefaults().objectForKey("loginInfo") as? NSData
+                {
+                    bro4u_DataManager.sharedInstance.loginInfo =   NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? b4u_LoginInfo
+                }
+            }
+        }
+     
   
         return true
     }

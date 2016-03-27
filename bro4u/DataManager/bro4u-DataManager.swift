@@ -27,6 +27,7 @@ class bro4u_DataManager: NSObject {
     var selectedDate:NSDate?
     var selectedTimeSlot:String?
     
+    var selectedSuggestedPatner:b4u_SugestedPartner?
     
     var currenLocation:CLLocation?
     var currentLocality:CLPlacemark?

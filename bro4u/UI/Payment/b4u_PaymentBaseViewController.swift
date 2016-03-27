@@ -8,7 +8,7 @@
 
 import UIKit
 
-class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,loginViewDelegate{
+class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,loginViewDelegate , paymentDelegate,UIPopoverPresentationControllerDelegate{
 
     @IBOutlet weak var viewSegmentCtrl: UIView!
     var segmentedControl:HMSegmentedControl?
@@ -225,7 +225,8 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
         let viewWidth = CGRectGetWidth(self.viewParent.frame)
         let viewHeight = CGRectGetHeight(self.viewParent.frame)
 
-        
+        paymentViewCtrl?.delegate = self
+            
         self.paymentViewCtrl!.view.translatesAutoresizingMaskIntoConstraints = false
         
         let metricDict = ["w":viewWidth,"h":viewHeight]
@@ -288,6 +289,45 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
         topConstraint?.constant = 0
         bottomConstraint?.constant  = 0
     }
+    
+    
+    func infoBtnClicked()
+    {
+        self.showQuicBookingView()
+    }
+
+    
+    
+    func showQuicBookingView()
+    {
+            let storyboard : UIStoryboard = self.storyboard!
+        
+            let  alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("OrderDetailViewControllerID") as! b4u_OrderDetailViewController
+        
+            alertViewCtrl.modalPresentationStyle = .Popover
+            alertViewCtrl.preferredContentSize = CGSizeMake(300, 400)
+        
+            let popoverMenuViewController = alertViewCtrl.popoverPresentationController
+            popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
+            popoverMenuViewController?.delegate = self
+            popoverMenuViewController?.sourceView = self.view
+            popoverMenuViewController?.sourceRect = CGRect(
+                x: CGRectGetMidX(self.view.frame),
+                y: CGRectGetMidY(self.view.frame),
+              width: 1,
+              height: 1)
+            presentViewController(
+              alertViewCtrl,
+              animated: true,
+              completion: nil)
+        
+    }
+
+    func adaptivePresentationStyleForPresentationController(
+        controller: UIPresentationController) -> UIModalPresentationStyle {
+            return .None
+    }
+    
 }
 
 

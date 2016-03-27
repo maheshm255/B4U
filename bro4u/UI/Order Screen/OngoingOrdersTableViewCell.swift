@@ -12,17 +12,20 @@ import UIKit
 
 class OngoingOrdersTableViewCell: UITableViewCell {
 
-  @IBOutlet var vendorImageView: UIImageView!
-  @IBOutlet var tiltleLbl: UILabel!
-  @IBOutlet var subTitleLbl: UILabel!
-  @IBOutlet var dateLbl: UILabel!
-  @IBOutlet var timeSlotLbl: UILabel!
-  @IBOutlet var dateTimeLbl: UILabel!
-  @IBOutlet var orderIDLbl: UILabel!
-  @IBOutlet var statusLbl: UILabel!
-  @IBOutlet var bookingLbl: UILabel!
-  @IBOutlet var priceLbl: UILabel!
-  
+    @IBOutlet weak var btnCancel: UIButton!
+    @IBOutlet weak var btnReshedule: UIButton!
+    @IBOutlet weak var btnTrack: UIButton!
+    @IBOutlet var vendorImageView: UIImageView!
+    @IBOutlet var tiltleLbl: UILabel!
+    @IBOutlet var subTitleLbl: UILabel!
+    @IBOutlet var dateLbl: UILabel!
+    @IBOutlet var timeSlotLbl: UILabel!
+    @IBOutlet var dateTimeLbl: UILabel!
+    @IBOutlet var orderIDLbl: UILabel!
+    @IBOutlet var statusLbl: UILabel!
+    @IBOutlet var bookingLbl: UILabel!
+    @IBOutlet var priceLbl: UILabel!
+    
   
   
   
@@ -39,6 +42,18 @@ class OngoingOrdersTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        
+        btnCancel.layer.cornerRadius = 5
+        btnCancel.layer.borderColor = UIColor.grayColor().CGColor
+        btnCancel.layer.borderWidth = 1
+        
+        btnReshedule.layer.cornerRadius = 5
+        btnReshedule.layer.borderColor = UIColor.grayColor().CGColor
+        btnReshedule.layer.borderWidth = 1
+        
+//        btnTrack.layer.cornerRadius = 5
+//        btnTrack.layer.borderColor = UIColor.grayColor().CGColor
+//        btnTrack.layer.borderWidth = 1
     }
     
     func configureData(orderDataModel:b4u_OrdersModel)

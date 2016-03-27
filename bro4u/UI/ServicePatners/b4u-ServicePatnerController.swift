@@ -81,6 +81,9 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         {
            // let ctrl = segue.destinationViewController as! b4u_ServicePatnerMapViewCtrl
             
+        }else if segue.identifier == "paymentCtrlSegue"
+        {
+            
         }
     }
     
@@ -159,6 +162,10 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         
         cell.btnLike.addTarget(self, action:"btnShare:", forControlEvents:UIControlEvents.TouchUpInside)
         cell.btnLike.tag = indexPath.section
+
+        cell.btnViewDetails.addTarget(self, action:"btnBookNowClicked:", forControlEvents:UIControlEvents.TouchUpInside)
+        cell.btnViewDetails.tag = indexPath.section
+
         
         return cell
     }
@@ -173,6 +180,19 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
 
     }// Default is 1 if
 
+    
+    
+    func btnBookNowClicked(sender: AnyObject)
+    {
+        
+        let btn:UIButton = sender as! UIButton
+        
+        bro4u_DataManager.sharedInstance.selectedSuggestedPatner = self.allPatners[btn.tag]
+        
+        self.performSegueWithIdentifier("paymentCtrlSegue", sender:sender)
+    }
+    
+    
     func btnShare(sender: AnyObject)
     {
         let textToShare = "Look at this awesome website for aspiring iOS Developers!"

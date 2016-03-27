@@ -14,12 +14,19 @@ class b4u_CancelOrderViewController: UIViewController {
   @IBOutlet weak var txtViewReason: UITextView!
 
   
+    var selectedOrder:b4u_OrdersModel?
+
   override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    super.viewDidLoad()
+    
+    // Do any additional setup after loading the view.
+    
+    
+    txtViewReason.layer.cornerRadius = 5
+    txtViewReason.layer.borderColor = UIColor.grayColor().CGColor
+    txtViewReason.layer.borderWidth = 1
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

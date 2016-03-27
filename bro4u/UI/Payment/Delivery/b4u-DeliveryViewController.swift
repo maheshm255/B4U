@@ -18,6 +18,7 @@ protocol deliveryViewDelegate
 }
 class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource ,calendarDelegate,timeSlotDelegate ,UIPopoverPresentationControllerDelegate ,UITextViewDelegate{
 
+    @IBOutlet weak var lblAmount: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
     var dateBtn:UIButton?
@@ -35,6 +36,8 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        self.lblAmount.text = "  Rs. \( bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)  "
         // Do any additional setup after loading the view.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keybShow:",
             name: UIKeyboardWillShowNotification, object: nil)
@@ -42,7 +45,7 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keybHide:",
             name: UIKeyboardWillHideNotification, object: nil)
         
-      self.addLoadingIndicator()
+       self.addLoadingIndicator()
 
         self.getData()
     }

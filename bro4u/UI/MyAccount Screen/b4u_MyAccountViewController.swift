@@ -9,11 +9,13 @@
 import UIKit
 
 class b4u_MyAccountViewController: UIViewController {
-
-  @IBOutlet var nameLbl: UILabel!
-  @IBOutlet var walletBalanceLbl: UILabel!
-  @IBOutlet var userImageView: UIImageView!
-  @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var viewTop: UIView!
+    @IBOutlet weak var viewUserNotLoggedIn: UIView!
+    @IBOutlet var nameLbl: UILabel!
+    @IBOutlet var walletBalanceLbl: UILabel!
+    @IBOutlet var userImageView: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
   
    var pListArray: NSArray = []
    var modelArr:[b4u_MyAccountModel] = Array()
@@ -23,10 +25,34 @@ class b4u_MyAccountViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.addLoadingIndicator()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"loginDismissed", name:kUserDataReceived, object:nil);
 
-        self.readPlist()
-        self.getData()
+        self.validateUser()
+    }
+    
+    func validateUser()
+    {
+        self.viewTop.hidden = true
+        
+        let isUserLoggedIn =   NSUserDefaults.standardUserDefaults().objectForKey("isUserLogined")
+        
+        if let hasLogin:Bool = isUserLoggedIn as? Bool
+        {
+            if hasLogin
+            {
+                self.viewUserNotLoggedIn.hidden = true
+
+                self.addLoadingIndicator()
+                
+                self.readPlist()
+                self.getData()
+                
+            }
+        }else
+        {
+            self.viewUserNotLoggedIn.hidden = false
+            self.viewTop.hidden = true
+        }
         
     }
     
@@ -46,6 +72,8 @@ class b4u_MyAccountViewController: UIViewController {
             
             print(resultObject)
             
+            self.viewTop.hidden = false
+
             self.updateUI()
         })
     }
@@ -159,20 +187,32 @@ class b4u_MyAccountViewController: UIViewController {
 //    whiteRoundedView.layer.backgroundColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [1.0, 1.0, 1.0, 1.0])
 //    whiteRoundedView.layer.masksToBounds = false
 //    whiteRoundedView.layer.cornerRadius = 3.0
-//    whiteRoundedView.layer.shadowOffset = CGSizeMake(-1, 1)
-//    whiteRoundedView.layer.shadowOpacity = 0.5
-//    cell.contentView.addSubview(whiteRoundedView)
-//    cell.contentView.sendSubviewToBack(whiteRoundedView)
-//  }
-  
+    //    whiteRoundedView.layer.shadowOffset = CGSizeMake(-1, 1)
+    //    whiteRoundedView.layer.shadowOpacity = 0.5
+    //    cell.contentView.addSubview(whiteRoundedView)
+    //    cell.contentView.sendSubviewToBack(whiteRoundedView)
+    //  }
+    
     @IBAction func cancelBtnClicked(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion:nil)
     }
-  
-  func addLoadingIndicator () {
-    self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
-    self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
-    b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
-  }
-
+    
+    func addLoadingIndicator () {
+        self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+        self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+        b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
+    }
+    
+    @IBAction func okButtonClicked(sender: AnyObject)
+    {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.performSegueWithIdentifier("accountloginSegue", sender:nil)
+        })
+    }
+    
+    func loginDismissed()
+    {
+        self.validateUser()
+    }
+    
 }

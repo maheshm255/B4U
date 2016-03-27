@@ -23,7 +23,7 @@ class b4u_ReOrderTableViewCell: UITableViewCell {
     
     @IBAction func viewDetailAction(sender: AnyObject) {
     
-        
+
         
     }
     
@@ -94,4 +94,6 @@ class b4u_ReOrderTableViewCell: UITableViewCell {
             self.amountLbl.text = "Rs. \(amount).00"
         }
     }
+    
+   
 }

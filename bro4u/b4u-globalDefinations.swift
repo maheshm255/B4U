@@ -127,7 +127,10 @@ let kReOrderDeleteIndex = "index.php/order/thrash_reorder"
 
 
 //ReSchedule Order
-let kReScheduleOrderIndex = "index.php/order/reschedule_order?order_id=23810&user_id=1626&date=2016-01-24&service_time=9AM-11AM"
+
+//?order_id=23810&user_id=1626&date=2016-01-24&service_time=9AM-11AM
+
+let kReScheduleOrderApi = "/index.php/order/reschedule_order"
 
 //Time Slots of Order
 let kReScheduleOrderTimeSlotIndex = "index.php/order/preferred_time?vendor_id=87&item_id=1710&date=2015-10-5"
@@ -147,3 +150,4 @@ let kPushServicesScreen = "categoryScreenPush"
 
 let kLoginDismissed = "kLoginDismissed"
 
+let kUserDataReceived = "UserDataReceived"

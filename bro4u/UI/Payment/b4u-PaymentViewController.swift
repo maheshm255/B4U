@@ -15,16 +15,42 @@ enum paymentOption{
    case kNetBanking
    case kCOD
 }
+
+protocol paymentDelegate
+{
+    func infoBtnClicked()
+
+}
 class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate {
 
     var itemDict : NSDictionary = ["Paytm":"10% Cashback","payUmoney":"1% instant off",
         "Net banking/Credit/Debit":"Use Credit/Debit or Net banking",
         "Cash On Service":"Pay cash on service"]
+    
     var radioButtonSelected:NSIndexPath!
     
+    var delegate:paymentDelegate?
+
+    
+    @IBOutlet weak var btnApply: UIButton!
+    @IBOutlet weak var tfCouponCode: UITextField!
+    @IBOutlet weak var imgViewDonwArrow: UIImageView!
+    @IBOutlet weak var lblHaveCouponCode: UILabel!
+    @IBOutlet weak var viewCouponCode: UIView!
+    @IBOutlet weak var btnInfo: UIButton!
+    @IBOutlet weak var lblAmount: UILabel!
+
     var selectedPaymentOption:paymentOption = paymentOption.kNone
+    
     override func viewDidLoad() {
       
+        
+    self.lblAmount.text = "  Rs. \( bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)  "
+
+    let tapGesture = UITapGestureRecognizer(target:self, action:"applyCouponCodeViewTaped")
+        tapGesture.numberOfTouchesRequired = 1
+    self.viewCouponCode.addGestureRecognizer(tapGesture)
+        
       self.addLoadingIndicator()
       b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         super.viewDidLoad()
@@ -33,6 +59,18 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         // Do any additional setup after loading the view.
     }
 
+    
+    func applyCouponCodeViewTaped()
+    {
+        self.imgViewDonwArrow.hidden = true
+        self.lblHaveCouponCode.hidden = true
+        
+        self.btnApply.hidden = false
+        self.tfCouponCode.hidden = false
+    }
+    @IBAction func applyCouponBtnClicked(sender: AnyObject)
+    {
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -126,30 +164,16 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
   
   func showAlertView()
   {
-    let storyboard : UIStoryboard = self.storyboard!
-    var alertViewCtrl:UIViewController  = UIViewController()
     
-      alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("OrderDetailViewControllerID") as! b4u_OrderDetailViewController
+
+
     
-    alertViewCtrl.modalPresentationStyle = .Popover
-    alertViewCtrl.preferredContentSize = CGSizeMake(300, 250)
-    // quickBookViewCtrl.delegate = self
     
-    let popoverMenuViewController = alertViewCtrl.popoverPresentationController
-    popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
-    popoverMenuViewController?.delegate = self
-    popoverMenuViewController?.sourceView = self.view
-    popoverMenuViewController?.sourceRect = CGRect(
-      x: CGRectGetMidX(self.view.frame),
-      y: CGRectGetMidY(self.view.frame),
-      width: 1,
-      height: 1)
-    presentViewController(
-      alertViewCtrl,
-      animated: true,
-      completion: nil)
+    self.delegate?.infoBtnClicked()
+    
+//    
+    }
+ 
+  
     
   }
-
-  
-}

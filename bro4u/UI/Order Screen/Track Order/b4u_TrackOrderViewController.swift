@@ -12,6 +12,8 @@ class b4u_TrackOrderViewController: UIViewController {
 
   @IBOutlet weak var lblStatus: UILabel!
 
+    var selectedOrder:b4u_OrdersModel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

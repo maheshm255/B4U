@@ -8,8 +8,9 @@
 
 import UIKit
 
-class MyOrderViewController: UIViewController,UIPopoverPresentationControllerDelegate {
+class MyOrderViewController: UIViewController,UIPopoverPresentationControllerDelegate ,orderResheduleDelegate{
 
+    @IBOutlet weak var viewUserNotLoggedIn: UIView!
     @IBOutlet weak var orderTableView: UITableView!
   
     var onGoingOrderArray:[b4u_OrdersModel]?
@@ -19,12 +20,37 @@ class MyOrderViewController: UIViewController,UIPopoverPresentationControllerDel
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-      self.addLoadingIndicator()
-
-        self.getData()
         
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"loginDismissed", name:kUserDataReceived, object:nil);
+     
+        self.validateUser()
     }
     
+    func validateUser()
+    {
+        orderTableView.hidden = true
+        
+        let isUserLoggedIn =   NSUserDefaults.standardUserDefaults().objectForKey("isUserLogined")
+        
+        if let hasLogin:Bool = isUserLoggedIn as? Bool
+        {
+            if hasLogin
+            {
+                self.viewUserNotLoggedIn.hidden = true
+                
+                self.addLoadingIndicator()
+                
+                self.getData()
+            }
+        }else
+        {
+            self.viewUserNotLoggedIn.hidden = false
+            orderTableView.hidden = true
+        }
+        
+    }
+  
     func getData()
     {
       b4u_Utility.sharedInstance.activityIndicator.startAnimating()
@@ -48,8 +74,15 @@ class MyOrderViewController: UIViewController,UIPopoverPresentationControllerDel
     }
     
     
+    override func viewWillAppear(animated: Bool)
+    {
+        self.view.alpha = 1.0
+    }
+    
     func congigureUI()
     {
+        orderTableView.hidden = false
+
         
         self.onGoingOrderArray = self.filterContent("Completed", orderType:orderTypes.kOnGoingOrders)
 
@@ -144,9 +177,16 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     {
       cellIdentifier = "OngoingOrdersTableViewCellID"
       let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! OngoingOrdersTableViewCell
+        
+        
+        cell.btnCancel.tag = indexPath.row
+        cell.btnReshedule.tag = indexPath.row
+        cell.btnTrack.tag = indexPath.row
+        
+        cell.configureData(self.onGoingOrderArray![indexPath.row])
+  
     
-      cell.configureData(self.onGoingOrderArray![indexPath.row])
-
+        
       return cell
     }
     else{
@@ -166,7 +206,7 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if indexPath.section == 0
         {
-            return 285;
+            return 221;
         }
         else if indexPath.section == 1
         {
@@ -176,6 +216,27 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         return 0
     }
     
+    internal func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    {
+//        switch (section) {
+//        case 0:
+//            if self.onGoingOrderArray?.count>0{
+//                
+//                return 30;
+//            }
+//            
+//        case 1:
+//            if self.onGoingOrderArray?.count>0{
+//            }
+//            
+//        default:
+//            break
+//            
+//        }
+        
+        return 50.0
+
+    }
 
 
   func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -223,7 +284,9 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
   }
   
   @IBAction func cancelBtnAction(sender: AnyObject) {
-    self.showAlertView("Cancel")
+
+    let selectedOrderObj: b4u_OrdersModel  =  self.onGoingOrderArray![sender.tag]
+    self.showAlertView("Cancel", selectedOrderObj:selectedOrderObj)
 
     
     //    let tableView = self.superview?.superview as! UITableView
@@ -249,7 +312,9 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
   
   @IBAction func trackBtnAction(sender: AnyObject) {
  
-    self.showAlertView("Track")
+    
+    let selectedOrderObj: b4u_OrdersModel  =  self.onGoingOrderArray![sender.tag]
+    self.showAlertView("Track", selectedOrderObj:selectedOrderObj)
 
   
   }
@@ -257,7 +322,8 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
   
   @IBAction func rescheduledBtnAction(sender: AnyObject) {
   
-    self.showAlertView("Reschedule")
+    let selectedOrderObj: b4u_OrdersModel  =  self.onGoingOrderArray![sender.tag]
+    self.showAlertView("Reschedule", selectedOrderObj:selectedOrderObj)
 
   }
   
@@ -268,58 +334,106 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
   
   @IBAction func payOnlineAction(sender: AnyObject) {
   
-    self.showAlertView("PayOnline")
+
+    let selectedOrderObj: b4u_OrdersModel  =  self.onGoingOrderArray![sender.tag]
+    self.showAlertView("PayOnline", selectedOrderObj:selectedOrderObj)
 
   }
   
 
-  func showAlertView(btnTapped: String)
+    func showAlertView(btnTapped: String,  selectedOrderObj:b4u_OrdersModel)
   {
     let storyboard : UIStoryboard = self.storyboard!
-    var alertViewCtrl:UIViewController  = UIViewController()
     
-    if btnTapped == "Cancel"{
-      alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("CancelOrderViewControllerID") as! b4u_CancelOrderViewController
+    if btnTapped == "Cancel"
+    {
+       let  alertViewCtrl:b4u_CancelOrderViewController = storyboard.instantiateViewControllerWithIdentifier("CancelOrderViewControllerID") as! b4u_CancelOrderViewController
 
+        self.pressentAlertPopUP(alertViewCtrl)
     }
     else if btnTapped == "Track"{
     
-      alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("TrackOrderViewControllerID") as! b4u_TrackOrderViewController
+      let  alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("TrackOrderViewControllerID") as! b4u_TrackOrderViewController
+        self.pressentAlertPopUP(alertViewCtrl)
 
     }
     else if btnTapped == "Reschedule"{
       
-      alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("RescheduleOrderViewControllerID") as! b4u_RescheduleOrderViewController
-      
+        let  alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("RescheduleOrderViewControllerID") as! b4u_RescheduleOrderViewController
+        
+        alertViewCtrl.selectedOrder = selectedOrderObj
+        alertViewCtrl.delegate = self
+        self.pressentAlertPopUP(alertViewCtrl)
+
     }
     else if btnTapped == "PayOnline"{
       
-      alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("PayOnlineOrderViewControllerID") as! b4u_PayOnlineOrderViewController
-      
+      let  alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("PayOnlineOrderViewControllerID") as! b4u_PayOnlineOrderViewController
+        self.pressentAlertPopUP(alertViewCtrl)
+
     }
-
-
-    
-    
-    alertViewCtrl.modalPresentationStyle = .Popover
-    alertViewCtrl.preferredContentSize = CGSizeMake(300, 250)
-    // quickBookViewCtrl.delegate = self
-    
-    let popoverMenuViewController = alertViewCtrl.popoverPresentationController
-    popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
-    popoverMenuViewController?.delegate = self
-    popoverMenuViewController?.sourceView = self.view
-    popoverMenuViewController?.sourceRect = CGRect(
-      x: CGRectGetMidX(self.view.frame),
-      y: CGRectGetMidY(self.view.frame),
-      width: 1,
-      height: 1)
-    presentViewController(
-      alertViewCtrl,
-      animated: true,
-      completion: nil)
     
   }
+    
+    func pressentAlertPopUP(alertViewCtrl:UIViewController?)
+    {
+        self.view.alpha = 0.5
+        
+        
+        alertViewCtrl!.modalPresentationStyle = .Popover
+        alertViewCtrl!.preferredContentSize = CGSizeMake(300, 250)
+        
+        let popoverMenuViewController = alertViewCtrl!.popoverPresentationController
+        popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
+        popoverMenuViewController?.delegate = self
+        popoverMenuViewController?.sourceView = self.view
+        popoverMenuViewController?.sourceRect = CGRect(
+            x: CGRectGetMidX(self.view.frame),
+            y: CGRectGetMidY(self.view.frame),
+            width: 1,
+            height: 1)
+        presentViewController(
+            alertViewCtrl!,
+            animated: true,
+            completion: nil)
+    }
 
+    func adaptivePresentationStyleForPresentationController(
+        controller: UIPresentationController) -> UIModalPresentationStyle {
+            return .None
+    }
+    
+    //MARKS: OrderReshedule Delegates
+    func updateOreder(order:b4u_OrdersModel ,selectedData:String? ,selectedTimeSlot:String?)
+    {
+        self.view.alpha = 1.0
 
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+        
+        let params = "?order_id=\(order.orderID!) &user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)&date=\(selectedData!)&service_time=\(selectedTimeSlot!)".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kReScheduleOrderApi, params:params!, result:{(resultObject) -> Void in
+            
+            
+            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+            
+            
+        })
+    }
+    func didCloseReshedule()
+    {
+        self.view.alpha = 1.0
+    }
+    
+    @IBAction func okButtonClicked(sender: AnyObject)
+    {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.performSegueWithIdentifier("orderloginSegue", sender:nil)
+        })
+    }
+ 
+    func loginDismissed()
+    {
+        self.validateUser()
+    }
 }

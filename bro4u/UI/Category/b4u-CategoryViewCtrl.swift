@@ -289,17 +289,27 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
         
         // Notify delegate about the new page
         self.selectedMainCategory =  bro4u_DataManager.sharedInstance.mainCategories[self.currentPage]
-
+        
         UIView.animateWithDuration(0.2, animations: { () -> Void in
             self.indicatorcolor.frame=CGRectMake(self.labels[sender.view!.tag-1].frame.origin.x, 61, self.labels[sender.view!.tag-1].intrinsicContentSize().width+32, 3)
             self.indicatorcolor.backgroundColor=self.currentColor
             //                self.categoryScrollView.scrollRectToVisible(self.labels[sender.view!.tag-1].frame, animated: true)
             
             //Center Content
-//            self.catHorizontalScrollView.setContentOffset(CGPointMake(-(self.view.center.x-50)+self.labels[sender.view!.tag-1].center.x-self.labels[sender.view!.tag-1].frame.size.width/2, 0), animated: true)
+            //            self.catHorizontalScrollView.setContentOffset(CGPointMake(-(self.view.center.x-50)+self.labels[sender.view!.tag-1].center.x-self.labels[sender.view!.tag-1].frame.size.width/2, 0), animated: true)
             
-            self.catHorizontalScrollView.setContentOffset(CGPointMake(-(self.view.center.x-50)+self.labels[sender.view!.tag-1].center.x-self.labels[sender.view!.tag-1].frame.size.width/2, 0), animated: true)
             
+            print("%@",self.controllers[sender.view!.tag-1].view.frame)
+            print("%@",self.catHorizontalScrollView.frame)
+            
+//            self.controllers[sender.view!.tag-1].view.frame.origin.x + self.catHorizontalScrollView.frame.size.width/2
+            
+//            self.catHorizontalScrollView.setContentOffset(CGPointMake(self.controllers[sender.view!.tag-1].view.frame.origin.x - self.controllers[sender.view!.tag-1].view.frame.size.width/2 , 0), animated: true)
+            
+            
+            self.catHorizontalScrollView.setContentOffset(CGPointMake(-(self.view.center.x-100)+self.labels[sender.view!.tag-1].center.x-self.labels[sender.view!.tag-1].frame.size.width/2, 0), animated: true)
+            
+    
            // self.imgViewIconBottom.backgroundColor =  self.currentColor
             
             self.imgViewIconBottom.downloadedFrom(link:(self.selectedMainCategory?.interBanner)!, contentMode:UIViewContentMode.ScaleToFill)
@@ -329,7 +339,7 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
             self.indicatorcolor.backgroundColor=self.currentColor
             
             //Center Content
-            self.catHorizontalScrollView.setContentOffset(CGPointMake(-(self.view.center.x-50)+self.labels[self.currentPage].center.x-self.labels[self.currentPage].frame.size.width/2, 0), animated: true)
+            self.catHorizontalScrollView.setContentOffset(CGPointMake(-(self.view.center.x-100)+self.labels[self.currentPage].center.x-self.labels[self.currentPage].frame.size.width/2, 0), animated: true)
             
             self.imgViewIconBottom.downloadedFrom(link:(self.selectedMainCategory?.interBanner)!, contentMode:UIViewContentMode.ScaleToFill)
             self.imgViewIconTop.downloadedFrom(link:(self.selectedMainCategory?.catIcon)!, contentMode:UIViewContentMode.ScaleAspectFit)
