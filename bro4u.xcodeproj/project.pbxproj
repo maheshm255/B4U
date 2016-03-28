@@ -212,6 +212,8 @@
 		65FF8D651C7E9222007588D0 /* b4u-ServicePatnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF8D641C7E9222007588D0 /* b4u-ServicePatnerController.swift */; };
 		65FF8D681C7EC1A5007588D0 /* b4u-SugestedPartner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF8D671C7EC1A5007588D0 /* b4u-SugestedPartner.swift */; };
 		787E454DD19C7F7D70BF42BE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0420EA4B8348ACC0A89E7A7 /* Pods.framework */; };
+		B33666801CA95092007FFD50 /* b4u_CreditAndDebitCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B336667F1CA95092007FFD50 /* b4u_CreditAndDebitCardViewController.swift */; };
+		B33666821CA950B2007FFD50 /* b4u_NetBankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33666811CA950B2007FFD50 /* b4u_NetBankingViewController.swift */; };
 		B34EAD821C9297DA00FCB0F5 /* b4u_MyInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD811C9297DA00FCB0F5 /* b4u_MyInfoModel.swift */; };
 		B34EAD841C9297FC00FCB0F5 /* b4u_MyWalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD831C9297FC00FCB0F5 /* b4u_MyWalletModel.swift */; };
 		B34EAD8A1C92987E00FCB0F5 /* b4u_OfferZoneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD891C92987E00FCB0F5 /* b4u_OfferZoneModel.swift */; };
@@ -554,6 +556,8 @@
 		65FF8D641C7E9222007588D0 /* b4u-ServicePatnerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-ServicePatnerController.swift"; sourceTree = "<group>"; };
 		65FF8D671C7EC1A5007588D0 /* b4u-SugestedPartner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-SugestedPartner.swift"; sourceTree = "<group>"; };
 		B0420EA4B8348ACC0A89E7A7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B336667F1CA95092007FFD50 /* b4u_CreditAndDebitCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_CreditAndDebitCardViewController.swift; sourceTree = "<group>"; };
+		B33666811CA950B2007FFD50 /* b4u_NetBankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_NetBankingViewController.swift; sourceTree = "<group>"; };
 		B34EAD811C9297DA00FCB0F5 /* b4u_MyInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_MyInfoModel.swift; sourceTree = "<group>"; };
 		B34EAD831C9297FC00FCB0F5 /* b4u_MyWalletModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_MyWalletModel.swift; sourceTree = "<group>"; };
 		B34EAD891C92987E00FCB0F5 /* b4u_OfferZoneModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_OfferZoneModel.swift; sourceTree = "<group>"; };
@@ -733,6 +737,8 @@
 		65271E591C83056F0022C888 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
+				B336667B1CA94979007FFD50 /* CreditDebit Card */,
+				B336667A1CA9494E007FFD50 /* Net Banking */,
 				B36939901CA175D0000266A5 /* Order Detail */,
 				65271F5A1C8367DB0022C888 /* Delivery */,
 				65271E5A1C8307820022C888 /* b4u-PaymentViewController.swift */,
@@ -1267,6 +1273,22 @@
 			path = ServicePatners;
 			sourceTree = "<group>";
 		};
+		B336667A1CA9494E007FFD50 /* Net Banking */ = {
+			isa = PBXGroup;
+			children = (
+				B33666811CA950B2007FFD50 /* b4u_NetBankingViewController.swift */,
+			);
+			path = "Net Banking";
+			sourceTree = "<group>";
+		};
+		B336667B1CA94979007FFD50 /* CreditDebit Card */ = {
+			isa = PBXGroup;
+			children = (
+				B336667F1CA95092007FFD50 /* b4u_CreditAndDebitCardViewController.swift */,
+			);
+			path = "CreditDebit Card";
+			sourceTree = "<group>";
+		};
 		B34EAD781C92971E00FCB0F5 /* My Account */ = {
 			isa = PBXGroup;
 			children = (
@@ -1733,6 +1755,7 @@
 				6536E0BF1C690CFC00B273D6 /* bro4u-DataManager.swift in Sources */,
 				65271F4D1C831B1E0022C888 /* PayUSAGetHashes.m in Sources */,
 				042700271C8B37B6008440CC /* NSDate+FSExtension.m in Sources */,
+				B33666821CA950B2007FFD50 /* b4u_NetBankingViewController.swift in Sources */,
 				B72037A01C93BE3200C1FF50 /* b4u_ReOrderViewController.swift in Sources */,
 				65B189BC1C6E6020000EDD00 /* Category.swift in Sources */,
 				B36939861CA143F2000266A5 /* b4u_CancelOrderViewController.swift in Sources */,
@@ -1824,6 +1847,7 @@
 				B36939881CA1440B000266A5 /* b4u_TrackOrderViewController.swift in Sources */,
 				65B18A801C70BB28000EDD00 /* AFSecurityPolicy.m in Sources */,
 				65DE79651C796AD200017F96 /* b4u_IntermediateScreenDataModel.swift in Sources */,
+				B33666801CA95092007FFD50 /* b4u_CreditAndDebitCardViewController.swift in Sources */,
 				65B18A901C70BBC1000EDD00 /* b4u-globalDefinations.swift in Sources */,
 				B71C28581C8C0C0C00873B5C /* MyInfoViewController.swift in Sources */,
 				65DE79681C79761F00017F96 /* b4u_IntermediateViewCtrl.swift in Sources */,
