@@ -129,7 +129,16 @@ class ReferAndEarnViewController: UIViewController,UIPopoverPresentationControll
         
     }
     
-    @IBAction func referFriendsAction(sender: AnyObject) {
+    @IBAction func referFriendsAction(sender: AnyObject)
+    {
+        if let referAndEarnData = bro4u_DataManager.sharedInstance.referAndEarnData
+        {
+            let textToShare = "Just gave you Rs. \(referAndEarnData.offerAmount!) to try your first service on Bro4u- The Home Service App. Use Code \(codeShareLbl.text)"
+            let myWebsite = NSURL(string: "https://www.google.gl/58X0oJ")
+            let itemArr : NSArray = [textToShare,myWebsite!]
+            let shareCntrlr = UIActivityViewController(activityItems: itemArr as [AnyObject], applicationActivities: nil)
+            presentViewController(shareCntrlr, animated: true, completion: nil)
+        }
     }
     
     func addLoadingIndicator () {
