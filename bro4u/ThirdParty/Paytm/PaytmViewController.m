@@ -72,23 +72,45 @@
     //Step 1: Create a default merchant config object
     _mc = [PGMerchantConfiguration defaultConfiguration];
     //Step 2: If you have your own checksum generation and validation url set this here. Otherwise use the default Paytm urls
-    _mc.checksumGenerationURL = @"https://pguat.paytm.com/paytmchecksum/paytmCheckSumGenerator.jsp";
-    _mc.checksumValidationURL = @"https://pguat.paytm.com/paytmchecksum/paytmCheckSumVerify.jsp";
     
+    _mc.checksumGenerationURL = @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/paytm_checksum_generation";
+    _mc.checksumValidationURL = @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/paytm_checksum_validation";
+
+    //Step 2: If you have your own checksum generation and validation url set this here. Otherwise use the default Paytm urls
+    
+    //    _mc.checksumGenerationURL = @"https://pguat.paytm.com/paytmchecksum/paytmCheckSumGenerator.jsp";
+    //    _mc.checksumValidationURL = @"https://pguat.paytm.com/paytmchecksum/paytmCheckSumVerify.jsp";
+
     //Step 3: Create the order with whatever params you want to add. But make sure that you include the merchant mandatory params
     _orderDict = [NSMutableDictionary new];
     //Merchant configuration in the order object
     //    orderDict[@"MID"] = @"Bro4uo37940487669580";
     //    orderDict[@"WEBSITE"] = @"Bro4uwap";
     
-    _orderDict[@"MID"] = @"WorldP64425807474247";
+    _orderDict[@"MID"] = @"NquJkw58790567615778";
     _orderDict[@"CHANNEL_ID"] = @"WAP";
-    _orderDict[@"INDUSTRY_TYPE_ID"] = @"Retail";
-    _orderDict[@"WEBSITE"] = @"worldpressplg";
+    _orderDict[@"INDUSTRY_TYPE_ID"] = @"Retail110";
+    _orderDict[@"WEBSITE"] = @"brofouruwap";
+    _orderDict[@"TXN_AMOUNT"] = @"1";
+    _orderDict[@"ORDER_ID"] = [PaytmViewController generateOrderIDWithPrefix:@""];
+    //    _orderDict[@"REQUEST_TYPE"] = @"DEFAULT";
+    _orderDict[@"CUST_ID"] = @"1234567890";
+    
+    
+    //Step 3: Create the order with whatever params you want to add. But make sure that you include the merchant mandatory params
+//    _orderDict = [NSMutableDictionary new];
+    //Merchant configuration in the order object
+    //    orderDict[@"MID"] = @"Bro4uo37940487669580";
+    //    orderDict[@"WEBSITE"] = @"Bro4uwap";
+    
+//    _orderDict[@"MID"] = @"WorldP64425807474247";
+//    _orderDict[@"CHANNEL_ID"] = @"WAP";
+//    _orderDict[@"INDUSTRY_TYPE_ID"] = @"Retail";
+//    _orderDict[@"WEBSITE"] = @"worldpressplg";
     //Order configuration in the order object
     _orderDict[@"TXN_AMOUNT"] = @"1";
     _orderDict[@"ORDER_ID"] = [PaytmViewController generateOrderIDWithPrefix:@""];
-    _orderDict[@"REQUEST_TYPE"] = @"DEFAULT";
+//    _orderDict[@"REQUEST_TYPE"] = @"DEFAULT";
     _orderDict[@"CUST_ID"] = @"1234567890";
     //    orderDict[@"EMAIL"] = @"abcd@gmail.com";
     //    orderDict[@"MOBILE_NO"] = @"9343999888";

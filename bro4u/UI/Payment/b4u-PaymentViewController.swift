@@ -8,9 +8,8 @@
 
 import UIKit
 
-enum paymentOption{
-   case kNone
-   case kPaytem
+enum paymentOption: Int{
+   case kPaytm = 0
    case kPayUMoney
    case kNetBanking
    case kCOD
@@ -23,9 +22,17 @@ protocol paymentDelegate
 }
 class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate {
 
-    var itemDict : NSDictionary = ["Paytm":"10% Cashback","payUmoney":"1% instant off",
-        "Net banking/Credit/Debit":"Use Credit/Debit or Net banking",
-        "Cash On Service":"Pay cash on service"]
+    @IBOutlet weak var paymentTableView: UITableView!
+    
+    
+     var dictArray: [Dictionary<String, String>] = [["Paytm":"10% Cashback"],
+                 ["payUmoney":"1% instant off"],
+                 ["Net banking/Credit/Debit":"Use Credit/Debit or Net banking"],
+                 ["Cash On Service":"Pay cash on service"]]
+
+//    var itemDict : NSDictionary = ["Paytm":"10% Cashback","payUmoney":"1% instant off",
+//        "Net banking/Credit/Debit":"Use Credit/Debit or Net banking",
+//        "Cash On Service":"Pay cash on service"]
     
     var radioButtonSelected:NSIndexPath!
     
@@ -40,7 +47,6 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     @IBOutlet weak var btnInfo: UIButton!
     @IBOutlet weak var lblAmount: UILabel!
 
-    var selectedPaymentOption:paymentOption = paymentOption.kNone
     
     override func viewDidLoad() {
       
@@ -57,6 +63,14 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
       b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
 
         // Do any additional setup after loading the view.
+       
+        //To Give Shadow to tableview
+        self.paymentTableView.layer.shadowColor  = UIColor.grayColor().CGColor
+        self.paymentTableView.layer.shadowOffset  = CGSizeMake(3.0, 3.0)
+        self.paymentTableView.layer.shadowRadius  = 0.2
+        self.paymentTableView.layer.shadowOpacity  = 1
+        self.paymentTableView.clipsToBounds  = false
+        self.paymentTableView.layer.masksToBounds  = false
     }
 
     
@@ -95,16 +109,16 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return itemDict.count
+        return dictArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cellIdentifier = "paymentSelectionTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! b4u_PaymentTblViewCell
-        
-        cell.typeLabel?.text = itemDict.allKeys[indexPath.row] as? String
-        cell.infoLabel?.text = itemDict.valueForKey((itemDict.allKeys[indexPath.row] as? String)!) as? String
+        let itemDict: NSDictionary   = dictArray[indexPath.row]
+        cell.typeLabel?.text = itemDict.allKeys[0] as? String
+        cell.infoLabel?.text = itemDict.valueForKey((itemDict.allKeys[0] as? String)!) as? String
         
         if radioButtonSelected != nil{
             if radioButtonSelected.isEqual(indexPath){
@@ -135,20 +149,52 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         
     }
     
-//    @IBAction func placeOrder(sender: AnyObject){
-//        
-////          let paytmViewController :PaytmViewController = PaytmViewController()
-////          self.navigationController?.pushViewController(paytmViewController, animated: true)
-////            let payUmoneyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PaymentSCVC") as? PayUMoneyViewController
-////
-////        self.performSegueWithIdentifier("paymentSegue", sender:nil)
+    @IBAction func placeOrder(sender: AnyObject){
+        
+        
+        var paymentViewController = UIViewController()
+        let rowSelected:Int = radioButtonSelected.row
+
+        switch rowSelected {
+           
+        case paymentOption.kPaytm.rawValue :
+            
+            paymentViewController = PaytmViewController()
+
+        case paymentOption.kPayUMoney.rawValue :
+            
+            paymentViewController = PayUMoneyWebPaymentViewController()
+
+        case paymentOption.kNetBanking.rawValue :
+            paymentViewController = b4u_NetBankingViewController()
+
+        case paymentOption.kCOD.rawValue :
+            paymentViewController = b4u_CreditAndDebitCardViewController()
+
+        default :
+            break
+
+
+        }
+//        self.navigationController?.pushViewController(paymentViewController, animated: true)
+//        let payUmoneyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PaymentSCVC") as? PayUMoneyViewController
 //
-////        let payUmoneyViewController :PayUMoneyViewController = PayUMoneyViewController()
-////        self.navigationController?.pushViewController(paytmViewController, animated: true)
+//          let paytmViewController :PaytmViewController = PaytmViewController()
+//          self.navigationController?.pushViewController(paytmViewController, animated: true)
+//            let payUmoneyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PaymentSCVC") as? PayUMoneyViewController
+//
+//        self.performSegueWithIdentifier("paymentSegue", sender:nil)
+//
+//        let payUmoneyViewController :PayUMoneyViewController = PayUMoneyViewController()
+//        self.navigationController?.pushViewController(paytmViewController, animated: true)
 //        
 //        let payUmoneyViewController :PayUMoneyWebPaymentViewController = PayUMoneyWebPaymentViewController()
 //        self.navigationController?.pushViewController(payUmoneyViewController, animated: true)
-//    }
+        let paymentViewController1 :PaytmViewController = PaytmViewController()
+
+        self.navigationController?.pushViewController(paymentViewController1, animated: true)
+
+    }
 
   func addLoadingIndicator () {
     self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
@@ -164,15 +210,9 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
   
   func showAlertView()
   {
+     self.delegate?.infoBtnClicked()
     
-
-
-    
-    
-    self.delegate?.infoBtnClicked()
-    
-//    
-    }
+  }
  
   
     
