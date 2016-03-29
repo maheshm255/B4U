@@ -89,7 +89,7 @@
     
     _orderDict[@"MID"] = @"NquJkw58790567615778";
     _orderDict[@"CHANNEL_ID"] = @"WAP";
-    _orderDict[@"INDUSTRY_TYPE_ID"] = @"Retail110";
+    _orderDict[@"INDUSTRY_TYPE_ID"] = @"Retail";
     _orderDict[@"WEBSITE"] = @"brofouruwap";
     _orderDict[@"TXN_AMOUNT"] = @"1";
     _orderDict[@"ORDER_ID"] = [PaytmViewController generateOrderIDWithPrefix:@""];

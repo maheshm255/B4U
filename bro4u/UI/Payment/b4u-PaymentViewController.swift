@@ -18,6 +18,8 @@ enum paymentOption: Int{
 protocol paymentDelegate
 {
     func infoBtnClicked()
+  
+  func navigateToPaymentGateWay(gateWayOpton:paymentOption)
 
 }
 class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate {
@@ -150,50 +152,20 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     }
     
     @IBAction func placeOrder(sender: AnyObject){
-        
-        
-        var paymentViewController = UIViewController()
-        let rowSelected:Int = radioButtonSelected.row
-
-        switch rowSelected {
-           
-        case paymentOption.kPaytm.rawValue :
-            
-            paymentViewController = PaytmViewController()
-
-        case paymentOption.kPayUMoney.rawValue :
-            
-            paymentViewController = PayUMoneyWebPaymentViewController()
-
-        case paymentOption.kNetBanking.rawValue :
-            paymentViewController = b4u_NetBankingViewController()
-
-        case paymentOption.kCOD.rawValue :
-            paymentViewController = b4u_CreditAndDebitCardViewController()
-
-        default :
-            break
-
-
-        }
-//        self.navigationController?.pushViewController(paymentViewController, animated: true)
-//        let payUmoneyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PaymentSCVC") as? PayUMoneyViewController
-//
-//          let paytmViewController :PaytmViewController = PaytmViewController()
-//          self.navigationController?.pushViewController(paytmViewController, animated: true)
-//            let payUmoneyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PaymentSCVC") as? PayUMoneyViewController
-//
-//        self.performSegueWithIdentifier("paymentSegue", sender:nil)
-//
-//        let payUmoneyViewController :PayUMoneyViewController = PayUMoneyViewController()
-//        self.navigationController?.pushViewController(paytmViewController, animated: true)
-//        
-//        let payUmoneyViewController :PayUMoneyWebPaymentViewController = PayUMoneyWebPaymentViewController()
-//        self.navigationController?.pushViewController(payUmoneyViewController, animated: true)
-        let paymentViewController1 :PaytmViewController = PaytmViewController()
-
-        self.navigationController?.pushViewController(paymentViewController1, animated: true)
-
+      
+      switch radioButtonSelected.row {
+      case 0:
+        delegate?.navigateToPaymentGateWay(paymentOption.kPaytm)
+      case 1:
+        delegate?.navigateToPaymentGateWay(paymentOption.kPayUMoney)
+      case 2:
+        delegate?.navigateToPaymentGateWay(paymentOption.kNetBanking)
+      case 3:
+        delegate?.navigateToPaymentGateWay(paymentOption.kCOD)
+      default:
+        break
+      }
+      
     }
 
   func addLoadingIndicator () {

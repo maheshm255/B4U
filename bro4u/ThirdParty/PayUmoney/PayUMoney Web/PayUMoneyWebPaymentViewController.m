@@ -91,16 +91,16 @@
 
 
 //BRo4u
-#define Merchant_Key @"9HwJ5t"
-#define Salt @"2JIfn3ez"
+//#define Merchant_Key @"9HwJ5t"
+//#define Salt @"2JIfn3ez"
 
-//#define Merchant_Key @"p6VnFd"
-//#define Salt @"4Lzjev3I"
+#define Merchant_Key @"p6VnFd"
+#define Salt @"4Lzjev3I"
 #define Base_URL @"https://test.payu.in"
 #define Success_URL @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/payu_postback"
 #define Failure_URL @" http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/payu_postback"
 #define Product_Info @"Plumber"
-#define Paid_Amount @"100.00"
+#define Paid_Amount @"1.00"
 #define Payee_Name @"Rahul Singh"
 
 
@@ -150,12 +150,12 @@
     NSString *email = [NSString stringWithFormat:@"suraj%d@yopmail.com",i]; // Generated a fake mail id for testing
     NSString *phone = @"9886894327";
 //    NSString *phone = @"9762159571";
-    NSString *serviceprovider = @"payu_paisa";
-    
+//    NSString *serviceprovider = @"payu_paisa";
+  
     NSString *hashValue = [NSString stringWithFormat:@"%@|%@|%@|%@|%@|%@|||||||||||%@",key,txnid1,amount,productInfo,firstname,email,Salt];
     NSString *hash = [self createSHA512:hashValue];
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:txnid1,key,amount,productInfo,firstname,email,phone,Success_URL,Failure_URL,hash,serviceprovider
-                                                                    , nil] forKeys:[NSArray arrayWithObjects:@"txnid",@"key",@"amount",@"productinfo",@"firstname",@"email",@"phone",@"surl",@"furl",@"hash",@"service_provider", nil]];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:txnid1,key,amount,productInfo,firstname,email,phone,Success_URL,Failure_URL,hash/*,serviceprovider*/
+                                                                    , nil] forKeys:[NSArray arrayWithObjects:@"txnid",@"key",@"amount",@"productinfo",@"firstname",@"email",@"phone",@"surl",@"furl",@"hash"/*,@"service_provider"*/, nil]];
     __block NSString *post = @"";
     [parameters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if ([post isEqualToString:@""]) {
