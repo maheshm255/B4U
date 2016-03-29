@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XP6-lF-vG6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XP6-lF-vG6">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
@@ -6234,7 +6234,7 @@
         <!--PayU Money Web Payment View Controller-->
         <scene sceneID="MTl-E3-HTN">
             <objects>
-                <viewController id="Pa3-5d-guV" customClass="PayUMoneyWebPaymentViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PayUMoneyWebPaymentViewControllerID" id="Pa3-5d-guV" customClass="PayUMoneyWebPaymentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0xX-On-FiU"/>
                         <viewControllerLayoutGuide type="bottom" id="VH9-Sz-PGK"/>
@@ -6243,8 +6243,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z4i-k8-Vxf">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z4i-k8-Vxf">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="Pa3-5d-guV" id="T2n-wC-PJ6"/>
@@ -6255,7 +6255,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="z4i-k8-Vxf" secondAttribute="trailing" id="73J-7d-Zuf"/>
                             <constraint firstItem="VH9-Sz-PGK" firstAttribute="top" secondItem="z4i-k8-Vxf" secondAttribute="bottom" id="Ebt-ia-UTs"/>
-                            <constraint firstItem="z4i-k8-Vxf" firstAttribute="top" secondItem="0xX-On-FiU" secondAttribute="bottom" constant="44" id="hOO-qS-bws"/>
+                            <constraint firstItem="z4i-k8-Vxf" firstAttribute="top" secondItem="0xX-On-FiU" secondAttribute="bottom" constant="-20" id="hOO-qS-bws"/>
                             <constraint firstItem="z4i-k8-Vxf" firstAttribute="leading" secondItem="7at-bM-2I1" secondAttribute="leading" id="ssf-jJ-vFu"/>
                         </constraints>
                     </view>
@@ -6271,7 +6271,7 @@
         <!--4u Credit And Debit Card View Controller-->
         <scene sceneID="Rya-Zv-1Kf">
             <objects>
-                <viewController id="9fE-h3-Ohy" customClass="b4u_CreditAndDebitCardViewController" customModule="bro4u" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreditAndDebitCardViewControllerID" id="9fE-h3-Ohy" customClass="b4u_CreditAndDebitCardViewController" customModule="bro4u" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZDM-Co-uNN"/>
                         <viewControllerLayoutGuide type="bottom" id="ji5-Ft-8Sk"/>
@@ -6359,7 +6359,7 @@
         <!--4u Net Banking View Controller-->
         <scene sceneID="MsV-Wu-o3g">
             <objects>
-                <viewController id="WBi-Hg-16I" customClass="b4u_NetBankingViewController" customModule="bro4u" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NetBankingViewControllerID" id="WBi-Hg-16I" customClass="b4u_NetBankingViewController" customModule="bro4u" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Goi-SE-zD1"/>
                         <viewControllerLayoutGuide type="bottom" id="tzs-qa-oas"/>
@@ -6443,17 +6443,17 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PQh-VR-yWs">
-                                        <rect key="frame" x="320" y="323" width="240" height="71"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uDj-rJ-FP4">
-                                        <rect key="frame" x="20" y="323" width="236" height="71"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="King" translatesAutoresizingMaskIntoConstraints="NO" id="uDj-rJ-FP4">
+                                        <rect key="frame" x="20" y="323" width="150" height="71"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="wko-Fh-y36"/>
+                                        </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCe-YT-WBg">
-                                        <rect key="frame" x="35" y="70" width="174" height="37"/>
+                                        <rect key="frame" x="35" y="70" width="100" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="gQb-cT-3i7"/>
-                                            <constraint firstAttribute="width" constant="174" id="kui-8V-mY0"/>
+                                            <constraint firstAttribute="width" constant="100" id="kui-8V-mY0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="ICICI bank">
@@ -6461,10 +6461,10 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cw4-dK-jll">
-                                        <rect key="frame" x="377" y="70" width="174" height="37"/>
+                                        <rect key="frame" x="460" y="70" width="100" height="37"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="174" id="1lr-Gw-qTr"/>
+                                            <constraint firstAttribute="width" constant="100" id="1lr-Gw-qTr"/>
                                             <constraint firstAttribute="height" constant="37" id="qRc-AK-YN5"/>
                                         </constraints>
                                         <state key="normal" title="HDFC Bank">
@@ -6472,25 +6472,31 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erF-B4-AYQ">
-                                        <rect key="frame" x="35" y="129" width="174" height="37"/>
+                                        <rect key="frame" x="35" y="129" width="156" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="Cw1-Bb-kAr"/>
-                                            <constraint firstAttribute="width" constant="174" id="Ra6-gG-ugk"/>
+                                            <constraint firstAttribute="width" constant="156" id="Ra6-gG-ugk"/>
                                         </constraints>
                                         <state key="normal" title="State bank Of India">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acp-WU-lgd">
-                                        <rect key="frame" x="377" y="129" width="174" height="37"/>
+                                        <rect key="frame" x="460" y="129" width="100" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="VuZ-Rh-NbD"/>
-                                            <constraint firstAttribute="width" constant="174" id="WVa-X7-ejm"/>
+                                            <constraint firstAttribute="width" constant="100" id="WVa-X7-ejm"/>
                                         </constraints>
                                         <state key="normal" title="Axis bank">
                                             <color key="titleColor" red="0.59200560591603058" green="0.22000704711352753" blue="0.037013482043768385" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="amex.png" translatesAutoresizingMaskIntoConstraints="NO" id="PQh-VR-yWs">
+                                        <rect key="frame" x="410" y="323" width="150" height="71"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="gEc-py-vMy"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -6515,10 +6521,9 @@
                                     <constraint firstItem="FCe-YT-WBg" firstAttribute="leading" secondItem="mme-5T-EOl" secondAttribute="leading" constant="35" id="b8e-qg-7FO"/>
                                     <constraint firstItem="FCe-YT-WBg" firstAttribute="top" secondItem="FR0-Pt-E8w" secondAttribute="bottom" constant="18" id="cwe-mL-KiR"/>
                                     <constraint firstItem="s2I-gU-94z" firstAttribute="leading" secondItem="8ny-zi-Ibr" secondAttribute="leading" id="gBx-zv-gT9"/>
-                                    <constraint firstAttribute="trailing" secondItem="cw4-dK-jll" secondAttribute="trailing" constant="29" id="gPW-KV-z4o"/>
+                                    <constraint firstAttribute="trailing" secondItem="cw4-dK-jll" secondAttribute="trailing" constant="20" id="gPW-KV-z4o"/>
                                     <constraint firstItem="uDj-rJ-FP4" firstAttribute="top" secondItem="8ny-zi-Ibr" secondAttribute="bottom" constant="27" id="gsh-My-wQ8"/>
                                     <constraint firstItem="s2I-gU-94z" firstAttribute="top" secondItem="erF-B4-AYQ" secondAttribute="bottom" constant="18" id="i4q-6j-vi3"/>
-                                    <constraint firstItem="PQh-VR-yWs" firstAttribute="leading" secondItem="uDj-rJ-FP4" secondAttribute="trailing" constant="64" id="kYM-bY-QWD"/>
                                     <constraint firstItem="acp-WU-lgd" firstAttribute="top" secondItem="cw4-dK-jll" secondAttribute="bottom" constant="22" id="vN2-pI-408"/>
                                     <constraint firstItem="uDj-rJ-FP4" firstAttribute="top" secondItem="PQh-VR-yWs" secondAttribute="top" id="x01-GF-OkP"/>
                                     <constraint firstItem="erF-B4-AYQ" firstAttribute="top" secondItem="FCe-YT-WBg" secondAttribute="bottom" constant="22" id="zRr-Lh-Cin"/>
@@ -6756,24 +6761,6 @@
             <point key="canvasLocation" x="921" y="8091"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="v8t-q6-DRF">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TG8-2l-9xd" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TO5-nm-Nkq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Pa3-5d-guV" kind="relationship" relationship="rootViewController" id="SDv-Pz-TiM"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2TK-dn-bf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="291" y="8768"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="Jxv-HG-FIB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MlQ-By-bby" sceneMemberID="viewController">
@@ -6812,6 +6799,7 @@
     </scenes>
     <resources>
         <image name="King" width="32" height="32"/>
+        <image name="amex.png" width="96" height="96"/>
         <image name="arrowI" width="32" height="32"/>
         <image name="bell" width="22" height="22"/>
         <image name="bro4ULogo" width="74" height="75"/>

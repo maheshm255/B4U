@@ -96,7 +96,7 @@
 
 #define Merchant_Key @"p6VnFd"
 #define Salt @"4Lzjev3I"
-#define Base_URL @"https://test.payu.in"
+#define Base_URL @"https://secure.payu.in"
 #define Success_URL @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/payu_postback"
 #define Failure_URL @" http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/payu_postback"
 #define Product_Info @"Plumber"
