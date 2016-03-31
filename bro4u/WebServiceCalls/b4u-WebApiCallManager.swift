@@ -266,10 +266,10 @@ class b4u_WebApiCallManager: NSObject {
     func pasrseMyWalletData(dataDict:Dictionary<String, AnyObject>)
     {
         
-        let parentArray1:[Dictionary<String ,AnyObject>] = dataDict["wallet_activities"] as! [Dictionary<String ,AnyObject>]
+        let parentArray:[Dictionary<String ,AnyObject>] = dataDict["wallet_activities"] as! [Dictionary<String ,AnyObject>]
         
         bro4u_DataManager.sharedInstance.myWalletData.removeAll()
-        for (_ ,dataDict) in parentArray1.enumerate()
+        for (_ ,dataDict) in parentArray.enumerate()
         {
             let parentObj = b4u_MyWalletModel(dataDict: dataDict)
             bro4u_DataManager.sharedInstance.myWalletData.append(parentObj)

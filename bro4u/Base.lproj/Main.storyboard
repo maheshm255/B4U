@@ -4425,9 +4425,91 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="111" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ObK-LJ-Jxg">
+                                        <rect key="frame" x="8" y="298" width="584" height="228"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyWalletTableViewCellID" rowHeight="111" id="0Dp-b6-zyO" customClass="b4u_MyWalletTableViewCell" customModule="bro4u" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="50" width="584" height="111"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Dp-b6-zyO" id="xJf-cF-Ld2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="584" height="110"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ron-01-Bcz">
+                                                            <rect key="frame" x="447" y="64" width="117" height="30"/>
+                                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.58064932193396224" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="117" id="OKn-y8-LkZ"/>
+                                                                <constraint firstAttribute="height" constant="30" id="bEX-n7-Uwn"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                            <state key="normal" title="DEBIT">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="activityBtnAction:" destination="0Dp-b6-zyO" eventType="touchUpInside" id="g8L-g6-8OH"/>
+                                                            </connections>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rs. 209.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eI9-HY-9YQ">
+                                                            <rect key="frame" x="447" y="17" width="129" height="31"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="31" id="2Gm-6b-v2S"/>
+                                                                <constraint firstAttribute="width" constant="129" id="JB1-dS-2Ny"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-10-25 07:14:04" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5GR-OM-hHd">
+                                                            <rect key="frame" x="17" y="17" width="172" height="31"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="31" id="YJV-WN-Rpu"/>
+                                                                <constraint firstAttribute="width" constant="172" id="o6H-Bb-ygQ"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deducted for Order #10" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naS-Pl-Xta">
+                                                            <rect key="frame" x="17" y="51" width="410" height="51"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="51" id="1qR-z7-wNf"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="eI9-HY-9YQ" secondAttribute="trailing" id="6Iy-zM-yd1"/>
+                                                        <constraint firstItem="5GR-OM-hHd" firstAttribute="leading" secondItem="xJf-cF-Ld2" secondAttribute="leadingMargin" constant="9" id="Hf9-Xy-m2U"/>
+                                                        <constraint firstItem="ron-01-Bcz" firstAttribute="leading" secondItem="naS-Pl-Xta" secondAttribute="trailing" constant="20" id="Jcv-sQ-plm"/>
+                                                        <constraint firstItem="ron-01-Bcz" firstAttribute="top" secondItem="eI9-HY-9YQ" secondAttribute="bottom" constant="16" id="NoE-vK-m2y"/>
+                                                        <constraint firstItem="5GR-OM-hHd" firstAttribute="top" secondItem="xJf-cF-Ld2" secondAttribute="topMargin" constant="9" id="Nx6-0M-sAj"/>
+                                                        <constraint firstItem="eI9-HY-9YQ" firstAttribute="leading" secondItem="ron-01-Bcz" secondAttribute="leading" id="TPF-YH-4gd"/>
+                                                        <constraint firstItem="naS-Pl-Xta" firstAttribute="top" secondItem="5GR-OM-hHd" secondAttribute="bottom" constant="3" id="U6B-Oy-FDf"/>
+                                                        <constraint firstItem="5GR-OM-hHd" firstAttribute="leading" secondItem="naS-Pl-Xta" secondAttribute="leading" id="rYF-5j-rHo"/>
+                                                        <constraint firstItem="eI9-HY-9YQ" firstAttribute="top" secondItem="xJf-cF-Ld2" secondAttribute="topMargin" constant="9" id="sUW-Bi-k2o"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="activityTypeBtn" destination="ron-01-Bcz" id="E6f-Vl-ZCy"/>
+                                                    <outlet property="amountLbl" destination="eI9-HY-9YQ" id="ajo-nx-Ijy"/>
+                                                    <outlet property="commentsLbl" destination="naS-Pl-Xta" id="Dh9-L2-ft0"/>
+                                                    <outlet property="dateTimeLbl" destination="5GR-OM-hHd" id="OMr-Km-XOu"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="cDY-1d-Wk1" id="7oB-VR-RQB"/>
+                                            <outlet property="delegate" destination="cDY-1d-Wk1" id="v8z-nf-a42"/>
+                                        </connections>
+                                    </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ObK-LJ-Jxg" secondAttribute="trailing" constant="8" id="1DT-g9-W7e"/>
                                     <constraint firstItem="avC-n8-m9T" firstAttribute="leading" secondItem="MmQ-Pt-RD4" secondAttribute="leading" id="8GO-C2-Bvd"/>
                                     <constraint firstAttribute="trailing" secondItem="Cbe-Rd-hgR" secondAttribute="trailing" constant="14" id="A63-Ed-5ba"/>
                                     <constraint firstItem="oL9-p0-d5f" firstAttribute="top" secondItem="MmQ-Pt-RD4" secondAttribute="top" constant="203" id="Fyt-Ya-rgH"/>
@@ -4436,8 +4518,11 @@
                                     <constraint firstItem="V4s-V4-GZ2" firstAttribute="centerY" secondItem="avC-n8-m9T" secondAttribute="centerY" id="O1x-eO-Gb3"/>
                                     <constraint firstItem="kMn-vs-j7h" firstAttribute="top" secondItem="oL9-p0-d5f" secondAttribute="bottom" constant="13" id="UnI-Nz-cX7"/>
                                     <constraint firstItem="kMn-vs-j7h" firstAttribute="centerX" secondItem="MmQ-Pt-RD4" secondAttribute="centerX" id="euQ-We-YRe"/>
+                                    <constraint firstItem="ObK-LJ-Jxg" firstAttribute="top" secondItem="kMn-vs-j7h" secondAttribute="bottom" constant="16" id="hAq-Vc-jgv"/>
+                                    <constraint firstItem="ObK-LJ-Jxg" firstAttribute="leading" secondItem="MmQ-Pt-RD4" secondAttribute="leading" constant="8" id="hs6-QA-wgs"/>
                                     <constraint firstItem="V4s-V4-GZ2" firstAttribute="leading" secondItem="R6Y-Z1-DkQ" secondAttribute="trailing" constant="19" id="pTb-3D-Len"/>
                                     <constraint firstAttribute="trailing" secondItem="avC-n8-m9T" secondAttribute="trailing" id="tKs-2c-WyH"/>
+                                    <constraint firstAttribute="bottom" secondItem="ObK-LJ-Jxg" secondAttribute="bottom" constant="8" id="trP-gf-QRd"/>
                                     <constraint firstItem="Cbe-Rd-hgR" firstAttribute="top" secondItem="MmQ-Pt-RD4" secondAttribute="top" constant="205" id="uUj-jp-GhA"/>
                                     <constraint firstItem="avC-n8-m9T" firstAttribute="top" secondItem="MmQ-Pt-RD4" secondAttribute="top" id="vOh-X8-AV7"/>
                                     <constraint firstItem="V4s-V4-GZ2" firstAttribute="centerY" secondItem="R6Y-Z1-DkQ" secondAttribute="centerY" id="xG8-Tz-WTj"/>
@@ -4469,6 +4554,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="couponcodeTxtFld" destination="oL9-p0-d5f" id="AE8-FQ-Zn3"/>
+                        <outlet property="walletBalanceTableView" destination="ObK-LJ-Jxg" id="qGI-Cw-h1z"/>
                         <outlet property="walletImageView" destination="R6Y-Z1-DkQ" id="7nZ-sA-6ch"/>
                         <outlet property="walletMoneyLbl" destination="V4s-V4-GZ2" id="H8M-tO-bBl"/>
                     </connections>

@@ -66,7 +66,18 @@ class b4u_MyAccountViewController: UIViewController {
     {
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyAccountIndex, params:"", result:{(resultObject) -> Void in
+        var user_id = ""
+      
+        if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+        
+        user_id = loginInfoData.userId! //Need to use later
+        
+      }
+      
+      
+      let params = "?user_id=\(8)"
+
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyAccountIndex, params:params, result:{(resultObject) -> Void in
             
             print("My Account Data Received")
             

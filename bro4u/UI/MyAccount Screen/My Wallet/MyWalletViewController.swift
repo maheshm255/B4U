@@ -14,6 +14,8 @@ class MyWalletViewController: UIViewController {
   @IBOutlet var walletImageView: UIImageView!
   @IBOutlet var walletMoneyLbl: UILabel!
   
+  @IBOutlet weak var walletBalanceTableView: UITableView!
+
   var myModelArr:[b4u_MyWalletModel] = Array()
   var indicatorcolor:UIView!
 
@@ -34,9 +36,10 @@ class MyWalletViewController: UIViewController {
     {
       b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
+      var user_id = ""
       if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
         
-        var filedName = loginInfoData.userId! //Need to use later
+        user_id = loginInfoData.userId! //Need to use later
         
        }
     
@@ -59,13 +62,39 @@ class MyWalletViewController: UIViewController {
 
     func congigureUI()
     {
-
+       walletBalanceTableView .reloadData()
     }
+  
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+
+  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    return bro4u_DataManager.sharedInstance.myWalletData.count
+  }
+  
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 1
+  }
+
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    
+    let textCellIdentifier = "MyWalletTableViewCellID"
+    let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! b4u_MyWalletTableViewCell
+    
+    let myWalletModel:b4u_MyWalletModel = bro4u_DataManager.sharedInstance.myWalletData[indexPath.section]
+    
+    cell.configureData(myWalletModel)
+    
+    cell.layer.borderWidth = 1.0
+    cell.layer.borderColor = UIColor.grayColor().CGColor
+    
+    
+    return cell
+  }
 
     /*
     // MARK: - Navigation
@@ -87,6 +116,18 @@ class MyWalletViewController: UIViewController {
     b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
   }
 
+  func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    
+    if section == 0
+    {
+      return 1.0;
+    }
+    else
+    {
+      return 10.0;
+    }
+    
+  }
 
 
 }

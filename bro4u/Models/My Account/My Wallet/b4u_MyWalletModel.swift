@@ -12,7 +12,7 @@ class b4u_MyWalletModel: NSObject {
 
   var activityID:NSNumber?
   var userID:NSNumber?
-  var amount:NSNumber?
+  var amount:String?
   var activityType:String?
   var comments:String?
   var timestamp:String?
@@ -22,7 +22,7 @@ class b4u_MyWalletModel: NSObject {
     
     activityID = dataDict["activity_id"] as? NSNumber
     userID = dataDict["user_id"] as? NSNumber
-    amount = dataDict["amount"] as? NSNumber
+    amount = dataDict["amount"] as? String
     activityType = dataDict["activity_type"] as? String
     comments = dataDict["comments"] as? String
     timestamp = dataDict["timestamp"] as? String
