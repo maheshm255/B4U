@@ -27,8 +27,10 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     
     // Do any additional setup after loading the view.
     
+
     self.cofigureUI()
   }
+
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
@@ -43,8 +45,6 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
   
   func cofigureUI()
   {
-    
-    
     
     self.addSegmentControl()
   }
@@ -260,9 +260,9 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
   
   func proceedToPayment()
   {
-    self.segmentedControl?.selectedSegmentIndex = 2
     
-    self.addPaymentViewControl()
+    self.getPaymentWays()
+  
   }
   
   func loginSuccessFull()
@@ -406,10 +406,57 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
         
       }
     }
-    
-    
-    
+
   }
+  
+  
+  //MARKS:- Get Payement Options
+  
+  func getPaymentWays()
+  {
+    self.addLoadingIndicator()
+    
+    b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+    
+    var user_id = "1"
+    if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+      
+      user_id = loginInfoData.userId! //Need to use later
+      
+    }
+    
+    
+    
+    let sub_Total =  bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!
+    let coupon = "MAKEMOMHAPPY" // TODO
+    let service_time =   bro4u_DataManager.sharedInstance.selectedTimeSlot!
+    let service_date =   bro4u_DataManager.sharedInstance.selectedDate!
+
+    
+    var params =  bro4u_DataManager.sharedInstance.userSelectedFilterParams! + "&sub_Total=\(sub_Total)&user_id=\(user_id)&coupon=\(coupon)&service_time=\(service_time)&service_date=\(service_date)"
+    
+    params = params.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+
+    
+    b4u_WebApiCallManager.sharedInstance.getApiCall(kGetBookingDetailIndex , params:params, result:{(resultObject) -> Void in
+      
+      b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
+      print("Payemtn data receivied")
+      self.segmentedControl?.selectedSegmentIndex = 2
+      
+      self.addPaymentViewControl()
+    })
+
+  }
+  
+  
+  func addLoadingIndicator () {
+    self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+    self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+    b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
+  }
+ 
 }
 
 

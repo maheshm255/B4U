@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XP6-lF-vG6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XP6-lF-vG6">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
@@ -6234,7 +6234,7 @@
         <!--PayU Money Web Payment View Controller-->
         <scene sceneID="MTl-E3-HTN">
             <objects>
-                <viewController storyboardIdentifier="PayUMoneyWebPaymentViewControllerID" id="Pa3-5d-guV" customClass="PayUMoneyWebPaymentViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PayUMoneyWebPaymentViewControllerID" automaticallyAdjustsScrollViewInsets="NO" id="Pa3-5d-guV" customClass="PayUMoneyWebPaymentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0xX-On-FiU"/>
                         <viewControllerLayoutGuide type="bottom" id="VH9-Sz-PGK"/>
@@ -6244,7 +6244,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z4i-k8-Vxf">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="Pa3-5d-guV" id="T2n-wC-PJ6"/>
@@ -6255,7 +6255,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="z4i-k8-Vxf" secondAttribute="trailing" id="73J-7d-Zuf"/>
                             <constraint firstItem="VH9-Sz-PGK" firstAttribute="top" secondItem="z4i-k8-Vxf" secondAttribute="bottom" id="Ebt-ia-UTs"/>
-                            <constraint firstItem="z4i-k8-Vxf" firstAttribute="top" secondItem="0xX-On-FiU" secondAttribute="bottom" constant="-20" id="hOO-qS-bws"/>
+                            <constraint firstItem="z4i-k8-Vxf" firstAttribute="top" secondItem="0xX-On-FiU" secondAttribute="bottom" id="hOO-qS-bws"/>
                             <constraint firstItem="z4i-k8-Vxf" firstAttribute="leading" secondItem="7at-bM-2I1" secondAttribute="leading" id="ssf-jJ-vFu"/>
                         </constraints>
                     </view>

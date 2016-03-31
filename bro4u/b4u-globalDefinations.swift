@@ -300,7 +300,7 @@ let kLocationSearchUrl = "https://maps.googleapis.com/maps/api/place/autocomplet
 
 //// About US URL
 //
-//let kAboutUsUrl = "http://v2.20160301.testing.bro4u.com/api_v2/index.php/page/about"
+let kAboutUsUrl = "http://v2.20160301.testing.bro4u.com/api_v2/index.php/page/about"
 
 
 // Notification 

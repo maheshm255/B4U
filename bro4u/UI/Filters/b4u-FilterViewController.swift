@@ -560,16 +560,9 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         let latitude =  "12.9718915"
         let longitude = "77.6411545"
         
-        var params = "?cat_id=\(catId)&latitude=\(latitude)&longitude=\(longitude)"
+        var params = "?cat_id=\(catId)"
         
-        
-        
-        
-        let dateStr = NSDate.dateFormat().stringFromDate(selectedDate)
-        
-        params = params + "&service_date=\(dateStr)"
-        
-        params = params + "&service_time=\(selectedTimeSlot)"
+      
         
         
         print(selectedIndexPath)
@@ -621,14 +614,26 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             }
             
         }
-        
+      
+      
+      bro4u_DataManager.sharedInstance.userSelectedFilterParams = params
+      
+      let dateStr = NSDate.dateFormat().stringFromDate(selectedDate)
+      
+      params = params + "&service_date=\(dateStr)"
+      
+      params = params + "&service_time=\(selectedTimeSlot)"
+      
+      params = params + "&latitude=\(latitude)&longitude=\(longitude)"
+      
+      
         bro4u_DataManager.sharedInstance.suggestedPatnersResult = nil
         
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
         b4u_WebApiCallManager.sharedInstance.getApiCall(kShowServicePatnerApi, params:params, result:{(resultObject) -> Void in
           
-        self.performSelectorOnMainThread("moveToSuggestedPatner", withObject:nil, waitUntilDone:true)
+         self.performSelectorOnMainThread("moveToSuggestedPatner", withObject:nil, waitUntilDone:true)
             
         })
     }

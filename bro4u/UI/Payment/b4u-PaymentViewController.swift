@@ -74,7 +74,7 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         self.paymentTableView.clipsToBounds  = false
         self.paymentTableView.layer.masksToBounds  = false
     }
-
+  
     
     func applyCouponCodeViewTaped()
     {
@@ -187,5 +187,4 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
   }
  
   
-    
-  }
+}
