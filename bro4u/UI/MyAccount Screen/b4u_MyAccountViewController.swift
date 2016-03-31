@@ -162,6 +162,19 @@ class b4u_MyAccountViewController: UIViewController {
     return 105.0;
   }
   
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        if section == 0
+        {
+            return 3.0;
+        }
+        else
+        {
+            return 5.0;
+        }
+        
+    }
+
     
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)

@@ -52,6 +52,8 @@ class bro4u_DataManager: NSObject {
     var paymentGatewayOffersData:[b4u_PaymentGatewayOffersModel] = Array()
     var notificationData:[b4u_NotificationModel] = Array()
     var myReorderData:[b4u_ReOrderModel] = Array()
+    var orderDetailData:[b4u_OrderDetailModel] = Array()
+    var selectionData:[b4u_SelectionModel] = Array()
 
 
     class var sharedInstance: bro4u_DataManager {
