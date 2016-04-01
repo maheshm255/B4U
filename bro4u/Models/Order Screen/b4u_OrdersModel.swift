@@ -93,7 +93,6 @@ class b4u_OrdersModel: NSObject {
                 let reOrderModel = b4u_ReOrder_MetaItemModel(dataDict:orderItemDataDict)
                 self.metaItemReOrder?.append(reOrderModel)
             }
-            
         }
         
         self.paymentGateWayes = Array()

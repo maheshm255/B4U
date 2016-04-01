@@ -402,21 +402,11 @@ class b4u_WebApiCallManager: NSObject {
         let parentArray1:[Dictionary<String ,AnyObject>] = dataDict["orderdetails"] as! [Dictionary<String ,AnyObject>]
         
         bro4u_DataManager.sharedInstance.orderDetailData.removeAll()
-        bro4u_DataManager.sharedInstance.selectionData.removeAll()
-        bro4u_DataManager.sharedInstance.paymentGatewayOffersData.removeAll()
         
         for (_ ,dataDict) in parentArray1.enumerate()
         {
             let parentObj = b4u_OrderDetailModel(dataDict:dataDict)
             bro4u_DataManager.sharedInstance.orderDetailData.append(parentObj)
-        }
-        
-        let parentArray2:[Dictionary<String ,AnyObject>] = dataDict["payment_gateway_offers"] as! [Dictionary<String ,AnyObject>]
-        
-        for (_ ,dataDict) in parentArray2.enumerate()
-        {
-            let parentObj = b4u_PaymentGatewayOffersModel(dataDict:dataDict)
-            bro4u_DataManager.sharedInstance.paymentGatewayOffersData.append(parentObj)
         }
     }
     

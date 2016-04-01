@@ -418,7 +418,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     
     b4u_Utility.sharedInstance.activityIndicator.startAnimating()
     
-    var user_id = "1"
+    var user_id = "3"
     if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
       
       user_id = loginInfoData.userId! //Need to use later
@@ -433,12 +433,12 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     let service_date =   bro4u_DataManager.sharedInstance.selectedDate!
 
     
-    var params =  bro4u_DataManager.sharedInstance.userSelectedFilterParams! + "&sub_Total=\(sub_Total)&user_id=\(user_id)&coupon=\(coupon)&service_time=\(service_time)&service_date=\(service_date)"
-    
-    params = params.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+//    var params =  bro4u_DataManager.sharedInstance.userSelectedFilterParams! + "&sub_Total=\(sub_Total)&user_id=\(user_id)&coupon=\(coupon)&service_time=\(service_time)&service_date=\(service_date)"
+//    
+//    params = params.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
 
     
-    b4u_WebApiCallManager.sharedInstance.getApiCall(kGetBookingDetailIndex , params:params, result:{(resultObject) -> Void in
+    b4u_WebApiCallManager.sharedInstance.getApiCall(kGetBookingDetailIndex , params:"", result:{(resultObject) -> Void in
       
       b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
 

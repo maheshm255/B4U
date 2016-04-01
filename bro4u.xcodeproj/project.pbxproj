@@ -214,6 +214,7 @@
 		65FF8D651C7E9222007588D0 /* b4u-ServicePatnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF8D641C7E9222007588D0 /* b4u-ServicePatnerController.swift */; };
 		65FF8D681C7EC1A5007588D0 /* b4u-SugestedPartner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF8D671C7EC1A5007588D0 /* b4u-SugestedPartner.swift */; };
 		787E454DD19C7F7D70BF42BE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0420EA4B8348ACC0A89E7A7 /* Pods.framework */; };
+		B30E44E91CAE583E00552A7A /* b4u_ReviewServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E44E81CAE583E00552A7A /* b4u_ReviewServiceViewController.swift */; };
 		B33666801CA95092007FFD50 /* b4u_CreditAndDebitCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B336667F1CA95092007FFD50 /* b4u_CreditAndDebitCardViewController.swift */; };
 		B33666821CA950B2007FFD50 /* b4u_NetBankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33666811CA950B2007FFD50 /* b4u_NetBankingViewController.swift */; };
 		B34EAD821C9297DA00FCB0F5 /* b4u_MyInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD811C9297DA00FCB0F5 /* b4u_MyInfoModel.swift */; };
@@ -561,6 +562,7 @@
 		65FF8D641C7E9222007588D0 /* b4u-ServicePatnerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-ServicePatnerController.swift"; sourceTree = "<group>"; };
 		65FF8D671C7EC1A5007588D0 /* b4u-SugestedPartner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-SugestedPartner.swift"; sourceTree = "<group>"; };
 		B0420EA4B8348ACC0A89E7A7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B30E44E81CAE583E00552A7A /* b4u_ReviewServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ReviewServiceViewController.swift; sourceTree = "<group>"; };
 		B336667F1CA95092007FFD50 /* b4u_CreditAndDebitCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_CreditAndDebitCardViewController.swift; sourceTree = "<group>"; };
 		B33666811CA950B2007FFD50 /* b4u_NetBankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_NetBankingViewController.swift; sourceTree = "<group>"; };
 		B34EAD811C9297DA00FCB0F5 /* b4u_MyInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_MyInfoModel.swift; sourceTree = "<group>"; };
@@ -1166,6 +1168,7 @@
 		65DE76D61C7780BD00017F96 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B30E44E51CAE57D800552A7A /* Review Screen */,
 				B701BBC01C98847A0095FEF1 /* About Us */,
 				04E07A571C901961009AD223 /* Login */,
 				04E0C4421C8C70E6006450D1 /* Location */,
@@ -1287,6 +1290,14 @@
 				65264F861C81D80200859F5A /* b4u-SuggestedPatnersResult.swift */,
 			);
 			path = ServicePatners;
+			sourceTree = "<group>";
+		};
+		B30E44E51CAE57D800552A7A /* Review Screen */ = {
+			isa = PBXGroup;
+			children = (
+				B30E44E81CAE583E00552A7A /* b4u_ReviewServiceViewController.swift */,
+			);
+			path = "Review Screen";
 			sourceTree = "<group>";
 		};
 		B336667A1CA9494E007FFD50 /* Net Banking */ = {
@@ -1908,6 +1919,7 @@
 				65B18A831C70BB28000EDD00 /* AFURLResponseSerialization.m in Sources */,
 				65DE76E21C7780BD00017F96 /* b4u-RightMenuTblCtrl.swift in Sources */,
 				65B49DBE1C7244FE0083942D /* b4u-SearchResult.swift in Sources */,
+				B30E44E91CAE583E00552A7A /* b4u_ReviewServiceViewController.swift in Sources */,
 				65B18A851C70BB28000EDD00 /* KeychainWrapper.m in Sources */,
 				04FC933D1CA10EAF002F90AC /* b4u-QuickBookOrderCtrl.swift in Sources */,
 				65271F511C831B1E0022C888 /* PayUUIEMIViewController.m in Sources */,
