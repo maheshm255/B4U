@@ -52,13 +52,15 @@ class OrderConfirmedViewController: UIViewController {
     {
       b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
+        var user_id = ""
+        
         if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
             
-            var filedName = loginInfoData.userId! //Need to use later
+            user_id = loginInfoData.userId! //Need to use later
             
         }
         
-        let user_id = 15
+        //user_id = "15"
         let order_id = 8765
         let params = "?order_id=\(order_id)&user_id=\(user_id)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kOrderConfirmedIndex , params:params, result:{(resultObject) -> Void in

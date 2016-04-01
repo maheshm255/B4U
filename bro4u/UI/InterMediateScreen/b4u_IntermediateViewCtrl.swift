@@ -102,11 +102,16 @@ class b4u_IntermediateViewCtrl: UIViewController {
         {
             b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
+            var user_id = ""
+            if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+                user_id = loginInfoData.userId! //Need to use later
+            }
+
             let catId = aSelectedCatObj.catId!
-            let userId = "15" //TODO
+//            let user_id = "15" //TODO
             let deviceId = b4u_Utility.getUUIDFromVendorIdentifier()
             
-            var params = "?cat_id=\(catId)&user_id=\(userId)&device_id=\(deviceId)"
+            var params = "?cat_id=\(catId)&user_id=\(user_id)&device_id=\(deviceId)"
             
             if  let aSelectedAttributeOption = selectedAttributeOption
             {
@@ -140,12 +145,16 @@ class b4u_IntermediateViewCtrl: UIViewController {
         }else if let aSelectedImgObj = self.selectedImgSlide
         {
             b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+            var user_id = ""
+            if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+                user_id = loginInfoData.userId! //Need to use later
+            }
 
             let catId = aSelectedImgObj.catId!
-            let userId = "15" //TODO
+//            let user_id = "15" //TODO
             let deviceId = b4u_Utility.getUUIDFromVendorIdentifier()
             
-            let params = "?cat_id=\(catId)&user_id=\(userId)&device_id=\(deviceId)"
+            let params = "?cat_id=\(catId)&user_id=\(user_id)&device_id=\(deviceId)"
             
             b4u_WebApiCallManager.sharedInstance.getApiCall(intermediateScreenAPi, params:params, result:{(resultObject) -> Void in
                 

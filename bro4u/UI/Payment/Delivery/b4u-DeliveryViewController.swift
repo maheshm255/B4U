@@ -81,8 +81,13 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
     {
       b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
-        let userId = "1"
-        let params = "?user_id=\(userId)"
+        var user_id = ""
+        if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+            user_id = loginInfoData.userId! //Need to use later
+        }
+
+//        let user_id = "1"
+        let params = "?user_id=\(user_id)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kGetAddress, params:params, result:{(resultObject) -> Void in
             
             print("address Received")

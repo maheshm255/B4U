@@ -137,7 +137,12 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
         
         addressModel = b4u_AddressDetails()
         
-        let user_id = "1"
+        var user_id = ""
+        if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+            user_id = loginInfoData.userId! //Need to use later
+        }
+
+//        let user_id = "1"
         let streetName = tfFullAddress.text
         let locality = tfCurrentPlace.text
         let cityId = "5"

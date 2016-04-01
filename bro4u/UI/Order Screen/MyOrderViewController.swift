@@ -55,13 +55,17 @@ class MyOrderViewController: UIViewController,UIPopoverPresentationControllerDel
     {
       b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
+        var user_id = ""
+        
         if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
             
-            var filedName = loginInfoData.userId! //Need to use later
+            user_id = loginInfoData.userId! //Need to use later
             
         }
         
-        let params = "?user_id=\(1)"
+        //user_id = "1"
+        
+        let params = "?user_id=\(user_id)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kMyOrdersIndex , params:params, result:{(resultObject) -> Void in
             
             print(" Orders Data Received")

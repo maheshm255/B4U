@@ -30,13 +30,16 @@ class b4u_NotificationViewController: UIViewController ,UITableViewDelegate,UITa
     {
       b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
+        var user_id = ""
+        
         if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
             
-            var filedName = loginInfoData.userId! //Need to use later
+            user_id = loginInfoData.userId! //Need to use later
             
         }
+        
         let deviceID = "asdkfi"
-        let user_id = "1626"
+        //user_id = "1626"
 
         let params = "?device_id=\(deviceID)&user_id=\(user_id)"
 

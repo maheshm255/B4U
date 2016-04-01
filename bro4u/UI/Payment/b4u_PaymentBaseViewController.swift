@@ -418,12 +418,15 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     
     b4u_Utility.sharedInstance.activityIndicator.startAnimating()
     
-    var user_id = "3"
+    var user_id = ""
+    
     if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
-      
-      user_id = loginInfoData.userId! //Need to use later
-      
+        
+        user_id = loginInfoData.userId! //Need to use later
+        
     }
+    
+    //user_id = "3"
     
     
     

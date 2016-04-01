@@ -74,8 +74,9 @@ class b4u_MyAccountViewController: UIViewController {
         
       }
       
-      
-      let params = "?user_id=\(8)"
+//        user_id = "8"
+
+      let params = "?user_id=\(user_id)"
 
         b4u_WebApiCallManager.sharedInstance.getApiCall(kMyAccountIndex, params:params, result:{(resultObject) -> Void in
             
