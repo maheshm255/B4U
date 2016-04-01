@@ -25,17 +25,7 @@ protocol paymentDelegate
 class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var paymentTableView: UITableView!
-    
-    
-     var dictArray: [Dictionary<String, String>] = [["Paytm":"10% Cashback"],
-                 ["payUmoney":"1% instant off"],
-                 ["Net banking/Credit/Debit":"Use Credit/Debit or Net banking"],
-                 ["Cash On Service":"Pay cash on service"]]
-
-//    var itemDict : NSDictionary = ["Paytm":"10% Cashback","payUmoney":"1% instant off",
-//        "Net banking/Credit/Debit":"Use Credit/Debit or Net banking",
-//        "Cash On Service":"Pay cash on service"]
-    
+  
     var radioButtonSelected:NSIndexPath!
     
     var delegate:paymentDelegate?
@@ -58,7 +48,6 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     let tapGesture = UITapGestureRecognizer(target:self, action:"applyCouponCodeViewTaped")
         tapGesture.numberOfTouchesRequired = 1
     self.viewCouponCode.addGestureRecognizer(tapGesture)
-        
       self.addLoadingIndicator()
       b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         super.viewDidLoad()
@@ -111,17 +100,19 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return dictArray.count
+        return bro4u_DataManager.sharedInstance.orderDetailData[0].paymentGateWayes!.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cellIdentifier = "paymentSelectionTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! b4u_PaymentTblViewCell
-        let itemDict: NSDictionary   = dictArray[indexPath.row]
-        cell.typeLabel?.text = itemDict.allKeys[0] as? String
-        cell.infoLabel?.text = itemDict.valueForKey((itemDict.allKeys[0] as? String)!) as? String
-        
+      
+        let PaymentGatewayOffersModel: b4u_PaymentGatewayOffersModel   = bro4u_DataManager.sharedInstance.orderDetailData[0].paymentGateWayes![indexPath.row]
+
+        cell.typeLabel?.text = PaymentGatewayOffersModel.offerFor
+        cell.infoLabel?.text = PaymentGatewayOffersModel.offerMsg
+      
         if radioButtonSelected != nil{
             if radioButtonSelected.isEqual(indexPath){
                 cell.radioImageView.image = UIImage(named: "radioBlue")
@@ -140,6 +131,7 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+      
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! b4u_PaymentTblViewCell
         if radioButtonSelected != nil
         {
@@ -155,9 +147,9 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
       
       switch radioButtonSelected.row {
       case 0:
-        delegate?.navigateToPaymentGateWay(paymentOption.kPaytm)
-      case 1:
         delegate?.navigateToPaymentGateWay(paymentOption.kPayUMoney)
+      case 1:
+        delegate?.navigateToPaymentGateWay(paymentOption.kPaytm)
       case 2:
         delegate?.navigateToPaymentGateWay(paymentOption.kNetBanking)
       case 3:
