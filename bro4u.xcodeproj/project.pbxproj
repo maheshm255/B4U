@@ -238,6 +238,7 @@
 		B3890D381CAD2D2900CD0003 /* b4u_MyWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3890D371CAD2D2900CD0003 /* b4u_MyWalletTableViewCell.swift */; };
 		B701BBBF1C98845F0095FEF1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B701BBBE1C98845F0095FEF1 /* MBProgressHUD.m */; };
 		B701BBC21C9884A80095FEF1 /* b4u_AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B701BBC11C9884A80095FEF1 /* b4u_AboutUsViewController.swift */; };
+		B7182E8C1CB1017B00935087 /* b4u_CODViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7182E8B1CB1017B00935087 /* b4u_CODViewController.swift */; };
 		B71C28581C8C0C0C00873B5C /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C28481C8C0C0C00873B5C /* MyInfoViewController.swift */; };
 		B71C28591C8C0C0C00873B5C /* MyWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C284A1C8C0C0C00873B5C /* MyWalletViewController.swift */; };
 		B71C285A1C8C0C0C00873B5C /* MyAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C284B1C8C0C0C00873B5C /* MyAccountTableViewCell.swift */; };
@@ -591,6 +592,7 @@
 		B701BBBD1C98845F0095FEF1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		B701BBBE1C98845F0095FEF1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		B701BBC11C9884A80095FEF1 /* b4u_AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_AboutUsViewController.swift; sourceTree = "<group>"; };
+		B7182E8B1CB1017B00935087 /* b4u_CODViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_CODViewController.swift; sourceTree = "<group>"; };
 		B71C28481C8C0C0C00873B5C /* MyInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
 		B71C284A1C8C0C0C00873B5C /* MyWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWalletViewController.swift; sourceTree = "<group>"; };
 		B71C284B1C8C0C0C00873B5C /* MyAccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTableViewCell.swift; sourceTree = "<group>"; };
@@ -770,6 +772,7 @@
 		65271E591C83056F0022C888 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
+				B7182E8A1CB1015500935087 /* COD */,
 				B336667B1CA94979007FFD50 /* CreditDebit Card */,
 				B336667A1CA9494E007FFD50 /* Net Banking */,
 				B36939901CA175D0000266A5 /* Order Detail */,
@@ -1483,6 +1486,14 @@
 			path = "About Us";
 			sourceTree = "<group>";
 		};
+		B7182E8A1CB1015500935087 /* COD */ = {
+			isa = PBXGroup;
+			children = (
+				B7182E8B1CB1017B00935087 /* b4u_CODViewController.swift */,
+			);
+			path = COD;
+			sourceTree = "<group>";
+		};
 		B71C28461C8C0C0C00873B5C /* MyAccount Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -1874,6 +1885,7 @@
 				045A49521CAE754800BF7381 /* b4u-VendorProfileViewController.swift in Sources */,
 				65271E5D1C8307BB0022C888 /* b4u_PaymentBaseViewController.swift in Sources */,
 				65F8B43B1C70BECD00D158FA /* b4u-UIView-Extension.swift in Sources */,
+				B7182E8C1CB1017B00935087 /* b4u_CODViewController.swift in Sources */,
 				65B189BD1C6E6020000EDD00 /* SubCategory+CoreDataProperties.swift in Sources */,
 				65FF8D681C7EC1A5007588D0 /* b4u-SugestedPartner.swift in Sources */,
 				042700261C8B37B6008440CC /* FSCalendarUnit.m in Sources */,
