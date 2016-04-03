@@ -40,6 +40,8 @@ class bro4u_DataManager: NSObject {
   
     var loginInfo:b4u_LoginInfo?
     
+    var orderId:String?
+    
   //Rahul Added
     var myInfoData:[b4u_MyInfoModel] = Array()
     var myWalletData:[b4u_MyWalletModel] = Array()

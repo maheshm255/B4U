@@ -122,6 +122,9 @@ class b4u_WebApiCallManager: NSObject {
         case kGetBookingDetailIndex:
             self.parseBookingDetail(dataDict)
 
+        case kPlaceCashOnDeliveryIndex:
+            self.parseCODPayment(dataDict)
+
         default:
             print(itemName)
         }
@@ -419,4 +422,9 @@ class b4u_WebApiCallManager: NSObject {
         }
     }
     
+    
+    func parseCODPayment(dataDict:Dictionary<String, AnyObject>)
+    {
+        bro4u_DataManager.sharedInstance.orderId = dataDict["order_id"] as? String
+    }
 }

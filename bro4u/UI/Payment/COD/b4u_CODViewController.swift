@@ -99,19 +99,19 @@ class b4u_CODViewController: UIViewController {
             
             print(" COD Order Data Received")
             
-            self.updateUI(resultObject as! NSDictionary)
+            self.updateUI(resultObject as! String)
 
             print(resultObject)
         })
     }
 
 
-    func updateUI(result:NSDictionary)
+    func updateUI(result:String)
     {
-        if result.objectForKey("status") as! String == "Success"
+        if result  == "Success"
         {
             let thanksScreen:OrderConfirmedViewController = OrderConfirmedViewController()
-            thanksScreen.order_id  = result.objectForKey("order_id") as! Int
+            thanksScreen.order_id  =  bro4u_DataManager.sharedInstance.orderId
             
         }else
         {

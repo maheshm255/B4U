@@ -24,7 +24,7 @@ class OrderConfirmedViewController: UIViewController {
   @IBOutlet var orderedAtDateLbl: UILabel!
   @IBOutlet var amountLbl: UILabel!
   
-  var order_id = 0
+    var order_id:String?
 
   
   @IBAction func callBro4uAction(sender: AnyObject) {
