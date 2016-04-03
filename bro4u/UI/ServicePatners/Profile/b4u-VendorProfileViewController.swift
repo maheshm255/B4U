@@ -34,14 +34,59 @@ class b4u_VendorProfileViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.addReviews()
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
     }
     
 
+    
+    func addReviews()
+    {
+        let partnerReviewsCtrl:b4u_PartnerReviewsTblViewCtrl =   self.storyboard?.instantiateViewControllerWithIdentifier("partnerReviewCtrl") as! b4u_PartnerReviewsTblViewCtrl
+        
+        partnerReviewsCtrl.view.translatesAutoresizingMaskIntoConstraints = false
+
+        
+        self.scrollViewDetails.addSubview(partnerReviewsCtrl.view)
+        
+        
+        let metricDict = ["w":partnerReviewsCtrl.view.bounds.size.width,"h":self.scrollViewDetails.frame.size.height]
+
+        
+        
+        partnerReviewsCtrl.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[view(h)]", options:[], metrics: metricDict, views: ["view":partnerReviewsCtrl.view]))
+        partnerReviewsCtrl.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[view(w)]", options:[], metrics: metricDict, views: ["view":partnerReviewsCtrl.view]))
+        
+        self.scrollViewDetails.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[view]|", options:[], metrics: nil, views: ["view":partnerReviewsCtrl.view]))
+        
+        self.scrollViewDetails.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[view]", options:[], metrics: nil, views: ["view":partnerReviewsCtrl.view]))
+
+        
+//       
+//        let leading = NSLayoutConstraint(item:partnerReviewsCtrl.view, attribute:NSLayoutAttribute.Leading, relatedBy:NSLayoutRelation.Equal, toItem:self.scrollViewDetails, attribute:NSLayoutAttribute.Leading, multiplier:1.0, constant:0.0)
+//        
+//        self.scrollViewDetails.addConstraint(leading)
+//     
+//        let top = NSLayoutConstraint(item:partnerReviewsCtrl.view, attribute:NSLayoutAttribute.Top, relatedBy:NSLayoutRelation.Equal, toItem:self.scrollViewDetails, attribute:NSLayoutAttribute.Top, multiplier:1.0, constant:0.0)
+//        
+//        self.scrollViewDetails.addConstraint(top)
+//        
+//        let trailing = NSLayoutConstraint(item:partnerReviewsCtrl.view, attribute:NSLayoutAttribute.Trailing, relatedBy:NSLayoutRelation.Equal, toItem:self.scrollViewDetails, attribute:NSLayoutAttribute.Trailing, multiplier:1.0, constant:0.0)
+//        
+//        self.scrollViewDetails.addConstraint(trailing)
+//        
+//        let bottom = NSLayoutConstraint(item:partnerReviewsCtrl.view, attribute:NSLayoutAttribute.Bottom, relatedBy:NSLayoutRelation.Equal, toItem:self.scrollViewDetails, attribute:NSLayoutAttribute.Bottom, multiplier:1.0, constant:0.0)
+//        
+//        self.scrollViewDetails.addConstraint(bottom)
+//        
+    }
     /*
     // MARK: - Navigation
 

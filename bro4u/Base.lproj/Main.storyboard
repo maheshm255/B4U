@@ -7239,7 +7239,7 @@
         <!--4u Partner Reviews Tbl View Ctrl-->
         <scene sceneID="hl4-Pf-zQq">
             <objects>
-                <tableViewController id="Pb3-0M-NLj" customClass="b4u_PartnerReviewsTblViewCtrl" customModule="bro4u" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="partnerReviewCtrl" id="Pb3-0M-NLj" customClass="b4u_PartnerReviewsTblViewCtrl" customModule="bro4u" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nyF-It-UZe">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -7332,6 +7332,17 @@
                                         <constraint firstItem="y5L-BT-U78" firstAttribute="leading" secondItem="xYk-r3-uXu" secondAttribute="trailing" id="ytH-eM-61t"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="btnReadMore" destination="csw-A0-IcF" id="4Dp-2B-i78"/>
+                                    <outlet property="imgStar1" destination="FzE-OY-05t" id="OSK-b6-vt6"/>
+                                    <outlet property="imgStar2" destination="31I-qy-Gmb" id="VTR-fM-LXW"/>
+                                    <outlet property="imgStar3" destination="xYk-r3-uXu" id="d4q-Aq-7wn"/>
+                                    <outlet property="imgStar4" destination="y5L-BT-U78" id="l4S-NC-8GX"/>
+                                    <outlet property="imgStar5" destination="ZWk-Zr-HE2" id="Ewe-nA-oZY"/>
+                                    <outlet property="lblComments" destination="hOm-5W-QsK" id="saq-RX-xPh"/>
+                                    <outlet property="lblDate" destination="NXJ-Fg-E8y" id="NsB-qA-pJI"/>
+                                    <outlet property="lblTitle" destination="o7Q-eE-dEb" id="cid-QQ-rSC"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
