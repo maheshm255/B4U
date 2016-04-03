@@ -110,9 +110,10 @@ class b4u_CODViewController: UIViewController {
     {
         if result  == "Success"
         {
-            let thanksScreen:OrderConfirmedViewController = OrderConfirmedViewController()
+
+            let thanksScreen:OrderConfirmedViewController = self.storyboard?.instantiateViewControllerWithIdentifier("OrderConfirmedViewControllerID") as! OrderConfirmedViewController
             thanksScreen.order_id  =  bro4u_DataManager.sharedInstance.orderId
-            
+            navigationController?.pushViewController(thanksScreen, animated: true)
         }else
         {
             print("Order Not Created")
