@@ -402,8 +402,6 @@ class b4u_WebApiCallManager: NSObject {
         let parentArray1:[Dictionary<String ,AnyObject>] = dataDict["orderdetails"] as! [Dictionary<String ,AnyObject>]
         
         bro4u_DataManager.sharedInstance.orderDetailData.removeAll()
-        bro4u_DataManager.sharedInstance.selectionData.removeAll()
-        bro4u_DataManager.sharedInstance.paymentGatewayOffersData.removeAll()
         
         for (_ ,dataDict) in parentArray1.enumerate()
         {

@@ -253,7 +253,7 @@ let kCouponCodeValidateIndex = "index.php/coupon/ajax_validate_coupon"
 
 //2.API to Get booking details & payment methods offers
 //index.php/order/book_v2/1565?sub_total=1000&user_id=3&coupon=MAKEMOMHAPPY&cake_egg_eggless=136&cake_weight=144&unit_quantity=2&service_time=11pm-12am&service_date=2015-12-27
-let kGetBookingDetailIndex = "index.php/order/book_v2/1565"
+let kGetBookingDetailIndex = "index.php/order/book_v2/1565?sub_total=1000&user_id=3&coupon=MAKEMOMHAPPY&cake_egg_eggless=136&cake_weight=144&unit_quantity=2&service_time=11pm-12am&service_date=2015-12-27"
 
 
 //3.Place COD Order

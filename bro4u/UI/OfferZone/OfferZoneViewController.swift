@@ -26,13 +26,16 @@ class OfferZoneViewController: UIViewController,UITableViewDataSource,UITableVie
     {
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
+        var user_id = ""
+        
         if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
             
-            var filedName = loginInfoData.userId! //Need to use later
+            user_id = loginInfoData.userId! //Need to use later
             
         }
+        
+        //user_id = "1"
         let deviceID = "kdsflasdf"
-        let user_id = "1"
         
         let params = "?device_id=\(deviceID)&user_id=\(user_id)"
         
