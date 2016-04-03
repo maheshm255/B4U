@@ -31,7 +31,7 @@ class b4u_WebApiCallManager: NSObject {
         if apiPath == kLocationSearchUrl
         {
             
-            requestUrl  = apiPath + params
+            requestUrl  = apiPath + params.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
             
         }else
         {
