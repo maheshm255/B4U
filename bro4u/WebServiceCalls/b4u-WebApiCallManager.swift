@@ -35,7 +35,7 @@ class b4u_WebApiCallManager: NSObject {
             
         }else
         {
-            requestUrl  = b4uBaseUrl + apiPath + params
+            requestUrl  = b4uBaseUrl + apiPath + params.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         }
         let sessionManager = AFHTTPSessionManager();
         
