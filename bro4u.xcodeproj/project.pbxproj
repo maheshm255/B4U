@@ -16,6 +16,8 @@
 		042700281C8B37B6008440CC /* UIScrollView+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 042700201C8B37B6008440CC /* UIScrollView+FSExtension.m */; };
 		042700291C8B37B6008440CC /* UIView+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 042700221C8B37B6008440CC /* UIView+FSExtension.m */; };
 		0427002C1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0427002B1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift */; };
+		044076111CB0E86200B7C2E7 /* b4u-PartnerReviewsTblViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044076101CB0E86200B7C2E7 /* b4u-PartnerReviewsTblViewCtrl.swift */; };
+		044076131CB0E8A700B7C2E7 /* b4u-PartnerReviewTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044076121CB0E8A700B7C2E7 /* b4u-PartnerReviewTblCell.swift */; };
 		045A49521CAE754800BF7381 /* b4u-VendorProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A49511CAE754800BF7381 /* b4u-VendorProfileViewController.swift */; };
 		04E07A561C900476009AD223 /* b4u-LocationSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E07A551C900476009AD223 /* b4u-LocationSearchModel.swift */; };
 		04E07A591C901961009AD223 /* b4u-LoginViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E07A581C901961009AD223 /* b4u-LoginViewCtrl.swift */; };
@@ -275,6 +277,8 @@
 		042700211C8B37B6008440CC /* UIView+FSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FSExtension.h"; sourceTree = "<group>"; };
 		042700221C8B37B6008440CC /* UIView+FSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FSExtension.m"; sourceTree = "<group>"; };
 		0427002B1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-TimeSlotViewCtrl.swift"; sourceTree = "<group>"; };
+		044076101CB0E86200B7C2E7 /* b4u-PartnerReviewsTblViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-PartnerReviewsTblViewCtrl.swift"; sourceTree = "<group>"; };
+		044076121CB0E8A700B7C2E7 /* b4u-PartnerReviewTblCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-PartnerReviewTblCell.swift"; sourceTree = "<group>"; };
 		045A49511CAE754800BF7381 /* b4u-VendorProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-VendorProfileViewController.swift"; sourceTree = "<group>"; };
 		04E07A551C900476009AD223 /* b4u-LocationSearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-LocationSearchModel.swift"; sourceTree = "<group>"; };
 		04E07A581C901961009AD223 /* b4u-LoginViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-LoginViewCtrl.swift"; sourceTree = "<group>"; };
@@ -669,6 +673,8 @@
 			isa = PBXGroup;
 			children = (
 				045A49511CAE754800BF7381 /* b4u-VendorProfileViewController.swift */,
+				044076101CB0E86200B7C2E7 /* b4u-PartnerReviewsTblViewCtrl.swift */,
+				044076121CB0E8A700B7C2E7 /* b4u-PartnerReviewTblCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1897,6 +1903,7 @@
 				042700241C8B37B6008440CC /* FSCalendarHeader.m in Sources */,
 				04E7D9201C929CFE002C70A9 /* b4u-termsAndCondViewController.swift in Sources */,
 				04E07A591C901961009AD223 /* b4u-LoginViewCtrl.swift in Sources */,
+				044076111CB0E86200B7C2E7 /* b4u-PartnerReviewsTblViewCtrl.swift in Sources */,
 				65B18A8A1C70BB28000EDD00 /* UIButton+AFNetworking.m in Sources */,
 				B71C285A1C8C0C0C00873B5C /* MyAccountTableViewCell.swift in Sources */,
 				B34EAD8A1C92987E00FCB0F5 /* b4u_OfferZoneModel.swift in Sources */,
@@ -1907,6 +1914,7 @@
 				65F8B4301C70BE6200D158FA /* b4u-UIImageView-Extension.swift in Sources */,
 				65F8B4371C70BECD00D158FA /* b4u-NSDateExtension.swift in Sources */,
 				04E747041C96DC5F00521674 /* b4u-RightMenuTblCell.swift in Sources */,
+				044076131CB0E8A700B7C2E7 /* b4u-PartnerReviewTblCell.swift in Sources */,
 				042700231C8B37B6008440CC /* FSCalendar.m in Sources */,
 				529F27751CADA94300ABFC9E /* b4u_SelectionModel.swift in Sources */,
 				65271F4C1C831B1E0022C888 /* PayUMoneyViewController.m in Sources */,

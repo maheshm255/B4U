@@ -20,23 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        let isUserLoggedIn =   NSUserDefaults.standardUserDefaults().objectForKey("isUserLogined")
+        self.registerPushNotification()
+        self.checkUserAlreadyLogin()
         
-        if let hasLogin:Bool = isUserLoggedIn as? Bool
-        {
-            if hasLogin
-            {
-                
-            if let unarchivedObject =
-                    
-                    NSUserDefaults.standardUserDefaults().objectForKey("loginInfo") as? NSData
-                {
-                    bro4u_DataManager.sharedInstance.loginInfo =   NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? b4u_LoginInfo
-                }
-            }
-        }
-     
-  
         return true
     }
 
@@ -67,6 +53,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       //  self.saveContext()
     }
 
+    
+    // MARK: - Push Notification
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print("Failed to register with error: \(error)");
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        
+                print(deviceToken)
+        }
+
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void)
+        
+    {
+        print("Recived: \(userInfo)")
+        
+        switch application.applicationState
+        {
+        case  UIApplicationState.Active:
+            if  userInfo["type"]?.intValue == 1
+            {
+                print("News Module Push Notification")
+            }
+            if  userInfo["type"]?.intValue == 2
+            {
+                print("Case Managment Module Push Notification")
+            }
+            print("active")
+        case  UIApplicationState.Background:
+            print("background")
+        case  UIApplicationState.Inactive:
+            print("inactive")
+            
+        }
+
+    }
+    
     // MARK: - Core Data stack
 
     lazy var applicationDocumentsDirectory: NSURL = {
@@ -152,5 +176,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
     }
     
+    
+    func checkUserAlreadyLogin()
+    {
+        let isUserLoggedIn =   NSUserDefaults.standardUserDefaults().objectForKey("isUserLogined")
+        
+        if let hasLogin:Bool = isUserLoggedIn as? Bool
+        {
+            if hasLogin
+            {
+                
+                if let unarchivedObject =
+                    
+                    NSUserDefaults.standardUserDefaults().objectForKey("loginInfo") as? NSData
+                {
+                    bro4u_DataManager.sharedInstance.loginInfo =   NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? b4u_LoginInfo
+                }
+            }
+        }
+    }
+    
+    
+    func registerPushNotification()
+    {
+       let setting =   UIUserNotificationSettings(forTypes:[UIUserNotificationType.Badge,UIUserNotificationType.Sound,UIUserNotificationType.Alert], categories:nil)
+        
+        UIApplication.sharedApplication().registerUserNotificationSettings(setting)
+        
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+    }
 }
 

@@ -157,14 +157,14 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
         
         var latitude:String = "12.213"
         var longitude:String = "66.234"
-        if let  currentLocaiton = bro4u_DataManager.sharedInstance.currenLocation
-        {
-             latitude = "\(currentLocaiton.coordinate.latitude)"
-             longitude = "\(currentLocaiton.coordinate.longitude)"
-            
-            addressModel?.currentLocation  = currentLocaiton
-
-        }
+//        if let  currentLocaiton = bro4u_DataManager.sharedInstance.currenLocation
+//        {
+//             latitude = "\(currentLocaiton.coordinate.latitude)"
+//             longitude = "\(currentLocaiton.coordinate.longitude)"
+//            
+//            addressModel?.currentLocation  = currentLocaiton
+//
+//        }
   
         
         
