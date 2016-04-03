@@ -317,7 +317,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
       paymentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NetBankingViewControllerID") as! b4u_NetBankingViewController
 
     case paymentOption.kCOD :
-      paymentViewController = b4u_CreditAndDebitCardViewController()
+      paymentViewController = b4u_CODViewController()
       
       
     }
