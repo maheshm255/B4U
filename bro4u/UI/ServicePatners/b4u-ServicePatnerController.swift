@@ -165,6 +165,10 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
 
         cell.btnViewDetails.addTarget(self, action:"btnBookNowClicked:", forControlEvents:UIControlEvents.TouchUpInside)
         cell.btnViewDetails.tag = indexPath.section
+        
+        cell.btnViewProfile.addTarget(self, action:"btnViewProfileClicked:", forControlEvents:UIControlEvents.TouchUpInside)
+
+        cell.btnViewDetails.tag = indexPath.section
 
         
         return cell
@@ -180,6 +184,16 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
 
     }// Default is 1 if
 
+    func btnViewProfileClicked(sender: AnyObject)
+    {
+        
+        let btn:UIButton = sender as! UIButton
+        
+        bro4u_DataManager.sharedInstance.selectedSuggestedPatner = self.allPatners[btn.tag]
+        
+        self.performSegueWithIdentifier("viewProfileSegue", sender:sender)
+    }
+    
     
     
     func btnBookNowClicked(sender: AnyObject)

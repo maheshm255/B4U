@@ -207,15 +207,23 @@ let kShowServicePatnerApi1 = "index.php/catalog/browse/1"
 /****** Catalog View Profile ******/
 
 //1.View Catalog/Profile
+
+//http://v2.20160301.testing.bro4u.com/api_v2/index.php/catalog/view/1973?cake_egg_eggless=136&cake_weight=366&service_date=29-01-2016&service_time=5PM-7PM&unit_quantity=1
+
 //index.php/catalog/view/1973?cake_egg_eggless=136&cake_weight=366&service_date=29-01-2016&service_time=5PM-7PM&unit_quantity=1
 let kViewProfileIndex = "index.php/catalog/view/1973"
 
 
 //2.Item Description web view link
+
+//http://v2.20160301.testing.bro4u.com/api_v2/index.php/catalog/description_view?item_id=2999
 ///index.php/catalog/description_view?item_id=2999
 let kItemDescriptionIndex = "index.php/catalog/description_view"
 
+
 //3.Price chart web view link
+
+//http://v2.20160301.testing.bro4u.com/api_v2/index.php/catalog/price_chart_view?item_id=2999
 ///index.php/catalog/price_chart_view?item_id=2999
 let kPriceChartIndex = "index.php/catalog/price_chart_view"
 

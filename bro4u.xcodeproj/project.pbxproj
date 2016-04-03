@@ -16,6 +16,7 @@
 		042700281C8B37B6008440CC /* UIScrollView+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 042700201C8B37B6008440CC /* UIScrollView+FSExtension.m */; };
 		042700291C8B37B6008440CC /* UIView+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 042700221C8B37B6008440CC /* UIView+FSExtension.m */; };
 		0427002C1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0427002B1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift */; };
+		045A49521CAE754800BF7381 /* b4u-VendorProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A49511CAE754800BF7381 /* b4u-VendorProfileViewController.swift */; };
 		04E07A561C900476009AD223 /* b4u-LocationSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E07A551C900476009AD223 /* b4u-LocationSearchModel.swift */; };
 		04E07A591C901961009AD223 /* b4u-LoginViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E07A581C901961009AD223 /* b4u-LoginViewCtrl.swift */; };
 		04E0C41B1C8BF6C4006450D1 /* CustomAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0C41A1C8BF6C4006450D1 /* CustomAnnotationView.xib */; };
@@ -273,6 +274,7 @@
 		042700211C8B37B6008440CC /* UIView+FSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FSExtension.h"; sourceTree = "<group>"; };
 		042700221C8B37B6008440CC /* UIView+FSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FSExtension.m"; sourceTree = "<group>"; };
 		0427002B1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-TimeSlotViewCtrl.swift"; sourceTree = "<group>"; };
+		045A49511CAE754800BF7381 /* b4u-VendorProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-VendorProfileViewController.swift"; sourceTree = "<group>"; };
 		04E07A551C900476009AD223 /* b4u-LocationSearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-LocationSearchModel.swift"; sourceTree = "<group>"; };
 		04E07A581C901961009AD223 /* b4u-LoginViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-LoginViewCtrl.swift"; sourceTree = "<group>"; };
 		04E0C41A1C8BF6C4006450D1 /* CustomAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAnnotationView.xib; sourceTree = "<group>"; };
@@ -659,6 +661,14 @@
 				0427002B1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift */,
 			);
 			path = TimeSlotes;
+			sourceTree = "<group>";
+		};
+		045A49501CAE74A500BF7381 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				045A49511CAE754800BF7381 /* b4u-VendorProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		04E07A571C901961009AD223 /* Login */ = {
@@ -1273,6 +1283,7 @@
 		65FF8D631C7E91EF007588D0 /* ServicePatners */ = {
 			isa = PBXGroup;
 			children = (
+				045A49501CAE74A500BF7381 /* Profile */,
 				6564123D1C88BDE500B8D5D4 /* MapView */,
 				65FF8D641C7E9222007588D0 /* b4u-ServicePatnerController.swift */,
 				65264F841C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift */,
@@ -1843,6 +1854,7 @@
 				B369398C1CA14446000266A5 /* b4u_PayOnlineOrderViewController.swift in Sources */,
 				65264F871C81D80200859F5A /* b4u-SuggestedPatnersResult.swift in Sources */,
 				042700291C8B37B6008440CC /* UIView+FSExtension.m in Sources */,
+				045A49521CAE754800BF7381 /* b4u-VendorProfileViewController.swift in Sources */,
 				65271E5D1C8307BB0022C888 /* b4u_PaymentBaseViewController.swift in Sources */,
 				65F8B43B1C70BECD00D158FA /* b4u-UIView-Extension.swift in Sources */,
 				65B189BD1C6E6020000EDD00 /* SubCategory+CoreDataProperties.swift in Sources */,

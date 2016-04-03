@@ -411,12 +411,13 @@ class b4u_WebApiCallManager: NSObject {
             bro4u_DataManager.sharedInstance.orderDetailData.append(parentObj)
         }
         
-        let parentArray2:[Dictionary<String ,AnyObject>] = dataDict["payment_gateway_offers"] as! [Dictionary<String ,AnyObject>]
-        
-        for (_ ,dataDict) in parentArray2.enumerate()
+        if let parentArray2:[Dictionary<String ,AnyObject>] = dataDict["payment_gateway_offers"] as? [Dictionary<String ,AnyObject>]
         {
-            let parentObj = b4u_PaymentGatewayOffersModel(dataDict:dataDict)
-            bro4u_DataManager.sharedInstance.paymentGatewayOffersData.append(parentObj)
+            for (_ ,dataDict) in parentArray2.enumerate()
+            {
+                let parentObj = b4u_PaymentGatewayOffersModel(dataDict:dataDict)
+                bro4u_DataManager.sharedInstance.paymentGatewayOffersData.append(parentObj)
+            }
         }
     }
     
