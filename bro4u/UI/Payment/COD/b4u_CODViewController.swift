@@ -111,7 +111,9 @@ class b4u_CODViewController: UIViewController {
         if result  == "Success"
         {
 
-            let thanksScreen:OrderConfirmedViewController = self.storyboard?.instantiateViewControllerWithIdentifier("OrderConfirmedViewControllerID") as! OrderConfirmedViewController
+            let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+
+            let thanksScreen:OrderConfirmedViewController = storyboard.instantiateViewControllerWithIdentifier("OrderConfirmedViewControllerID") as! OrderConfirmedViewController
             thanksScreen.order_id  =  bro4u_DataManager.sharedInstance.orderId
             navigationController?.pushViewController(thanksScreen, animated: true)
         }else
