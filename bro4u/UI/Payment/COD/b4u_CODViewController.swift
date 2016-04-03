@@ -28,7 +28,7 @@ class b4u_CODViewController: UIViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepareForSegue(segue: UIStoryboardSevar, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
@@ -99,9 +99,24 @@ class b4u_CODViewController: UIViewController {
             
             print(" COD Order Data Received")
             
+            self.updateUI(resultObject as! NSDictionary)
+
             print(resultObject)
         })
     }
 
+
+    func updateUI(result:NSDictionary)
+    {
+        if result.objectForKey("status") as! String == "Success"
+        {
+            let thanksScreen:OrderConfirmedViewController = OrderConfirmedViewController()
+            thanksScreen.order_id  = result.objectForKey("order_id") as! Int
+            
+        }else
+        {
+            print("Order Not Created")
+        }
+    }
 
 }

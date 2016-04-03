@@ -24,7 +24,8 @@ class OrderConfirmedViewController: UIViewController {
   @IBOutlet var orderedAtDateLbl: UILabel!
   @IBOutlet var amountLbl: UILabel!
   
-  
+  var order_id = 0
+
   
   @IBAction func callBro4uAction(sender: AnyObject) {
   }
@@ -61,7 +62,6 @@ class OrderConfirmedViewController: UIViewController {
         }
         
         //user_id = "15"
-        let order_id = 8765
         let params = "?order_id=\(order_id)&user_id=\(user_id)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kOrderConfirmedIndex , params:params, result:{(resultObject) -> Void in
             
