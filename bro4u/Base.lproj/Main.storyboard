@@ -6668,39 +6668,39 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJw-rf-hGj">
-                                        <rect key="frame" x="228" y="117" width="70" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJw-rf-hGj">
+                                        <rect key="frame" x="228" y="117" width="25" height="25"/>
+                                        <state key="normal" image="like"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w17-hN-aby">
-                                        <rect key="frame" x="300" y="117" width="70" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w17-hN-aby">
+                                        <rect key="frame" x="300" y="117" width="25" height="25"/>
+                                        <state key="normal" image="dislikeGrey"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKH-uz-Yg7">
-                                        <rect key="frame" x="183" y="236" width="50" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKH-uz-Yg7">
+                                        <rect key="frame" x="183" y="236" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="eb9-Fo-ytL"/>
                                             <constraint firstAttribute="width" constant="50" id="q5O-7y-Odg"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" image="poor"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XzK-uE-MLo">
-                                        <rect key="frame" x="277" y="236" width="50" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XzK-uE-MLo">
+                                        <rect key="frame" x="277" y="236" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="SaH-Oj-Pfe"/>
                                             <constraint firstAttribute="width" constant="50" id="V35-cQ-0IR"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" image="angry"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sqm-Iu-jAq">
-                                        <rect key="frame" x="377" y="236" width="50" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sqm-Iu-jAq">
+                                        <rect key="frame" x="377" y="236" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="903-Iv-xQu"/>
                                             <constraint firstAttribute="width" constant="50" id="zSJ-l0-AEd"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" image="smiley"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Was the quality up to your mark" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fF-61-wQG">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Was the quality up to your mark" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fF-61-wQG">
                                         <rect key="frame" x="163" y="183" width="275" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -6715,8 +6715,12 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="Sqm-Iu-jAq" firstAttribute="top" secondItem="ZKH-uz-Yg7" secondAttribute="top" id="8S3-qC-MTb"/>
+                                    <constraint firstItem="ZKH-uz-Yg7" firstAttribute="leading" secondItem="RZt-AD-mg5" secondAttribute="leading" constant="183" id="ABw-p1-ArZ"/>
+                                    <constraint firstItem="XzK-uE-MLo" firstAttribute="top" secondItem="ZKH-uz-Yg7" secondAttribute="top" id="BoM-iX-EGi"/>
                                     <constraint firstItem="XzK-uE-MLo" firstAttribute="leading" secondItem="ZKH-uz-Yg7" secondAttribute="trailing" constant="44" id="LeN-m3-SdA"/>
                                     <constraint firstItem="XzK-uE-MLo" firstAttribute="centerX" secondItem="RZt-AD-mg5" secondAttribute="centerX" id="XcP-wC-5Sh"/>
+                                    <constraint firstItem="ZKH-uz-Yg7" firstAttribute="top" secondItem="7fF-61-wQG" secondAttribute="bottom" constant="21" id="jME-On-g36"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PGg-Fu-OSq">
@@ -7535,6 +7539,7 @@
     <resources>
         <image name="110" width="74" height="33"/>
         <image name="King" width="32" height="32"/>
+        <image name="angry" width="36" height="36"/>
         <image name="arrowI" width="32" height="32"/>
         <image name="axis" width="105" height="34"/>
         <image name="bell" width="22" height="22"/>
@@ -7549,12 +7554,14 @@
         <image name="crossGrey" width="20" height="20"/>
         <image name="currentLocation" width="32" height="32"/>
         <image name="delete" width="18" height="21"/>
+        <image name="dislikeGrey" width="25" height="25"/>
         <image name="downArrow" width="14" height="7"/>
         <image name="gift" width="130" height="130"/>
         <image name="greenArrow" width="92" height="92"/>
         <image name="greyArrow" width="32" height="32"/>
         <image name="hdfc" width="105" height="34"/>
         <image name="icici" width="105" height="34"/>
+        <image name="like" width="25" height="25"/>
         <image name="locationAddress" width="12" height="19"/>
         <image name="locationI" width="20" height="20"/>
         <image name="loginBackGround" width="320" height="480"/>
@@ -7567,6 +7574,7 @@
         <image name="payUMoney" width="94" height="21"/>
         <image name="paytm" width="49" height="16"/>
         <image name="plus" width="24" height="24"/>
+        <image name="poor" width="36" height="36"/>
         <image name="profile" width="17" height="17"/>
         <image name="purpleArrow" width="32" height="32"/>
         <image name="radioBlue" width="24" height="24"/>
@@ -7578,6 +7586,7 @@
         <image name="shareAll" width="20" height="20"/>
         <image name="shareGray" width="17" height="17"/>
         <image name="share_gray" width="17" height="17"/>
+        <image name="smiley" width="36" height="36"/>
         <image name="star" width="11" height="11"/>
         <image name="starGrey" width="20" height="20"/>
         <image name="thankU" width="320" height="217"/>
