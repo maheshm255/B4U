@@ -15,7 +15,6 @@
 #import "HMSegmentedControl.h"
 #import "PaymentsSDK.h"
 #import "PayU_iOS_CoreSDK.h"
-#import "PayUHeader.h"
 
 #import "FSCalendar.h"
 
@@ -23,5 +22,3 @@
 
 #import "MBProgressHUD.h"
 
-//For Web Payment
-#import "PayUMoneyWebPaymentViewController.h"

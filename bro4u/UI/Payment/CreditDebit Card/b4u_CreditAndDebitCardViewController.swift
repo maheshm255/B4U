@@ -10,6 +10,21 @@ import UIKit
 
 class b4u_CreditAndDebitCardViewController: UIViewController {
 
+    
+    @IBOutlet weak var amountLbl: UILabel!
+    @IBOutlet weak var creditCardNoTextFld: UITextField!
+    @IBOutlet weak var expiryDateBtn: UIButton!
+    @IBOutlet weak var cvvTextFld: UITextField!
+    @IBOutlet weak var continueBtn: UIButton!
+    
+    
+    @IBAction func ExpiryDateBtnAction(sender: AnyObject) {
+    }
+    
+    
+    @IBAction func continueBtnAction(sender: AnyObject) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

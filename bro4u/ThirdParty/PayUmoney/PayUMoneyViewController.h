@@ -1,15 +1,13 @@
 //
 //  PayUMoneyViewController.h
-//  SegmentControlDemo
+//  bro4u
 //
-//  Created by Rahul on 27/02/16.
-//  Copyright © 2016 MSP-User3. All rights reserved.
+//  Created by Rahul on 05/04/16.
+//  Copyright © 2016 AppLearn. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "PayUHeader.h"
 
 @interface PayUMoneyViewController : UIViewController
-
 
 @end

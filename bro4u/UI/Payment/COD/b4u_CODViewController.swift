@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreLocation
+
 
 class b4u_CODViewController: UIViewController {
 
@@ -70,28 +72,60 @@ class b4u_CODViewController: UIViewController {
     let  selection=""
     let  grand_total="98.0"
     let  night_delivery_charge="0.00"
-    let  customer_name="Harshal Zope"
+//    let  customer_name="Harshal Zope"
     let  vendor_id="132"
     let  custom_message="ihih"
-    let  address_id="2"
-    let  email="harshal.zope1990@gmail.com"
-    let  mobile="8149881090"
+//    let  address_id="2"
+//    let  email="harshal.zope1990@gmail.com"
+//    let  mobile="8149881090"
     let  item_id="1928"
     let  payment_wallet="0"
     let  coupon="bash200"
     let  imei="359296054612743"
-    let  cat_id="13"
-    let  latitude="23.344543"
-    let  longitude="49878428"
+//    var  cat_id="13"
+//    let  latitude="23.344543"
+//    let  longitude="49878428"
 
     
         var user_id = ""
-    
+        var cat_id = ""
+        var  address_id=""
+        var  email=""
+        var  latitude=""
+        var  longitude=""
+        var  mobile=""
+        var  customer_name=""
+
+
         if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
             
             user_id = loginInfoData.userId! //Need to use later
             
         }
+        
+        if let catIDData:b4u_Category = bro4u_DataManager.sharedInstance.categoryAndSubOptions[0]{
+            
+            cat_id = catIDData.catId! //Need to use later
+        }
+
+        if let currentLocationData:CLLocation = bro4u_DataManager.sharedInstance.currenLocation{
+            
+            latitude = "\(currentLocationData.coordinate.latitude)"
+            longitude = "\(currentLocationData.coordinate.longitude)"
+        }
+        
+        if let addressData:b4u_AddressDetails = bro4u_DataManager.sharedInstance.address[0]{
+            
+            address_id = "\(addressData.addressId!)" //Need to use later
+            email = "\(addressData.email!)" //Need to use later
+            latitude = "\(addressData.lattitude)"
+            longitude = "\(addressData.longitude)"
+            mobile = "\(addressData.phoneNumber)"
+            customer_name = "\(addressData.name)"
+
+        }
+
+
         
         let params = "?user_id=\(user_id)&total_cost=\(total_cost)&service_time=\(service_time)&service_date=\(service_date)&selection=\(selection)&grand_total=\(grand_total)&night_delivery_charge=\(night_delivery_charge)&customer_name=\(customer_name)&vendor_id=\(vendor_id)&custom_message=\(custom_message)&address_id=\(address_id)&email=\(email)&mobile=\(mobile)&item_id=\(item_id)&payment_wallet=\(payment_wallet)&coupon=\(coupon)&imei=\(imei)&cat_id=\(cat_id)&latitude=\(latitude)&longitude=\(longitude)"
 
