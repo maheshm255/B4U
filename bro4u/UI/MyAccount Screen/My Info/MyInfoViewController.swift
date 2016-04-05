@@ -53,7 +53,11 @@ class MyInfoViewController: UIViewController {
     {
       b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyInfoIndex, params:"", result:{(resultObject) -> Void in
+        
+        let userId = bro4u_DataManager.sharedInstance.loginInfo!.userId!
+        
+        let params = "?user_id=\(userId)"
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyInfoIndex, params:params, result:{(resultObject) -> Void in
             
             print("My Info Data Received")
             
@@ -67,21 +71,14 @@ class MyInfoViewController: UIViewController {
     
     func updateUI()
     {
-//        if let modelDetails = bro4u_DataManager.sharedInstance.myInfoData
-//        {
-//            self.nameTxtFld = "\( modelDetails.fullName!)"
-//            self.nameLbl.text = accountDetails.fullName
-//            self.tableView.reloadData()
-//            @IBOutlet var nameTxtFld: UITextField!
-//            @IBOutlet var mobileNoTxtFld: UITextField!
-//            @IBOutlet var emailTxtFld: UITextField!
-//            @IBOutlet var maleBtn: UIButton!
-//            @IBOutlet var femaleBtn: UIButton!
-//            @IBOutlet var dateBtn: UIButton!
-//            @IBOutlet var userNameLbl: UILabel!
-//            @IBOutlet var userImageView: UIImageView!
-//
-//        }
+        if let myInfoDetailModel = bro4u_DataManager.sharedInstance.myInfoData.first
+        {
+    
+             self.nameTxtFld.text = myInfoDetailModel.fullName!
+             self.mobileNoTxtFld.text = myInfoDetailModel.mobile!
+             self.emailTxtFld.text = myInfoDetailModel.email!
+
+        }
     }
 
 

@@ -414,6 +414,8 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
   
   func getPaymentWays()
   {
+    
+    // TODO - Mahesh
     self.addLoadingIndicator()
     
     b4u_Utility.sharedInstance.activityIndicator.startAnimating()
@@ -431,17 +433,22 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     
     
     let sub_Total =  bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!
-    let coupon = "MAKEMOMHAPPY" // TODO
+
+    var coupon = ""
+    if let couponCode =    bro4u_DataManager.sharedInstance.copiedCopunCode
+    {
+        coupon = couponCode
+    }
     let service_time =   bro4u_DataManager.sharedInstance.selectedTimeSlot!
     let service_date =   bro4u_DataManager.sharedInstance.selectedDate!
 
     
-//    var params =  bro4u_DataManager.sharedInstance.userSelectedFilterParams! + "&sub_Total=\(sub_Total)&user_id=\(user_id)&coupon=\(coupon)&service_time=\(service_time)&service_date=\(service_date)"
-//    
-//    params = params.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+    //index.php/order/book_v2/1565?sub_total=1000&user_id=3&coupon=MAKEMOMHAPPY&cake_egg_eggless=136&cake_weight=144&unit_quantity=2&service_time=11pm-12am&service_date=2015-12-27
+    
+    var params = bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.itemId! + bro4u_DataManager.sharedInstance.userSelectedFilterParams! + "&sub_Total=\(sub_Total)&user_id=\(user_id)&coupon=\(coupon)&service_time=\(service_time)&service_date=\(service_date)"
 
     
-    b4u_WebApiCallManager.sharedInstance.getApiCall(kGetBookingDetailIndex , params:"", result:{(resultObject) -> Void in
+    b4u_WebApiCallManager.sharedInstance.getApiCall(kGetBookingDetailIndex , params:params, result:{(resultObject) -> Void in
       
       b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
 
@@ -450,6 +457,10 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
       
       self.addPaymentViewControl()
     })
+
+    
+ 
+    
 
   }
   

@@ -54,6 +54,7 @@ class b4u_CalendarViewCtrl: UIViewController ,FSCalendarDataSource , FSCalendarD
     
     func calendar(calendar: FSCalendar!, didSelectDate date: NSDate!) {
         
+        NSDate()
         
         let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
         let components = calendar.components([.Month, .Day , .Year , .Weekday], fromDate: date)
