@@ -16,6 +16,7 @@ class b4u_IntermediateViewCtrl: UIViewController {
     @IBOutlet weak var imgViewIcon1: UIImageView!
     
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblMessage1: UILabel!
     @IBOutlet weak var lblMessage3: UILabel!
@@ -73,6 +74,10 @@ class b4u_IntermediateViewCtrl: UIViewController {
     @IBAction func tapToCopyBtnClicked(sender: AnyObject)
     {
         //TO DO
+        
+        bro4u_DataManager.sharedInstance.copiedCopunCode = self.lblCoupan.text
+        
+        self.view.makeToast(message:"Coupon code is copied", duration:1.0 , position: HRToastPositionDefault)
     }
     
     // MARK: - Navigation
@@ -144,6 +149,7 @@ class b4u_IntermediateViewCtrl: UIViewController {
             })
         }else if let aSelectedImgObj = self.selectedImgSlide
         {
+            
             b4u_Utility.sharedInstance.activityIndicator.startAnimating()
             var user_id = ""
             if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
@@ -175,13 +181,15 @@ class b4u_IntermediateViewCtrl: UIViewController {
 
         if let aDataModel = bro4u_DataManager.sharedInstance.interMediateScreenDataObj
         {
+            self.scrollView.hidden = false;
+
+            
             self.lblTitle.text = aDataModel.catName
             self.lblMessage1.text = aDataModel.interMessges![0]
             self.lblMessage2.text = aDataModel.interMessges![1]
             self.lblMessage3.text = aDataModel.interMessges![2]
             self.lblOffer.text = aDataModel.couponOfferAdHeader
             self.lblOfferMessage.text = aDataModel.couponOfferAdDesc
-            self.lblCoupan.text = aDataModel.couponCode
             
             self.imgViewBanner.downloadedFrom(link:aDataModel.interBanner!, contentMode:UIViewContentMode.ScaleToFill)
             
@@ -191,6 +199,15 @@ class b4u_IntermediateViewCtrl: UIViewController {
             if aDataModel.termsAndConditions?.count <= 0
             {
                 self.btnTermsAndConditions.hidden = true
+            }
+            
+            if let couponCode = aDataModel.couponCode
+            {
+                self.lblCoupan.text = couponCode
+ 
+            }else
+            {
+                self.btnTapToCopy.hidden = true
             }
         }
     }

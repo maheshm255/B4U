@@ -25,7 +25,7 @@ class b4u_MyAccountModel: NSObject {
         emailID = dataDict["email"] as? String
         mobileNumber = dataDict["mobile"] as? String
         walletBalance = dataDict["wallet_balance"] as? NSNumber
-
+         profile_pic = dataDict["profile_pic"] as? String
     }
 
 }

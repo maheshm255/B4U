@@ -58,7 +58,7 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        selectedIndex = 0
+       // selectedIndex = 0
         
         self.addLoadingIndicator()
 
@@ -129,19 +129,19 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
             self.imgViewIconTop.downloadedFrom(link:(selectedCategory.catIcon)!, contentMode:UIViewContentMode.ScaleAspectFit)
         }
      
-
         
-        UIView.animateWithDuration(0.5, delay: 0.4,
-            options: .Repeat, animations: {
-                
-                self.updateUI()
-                self.scrollToPage(self.catTblsScrollView, page:self.selectedIndex!, animated:true)
-                
-            }, completion: nil)
+        if let selectedIndex = self.selectedIndex
+        {
+            UIView.animateWithDuration(0.5, delay: 0.4,
+                options: .Repeat, animations: {
+                    
+                    self.updateUI()
+                    self.scrollToPage(self.catTblsScrollView, page:selectedIndex, animated:true)
+                    
+                }, completion: nil)
+            
+        }
         
-        
-      
-
     }
     
      func scrollToPage(scrollView: UIScrollView, page: Int, animated: Bool) {
