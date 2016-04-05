@@ -29,7 +29,7 @@ class b4u_PartnerReviewsTblViewCtrl: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 5
+        return (bro4u_DataManager.sharedInstance.vendorProfile?.reviews?.count)!
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,7 +43,10 @@ class b4u_PartnerReviewsTblViewCtrl: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("reviewTblCell", forIndexPath: indexPath) as! b4u_PartnerReviewTblCell
 
         // Configure the cell...
+        
+        let reviewsModel:b4u_VendorReviews = (bro4u_DataManager.sharedInstance.vendorProfile?.reviews![indexPath.section])!
 
+        cell.configureData(reviewsModel)
         return cell
     }
     

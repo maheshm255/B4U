@@ -18,6 +18,8 @@
 		0427002C1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0427002B1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift */; };
 		044076111CB0E86200B7C2E7 /* b4u-PartnerReviewsTblViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044076101CB0E86200B7C2E7 /* b4u-PartnerReviewsTblViewCtrl.swift */; };
 		044076131CB0E8A700B7C2E7 /* b4u-PartnerReviewTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044076121CB0E8A700B7C2E7 /* b4u-PartnerReviewTblCell.swift */; };
+		044076161CB17B4400B7C2E7 /* b4u-VendorProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044076151CB17B4400B7C2E7 /* b4u-VendorProfileModel.swift */; };
+		044076181CB17B5C00B7C2E7 /* b4u-VendorReviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044076171CB17B5C00B7C2E7 /* b4u-VendorReviews.swift */; };
 		045A49521CAE754800BF7381 /* b4u-VendorProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A49511CAE754800BF7381 /* b4u-VendorProfileViewController.swift */; };
 		04E07A561C900476009AD223 /* b4u-LocationSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E07A551C900476009AD223 /* b4u-LocationSearchModel.swift */; };
 		04E07A591C901961009AD223 /* b4u-LoginViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E07A581C901961009AD223 /* b4u-LoginViewCtrl.swift */; };
@@ -280,6 +282,8 @@
 		0427002B1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-TimeSlotViewCtrl.swift"; sourceTree = "<group>"; };
 		044076101CB0E86200B7C2E7 /* b4u-PartnerReviewsTblViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-PartnerReviewsTblViewCtrl.swift"; sourceTree = "<group>"; };
 		044076121CB0E8A700B7C2E7 /* b4u-PartnerReviewTblCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-PartnerReviewTblCell.swift"; sourceTree = "<group>"; };
+		044076151CB17B4400B7C2E7 /* b4u-VendorProfileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-VendorProfileModel.swift"; sourceTree = "<group>"; };
+		044076171CB17B5C00B7C2E7 /* b4u-VendorReviews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-VendorReviews.swift"; sourceTree = "<group>"; };
 		045A49511CAE754800BF7381 /* b4u-VendorProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-VendorProfileViewController.swift"; sourceTree = "<group>"; };
 		04E07A551C900476009AD223 /* b4u-LocationSearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-LocationSearchModel.swift"; sourceTree = "<group>"; };
 		04E07A581C901961009AD223 /* b4u-LoginViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-LoginViewCtrl.swift"; sourceTree = "<group>"; };
@@ -669,6 +673,15 @@
 				0427002B1C8B43FC008440CC /* b4u-TimeSlotViewCtrl.swift */,
 			);
 			path = TimeSlotes;
+			sourceTree = "<group>";
+		};
+		044076141CB17B0400B7C2E7 /* VendorProfile */ = {
+			isa = PBXGroup;
+			children = (
+				044076151CB17B4400B7C2E7 /* b4u-VendorProfileModel.swift */,
+				044076171CB17B5C00B7C2E7 /* b4u-VendorReviews.swift */,
+			);
+			path = VendorProfile;
 			sourceTree = "<group>";
 		};
 		045A49501CAE74A500BF7381 /* Profile */ = {
@@ -1306,6 +1319,7 @@
 		65FF8D661C7EBFDD007588D0 /* ServicePatners */ = {
 			isa = PBXGroup;
 			children = (
+				044076141CB17B0400B7C2E7 /* VendorProfile */,
 				65FF8D671C7EC1A5007588D0 /* b4u-SugestedPartner.swift */,
 				65264F861C81D80200859F5A /* b4u-SuggestedPatnersResult.swift */,
 			);
@@ -1923,6 +1937,7 @@
 				65DE76E11C7780BD00017F96 /* b4u-HomeViewController.swift in Sources */,
 				65B18A8D1C70BB28000EDD00 /* UIRefreshControl+AFNetworking.m in Sources */,
 				B369398A1CA14423000266A5 /* b4u_RescheduleOrderViewController.swift in Sources */,
+				044076161CB17B4400B7C2E7 /* b4u-VendorProfileModel.swift in Sources */,
 				65F8B4301C70BE6200D158FA /* b4u-UIImageView-Extension.swift in Sources */,
 				65F8B4371C70BECD00D158FA /* b4u-NSDateExtension.swift in Sources */,
 				04E747041C96DC5F00521674 /* b4u-RightMenuTblCell.swift in Sources */,
@@ -1944,6 +1959,7 @@
 				6536E0941C68F3F000B273D6 /* AppDelegate.swift in Sources */,
 				65FF8D651C7E9222007588D0 /* b4u-ServicePatnerController.swift in Sources */,
 				65271F4E1C831B1E0022C888 /* PayUSAGetTransactionID.m in Sources */,
+				044076181CB17B5C00B7C2E7 /* b4u-VendorReviews.swift in Sources */,
 				65DE76E71C77837B00017F96 /* b4u-CategoryViewCtrl.swift in Sources */,
 				65271F641C8370350022C888 /* b4u-AddAddressTableViewController.swift in Sources */,
 				65DE76E31C7780BD00017F96 /* b4u-SearchResultTblCell.swift in Sources */,

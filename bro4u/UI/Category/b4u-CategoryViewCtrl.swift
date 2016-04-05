@@ -379,4 +379,7 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
         self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
         b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
     }
+    
+
+    
 }

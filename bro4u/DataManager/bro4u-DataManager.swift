@@ -41,6 +41,12 @@ class bro4u_DataManager: NSObject {
     var loginInfo:b4u_LoginInfo?
     
     var orderId:String?
+
+    var vendorProfile:b4u_VendorProfileModel?
+
+    var vendorDescriptinHtmlString:String?
+    
+    var vendorPriceChartHtmlString:String?
     
   //Rahul Added
     var myInfoData:[b4u_MyInfoModel] = Array()

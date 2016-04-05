@@ -8,8 +8,11 @@
 
 import UIKit
 
-class b4u_VendorProfileViewController: UIViewController {
+class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIScrollViewDelegate{
+    @IBOutlet weak var lblPrice: UILabel!
     
+    @IBOutlet weak var horizontalSepLeading: NSLayoutConstraint!
+    @IBOutlet weak var detailBaseViewHeight: NSLayoutConstraint!
     @IBOutlet weak var horizontalSeperatorView: UIImageView!
     @IBOutlet weak var baseViewScrollDetail: UIView!
     @IBOutlet weak var btnAbountPartner: UIButton!
@@ -30,12 +33,41 @@ class b4u_VendorProfileViewController: UIViewController {
     @IBOutlet weak var imgViewTopBackground: UIImageView!
     @IBOutlet weak var scrollContentView: UIView!
     @IBOutlet weak var scrollViewBase: UIScrollView!
+    
+    
+    var allWebApiSuccessCount:Int = 0
+    var webViewdescHieghtConstraint: NSLayoutConstraint!
+
+    var itemWebViewHeightConstraint: NSLayoutConstraint!
+    
+    var ratingChartWebView:UIWebView?
+    var itemDescroptionWebView:UIWebView?
+    
+    
+    var heightForDescription:CGFloat = 0.0
+    var heightForReviews:CGFloat = 0.0
+    var heightForAboutPartner:CGFloat = 0.0
+    
+    var currentPage:Int{// The index of the current page (readonly)
+        
+        get{
+            
+            let width = view.bounds.size.width - 10
+            let page = Int((self.scrollViewDetails.contentOffset.x / width))
+                return page
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        self.addReviews()
+       self.getItemPriceChart()
+       self.getItemDescriptionIndex()
+       self.getProfileData()
+        
+
 
     }
 
@@ -47,47 +79,187 @@ class b4u_VendorProfileViewController: UIViewController {
     
 
     
+    func getItemPriceChart()
+    {
+        let itemId = bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.itemId!
+        let params = "?item_id=\(itemId)"
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kPriceChartIndex, params:params, result:{(resultObject) -> Void in
+            
+            self.allWebApiSuccessCount++
+
+            self.configureUI()
+            
+        })
+    }
+    
+    func getItemDescriptionIndex()
+    {
+        
+        let itemId = bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.itemId!
+        let params = "?item_id=\(itemId)"
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kItemDescriptionIndex, params:params, result:{(resultObject) -> Void in
+            
+            self.allWebApiSuccessCount++
+            
+            self.configureUI()
+        })
+    }
+    
+    
+    func getProfileData()
+    {
+        
+        let selectedDate = NSDate.dateFormat().stringFromDate(bro4u_DataManager.sharedInstance.selectedDate!)
+        
+        let selectedTime = bro4u_DataManager.sharedInstance.selectedTimeSlot!
+        
+        let params = "\(bro4u_DataManager.sharedInstance.userSelectedFilterParams!)&service_time=\(selectedDate)&service_time=\(selectedTime)"
+        
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kViewProfileIndex, params:params, result:{(resultObject) -> Void in
+            
+            self.allWebApiSuccessCount++
+            self.configureUI()
+        })
+    }
+    
+    
+    func configureUI()
+    {
+
+        if self.allWebApiSuccessCount == 3
+        {
+            self.configureWebViews()
+            self.addReviews()
+            self.configurePartnerUI()
+            
+            self.scrollViewDetails.pagingEnabled = true
+            self.scrollViewDetails.scrollEnabled=true
+            self.scrollViewDetails.delegate = self
+            
+            let width  = UIScreen.mainScreen().bounds.width
+            let height  = self.scrollViewDetails.bounds.height
+            
+            self.scrollViewDetails.contentSize  = CGSizeMake(3 * width,height)
+
+            let profileModelObj = bro4u_DataManager.sharedInstance.vendorProfile!
+            
+            self.vendorIcon.downloadedFrom(link:profileModelObj.profilePic!, contentMode:UIViewContentMode.ScaleAspectFit)
+            
+            self.lblVendorName.text = profileModelObj.vendorName!
+            self.lblVendorType.text = profileModelObj.catName!
+            
+            self.lblNumberOReviews.text = "\(profileModelObj.serviceQuality!) % Positive"
+
+            self.lblFeedback.text = "(\(profileModelObj.reviewCount!) % Ratings)"
+            
+            
+            self.lblTimeSince.text = profileModelObj.inBusiness!
+            
+            self.lblNumberOfJobDone.text = profileModelObj.completedJob!
+            
+            self.lblNumberOfProfiles.text = profileModelObj.profileViews!
+            
+             self.lblPrice.text = "  Rs. \( bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)  "
+        }
+    }
+    
+    func configureWebViews()
+    {
+        self.configureItemDescriptinWebView()
+        self.configureRatingChartWebView()
+        self.webViewConstraints(10.0)
+
+    }
     func addReviews()
     {
+
+        
         let partnerReviewsCtrl:b4u_PartnerReviewsTblViewCtrl =   self.storyboard?.instantiateViewControllerWithIdentifier("partnerReviewCtrl") as! b4u_PartnerReviewsTblViewCtrl
         
+        partnerReviewsCtrl.tableView.scrollEnabled = false
+        
+        self.scrollViewDetails.addSubview(partnerReviewsCtrl.view)
+
         partnerReviewsCtrl.view.translatesAutoresizingMaskIntoConstraints = false
 
         
-        self.scrollViewDetails.addSubview(partnerReviewsCtrl.view)
+       self.detailBaseViewHeight.constant = CGFloat((bro4u_DataManager.sharedInstance.vendorProfile?.reviews?.count)!) * 117.0
+
+        let height:CGFloat = CGFloat((bro4u_DataManager.sharedInstance.vendorProfile?.reviews?.count)!) * 117.0
         
         
-        let metricDict = ["w":partnerReviewsCtrl.view.bounds.size.width,"h":self.scrollViewDetails.frame.size.height]
+        self.heightForReviews = height
+        
+        let metricDict = ["w":partnerReviewsCtrl.view.bounds.size.width,"h":height]
 
         
         
         partnerReviewsCtrl.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[view(h)]", options:[], metrics: metricDict, views: ["view":partnerReviewsCtrl.view]))
+        
         partnerReviewsCtrl.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[view(w)]", options:[], metrics: metricDict, views: ["view":partnerReviewsCtrl.view]))
         
-        self.scrollViewDetails.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[view]|", options:[], metrics: nil, views: ["view":partnerReviewsCtrl.view]))
         
-        self.scrollViewDetails.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[view]", options:[], metrics: nil, views: ["view":partnerReviewsCtrl.view]))
+        let width  = UIScreen.mainScreen().bounds.width - 10
 
         
-//       
-//        let leading = NSLayoutConstraint(item:partnerReviewsCtrl.view, attribute:NSLayoutAttribute.Leading, relatedBy:NSLayoutRelation.Equal, toItem:self.scrollViewDetails, attribute:NSLayoutAttribute.Leading, multiplier:1.0, constant:0.0)
-//        
-//        self.scrollViewDetails.addConstraint(leading)
-//     
-//        let top = NSLayoutConstraint(item:partnerReviewsCtrl.view, attribute:NSLayoutAttribute.Top, relatedBy:NSLayoutRelation.Equal, toItem:self.scrollViewDetails, attribute:NSLayoutAttribute.Top, multiplier:1.0, constant:0.0)
-//        
-//        self.scrollViewDetails.addConstraint(top)
-//        
-//        let trailing = NSLayoutConstraint(item:partnerReviewsCtrl.view, attribute:NSLayoutAttribute.Trailing, relatedBy:NSLayoutRelation.Equal, toItem:self.scrollViewDetails, attribute:NSLayoutAttribute.Trailing, multiplier:1.0, constant:0.0)
-//        
-//        self.scrollViewDetails.addConstraint(trailing)
-//        
-//        let bottom = NSLayoutConstraint(item:partnerReviewsCtrl.view, attribute:NSLayoutAttribute.Bottom, relatedBy:NSLayoutRelation.Equal, toItem:self.scrollViewDetails, attribute:NSLayoutAttribute.Bottom, multiplier:1.0, constant:0.0)
-//        
-//        self.scrollViewDetails.addConstraint(bottom)
-//        
+        let leading = NSLayoutConstraint(item:partnerReviewsCtrl.view, attribute:.Leading, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Leading, multiplier:1.0, constant:width)
+        
+        self.scrollViewDetails.addConstraint(leading)
+        
+      
+        let top = NSLayoutConstraint(item:partnerReviewsCtrl.view, attribute:.Top, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Top, multiplier:1.0, constant:1.0)
+        
+        self.scrollViewDetails.addConstraint(top)
+        
     }
-    /*
+    
+    func configurePartnerUI()
+    {
+        let label = UITextView()
+        
+        label.backgroundColor = UIColor.whiteColor()
+        label.text =  "About Us \n" + (bro4u_DataManager.sharedInstance.vendorProfile?.aboutVendor!)!
+        
+        label.layer.cornerRadius = 2.0
+        label.layer.borderColor = UIColor.lightGrayColor().CGColor
+        label.layer.borderWidth = 1.0
+        
+        label.textContainerInset = UIEdgeInsetsMake(10, 0, 10, 0);
+
+        self.scrollViewDetails.addSubview(label)
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        let width  = UIScreen.mainScreen().bounds.width
+
+        
+        let leading = NSLayoutConstraint(item:label, attribute:.Leading, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Leading, multiplier:1.0, constant:2 * width)
+        
+        self.scrollViewDetails.addConstraint(leading)
+        
+        
+        let top = NSLayoutConstraint(item:label, attribute:.Top, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Top, multiplier:1.0, constant:10)
+        
+        self.scrollViewDetails.addConstraint(top)
+        
+        let metricDict = ["w":self.view.bounds.size.width - 40 ,"H":200]
+
+        
+        label.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[view(w)]", options:[], metrics: metricDict, views: ["view":label]))
+
+        label.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[view(H)]", options:[], metrics: metricDict, views: ["view":label]))
+
+        
+        
+        self.heightForAboutPartner = 300.0
+        
+//        let tralling = NSLayoutConstraint(item:label, attribute:.Trailing, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Trailing, multiplier:1.0, constant:10.0)
+//        
+//        self.scrollViewDetails.addConstraint(tralling)
+        
+     
+    }
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -95,15 +267,196 @@ class b4u_VendorProfileViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+
+    
+    
+    func configureRatingChartWebView()
+    {
+        ratingChartWebView = UIWebView()
+        
+        ratingChartWebView?.scrollView.scrollEnabled = false
+        
+        ratingChartWebView?.delegate = self
+        
+        ratingChartWebView!.translatesAutoresizingMaskIntoConstraints = false
+
+     //   self.setRatignChartWebViewConstraint(100.00)
+        
+        if let htmlStr = bro4u_DataManager.sharedInstance.vendorPriceChartHtmlString
+        {
+            self.ratingChartWebView?.loadHTMLString(htmlStr, baseURL:nil)
+        }else
+        {
+            self.itemDescroptionWebView?.loadHTMLString("", baseURL:nil)
+            
+        }
+    }
+    
+    
+    func configureItemDescriptinWebView()
+    {
+        self.itemDescroptionWebView = UIWebView()
+        
+        itemDescroptionWebView?.scrollView.scrollEnabled = false
+
+        self.itemDescroptionWebView!.delegate = self
+        
+        self.itemDescroptionWebView!.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        if let htmlStr = bro4u_DataManager.sharedInstance.vendorDescriptinHtmlString
+        {
+            self.itemDescroptionWebView?.loadHTMLString(htmlStr, baseURL:nil)
+        }else
+        {
+            self.itemDescroptionWebView?.loadHTMLString("", baseURL:nil)
+
+        }
+    }
+    
+    func webViewConstraints(height:CGFloat)
+    {
+        
+        self.detailBaseViewHeight.constant = 2 * height
+
+        self.scrollViewDetails.addSubview(itemDescroptionWebView!)
+        self.scrollViewDetails.addSubview(ratingChartWebView!)
+        
+        let metricDict = ["w":self.view.bounds.size.width,"h":height]
+ 
+    
+        self.itemWebViewHeightConstraint = NSLayoutConstraint(item:self.itemDescroptionWebView!, attribute:NSLayoutAttribute.Height, relatedBy:NSLayoutRelation.Equal, toItem:nil, attribute:.Height, multiplier:1.0, constant:height)
+        
+        self.itemDescroptionWebView!.addConstraint( self.itemWebViewHeightConstraint)
+        
+        self.itemDescroptionWebView!.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[view(w)]", options:[], metrics: metricDict, views: ["view":itemDescroptionWebView!]))
+        
+        
+        
+        let leading = NSLayoutConstraint(item:itemDescroptionWebView!, attribute:.Leading, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Leading, multiplier:1.0, constant:0.0)
+        
+        self.scrollViewDetails.addConstraint(leading)
+        
+        
+        let top = NSLayoutConstraint(item:itemDescroptionWebView!, attribute:.Top, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Top, multiplier:1.0, constant:1.0)
+        
+        self.scrollViewDetails.addConstraint(top)
+        
+        
+        
+//        self.scrollViewDetails.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[view]|", options:[], metrics: nil, views: ["view":itemDescroptionWebView!]))
+//        
+//        self.scrollViewDetails.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[view]", options:[], metrics: nil, views: ["view":itemDescroptionWebView!]))
+//        
+        
+        
+        
+        self.webViewdescHieghtConstraint = NSLayoutConstraint(item:self.ratingChartWebView!, attribute:NSLayoutAttribute.Height, relatedBy:NSLayoutRelation.Equal, toItem:nil, attribute:.Height, multiplier:1.0, constant:height)
+        
+        ratingChartWebView!.addConstraint( self.webViewdescHieghtConstraint)
+        
+        ratingChartWebView!.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[view(w)]", options:[], metrics: metricDict, views: ["view":ratingChartWebView!]))
+        
+        
+        let topConstraint = NSLayoutConstraint(item:ratingChartWebView!, attribute:.Top, relatedBy:.Equal, toItem:self.itemDescroptionWebView!, attribute:.Bottom, multiplier:1.0, constant:20.0)
+        
+        self.scrollViewDetails.addConstraint(topConstraint)
+        
+        let leading1 = NSLayoutConstraint(item:ratingChartWebView!, attribute:.Leading, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Leading, multiplier:1.0, constant:0.0)
+        
+        self.scrollViewDetails.addConstraint(leading1)
+        
+        
+//        self.scrollViewDetails.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-200-[view]|", options:[], metrics: nil, views: ["view":ratingChartWebView! , "itemWebView":itemDescroptionWebView!]))
+        
+//        self.scrollViewDetails.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[view]", options:[], metrics: nil, views: ["view":ratingChartWebView!]))
+
+    }
     @IBAction func btReviewPressed(sender: AnyObject)
     {
+        let width = self.scrollViewDetails.bounds.size.width
+        self.scrollViewDetails.setContentOffset(CGPointMake(width, 0), animated:true)
+        
+        self.horizontalSepLeading.constant = 1 * self.btnAbountPartner.bounds.size.width
+
+        self.detailBaseViewHeight.constant = self.heightForReviews
     }
 
     @IBAction func btnAbountPartner(sender: AnyObject)
     {
+        let width = self.scrollViewDetails.bounds.size.width
+        self.scrollViewDetails.setContentOffset(CGPointMake(2 * width, 0), animated:true)
+
+        self.horizontalSepLeading.constant = 2 * self.btnAbountPartner.bounds.size.width
+        self.detailBaseViewHeight.constant = self.heightForAboutPartner
+
     }
     @IBAction func btnDescriptionPressed(sender: AnyObject)
     {
+        self.scrollViewDetails.setContentOffset(CGPointMake(0, 0), animated:true)
+        
+        self.horizontalSepLeading.constant = 0 * self.btnAbountPartner.bounds.size.width
+        self.detailBaseViewHeight.constant = self.heightForDescription
+
+    }
+    
+    internal func webViewDidFinishLoad(webView: UIWebView)
+    {
+        let height = webView.scrollView.contentSize.height;
+        
+        
+        self.detailBaseViewHeight.constant =
+            self.detailBaseViewHeight.constant + height
+
+        
+        
+        if webView == self.itemDescroptionWebView
+        {
+            
+            self.itemWebViewHeightConstraint.constant = height
+        }
+        else if webView == self.ratingChartWebView
+        {
+         self.webViewdescHieghtConstraint.constant = height
+
+        }
+        
+        self.heightForDescription =  self.itemWebViewHeightConstraint.constant +  self.webViewdescHieghtConstraint.constant + 20
+
+    }
+    
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView)
+    {
+        self.updateUI()
+    }
+    
+    func updateUI()
+    {
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+          
+            print(self.currentPage)
+            self.horizontalSepLeading.constant = CGFloat(self.currentPage) * self.btnAbountPartner.bounds.size.width
+            
+            if self.currentPage == 0
+            {
+                  self.detailBaseViewHeight.constant = self.heightForDescription
+            }else  if self.currentPage == 1
+            {
+                self.detailBaseViewHeight.constant = self.heightForReviews
+
+            }
+            else  if self.currentPage == 2
+            {
+                self.detailBaseViewHeight.constant = self.heightForAboutPartner
+
+            }
+            
+        })
+    }
+    @IBAction func btnBookNowPressed(sender: AnyObject) {
+        
+        self.performSegueWithIdentifier("paymentCtrlSegue", sender:sender)
+
     }
 }

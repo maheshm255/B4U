@@ -37,6 +37,9 @@ class b4u_WebApiCallManager: NSObject {
         {
             requestUrl  = b4uBaseUrl + apiPath + params.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         }
+        
+        print(requestUrl)
+
         let sessionManager = AFHTTPSessionManager();
         
             sessionManager.responseSerializer = AFHTTPResponseSerializer()
@@ -49,12 +52,29 @@ class b4u_WebApiCallManager: NSObject {
             let getTokenTask = sessionManager.GET(requestUrl, parameters:nil, success: { (dataTask:NSURLSessionDataTask, response:AnyObject) -> Void in
                 
                 do {
+                    
                         // Will return an object or nil if JSON decoding fails
+                    
+                    if apiPath == kItemDescriptionIndex || apiPath == kPriceChartIndex
+                    {
+                        let resultStr = String(data:response as! NSData, encoding: NSUTF8StringEncoding)
+                        if apiPath == kItemDescriptionIndex
+                        {
+                            bro4u_DataManager.sharedInstance.vendorDescriptinHtmlString = resultStr
+                        }else if apiPath == kPriceChartIndex
+                        {
+                            bro4u_DataManager.sharedInstance.vendorPriceChartHtmlString = resultStr
+                        }
+                        
+                        print(resultStr)
+
+                    }else
+                    {
                         let resultObj =  try NSJSONSerialization.JSONObjectWithData(response as! NSData, options:NSJSONReadingOptions.AllowFragments)
                         print(resultObj)
-                    
+
                        self.parseData(apiPath, dataDict:resultObj as! Dictionary<String, AnyObject>)
-                    
+                    }
                     result("Success")
                 
                     
@@ -125,6 +145,9 @@ class b4u_WebApiCallManager: NSObject {
         case kPlaceCashOnDeliveryIndex:
             self.parseCODPayment(dataDict)
 
+        case kViewProfileIndex:
+            self.parseVendorProfileData(dataDict)
+            
         default:
             print(itemName)
         }
@@ -426,5 +449,12 @@ class b4u_WebApiCallManager: NSObject {
     func parseCODPayment(dataDict:Dictionary<String, AnyObject>)
     {
         bro4u_DataManager.sharedInstance.orderId = dataDict["order_id"] as? String
+    }
+    
+    func parseVendorProfileData(dataDict:Dictionary<String, AnyObject>)
+    {
+        let vendorProfile = b4u_VendorProfileModel(vendorDataDict: dataDict)
+        
+        bro4u_DataManager.sharedInstance.vendorProfile = vendorProfile
     }
 }
