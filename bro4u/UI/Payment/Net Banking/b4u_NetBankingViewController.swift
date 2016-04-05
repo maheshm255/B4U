@@ -18,7 +18,7 @@ enum selectBank : Int{
 class b4u_NetBankingViewController: UIViewController {
 
 
-    var paymentParam:PayUModelPaymentParams?
+    var payUMoneyCntrl:PayUMoneyViewController?
     var saltKey:String?
     
     @IBOutlet weak var iciciBtn: UIButton!
@@ -64,15 +64,8 @@ class b4u_NetBankingViewController: UIViewController {
     
     func startPayment(){
         
-        self.paymentParam = PayUModelPaymentParams()
+        self.payUMoneyCntrl = PayUMoneyViewController()
 
-        self.paymentParam!.key = "p6VnFd"
-        self.paymentParam!.amount = "1.0"
-        self.paymentParam!.productInfo = "Plumber"
-        self.paymentParam!.SURL = "http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/payu_postback"
-        self.paymentParam!.FURL = "http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/payu_postback"
-        self.paymentParam!.Environment = ENVIRONMENT_PRODUCTION;
-        self.saltKey = "4Lzjev3I"
         
         
 

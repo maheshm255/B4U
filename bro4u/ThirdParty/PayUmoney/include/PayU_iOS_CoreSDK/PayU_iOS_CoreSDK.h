@@ -22,7 +22,8 @@
 #import "PayUModelOfferStatus.h"
 #import "PayUModelStoredCard.h"
 #import "PayUMoneyViewController.h"
-
+#import "PayUUIPaymentUIWebViewController.h"
+#import "PayUWebViewResponse.h"
 
 /*
  SDK Version 3.0
