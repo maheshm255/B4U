@@ -29,6 +29,11 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     var radioButtonSelected:NSIndexPath!
     
     var delegate:paymentDelegate?
+    
+    //Hard Coded for Payment Options
+    let itemDict : NSArray = ["paytm","Credit/Debit Card",
+        "Net banking/Credit/Debit",
+        "Cash On Service"]
 
     
     @IBOutlet weak var btnApply: UIButton!
@@ -42,7 +47,7 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     
     override func viewDidLoad() {
       
-        
+    
     self.lblAmount.text = "  Rs. \( bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)  "
 
     let tapGesture = UITapGestureRecognizer(target:self, action:"applyCouponCodeViewTaped")
@@ -110,7 +115,18 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
       
         let PaymentGatewayOffersModel: b4u_PaymentGatewayOffersModel   = bro4u_DataManager.sharedInstance.orderDetailData[0].paymentGateWayes![indexPath.row]
 
-        cell.typeLabel?.text = PaymentGatewayOffersModel.offerFor
+        if(indexPath.row == 0){
+            cell.typeLabel.hidden  = true
+            cell.typeImageView.hidden = false
+            cell.typeImageView.image = UIImage(named:itemDict[0] as! String)
+        }
+        else
+        {
+            cell.typeLabel.hidden  = false
+            cell.typeImageView.hidden = true
+            cell.typeLabel?.text = itemDict[indexPath.row] as! String
+
+        }
         cell.infoLabel?.text = PaymentGatewayOffersModel.offerMsg
       
         if radioButtonSelected != nil{
@@ -147,9 +163,9 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
       
       switch radioButtonSelected.row {
       case 0:
-        delegate?.navigateToPaymentGateWay(paymentOption.kPayUMoney)
-      case 1:
         delegate?.navigateToPaymentGateWay(paymentOption.kPaytm)
+      case 1:
+        delegate?.navigateToPaymentGateWay(paymentOption.kPayUMoney)
       case 2:
         delegate?.navigateToPaymentGateWay(paymentOption.kNetBanking)
       case 3:

@@ -185,7 +185,7 @@ class b4u_MyAccountViewController: UIViewController {
             // Set the CellID
             switch(indexPath.section){
             case 0:
-                destination = storyboard.instantiateViewControllerWithIdentifier("CreditAndDebitCardViewControllerID") as! b4u_CreditAndDebitCardViewController
+                destination = storyboard.instantiateViewControllerWithIdentifier("MyOrderViewControllerID") as! MyOrderViewController
 
             case 1:
                 destination = storyboard.instantiateViewControllerWithIdentifier("MyWalletViewControllerID") as! MyWalletViewController

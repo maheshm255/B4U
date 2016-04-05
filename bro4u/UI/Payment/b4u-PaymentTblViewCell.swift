@@ -12,6 +12,7 @@ class b4u_PaymentTblViewCell: UITableViewCell {
 
     
     @IBOutlet weak var radioImageView:UIImageView!
+    @IBOutlet weak var typeImageView:UIImageView!
     @IBOutlet weak var typeLabel:UILabel!
     @IBOutlet weak var infoLabel:UILabel!
     @IBOutlet weak var checkBoxImageView:UIImageView!
