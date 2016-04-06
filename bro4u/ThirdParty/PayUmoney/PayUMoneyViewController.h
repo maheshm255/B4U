@@ -10,4 +10,15 @@
 
 @interface PayUMoneyViewController : UIViewController
 
+@property (nonatomic, strong) NSString *paymentType;
+@property (nonatomic, strong) NSString *selectedBankCode;
+@property (nonatomic, strong) NSString *cardNumber;
+@property (nonatomic, strong) NSString *cardExpYear;
+@property (nonatomic, strong) NSString *cardExpMonth;
+@property (nonatomic, strong) NSString *nameOnCard;
+@property (nonatomic, strong) NSString *cardNo;
+@property (nonatomic, strong) NSString *CVVNo;
+
+
+
 @end

@@ -17,7 +17,9 @@ enum selectBank : Int{
 
 class b4u_NetBankingViewController: UIViewController {
 
-    var payUMoneyCntrl:UIViewController?
+    var payUMoneyCntrl:PayUMoneyViewController?
+    var paymentType:String?
+    var selectedBankCode:String?
 
     var saltKey:String?
     
@@ -36,15 +38,17 @@ class b4u_NetBankingViewController: UIViewController {
         switch sender.tag{
         case selectBank.kICICI.rawValue :
             selectBankBtn.setTitle("ICICI NetBanking", forState: UIControlState.Normal)
-
+            selectedBankCode = "ICIB"
         case selectBank.kHDFC.rawValue :
             selectBankBtn.setTitle("HDFC Bank", forState: UIControlState.Normal)
-
+            selectedBankCode = "HDFB"
         case selectBank.kSBI.rawValue :
             selectBankBtn.setTitle("State Bank Of India", forState: UIControlState.Normal)
+            selectedBankCode = "SBIB"
 
         case selectBank.kAXIS.rawValue :
             selectBankBtn.setTitle("AXIS Bank NetBanking", forState: UIControlState.Normal)
+            selectedBankCode = "AXIB"
 
         default :
             break
@@ -58,16 +62,15 @@ class b4u_NetBankingViewController: UIViewController {
     
     @IBAction func continueBtnAction(sender: AnyObject) {
    
-        self.startPayment()
-    
-    }
-    
-    func startPayment(){
-        
-        self.payUMoneyCntrl = PayUMoneyViewController()
-        self.navigationController?.pushViewController(self.payUMoneyCntrl!, animated: true)
+        payUMoneyCntrl = PayUMoneyViewController()
+        payUMoneyCntrl?.paymentType = PAYMENT_PG_NET_BANKING
+        payUMoneyCntrl?.selectedBankCode = selectedBankCode
 
+
+        self.navigationController?.pushViewController(self.payUMoneyCntrl!, animated: true)
+    
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

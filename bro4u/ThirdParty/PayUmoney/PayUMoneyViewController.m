@@ -26,7 +26,8 @@
     // Do any additional setup after loading the view.
     
     [self configureAllParameters];
-    [self PayByNetBanking];
+    
+    [self openWebPayment];
 
 }
 
@@ -55,14 +56,24 @@
     //create Parameter for hash
     [self initPayment];
     self.paymentParamForPassing.hashes.paymentHash = [self createSHA512:self.hashParameter];
-
 }
 
+- (void)openWebPayment{
+
+    if ([self.paymentType  isEqual:  PAYMENT_PG_CCDC])
+    {
+        [self payByCCDC];
+    }
+    else if ([self.paymentType  isEqual:  PAYMENT_PG_NET_BANKING])
+    {
+        [self PayByNetBanking];
+
+    }
+}
 
 - (void)PayByNetBanking{
-    NSString *bankCode = @"BOIB";
     
-    self.paymentParamForPassing.bankCode = bankCode;
+    self.paymentParamForPassing.bankCode = _selectedBankCode;
     
         self.createRequest = [PayUCreateRequest new];
         [self.createRequest createRequestWithPaymentParam:self.paymentParamForPassing forPaymentType:PAYMENT_PG_NET_BANKING withCompletionBlock:^(NSMutableURLRequest *request, NSString *postParam, NSString *error) {
@@ -78,6 +89,38 @@
                 
             }
         }];
+}
+
+
+- (void)payByCCDC{
+
+    self.paymentParamForPassing.expYear = self.cardExpYear;
+    self.paymentParamForPassing.expMonth = self.cardExpMonth;
+//    self.paymentParamForPassing.nameOnCard = self.textFieldNameOnCard.text;
+    self.paymentParamForPassing.cardNumber = self.cardNo;
+    self.paymentParamForPassing.CVV = self.CVVNo;
+
+    self.createRequest = [PayUCreateRequest new];
+
+    [self.createRequest createRequestWithPaymentParam:self.paymentParamForPassing forPaymentType:self.paymentType withCompletionBlock:^(NSMutableURLRequest *request, NSString *postParam, NSString *error) {
+        if (error == nil) {
+            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+
+            PayUUIPaymentUIWebViewController *webView = [storyboard instantiateViewControllerWithIdentifier:@"PayUUIPaymentUIWebViewControllerID"];
+            webView.paymentRequest = (NSURLRequest *)request;
+            webView.paymentParam = self.paymentParamForPassing;
+            [self.navigationController pushViewController:webView animated:true];
+        }
+        else{
+            NSLog(@"URL request from createRequestWithPostParam: %@",request);
+            NSLog(@"PostParam from createRequestWithPostParam:%@",postParam);
+            NSLog(@"Error from createRequestWithPostParam:%@",error);
+            [[[UIAlertView alloc] initWithTitle:@"ERROR" message:error delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+            
+        }
+    }];
+
+
 }
 
 - (void)didReceiveMemoryWarning {
