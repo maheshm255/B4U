@@ -21,6 +21,8 @@ class bro4u_DataManager: NSObject {
     var catlogFilterObj:b4u_catalog?
 
     var timeSlots:b4u_TimeSlots?
+    var bankList:b4u_BankList?
+
     var suggestedPatnersResult:b4u_SuggestedPatnersResult?
 
     // User Selected
