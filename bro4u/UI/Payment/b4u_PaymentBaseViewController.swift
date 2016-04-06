@@ -302,6 +302,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
   {
     
     var paymentViewController:UIViewController?
+    
 
     switch gateWayOpton {
       
@@ -309,12 +310,20 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
       
       paymentViewController = PaytmViewController()
       
-    case paymentOption.kPayUMoney :
+    case paymentOption.kCCDC :
       
         paymentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("CreditAndDebitCardViewControllerID") as! b4u_CreditAndDebitCardViewController
+        
+        var payUPaymentTypeCntrl:b4u_CreditAndDebitCardViewController?
+        payUPaymentTypeCntrl = b4u_CreditAndDebitCardViewController()
+        payUPaymentTypeCntrl!.paymentType = PAYMENT_PG_CCDC
       
     case paymentOption.kNetBanking :
       paymentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NetBankingViewControllerID") as! b4u_NetBankingViewController
+      
+      var payUPaymentTypeCntrl:b4u_NetBankingViewController?
+      payUPaymentTypeCntrl = b4u_NetBankingViewController()
+      payUPaymentTypeCntrl!.paymentType = PAYMENT_PG_NET_BANKING
 
     case paymentOption.kCOD :
       paymentViewController = b4u_CODViewController()

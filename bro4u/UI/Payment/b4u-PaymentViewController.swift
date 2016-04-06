@@ -10,7 +10,7 @@ import UIKit
 
 enum paymentOption: Int{
    case kPaytm = 0
-   case kPayUMoney
+   case kCCDC
    case kNetBanking
    case kCOD
 }
@@ -165,7 +165,7 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
       case 0:
         delegate?.navigateToPaymentGateWay(paymentOption.kPaytm)
       case 1:
-        delegate?.navigateToPaymentGateWay(paymentOption.kPayUMoney)
+        delegate?.navigateToPaymentGateWay(paymentOption.kCCDC)
       case 2:
         delegate?.navigateToPaymentGateWay(paymentOption.kNetBanking)
       case 3:

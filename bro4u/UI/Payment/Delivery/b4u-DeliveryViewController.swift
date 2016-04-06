@@ -340,6 +340,8 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
             animated: true,
             completion: nil)
     }
+    
+    
     func selectTimeSlot(sender: AnyObject)
     {
         if  bro4u_DataManager.sharedInstance.timeSlots?.timeSlots?.count > 0
@@ -375,10 +377,9 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
                 completion: nil)
             
         }
-        
-        
-
     }
+    
+    
     @IBAction func proceedToPaymetnBtnClicked(sender: AnyObject)
     {
         self.delegate?.proceedToPayment()
