@@ -21,12 +21,43 @@ class b4u_ExpandableTblHeaderView: UIView {
     var arrowImgView:UIImageView?
     var seperatorImgView:UIImageView?
     var toggleButton = UIButton()
+    
+   internal  var lblTitle:UILabel?
+   internal  var lblSelectedItems:UILabel?
+    
     required init(tableView:b4u_ExpandableTableView, section:Int){
         
         let height = tableView.delegate?.tableView!(tableView, heightForHeaderInSection: section)
         let frame = CGRectMake(0, 0, CGRectGetWidth(tableView.frame), height!)
         
         super.init(frame: frame)
+        
+        
+        
+        lblTitle = UILabel()
+        lblTitle!.frame = CGRectMake(10, 0, CGRectGetWidth(tableView.frame) - 60, height!)
+        
+        lblTitle!.textAlignment = NSTextAlignment.Left
+        lblTitle!.font = UIFont(name: "HelveticaNeue-neue", size: 14)
+        lblTitle!.textColor = UIColor.blackColor()
+        
+        lblTitle!.backgroundColor = UIColor.clearColor()
+        
+        self.addSubview(lblTitle!)
+        
+        
+        lblSelectedItems = UILabel()
+        lblSelectedItems!.frame = CGRectMake(10, 30, CGRectGetWidth(tableView.frame) - 60, height!)
+        
+        lblSelectedItems!.textAlignment = NSTextAlignment.Left
+        lblSelectedItems!.font = UIFont(name: "HelveticaNeue-neue", size: 14)
+        lblSelectedItems!.textColor = UIColor.blackColor()
+        
+        lblSelectedItems!.text = "Selected Items"
+        lblSelectedItems!.backgroundColor = UIColor.clearColor()
+        
+        self.addSubview(lblSelectedItems!)
+        
         
         toggleButton.addTarget(self, action: "toggle:", forControlEvents: UIControlEvents.TouchUpInside)
         toggleButton.backgroundColor = UIColor.clearColor()

@@ -55,11 +55,31 @@ extension NSDate{
     }
     
     
+    
+    func isSame(dateToCompare : NSDate) -> Bool
+    {
+        //Declare Variables
+        var isSame = false
+        
+        //Compare Values
+        if self.compare(dateToCompare) == NSComparisonResult.OrderedSame
+        {
+            isSame = true
+        }
+        
+        //Return Result
+        return isSame
+    }
+    
+    
     func isGreaterThanDate(dateToCompare : NSDate) -> Bool
     {
         //Declare Variables
         var isGreater = false
         
+        
+        
+
         //Compare Values
         if self.compare(dateToCompare) == NSComparisonResult.OrderedDescending
         {
@@ -69,6 +89,7 @@ extension NSDate{
         //Return Result
         return isGreater
     }
+    
     
     class func utcDateFormatter()-> NSDateFormatter
     {

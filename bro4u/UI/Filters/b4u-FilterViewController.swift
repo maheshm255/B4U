@@ -32,6 +32,9 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     
     var selectedIndexPath:Dictionary<String ,[NSIndexPath]> = Dictionary()
     var numberOfItems:Int = 0
+    
+    var hederViews:Dictionary<String ,b4u_ExpandableTblHeaderView> = Dictionary()
+
     var inputArray:[AnyObject]?{
         
         var array:[b4u_CatFilterAttributes] = Array()
@@ -132,7 +135,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     }
     // MARK: UITableViewDataSource
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 60
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -260,21 +263,40 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         let headerView = b4u_ExpandableTblHeaderView(tableView: self.expandableTblView, section: section)
         headerView.backgroundColor = UIColor.whiteColor()
 
-        let label = UILabel(frame:CGRectMake(10, 0, CGRectGetWidth(headerView.frame),CGRectGetHeight(headerView.frame)))
+//        let label = UILabel(frame:CGRectMake(10, 0, CGRectGetWidth(headerView.frame)-30,CGRectGetHeight(headerView.frame)))
+//
+//        label.textAlignment = NSTextAlignment.Left
+//        label.font = UIFont(name: "HelveticaNeue-neue", size: 14)
+//        label.textColor = UIColor.blackColor()
+//        
+//        label.backgroundColor = UIColor.blueColor()
+//        
+//        headerView.addSubview(label)
+//        
+//        
+//        
+//        let selectedItems = UILabel(frame:CGRectMake(10, 20, CGRectGetWidth(headerView.frame)-30,CGRectGetHeight(headerView.frame)))
+//        
+//        selectedItems.textAlignment = NSTextAlignment.Left
+//        selectedItems.font = UIFont(name: "HelveticaNeue-neue", size: 14)
+//        selectedItems.textColor = UIColor.blackColor()
+//        
+//        selectedItems.text = "Selected Items"
+//        selectedItems.backgroundColor = UIColor.greenColor()
+//        
+//        headerView.addSubview(selectedItems)
 
-        label.textAlignment = NSTextAlignment.Left
-        label.font = UIFont(name: "HelveticaNeue-neue", size: 14)
-        label.textColor = UIColor.blackColor()
-        
-        headerView.addSubview(label)
+       headerView.lblSelectedItems!.text = ""
+
         
         if section < inputArray?.count
         {
       
         let catFilterAttributes:b4u_CatFilterAttributes = self.inputArray![section] as! b4u_CatFilterAttributes
             
-            
-        label.text =  catFilterAttributes.attrName!
+        
+        
+        headerView.lblTitle!.text =  catFilterAttributes.attrName!
             
             
             
@@ -285,10 +307,12 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
        
         }else
         {
-            label.text =  "When do you need service?"
+            headerView.lblTitle!.text =  "When do you need service?"
             
             headerView.toggleButton.enabled = false
         }
+        
+        self.hederViews["\(section)"] = headerView
         
         return headerView
 
@@ -361,12 +385,58 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                 selectedIndexPath["\(indexPath.section)"] = [indexPath]
             }
         }
+            
+            self.updateHeaderForSection(indexPath.section)
         }
         else
         {
             
         }
     
+    }
+    
+    
+    func updateHeaderForSection(section:Int)
+    {
+        var indexPaths = self.selectedIndexPath["\(section)"]
+        
+       indexPaths =  indexPaths!.sort { $0.row < $1.row }
+
+        let catFilterAttributes:b4u_CatFilterAttributes = self.inputArray![section] as! b4u_CatFilterAttributes
+
+        var selectedItems = ""
+        for (_,indexPath) in (indexPaths?.enumerate())!
+        {
+            let attributeOptions = catFilterAttributes.catFilterAttributeOptions![indexPath.row]
+            
+            if selectedItems == ""
+            {
+              selectedItems = selectedItems + attributeOptions.optionName!
+            }else
+            {
+                selectedItems = selectedItems +  " , " + attributeOptions.optionName!
+
+            }
+        }
+        
+        
+        let headerView = self.hederViews["\(section)"]
+        headerView!.lblSelectedItems?.text = selectedItems
+        
+        if selectedItems.length > 0
+        {
+            let frame:CGRect = CGRectMake(10, 0, CGRectGetWidth((headerView!.lblTitle?.frame)!), CGRectGetHeight((headerView!.frame))/2 - 5)
+            
+            headerView!.lblTitle?.frame = frame
+            
+            headerView?.lblSelectedItems?.frame = CGRectMake(10, CGRectGetHeight((headerView!.frame))/2, CGRectGetWidth((headerView!.lblTitle?.frame)!), CGRectGetHeight((headerView!.frame))/2 )
+        }else
+        {
+            let frame:CGRect = CGRectMake(10, 0, CGRectGetWidth((headerView!.lblTitle?.frame)!), CGRectGetHeight((headerView!.frame)))
+            
+            headerView!.lblTitle?.frame = frame
+        }
+        print(selectedItems)
     }
     
     func btnSelectDateClicked(sender:AnyObject)

@@ -54,21 +54,33 @@ class b4u_CalendarViewCtrl: UIViewController ,FSCalendarDataSource , FSCalendarD
     
     func calendar(calendar: FSCalendar!, didSelectDate date: NSDate!) {
         
-        NSDate()
         
-        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-        let components = calendar.components([.Month, .Day , .Year , .Weekday], fromDate: date)
-        
-        lblDay.text =  self.getWeekDay(components.weekday)
-        
-        lblNumberDay.text = "\(components.day)"
-        lblMonth.text = self.getMonth(components.month)
-        lblYear.text = "\(components.year)"
-        
-        self.selectedDate = date
-        
+            let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
+            let components = calendar.components([.Month, .Day , .Year , .Weekday], fromDate: date)
+            
+            lblDay.text =  self.getWeekDay(components.weekday)
+            
+            lblNumberDay.text = "\(components.day)"
+            lblMonth.text = self.getMonth(components.month)
+            lblYear.text = "\(components.year)"
+            
+            self.selectedDate = date
     }
     
+    func calendar(calendar: FSCalendar!, shouldSelectDate date: NSDate!) -> Bool {
+        
+      let selectedDateStr =   NSDate.dateFormat().stringFromDate(date)
+        let currentDate =   NSDate()
+
+      let currentDatetr  = NSDate.dateFormat().stringFromDate(currentDate)
+
+        if  currentDate.isLessThanDate(date) || selectedDateStr == currentDatetr
+        {
+            return true
+        }
+        return false
+    }
+
     
     func getWeekDay(weekDay:Int)->String
     {
