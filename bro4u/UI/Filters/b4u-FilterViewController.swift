@@ -235,10 +235,11 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                 cell = tableView.dequeueReusableCellWithIdentifier(checkBoxCellIdentifier, forIndexPath: indexPath) as! b4u_ExpandableTblViewCell
                 cell.lblTitle?.text =  aItem.optionName
                 
-                cell.btnMinus.addTarget(self, action:#selector(b4u_FilterViewController.minusBtnClicked(_:)), forControlEvents:.TouchUpInside)
+                
+                cell.btnMinus.addTarget(self, action:"minusBtnClicked:", forControlEvents: .TouchUpInside)
                 
                 
-                cell.btnPlus.addTarget(self, action:#selector(b4u_FilterViewController.plusBtnClicked(_:)), forControlEvents:.TouchUpInside)
+                cell.btnPlus.addTarget(self, action:"plusBtnClicked:", forControlEvents:.TouchUpInside)
                 
                 cell.btnPlus.tag = indexPath.section
                 cell.btnMinus.tag = indexPath.section
@@ -257,9 +258,9 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             
             cell = tableView.dequeueReusableCellWithIdentifier(dateAndTimeCell, forIndexPath: indexPath) as! b4u_DateAndTImeSelectionTblCell
             
-            cell.btnSelectDate.addTarget(self, action:#selector(b4u_FilterViewController.btnSelectDateClicked(_:)), forControlEvents:UIControlEvents.TouchUpInside)
+            cell.btnSelectDate.addTarget(self, action:"btnSelectDateClicked:", forControlEvents:UIControlEvents.TouchUpInside)
             
-            cell.btnSelectTime.addTarget(self, action:#selector(b4u_FilterViewController.btnSelectTimeClicked(_:)), forControlEvents:UIControlEvents.TouchUpInside)
+            cell.btnSelectTime.addTarget(self, action:"btnSelectTimeClicked:", forControlEvents:UIControlEvents.TouchUpInside)
             
             self.dateBtn = cell.btnSelectDate
             self.timeBtn = cell.btnSelectTime
