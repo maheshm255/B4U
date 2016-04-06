@@ -14,7 +14,7 @@ class b4u_catalog: NSObject {
     var filterAttributes:[b4u_CatFilterAttributes]?
     var pricingAttributes:[b4u_CatFilterAttributes]?
     var variantAttributes:[b4u_CatFilterAttributes]?
-
+    var todaysTimeSlot:[String]?
     init(catLogDataDict:Dictionary<String ,AnyObject>)
     {
         
@@ -50,5 +50,8 @@ class b4u_catalog: NSObject {
             let catFilterAttributesObj = b4u_CatFilterAttributes(catFilterAttribuesDataDict:dataDict)
             self.variantAttributes?.append(catFilterAttributesObj)
         }
+        
+        self.todaysTimeSlot  = catLogDataDict["today_slots"] as? [String]
+        
     }
 }

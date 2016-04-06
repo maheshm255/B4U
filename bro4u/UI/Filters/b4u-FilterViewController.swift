@@ -74,6 +74,13 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         self.callFilterApi()
 
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+
+   
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -132,6 +139,10 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
 
         self.expandableTblView.reloadData()
+        
+        let headerView = self.hederViews["0"]
+        
+        headerView?.toggle((headerView?.toggleButton)!)
     }
     // MARK: UITableViewDataSource
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -217,15 +228,17 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             }else if catFilterAttributes.inputType == inputType.textBoxGroup.rawValue
             {
                 
+                self.sectionNumberForRadioInputs.insert(indexPath.section)
+
                 let checkBoxCellIdentifier = "textBoxGroupCell"
                 
                 cell = tableView.dequeueReusableCellWithIdentifier(checkBoxCellIdentifier, forIndexPath: indexPath) as! b4u_ExpandableTblViewCell
                 cell.lblTitle?.text =  aItem.optionName
                 
-                cell.btnMinus.addTarget(self, action:"minusBtnClicked:", forControlEvents:.TouchUpInside)
+                cell.btnMinus.addTarget(self, action:#selector(b4u_FilterViewController.minusBtnClicked(_:)), forControlEvents:.TouchUpInside)
                 
                 
-                cell.btnPlus.addTarget(self, action:"plusBtnClicked:", forControlEvents:.TouchUpInside)
+                cell.btnPlus.addTarget(self, action:#selector(b4u_FilterViewController.plusBtnClicked(_:)), forControlEvents:.TouchUpInside)
                 
                 cell.btnPlus.tag = indexPath.section
                 cell.btnMinus.tag = indexPath.section
@@ -244,9 +257,9 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             
             cell = tableView.dequeueReusableCellWithIdentifier(dateAndTimeCell, forIndexPath: indexPath) as! b4u_DateAndTImeSelectionTblCell
             
-            cell.btnSelectDate.addTarget(self, action:"btnSelectDateClicked:", forControlEvents:UIControlEvents.TouchUpInside)
+            cell.btnSelectDate.addTarget(self, action:#selector(b4u_FilterViewController.btnSelectDateClicked(_:)), forControlEvents:UIControlEvents.TouchUpInside)
             
-            cell.btnSelectTime.addTarget(self, action:"btnSelectTimeClicked:", forControlEvents:UIControlEvents.TouchUpInside)
+            cell.btnSelectTime.addTarget(self, action:#selector(b4u_FilterViewController.btnSelectTimeClicked(_:)), forControlEvents:UIControlEvents.TouchUpInside)
             
             self.dateBtn = cell.btnSelectDate
             self.timeBtn = cell.btnSelectTime
@@ -300,7 +313,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             
             
             
-            if catFilterAttributes.inputType == inputType.radio.rawValue
+            if catFilterAttributes.inputType == inputType.radio.rawValue  ||  catFilterAttributes.inputType == inputType.textBoxGroup.rawValue
             {
                 self.sectionNumberForRadioInputs.insert(section)
             }
@@ -453,6 +466,14 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         calendarController.preferredContentSize = CGSizeMake(300, 400)
         calendarController.delegate = self
         
+        
+        if  bro4u_DataManager.sharedInstance.catlogFilterObj?.todaysTimeSlot?.count > 0
+        {
+            calendarController.selectedDate = NSDate()
+        }
+        else{
+            calendarController.selectedDate = NSDate().dateByAddingTimeInterval(60*60*24*1)
+        }
         let popoverMenuViewController = calendarController.popoverPresentationController
          popoverMenuViewController?.permittedArrowDirections = .Any
         popoverMenuViewController?.delegate = self
@@ -507,18 +528,27 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
   
     func minusBtnClicked(sender:AnyObject)
     {
+        let btn = sender as! UIButton
+
         if numberOfItems > 0
         {
-            numberOfItems--
+            numberOfItems -= 1
             
             self.expandableTblView.reloadData()
+        }
+        if numberOfItems == 0
+        {
+            self.selectedIndexPath.removeValueForKey("\(btn.tag)")
         }
     }
     
     func plusBtnClicked(sender:AnyObject)
     {
         let btn = sender as! UIButton
-        numberOfItems++
+        numberOfItems += 1
+        
+        self.selectedIndexPath["\(btn.tag)"] = [NSIndexPath(forRow:0, inSection:btn.tag)]
+        
         
 //        if  selectedIndexPath["\(btn.tag)"]?.count > 0
 //        {
@@ -791,4 +821,8 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
         b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
     }
+    
+
+    
+    
 }

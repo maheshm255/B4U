@@ -76,6 +76,8 @@ class b4u_ExpandableTblHeaderView: UIView {
         self.tableView = tableView
         self.delegate = tableView
         self.section = section
+        
+      
     }
     
     required init?(coder aDecoder: NSCoder) {

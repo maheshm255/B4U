@@ -8,7 +8,7 @@
 
 import UIKit
 
-class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITableViewDelegate{
+class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate{
 
     @IBOutlet weak var btnLoadMore: UIButton!
     @IBOutlet weak var viewLoadMore: UIView!
@@ -203,7 +203,14 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         
         bro4u_DataManager.sharedInstance.selectedSuggestedPatner = self.allPatners[btn.tag]
         
-        self.performSegueWithIdentifier("paymentCtrlSegue", sender:sender)
+        
+        if bro4u_DataManager.sharedInstance.selectedSuggestedPatner?.quantityActive == "yes"
+        {
+          self.showQuantityRequired()
+        }else
+        {
+            self.performSegueWithIdentifier("paymentCtrlSegue", sender:sender)
+        }
     }
     
     
@@ -219,6 +226,35 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
     {
         self.callServicePatnerApi()
     }
+    
+    
+    
+    func showQuantityRequired()
+    {
+        let storyboard : UIStoryboard = self.storyboard!
+        
+        let quantityCtrl:b4u_quantityViewController = storyboard.instantiateViewControllerWithIdentifier("quantityRequiredCtrl") as! b4u_quantityViewController
+        
+        quantityCtrl.modalPresentationStyle = .Popover
+        quantityCtrl.preferredContentSize = CGSizeMake(300, 400)
+        // quickBookViewCtrl.delegate = self
+        
+        let popoverMenuViewController = quantityCtrl.popoverPresentationController
+        popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
+        popoverMenuViewController?.delegate = self
+        popoverMenuViewController?.sourceView = self.view
+        popoverMenuViewController?.sourceRect = CGRect(
+            x: CGRectGetMidX(self.view.frame),
+            y: CGRectGetMidY(self.view.frame),
+            width: 1,
+            height: 1)
+        presentViewController(
+            quantityCtrl,
+            animated: true,
+            completion: nil)
+        
+    }
+    
     internal func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
         {
          return 182.0
@@ -249,5 +285,8 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
     self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
     b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
   }
-
+    func adaptivePresentationStyleForPresentationController(
+        controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .None
+    }
 }

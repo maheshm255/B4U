@@ -44,11 +44,22 @@ class b4u_IntermediateViewCtrl: UIViewController {
         self.callInterMediateApi()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.cleanSelection()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func cleanSelection()
+    {
+        bro4u_DataManager.sharedInstance.selectedDate = nil
+        bro4u_DataManager.sharedInstance.selectedTimeSlot = nil
+        bro4u_DataManager.sharedInstance.userSelectedFilterParams = nil
+    }
     @IBAction func tAndCBtnClicked(sender: AnyObject)
     {
         // TO DO

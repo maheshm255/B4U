@@ -37,6 +37,13 @@ class b4u_CalendarViewCtrl: UIViewController ,FSCalendarDataSource , FSCalendarD
         fsCalendar.delegate = self
         fsCalendar.dataSource = self
         
+        if let aSelectedDate = self.selectedDate
+        {
+            fsCalendar.selectedDate = aSelectedDate
+            
+            self.calendar(fsCalendar, didSelectDate:selectedDate)
+        }
+        
         fsCalendar.flow = .Horizontal
         FSCalendar.appearance().setHeaderDateFormat("MMM-yyyy")
         
