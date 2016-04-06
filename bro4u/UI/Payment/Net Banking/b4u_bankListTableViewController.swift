@@ -10,7 +10,7 @@ import UIKit
 
 protocol bankSelectedDelegate{
     
-    func didSelectBank(bankName:String)
+    func didSelectBank(bankDetail:b4u_BankDetail)
     
 }
 
@@ -18,6 +18,7 @@ class b4u_bankListTableViewController: UITableViewController {
 
     var delegate:bankSelectedDelegate?
 
+    var bankList:[b4u_BankDetail] = Array()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,8 +27,29 @@ class b4u_bankListTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        self.readPlist()
+
     }
 
+    
+    func readPlist(){
+        
+        let path = NSBundle.mainBundle().pathForResource("BankListAndCodes", ofType: "plist")
+        
+        let bankDataList =    NSArray(contentsOfFile:path!) as! [Dictionary<String ,String>]
+        
+        
+        for (_ ,dataDict) in bankDataList.enumerate()
+        {
+            let bankObj = b4u_BankDetail(bankDetails:dataDict)
+            
+            self.bankList.append(bankObj)
+        }
+    }
+
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -42,19 +64,26 @@ class b4u_bankListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.bankList.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
         // Configure the cell...
-
+        let bankObj = self.bankList[indexPath.row]
+        
+        cell.textLabel?.text = bankObj.bankName!
         return cell
     }
-    */
+ 
 
+    
+    override  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        delegate?.didSelectBank(self.bankList[indexPath.row])
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

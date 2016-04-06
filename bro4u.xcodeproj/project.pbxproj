@@ -172,7 +172,7 @@
 		B7268EAD1CB41D51004C31A1 /* PayUMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7268EAC1CB41D51004C31A1 /* PayUMoneyViewController.m */; };
 		B794CFE51CB5657B00CBABAA /* BankListAndCodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = B794CFE41CB5657B00CBABAA /* BankListAndCodes.plist */; };
 		B794CFE91CB56FBC00CBABAA /* b4u_bankListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794CFE81CB56FBC00CBABAA /* b4u_bankListTableViewController.swift */; };
-		B794CFEB1CB5713600CBABAA /* b4u_BankList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794CFEA1CB5713600CBABAA /* b4u_BankList.swift */; };
+		B794CFEB1CB5713600CBABAA /* b4u_BankDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794CFEA1CB5713600CBABAA /* b4u_BankDetail.swift */; };
 		B79D486D1CB4CA8E0075164C /* amex.png in Resources */ = {isa = PBXBuildFile; fileRef = B79D48101CB4CA8D0075164C /* amex.png */; };
 		B79D486E1CB4CA8E0075164C /* amex_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B79D48111CB4CA8D0075164C /* amex_logo.png */; };
 		B79D486F1CB4CA8E0075164C /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = B79D48121CB4CA8D0075164C /* arrow.png */; };
@@ -483,7 +483,7 @@
 		B7268EAC1CB41D51004C31A1 /* PayUMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayUMoneyViewController.m; sourceTree = "<group>"; };
 		B794CFE41CB5657B00CBABAA /* BankListAndCodes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BankListAndCodes.plist; sourceTree = "<group>"; };
 		B794CFE81CB56FBC00CBABAA /* b4u_bankListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_bankListTableViewController.swift; sourceTree = "<group>"; };
-		B794CFEA1CB5713600CBABAA /* b4u_BankList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_BankList.swift; sourceTree = "<group>"; };
+		B794CFEA1CB5713600CBABAA /* b4u_BankDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_BankDetail.swift; sourceTree = "<group>"; };
 		B79D48101CB4CA8D0075164C /* amex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amex.png; sourceTree = "<group>"; };
 		B79D48111CB4CA8D0075164C /* amex_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amex_logo.png; sourceTree = "<group>"; };
 		B79D48121CB4CA8D0075164C /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
@@ -1156,7 +1156,7 @@
 			children = (
 				B33666811CA950B2007FFD50 /* b4u_NetBankingViewController.swift */,
 				B794CFE81CB56FBC00CBABAA /* b4u_bankListTableViewController.swift */,
-				B794CFEA1CB5713600CBABAA /* b4u_BankList.swift */,
+				B794CFEA1CB5713600CBABAA /* b4u_BankDetail.swift */,
 				B794CFE41CB5657B00CBABAA /* BankListAndCodes.plist */,
 			);
 			path = "Net Banking";
@@ -1819,7 +1819,7 @@
 				042700251C8B37B6008440CC /* FSCalendarPage.m in Sources */,
 				65B18A811C70BB28000EDD00 /* AFURLConnectionOperation.m in Sources */,
 				65271E521C828FC30022C888 /* b4u-CategoryHeaderView.swift in Sources */,
-				B794CFEB1CB5713600CBABAA /* b4u_BankList.swift in Sources */,
+				B794CFEB1CB5713600CBABAA /* b4u_BankDetail.swift in Sources */,
 				B71C28591C8C0C0C00873B5C /* MyWalletViewController.swift in Sources */,
 				65B18A891C70BB28000EDD00 /* UIAlertView+AFNetworking.m in Sources */,
 				B71C285D1C8C0C0C00873B5C /* OfferZoneViewController.swift in Sources */,
