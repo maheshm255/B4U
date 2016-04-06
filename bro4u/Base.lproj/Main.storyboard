@@ -6590,7 +6590,7 @@
         <!--4u Net Banking View Controller-->
         <scene sceneID="MsV-Wu-o3g">
             <objects>
-                <viewController storyboardIdentifier="NetBankingViewControllerID" id="WBi-Hg-16I" customClass="b4u_NetBankingViewController" customModule="bro4u" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NetBankingViewControllerID" id="WBi-Hg-16I" customClass="b4u_NetBankingViewController" customModule="bro4u" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Goi-SE-zD1"/>
                         <viewControllerLayoutGuide type="bottom" id="tzs-qa-oas"/>
@@ -6818,10 +6818,10 @@
             </objects>
             <point key="canvasLocation" x="5366" y="8646"/>
         </scene>
-        <!--View Controller-->
+        <!--PayUUI PaymentUI Web View Controller-->
         <scene sceneID="nP1-bR-8Qd">
             <objects>
-                <viewController storyboardIdentifier="PayUUIPaymentUIWebViewControllerID" id="FgD-Vk-MKk" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PayUUIPaymentUIWebViewControllerID" id="FgD-Vk-MKk" customClass="PayUUIPaymentUIWebViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RyA-4J-zaL"/>
                         <viewControllerLayoutGuide type="bottom" id="4ml-xc-sFr"/>
@@ -6850,6 +6850,10 @@
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="62r-oV-eKv" id="h9C-AX-BWe"/>
+                        <outlet property="paymentWebView" destination="oV4-Bx-dyP" id="tJc-3L-POD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EHm-XP-YMF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

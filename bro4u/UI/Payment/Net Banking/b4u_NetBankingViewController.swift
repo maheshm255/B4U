@@ -17,8 +17,8 @@ enum selectBank : Int{
 
 class b4u_NetBankingViewController: UIViewController {
 
+    var payUMoneyCntrl:UIViewController?
 
-    var payUMoneyCntrl:PayUMoneyViewController?
     var saltKey:String?
     
     @IBOutlet weak var iciciBtn: UIButton!
@@ -65,9 +65,7 @@ class b4u_NetBankingViewController: UIViewController {
     func startPayment(){
         
         self.payUMoneyCntrl = PayUMoneyViewController()
-
-        
-        
+        self.navigationController?.pushViewController(self.payUMoneyCntrl!, animated: true)
 
     }
     

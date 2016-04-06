@@ -63,7 +63,9 @@
         self.createRequest = [PayUCreateRequest new];
         [self.createRequest createRequestWithPaymentParam:self.paymentParamForPassing forPaymentType:PAYMENT_PG_NET_BANKING withCompletionBlock:^(NSMutableURLRequest *request, NSString *postParam, NSString *error) {
             if (error == nil) {
-                PayUUIPaymentUIWebViewController *webView = [self.storyboard instantiateViewControllerWithIdentifier:@"PayUUIPaymentUIWebViewControllerID"];
+                UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+
+                PayUUIPaymentUIWebViewController *webView = [storyboard instantiateViewControllerWithIdentifier:@"PayUUIPaymentUIWebViewControllerID"];
                 webView.paymentRequest = request;
                 webView.paymentParam = self.paymentParamForPassing;
                 [self.navigationController pushViewController:webView animated:true];
