@@ -94,7 +94,7 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
             let bankListTblCtrl:b4u_bankListTableViewController = storyboard.instantiateViewControllerWithIdentifier("bankListTableViewControllerID") as! b4u_bankListTableViewController
             
             bankListTblCtrl.modalPresentationStyle = .Popover
-            bankListTblCtrl.preferredContentSize = CGSizeMake(150, 300)
+            bankListTblCtrl.preferredContentSize = CGSizeMake(300, 300)
             
             bankListTblCtrl.delegate = self
             

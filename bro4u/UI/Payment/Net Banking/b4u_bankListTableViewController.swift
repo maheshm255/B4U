@@ -69,7 +69,7 @@ class b4u_bankListTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("bankListTableViewCntrlID", forIndexPath: indexPath)
 
         // Configure the cell...
         let bankObj = self.bankList[indexPath.row]
