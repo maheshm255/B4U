@@ -29,15 +29,21 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
 
         // Do any additional setup after loading the view.
         
-        self.creditCardNoTextFld.text = "5123456789012346"
-        self.cvvTextFld.text = "123"
-        self.expiryDateBtn.setTitle("12/2019", forState: .Normal)
+//        self.creditCardNoTextFld.text = "5123456789012346"
+//        self.cvvTextFld.text = "123"
+//        self.expiryDateBtn.setTitle("12/2019", forState: .Normal)
         creditCardNoTextFld.keyboardType = .NumberPad
         cvvTextFld.keyboardType = .NumberPad
 
         creditCardNoTextFld.layer.borderWidth = 1.0;
+        creditCardNoTextFld.layer.borderColor = UIColor.lightGrayColor().CGColor
         cvvTextFld.layer.borderWidth = 1.0;
+        cvvTextFld.layer.borderColor = UIColor.lightGrayColor().CGColor
 
+        expiryDateBtn.layer.borderWidth = 1.0
+        expiryDateBtn.layer.borderColor = UIColor.lightGrayColor().CGColor
+
+        
         self.creditCardNoTextFld.delegate = self
         self.cvvTextFld.delegate = self
 
