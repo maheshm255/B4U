@@ -83,6 +83,7 @@ class b4u_bankListTableViewController: UITableViewController {
     override  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         delegate?.didSelectBank(self.bankList[indexPath.row])
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     /*
     // Override to support conditional editing of the table view.

@@ -74,6 +74,7 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -104,7 +105,7 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
             popoverMenuViewController?.sourceView = btn
             popoverMenuViewController?.sourceRect = CGRect(
                 x: CGRectGetMidX(btn.bounds),
-                y: CGRectGetMidY(btn.frame),
+                y: CGRectGetMidY(btn.bounds),
                 width: 1,
                 height: 1)
             presentViewController(
@@ -118,6 +119,8 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
     //MARKS: timeSlot selecteion delegate
     func didSelectBank(bankDetail:b4u_BankDetail)
     {
+        self.selectBankBtn!.setTitle(bankDetail.bankName, forState:UIControlState.Normal)
+        selectedBankCode = bankDetail.bankCode
         
     }
     
@@ -135,5 +138,8 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+
 
 }
