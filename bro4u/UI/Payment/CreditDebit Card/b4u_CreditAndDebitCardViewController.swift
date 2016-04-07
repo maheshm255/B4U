@@ -145,10 +145,20 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
         guard let text = textField.text else { return true }
         
         let newLength = text.characters.count + string.characters.count - range.length
-        if (newLength == 5 || newLength == 10 || newLength == 15) && newLength > text.length{
-            textField.text = textField.text?.stringByAppendingString("-")
+        if textField == self.creditCardNoTextFld{
+        
+            if (newLength == 5 || newLength == 10 || newLength == 15) && newLength > text.length{
+                textField.text = textField.text?.stringByAppendingString("-")
+            }
+            return newLength <= 19 // Bool
+
         }
-        return newLength <= 19 // Bool
+        else if textField == self.cvvTextFld{
+            return newLength <= 3 // Bool
+
+        }
+        
+        return true
     }
 
     
