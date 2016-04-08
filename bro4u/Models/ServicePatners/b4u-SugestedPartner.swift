@@ -39,7 +39,7 @@ class b4u_SugestedPartner: NSObject {
     var priorDays:String?
     var profilePic:String?
     var quantityActive:String?
-    var reviewCount:String?
+    var reviewCount:NSNumber?
     var selection:[String]?
     var sequence:String?
     var take:String?
@@ -54,7 +54,8 @@ class b4u_SugestedPartner: NSObject {
     var wishId:String?
     var workingHours:String?
     
-
+    var chargeTitle:String?
+    
     init(sugestedPartnerDetailsDict:Dictionary<String ,AnyObject>) {
         
         aboutVendor = sugestedPartnerDetailsDict["about_vendor"] as? String
@@ -87,7 +88,7 @@ class b4u_SugestedPartner: NSObject {
         priorDays = sugestedPartnerDetailsDict["prior_days"] as? String
         profilePic = sugestedPartnerDetailsDict["profile_pic"] as? String
         quantityActive = sugestedPartnerDetailsDict["quantity_active"] as? String
-        reviewCount = sugestedPartnerDetailsDict["review_count"] as? String
+        reviewCount = sugestedPartnerDetailsDict["review_count"] as? NSNumber
       //  selection = sugestedPartnerDetailsDict["banner"] as? String
         sequence = sugestedPartnerDetailsDict["sequence"] as? String
         take = sugestedPartnerDetailsDict["take"] as? String
@@ -95,6 +96,9 @@ class b4u_SugestedPartner: NSObject {
         vendorId = sugestedPartnerDetailsDict["vendor_id"] as? String
         vendorMaxOfferAmount = sugestedPartnerDetailsDict["vendor_max_offer_amount"] as? String
         vendorName = sugestedPartnerDetailsDict["vendor_name"] as? String
+        
+        chargeTitle = sugestedPartnerDetailsDict["charges_title"] as? String
+        
 //        banner = sugestedPartnerDetailsDict["banner"] as? String
 //        banner = sugestedPartnerDetailsDict["banner"] as? String
 //        banner = sugestedPartnerDetailsDict["banner"] as? String

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate{
+class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate ,quantityDelegate,vendorSortDelegate{
 
     @IBOutlet weak var btnLoadMore: UIButton!
     @IBOutlet weak var viewLoadMore: UIView!
@@ -36,6 +36,12 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         self.checkLoadMoreCondition()
       b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
 
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        bro4u_DataManager.sharedInstance.selectedQualtity = nil
+        bro4u_DataManager.sharedInstance.selectedSuggestedPatner = nil
     }
 
   
@@ -140,10 +146,35 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         cell.imgViewProfilePic.downloadedFrom(link:aPatner.profilePic!, contentMode:UIViewContentMode.ScaleAspectFit)
         
         cell.lblVendorName.text = aPatner.vendorName
-        cell.lblDiscount.text = aPatner.offerPrice
-        cell.lblActualPrice.text = aPatner.custPrice
-        cell.lblVendorReiviews.text = aPatner.reviewCount
+      
+        cell.lblVendorReiviews.text = "\(aPatner.reviewCount!) Reviews"
         cell.lblVendorDistance.text = "\(aPatner.distance!) Kms away"
+        
+        if Double(aPatner.offerPrice!) > 0  && Double(aPatner.price!) > 0
+        {
+            cell.lblDiscount.text = "Rs." + aPatner.offerPrice!
+            
+//            let shadow : NSShadow = NSShadow()
+//            shadow.shadowOffset = CGSizeMake(-2.0, -2.0)
+            
+            let attributes = [
+                NSUnderlineStyleAttributeName : 1,
+                NSForegroundColorAttributeName : UIColor(red:178.0/255, green: 178.0/255, blue: 178.0/255, alpha: 1.0),
+                NSStrokeWidthAttributeName : 3.0,
+                //NSShadowAttributeName : shadow,
+                NSStrikethroughStyleAttributeName:1
+            ]
+            
+            let price = NSAttributedString(string:"Rs. \(aPatner.price!)", attributes: attributes) //1
+            
+        
+            cell.lblActualPrice.attributedText = price
+            
+        }else
+        {
+            cell.lblActualPrice.text = ""
+            cell.lblDiscount.text = "Rs." + aPatner.offerPrice!
+        }
         
 //        cell.contentView.layer.borderColor = UIColor.grayColor().CGColor
 //        //cell.contentView.layer.borderWidth = 1.0
@@ -204,7 +235,7 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         bro4u_DataManager.sharedInstance.selectedSuggestedPatner = self.allPatners[btn.tag]
         
         
-        if bro4u_DataManager.sharedInstance.selectedSuggestedPatner?.quantityActive == "yes"
+        if bro4u_DataManager.sharedInstance.selectedQualtity == nil &&  bro4u_DataManager.sharedInstance.selectedSuggestedPatner?.quantityActive == "yes"
         {
           self.showQuantityRequired()
         }else
@@ -237,7 +268,7 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         
         quantityCtrl.modalPresentationStyle = .Popover
         quantityCtrl.preferredContentSize = CGSizeMake(300, 400)
-        // quickBookViewCtrl.delegate = self
+        quantityCtrl.delegate = self
         
         let popoverMenuViewController = quantityCtrl.popoverPresentationController
         popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
@@ -245,7 +276,7 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         popoverMenuViewController?.sourceView = self.view
         popoverMenuViewController?.sourceRect = CGRect(
             x: CGRectGetMidX(self.view.frame),
-            y: CGRectGetMidY(self.view.frame),
+            y: CGRectGetMidY(self.view.bounds),
             width: 1,
             height: 1)
         presentViewController(
@@ -253,6 +284,11 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
             animated: true,
             completion: nil)
         
+    }
+    
+    func selectedQuanitty(quantity:String?)
+    {
+        bro4u_DataManager.sharedInstance.selectedQualtity = quantity
     }
     
     internal func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
@@ -289,4 +325,40 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         controller: UIPresentationController) -> UIModalPresentationStyle {
         return .None
     }
+    @IBAction func filterButtonAction(sender: AnyObject)
+    {
+        self.showSortOptions()
+    }
+    
+    func showSortOptions()
+    {
+        let storyboard : UIStoryboard = self.storyboard!
+        
+        let sortController:b4u_VendorSortTblViewController = storyboard.instantiateViewControllerWithIdentifier("vendorSortViewController") as! b4u_VendorSortTblViewController
+        
+        sortController.modalPresentationStyle = .Popover
+        sortController.preferredContentSize = CGSizeMake(300, 230)
+         sortController.delegate = self
+        
+        let popoverMenuViewController = sortController.popoverPresentationController
+        popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
+        popoverMenuViewController?.delegate = self
+        popoverMenuViewController?.sourceView = self.view
+        popoverMenuViewController?.sourceRect = CGRect(
+            x: CGRectGetMidX(self.view.frame),
+            y: CGRectGetMidY(self.view.bounds),
+            width: 1,
+            height: 1)
+        presentViewController(
+            sortController,
+            animated: true,
+            completion: nil)
+        
+    }
+    
+    func sortUsinOption(aSortOption:sortOpbion)
+    {
+        print(aSortOption)
+    }
+
 }

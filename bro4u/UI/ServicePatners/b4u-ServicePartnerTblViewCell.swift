@@ -9,7 +9,9 @@
 import UIKit
 
 class b4u_ServicePartnerTblViewCell: UITableViewCell {
+    @IBOutlet weak var topConstraintChargesLbl: NSLayoutConstraint!
 
+    @IBOutlet weak var leadingConstraingDiscounLbl: NSLayoutConstraint!
     @IBOutlet weak var btnViewDetails: UIButton!
     @IBOutlet weak var btnViewProfile: UIButton!
     @IBOutlet weak var btnShare: UIButton!

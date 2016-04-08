@@ -8,8 +8,19 @@
 
 import UIKit
 
-class b4u_quantityViewController: UIViewController {
+protocol quantityDelegate: NSObjectProtocol {
+    func selectedQuanitty(quantity:String?)
+}
 
+
+class b4u_quantityViewController: UIViewController , UIPickerViewDelegate ,UIPickerViewDataSource{
+
+    
+    let quantitiyData = ["1","2","3","4","5"]
+    
+    var selectedQuantity:String?
+    var delegate:quantityDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +33,7 @@ class b4u_quantityViewController: UIViewController {
     }
     
 
+    @IBOutlet weak var pickerView: UIPickerView!
     /*
     // MARK: - Navigation
 
@@ -31,5 +43,35 @@ class b4u_quantityViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func cancelButtonAction(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion:nil)
+    }
 
+    @IBAction func setButtonAction(sender: AnyObject) {
+        
+        delegate?.selectedQuanitty(self.selectedQuantity)
+        self.dismissViewControllerAnimated(true, completion:nil)
+    }
+    
+    
+    // returns the number of 'columns' to display.
+    internal func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int
+    {
+        return 1
+    }
+    // returns the # of rows in each component..
+    internal func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+        return 5
+    }
+    
+     internal func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+    {
+        return quantitiyData[row]
+    }
+  
+     internal func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        self.selectedQuantity = self.quantitiyData[row]
+    }
 }

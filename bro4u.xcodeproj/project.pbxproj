@@ -22,6 +22,7 @@
 		044076161CB17B4400B7C2E7 /* b4u-VendorProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044076151CB17B4400B7C2E7 /* b4u-VendorProfileModel.swift */; };
 		044076181CB17B5C00B7C2E7 /* b4u-VendorReviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044076171CB17B5C00B7C2E7 /* b4u-VendorReviews.swift */; };
 		045A49521CAE754800BF7381 /* b4u-VendorProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A49511CAE754800BF7381 /* b4u-VendorProfileViewController.swift */; };
+		049CE9CC1CB62E3800A583A2 /* b4u_VendorSortTblViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CE9CB1CB62E3800A583A2 /* b4u_VendorSortTblViewController.swift */; };
 		04E07A561C900476009AD223 /* b4u-LocationSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E07A551C900476009AD223 /* b4u-LocationSearchModel.swift */; };
 		04E07A591C901961009AD223 /* b4u-LoginViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E07A581C901961009AD223 /* b4u-LoginViewCtrl.swift */; };
 		04E0C41B1C8BF6C4006450D1 /* CustomAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0C41A1C8BF6C4006450D1 /* CustomAnnotationView.xib */; };
@@ -280,6 +281,7 @@
 		044076151CB17B4400B7C2E7 /* b4u-VendorProfileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-VendorProfileModel.swift"; sourceTree = "<group>"; };
 		044076171CB17B5C00B7C2E7 /* b4u-VendorReviews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-VendorReviews.swift"; sourceTree = "<group>"; };
 		045A49511CAE754800BF7381 /* b4u-VendorProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-VendorProfileViewController.swift"; sourceTree = "<group>"; };
+		049CE9CB1CB62E3800A583A2 /* b4u_VendorSortTblViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_VendorSortTblViewController.swift; sourceTree = "<group>"; };
 		04E07A551C900476009AD223 /* b4u-LocationSearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-LocationSearchModel.swift"; sourceTree = "<group>"; };
 		04E07A581C901961009AD223 /* b4u-LoginViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-LoginViewCtrl.swift"; sourceTree = "<group>"; };
 		04E0C41A1C8BF6C4006450D1 /* CustomAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAnnotationView.xib; sourceTree = "<group>"; };
@@ -1129,6 +1131,7 @@
 				65FF8D641C7E9222007588D0 /* b4u-ServicePatnerController.swift */,
 				65264F841C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift */,
 				0410F6561CB55D9D00296A3F /* b4u-quantityViewController.swift */,
+				049CE9CB1CB62E3800A583A2 /* b4u_VendorSortTblViewController.swift */,
 			);
 			path = ServicePatners;
 			sourceTree = "<group>";
@@ -1912,6 +1915,7 @@
 				65B49DBE1C7244FE0083942D /* b4u-SearchResult.swift in Sources */,
 				B30E44E91CAE583E00552A7A /* b4u_ReviewServiceViewController.swift in Sources */,
 				65B18A851C70BB28000EDD00 /* KeychainWrapper.m in Sources */,
+				049CE9CC1CB62E3800A583A2 /* b4u_VendorSortTblViewController.swift in Sources */,
 				04FC933D1CA10EAF002F90AC /* b4u-QuickBookOrderCtrl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
