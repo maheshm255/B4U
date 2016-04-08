@@ -10,6 +10,26 @@ import UIKit
 
 class b4u_OrderConfirmedCODViewController: UIViewController {
 
+    
+    @IBOutlet weak var imgViewServiceProvider: UIImageView!
+    @IBOutlet weak var lblServiceProvide: UILabel!
+    @IBOutlet weak var lblService: UILabel!
+    @IBOutlet weak var lblServiceDate: UILabel!
+    @IBOutlet weak var lblTimeSlot: UILabel!
+    @IBOutlet weak var lblOrderId: UILabel!
+    @IBOutlet weak var lblServiceStatus: UILabel!
+    @IBOutlet weak var lblAmount: UILabel!
+    @IBOutlet weak var lblOrderedAt: UILabel!
+    @IBOutlet weak var lblHeasder: UILabel!
+    @IBOutlet weak var lblSubheader: UILabel!
+    @IBOutlet weak var lblOnlineAdvantage1: UILabel!
+    @IBOutlet weak var lblOnlineAdvantage2: UILabel!
+    @IBOutlet weak var lblOnlineAdvantage3: UILabel!
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,4 +52,10 @@ class b4u_OrderConfirmedCODViewController: UIViewController {
     }
     */
 
+    @IBAction func actionOngoingOrder(sender: AnyObject) {
+    }
+
+    @IBAction func actioonContinueShopping(sender: AnyObject) {
+    }
+    
 }
