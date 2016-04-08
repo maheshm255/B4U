@@ -156,7 +156,6 @@ class b4u_CODViewController: UIViewController {
             thanksScreen.lblOrderId.text  =  "#\(bro4u_DataManager.sharedInstance.orderId)"
             thanksScreen.lblServiceProvide.text = bro4u_DataManager.sharedInstance.selectedSuggestedPatner?.vendorName
             thanksScreen.lblService.text = bro4u_DataManager.sharedInstance.interMediateScreenDataObj?.catName
-            
 
             navigationController?.pushViewController(thanksScreen, animated: true)
         }else

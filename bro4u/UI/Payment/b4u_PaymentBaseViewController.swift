@@ -332,12 +332,12 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
         self.performSegueWithIdentifier("netBankingCtrl", sender:nil)
         
     case paymentOption.kCOD :
-        paymentViewController = b4u_CODViewController()
+        self.performSegueWithIdentifier("CODViewControllerID", sender:nil)
         
         
     }
 
-    self.navigationController?.pushViewController(paymentViewController!, animated: true)
+//    self.navigationController?.pushViewController(paymentViewController!, animated: true)
     
   }
   
