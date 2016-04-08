@@ -105,10 +105,53 @@
     NSLog(@"Inside Dealloc of webview");
 }
 
+- (void)didMoveToParentViewController:(UIViewController *)parent{
+    if (parent == NULL) {
+        NSLog(@"Back Pressed");
+    }
+}
+
+
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:true];
+    
+    [self clickedBackButton];
     NSLog(@"Inside viewWillDisappear");
+    
+    
 }
+
+- (void)clickedBackButton{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Cancel Transaction"
+                                  message:@"Do you really want to cancel the transaction"
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* okButton = [UIAlertAction
+                                actionWithTitle:@"Ok"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action)
+                                {
+                                    //Handel your yes please button action here
+                                    [self dismissViewControllerAnimated:YES completion:nil];
+
+                                    
+                                }];
+    UIAlertAction* cancelButton = [UIAlertAction
+                               actionWithTitle:@"Cancel"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action)
+                               {
+                                   //Handel no, thanks button
+                                   [alert dismissViewControllerAnimated:YES completion:nil];
+                               }];
+    
+    [alert addAction:okButton];
+    [alert addAction:cancelButton];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 
 -(void)PayUSuccessResponse:(id)response{
     NSLog(@"%@",response);

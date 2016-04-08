@@ -74,6 +74,20 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        iciciBtn.layer.borderWidth = 1.0
+        iciciBtn.layer.borderColor = UIColor.lightGrayColor().CGColor
+        hdfcBtn.layer.borderWidth = 1.0
+        hdfcBtn.layer.borderColor = UIColor.lightGrayColor().CGColor
+        sbiBtn.layer.borderWidth = 1.0
+        sbiBtn.layer.borderColor = UIColor.lightGrayColor().CGColor
+        axisBtn.layer.borderWidth = 1.0
+        axisBtn.layer.borderColor = UIColor.lightGrayColor().CGColor
+
+        
+        selectBankBtn.layer.borderWidth = 1.0
+        selectBankBtn.layer.borderColor = UIColor.orangeColor().CGColor
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -94,7 +108,7 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
             let bankListTblCtrl:b4u_bankListTableViewController = storyboard.instantiateViewControllerWithIdentifier("bankListTableViewControllerID") as! b4u_bankListTableViewController
             
             bankListTblCtrl.modalPresentationStyle = .Popover
-            bankListTblCtrl.preferredContentSize = CGSizeMake(150, 300)
+            bankListTblCtrl.preferredContentSize = CGSizeMake(300, 300)
             
             bankListTblCtrl.delegate = self
             
@@ -104,7 +118,7 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
             popoverMenuViewController?.sourceView = btn
             popoverMenuViewController?.sourceRect = CGRect(
                 x: CGRectGetMidX(btn.bounds),
-                y: CGRectGetMidY(btn.frame),
+                y: CGRectGetMidY(btn.bounds),
                 width: 1,
                 height: 1)
             presentViewController(
@@ -118,6 +132,8 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
     //MARKS: timeSlot selecteion delegate
     func didSelectBank(bankDetail:b4u_BankDetail)
     {
+        self.selectBankBtn!.setTitle(bankDetail.bankName, forState:UIControlState.Normal)
+        selectedBankCode = bankDetail.bankCode
         
     }
     
@@ -135,5 +151,8 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+
 
 }
