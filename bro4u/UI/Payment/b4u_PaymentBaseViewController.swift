@@ -246,15 +246,29 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     
     
   }
-  /*
+  
   // MARK: - Navigation
   
   // In a storyboard-based application, you will often want to do a little preparation before navigation
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
   // Get the new view controller using segue.destinationViewController.
   // Pass the selected object to the new view controller.
+    
+    
+    if segue.identifier == "CreditAndDebitCardViewControllerID"
+    {
+        let  paymentViewController:b4u_CreditAndDebitCardViewController = segue.destinationViewController as! b4u_CreditAndDebitCardViewController
+        
+        paymentViewController.paymentType = PAYMENT_PG_CCDC
+    }
+    else if segue.identifier == "netBankingCtrl"
+        {
+            let  paymentViewController:b4u_NetBankingViewController = segue.destinationViewController as! b4u_NetBankingViewController
+            
+            paymentViewController.paymentType = PAYMENT_PG_NET_BANKING
+    }
   }
-  */
+
   
   //MARKS: Delivery Delegate
   
@@ -303,32 +317,24 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     
     var paymentViewController:UIViewController?
     
-
+    
     switch gateWayOpton {
-      
-    case paymentOption.kPaytm :
-      
-      paymentViewController = PaytmViewController()
-      
-    case paymentOption.kCCDC :
-      
-        paymentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("CreditAndDebitCardViewControllerID") as! b4u_CreditAndDebitCardViewController
         
-        var payUPaymentTypeCntrl:b4u_CreditAndDebitCardViewController?
-        payUPaymentTypeCntrl = b4u_CreditAndDebitCardViewController()
-        payUPaymentTypeCntrl!.paymentType = PAYMENT_PG_CCDC
-      
+    case paymentOption.kPaytm :
+        
+        paymentViewController = PaytmViewController()
+        
+    case paymentOption.kCCDC :
+        
+        self.performSegueWithIdentifier("creditCardViewController", sender:nil)
+        
     case paymentOption.kNetBanking :
-      paymentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NetBankingViewControllerID") as! b4u_NetBankingViewController
-      
-      var payUPaymentTypeCntrl:b4u_NetBankingViewController?
-      payUPaymentTypeCntrl = b4u_NetBankingViewController()
-      payUPaymentTypeCntrl!.paymentType = PAYMENT_PG_NET_BANKING
-
+        self.performSegueWithIdentifier("netBankingCtrl", sender:nil)
+        
     case paymentOption.kCOD :
-      paymentViewController = b4u_CODViewController()
-      
-      
+        paymentViewController = b4u_CODViewController()
+        
+        
     }
 
     self.navigationController?.pushViewController(paymentViewController!, animated: true)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate {
+class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate ,UINavigationBarDelegate{
 
     
     var payUMoneyCntrl:PayUMoneyViewController?
@@ -27,6 +27,8 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+      //  self.navigationController?.navigationBar.delegate = self
         // Do any additional setup after loading the view.
         
 //        self.creditCardNoTextFld.text = "5123456789012346"
@@ -168,4 +170,19 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
     }
 
     
+    override func willMoveToParentViewController(parent: UIViewController?) {
+        if parent == nil {
+            // Back btn Event handler
+        }
+    }
+    
+    
+    func navigationBar(navigationBar: UINavigationBar, shouldPopItem item: UINavigationItem) -> Bool // same as push methods
+    {
+        return true
+    }
+    func navigationBar(navigationBar: UINavigationBar, didPopItem item: UINavigationItem)
+    {
+        
+    }
 }
