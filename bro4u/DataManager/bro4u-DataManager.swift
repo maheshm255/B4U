@@ -44,6 +44,7 @@ class bro4u_DataManager: NSObject {
     
     var orderId:String?
 
+
     var vendorProfile:b4u_VendorProfileModel?
 
     var vendorDescriptinHtmlString:String?

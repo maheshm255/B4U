@@ -1931,6 +1931,7 @@
                         <outlet property="viewSegmentCtrl" destination="P9f-JD-O9v" id="Pd6-Qh-YAp"/>
                         <segue destination="9fE-h3-Ohy" kind="show" identifier="creditCardViewController" id="m1L-9d-gCP"/>
                         <segue destination="WBi-Hg-16I" kind="show" identifier="netBankingCtrl" id="L3E-Gk-YsJ"/>
+                        <segue destination="4z4-V0-tlB" kind="show" identifier="CODViewControllerID" id="7y7-1d-l93"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPj-4i-0ej" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4084,15 +4085,21 @@
                             <constraint firstItem="MCv-G3-Ieo" firstAttribute="leading" secondItem="9xh-Fu-xLl" secondAttribute="leading" constant="5" id="sy9-dR-dbL"/>
                             <constraint firstItem="LkQ-j8-A0q" firstAttribute="top" secondItem="6oT-rC-s1L" secondAttribute="bottom" constant="7" id="vCB-AX-XQj"/>
                             <constraint firstAttribute="trailing" secondItem="6oT-rC-s1L" secondAttribute="trailing" constant="5" id="wvT-dz-pG5"/>
-                            <constraint firstItem="nXf-SJ-4nT" firstAttribute="top" secondItem="LkQ-j8-A0q" secondAttribute="bottom" id="y23-6W-lqp"/>
+                            <constraint firstItem="nXf-SJ-4nT" firstAttribute="top" secondItem="LkQ-j8-A0q" secondAttribute="bottom" constant="-44" id="y23-6W-lqp"/>
                             <constraint firstAttribute="trailing" secondItem="BKA-es-TGN" secondAttribute="trailing" id="ySZ-Tr-oGJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0zX-W3-BFw"/>
+                    <connections>
+                        <outlet property="btnContinue" destination="LkQ-j8-A0q" id="ApR-nV-ZfR"/>
+                        <outlet property="downView" destination="6oT-rC-s1L" id="60e-eD-43K"/>
+                        <outlet property="middleView" destination="MCv-G3-Ieo" id="ViA-Un-TFY"/>
+                        <outlet property="topView" destination="BKA-es-TGN" id="tUw-E6-tCo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hyu-qh-eDa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7782" y="2828"/>
+            <point key="canvasLocation" x="7062" y="2820"/>
         </scene>
         <!--My Orders-->
         <scene sceneID="jQt-Yf-4cK">
@@ -8663,24 +8670,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yiZ-M7-0vQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4130" y="1623"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="f73-Yf-CQh">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YNi-mp-xTt" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nbW-v9-Xfc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="4z4-V0-tlB" kind="relationship" relationship="rootViewController" id="zwI-r1-cwP"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Yv5-ZJ-Y6i" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6970" y="2828"/>
         </scene>
     </scenes>
     <resources>
