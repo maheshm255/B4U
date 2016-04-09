@@ -211,7 +211,7 @@ let kShowServicePatnerApi1 = "index.php/catalog/browse/1"
 //http://v2.20160301.testing.bro4u.com/api_v2/index.php/catalog/view/1973?cake_egg_eggless=136&cake_weight=366&service_date=29-01-2016&service_time=5PM-7PM&unit_quantity=1
 
 //index.php/catalog/view/1973?cake_egg_eggless=136&cake_weight=366&service_date=29-01-2016&service_time=5PM-7PM&unit_quantity=1
-let kViewProfileIndex = "index.php/catalog/view/1973"
+let kViewProfileIndex = "index.php/catalog/view"
 
 
 //2.Item Description web view link

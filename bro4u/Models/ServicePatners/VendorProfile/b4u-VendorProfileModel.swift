@@ -36,6 +36,7 @@ class b4u_VendorProfileModel: NSObject {
     var inBusiness:String?
     var profileViews:String?
     
+    
     init(vendorDataDict:Dictionary<String ,AnyObject>)
     {
         
@@ -64,7 +65,7 @@ class b4u_VendorProfileModel: NSObject {
             
             aboutVendor = vendorDetaisDataDict!["about_vendor"] as? String
             averageRating = vendorDetaisDataDict!["average_rating"] as? String
-            averageRatingPercent = vendorDetaisDataDict!["average_rating_percent"] as? String
+            averageRatingPercent = "\(vendorDetaisDataDict!["average_rating_percent"] as! NSNumber)%"
             defaultBanner = vendorDetaisDataDict!["default_banner"] as? String
             profilePic = vendorDetaisDataDict!["profile_pic"] as? String
             
@@ -80,21 +81,24 @@ class b4u_VendorProfileModel: NSObject {
 
             if  let workingDaysArray:[Dictionary<String , AnyObject>] = vendorDetaisDataDict!["working_days"] as? [Dictionary<String , AnyObject>]
             {
-                let  workingDaysDict = workingDaysArray.first
-                workingFromDay = workingDaysDict!["from_day"] as? String
-                workingToDay = workingDaysDict!["to_day"] as? String
+                if let  workingDaysDict = workingDaysArray.first
+                {
+                    workingFromDay = workingDaysDict["from_day"] as? String
+                    workingToDay = workingDaysDict["to_day"] as? String
+                }
                 
             }
             
             if let workingHoursArray:[Dictionary<String , AnyObject>] = vendorDetaisDataDict!["working_hours"] as?
                 [Dictionary<String , AnyObject>]
             {
-                let  workingHoursDict = workingHoursArray.first
-
-                workingFromFromat = workingHoursDict!["from_format"] as? String
-                workingfromHours = workingHoursDict!["from_hour"] as? String
-                workingToFormat = workingHoursDict!["to_format"] as? String
-                workingToHours = workingHoursDict!["to_hour"] as? String
+                if let  workingHoursDict = workingHoursArray.first
+                {
+                    workingFromFromat = workingHoursDict["from_format"] as? String
+                    workingfromHours = workingHoursDict["from_hour"] as? String
+                    workingToFormat = workingHoursDict["to_format"] as? String
+                    workingToHours = workingHoursDict["to_hour"] as? String
+                }
             }
         }
     }

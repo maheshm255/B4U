@@ -19,7 +19,7 @@ class b4u_SugestedPartner: NSObject {
     var custPrice:String?
     var defaultBanner:String?
     var deliveryCharge:String?
-    var distance:NSNumber?
+    var distance:String?
     var imgAltText:String?
     var itemDesc:String?
     var itemId:String?
@@ -56,6 +56,9 @@ class b4u_SugestedPartner: NSObject {
     
     var chargeTitle:String?
     
+    
+    var sortingPrice:String?
+    
     init(sugestedPartnerDetailsDict:Dictionary<String ,AnyObject>) {
         
         aboutVendor = sugestedPartnerDetailsDict["about_vendor"] as? String
@@ -67,7 +70,7 @@ class b4u_SugestedPartner: NSObject {
         custPrice = sugestedPartnerDetailsDict["cust_price"] as? String
         defaultBanner = sugestedPartnerDetailsDict["default_banner"] as? String
         deliveryCharge = sugestedPartnerDetailsDict["delivery_charge"] as? String
-        distance = sugestedPartnerDetailsDict["distance"] as? NSNumber
+        distance = "\(sugestedPartnerDetailsDict["distance"] as! NSNumber)"
         itemDesc = sugestedPartnerDetailsDict["item_desc"] as? String
         imgAltText = sugestedPartnerDetailsDict["image_alt_text"] as? String
         itemDesc = sugestedPartnerDetailsDict["item_desc"] as? String
@@ -99,6 +102,16 @@ class b4u_SugestedPartner: NSObject {
         
         chargeTitle = sugestedPartnerDetailsDict["charges_title"] as? String
         
+        
+        if let aOfferPrice = self.offerPrice
+        {
+            self.sortingPrice = aOfferPrice
+            
+        }else if let aPrice = self.price
+        {
+            self.sortingPrice = aPrice
+
+        }
 //        banner = sugestedPartnerDetailsDict["banner"] as? String
 //        banner = sugestedPartnerDetailsDict["banner"] as? String
 //        banner = sugestedPartnerDetailsDict["banner"] as? String

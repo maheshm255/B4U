@@ -9,6 +9,7 @@
 import UIKit
 
 class b4u_ServicePartnerTblViewCell: UITableViewCell {
+    @IBOutlet weak var lblCharges: UILabel!
     @IBOutlet weak var topConstraintChargesLbl: NSLayoutConstraint!
 
     @IBOutlet weak var leadingConstraingDiscounLbl: NSLayoutConstraint!
@@ -28,6 +29,7 @@ class b4u_ServicePartnerTblViewCell: UITableViewCell {
     @IBOutlet weak var lblVendorFeedBack: UILabel!
     
     @IBOutlet weak var lblVendorReiviews: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

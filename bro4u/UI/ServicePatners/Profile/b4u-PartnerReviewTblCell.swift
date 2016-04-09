@@ -64,7 +64,7 @@ class b4u_PartnerReviewTblCell: UITableViewCell {
             self.imgStar2.image = UIImage(named:"starGrey")
             self.imgStar1.image = UIImage(named:"starGrey")
         default:
-            print("default review")
+            print("")
         }
     }
 }

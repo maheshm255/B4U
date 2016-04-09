@@ -114,13 +114,19 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
     
     func serviceAPIRequest(catId:String , nextPage:NSNumber)
     {
-        let catId = catId
+        
+       // let catId = catId
 
         let latitude =  "12.9718915"
         let longitude = "77.6411545"
         let nextPage = nextPage
         
-        let params = "/\(nextPage)?cat_id=\(catId)&latitude=\(latitude)&longitude=\(longitude)"
+//        let params = "/\(nextPage)?cat_id=\(catId)&latitude=\(latitude)&longitude=\(longitude)"
+        
+        let params = "/\(nextPage)\(bro4u_DataManager.sharedInstance.userSelectedFilterParams!)&latitude=\(latitude)&longitude=\(longitude)&service_date=\(bro4u_DataManager.sharedInstance.selectedDate!)&service_time=\(bro4u_DataManager.sharedInstance.selectedTimeSlot!)"
+
+        
+        
         b4u_WebApiCallManager.sharedInstance.getApiCall(kShowServicePatnerApi, params:params, result:{(resultObject) -> Void in
             
             self.getAllServicePatners()
@@ -150,32 +156,47 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         cell.lblVendorReiviews.text = "\(aPatner.reviewCount!) Reviews"
         cell.lblVendorDistance.text = "\(aPatner.distance!) Kms away"
         
-        if Double(aPatner.offerPrice!) > 0  && Double(aPatner.price!) > 0
-        {
-            cell.lblDiscount.text = "Rs." + aPatner.offerPrice!
-            
-//            let shadow : NSShadow = NSShadow()
-//            shadow.shadowOffset = CGSizeMake(-2.0, -2.0)
-            
-            let attributes = [
-                NSUnderlineStyleAttributeName : 1,
-                NSForegroundColorAttributeName : UIColor(red:178.0/255, green: 178.0/255, blue: 178.0/255, alpha: 1.0),
-                NSStrokeWidthAttributeName : 3.0,
-                //NSShadowAttributeName : shadow,
-                NSStrikethroughStyleAttributeName:1
-            ]
-            
-            let price = NSAttributedString(string:"Rs. \(aPatner.price!)", attributes: attributes) //1
-            
         
-            cell.lblActualPrice.attributedText = price
+        if let offerPreice = aPatner.offerPrice , let price = aPatner.price
+        {
+            if Double(offerPreice) > 0  && Double(price) > 0
+            {
+                cell.lblDiscount.text = "Rs." + aPatner.offerPrice!
+                
+                //            let shadow : NSShadow = NSShadow()
+                //            shadow.shadowOffset = CGSizeMake(-2.0, -2.0)
+                
+                let attributes = [
+                    NSUnderlineStyleAttributeName : 1,
+                    NSForegroundColorAttributeName : UIColor(red:178.0/255, green: 178.0/255, blue: 178.0/255, alpha: 1.0),
+                    NSStrokeWidthAttributeName : 3.0,
+                    //NSShadowAttributeName : shadow,
+                    NSStrikethroughStyleAttributeName:1
+                ]
+                
+                let price = NSAttributedString(string:"Rs. \(aPatner.price!)", attributes: attributes) //1
+                
+                
+                cell.lblActualPrice.attributedText = price
+                
+                cell.leadingConstraingDiscounLbl.constant = 10
+                
+            }else
+            {
+                cell.lblActualPrice.text = ""
+                
+                cell.leadingConstraingDiscounLbl.constant = 0
+                cell.lblDiscount.text = "Rs." + aPatner.offerPrice!
+            }
             
         }else
         {
             cell.lblActualPrice.text = ""
+            
+            cell.leadingConstraingDiscounLbl.constant = 0
             cell.lblDiscount.text = "Rs." + aPatner.offerPrice!
         }
-        
+     
 //        cell.contentView.layer.borderColor = UIColor.grayColor().CGColor
 //        //cell.contentView.layer.borderWidth = 1.0
 //        cell.contentView.layer.shadowColor = UIColor.blackColor().CGColor
@@ -199,9 +220,24 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         
         cell.btnViewProfile.addTarget(self, action:"btnViewProfileClicked:", forControlEvents:UIControlEvents.TouchUpInside)
 
-        cell.btnViewDetails.tag = indexPath.section
+        cell.btnViewProfile.tag = indexPath.section
 
+        cell.btnViewProfile.layer.cornerRadius = 2.0
+        cell.btnViewProfile.layer.borderColor = UIColor.lightGrayColor().CGColor
+
+        cell.btnViewProfile.layer.borderWidth = 1.0
         
+        if let chargesStr = aPatner.chargeTitle
+        {
+            cell.lblCharges.text = chargesStr
+            cell.topConstraintChargesLbl.constant = 10
+
+        }else
+        {
+            cell.lblCharges.text = ""
+            cell.topConstraintChargesLbl.constant = 0
+
+        }
         return cell
     }
     internal func numberOfSectionsInTableView(tableView: UITableView) -> Int
@@ -359,6 +395,42 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
     func sortUsinOption(aSortOption:sortOpbion)
     {
         print(aSortOption)
-    }
+        
+        switch aSortOption
+        {
+        case sortOpbion.kSortPriceHighToLow :
+            print("hight to low")
+            
+            self.allPatners.sortInPlace({ Double($0.sortingPrice!) > Double($1.sortingPrice! )})
+            self.tableViewServicePatner.reloadData()
+            
+        case sortOpbion.kSortPriceLowToHigh :
+            print("low to high")
+            
+            self.allPatners.sortInPlace({ Double($0.sortingPrice!) < Double($1.sortingPrice! )})
+            self.tableViewServicePatner.reloadData()
+            
+        case sortOpbion.kSortNearToFar :
+            print("Near to far")
+            
+            self.allPatners.sortInPlace({ Double($0.distance!) < Double($1.distance! )})
 
+            self.tableViewServicePatner.reloadData()
+            
+        case sortOpbion.kSortPopularity :
+         
+            self.allPatners.sortInPlace({ Int($0.reviewCount!) > Int($1.reviewCount! )})
+            
+            self.tableViewServicePatner.reloadData()
+            
+            print("by popularity")
+
+            
+        default :
+            print("Default sorting")
+            
+        }
+        
+    }
+    
 }

@@ -113,7 +113,7 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
         
         let selectedTime = bro4u_DataManager.sharedInstance.selectedTimeSlot!
         
-        let params = "\(bro4u_DataManager.sharedInstance.userSelectedFilterParams!)&service_time=\(selectedDate)&service_time=\(selectedTime)"
+        let params = "/\(bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.itemId!)\(bro4u_DataManager.sharedInstance.userSelectedFilterParams!)&service_time=\(selectedDate)&service_time=\(selectedTime)"
         
         b4u_WebApiCallManager.sharedInstance.getApiCall(kViewProfileIndex, params:params, result:{(resultObject) -> Void in
             
@@ -143,23 +143,48 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
 
             let profileModelObj = bro4u_DataManager.sharedInstance.vendorProfile!
             
-            self.vendorIcon.downloadedFrom(link:profileModelObj.profilePic!, contentMode:UIViewContentMode.ScaleAspectFit)
+            self.imgViewTopBackground.downloadedFrom(link:profileModelObj.defaultBanner!, contentMode:UIViewContentMode.ScaleToFill)
+
+            
+            self.vendorIcon.downloadedFrom(link:profileModelObj.profilePic!, contentMode:UIViewContentMode.ScaleToFill)
             
             self.lblVendorName.text = profileModelObj.vendorName!
             self.lblVendorType.text = profileModelObj.catName!
             
             self.lblNumberOReviews.text = "\(profileModelObj.serviceQuality!) % Positive"
 
-            self.lblFeedback.text = "(\(profileModelObj.reviewCount!) % Ratings)"
+            self.lblFeedback.text = "(\(profileModelObj.reviewCount!) Reviews)"
             
             
             self.lblTimeSince.text = profileModelObj.inBusiness!
             
-            self.lblNumberOfJobDone.text = profileModelObj.completedJob!
+            self.lblNumberOfJobDone.text = " \(profileModelObj.completedJob!) "
             
-            self.lblNumberOfProfiles.text = profileModelObj.profileViews!
+            self.lblNumberOfProfiles.text = " \(profileModelObj.profileViews!) "
             
              self.lblPrice.text = "  Rs. \( bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)  "
+            
+            
+            if bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.premiumPartner! == "yes"
+            {
+                self.imgViewG.hidden = false
+            }else
+            {
+               self.imgViewG.hidden = true
+                
+            }
+            
+            self.lblNumberOfProfiles.layer.cornerRadius = 5.0
+            //self.lblNumberOfProfiles.layer.borderWidth = 1.0
+            self.lblNumberOfProfiles.layer.borderColor = UIColor.blackColor().CGColor
+            
+            
+            self.lblNumberOfJobDone.layer.cornerRadius = 5.0
+           // self.lblNumberOfJobDone.layer.borderWidth = 1.0
+            self.lblNumberOfJobDone.layer.borderColor = UIColor.blackColor().CGColor
+            
+            
+            self.btnReview.setTitle("Reviews(\(profileModelObj.reviewCount!))", forState:UIControlState.Normal)
         }
     }
     
@@ -380,6 +405,13 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
         self.horizontalSepLeading.constant = 1 * self.btnAbountPartner.bounds.size.width
 
         self.detailBaseViewHeight.constant = self.heightForReviews
+        
+        
+        self.detailBaseViewHeight.constant = self.heightForReviews
+        
+        self.btnDescroption.titleLabel?.textColor = UIColor(red:139.9/255, green:139.0/255, blue:139.0/255, alpha:1.0)
+        self.btnReview.titleLabel?.textColor = UIColor(red:0.0/255, green:141.0/255, blue:181.0/255, alpha:1.0)
+        self.btnAbountPartner.titleLabel?.textColor = UIColor(red:139.9/255, green:139.0/255, blue:139.0/255, alpha:1.0)
     }
 
     @IBAction func btnAbountPartner(sender: AnyObject)
@@ -389,6 +421,12 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
 
         self.horizontalSepLeading.constant = 2 * self.btnAbountPartner.bounds.size.width
         self.detailBaseViewHeight.constant = self.heightForAboutPartner
+        
+        self.detailBaseViewHeight.constant = self.heightForAboutPartner
+        
+        self.btnDescroption.titleLabel?.textColor = UIColor(red:139.9/255, green:139.0/255, blue:139.0/255, alpha:1.0)
+        self.btnReview.titleLabel?.textColor = UIColor(red:139.9/255, green:139.0/255, blue:139.0/255, alpha:1.0)
+        self.btnAbountPartner.titleLabel?.textColor = UIColor(red:0.0/255, green:141.0/255, blue:181.0/255, alpha:1.0)
 
     }
     @IBAction func btnDescriptionPressed(sender: AnyObject)
@@ -398,6 +436,12 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
         self.horizontalSepLeading.constant = 0 * self.btnAbountPartner.bounds.size.width
         self.detailBaseViewHeight.constant = self.heightForDescription
 
+        self.detailBaseViewHeight.constant = self.heightForDescription
+        
+        self.btnDescroption.titleLabel?.textColor = UIColor(red:0.0/255, green:141.0/255, blue:181.0/255, alpha:1.0)
+        self.btnReview.titleLabel?.textColor = UIColor(red:139.0/255, green:139.0/255, blue:139.0/255, alpha:1.0)
+        self.btnAbountPartner.titleLabel?.textColor = UIColor(red:139.9/255, green:139.0/255, blue:139.0/255, alpha:1.0)
+        
     }
     
     internal func webViewDidFinishLoad(webView: UIWebView)
@@ -440,16 +484,29 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
             
             if self.currentPage == 0
             {
-                  self.detailBaseViewHeight.constant = self.heightForDescription
+                self.detailBaseViewHeight.constant = self.heightForDescription
+                
+                self.btnDescroption.titleLabel?.textColor = UIColor(red:0.0/255, green:141.0/255, blue:181.0/255, alpha:1.0)
+                self.btnReview.titleLabel?.textColor = UIColor(red:139.0/255, green:139.0/255, blue:139.0/255, alpha:1.0)
+                self.btnAbountPartner.titleLabel?.textColor = UIColor(red:139.9/255, green:139.0/255, blue:139.0/255, alpha:1.0)
+                
             }else  if self.currentPage == 1
             {
                 self.detailBaseViewHeight.constant = self.heightForReviews
-
+                
+                self.btnDescroption.titleLabel?.textColor = UIColor(red:139.9/255, green:139.0/255, blue:139.0/255, alpha:1.0)
+                self.btnReview.titleLabel?.textColor = UIColor(red:0.0/255, green:141.0/255, blue:181.0/255, alpha:1.0)
+                self.btnAbountPartner.titleLabel?.textColor = UIColor(red:139.9/255, green:139.0/255, blue:139.0/255, alpha:1.0)
+                
             }
             else  if self.currentPage == 2
             {
                 self.detailBaseViewHeight.constant = self.heightForAboutPartner
 
+                self.btnDescroption.titleLabel?.textColor = UIColor(red:139.9/255, green:139.0/255, blue:139.0/255, alpha:1.0)
+                self.btnReview.titleLabel?.textColor = UIColor(red:139.9/255, green:139.0/255, blue:139.0/255, alpha:1.0)
+                self.btnAbountPartner.titleLabel?.textColor = UIColor(red:0.0/255, green:141.0/255, blue:181.0/255, alpha:1.0)
+                
             }
             
         })

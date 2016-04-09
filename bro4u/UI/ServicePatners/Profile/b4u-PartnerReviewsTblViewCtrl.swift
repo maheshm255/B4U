@@ -29,7 +29,12 @@ class b4u_PartnerReviewsTblViewCtrl: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return (bro4u_DataManager.sharedInstance.vendorProfile?.reviews?.count)!
+        
+        if (bro4u_DataManager.sharedInstance.vendorProfile?.reviews?.count)! > 0
+        {
+            return (bro4u_DataManager.sharedInstance.vendorProfile?.reviews?.count)! + 1
+        }
+        return 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,18 +45,30 @@ class b4u_PartnerReviewsTblViewCtrl: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("reviewTblCell", forIndexPath: indexPath) as! b4u_PartnerReviewTblCell
-
-        // Configure the cell...
         
+        if indexPath.section == 0
+        {
+            let cell = tableView.dequeueReusableCellWithIdentifier("reviewSummaryCell", forIndexPath: indexPath) as! b4u_PartnerReviewsSummaryTblCell
+            // Configure the cell...
+            let reviewsModel:b4u_VendorReviews = (bro4u_DataManager.sharedInstance.vendorProfile?.reviews![indexPath.section])!
+            
+            cell.configureData(reviewsModel)
+            return cell
+        }
+        let cell = tableView.dequeueReusableCellWithIdentifier("reviewTblCell", forIndexPath: indexPath) as! b4u_PartnerReviewTblCell
+        // Configure the cell...
         let reviewsModel:b4u_VendorReviews = (bro4u_DataManager.sharedInstance.vendorProfile?.reviews![indexPath.section])!
-
+        
         cell.configureData(reviewsModel)
         return cell
     }
     
     override  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
+        if indexPath.section == 0
+        {
+            return 165.0
+        }
         return 117.0
     }
     
