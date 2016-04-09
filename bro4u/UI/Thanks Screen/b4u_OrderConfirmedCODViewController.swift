@@ -12,7 +12,7 @@ import CoreLocation
 class b4u_OrderConfirmedCODViewController: UIViewController {
 
     var order_id:String?
-    var currentOrder: b4u_OrdersModel?
+    var confirmedOrder:b4u_OrdersModel?
 
     @IBOutlet weak var imgViewServiceProvider: UIImageView!
     @IBOutlet weak var lblServiceProvide: UILabel!
@@ -35,6 +35,7 @@ class b4u_OrderConfirmedCODViewController: UIViewController {
     
     @IBOutlet weak var middleView: UIView!
     
+    @IBOutlet weak var btnContinue: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +68,7 @@ class b4u_OrderConfirmedCODViewController: UIViewController {
     
     func createOrder()
     {
+        
         /*
         /index.php/order/place_cod_order?
         user_id=1626&
@@ -93,9 +95,13 @@ class b4u_OrderConfirmedCODViewController: UIViewController {
         
         */
         
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+        topView.hidden = true
+        middleView.hidden = true
+        downView.hidden = true
+        btnContinue.hidden = true
         
-        
-        var user_id = "1626"
+        var user_id = ""
         var total_cost = "98"
         var service_time = "12pm-2pm"
         var service_date = "2-09-2015"
@@ -117,12 +123,12 @@ class b4u_OrderConfirmedCODViewController: UIViewController {
         var longitude="49878428"
 
         
-//        if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
-//            
-//            user_id = loginInfoData.userId! //Need to use later
-//            
-//        }
-//        
+        if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+            
+            user_id = loginInfoData.userId! //Need to use later
+            
+        }
+//
 //        if let catIDData:b4u_Category = bro4u_DataManager.sharedInstance.categoryAndSubOptions[0]{
 //            
 //            cat_id = catIDData.catId! //Need to use later
@@ -162,25 +168,31 @@ class b4u_OrderConfirmedCODViewController: UIViewController {
     {
         if result  == "Success"
         {
-           b4u_Utility.sharedInstance.activityIndicator.startAnimating()
             
             var user_id = ""
-            
+            var order_id = ""
+
             if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
                 
                 user_id = loginInfoData.userId! //Need to use later
                 
             }
+            if let orderID = bro4u_DataManager.sharedInstance.orderId{
+                
+                order_id = orderID //Need to use later
+                
+            }
+
             
             //user_id = "15"
-            let params = "?order_id=\(currentOrder?.orderID)&user_id=\(user_id)"
+            let params = "?order_id=\(order_id)&user_id=\(user_id)"
             b4u_WebApiCallManager.sharedInstance.getApiCall(kOrderConfirmedIndex , params:params, result:{(resultObject) -> Void in
                 
                 print(" Order Confirmed  Data Received")
                 
                 print(resultObject)
                 b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-                //            self.congigureUI()
+                self.configureUI()
                 
             })
 
@@ -195,43 +207,49 @@ class b4u_OrderConfirmedCODViewController: UIViewController {
     @IBAction func actioonContinueShopping(sender: AnyObject) {
     }
     
-    func configureUI(result:String)
+    func configureUI()
     {
+        confirmedOrder =  bro4u_DataManager.sharedInstance.orderData[0]
+
+        topView.hidden = false
+        middleView.hidden = false
+        downView.hidden = false
+        btnContinue.hidden = false
+
         
-        
-        if let vendorName = currentOrder!.vendorName
+        if let vendorName = confirmedOrder!.vendorName
         {
             self.lblServiceProvide.text = vendorName
         }
-        if let categoryName = currentOrder!.catName
+        if let categoryName = confirmedOrder!.catName
         {
             self.lblService.text = categoryName
         }
-        if let serviceDate = currentOrder!.serviceDate
+        if let serviceDate = confirmedOrder!.serviceDate
         {
             self.lblServiceDate.text = serviceDate
         }
-        if let serviceTime = currentOrder!.serviceTime
+        if let serviceTime = confirmedOrder!.serviceTime
         {
             self.lblTimeSlot.text = serviceTime
         }
-        if let vendorImageUrl = currentOrder!.profilePic
+        if let vendorImageUrl = confirmedOrder!.profilePic
         {
             self.imgViewServiceProvider.downloadedFrom(link:vendorImageUrl, contentMode:UIViewContentMode.ScaleToFill)
         }
-        if let orderID = currentOrder!.orderID
+        if let orderID = confirmedOrder!.orderID
         {
             self.lblOrderId.text = "#\(orderID)"
         }
-        if let orderStatus = currentOrder!.statusDesc
+        if let orderStatus = confirmedOrder!.statusDesc
         {
             self.lblServiceStatus.text = orderStatus
         }
-        if let price = currentOrder!.finalTotal //Need to check Key
+        if let price = confirmedOrder!.finalTotal //Need to check Key
         {
             self.lblAmount.text = "Rs. \(price).00"
         }
-        if let orderedaAT = currentOrder!.timestamp //Need to check Key
+        if let orderedaAT = confirmedOrder!.timestamp //Need to check Key
         {
             self.lblAmount.text = orderedaAT
         }
