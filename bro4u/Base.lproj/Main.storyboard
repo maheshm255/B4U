@@ -4083,6 +4083,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0zX-W3-BFw"/>
+                    <connections>
+                        <outlet property="downView" destination="6oT-rC-s1L" id="60e-eD-43K"/>
+                        <outlet property="middleView" destination="MCv-G3-Ieo" id="ViA-Un-TFY"/>
+                        <outlet property="topView" destination="BKA-es-TGN" id="tUw-E6-tCo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hyu-qh-eDa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
