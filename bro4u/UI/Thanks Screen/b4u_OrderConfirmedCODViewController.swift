@@ -179,7 +179,7 @@ class b4u_OrderConfirmedCODViewController: UIViewController {
             }
             if let orderID = bro4u_DataManager.sharedInstance.orderId{
                 
-                order_id = orderID //Need to use later
+                order_id = "\(orderID)" //Need to use later
                 
             }
 
@@ -252,6 +252,13 @@ class b4u_OrderConfirmedCODViewController: UIViewController {
         if let orderedaAT = confirmedOrder!.timestamp //Need to check Key
         {
             self.lblAmount.text = orderedaAT
+        }
+        if let whyOnlineText: b4u_WhyOnlineModel = confirmedOrder!.whyOnline![0] //Need to check Key
+        {
+            self.lblOnlineAdvantage1.text = whyOnlineText.text1
+            self.lblOnlineAdvantage2.text = whyOnlineText.text2
+            self.lblOnlineAdvantage3.text = whyOnlineText.text3
+
         }
 
         
