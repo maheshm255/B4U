@@ -449,7 +449,7 @@ class b4u_WebApiCallManager: NSObject {
     
     func parseCODPayment(dataDict:Dictionary<String, AnyObject>)
     {
-        bro4u_DataManager.sharedInstance.orderId = dataDict["order_id"] as? String
+        bro4u_DataManager.sharedInstance.orderId = dataDict["order_id"] as? NSNumber
     }
     
     func parseVendorProfileData(dataDict:Dictionary<String, AnyObject>)

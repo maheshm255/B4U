@@ -42,7 +42,7 @@ class bro4u_DataManager: NSObject {
   
     var loginInfo:b4u_LoginInfo?
     
-    var orderId:String?
+    var orderId:NSNumber?
 
 
     var vendorProfile:b4u_VendorProfileModel?
