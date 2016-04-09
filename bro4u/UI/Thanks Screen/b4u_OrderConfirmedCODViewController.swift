@@ -179,7 +179,7 @@ class b4u_OrderConfirmedCODViewController: UIViewController {
             }
             if let orderID = bro4u_DataManager.sharedInstance.orderId{
                 
-                order_id = orderID //Need to use later
+                order_id = "\(orderID)" //Need to use later
                 
             }
 

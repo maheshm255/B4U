@@ -10,8 +10,11 @@ import UIKit
 
 class b4u_PartnerReviewsSummaryTblCell: UITableViewCell {
 
-    @IBOutlet weak var constraintLblQualityWidth: NSLayoutConstraint!
-    @IBOutlet weak var constraintOnTimeLblWidth: NSLayoutConstraint!
+    @IBOutlet weak var constraintLblOnTImeTrailing: NSLayoutConstraint!
+    @IBOutlet weak var constraintLblQualityTrailing: NSLayoutConstraint!
+    @IBOutlet weak var imgViewQualityBase: UIImageView!
+    @IBOutlet weak var imgViewOnTimeBase: UIImageView!
+ 
     @IBOutlet weak var imgViewOnTime: UIImageView!
     @IBOutlet weak var imgViewQuality: UIImageView!
     @IBOutlet weak var lblOnTimeQuality: UILabel!
@@ -78,6 +81,20 @@ class b4u_PartnerReviewsSummaryTblCell: UITableViewCell {
         default:
             print("")
         }
+        
+        
+//        var width = CGRectGetWidth(self.imgViewOnTimeBase.bounds)
+//        
+//         var aWidth = ( width * CGFloat(Int(profileModelObj.onTime!)!) ) / 100
+//        
+//        self.constraintLblOnTImeTrailing.constant = aWidth - 10
+//        
+//        
+//         width = CGRectGetWidth(self.imgViewOnTimeBase.bounds)
+//        
+//         aWidth = ( width * CGFloat(Int(profileModelObj.serviceQuality!)!) ) / 100
+//        
+//        self.constraintLblQualityTrailing.constant = aWidth - 10
         
     }
 

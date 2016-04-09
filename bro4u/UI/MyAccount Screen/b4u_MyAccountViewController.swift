@@ -117,7 +117,8 @@ class b4u_MyAccountViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        // Pass the selected object to the new view controller
+        
     }
     
 
@@ -191,11 +192,17 @@ class b4u_MyAccountViewController: UIViewController {
                 destination = storyboard.instantiateViewControllerWithIdentifier("MyWalletViewControllerID") as! MyWalletViewController
 
             case 2:
-                destination = storyboard.instantiateViewControllerWithIdentifier("MyInfoViewControllerID") as! MyInfoViewController
+//                destination = storyboard.instantiateViewControllerWithIdentifier("MyInfoViewControllerID") as! MyInfoViewController
+                
+                self.performSegueWithIdentifier("myInfoCtrl", sender:nil)
 
+                return
             case 3:
-                destination = storyboard.instantiateViewControllerWithIdentifier("NotificationViewControllerID") as! b4u_NotificationViewController
 
+                self.performSegueWithIdentifier("notificatinSegue", sender:nil)
+                
+                return
+                
             default:
                 break
                 

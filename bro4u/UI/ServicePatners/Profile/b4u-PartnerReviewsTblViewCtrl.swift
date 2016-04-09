@@ -60,6 +60,10 @@ class b4u_PartnerReviewsTblViewCtrl: UITableViewController {
         let reviewsModel:b4u_VendorReviews = (bro4u_DataManager.sharedInstance.vendorProfile?.reviews![indexPath.section])!
         
         cell.configureData(reviewsModel)
+        
+        cell.btnReadMore.tag = indexPath.section
+        
+        cell.btnReadMore.addTarget(self, action:"btnReadMorePressed:", forControlEvents:UIControlEvents.TouchUpInside)
         return cell
     }
     
@@ -72,6 +76,11 @@ class b4u_PartnerReviewsTblViewCtrl: UITableViewController {
         return 117.0
     }
     
+    
+    func btnReadMorePressed(sender:AnyObject)
+    {
+        self.showReadMore()
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -117,4 +126,31 @@ class b4u_PartnerReviewsTblViewCtrl: UITableViewController {
     }
     */
 
+    
+    func showReadMore()
+    {
+        let storyboard : UIStoryboard = self.storyboard!
+        
+        let  alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("readMoreCtrl") as! b4u_ReviewReadMoreCtrl
+        
+        alertViewCtrl.modalPresentationStyle = .Popover
+        alertViewCtrl.preferredContentSize = CGSizeMake(300, 400)
+        
+        let popoverMenuViewController = alertViewCtrl.popoverPresentationController
+        popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
+       // popoverMenuViewController?.delegate = self
+        popoverMenuViewController?.sourceView = self.view
+        popoverMenuViewController?.sourceRect = CGRect(
+            x: CGRectGetMidX(self.view.frame),
+            y: CGRectGetMidY(self.view.frame),
+            width: 1,
+            height: 1)
+        presentViewController(
+            alertViewCtrl,
+            animated: true,
+            completion: nil)
+        
+    }
+  
+    
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyInfoViewController: UIViewController {
+class MyInfoViewController: UIViewController ,UITextFieldDelegate {
 
   @IBOutlet var nameTxtFld: UITextField!
   @IBOutlet var mobileNoTxtFld: UITextField!
@@ -22,21 +22,9 @@ class MyInfoViewController: UIViewController {
   var myInfoModelArr:[b4u_MyInfoModel] = Array()
 
   
-  @IBAction func dateBtnAction(sender: AnyObject) {
-  }
-  
-  
-  @IBAction func maleBtnAction(sender: AnyObject) {
-  }
-  
-  
-  @IBAction func femaleBtnAction(sender: AnyObject) {
-  }
-  
-  
-  @IBAction func updateBtnAction(sender: AnyObject) {
-  }
-  
+    
+    var gender:String = "male"
+    
 
   
     override func viewDidLoad() {
@@ -77,7 +65,20 @@ class MyInfoViewController: UIViewController {
              self.nameTxtFld.text = myInfoDetailModel.fullName!
              self.mobileNoTxtFld.text = myInfoDetailModel.mobile!
              self.emailTxtFld.text = myInfoDetailModel.email!
-
+             self.userNameLbl.text = myInfoDetailModel.fullName!
+            
+            if let gender = myInfoDetailModel.gender
+            {
+                if gender == "male"
+                {
+                    self.maleBtn.setBackgroundImage(UIImage(named:"radioBlue"), forState:.Normal)
+                    self.femaleBtn.setBackgroundImage(UIImage(named:"radioGray"), forState:.Normal)
+                }else
+                {
+                    self.maleBtn.setBackgroundImage(UIImage(named:"radioGray"), forState:.Normal)
+                    self.femaleBtn.setBackgroundImage(UIImage(named:"radioBlue"), forState:.Normal)
+                }
+            }
         }
     }
 
@@ -104,5 +105,81 @@ class MyInfoViewController: UIViewController {
     b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
   }
 
+
+    /**
+     * Called when 'return' key pressed. return NO to ignore.
+     */
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+    @IBAction func dateBtnAction(sender: AnyObject) {
+    }
+    
+    
+    @IBAction func maleBtnAction(sender: AnyObject)
+    {
+        gender = "male"
+        
+        self.maleBtn.setBackgroundImage(UIImage(named:"radioBlue"), forState:.Normal)
+        self.femaleBtn.setBackgroundImage(UIImage(named:"radioGray"), forState:.Normal)
+        
+    }
+    
+    
+    @IBAction func femaleBtnAction(sender: AnyObject) {
+        
+        gender = "female"
+        
+        self.maleBtn.setBackgroundImage(UIImage(named:"radioGray"), forState:.Normal)
+        self.femaleBtn.setBackgroundImage(UIImage(named:"radioBlue"), forState:.Normal)
+    }
+    
+    
+    @IBAction func updateBtnAction(sender: AnyObject)
+    {
+        
+        //index.php/my_account/update_user_account?user_id=1&email=akshay.hh@gmail.com&mobile=34564564&name=test&dob=2015-12-13&gender=male
+        //Update My Info Window
+        
+        guard let userName = self.nameTxtFld.text where userName != "" else
+        {
+            self.view.makeToast(message:"Please enter your name", duration:1.0, position: HRToastPositionDefault)
+            return
+        }
+        
+        guard let phoneNumber = self.mobileNoTxtFld.text where phoneNumber != "" else
+        {
+            self.view.makeToast(message:"Please enter your mobile number", duration:1.0, position: HRToastPositionDefault)
+            return
+        }
+        
+        guard let emailId = self.emailTxtFld.text where emailId != "" else
+        {
+            self.view.makeToast(message:"Please enter your email id", duration:1.0, position: HRToastPositionDefault)
+            return
+        }
+        
+        let dateOfBirth = ""
+        
+        let params = "?user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)&email=\(emailId)&mobile=\(phoneNumber)&name=\(userName)&dob=\(dateOfBirth)&gender=\(gender)"
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyAccountUpdateProfileIndex, params:params, result:{(resultObject) -> Void in
+            
+            
+            if resultObject as! String == "Success"
+            {
+                self.view.makeToast(message:"Information updated successfully", duration:1.0, position: HRToastPositionDefault)
+            }else
+            {
+                self.view.makeToast(message:"Not able to update the information ,Please try again!", duration:1.0, position: HRToastPositionDefault)
+                
+            }
+        })
+        
+        
+        
+    }
 
 }

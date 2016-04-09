@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		040E827D1CB91E2000288EA1 /* b4u-PartnerReviewsSummaryTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E827C1CB91E2000288EA1 /* b4u-PartnerReviewsSummaryTblCell.swift */; };
+		040E827F1CB939E200288EA1 /* b4u-ReviewReadMoreCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E827E1CB939E200288EA1 /* b4u-ReviewReadMoreCtrl.swift */; };
 		0410F6571CB55D9D00296A3F /* b4u-quantityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0410F6561CB55D9D00296A3F /* b4u-quantityViewController.swift */; };
 		042700131C8B374A008440CC /* b4u_CalendarViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042700121C8B374A008440CC /* b4u_CalendarViewCtrl.swift */; };
 		042700231C8B37B6008440CC /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 042700161C8B37B6008440CC /* FSCalendar.m */; };
@@ -264,6 +265,7 @@
 
 /* Begin PBXFileReference section */
 		040E827C1CB91E2000288EA1 /* b4u-PartnerReviewsSummaryTblCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-PartnerReviewsSummaryTblCell.swift"; sourceTree = "<group>"; };
+		040E827E1CB939E200288EA1 /* b4u-ReviewReadMoreCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-ReviewReadMoreCtrl.swift"; sourceTree = "<group>"; };
 		0410F6561CB55D9D00296A3F /* b4u-quantityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-quantityViewController.swift"; sourceTree = "<group>"; };
 		042700121C8B374A008440CC /* b4u_CalendarViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = b4u_CalendarViewCtrl.swift; path = bro4u/UI/Calendar/b4u_CalendarViewCtrl.swift; sourceTree = SOURCE_ROOT; };
 		042700151C8B37B6008440CC /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendar.h; sourceTree = "<group>"; };
@@ -668,6 +670,7 @@
 				044076101CB0E86200B7C2E7 /* b4u-PartnerReviewsTblViewCtrl.swift */,
 				044076121CB0E8A700B7C2E7 /* b4u-PartnerReviewTblCell.swift */,
 				040E827C1CB91E2000288EA1 /* b4u-PartnerReviewsSummaryTblCell.swift */,
+				040E827E1CB939E200288EA1 /* b4u-ReviewReadMoreCtrl.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1784,6 +1787,7 @@
 				65FF8D621C7E2B86007588D0 /* b4u-TimeSlots.swift in Sources */,
 				B71C285E1C8C0C0C00873B5C /* MyOrderViewController.swift in Sources */,
 				65271F5E1C8367FF0022C888 /* b4u-AddressTblCell.swift in Sources */,
+				040E827F1CB939E200288EA1 /* b4u-ReviewReadMoreCtrl.swift in Sources */,
 				6536E0BF1C690CFC00B273D6 /* bro4u-DataManager.swift in Sources */,
 				042700271C8B37B6008440CC /* NSDate+FSExtension.m in Sources */,
 				B33666821CA950B2007FFD50 /* b4u_NetBankingViewController.swift in Sources */,
