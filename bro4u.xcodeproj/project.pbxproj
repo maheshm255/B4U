@@ -254,6 +254,7 @@
 		B79D48B61CB4CA8E0075164C /* yesbank_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B79D486B1CB4CA8E0075164C /* yesbank_logo.png */; };
 		B79D48B71CB4CA8E0075164C /* libiOSCustomBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B79D486C1CB4CA8E0075164C /* libiOSCustomBrowser.a */; };
 		B79D48BA1CB4CADC0075164C /* PayUUIPaymentUIWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79D48B81CB4CADC0075164C /* PayUUIPaymentUIWebViewController.m */; };
+		B7A8D8FD1CB93E1900CC7DDA /* b4u_WhyOnlineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A8D8FC1CB93E1900CC7DDA /* b4u_WhyOnlineModel.swift */; };
 		B7BB86651C95888C003D5F44 /* MyAccount.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7BB86641C95888C003D5F44 /* MyAccount.plist */; };
 		B7DC0EDF1C942A3300A5577C /* b4u_ReOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DC0EDE1C942A3300A5577C /* b4u_ReOrderModel.swift */; };
 		B7DC0EE11C942F2200A5577C /* b4u_ReOrder_MetaItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DC0EE01C942F2200A5577C /* b4u_ReOrder_MetaItemModel.swift */; };
@@ -590,6 +591,7 @@
 		B79D486C1CB4CA8E0075164C /* libiOSCustomBrowser.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiOSCustomBrowser.a; sourceTree = "<group>"; };
 		B79D48B81CB4CADC0075164C /* PayUUIPaymentUIWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayUUIPaymentUIWebViewController.m; sourceTree = "<group>"; };
 		B79D48B91CB4CADC0075164C /* PayUUIPaymentUIWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayUUIPaymentUIWebViewController.h; sourceTree = "<group>"; };
+		B7A8D8FC1CB93E1900CC7DDA /* b4u_WhyOnlineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_WhyOnlineModel.swift; sourceTree = "<group>"; };
 		B7BB86641C95888C003D5F44 /* MyAccount.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyAccount.plist; sourceTree = "<group>"; };
 		B7DC0EDE1C942A3300A5577C /* b4u_ReOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ReOrderModel.swift; sourceTree = "<group>"; };
 		B7DC0EE01C942F2200A5577C /* b4u_ReOrder_MetaItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ReOrder_MetaItemModel.swift; sourceTree = "<group>"; };
@@ -1226,6 +1228,7 @@
 			children = (
 				B34EAD8B1C92989C00FCB0F5 /* b4u_OrdersModel.swift */,
 				B7FF16E11C95E15500B299C0 /* b4u_PaymentGatewayOffersModel.swift */,
+				B7A8D8FC1CB93E1900CC7DDA /* b4u_WhyOnlineModel.swift */,
 			);
 			path = "Order Screen";
 			sourceTree = "<group>";
@@ -1911,6 +1914,7 @@
 				044076131CB0E8A700B7C2E7 /* b4u-PartnerReviewTblCell.swift in Sources */,
 				042700231C8B37B6008440CC /* FSCalendar.m in Sources */,
 				529F27751CADA94300ABFC9E /* b4u_SelectionModel.swift in Sources */,
+				B7A8D8FD1CB93E1900CC7DDA /* b4u_WhyOnlineModel.swift in Sources */,
 				B34EAD961C929A5900FCB0F5 /* b4u_NotificationModel.swift in Sources */,
 				04E0C44A1C8C99A7006450D1 /* GooglePlacesAutocomplete.swift in Sources */,
 				042700281C8B37B6008440CC /* UIScrollView+FSExtension.m in Sources */,
