@@ -17,7 +17,7 @@ enum selectBank : Int{
 
 class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationControllerDelegate,bankSelectedDelegate {
 
-    var payUMoneyCntrl:PayUMoneyViewController?
+//    var payUMoneyCntrl:PayUMoneyViewController?
     var paymentType:String?
     var selectedBankCode:String?
 

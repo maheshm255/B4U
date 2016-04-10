@@ -11,7 +11,7 @@ import UIKit
 class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate ,UINavigationBarDelegate{
 
     
-    var payUMoneyCntrl:PayUMoneyViewController?
+//    var payUMoneyCntrl:PayUMoneyViewController?
     var paymentType:String?
     var datePicker:UIDatePicker!
     var datePickerContainer:UIView!

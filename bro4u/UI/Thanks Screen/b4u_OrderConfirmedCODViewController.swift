@@ -46,6 +46,10 @@ class b4u_OrderConfirmedCODViewController: UIViewController {
         self.addLoadingIndicator()
         
         self.createOrder()
+        
+        lblServiceStatus.layer.borderWidth = 1.0
+        lblServiceStatus.layer.borderColor = UIColor.lightGrayColor().CGColor
+
 
     }
 
@@ -317,7 +321,7 @@ class b4u_OrderConfirmedCODViewController: UIViewController {
         }
         if let orderedaAT = confirmedOrder!.timestamp //Need to check Key
         {
-            self.lblAmount.text = orderedaAT
+            self.lblOrderedAt.text = "Ordered At \(orderedaAT)"
         }
         
         whyOnlineText =  bro4u_DataManager.sharedInstance.whyOnlineData[0]
