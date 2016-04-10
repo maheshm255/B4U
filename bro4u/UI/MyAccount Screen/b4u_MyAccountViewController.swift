@@ -189,8 +189,11 @@ class b4u_MyAccountViewController: UIViewController {
                 destination = storyboard.instantiateViewControllerWithIdentifier("MyOrderViewControllerID") as! MyOrderViewController
 
             case 1:
-                destination = storyboard.instantiateViewControllerWithIdentifier("MyWalletViewControllerID") as! MyWalletViewController
+//                destination = storyboard.instantiateViewControllerWithIdentifier("MyWalletViewControllerID") as! MyWalletViewController
 
+                self.performSegueWithIdentifier("walletCtrlSegue", sender:nil)
+
+                return
             case 2:
 //                destination = storyboard.instantiateViewControllerWithIdentifier("MyInfoViewControllerID") as! MyInfoViewController
                 

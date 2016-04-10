@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XP6-lF-vG6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XP6-lF-vG6">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -4961,6 +4961,7 @@
                         <segue destination="9dk-zF-opF" kind="show" identifier="accountloginSegue" id="zl4-3N-4qA"/>
                         <segue destination="BAS-3H-Kt6" kind="show" identifier="myInfoCtrl" id="VYI-Ao-64R"/>
                         <segue destination="nyo-QS-TEz" kind="show" identifier="notificatinSegue" id="ALc-UA-rJa"/>
+                        <segue destination="cDY-1d-Wk1" kind="show" identifier="walletCtrlSegue" id="EWe-mK-kQh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GCA-73-cwK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -5018,7 +5019,7 @@
                                             <action selector="applyBtnAction:" destination="cDY-1d-Wk1" eventType="touchUpInside" id="bLg-57-oRp"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="WALLET TRANSACTIONS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMn-vs-j7h">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WALLET TRANSACTIONS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMn-vs-j7h">
                                         <rect key="frame" x="231" y="251" width="138" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="OgF-wt-qcO"/>
@@ -5056,7 +5057,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="580" height="94"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="2015-10-25 07:14:04" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5GR-OM-hHd">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-10-25 07:14:04" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5GR-OM-hHd">
                                                             <rect key="frame" x="18" y="18" width="106" height="13"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="11"/>
                                                             <color key="textColor" red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
@@ -5170,7 +5171,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NXt-zE-uSc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2175" y="4921"/>
+            <point key="canvasLocation" x="1857" y="4960"/>
         </scene>
         <!--My Info-->
         <scene sceneID="c3R-xd-4Az">
@@ -6176,7 +6177,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKg-6P-uLp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1385" y="4835"/>
+            <point key="canvasLocation" x="1278" y="5315"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gxJ-fs-JuY">
@@ -8066,7 +8067,7 @@
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOD-5R-K2j" userLabel="reviews">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOD-5R-K2j" userLabel="reviews">
                                                         <rect key="frame" x="82" y="53" width="30" height="15"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
                                                         <color key="textColor" red="0.22745098039215686" green="0.67450980392156867" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
@@ -8910,11 +8911,12 @@
         <image name="thankU" width="320" height="217"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nEL-nc-rUf"/>
-        <segue reference="9yL-r3-mwm"/>
-        <segue reference="ZKs-u5-bSL"/>
-        <segue reference="1oG-xt-ZfG"/>
-        <segue reference="iYf-9b-F9y"/>
+        <segue reference="zl4-3N-4qA"/>
+        <segue reference="EWe-mK-kQh"/>
         <segue reference="W5U-K3-ziD"/>
+        <segue reference="iYf-9b-F9y"/>
+        <segue reference="ZKs-u5-bSL"/>
+        <segue reference="9yL-r3-mwm"/>
+        <segue reference="nEL-nc-rUf"/>
     </inferredMetricsTieBreakers>
 </document>

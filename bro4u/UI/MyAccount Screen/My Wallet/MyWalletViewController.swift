@@ -66,6 +66,11 @@ class MyWalletViewController: UIViewController ,UITextFieldDelegate {
     func congigureUI()
     {
        walletBalanceTableView .reloadData()
+        
+        if let walletBalance =   bro4u_DataManager.sharedInstance.walletBalanceData
+        {
+            self.walletMoneyLbl.text = "\(walletBalance)"
+        }
     }
   
   
