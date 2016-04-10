@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyWalletViewController: UIViewController {
+class MyWalletViewController: UIViewController ,UITextFieldDelegate {
 
   @IBOutlet var couponcodeTxtFld: UITextField!
   @IBOutlet var walletImageView: UIImageView!
@@ -19,12 +19,12 @@ class MyWalletViewController: UIViewController {
   var myModelArr:[b4u_MyWalletModel] = Array()
   var indicatorcolor:UIView!
 
-  @IBAction func applyBtnAction(sender: AnyObject) {
-  }
+ 
   
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.couponcodeTxtFld.delegate = self
         // Do any additional setup after loading the view.
       self.addLoadingIndicator()
 
@@ -45,22 +45,22 @@ class MyWalletViewController: UIViewController {
         }
         
         //user_id = "1"
-    
-    
-    let params = "?user_id=\(user_id)"
-    b4u_WebApiCallManager.sharedInstance.getApiCall(kMyWalletIndex , params:params, result:{(resultObject) -> Void in
-    
-    print(" Wallet Balance Data Received")
-    
-    print(resultObject)
-    
-    b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-
-    self.congigureUI()
-    
-    })
-    
-    
+        
+        
+        let params = "?user_id=\(user_id)"
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyWalletIndex , params:params, result:{(resultObject) -> Void in
+            
+            print(" Wallet Balance Data Received")
+            
+            print(resultObject)
+            
+            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+            
+            self.congigureUI()
+            
+        })
+        
+        
    }
 
     func congigureUI()
@@ -108,12 +108,59 @@ class MyWalletViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        return 95.0
+    }
   
   @IBAction func cancelBtnClicked(sender: AnyObject) {
     self.dismissViewControllerAnimated(true, completion:nil)
-  }
-  
-  func addLoadingIndicator () {
+    }
+    
+    @IBAction func applyBtnAction(sender: AnyObject)
+    {
+     
+        
+        guard let referelCode = couponcodeTxtFld.text where referelCode != ""else
+        {
+            self.view.makeToast(message:"Please enter coupon code", duration:1.0, position:HRToastPositionDefault)
+            return
+        }
+        
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+        
+        var user_id = ""
+        
+        if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+            
+            user_id = loginInfoData.userId! //Need to use later
+            
+        }
+        
+        //user_id = "1"
+        
+        
+        let params = "?user_id=\(user_id)&device_id=\(b4u_Utility.getUUIDFromVendorIdentifier())&referral_code=\(referelCode)"
+        
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kApplyWalletCouponIndex , params:params, result:{(resultObject) -> Void in
+            
+              b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
+            
+               if resultObject as! String == "Success"
+               {
+                  self.view.makeToast(message:"Referel code applied successfully", duration:1.0, position:HRToastPositionDefault)
+               }else
+               {
+                self.view.makeToast(message:"Please enter valid code", duration:1.0, position:HRToastPositionDefault)
+
+              }
+            
+        })
+        
+    }
+    func addLoadingIndicator () {
     self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
     self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
     b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
@@ -133,4 +180,11 @@ class MyWalletViewController: UIViewController {
   }
 
 
+    /**
+     * Called when 'return' key pressed. return NO to ignore.
+     */
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
