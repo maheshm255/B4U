@@ -112,7 +112,7 @@ class b4u_OrderConfirmedCODViewController: UIViewController {
         var customer_name=""
         var vendor_id=""
         var custom_message="ihih"
-        var address_id=""
+        var address_id="1"
         var email=""
         var mobile=""
         var item_id=""
@@ -138,15 +138,24 @@ class b4u_OrderConfirmedCODViewController: UIViewController {
         service_time =   bro4u_DataManager.sharedInstance.selectedTimeSlot!
         service_date =   "\(bro4u_DataManager.sharedInstance.selectedDate!)"
 
-        if let selectionLocal: b4u_SelectionModel =    bro4u_DataManager.sharedInstance.selectionData[0]{
-            //Need to Implement
-            grand_total = "\(selectionLocal.grandTotal)"
-            night_delivery_charge = selectionLocal.nightCharge!
-            item_id = selectionLocal.itemId!
-            vendor_id = selectionLocal.vendorId!
-            selection =  ""
-        }
         
+        if let orderDetailModel = bro4u_DataManager.sharedInstance.orderDetailData.first
+        {
+            if let selectionLocal: b4u_SelectionModel =  orderDetailModel.selection?.first{
+                //Need to Implement
+                grand_total = "\(selectionLocal.grandTotal)"
+                
+                if let deliverChages = selectionLocal.nightCharge
+                {
+                    night_delivery_charge = deliverChages
+                }
+                item_id = selectionLocal.itemId!
+                vendor_id = selectionLocal.vendorId!
+                selection =  ""
+            }
+            
+        }
+    
         if let catIDData:b4u_OrderDetailModel = bro4u_DataManager.sharedInstance.orderDetailData[0]{
 
             cat_id = catIDData.catId! //Need to use later
@@ -155,12 +164,33 @@ class b4u_OrderConfirmedCODViewController: UIViewController {
 
         if let addressData:b4u_AddressDetails = bro4u_DataManager.sharedInstance.address[0]{
 
-            address_id = "\(addressData.addressId!)" //Need to use later
-            email = addressData.email! //Need to use later
-            latitude = addressData.lattitude!
-            longitude = addressData.longitude!
-            mobile = addressData.phoneNumber!
-            customer_name = addressData.name!
+            if let addressId = addressData.addressId
+            {
+                address_id = "\(addressId)" //Need to use later
+            }
+            
+            if let aEmail = addressData.email
+            {
+                email = aEmail //Need to use later
+            }
+            if let lat = addressData.lattitude
+            {
+                latitude = lat
+            }
+            
+            if let long = addressData.longitude
+            {
+                longitude = long
+            }
+            
+            if let phoneNumber = addressData.phoneNumber
+            {
+                mobile = phoneNumber
+            }
+            if let cusName = addressData.name
+            {
+                customer_name = cusName
+            }
         }
 
 
