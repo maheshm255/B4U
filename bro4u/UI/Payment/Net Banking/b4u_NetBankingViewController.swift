@@ -147,13 +147,41 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
     
     @IBAction func continueBtnAction(sender: AnyObject) {
         
-        payUMoneyCntrl = PayUMoneyViewController()
+        /*payUMoneyCntrl = PayUMoneyViewController()
         payUMoneyCntrl?.paymentType = PAYMENT_PG_NET_BANKING
         payUMoneyCntrl?.selectedBankCode = selectedBankCode
         
         
-        self.navigationController?.pushViewController(self.payUMoneyCntrl!, animated: true)
+        self.navigationController?.pushViewController(self.payUMoneyCntrl!, animated: true)*/
         
+        //////////////
+        
+        let callBackhandler = {(request:AnyObject?,paymentParamForPassing:PayUModelPaymentParams?, error:String?) in
+            
+            if error != nil{
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+                
+            }else {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let webViewVC = storyboard.instantiateViewControllerWithIdentifier("PayUUIPaymentUIWebViewControllerID") as! PayUUIPaymentUIWebViewController
+                
+                webViewVC.paymentRequest = request as! NSURLRequest
+                webViewVC.paymentParam = paymentParamForPassing
+                
+                self.navigationController?.pushViewController(webViewVC, animated: true)
+            }
+            
+        }
+        
+        let payUMoneyUtil = PayUMoneyUtilitiy()
+        payUMoneyUtil.paymentType = PAYMENT_PG_NET_BANKING
+        payUMoneyUtil.selectedBankCode = selectedBankCode
+        payUMoneyUtil.callBackHandler = callBackhandler
+        payUMoneyUtil.configureAllParameters()
+        payUMoneyUtil.openWebPayment()
+
     }
 
 
