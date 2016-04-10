@@ -67,6 +67,7 @@ class bro4u_DataManager: NSObject {
     var myReorderData:[b4u_ReOrderModel] = Array()
     var orderDetailData:[b4u_OrderDetailModel] = Array()
     var selectionData:[b4u_SelectionModel] = Array()
+    var whyOnlineData:[b4u_WhyOnlineModel] = Array()
 
 
     class var sharedInstance: bro4u_DataManager {

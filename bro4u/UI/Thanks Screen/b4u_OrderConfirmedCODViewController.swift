@@ -13,6 +13,7 @@ class b4u_OrderConfirmedCODViewController: UIViewController {
 
     var order_id:String?
     var confirmedOrder:b4u_OrdersModel?
+    var whyOnlineText:b4u_WhyOnlineModel?
 
     @IBOutlet weak var imgViewServiceProvider: UIImageView!
     @IBOutlet weak var lblServiceProvide: UILabel!
@@ -253,15 +254,22 @@ class b4u_OrderConfirmedCODViewController: UIViewController {
         {
             self.lblAmount.text = orderedaAT
         }
-        if let whyOnlineText: b4u_WhyOnlineModel = confirmedOrder!.whyOnline![0] //Need to check Key
-        {
-            self.lblOnlineAdvantage1.text = whyOnlineText.text1
-            self.lblOnlineAdvantage2.text = whyOnlineText.text2
-            self.lblOnlineAdvantage3.text = whyOnlineText.text3
+        
+        whyOnlineText =  bro4u_DataManager.sharedInstance.whyOnlineData[0]
 
+        if let text1 = whyOnlineText!.text1 //Need to check Key
+        {
+            self.lblOnlineAdvantage1.text = text1
+        }
+        if let text2 = whyOnlineText!.text2 //Need to check Key
+        {
+            self.lblOnlineAdvantage2.text = text2
+        }
+        if let text3 = whyOnlineText!.text3 //Need to check Key
+        {
+            self.lblOnlineAdvantage3.text = text3
         }
 
-        
     }
 
     func addLoadingIndicator () {

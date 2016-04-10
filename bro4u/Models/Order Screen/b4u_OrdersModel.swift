@@ -47,8 +47,6 @@ class b4u_OrdersModel: NSObject {
 
     var paymentGateWayes:[b4u_PaymentGatewayOffersModel]?
     
-    var whyOnline:[b4u_WhyOnlineModel]?
-
     init(dataDict:Dictionary<String ,AnyObject>) {
         
         
@@ -108,18 +106,6 @@ class b4u_OrdersModel: NSObject {
                 self.paymentGateWayes?.append(parentObj)
             }
         }
-        
-        self.whyOnline = Array()
-        
-        if let itemDataArray:[Dictionary<String ,AnyObject>] = dataDict["why_online"] as? [Dictionary<String ,AnyObject>]
-        {
-            for (_ ,whyOnlineDataDict) in itemDataArray.enumerate()
-            {
-                let whyOnlineModel = b4u_WhyOnlineModel(dataDict:whyOnlineDataDict)
-                self.whyOnline?.append(whyOnlineModel)
-            }
-        }
-
         
     }
 

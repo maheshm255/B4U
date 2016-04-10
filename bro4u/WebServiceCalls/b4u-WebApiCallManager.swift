@@ -368,6 +368,16 @@ class b4u_WebApiCallManager: NSObject {
             let parentObj = b4u_OrdersModel(dataDict:dataDict)
             bro4u_DataManager.sharedInstance.orderData.append(parentObj)
         }
+        
+        let parentDict:[Dictionary<String ,AnyObject>] = dataDict["why_online"] as! [Dictionary<String ,AnyObject>]
+
+        bro4u_DataManager.sharedInstance.whyOnlineData.removeAll()
+
+        for (_ ,dataDict) in parentDict.enumerate()
+        {
+            let parentObj = b4u_WhyOnlineModel(dataDict:dataDict)
+            bro4u_DataManager.sharedInstance.whyOnlineData.append(parentObj)
+        }
     }
 
 
