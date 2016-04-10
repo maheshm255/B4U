@@ -15,6 +15,8 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
     var paymentType:String?
     var datePicker:UIDatePicker!
     var datePickerContainer:UIView!
+    var order_id:String?
+
 
     @IBOutlet weak var amountLbl: UILabel!
     @IBOutlet weak var creditCardNoTextFld: UITextField!
@@ -48,6 +50,9 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
         
         self.creditCardNoTextFld.delegate = self
         self.cvvTextFld.delegate = self
+
+        self.amountLbl.text = "Rs. \(bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)"
+        self.order_id = "\(bro4u_DataManager.sharedInstance.orderId!)"
 
 //        self.hideKeyboardWhenTappedAround()
 

@@ -35,7 +35,7 @@
     
     
     self.paymentParamForPassing = [PayUModelPaymentParams new];
-    self.paymentParamForPassing.key = @"p6VnFd";
+    self.paymentParamForPassing.key = kMerchantKey;
 //    self.paymentParamForPassing.transactionID = @"Ywism0Q9XC88qvy";
     self.paymentParamForPassing.amount = @"1.0";
     self.paymentParamForPassing.productInfo = @"Plumber";
@@ -43,8 +43,8 @@
     self.paymentParamForPassing.email = @"email@testsdk1.com";
 //    self.paymentParamForPassing.userCredentials = @"ra:ra";
     self.paymentParamForPassing.phoneNumber = @"1111111111";
-    self.paymentParamForPassing.SURL = @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/payu_postback";
-    self.paymentParamForPassing.FURL = @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/payu_postback";
+    self.paymentParamForPassing.SURL = kSURL;
+    self.paymentParamForPassing.FURL = kFURL;
 //    self.paymentParamForPassing.udf1 = @"u1";
 //    self.paymentParamForPassing.udf2 = @"u2";
 //    self.paymentParamForPassing.udf3 = @"u3";
@@ -52,7 +52,7 @@
 //    self.paymentParamForPassing.udf5 = @"u5";
     self.paymentParamForPassing.Environment = ENVIRONMENT_PRODUCTION;
 //    self.paymentParamForPassing.offerKey = @"offertest@1411";
-    self.saltKey =  @"4Lzjev3I";
+    self.saltKey =  kSaltKey;
     //create Parameter for hash
     [self initPayment];
     self.paymentParamForPassing.hashes.paymentHash = [self createSHA512:self.hashParameter];

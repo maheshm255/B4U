@@ -281,6 +281,14 @@
 #define     ISSUER_AMEX                                         @"AMEX"
 #define     ISSUER_JCB                                          @"JCB"
 
+
+//Payment Constant
+#define kMerchantKey                                            @"p6VnFd"
+#define kSURL                                                   @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/payu_postback"
+#define kFURL                                                   @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/payu_postback"
+#define kSaltKey                                                @"4Lzjev3I"
+
+
 #ifdef DEBUG
 #   define NSLog(...) NSLog(__VA_ARGS__)
 #else

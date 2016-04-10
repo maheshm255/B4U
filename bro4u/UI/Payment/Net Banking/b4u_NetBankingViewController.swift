@@ -33,41 +33,6 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
     
     
     
-    @IBAction func bankBtnAction(sender: AnyObject) {
-        
-        switch sender.tag{
-        case selectBank.kICICI.rawValue :
-            selectBankBtn.setTitle("ICICI NetBanking", forState: UIControlState.Normal)
-            selectedBankCode = "ICIB"
-        case selectBank.kHDFC.rawValue :
-            selectBankBtn.setTitle("HDFC Bank", forState: UIControlState.Normal)
-            selectedBankCode = "HDFB"
-        case selectBank.kSBI.rawValue :
-            selectBankBtn.setTitle("State Bank Of India", forState: UIControlState.Normal)
-            selectedBankCode = "SBIB"
-
-        case selectBank.kAXIS.rawValue :
-            selectBankBtn.setTitle("AXIS Bank NetBanking", forState: UIControlState.Normal)
-            selectedBankCode = "AXIB"
-
-        default :
-            break
-
-        
-        }
-    }
-    
-    
-    @IBAction func continueBtnAction(sender: AnyObject) {
-   
-        payUMoneyCntrl = PayUMoneyViewController()
-        payUMoneyCntrl?.paymentType = PAYMENT_PG_NET_BANKING
-        payUMoneyCntrl?.selectedBankCode = selectedBankCode
-
-
-        self.navigationController?.pushViewController(self.payUMoneyCntrl!, animated: true)
-    
-    }
     
     
     override func viewDidLoad() {
@@ -87,6 +52,8 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
         
         selectBankBtn.layer.borderWidth = 1.0
         selectBankBtn.layer.borderColor = UIColor.orangeColor().CGColor
+
+        self.totalAmountLbl.text = "Rs. \(bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)"
 
     }
 
@@ -153,6 +120,41 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
     */
     
     
+    @IBAction func bankBtnAction(sender: AnyObject) {
+        
+        switch sender.tag{
+        case selectBank.kICICI.rawValue :
+            selectBankBtn.setTitle("ICICI NetBanking", forState: UIControlState.Normal)
+            selectedBankCode = "ICIB"
+        case selectBank.kHDFC.rawValue :
+            selectBankBtn.setTitle("HDFC Bank", forState: UIControlState.Normal)
+            selectedBankCode = "HDFB"
+        case selectBank.kSBI.rawValue :
+            selectBankBtn.setTitle("State Bank Of India", forState: UIControlState.Normal)
+            selectedBankCode = "SBIB"
+            
+        case selectBank.kAXIS.rawValue :
+            selectBankBtn.setTitle("AXIS Bank NetBanking", forState: UIControlState.Normal)
+            selectedBankCode = "AXIB"
+            
+        default :
+            break
+            
+            
+        }
+    }
+    
+    
+    @IBAction func continueBtnAction(sender: AnyObject) {
+        
+        payUMoneyCntrl = PayUMoneyViewController()
+        payUMoneyCntrl?.paymentType = PAYMENT_PG_NET_BANKING
+        payUMoneyCntrl?.selectedBankCode = selectedBankCode
+        
+        
+        self.navigationController?.pushViewController(self.payUMoneyCntrl!, animated: true)
+        
+    }
 
 
 }
