@@ -41,6 +41,7 @@
 		04FC933D1CA10EAF002F90AC /* b4u-QuickBookOrderCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC933C1CA10EAF002F90AC /* b4u-QuickBookOrderCtrl.swift */; };
 		04FE41611C9E57C800A168FF /* b4u-loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE41601C9E57C800A168FF /* b4u-loginView.swift */; };
 		04FE418F1C9E706B00A168FF /* b4u-loginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FE418E1C9E706B00A168FF /* b4u-loginView.xib */; };
+		520282741CBA667300CD8725 /* PayUMoneyUtilitiy.m in Sources */ = {isa = PBXBuildFile; fileRef = 520282731CBA667300CD8725 /* PayUMoneyUtilitiy.m */; };
 		522291871CB6384E00392DC0 /* b4u_DismissKeyBoardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522291861CB6384E00392DC0 /* b4u_DismissKeyBoardExtension.swift */; };
 		522291891CB65CBC00392DC0 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522291881CB65CBC00392DC0 /* MonthYearPickerView.swift */; };
 		529F27731CADA84700ABFC9E /* b4u_OrderDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F27721CADA84700ABFC9E /* b4u_OrderDetailModel.swift */; };
@@ -157,9 +158,9 @@
 		B36939921CA175F9000266A5 /* b4u_OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36939911CA175F9000266A5 /* b4u_OrderDetailViewController.swift */; };
 		B36939941CA17617000266A5 /* B4u_Term&ConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36939931CA17617000266A5 /* B4u_Term&ConditionViewController.swift */; };
 		B3890D381CAD2D2900CD0003 /* b4u_MyWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3890D371CAD2D2900CD0003 /* b4u_MyWalletTableViewCell.swift */; };
+		B3A08DCB1CBB6D71004B3D52 /* b4u_CreateOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A08DCA1CBB6D71004B3D52 /* b4u_CreateOrder.swift */; };
 		B701BBBF1C98845F0095FEF1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B701BBBE1C98845F0095FEF1 /* MBProgressHUD.m */; };
 		B701BBC21C9884A80095FEF1 /* b4u_AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B701BBC11C9884A80095FEF1 /* b4u_AboutUsViewController.swift */; };
-		B7182E8C1CB1017B00935087 /* b4u_CODViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7182E8B1CB1017B00935087 /* b4u_CODViewController.swift */; };
 		B7182E8F1CB1289700935087 /* b4u_PlaceOnlineOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7182E8E1CB1289700935087 /* b4u_PlaceOnlineOrderViewController.swift */; };
 		B71C28581C8C0C0C00873B5C /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C28481C8C0C0C00873B5C /* MyInfoViewController.swift */; };
 		B71C28591C8C0C0C00873B5C /* MyWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C284A1C8C0C0C00873B5C /* MyWalletViewController.swift */; };
@@ -310,6 +311,8 @@
 		04FE418E1C9E706B00A168FF /* b4u-loginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "b4u-loginView.xib"; sourceTree = "<group>"; };
 		0B4AB3BBC76D5DA9D4D6646A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4B48C7B178FB5F85A79C9741 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		520282721CBA667300CD8725 /* PayUMoneyUtilitiy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayUMoneyUtilitiy.h; path = bro4u/Helpers/PayUMoneyUtilitiy.h; sourceTree = SOURCE_ROOT; };
+		520282731CBA667300CD8725 /* PayUMoneyUtilitiy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PayUMoneyUtilitiy.m; path = bro4u/Helpers/PayUMoneyUtilitiy.m; sourceTree = SOURCE_ROOT; };
 		522291861CB6384E00392DC0 /* b4u_DismissKeyBoardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_DismissKeyBoardExtension.swift; sourceTree = "<group>"; };
 		522291881CB65CBC00392DC0 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		529F27721CADA84700ABFC9E /* b4u_OrderDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_OrderDetailModel.swift; sourceTree = "<group>"; };
@@ -459,10 +462,10 @@
 		B36939911CA175F9000266A5 /* b4u_OrderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_OrderDetailViewController.swift; sourceTree = "<group>"; };
 		B36939931CA17617000266A5 /* B4u_Term&ConditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "B4u_Term&ConditionViewController.swift"; sourceTree = "<group>"; };
 		B3890D371CAD2D2900CD0003 /* b4u_MyWalletTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_MyWalletTableViewCell.swift; sourceTree = "<group>"; };
+		B3A08DCA1CBB6D71004B3D52 /* b4u_CreateOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_CreateOrder.swift; sourceTree = "<group>"; };
 		B701BBBD1C98845F0095FEF1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		B701BBBE1C98845F0095FEF1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		B701BBC11C9884A80095FEF1 /* b4u_AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_AboutUsViewController.swift; sourceTree = "<group>"; };
-		B7182E8B1CB1017B00935087 /* b4u_CODViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_CODViewController.swift; sourceTree = "<group>"; };
 		B7182E8E1CB1289700935087 /* b4u_PlaceOnlineOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_PlaceOnlineOrderViewController.swift; sourceTree = "<group>"; };
 		B71C28481C8C0C0C00873B5C /* MyInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
 		B71C284A1C8C0C0C00873B5C /* MyWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWalletViewController.swift; sourceTree = "<group>"; };
@@ -1127,6 +1130,8 @@
 		65F8B42E1C70BE6200D158FA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				520282721CBA667300CD8725 /* PayUMoneyUtilitiy.h */,
+				520282731CBA667300CD8725 /* PayUMoneyUtilitiy.m */,
 				522291881CB65CBC00392DC0 /* MonthYearPickerView.swift */,
 				65F8B4311C70BECD00D158FA /* b4u-NSDateExtension.swift */,
 				65F8B4321C70BECD00D158FA /* b4u-progressIndicator.swift */,
@@ -1346,7 +1351,7 @@
 		B7182E8A1CB1015500935087 /* COD */ = {
 			isa = PBXGroup;
 			children = (
-				B7182E8B1CB1017B00935087 /* b4u_CODViewController.swift */,
+				B3A08DCA1CBB6D71004B3D52 /* b4u_CreateOrder.swift */,
 			);
 			path = COD;
 			sourceTree = "<group>";
@@ -1819,6 +1824,7 @@
 				65FF8D601C7E175C007588D0 /* b4u-DateAndTImeSelectionTblCell.swift in Sources */,
 				65271EFD1C831B1E0022C888 /* PaytmViewController.m in Sources */,
 				042700131C8B374A008440CC /* b4u_CalendarViewCtrl.swift in Sources */,
+				520282741CBA667300CD8725 /* PayUMoneyUtilitiy.m in Sources */,
 				65B18A881C70BB28000EDD00 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				65DE76D31C7777FE00017F96 /* b4u-Category.swift in Sources */,
 				65264F851C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift in Sources */,
@@ -1868,7 +1874,6 @@
 				045A49521CAE754800BF7381 /* b4u-VendorProfileViewController.swift in Sources */,
 				65271E5D1C8307BB0022C888 /* b4u_PaymentBaseViewController.swift in Sources */,
 				65F8B43B1C70BECD00D158FA /* b4u-UIView-Extension.swift in Sources */,
-				B7182E8C1CB1017B00935087 /* b4u_CODViewController.swift in Sources */,
 				65B189BD1C6E6020000EDD00 /* SubCategory+CoreDataProperties.swift in Sources */,
 				65FF8D681C7EC1A5007588D0 /* b4u-SugestedPartner.swift in Sources */,
 				042700261C8B37B6008440CC /* FSCalendarUnit.m in Sources */,
@@ -1889,6 +1894,7 @@
 				65B18A4E1C70BA51000EDD00 /* b4u-WebApiCallManager.swift in Sources */,
 				B36939881CA1440B000266A5 /* b4u_TrackOrderViewController.swift in Sources */,
 				65B18A801C70BB28000EDD00 /* AFSecurityPolicy.m in Sources */,
+				B3A08DCB1CBB6D71004B3D52 /* b4u_CreateOrder.swift in Sources */,
 				65DE79651C796AD200017F96 /* b4u_IntermediateScreenDataModel.swift in Sources */,
 				B33666801CA95092007FFD50 /* b4u_CreditAndDebitCardViewController.swift in Sources */,
 				65B18A901C70BBC1000EDD00 /* b4u-globalDefinations.swift in Sources */,

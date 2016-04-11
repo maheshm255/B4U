@@ -23,21 +23,10 @@ class OrderConfirmedViewController: UIViewController {
   @IBOutlet var serviceStatusLbl: UILabel!
   @IBOutlet var orderedAtDateLbl: UILabel!
   @IBOutlet var amountLbl: UILabel!
+  @IBOutlet var lblCallBro4U: UILabel!
   
     var order_id:String?
 
-  
-  @IBAction func callBro4uAction(sender: AnyObject) {
-  }
-  
-  
-  @IBAction func payOnlineAction(sender: AnyObject) {
-  }
-  
-  
-  @IBAction func checkOtherServicesAction(sender: AnyObject) {
-  }
-  
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +50,6 @@ class OrderConfirmedViewController: UIViewController {
             
         }
         
-        //user_id = "15"
         let params = "?order_id=\(order_id)&user_id=\(user_id)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kOrderConfirmedIndex , params:params, result:{(resultObject) -> Void in
             
@@ -134,6 +122,18 @@ class OrderConfirmedViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+  
+  @IBAction func callBro4uAction(sender: AnyObject) {
+  }
+  
+  
+  @IBAction func payOnlineAction(sender: AnyObject) {
+  }
+  
+  
+  @IBAction func checkOtherServicesAction(sender: AnyObject) {
+  }
+
   
   func addLoadingIndicator () {
     self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)

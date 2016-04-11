@@ -11,7 +11,7 @@ import UIKit
 class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate ,UINavigationBarDelegate{
 
     
-    var payUMoneyCntrl:PayUMoneyViewController?
+//    var payUMoneyCntrl:PayUMoneyViewController?
     var paymentType:String?
     var datePicker:UIDatePicker!
     var datePickerContainer:UIView!
@@ -33,9 +33,9 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
       //  self.navigationController?.navigationBar.delegate = self
         // Do any additional setup after loading the view.
         
-//        self.creditCardNoTextFld.text = "5123456789012346"
-//        self.cvvTextFld.text = "123"
-//        self.expiryDateBtn.setTitle("12/2019", forState: .Normal)
+        self.creditCardNoTextFld.text = "5123456789012346"
+        self.cvvTextFld.text = "123"
+        self.expiryDateBtn.setTitle("12/2019", forState: .Normal)
         creditCardNoTextFld.keyboardType = .NumberPad
         cvvTextFld.keyboardType = .NumberPad
 
@@ -52,7 +52,7 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
         self.cvvTextFld.delegate = self
 
         self.amountLbl.text = "Rs. \(bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)"
-        self.order_id = "\(bro4u_DataManager.sharedInstance.orderId!)"
+        self.order_id = "29944" //"\(bro4u_DataManager.sharedInstance.orderId!)"
 
 //        self.hideKeyboardWhenTappedAround()
 
@@ -112,7 +112,7 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
 
     @IBAction func continueBtnAction(sender: AnyObject) {
         
-        payUMoneyCntrl = PayUMoneyViewController()
+        /*payUMoneyCntrl = PayUMoneyViewController()
         payUMoneyCntrl?.paymentType = PAYMENT_PG_CCDC
         
         let dateArr = expiryDateBtn.titleLabel!.text!.componentsSeparatedByString("/")
@@ -122,7 +122,38 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
         payUMoneyCntrl?.cardNo = creditCardNoTextFld.text
         payUMoneyCntrl?.CVVNo = cvvTextFld.text
         
-        self.navigationController?.pushViewController(self.payUMoneyCntrl!, animated: true)
+        self.navigationController?.pushViewController(self.payUMoneyCntrl!, animated: true)*/
+        
+        let callBackhandler = {(request:AnyObject?,paymentParamForPassing:PayUModelPaymentParams?, error:String?) in
+            
+            if error != nil {
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+                
+            }else {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let webViewVC = storyboard.instantiateViewControllerWithIdentifier("PayUUIPaymentUIWebViewControllerID") as! PayUUIPaymentUIWebViewController
+                
+                webViewVC.paymentRequest = request as! NSURLRequest
+                webViewVC.paymentParam = paymentParamForPassing
+                
+                self.navigationController?.pushViewController(webViewVC, animated: true)
+            }
+            
+        }
+        
+        let dateArr = expiryDateBtn.titleLabel!.text!.componentsSeparatedByString("/")
+        
+        let payUMoneyUtil = PayUMoneyUtilitiy()
+        payUMoneyUtil.paymentType = PAYMENT_PG_CCDC
+        payUMoneyUtil.cardExpYear = dateArr[1]
+        payUMoneyUtil.cardExpMonth = dateArr[0]
+        payUMoneyUtil.cardNo = creditCardNoTextFld.text
+        payUMoneyUtil.CVVNo = cvvTextFld.text
+        payUMoneyUtil.callBackHandler = callBackhandler
+        payUMoneyUtil.configureAllParameters()
+        payUMoneyUtil.openWebPayment()
         
     }
 
