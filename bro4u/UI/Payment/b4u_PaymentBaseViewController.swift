@@ -8,7 +8,7 @@
 
 import UIKit
 
-class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,loginViewDelegate , paymentDelegate,UIPopoverPresentationControllerDelegate{
+class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,loginViewDelegate , paymentDelegate,UIPopoverPresentationControllerDelegate,createOrderDelegate, PGTransactionDelegate{
   
   @IBOutlet weak var viewSegmentCtrl: UIView!
   var segmentedControl:HMSegmentedControl?
@@ -315,15 +315,12 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
   func navigateToPaymentGateWay(gateWayOpton:paymentOption)
   {
     
-    var paymentViewController:UIViewController?
-    
-    
     switch gateWayOpton {
         
     case paymentOption.kPaytm :
         
-        paymentViewController = PaytmViewController()
-        
+        self.createOrderForPayTm()
+
     case paymentOption.kCCDC :
         
         self.performSegueWithIdentifier("creditCardViewController", sender:nil)
@@ -337,8 +334,19 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
         
     }
 
-//    self.navigationController?.pushViewController(paymentViewController!, animated: true)
     
+  }
+  
+  
+  func createOrderForPayTm()
+  {
+    
+    b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+    let createOrderObj = b4u_CreateOrder()
+    createOrderObj.delegate = self
+    createOrderObj.createOrder()
+    createOrderObj.paymentType  = kPaytmPayment
+
   }
   
   
@@ -486,6 +494,109 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
   }
  
+  func hasOrderCreated(resultObject:String)
+  {
+    
+    if resultObject == "Success"
+    {
+      b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+      
+//      let paymentViewController = PaytmViewController()
+//      self.navigationController?.pushViewController(paymentViewController, animated: true)
+      
+      let callBackhandler = {(order:PGOrder?, merchantConfiguration :PGMerchantConfiguration?) in
+        
+        if order != nil{
+          self.laodViewController(order!, merchantConfiguration: merchantConfiguration!)
+        }
+        
+      }
+      
+      
+      let payUMoneyUtil = PayUMoneyUtilitiy()
+      payUMoneyUtil.paytmCallBackHandler = callBackhandler
+      payUMoneyUtil.createOrder()
+      
+
+    }
+  }
+  
+  //shahnawaz
+  
+  func laodViewController(order : PGOrder, merchantConfiguration :PGMerchantConfiguration) -> Void {
+    let txnController = PGTransactionViewController(transactionForOrder: order)
+    txnController.serverType = eServerTypeProduction;
+    txnController.merchant = merchantConfiguration;
+    txnController.delegate = self;
+    showController(txnController)
+
+  }
+  
+  func showController(controller : PGTransactionViewController) -> Void {
+    if navigationController != nil {
+      navigationController?.pushViewController(controller, animated: true)
+    }else{
+      self.presentViewController(controller, animated: true, completion: nil)
+    }
+  }
+  
+  func removeController(controller : PGTransactionViewController) -> Void {
+    if navigationController != nil {
+      navigationController?.popViewControllerAnimated(true)
+    }else{
+      controller.dismissViewControllerAnimated(true, completion: nil)
+    }
+  }
+  
+  func didSucceedTransaction(controller: PGTransactionViewController!, response: [NSObject : AnyObject]!) {
+    let title = "Your order  was completed successfully. \n \(response["ORDERID"])"
+    
+    let alert = UIAlertController(title: title, message: response.description, preferredStyle: UIAlertControllerStyle.Alert)
+    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+    self.presentViewController(alert, animated: true, completion: nil)
+    removeController(controller)
+    
+  }
+  
+  func didFailTransaction(controller: PGTransactionViewController!, error: NSError!, response: [NSObject : AnyObject]!) {
+    
+    if response != nil
+    {
+      let alert = UIAlertController(title: error.localizedDescription, message: response.description, preferredStyle: UIAlertControllerStyle.Alert)
+      alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+      self.presentViewController(alert, animated: true, completion: nil)
+      
+    }
+    else if error != nil
+    {
+      let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
+      alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+      self.presentViewController(alert, animated: true, completion: nil)
+      
+    }
+    removeController(controller)
+  }
+  
+  func didCancelTransaction(controller: PGTransactionViewController!, error: NSError!, response: [NSObject : AnyObject]!) {
+    
+    let msg : String?
+    if  error == nil {
+      msg = "Successful"
+    }else {
+      msg = "UnSuccessful"
+    }
+    let alert = UIAlertController(title: "Transaction Cancel", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+    self.presentViewController(alert, animated: true, completion: nil)
+    
+    removeController(controller)
+  }
+  
+  func didFinishCASTransaction(controller: PGTransactionViewController!, response: [NSObject : AnyObject]!) {
+    
+  }
+  
+
 }
 
 

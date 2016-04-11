@@ -324,6 +324,15 @@ let kLoginDismissed = "kLoginDismissed"
 
 let kUserDataReceived = "UserDataReceived"
 
+//Payment Type
+let kCODPayment = "CODPayment"
+let kNetBankingPayment = "NetBankingPayment"
+let kCardPayment = "CardPayment"
+let kPaytmPayment = "PaytmPayment"
+
+
+
+
 
 
 

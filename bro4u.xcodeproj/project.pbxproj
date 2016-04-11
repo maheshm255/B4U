@@ -163,7 +163,6 @@
 		B3A08DCB1CBB6D71004B3D52 /* b4u_CreateOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A08DCA1CBB6D71004B3D52 /* b4u_CreateOrder.swift */; };
 		B701BBBF1C98845F0095FEF1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B701BBBE1C98845F0095FEF1 /* MBProgressHUD.m */; };
 		B701BBC21C9884A80095FEF1 /* b4u_AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B701BBC11C9884A80095FEF1 /* b4u_AboutUsViewController.swift */; };
-		B7182E8F1CB1289700935087 /* b4u_PlaceOnlineOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7182E8E1CB1289700935087 /* b4u_PlaceOnlineOrderViewController.swift */; };
 		B71C28581C8C0C0C00873B5C /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C28481C8C0C0C00873B5C /* MyInfoViewController.swift */; };
 		B71C28591C8C0C0C00873B5C /* MyWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C284A1C8C0C0C00873B5C /* MyWalletViewController.swift */; };
 		B71C285A1C8C0C0C00873B5C /* MyAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71C284B1C8C0C0C00873B5C /* MyAccountTableViewCell.swift */; };
@@ -470,7 +469,6 @@
 		B701BBBD1C98845F0095FEF1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		B701BBBE1C98845F0095FEF1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		B701BBC11C9884A80095FEF1 /* b4u_AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_AboutUsViewController.swift; sourceTree = "<group>"; };
-		B7182E8E1CB1289700935087 /* b4u_PlaceOnlineOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_PlaceOnlineOrderViewController.swift; sourceTree = "<group>"; };
 		B71C28481C8C0C0C00873B5C /* MyInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
 		B71C284A1C8C0C0C00873B5C /* MyWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWalletViewController.swift; sourceTree = "<group>"; };
 		B71C284B1C8C0C0C00873B5C /* MyAccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTableViewCell.swift; sourceTree = "<group>"; };
@@ -785,7 +783,7 @@
 		65271E591C83056F0022C888 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
-				B7182E8D1CB1287A00935087 /* Online Order */,
+				B3A08DCC1CBB86D0004B3D52 /* Paytm Order */,
 				B7182E8A1CB1015500935087 /* COD */,
 				B336667B1CA94979007FFD50 /* CreditDebit Card */,
 				B336667A1CA9494E007FFD50 /* Net Banking */,
@@ -892,6 +890,7 @@
 		6536E0B41C690C6F00B273D6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B3A08DCF1CBBA600004B3D52 /* Online Order */,
 				529F27711CADA80700ABFC9E /* Order Detail */,
 				04E746FE1C96D48800521674 /* LoginInfo */,
 				04F026441C9594CE00C99548 /* Address */,
@@ -1334,6 +1333,20 @@
 			path = "Order Detail";
 			sourceTree = "<group>";
 		};
+		B3A08DCC1CBB86D0004B3D52 /* Paytm Order */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Paytm Order";
+			sourceTree = "<group>";
+		};
+		B3A08DCF1CBBA600004B3D52 /* Online Order */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Online Order";
+			sourceTree = "<group>";
+		};
 		B4D74FF320FF35BA637DFE8F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1366,14 +1379,6 @@
 				B3A08DCA1CBB6D71004B3D52 /* b4u_CreateOrder.swift */,
 			);
 			path = COD;
-			sourceTree = "<group>";
-		};
-		B7182E8D1CB1287A00935087 /* Online Order */ = {
-			isa = PBXGroup;
-			children = (
-				B7182E8E1CB1289700935087 /* b4u_PlaceOnlineOrderViewController.swift */,
-			);
-			path = "Online Order";
 			sourceTree = "<group>";
 		};
 		B71C28461C8C0C0C00873B5C /* MyAccount Screen */ = {
@@ -1916,7 +1921,6 @@
 				65B18A901C70BBC1000EDD00 /* b4u-globalDefinations.swift in Sources */,
 				B71C28581C8C0C0C00873B5C /* MyInfoViewController.swift in Sources */,
 				65DE79681C79761F00017F96 /* b4u_IntermediateViewCtrl.swift in Sources */,
-				B7182E8F1CB1289700935087 /* b4u_PlaceOnlineOrderViewController.swift in Sources */,
 				65B18A7D1C70BB28000EDD00 /* AFHTTPRequestOperationManager.m in Sources */,
 				B7268EAD1CB41D51004C31A1 /* PayUMoneyViewController.m in Sources */,
 				65271E541C828FED0022C888 /* b4u-CategoryTblViewCell.swift in Sources */,

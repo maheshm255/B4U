@@ -144,6 +144,9 @@ class b4u_WebApiCallManager: NSObject {
 
         case kPlaceCashOnDeliveryIndex:
             self.parseCODPayment(dataDict)
+          
+        case kPlaceOnlineOrderIndex:
+          self.parseOnlinePayment(dataDict)
 
         case kViewProfileIndex:
             self.parseVendorProfileData(dataDict)
@@ -461,7 +464,17 @@ class b4u_WebApiCallManager: NSObject {
     {
         bro4u_DataManager.sharedInstance.orderId = dataDict["order_id"] as? NSNumber
     }
-    
+  
+    func parseOnlinePayment(dataDict:Dictionary<String, AnyObject>)
+    {
+      bro4u_DataManager.sharedInstance.orderId = dataDict["order_id"] as? NSNumber
+      bro4u_DataManager.sharedInstance.txnID = dataDict["txnid"] as? String
+      bro4u_DataManager.sharedInstance.surl = dataDict["surl"] as? String
+      bro4u_DataManager.sharedInstance.furl = dataDict["furl"] as? String
+
+    }
+
+  
     func parseVendorProfileData(dataDict:Dictionary<String, AnyObject>)
     {
         let vendorProfile = b4u_VendorProfileModel(vendorDataDict: dataDict)
