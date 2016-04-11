@@ -18,6 +18,7 @@ class b4u_CreateOrder: NSObject {
 
   
   var delegate:createOrderDelegate?
+  var paymentType:String?
 
   func createOrder()
   {
@@ -145,15 +146,30 @@ class b4u_CreateOrder: NSObject {
     
     let params = "?user_id=\(user_id)&total_cost=\(total_cost)&service_time=\(service_time)&service_date=\(service_date)&selection=\(selection)&grand_total=\(grand_total)&night_delivery_charge=\(night_delivery_charge)&customer_name=\(customer_name)&vendor_id=\(vendor_id)&custom_message=\(custom_message)&address_id=\(address_id)&email=\(email)&mobile=\(mobile)&item_id=\(item_id)&payment_wallet=\(payment_wallet)&coupon=\(coupon)&imei=\(imei)&cat_id=\(cat_id)&latitude=\(latitude)&longitude=\(longitude)"
     
-    b4u_WebApiCallManager.sharedInstance.getApiCall(kPlaceCashOnDeliveryIndex , params:params, result:{(resultObject) -> Void in
+    
+    if self.paymentType == kCODPayment{
+      b4u_WebApiCallManager.sharedInstance.getApiCall(kPlaceCashOnDeliveryIndex , params:params, result:{(resultObject) -> Void in
+        print(" COD Order Data Received")
+        // self.getDataOfThanksScreen(resultObject as! String)
+        
+        self.delegate?.hasOrderCreated(resultObject as! String)
+        
+        print(resultObject)
+      })
       
-      print(" COD Order Data Received")
-     // self.getDataOfThanksScreen(resultObject as! String)
+    }
+    else{
+      b4u_WebApiCallManager.sharedInstance.getApiCall(kPlaceOnlineOrderIndex , params:params, result:{(resultObject) -> Void in
+        print(" Online Order Data Received")
+        // self.getDataOfThanksScreen(resultObject as! String)
+        
+        self.delegate?.hasOrderCreated(resultObject as! String)
+        
+        print(resultObject)
+      })
       
-      self.delegate?.hasOrderCreated(resultObject as! String)
-      
-      print(resultObject)
-    })
+    }
+
   }
 
 

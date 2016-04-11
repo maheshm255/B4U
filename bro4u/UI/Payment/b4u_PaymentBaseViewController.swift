@@ -8,7 +8,7 @@
 
 import UIKit
 
-class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,loginViewDelegate , paymentDelegate,UIPopoverPresentationControllerDelegate{
+class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,loginViewDelegate , paymentDelegate,UIPopoverPresentationControllerDelegate,createOrderDelegate{
   
   @IBOutlet weak var viewSegmentCtrl: UIView!
   var segmentedControl:HMSegmentedControl?
@@ -315,15 +315,12 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
   func navigateToPaymentGateWay(gateWayOpton:paymentOption)
   {
     
-    var paymentViewController:UIViewController?
-    
-    
     switch gateWayOpton {
         
     case paymentOption.kPaytm :
         
-        paymentViewController = PaytmViewController()
-        
+        self.createOrderForPayTm()
+
     case paymentOption.kCCDC :
         
         self.performSegueWithIdentifier("creditCardViewController", sender:nil)
@@ -337,8 +334,19 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
         
     }
 
-//    self.navigationController?.pushViewController(paymentViewController!, animated: true)
     
+  }
+  
+  
+  func createOrderForPayTm()
+  {
+    
+    b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+    let createOrderObj = b4u_CreateOrder()
+    createOrderObj.delegate = self
+    createOrderObj.createOrder()
+    createOrderObj.paymentType  = kPaytmPayment
+
   }
   
   
@@ -486,6 +494,19 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
   }
  
+  func hasOrderCreated(resultObject:String)
+  {
+    
+    if resultObject == "Success"
+    {
+      b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+      
+      let paymentViewController = PaytmViewController()
+      self.navigationController?.pushViewController(paymentViewController, animated: true)
+
+    }
+  }
+
 }
 
 

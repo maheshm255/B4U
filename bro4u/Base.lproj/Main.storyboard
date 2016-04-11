@@ -3619,12 +3619,6 @@
                                             <constraint firstAttribute="height" constant="1" id="Uib-jA-sgu"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Call BRO4U" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLL-0s-zOF">
-                                        <rect key="frame" x="56" y="198" width="79" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="320-Y7-8cB" userLabel="verticalSep">
                                         <rect key="frame" x="291" y="178" width="1" height="67"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -3638,13 +3632,19 @@
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Call BRO4U" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLL-0s-zOF">
+                                        <rect key="frame" x="67" y="197" width="79" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="11-02-2016" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCk-Va-HTg">
                                         <rect key="frame" x="475" y="153" width="89" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="creditCard" translatesAutoresizingMaskIntoConstraints="NO" id="KK4-Cf-vYY">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="creditCard" translatesAutoresizingMaskIntoConstraints="NO" id="KK4-Cf-vYY">
                                         <rect key="frame" x="405" y="200" width="19" height="13"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="19" id="LPQ-Pu-TrB"/>
@@ -3693,7 +3693,6 @@
                                     <constraint firstAttribute="bottom" secondItem="Ki3-yL-Sx7" secondAttribute="bottom" constant="8" id="492-pi-XP7"/>
                                     <constraint firstItem="rjc-jR-wkt" firstAttribute="top" secondItem="rCC-rW-njb" secondAttribute="bottom" constant="20" id="4YF-31-6lj"/>
                                     <constraint firstItem="a1n-Qq-do7" firstAttribute="leading" secondItem="bq1-ym-3HB" secondAttribute="leading" id="6R4-WD-9pH"/>
-                                    <constraint firstItem="lLL-0s-zOF" firstAttribute="centerY" secondItem="rjc-jR-wkt" secondAttribute="centerY" id="6gl-En-Mfb"/>
                                     <constraint firstItem="rCC-rW-njb" firstAttribute="trailing" secondItem="ott-9F-rwC" secondAttribute="trailing" id="7ak-hb-O8Z"/>
                                     <constraint firstItem="8yT-9x-kAv" firstAttribute="top" secondItem="rCC-rW-njb" secondAttribute="bottom" constant="7" id="9MS-Vo-Iyf"/>
                                     <constraint firstItem="ott-9F-rwC" firstAttribute="top" secondItem="kWo-nU-bXm" secondAttribute="bottom" constant="20" id="9lO-Yu-ezN"/>
@@ -3712,7 +3711,6 @@
                                     <constraint firstItem="TU9-8h-6xx" firstAttribute="centerX" secondItem="SCh-gK-Y1v" secondAttribute="centerX" constant="-78" id="Sao-yp-6Nw"/>
                                     <constraint firstItem="rrr-6N-WSk" firstAttribute="trailing" secondItem="4iT-IV-qBv" secondAttribute="trailing" id="VHf-r4-7mu"/>
                                     <constraint firstItem="JTf-0P-vfz" firstAttribute="trailing" secondItem="kWo-nU-bXm" secondAttribute="trailing" id="WQi-r5-lzF"/>
-                                    <constraint firstItem="lLL-0s-zOF" firstAttribute="leading" secondItem="rjc-jR-wkt" secondAttribute="trailing" constant="20" id="Yvn-dS-nIM"/>
                                     <constraint firstItem="320-Y7-8cB" firstAttribute="leading" secondItem="Ki3-yL-Sx7" secondAttribute="trailing" constant="8" id="bBv-Ve-EFt"/>
                                     <constraint firstItem="sCk-Va-HTg" firstAttribute="top" secondItem="8WK-rp-teS" secondAttribute="bottom" constant="6" id="bCu-ub-HdY"/>
                                     <constraint firstItem="gzk-Yr-pDh" firstAttribute="leading" secondItem="SCh-gK-Y1v" secondAttribute="leading" constant="20" id="eAJ-FX-WUQ"/>
@@ -3730,7 +3728,6 @@
                                     <constraint firstItem="rrr-6N-WSk" firstAttribute="top" secondItem="rCC-rW-njb" secondAttribute="bottom" constant="10" id="q95-Za-SUP"/>
                                     <constraint firstAttribute="trailing" secondItem="rrr-6N-WSk" secondAttribute="trailing" constant="20" id="s3E-ZR-qDn"/>
                                     <constraint firstItem="320-Y7-8cB" firstAttribute="centerX" secondItem="SCh-gK-Y1v" secondAttribute="centerX" id="tKr-nl-ycf"/>
-                                    <constraint firstItem="KK4-Cf-vYY" firstAttribute="centerY" secondItem="lLL-0s-zOF" secondAttribute="centerY" id="tNv-Vt-PwS"/>
                                     <constraint firstItem="4iT-IV-qBv" firstAttribute="top" secondItem="rrr-6N-WSk" secondAttribute="bottom" constant="9.5" id="ux1-yT-i8T"/>
                                     <constraint firstItem="bq1-ym-3HB" firstAttribute="leading" secondItem="aAr-k5-Ukf" secondAttribute="trailing" constant="16" id="vDD-V7-JO7"/>
                                     <constraint firstAttribute="trailing" secondItem="8WK-rp-teS" secondAttribute="trailing" constant="20" id="vpq-rS-kE0"/>
@@ -4125,7 +4122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hyu-qh-eDa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6927" y="2828"/>
+            <point key="canvasLocation" x="7007" y="2820"/>
         </scene>
         <!--My Orders-->
         <scene sceneID="jQt-Yf-4cK">
@@ -7258,7 +7255,9 @@
                         <outlet property="continueBtn" destination="j7K-qW-394" id="E69-NI-1g0"/>
                         <outlet property="creditCardNoTextFld" destination="Mz9-2e-vzK" id="p1S-2M-pr5"/>
                         <outlet property="cvvTextFld" destination="ffJ-Ok-1ge" id="5jE-7w-3XC"/>
+                        <outlet property="downView" destination="tJC-Cp-AfM" id="IHq-qH-Cm7"/>
                         <outlet property="expiryDateBtn" destination="dP8-uC-1xo" id="Vmx-z3-ZVJ"/>
+                        <outlet property="topView" destination="VNA-HI-oXL" id="xRQ-ce-C0y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QuG-qo-GmW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -7485,10 +7484,12 @@
                     <connections>
                         <outlet property="axisBtn" destination="acp-WU-lgd" id="UZS-jw-DMb"/>
                         <outlet property="continueBtn" destination="8ny-zi-Ibr" id="2TG-RM-aRi"/>
+                        <outlet property="downView" destination="mme-5T-EOl" id="xBI-jr-rh1"/>
                         <outlet property="hdfcBtn" destination="cw4-dK-jll" id="MWl-IY-oDP"/>
                         <outlet property="iciciBtn" destination="FCe-YT-WBg" id="YgJ-ZE-4Pi"/>
                         <outlet property="sbiBtn" destination="erF-B4-AYQ" id="CGF-tn-MH3"/>
                         <outlet property="selectBankBtn" destination="s2I-gU-94z" id="1VX-36-POx"/>
+                        <outlet property="topView" destination="SAz-rb-enT" id="bUE-R4-iIf"/>
                         <outlet property="totalAmountLbl" destination="5PZ-ty-PZ8" id="eXb-YD-SHn"/>
                     </connections>
                 </viewController>
@@ -8403,7 +8404,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aMh-VY-vR1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4704" y="6774"/>
+            <point key="canvasLocation" x="4376" y="6790"/>
         </scene>
         <!--4u Partner Reviews Tbl View Ctrl-->
         <scene sceneID="hl4-Pf-zQq">

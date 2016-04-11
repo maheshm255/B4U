@@ -8,7 +8,7 @@
 
 import UIKit
 
-class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate ,UINavigationBarDelegate{
+class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate ,UINavigationBarDelegate , createOrderDelegate{
 
     
 //    var payUMoneyCntrl:PayUMoneyViewController?
@@ -23,6 +23,8 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
     @IBOutlet weak var expiryDateBtn: UIButton!
     @IBOutlet weak var cvvTextFld: UITextField!
     @IBOutlet weak var continueBtn: UIButton!
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var downView: UIView!
     
     
     
@@ -32,29 +34,51 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
         
       //  self.navigationController?.navigationBar.delegate = self
         // Do any additional setup after loading the view.
+      
+      
+        self.addLoadingIndicator()
         
-        self.creditCardNoTextFld.text = "5123456789012346"
-        self.cvvTextFld.text = "123"
-        self.expiryDateBtn.setTitle("12/2019", forState: .Normal)
-        creditCardNoTextFld.keyboardType = .NumberPad
-        cvvTextFld.keyboardType = .NumberPad
-
-        creditCardNoTextFld.layer.borderWidth = 1.0;
-        creditCardNoTextFld.layer.borderColor = UIColor.lightGrayColor().CGColor
-        cvvTextFld.layer.borderWidth = 1.0;
-        cvvTextFld.layer.borderColor = UIColor.lightGrayColor().CGColor
-
-        expiryDateBtn.layer.borderWidth = 1.0
-        expiryDateBtn.layer.borderColor = UIColor.lightGrayColor().CGColor
-
-        
-        self.creditCardNoTextFld.delegate = self
-        self.cvvTextFld.delegate = self
-
-        self.amountLbl.text = "Rs. \(bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)"
-        self.order_id = "29944" //"\(bro4u_DataManager.sharedInstance.orderId!)"
-
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+        let createOrderObj = b4u_CreateOrder()
+        createOrderObj.delegate = self
+        createOrderObj.createOrder()
+        createOrderObj.paymentType  = kCardPayment
+      
+        topView.hidden = true
+        downView.hidden = true
 //        self.hideKeyboardWhenTappedAround()
+
+    }
+  
+    func configureUI()
+    {
+      topView.hidden = false
+      downView.hidden = false
+
+      
+      //Set Default Values
+      self.creditCardNoTextFld.text = "5123456789012346"
+      self.cvvTextFld.text = "123"
+      self.expiryDateBtn.setTitle("12/2019", forState: .Normal)
+      
+      
+      creditCardNoTextFld.keyboardType = .NumberPad
+      cvvTextFld.keyboardType = .NumberPad
+      
+      creditCardNoTextFld.layer.borderWidth = 1.0;
+      creditCardNoTextFld.layer.borderColor = UIColor.lightGrayColor().CGColor
+      cvvTextFld.layer.borderWidth = 1.0;
+      cvvTextFld.layer.borderColor = UIColor.lightGrayColor().CGColor
+      
+      expiryDateBtn.layer.borderWidth = 1.0
+      expiryDateBtn.layer.borderColor = UIColor.lightGrayColor().CGColor
+      
+      
+      self.creditCardNoTextFld.delegate = self
+      self.cvvTextFld.delegate = self
+      
+      self.amountLbl.text = "Rs. \(bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)"
+      self.order_id = "\(bro4u_DataManager.sharedInstance.orderId!)"
 
     }
 
@@ -152,6 +176,10 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
         payUMoneyUtil.cardNo = creditCardNoTextFld.text
         payUMoneyUtil.CVVNo = cvvTextFld.text
         payUMoneyUtil.callBackHandler = callBackhandler
+        payUMoneyUtil.txnID = bro4u_DataManager.sharedInstance.txnID
+        payUMoneyUtil.sURL = bro4u_DataManager.sharedInstance.furl
+        payUMoneyUtil.fURL = bro4u_DataManager.sharedInstance.surl
+
         payUMoneyUtil.configureAllParameters()
         payUMoneyUtil.openWebPayment()
         
@@ -221,4 +249,23 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
     {
         
     }
+  
+    func addLoadingIndicator () {
+      self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+      self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+      b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
+    }
+    
+    
+    func hasOrderCreated(resultObject:String)
+    {
+      
+      if resultObject == "Success"
+      {
+        b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
+        self.configureUI()
+      }
+    }
+
 }

@@ -15,7 +15,7 @@ enum selectBank : Int{
     case kAXIS
 }
 
-class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationControllerDelegate,bankSelectedDelegate {
+class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationControllerDelegate,bankSelectedDelegate , createOrderDelegate{
 
 //    var payUMoneyCntrl:PayUMoneyViewController?
     var paymentType:String?
@@ -30,30 +30,29 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
     @IBOutlet weak var selectBankBtn: UIButton!
     @IBOutlet weak var continueBtn: UIButton!
     @IBOutlet weak var totalAmountLbl: UILabel!
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var downView: UIView!
     
     
     
-    
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        iciciBtn.layer.borderWidth = 1.0
-        iciciBtn.layer.borderColor = UIColor.lightGrayColor().CGColor
-        hdfcBtn.layer.borderWidth = 1.0
-        hdfcBtn.layer.borderColor = UIColor.lightGrayColor().CGColor
-        sbiBtn.layer.borderWidth = 1.0
-        sbiBtn.layer.borderColor = UIColor.lightGrayColor().CGColor
-        axisBtn.layer.borderWidth = 1.0
-        axisBtn.layer.borderColor = UIColor.lightGrayColor().CGColor
+      
+      self.addLoadingIndicator()
+      
+      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+      let createOrderObj = b4u_CreateOrder()
+      createOrderObj.delegate = self
+      createOrderObj.createOrder()
+      createOrderObj.paymentType  = kNetBankingPayment
 
-        
-        selectBankBtn.layer.borderWidth = 1.0
-        selectBankBtn.layer.borderColor = UIColor.orangeColor().CGColor
+      topView.hidden = true
+      downView.hidden = true
 
-        self.totalAmountLbl.text = "Rs. \(bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)"
 
     }
 
@@ -61,7 +60,29 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+  
+    func configureUI()
+    {
     
+      topView.hidden = false
+      downView.hidden = false
+
+      iciciBtn.layer.borderWidth = 1.0
+      iciciBtn.layer.borderColor = UIColor.lightGrayColor().CGColor
+      hdfcBtn.layer.borderWidth = 1.0
+      hdfcBtn.layer.borderColor = UIColor.lightGrayColor().CGColor
+      sbiBtn.layer.borderWidth = 1.0
+      sbiBtn.layer.borderColor = UIColor.lightGrayColor().CGColor
+      axisBtn.layer.borderWidth = 1.0
+      axisBtn.layer.borderColor = UIColor.lightGrayColor().CGColor
+      
+      
+      selectBankBtn.layer.borderWidth = 1.0
+      selectBankBtn.layer.borderColor = UIColor.orangeColor().CGColor
+      
+      self.totalAmountLbl.text = "Rs. \(bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)"
+
+    }
 
 
     @IBAction func selectBankBtnAction(sender: AnyObject) {
@@ -179,10 +200,37 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
         payUMoneyUtil.paymentType = PAYMENT_PG_NET_BANKING
         payUMoneyUtil.selectedBankCode = selectedBankCode
         payUMoneyUtil.callBackHandler = callBackhandler
+        payUMoneyUtil.txnID = bro4u_DataManager.sharedInstance.txnID
+        payUMoneyUtil.sURL = bro4u_DataManager.sharedInstance.furl
+        payUMoneyUtil.fURL = bro4u_DataManager.sharedInstance.surl
+
+      
+      
         payUMoneyUtil.configureAllParameters()
         payUMoneyUtil.openWebPayment()
 
     }
+  
+  
+    func addLoadingIndicator () {
+      self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+      self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+      b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
+    }
+    
+    
+    func hasOrderCreated(resultObject:String)
+    {
+      
+      if resultObject == "Success"
+      {
+        b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+        
+        self.configureUI()
+      }
+      //      self.getDataOfThanksScreen(resultObject)
+    }
+
 
 
 }

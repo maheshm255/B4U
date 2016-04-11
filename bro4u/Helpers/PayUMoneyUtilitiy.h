@@ -22,6 +22,9 @@ typedef void (^CallBackHandler)(NSMutableURLRequest *payUCreateRequest,PayUModel
 @property (nonatomic, strong) NSString *cardNo;
 @property (nonatomic, strong) NSString *CVVNo;
 @property (nonatomic, copy) CallBackHandler callBackHandler;
+@property (nonatomic, strong) NSString *txnID;
+@property (nonatomic, strong) NSString *sURL;
+@property (nonatomic, strong) NSString *fURL;
 
 -(void)configureAllParameters;
 - (void)openWebPayment;

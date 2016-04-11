@@ -22,19 +22,18 @@
 
 
 -(void)configureAllParameters{
-    
-    
     self.paymentParamForPassing = [PayUModelPaymentParams new];
     self.paymentParamForPassing.key = kMerchantKey;
-    //    self.paymentParamForPassing.transactionID = @"Ywism0Q9XC88qvy";
+    self.paymentParamForPassing.transactionID = _txnID;
     self.paymentParamForPassing.amount = @"1.0";
     self.paymentParamForPassing.productInfo = @"Plumber";
     self.paymentParamForPassing.firstName = @"Ram";
     self.paymentParamForPassing.email = @"email@testsdk1.com";
     //    self.paymentParamForPassing.userCredentials = @"ra:ra";
     self.paymentParamForPassing.phoneNumber = @"1111111111";
-    self.paymentParamForPassing.SURL = kSURL;
-    self.paymentParamForPassing.FURL = kFURL;
+    self.paymentParamForPassing.SURL = _sURL;
+    self.paymentParamForPassing.FURL = _fURL;
+  
     //    self.paymentParamForPassing.udf1 = @"u1";
     //    self.paymentParamForPassing.udf2 = @"u2";
     //    self.paymentParamForPassing.udf3 = @"u3";
@@ -42,6 +41,7 @@
     //    self.paymentParamForPassing.udf5 = @"u5";
     self.paymentParamForPassing.Environment = ENVIRONMENT_PRODUCTION;
     //    self.paymentParamForPassing.offerKey = @"offertest@1411";
+  
     self.saltKey =  kSaltKey;
     //create Parameter for hash
     [self initPayment];
