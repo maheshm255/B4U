@@ -25,6 +25,8 @@
 		044076181CB17B5C00B7C2E7 /* b4u-VendorReviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044076171CB17B5C00B7C2E7 /* b4u-VendorReviews.swift */; };
 		045A49521CAE754800BF7381 /* b4u-VendorProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A49511CAE754800BF7381 /* b4u-VendorProfileViewController.swift */; };
 		049CE9CC1CB62E3800A583A2 /* b4u_VendorSortTblViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CE9CB1CB62E3800A583A2 /* b4u_VendorSortTblViewController.swift */; };
+		04C9CFF41CBBCA4A00CF0C5A /* b4u-RasiseIssueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9CFF31CBBCA4A00CF0C5A /* b4u-RasiseIssueController.swift */; };
+		04C9CFF61CBBD53A00CF0C5A /* b4u-SingleSelectionTblCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9CFF51CBBD53A00CF0C5A /* b4u-SingleSelectionTblCtrl.swift */; };
 		04E07A561C900476009AD223 /* b4u-LocationSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E07A551C900476009AD223 /* b4u-LocationSearchModel.swift */; };
 		04E07A591C901961009AD223 /* b4u-LoginViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E07A581C901961009AD223 /* b4u-LoginViewCtrl.swift */; };
 		04E0C41B1C8BF6C4006450D1 /* CustomAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0C41A1C8BF6C4006450D1 /* CustomAnnotationView.xib */; };
@@ -292,6 +294,8 @@
 		044076171CB17B5C00B7C2E7 /* b4u-VendorReviews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-VendorReviews.swift"; sourceTree = "<group>"; };
 		045A49511CAE754800BF7381 /* b4u-VendorProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-VendorProfileViewController.swift"; sourceTree = "<group>"; };
 		049CE9CB1CB62E3800A583A2 /* b4u_VendorSortTblViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_VendorSortTblViewController.swift; sourceTree = "<group>"; };
+		04C9CFF31CBBCA4A00CF0C5A /* b4u-RasiseIssueController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-RasiseIssueController.swift"; sourceTree = "<group>"; };
+		04C9CFF51CBBD53A00CF0C5A /* b4u-SingleSelectionTblCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-SingleSelectionTblCtrl.swift"; sourceTree = "<group>"; };
 		04E07A551C900476009AD223 /* b4u-LocationSearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-LocationSearchModel.swift"; sourceTree = "<group>"; };
 		04E07A581C901961009AD223 /* b4u-LoginViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-LoginViewCtrl.swift"; sourceTree = "<group>"; };
 		04E0C41A1C8BF6C4006450D1 /* CustomAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAnnotationView.xib; sourceTree = "<group>"; };
@@ -680,6 +684,14 @@
 				040E827E1CB939E200288EA1 /* b4u-ReviewReadMoreCtrl.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		04C9CFF21CBBCA2B00CF0C5A /* Raise issue */ = {
+			isa = PBXGroup;
+			children = (
+				04C9CFF31CBBCA4A00CF0C5A /* b4u-RasiseIssueController.swift */,
+			);
+			path = "Raise issue";
 			sourceTree = "<group>";
 		};
 		04E07A571C901961009AD223 /* Login */ = {
@@ -1405,6 +1417,7 @@
 		B71C28501C8C0C0C00873B5C /* Order Screen */ = {
 			isa = PBXGroup;
 			children = (
+				04C9CFF21CBBCA2B00CF0C5A /* Raise issue */,
 				B36939821CA14373000266A5 /* cancel Order */,
 				B36939831CA14373000266A5 /* Track Order */,
 				B36939811CA14373000266A5 /* Reschedule Order */,
@@ -1412,6 +1425,7 @@
 				B71C28511C8C0C0C00873B5C /* MyOrderViewController.swift */,
 				B71C28521C8C0C0C00873B5C /* OngoingOrdersTableViewCell.swift */,
 				B71C28531C8C0C0C00873B5C /* PastOrdersTableViewCell.swift */,
+				04C9CFF51CBBD53A00CF0C5A /* b4u-SingleSelectionTblCtrl.swift */,
 			);
 			path = "Order Screen";
 			sourceTree = "<group>";
@@ -1867,9 +1881,11 @@
 				65B18A861C70BB28000EDD00 /* SWRevealViewController.m in Sources */,
 				04E747021C96D4C400521674 /* b4u-LoginInfo.swift in Sources */,
 				B36939941CA17617000266A5 /* B4u_Term&ConditionViewController.swift in Sources */,
+				04C9CFF61CBBD53A00CF0C5A /* b4u-SingleSelectionTblCtrl.swift in Sources */,
 				B369398C1CA14446000266A5 /* b4u_PayOnlineOrderViewController.swift in Sources */,
 				65264F871C81D80200859F5A /* b4u-SuggestedPatnersResult.swift in Sources */,
 				042700291C8B37B6008440CC /* UIView+FSExtension.m in Sources */,
+				04C9CFF41CBBCA4A00CF0C5A /* b4u-RasiseIssueController.swift in Sources */,
 				B794CFE91CB56FBC00CBABAA /* b4u_bankListTableViewController.swift in Sources */,
 				045A49521CAE754800BF7381 /* b4u-VendorProfileViewController.swift in Sources */,
 				65271E5D1C8307BB0022C888 /* b4u_PaymentBaseViewController.swift in Sources */,

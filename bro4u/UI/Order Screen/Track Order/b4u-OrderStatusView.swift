@@ -62,7 +62,7 @@ class b4u_OrderStatusView: UIView {
     {
         let center = CGPoint(x:bounds.width/2, y: bounds.height/2)
         
-        let radius: CGFloat = 80
+        let radius: CGFloat = 70
         
         let arcWidth: CGFloat = 15
         
@@ -85,7 +85,7 @@ class b4u_OrderStatusView: UIView {
     {
         let carBezierPath3 = UIBezierPath()
         
-        carBezierPath3.addArcWithCenter(CGPointMake(canvasRect.size.width / 2, canvasRect.size.height / 2), radius:80 , startAngle:startAngle, endAngle:endAngle,  clockwise:true)
+        carBezierPath3.addArcWithCenter(CGPointMake(canvasRect.size.width / 2, canvasRect.size.height / 2), radius:70 , startAngle:startAngle, endAngle:endAngle,  clockwise:true)
         
         
         // carBezierPath.closePath()

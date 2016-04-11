@@ -12,6 +12,7 @@ import UIKit
 
 class OngoingOrdersTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var btnRaiseIssue: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var btnReshedule: UIButton!
     @IBOutlet weak var btnTrack: UIButton!
@@ -26,8 +27,12 @@ class OngoingOrdersTableViewCell: UITableViewCell {
     @IBOutlet var bookingLbl: UILabel!
     @IBOutlet var priceLbl: UILabel!
     
+    @IBOutlet weak var lblOfferPrice: UILabel!
+    @IBOutlet weak var lblFinalPriceText: UILabel!
   
+    @IBOutlet weak var lblFinalPrice: UILabel!
   
+    @IBOutlet weak var lblOnLinePayMessage: UILabel!
   
 
   
@@ -51,9 +56,13 @@ class OngoingOrdersTableViewCell: UITableViewCell {
         btnReshedule.layer.borderColor = UIColor.grayColor().CGColor
         btnReshedule.layer.borderWidth = 1
         
-//        btnTrack.layer.cornerRadius = 5
-//        btnTrack.layer.borderColor = UIColor.grayColor().CGColor
-//        btnTrack.layer.borderWidth = 1
+        btnTrack.layer.cornerRadius = 5
+        btnTrack.layer.borderColor = UIColor.grayColor().CGColor
+        btnTrack.layer.borderWidth = 1
+        
+        
+        self.statusLbl.layer.borderColor = UIColor.grayColor().CGColor
+        self.statusLbl.layer.borderWidth = 1
     }
     
     func configureData(orderDataModel:b4u_OrdersModel)
@@ -88,11 +97,11 @@ class OngoingOrdersTableViewCell: UITableViewCell {
         }
         if let orderStatus = orderDataModel.statusDesc
         {
-            self.statusLbl.text = orderStatus
+            self.statusLbl.text = " \(orderStatus) "
         }
         if let price = orderDataModel.finalTotal //Need to check Key
         {
-            self.priceLbl.text = "Rs. \(price).00"
+            //self.priceLbl.text = "Rs. \(price).00"
         }
     }
   

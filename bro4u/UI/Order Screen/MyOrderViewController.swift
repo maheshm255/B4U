@@ -209,7 +209,7 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if indexPath.section == 0
         {
-            return 221;
+            return 300;
         }
         else if indexPath.section == 1
         {
@@ -313,6 +313,12 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     //    tableView.reloadData()
   }
   
+    @IBAction func btnRaiseIssuePressed(sender: AnyObject)
+    {
+        let selectedOrderObj: b4u_OrdersModel  =  self.onGoingOrderArray![sender.tag]
+        self.showAlertView("RaiseIssue", selectedOrderObj:selectedOrderObj)
+
+    }
   @IBAction func trackBtnAction(sender: AnyObject) {
  
     
@@ -371,6 +377,15 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         self.pressentAlertPopUP(alertViewCtrl)
 
     }
+    else if btnTapped == "RaiseIssue"{
+        
+        let  alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("b4uRasiseIssueController") as! b4u_RasiseIssueController
+//        
+//        alertViewCtrl.selectedOrder = selectedOrderObj
+//        alertViewCtrl.delegate = self
+        self.pressentAlertPopUP(alertViewCtrl)
+        
+    }
     else if btnTapped == "PayOnline"{
       
       let  alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("PayOnlineOrderViewControllerID") as! b4u_PayOnlineOrderViewController
@@ -394,7 +409,7 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         popoverMenuViewController?.sourceView = self.view
         popoverMenuViewController?.sourceRect = CGRect(
             x: CGRectGetMidX(self.view.frame),
-            y: CGRectGetMidY(self.view.frame),
+            y: CGRectGetMidY(self.view.bounds),
             width: 1,
             height: 1)
         presentViewController(
