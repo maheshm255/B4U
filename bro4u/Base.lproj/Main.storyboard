@@ -6275,7 +6275,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sMz-71-Doo">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sMz-71-Doo" customClass="b4u_OrderStatusView" customModule="bro4u" customModuleProvider="target">
                                 <rect key="frame" x="150" y="175" width="300" height="250"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPa-3k-tSa">
@@ -6322,6 +6322,10 @@
                             <constraint firstItem="sMz-71-Doo" firstAttribute="centerY" secondItem="iXx-D2-wIN" secondAttribute="centerY" id="j2a-0H-G5W"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lblStatus" destination="FFy-6x-jLl" id="1oP-wb-x9p"/>
+                        <outlet property="viewOrderStatus" destination="sMz-71-Doo" id="FXN-5W-0a8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tML-lW-seN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

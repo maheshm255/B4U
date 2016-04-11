@@ -78,7 +78,7 @@ class b4u_OrdersModel: NSObject {
         vendorEmail = dataDict["vendor_email"] as? String
         vendorID = dataDict["vendor_id"] as? String
         statusUpdated = dataDict["status_updated"] as? String
-        onGoing = dataDict["on_going"] as? String
+        onGoing = dataDict["ongoing"] as? String
         actualPrice = dataDict["actual_price"] as? NSNumber
         offerPrice = dataDict["offer_price"] as? NSNumber
         finalTotal = dataDict["final_total"] as? NSNumber

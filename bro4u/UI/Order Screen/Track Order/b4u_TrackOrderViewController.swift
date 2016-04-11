@@ -10,14 +10,36 @@ import UIKit
 
 class b4u_TrackOrderViewController: UIViewController {
 
+    @IBOutlet weak var viewOrderStatus: b4u_OrderStatusView!
   @IBOutlet weak var lblStatus: UILabel!
 
     var selectedOrder:b4u_OrdersModel?
+
+    var carTimer:NSTimer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+
+    override func viewDidAppear(animated: Bool){
+        super.viewDidAppear(animated)
+        
+        
+        viewOrderStatus.orderStatus = selectedOrder!.statusNumber!.integerValue
+        self.lblStatus.text = selectedOrder!.statusDesc!
+        
+        carTimer =  NSTimer.scheduledTimerWithTimeInterval(0.05, target:self, selector:"updateCar", userInfo:nil, repeats:true)
+        
+        
+    }
+    
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,6 +48,21 @@ class b4u_TrackOrderViewController: UIViewController {
     }
     
 
+    
+    
+    func updateCar()
+    {
+        if viewOrderStatus?.carPercent <= 100
+        {
+            viewOrderStatus?.carPercent = viewOrderStatus.carPercent + 5.0
+            viewOrderStatus?.setNeedsDisplay()
+        }else
+        {
+            carTimer?.invalidate()
+            carTimer = nil
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

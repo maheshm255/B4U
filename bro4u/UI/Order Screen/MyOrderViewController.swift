@@ -88,13 +88,12 @@ class MyOrderViewController: UIViewController,UIPopoverPresentationControllerDel
         orderTableView.hidden = false
 
         
-        self.onGoingOrderArray = self.filterContent("Completed", orderType:orderTypes.kOnGoingOrders)
+        self.onGoingOrderArray = self.filterContent("yes", orderType:orderTypes.kOnGoingOrders)
 
-        self.pastOrdersArray = self.filterContent("Completed", orderType:orderTypes.kCompetedOrders)
+        self.pastOrdersArray = self.filterContent("no", orderType:orderTypes.kCompetedOrders)
 
      //   self.onGoingOrderArray = self.filterContent("Completed", scope:"")
         
-        print(onGoingOrderArray)
         orderTableView.reloadData()
         b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
 
@@ -111,7 +110,7 @@ class MyOrderViewController: UIViewController,UIPopoverPresentationControllerDel
             
             filteredItems =   allOreders.filter({m in
                 
-                if let orderDesc = m.statusDesc
+                if let orderDesc = m.onGoing
                     
                 {
                     switch orderType
@@ -119,7 +118,7 @@ class MyOrderViewController: UIViewController,UIPopoverPresentationControllerDel
                     case .kOnGoingOrders:
                         return orderDesc.contains(searchText)
                     case .kCompetedOrders:
-                        return !orderDesc.contains(searchText)
+                        return orderDesc.contains(searchText)
 
                     }
                     
@@ -358,6 +357,8 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     else if btnTapped == "Track"{
     
       let  alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("TrackOrderViewControllerID") as! b4u_TrackOrderViewController
+        
+        alertViewCtrl.selectedOrder = selectedOrderObj
         self.pressentAlertPopUP(alertViewCtrl)
 
     }
