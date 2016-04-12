@@ -41,7 +41,7 @@ typedef void (^PaytmCallBackHandler)(PGOrder *order, PGMerchantConfiguration *me
 @property (nonatomic, strong) PGMerchantConfiguration *mc;
 @property (nonatomic, strong) NSMutableDictionary *orderDict;
 
-+(NSString*)generateOrderIDWithPrefix:(NSString *)prefix;
+//+(NSString*)generateOrderIDWithPrefix:(NSString *)prefix;
 -(void)createOrder;
 
 -(void)configureAllParameters;

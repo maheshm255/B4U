@@ -513,9 +513,9 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
       
       let payUMoneyUtil = PayUMoneyUtilitiy()
       payUMoneyUtil.paytmCallBackHandler = callBackhandler
+      payUMoneyUtil.orderID = "\(bro4u_DataManager.sharedInstance.orderId!)"
+      payUMoneyUtil.userID = "\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)"
       payUMoneyUtil.createOrder()
-      
-
     }
   }
   
@@ -523,7 +523,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
   
   func laodViewController(order : PGOrder, merchantConfiguration :PGMerchantConfiguration) -> Void {
     let txnController = PGTransactionViewController(transactionForOrder: order)
-    txnController.serverType = eServerTypeProduction;
+    txnController.serverType = eServerTypeStaging;
     txnController.merchant = merchantConfiguration;
     txnController.delegate = self;
     showController(txnController)

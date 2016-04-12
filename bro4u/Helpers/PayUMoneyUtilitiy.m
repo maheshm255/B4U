@@ -8,14 +8,21 @@
 
 #import "PayUMoneyUtilitiy.h"
 #import <CommonCrypto/CommonDigest.h>
+//Need to open for Production
+//#define ChecksumGenerationURL              @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/paytm_checksum_generation"
+//#define ChecksumValidationURL              @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/paytm_checksum_validation"
+//#define MerchantID                          @"NquJkw58790567615778"
+//#define CHANNELID                          @"WAP"
+//#define INDUSTRYTYPEID                    @"Retail110"
+//#define WEBSITE                             @"brofouruwap"
 
-#define ChecksumGenerationURL              @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/paytm_checksum_generation"
-#define ChecksumValidationURL              @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/paytm_checksum_validation"
-#define MerchantID                          @"NquJkw58790567615778"
+//Testing from Paytm
+#define ChecksumGenerationURL              @"https://pguat.paytm.com/paytmchecksum/paytmCheckSumGenerator.jsp"
+#define ChecksumValidationURL              @"https://pguat.paytm.com/paytmchecksum/paytmCheckSumVerify.jsp"
+#define MerchantID                          @"WorldP64425807474247"
 #define CHANNELID                          @"WAP"
-#define INDUSTRYTYPEID                    @"Retail110"
-#define WEBSITE                             @"brofouruwap"
-
+#define INDUSTRYTYPEID                    @"Retail"
+#define WEBSITE                             @"worldpressplg"
 
 @interface PayUMoneyUtilitiy ()
 
@@ -95,7 +102,7 @@
     
     self.paymentParamForPassing.expYear = self.cardExpYear;
     self.paymentParamForPassing.expMonth = self.cardExpMonth;
-    //    self.paymentParamForPassing.nameOnCard = self.textFieldNameOnCard.text;
+    self.paymentParamForPassing.nameOnCard = self.nameOnCard;
     
     NSString *cardNoWithoutDash = [self.cardNo
                                      stringByReplacingOccurrencesOfString:@"-" withString:@""];
@@ -124,18 +131,16 @@
 
 
 -(void)initPayment {
-    int i = arc4random() % 9999999999;
-    NSString *strHash = [self createSHA512:[NSString stringWithFormat:@"%d%@",i,[NSDate date]]];// Generatehash512(rnd.ToString() + DateTime.Now);
-//    self.paymentParamForPassing.transactionID = [strHash substringToIndex:20];
     NSString *txnID = self.paymentParamForPassing.transactionID;
 
     NSString *key = self.paymentParamForPassing.key;
     NSString *amount = self.paymentParamForPassing.amount;
     NSString *productInfo = self.paymentParamForPassing.productInfo;
     NSString *firstname = self.paymentParamForPassing.firstName;
-    NSString *email = self.paymentParamForPassing.email; // Generated a fake mail id for testing
+    NSString *email = self.paymentParamForPassing.email;
     
     self.hashParameter = [NSString stringWithFormat:@"%@|%@|%@|%@|%@|%@|||||||||||%@",key,txnID,amount,productInfo,firstname,email,self.saltKey];
+    self.paymentParamForPassing.hashes.paymentHash = [self createSHA512:self.hashParameter];
 }
 
 //Create hash
@@ -152,16 +157,6 @@
 }
 
 /* Pay by Paytm */
-
-
-//+(NSString*)generateOrderIDWithPrefix:(NSString *)prefix
-//{
-//  srand ( (unsigned)time(NULL) );
-//  int randomNo = rand(); //just randomizing the number
-//  NSString *orderID = [NSString stringWithFormat:@"%@%d", prefix, randomNo];
-//  return orderID;
-//}
-
 
 
 /*
