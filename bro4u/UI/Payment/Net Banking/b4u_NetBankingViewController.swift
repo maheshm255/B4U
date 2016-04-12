@@ -168,15 +168,6 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
     
     @IBAction func continueBtnAction(sender: AnyObject) {
         
-        /*payUMoneyCntrl = PayUMoneyViewController()
-        payUMoneyCntrl?.paymentType = PAYMENT_PG_NET_BANKING
-        payUMoneyCntrl?.selectedBankCode = selectedBankCode
-        
-        
-        self.navigationController?.pushViewController(self.payUMoneyCntrl!, animated: true)*/
-        
-        //////////////
-        
         let callBackhandler = {(request:AnyObject?,paymentParamForPassing:PayUModelPaymentParams?, error:String?) in
             
             if error != nil{

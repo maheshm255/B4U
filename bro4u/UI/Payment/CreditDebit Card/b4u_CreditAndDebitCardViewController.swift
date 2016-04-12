@@ -136,17 +136,6 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
 
     @IBAction func continueBtnAction(sender: AnyObject) {
         
-        /*payUMoneyCntrl = PayUMoneyViewController()
-        payUMoneyCntrl?.paymentType = PAYMENT_PG_CCDC
-        
-        let dateArr = expiryDateBtn.titleLabel!.text!.componentsSeparatedByString("/")
-        
-        payUMoneyCntrl?.cardExpYear = dateArr[1]
-        payUMoneyCntrl?.cardExpMonth = dateArr[0]
-        payUMoneyCntrl?.cardNo = creditCardNoTextFld.text
-        payUMoneyCntrl?.CVVNo = cvvTextFld.text
-        
-        self.navigationController?.pushViewController(self.payUMoneyCntrl!, animated: true)*/
         
         let callBackhandler = {(request:AnyObject?,paymentParamForPassing:PayUModelPaymentParams?, error:String?) in
             
