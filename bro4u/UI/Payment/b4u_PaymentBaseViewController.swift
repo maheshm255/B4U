@@ -337,7 +337,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     
   }
   
-  
+  //Paytm Order
   func createOrderForPayTm()
   {
     
@@ -494,16 +494,14 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
   }
  
+    //Call Back for Order Created
   func hasOrderCreated(resultObject:String)
   {
     
     if resultObject == "Success"
     {
       b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-      
-//      let paymentViewController = PaytmViewController()
-//      self.navigationController?.pushViewController(paymentViewController, animated: true)
-      
+        
       let callBackhandler = {(order:PGOrder?, merchantConfiguration :PGMerchantConfiguration?) in
         
         if order != nil{
@@ -532,6 +530,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
 
   }
   
+    //Paytm Delegates
   func showController(controller : PGTransactionViewController) -> Void {
     if navigationController != nil {
       navigationController?.pushViewController(controller, animated: true)
@@ -592,7 +591,8 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     removeController(controller)
   }
   
-  func didFinishCASTransaction(controller: PGTransactionViewController!, response: [NSObject : AnyObject]!) {
+  func didFinishCASTransaction(controller: PGTransactionViewController!, response: [NSObject : AnyObject]!)
+  {
     
   }
   
