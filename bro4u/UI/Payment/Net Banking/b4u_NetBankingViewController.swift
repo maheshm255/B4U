@@ -54,7 +54,7 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
       downView.hidden = true
 
 
-      NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_NetBankingViewController.handlePaymentResponse(_:)), name: "paymentResponse", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"handlePaymentResponse:", name: "paymentResponse", object: nil)
       
     }
 

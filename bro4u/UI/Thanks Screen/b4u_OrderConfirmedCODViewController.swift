@@ -11,7 +11,6 @@ import CoreLocation
 
 class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelegate{
 
-    var order_id:String?
     var confirmedOrder:b4u_OrdersModel?
     var whyOnlineText:b4u_WhyOnlineModel?
 
@@ -57,7 +56,6 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
         downView.hidden = true
         btnContinue.hidden = true
 
-//        self.createOrder()
       
         lblServiceStatus.layer.borderWidth = 1.0
         lblServiceStatus.layer.borderColor = UIColor.lightGrayColor().CGColor
@@ -166,9 +164,9 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
         {
             self.lblAmount.text = "Rs. \(price).00"
         }
-        if let orderedaAT = confirmedOrder!.timestamp //Need to check Key
+        if let orderedAT = confirmedOrder!.timestamp //Need to check Key
         {
-            self.lblOrderedAt.text = "Ordered At \(orderedaAT)"
+            self.lblOrderedAt.text = "Ordered At \(orderedAT)"
         }
         
         whyOnlineText =  bro4u_DataManager.sharedInstance.whyOnlineData[0]
@@ -197,7 +195,6 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
   
     func hasOrderCreated(resultObject:String)
     {
-      
       self.getDataOfThanksScreen(resultObject)
     }
 

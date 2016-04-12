@@ -35,7 +35,9 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
       //  self.navigationController?.navigationBar.delegate = self
         // Do any additional setup after loading the view.
       
-      NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_NetBankingViewController.handlePaymentResponse(_:)), name: "paymentResponse", object: nil)
+//      NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_NetBankingViewController.handlePaymentResponse(_:)), name: "paymentResponse", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"handlePaymentResponse:", name: "paymentResponse", object: nil)
+
       
         self.addLoadingIndicator()
         
