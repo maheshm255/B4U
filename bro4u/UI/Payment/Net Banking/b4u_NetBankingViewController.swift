@@ -54,12 +54,23 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
       downView.hidden = true
 
 
+      NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_NetBankingViewController.handlePaymentResponse(_:)), name: "paymentResponse", object: nil)
+      
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+  
+  func handlePaymentResponse(reponseData : AnyObject){
+    
+    print("response data \(reponseData)")
+    let orderConfirmedViewController = storyboard?.instantiateViewControllerWithIdentifier("OrderConfirmedViewControllerID") as? OrderConfirmedViewController
+    navigationController?.pushViewController(orderConfirmedViewController!, animated: true)
+    
+    
+  }
   
     func configureUI()
     {
