@@ -168,15 +168,6 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
     
     @IBAction func continueBtnAction(sender: AnyObject) {
         
-        /*payUMoneyCntrl = PayUMoneyViewController()
-        payUMoneyCntrl?.paymentType = PAYMENT_PG_NET_BANKING
-        payUMoneyCntrl?.selectedBankCode = selectedBankCode
-        
-        
-        self.navigationController?.pushViewController(self.payUMoneyCntrl!, animated: true)*/
-        
-        //////////////
-        
         let callBackhandler = {(request:AnyObject?,paymentParamForPassing:PayUModelPaymentParams?, error:String?) in
             
             if error != nil{
@@ -203,6 +194,13 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
         payUMoneyUtil.txnID = bro4u_DataManager.sharedInstance.txnID
         payUMoneyUtil.sURL = bro4u_DataManager.sharedInstance.furl
         payUMoneyUtil.fURL = bro4u_DataManager.sharedInstance.surl
+        payUMoneyUtil.amount = bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice
+        payUMoneyUtil.productInfo = bro4u_DataManager.sharedInstance.selectedSuggestedPatner?.catName
+        payUMoneyUtil.firstName = bro4u_DataManager.sharedInstance.loginInfo?.fullName
+        payUMoneyUtil.email = bro4u_DataManager.sharedInstance.loginInfo?.email
+        payUMoneyUtil.phoneNumber = bro4u_DataManager.sharedInstance.loginInfo?.email
+        payUMoneyUtil.orderID = "\(bro4u_DataManager.sharedInstance.orderId)"
+        payUMoneyUtil.userID = "\(bro4u_DataManager.sharedInstance.loginInfo?.userId)"
 
       
       

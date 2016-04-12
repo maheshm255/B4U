@@ -56,11 +56,17 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
       downView.hidden = false
 
       
-      //Set Default Values
-      self.creditCardNoTextFld.text = "5123456789012346"
-      self.cvvTextFld.text = "123"
-      self.expiryDateBtn.setTitle("12/2019", forState: .Normal)
+      //Set Default Values od Debit Card
+//      self.creditCardNoTextFld.text = "4181576255038012"
+//      self.cvvTextFld.text = "017"
+//      self.expiryDateBtn.setTitle("10/2020", forState: .Normal)
       
+        //Set Default Values of Credit Card
+//      self.creditCardNoTextFld.text = "5459648600234794"
+//      self.cvvTextFld.text = "865"
+//      self.expiryDateBtn.setTitle("05/2018", forState: .Normal)
+        
+
       
       creditCardNoTextFld.keyboardType = .NumberPad
       cvvTextFld.keyboardType = .NumberPad
@@ -90,25 +96,13 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
     
     @IBAction func ExpiryDateBtnAction(sender: AnyObject) {
         self.view.endEditing(true)
-
-//        datePicker = UIDatePicker()
-//        datePicker.datePickerMode = UIDatePickerMode.Date
-//        datePicker.addTarget(self, action: "dateChanged:", forControlEvents: UIControlEvents.ValueChanged)
-//        let pickerSize : CGSize = datePicker.sizeThatFits(CGSizeZero)
-//        datePicker.frame = CGRectMake(0.0, 200, pickerSize.width, 250)
-//        
-//        //you probably don't want to set background color as black
-//        datePicker.backgroundColor = UIColor.blueColor()
-//
-//        self.view.addSubview(datePicker)
         
         let expiryDatePicker = MonthYearPickerView()
         expiryDatePicker.onDateSelected = { (month: Int, year: Int) in
             let string = String(format: "%02d/%d", month, year)
             NSLog(string) // should show something like 05/2015
-            self.expiryDateBtn.titleLabel!.text = string
+            self.expiryDateBtn.setTitle(string, forState:UIControlState.Normal)
         }
-        
         
         datePickerContainer = UIView()
 
@@ -136,17 +130,6 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
 
     @IBAction func continueBtnAction(sender: AnyObject) {
         
-        /*payUMoneyCntrl = PayUMoneyViewController()
-        payUMoneyCntrl?.paymentType = PAYMENT_PG_CCDC
-        
-        let dateArr = expiryDateBtn.titleLabel!.text!.componentsSeparatedByString("/")
-        
-        payUMoneyCntrl?.cardExpYear = dateArr[1]
-        payUMoneyCntrl?.cardExpMonth = dateArr[0]
-        payUMoneyCntrl?.cardNo = creditCardNoTextFld.text
-        payUMoneyCntrl?.CVVNo = cvvTextFld.text
-        
-        self.navigationController?.pushViewController(self.payUMoneyCntrl!, animated: true)*/
         
         let callBackhandler = {(request:AnyObject?,paymentParamForPassing:PayUModelPaymentParams?, error:String?) in
             
@@ -179,6 +162,15 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
         payUMoneyUtil.txnID = bro4u_DataManager.sharedInstance.txnID
         payUMoneyUtil.sURL = bro4u_DataManager.sharedInstance.furl
         payUMoneyUtil.fURL = bro4u_DataManager.sharedInstance.surl
+        payUMoneyUtil.amount = bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice
+        payUMoneyUtil.productInfo = bro4u_DataManager.sharedInstance.selectedSuggestedPatner?.catName
+        payUMoneyUtil.firstName = bro4u_DataManager.sharedInstance.loginInfo?.fullName
+        payUMoneyUtil.email = bro4u_DataManager.sharedInstance.loginInfo?.email
+        payUMoneyUtil.phoneNumber = bro4u_DataManager.sharedInstance.loginInfo?.email
+        payUMoneyUtil.orderID = "\(bro4u_DataManager.sharedInstance.orderId)"
+        payUMoneyUtil.userID = "\(bro4u_DataManager.sharedInstance.loginInfo?.userId)"
+        payUMoneyUtil.nameOnCard = bro4u_DataManager.sharedInstance.loginInfo?.fullName
+
 
         payUMoneyUtil.configureAllParameters()
         payUMoneyUtil.openWebPayment()

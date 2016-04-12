@@ -28,11 +28,20 @@ typedef void (^PaytmCallBackHandler)(PGOrder *order, PGMerchantConfiguration *me
 @property (nonatomic, strong) NSString *txnID;
 @property (nonatomic, strong) NSString *sURL;
 @property (nonatomic, strong) NSString *fURL;
+@property (nonatomic, strong) NSString *amount;
+@property (nonatomic, strong) NSString *productInfo;
+@property (nonatomic, strong) NSString *firstName;
+@property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSString *phoneNumber;
+@property (nonatomic, strong) NSString *userID;
+
+//For Paytm
+@property (nonatomic, strong) NSString *orderID;
 
 @property (nonatomic, strong) PGMerchantConfiguration *mc;
 @property (nonatomic, strong) NSMutableDictionary *orderDict;
 
-+(NSString*)generateOrderIDWithPrefix:(NSString *)prefix;
+//+(NSString*)generateOrderIDWithPrefix:(NSString *)prefix;
 -(void)createOrder;
 
 -(void)configureAllParameters;
