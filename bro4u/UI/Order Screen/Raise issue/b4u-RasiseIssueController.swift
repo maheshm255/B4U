@@ -8,6 +8,13 @@
 
 import UIKit
 
+
+protocol orderRaiseIssueDelegate: NSObjectProtocol
+{
+    func raiseIssue(order:b4u_OrdersModel , selectedIssue:String , reason:String)
+    func didCloseRaiseIssue()
+}
+
 class b4u_RasiseIssueController: UIViewController  , UIPopoverPresentationControllerDelegate ,singleSelectionDelegate {
 
     @IBOutlet weak var btnRasieIssue: UIButton!
@@ -15,6 +22,10 @@ class b4u_RasiseIssueController: UIViewController  , UIPopoverPresentationContro
     @IBOutlet weak var btnIssues: UIButton!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var textViewComments: UITextView!
+
+    
+    var delegate:orderRaiseIssueDelegate?
+    var selectedOrder:b4u_OrdersModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,17 +71,21 @@ class b4u_RasiseIssueController: UIViewController  , UIPopoverPresentationContro
         
         guard let selectedIssue = self.btnIssues.titleLabel?.text where selectedIssue != "Select Issue Type" else
         {
-            self.view.makeToast(message:"Please enter eeason", duration:1.0, position: HRToastPositionDefault)
+            self.view.makeToast(message:"Please enter reason", duration:1.0, position: HRToastPositionDefault)
             return
         }
         
         guard let comments = self.textViewComments.text where comments != "" else
         {
-            self.view.makeToast(message:"Please enter eeason", duration:1.0, position: HRToastPositionDefault)
+            self.view.makeToast(message:"Please enter reason", duration:1.0, position: HRToastPositionDefault)
             return
         }
         
         
+        self.delegate?.raiseIssue(selectedOrder!, selectedIssue:selectedIssue, reason: comments)
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+
         
     }
     @IBAction func btnIssuesPressed(sender: AnyObject)
@@ -87,6 +102,8 @@ class b4u_RasiseIssueController: UIViewController  , UIPopoverPresentationContro
     {
         
         let  alertViewCtrl = storyboard!.instantiateViewControllerWithIdentifier("b4uSingleSelectionTblCtrl") as! b4u_SingleSelectionTblCtrl
+        
+     
         
         alertViewCtrl.inputArray = ["No Response","Re-Schedules" , "Price" , "Issues","Others"]
         alertViewCtrl.modalPresentationStyle = .Popover

@@ -39,4 +39,18 @@ class b4u_Utility: NSObject {
         return vendoerId!.UUIDString
     }
     
+    class func callAt(number:String)
+    {
+        //08030323232
+        let url = NSURL(string:"tel://\(number)")!
+        
+        if UIApplication.sharedApplication().canOpenURL(url)
+        {
+            UIApplication.sharedApplication().openURL(url)
+        }else
+        {
+            print("Call is not supported")
+        }
+    }
+    
 }

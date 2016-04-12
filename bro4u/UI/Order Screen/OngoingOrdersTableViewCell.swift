@@ -11,7 +11,13 @@ import UIKit
 
 
 class OngoingOrdersTableViewCell: UITableViewCell {
+    @IBOutlet weak var btnCallBro4u: UIButton!
+    @IBOutlet weak var lblCallBro4u: UILabel!
+    @IBOutlet weak var btnPayOnline: UIButton!
 
+    @IBOutlet weak var viewPayOnLine: UIView!
+    @IBOutlet weak var ViewCallB4u: UIView!
+    @IBOutlet weak var viewHr1: UIView!
     @IBOutlet weak var btnRaiseIssue: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var btnReshedule: UIButton!
@@ -34,7 +40,8 @@ class OngoingOrdersTableViewCell: UITableViewCell {
   
     @IBOutlet weak var lblOnLinePayMessage: UILabel!
   
-
+    var constraintY:NSLayoutConstraint?
+    var topConstraint:NSLayoutConstraint?
   
   
   @IBOutlet var headerLabel: UILabel!
@@ -99,12 +106,84 @@ class OngoingOrdersTableViewCell: UITableViewCell {
         {
             self.statusLbl.text = " \(orderStatus) "
         }
-        if let price = orderDataModel.finalTotal //Need to check Key
+       
+        
+        //OPRC - Order in processing 
+        
+        if (orderDataModel.statusCode == "OPRC") && (orderDataModel.paymentType == "cod" ||
+          (orderDataModel.paymentType == "online" && orderDataModel.paymentStatus == "success"))
         {
-            //self.priceLbl.text = "Rs. \(price).00"
+            if Double(orderDataModel.offerPrice!) > 0 && Double(orderDataModel.actualPrice!)  > Double(orderDataModel.offerPrice!)
+            {
+                self.lblOnLinePayMessage.text = "Online payment 2% Off"
+                self.lblOfferPrice.text =  "\(orderDataModel.offerPrice!)"
+                
+                
+                if  let aConstraintY = self.constraintY
+                {
+                    self.removeConstraint(aConstraintY)
+                }
+//               topConstraint = NSLayoutConstraint(item:self.lblOnLinePayMessage, attribute: NSLayoutAttribute.Top, relatedBy:.Equal, toItem:self.viewHr1, attribute:.Bottom, multiplier:1.0, constant:2)
+//                
+//                self.addConstraint(topConstraint!)
+                
+            }else
+            {
+                self.lblOnLinePayMessage.text = ""
+                self.lblOfferPrice.text =  ""
+
+                if  let aConstraintY = self.constraintY
+                {
+                    self.removeConstraint(aConstraintY)
+                }
+                
+                constraintY = NSLayoutConstraint(item:self.lblFinalPriceText, attribute: NSLayoutAttribute.CenterY, relatedBy:.Equal, toItem:self.statusLbl, attribute:.CenterY, multiplier:1.0, constant:0)
+                
+                self.addConstraint(constraintY!)
+            }
+        }else
+        {
+            self.lblOnLinePayMessage.text = ""
+            self.lblOfferPrice.text =  ""
+            
+            if  let aConstraintY = self.constraintY
+            {
+                self.removeConstraint(aConstraintY)
+            }
+             constraintY = NSLayoutConstraint(item:self.lblFinalPriceText, attribute: NSLayoutAttribute.CenterY, relatedBy:.Equal, toItem:self.statusLbl, attribute:.CenterY, multiplier:1.0, constant:0)
+            
+            self.addConstraint(constraintY!)
         }
+       
+        
+        self.lblFinalPriceText.text = "Actual Price"
+        self.lblFinalPrice.text = "\(orderDataModel.actualPrice!)"
+        
+        
+        if orderDataModel.statusCode == "OREQ" || orderDataModel.statusCode == "OTRNF" || orderDataModel.statusCode == "OVREJ"
+        {
+            self.lblCallBro4u.text = "Call Bro4u"
+            
+            self.ViewCallB4u.tag = 1
+        }
+        
+        if orderDataModel.statusCode == "OACC" || orderDataModel.statusCode == "OPRC" || orderDataModel.statusCode == "OACL"
+        {
+            self.lblCallBro4u.text = "Call Service Provider"
+
+            self.ViewCallB4u.tag = 2
+
+        }
+        
+
     }
   
+    @IBAction func btnPayOnlineAction(sender: AnyObject) {
+    }
+    
+    @IBAction func btnCallBro4u(sender: AnyObject) {
+    }
+    
   
 
 

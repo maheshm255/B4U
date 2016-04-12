@@ -8,6 +8,7 @@
 
 import Foundation
 
+let b4uNumber = "08030323232"
 
 enum orderTypes
 {
@@ -21,6 +22,12 @@ enum loginFormScreen
     case kPaymentScreen
     case kNone
 }
+
+
+let orderRaiseIssueReasons = ["No Response":"no_response","Re-Schedules":"re_schedules","Price":"price","Issues":"issues","Others":"other"]
+
+let orderCancelReasons = ["Price issue":"price_issue","No response":"no_response","I'm unavailable":"im_unavailable","Better deal":"better_deal","Others":"other"]
+
 /******Base URL*******/
 
 let b4uBaseUrl:String = "http://v2.20160301.testing.bro4u.com/api_v2/"
@@ -111,6 +118,10 @@ let kMyInfoIndex = "index.php/my_account/user_details"
 let kOrderNotificationIndex = "index.php/my_account/get_notifications"
 
 
+//
+//?order_id=29686&issue_type=no_response&message=jasdfl%20alskfj%20lskdf
+
+let kOrderRaiseIssueApi = "index.php/order/raise_issue"
 /*************Right Menu**********************/
 
 //1.About Us web view url

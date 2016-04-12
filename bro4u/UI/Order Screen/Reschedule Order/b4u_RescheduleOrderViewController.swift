@@ -182,6 +182,10 @@ class b4u_RescheduleOrderViewController: UIViewController,
     }
     
 
+    @IBAction func callB4uBtnAction(sender: AnyObject) {
+        
+        b4u_Utility.callAt(b4uNumber)
+    }
     func addLoadingIndicator () {
         self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
         self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)

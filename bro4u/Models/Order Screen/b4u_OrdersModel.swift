@@ -31,7 +31,7 @@ class b4u_OrdersModel: NSObject {
     var finalAmountPaid:NSNumber?
     var materialCharges:NSNumber?
     var netAmountPaid:NSNumber?
-    var statusCode:NSNumber?
+    var statusCode:String?
     var statusDesc:String?
     var vendorName:String?
     var vendorMobile:String?
@@ -71,7 +71,7 @@ class b4u_OrdersModel: NSObject {
         finalAmountPaid = dataDict["final_amount_paid"] as? NSNumber
         materialCharges = dataDict["material_charges"] as? NSNumber
         netAmountPaid = dataDict["net_amount_paid"] as? NSNumber
-        statusCode = dataDict["status_code"] as? NSNumber
+        statusCode = dataDict["status_code"] as? String
         statusDesc = dataDict["status_desc"] as? String
         vendorName = dataDict["vendor_name"] as? String
         vendorMobile = dataDict["vendor_mobile"] as? String

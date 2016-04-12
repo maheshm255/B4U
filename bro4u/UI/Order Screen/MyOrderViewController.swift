@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyOrderViewController: UIViewController,UIPopoverPresentationControllerDelegate ,orderResheduleDelegate{
+class MyOrderViewController: UIViewController,UIPopoverPresentationControllerDelegate ,orderResheduleDelegate ,orderRaiseIssueDelegate ,orderCancelDelegate{
 
     @IBOutlet weak var viewUserNotLoggedIn: UIView!
     @IBOutlet weak var orderTableView: UITableView!
@@ -185,16 +185,21 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         cell.btnCancel.tag = indexPath.row
         cell.btnReshedule.tag = indexPath.row
         cell.btnTrack.tag = indexPath.row
-        
+        cell.btnCallBro4u.tag = indexPath.row
+        cell.btnPayOnline.tag = indexPath.row
+
         cell.configureData(self.onGoingOrderArray![indexPath.row])
   
-    
+        
         
       return cell
     }
     else{
         cellIdentifier = "PastOrdersTableViewCellID"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PastOrdersTableViewCell
+
+        cell.btnRaiseIssue.tag = indexPath.row
+        cell.btnWriteReview.tag = indexPath.row
         
         cell.configureData(self.pastOrdersArray![indexPath.row])
 
@@ -209,11 +214,11 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if indexPath.section == 0
         {
-            return 300;
+            return 250;
         }
         else if indexPath.section == 1
         {
-            return 160;
+            return 186;
         }
         
         return 0
@@ -291,26 +296,6 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     let selectedOrderObj: b4u_OrdersModel  =  self.onGoingOrderArray![sender.tag]
     self.showAlertView("Cancel", selectedOrderObj:selectedOrderObj)
 
-    
-    //    let tableView = self.superview?.superview as! UITableView
-    //
-    //    let indexPath = tableView.indexPathForCell(self)
-    //
-    //    let orderModel:b4u_OrdersModel = bro4u_DataManager.sharedInstance.orderData[indexPath!.row]
-    //    var metaDataModel:b4u_ReOrder_MetaItemModel?
-    //    if orderModel.metaItemReOrder?.count > 0{
-    //
-    //        metaDataModel = orderModel.metaItemReOrder?.first
-    //
-    //        let params = "?order_id=\(orderModel.orderID!)&user_id=\(metaDataModel!.userID!)&vendor_id=\(orderModel.vendorID!)&cancel_message=\("Text")"//Need to pass the textfield Message from popup
-    //
-    //        b4u_WebApiCallManager.sharedInstance.getApiCall(kCancelOrderIndex, params:params, result:{(resultObject) -> Void in
-    //
-    //        })
-    //    }
-    //
-    //
-    //    tableView.reloadData()
   }
   
     @IBAction func btnRaiseIssuePressed(sender: AnyObject)
@@ -338,6 +323,21 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
   
   
   @IBAction func callBro4uAction(sender: AnyObject) {
+    
+    let orderDataModel: b4u_OrdersModel  =  self.onGoingOrderArray![sender.tag]
+
+    if orderDataModel.statusCode == "OREQ" || orderDataModel.statusCode == "OTRNF" || orderDataModel.statusCode == "OVREJ"
+    {
+        b4u_Utility.callAt(b4uNumber)
+    }
+    
+    if orderDataModel.statusCode == "OACC" || orderDataModel.statusCode == "OPRC" || orderDataModel.statusCode == "OACL"
+    {
+        b4u_Utility.callAt(orderDataModel.vendorMobile!)
+
+       // vendor_mobile
+        
+    }
   }
   
   
@@ -357,15 +357,18 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if btnTapped == "Cancel"
     {
        let  alertViewCtrl:b4u_CancelOrderViewController = storyboard.instantiateViewControllerWithIdentifier("CancelOrderViewControllerID") as! b4u_CancelOrderViewController
+        
+        alertViewCtrl.selectedOrder = selectedOrderObj
+        alertViewCtrl.delegate = self
 
-        self.pressentAlertPopUP(alertViewCtrl)
+        self.pressentAlertPopUP(alertViewCtrl, size:CGSizeMake(300, 250))
     }
     else if btnTapped == "Track"{
     
       let  alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("TrackOrderViewControllerID") as! b4u_TrackOrderViewController
         
         alertViewCtrl.selectedOrder = selectedOrderObj
-        self.pressentAlertPopUP(alertViewCtrl)
+        self.pressentAlertPopUP(alertViewCtrl, size:CGSizeMake(300, 230))
 
     }
     else if btnTapped == "Reschedule"{
@@ -374,34 +377,34 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         alertViewCtrl.selectedOrder = selectedOrderObj
         alertViewCtrl.delegate = self
-        self.pressentAlertPopUP(alertViewCtrl)
+        self.pressentAlertPopUP(alertViewCtrl, size:CGSizeMake(300, 190))
 
     }
     else if btnTapped == "RaiseIssue"{
         
         let  alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("b4uRasiseIssueController") as! b4u_RasiseIssueController
-//        
-//        alertViewCtrl.selectedOrder = selectedOrderObj
-//        alertViewCtrl.delegate = self
-        self.pressentAlertPopUP(alertViewCtrl)
+        
+        alertViewCtrl.selectedOrder = selectedOrderObj
+        alertViewCtrl.delegate = self
+        self.pressentAlertPopUP(alertViewCtrl, size:CGSizeMake(300, 250))
         
     }
     else if btnTapped == "PayOnline"{
       
       let  alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("PayOnlineOrderViewControllerID") as! b4u_PayOnlineOrderViewController
-        self.pressentAlertPopUP(alertViewCtrl)
+        self.pressentAlertPopUP(alertViewCtrl, size: CGSizeMake(300, 250))
 
     }
     
   }
     
-    func pressentAlertPopUP(alertViewCtrl:UIViewController?)
+    func pressentAlertPopUP(alertViewCtrl:UIViewController? , size:CGSize)
     {
-        self.view.alpha = 0.5
+     //   self.view.alpha = 0.5
         
         
         alertViewCtrl!.modalPresentationStyle = .Popover
-        alertViewCtrl!.preferredContentSize = CGSizeMake(300, 250)
+        alertViewCtrl!.preferredContentSize = size
         
         let popoverMenuViewController = alertViewCtrl!.popoverPresentationController
         popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
@@ -428,11 +431,19 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     {
         self.view.alpha = 1.0
 
+        
+        guard let selectedDate = selectedData else{
+            return
+        }
+        
+        guard let aSelectedTiemSlot = selectedTimeSlot else{
+            return
+        }
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         
-        let params = "?order_id=\(order.orderID!) &user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)&date=\(selectedData!)&service_time=\(selectedTimeSlot!)".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        let params = "?order_id=\(order.orderID!) &user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)&date=\(selectedDate)&service_time=\(aSelectedTiemSlot)"
         
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kReScheduleOrderApi, params:params!, result:{(resultObject) -> Void in
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kReScheduleOrderApi, params:params, result:{(resultObject) -> Void in
             
             
             b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
@@ -455,5 +466,68 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     func loginDismissed()
     {
         self.validateUser()
+    }
+    
+    
+    // Raise issue delegates
+    
+    func raiseIssue(order:b4u_OrdersModel , selectedIssue:String , reason:String)
+    {
+        
+        //?order_id=29686&issue_type=no_response&message=jasdfl%20alskfj%20lskdf
+
+        self.view.alpha = 1.0
+        
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+        
+        let params = "?order_id=\(order.orderID!) &user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)&issue_type=\(orderRaiseIssueReasons[selectedIssue]!)&message=\(reason)"
+        
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kOrderRaiseIssueApi, params:params, result:{(resultObject) -> Void in
+            
+            
+            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+            
+            
+        })
+
+    }
+    func didCloseRaiseIssue()
+    {
+        self.view.alpha = 1.0
+    }
+    
+    // Cancel Order Delegates
+    func cancelOrder(order:b4u_OrdersModel , selectedIssue:String , reason:String)
+    {
+        //?order_id=29686&issue_type=no_response&message=jasdfl%20alskfj%20lskdf
+        
+        self.view.alpha = 1.0
+        
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+        
+        let params = "?order_id=\(order.orderID!) &user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)&vendor_id=\(order.vendorID!)&issue_type=\(orderCancelReasons[selectedIssue]!)&cancel_message=\(reason)&cancel_reason=\(selectedIssue)"
+        
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kCancelOrderIndex, params:params, result:{(resultObject) -> Void in
+            
+            
+            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+            
+            
+        })
+    }
+    @IBAction func btnPastOrdersRaiseIssuePressed(sender: AnyObject)
+    {
+        let selectedOrderObj: b4u_OrdersModel  =  self.pastOrdersArray![sender.tag]
+        self.showAlertView("RaiseIssue", selectedOrderObj:selectedOrderObj)
+
+    }
+    @IBAction func btnWriteReivewPressed(sender: AnyObject) {
+        
+        self.performSegueWithIdentifier("writeViewSegue", sender:nil)
+    }
+    func didCloseCancelIssue()
+    {
+        self.view.alpha = 1.0
+ 
     }
 }

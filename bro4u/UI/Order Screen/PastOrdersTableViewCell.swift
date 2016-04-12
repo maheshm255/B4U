@@ -22,7 +22,9 @@ class PastOrdersTableViewCell: UITableViewCell {
   @IBOutlet var bookingLbl: UILabel!
   @IBOutlet var priceLbl: UILabel!
   
+    @IBOutlet weak var btnWriteReview: UIButton!
   
+    @IBOutlet weak var btnRaiseIssue: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,6 +34,9 @@ class PastOrdersTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        
+        self.serviceStatusLbl.layer.borderColor = UIColor.grayColor().CGColor
+        self.serviceStatusLbl.layer.borderWidth = 1
     }
 
     func configureData(orderDataModel:b4u_OrdersModel)
@@ -66,7 +71,7 @@ class PastOrdersTableViewCell: UITableViewCell {
         }
         if let orderStatus = orderDataModel.statusDesc
         {
-            self.serviceStatusLbl.text = orderStatus
+            self.serviceStatusLbl.text = " \(orderStatus) "
         }
         if let price = orderDataModel.finalTotal //Need to check Key
         {
