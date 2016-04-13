@@ -9,23 +9,23 @@
 import UIKit
 
 enum paymentOption: Int{
-   case kPaytm = 0
-   case kCCDC
-   case kNetBanking
-   case kCOD
+    case kPaytm = 0
+    case kCCDC
+    case kNetBanking
+    case kCOD
 }
 
 protocol paymentDelegate
 {
     func infoBtnClicked()
-  
-  func navigateToPaymentGateWay(gateWayOpton:paymentOption)
-
+    
+    func navigateToPaymentGateWay(gateWayOpton:paymentOption)
+    
 }
 class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate {
-
+    
     @IBOutlet weak var paymentTableView: UITableView!
-  
+    
     var radioButtonSelected:NSIndexPath!
     
     var delegate:paymentDelegate?
@@ -34,7 +34,7 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     let itemDict : NSArray = ["paytm","Credit/Debit Card",
         "Net banking/Credit/Debit",
         "Cash On Service"]
-
+    
     
     @IBOutlet weak var btnApply: UIButton!
     @IBOutlet weak var tfCouponCode: UITextField!
@@ -43,23 +43,31 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     @IBOutlet weak var viewCouponCode: UIView!
     @IBOutlet weak var btnInfo: UIButton!
     @IBOutlet weak var lblAmount: UILabel!
-
+    
     
     override func viewDidLoad() {
-      
-    
-    self.lblAmount.text = "  Rs. \( bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)  "
+        
+        
+        
+        if  let selectedSuggestedPartner =   bro4u_DataManager.sharedInstance.selectedSuggestedPatner
+        {
+            self.lblAmount.text = "  Rs. \( selectedSuggestedPartner.custPrice!)  "
 
-    let tapGesture = UITapGestureRecognizer(target:self, action:"applyCouponCodeViewTaped")
+        }else if let selectedReOrderModel = bro4u_DataManager.sharedInstance.selectedReorderModel
+        {
+            self.lblAmount.text = "  Rs. \(selectedReOrderModel.subTotal!)  "
+        }
+        
+        let tapGesture = UITapGestureRecognizer(target:self, action:"applyCouponCodeViewTaped")
         tapGesture.numberOfTouchesRequired = 1
-    self.viewCouponCode.addGestureRecognizer(tapGesture)
-      self.addLoadingIndicator()
-      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+        self.viewCouponCode.addGestureRecognizer(tapGesture)
+        self.addLoadingIndicator()
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         super.viewDidLoad()
-      b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-
+        b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+        
         // Do any additional setup after loading the view.
-       
+        
         //To Give Shadow to tableview
         self.paymentTableView.layer.shadowColor  = UIColor.grayColor().CGColor
         self.paymentTableView.layer.shadowOffset  = CGSizeMake(3.0, 3.0)
@@ -68,7 +76,7 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         self.paymentTableView.clipsToBounds  = false
         self.paymentTableView.layer.masksToBounds  = false
     }
-  
+    
     
     func applyCouponCodeViewTaped()
     {
@@ -86,17 +94,17 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
     // MARK: UITableViewDataSource
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -112,9 +120,9 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         
         let cellIdentifier = "paymentSelectionTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! b4u_PaymentTblViewCell
-      
+        
         let PaymentGatewayOffersModel: b4u_PaymentGatewayOffersModel   = bro4u_DataManager.sharedInstance.orderDetailData[0].paymentGateWayes![indexPath.row]
-
+        
         if(indexPath.row == 0){
             cell.typeLabel.hidden  = true
             cell.typeImageView.hidden = false
@@ -125,10 +133,10 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
             cell.typeLabel.hidden  = false
             cell.typeImageView.hidden = true
             cell.typeLabel?.text = itemDict[indexPath.row] as! String
-
+            
         }
         cell.infoLabel?.text = PaymentGatewayOffersModel.offerMsg
-      
+        
         if radioButtonSelected != nil{
             if radioButtonSelected.isEqual(indexPath){
                 cell.radioImageView.image = UIImage(named: "radioBlue")
@@ -147,7 +155,7 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-      
+        
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! b4u_PaymentTblViewCell
         if radioButtonSelected != nil
         {
@@ -160,39 +168,39 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     }
     
     @IBAction func placeOrder(sender: AnyObject){
-      
-      switch radioButtonSelected.row {
-      case 0:
-        delegate?.navigateToPaymentGateWay(paymentOption.kPaytm)
-      case 1:
-        delegate?.navigateToPaymentGateWay(paymentOption.kCCDC)
-      case 2:
-        delegate?.navigateToPaymentGateWay(paymentOption.kNetBanking)
-      case 3:
-        delegate?.navigateToPaymentGateWay(paymentOption.kCOD)
-      default:
-        break
-      }
-      
+        
+        switch radioButtonSelected.row {
+        case 0:
+            delegate?.navigateToPaymentGateWay(paymentOption.kPaytm)
+        case 1:
+            delegate?.navigateToPaymentGateWay(paymentOption.kCCDC)
+        case 2:
+            delegate?.navigateToPaymentGateWay(paymentOption.kNetBanking)
+        case 3:
+            delegate?.navigateToPaymentGateWay(paymentOption.kCOD)
+        default:
+            break
+        }
+        
     }
-
-  func addLoadingIndicator () {
-    self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
-    self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
-    b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
-  }
-
-  @IBAction func showDetailBtnClicked(sender: AnyObject) {
     
-    self.showAlertView()
-  }
-
-  
-  func showAlertView()
-  {
-     self.delegate?.infoBtnClicked()
+    func addLoadingIndicator () {
+        self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+        self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+        b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
+    }
     
-  }
- 
-  
+    @IBAction func showDetailBtnClicked(sender: AnyObject) {
+        
+        self.showAlertView()
+    }
+    
+    
+    func showAlertView()
+    {
+        self.delegate?.infoBtnClicked()
+        
+    }
+    
+    
 }

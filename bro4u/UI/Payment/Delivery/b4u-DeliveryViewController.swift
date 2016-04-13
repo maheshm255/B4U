@@ -37,7 +37,15 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
         super.viewDidLoad()
 
         
-        self.lblAmount.text = "  Rs. \( bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)  "
+       if let selectedPartner = bro4u_DataManager.sharedInstance.selectedSuggestedPatner
+       {
+          self.lblAmount.text = "  Rs. \( selectedPartner.custPrice!)  "
+        }else if let selectedReorderModel = bro4u_DataManager.sharedInstance.selectedReorderModel
+       {
+          //TODO - to check actual field
+           self.lblAmount.text = "  Rs. \( selectedReorderModel.subTotal!)  "
+
+        }
         // Do any additional setup after loading the view.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keybShow:",
             name: UIKeyboardWillShowNotification, object: nil)

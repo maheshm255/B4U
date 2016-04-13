@@ -42,6 +42,9 @@ class bro4u_DataManager: NSObject {
   
     var loginInfo:b4u_LoginInfo?
     
+    var selectedReorderModel:b4u_ReOrderModel?
+    
+    
     var orderId:NSNumber?
     var txnID:String?
     var surl:String?
@@ -70,7 +73,8 @@ class bro4u_DataManager: NSObject {
     var orderDetailData:[b4u_OrderDetailModel] = Array()
     var selectionData:[b4u_SelectionModel] = Array()
     var whyOnlineData:[b4u_WhyOnlineModel] = Array()
-
+ 
+    
 
     class var sharedInstance: bro4u_DataManager {
         struct Singleton {

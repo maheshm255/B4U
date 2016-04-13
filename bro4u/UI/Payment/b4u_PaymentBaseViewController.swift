@@ -438,11 +438,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
   func getPaymentWays()
   {
     
-    // TODO - Mahesh
-    self.addLoadingIndicator()
-    
-    b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-    
+
     var user_id = ""
     
     if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
@@ -455,21 +451,61 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     
     
     
-    let sub_Total =  bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!
-
+    var  sub_Total =  ""
+    var itemId = ""
+    var filterPareams = ""
+    var params = ""
+    
+    if let aFilterParams = bro4u_DataManager.sharedInstance.userSelectedFilterParams{
+        
+        filterPareams = aFilterParams
+    }
+    
     var coupon = ""
     if let couponCode =    bro4u_DataManager.sharedInstance.copiedCopunCode
     {
         coupon = couponCode
     }
-    let service_time =   bro4u_DataManager.sharedInstance.selectedTimeSlot!
-    let service_date =   bro4u_DataManager.sharedInstance.selectedDate!
+    
+    guard let service_date =   bro4u_DataManager.sharedInstance.selectedDate else
+    {
+        self.view.makeToast(message:"Please Select Service Date", duration:1.0, position:HRToastPositionDefault)
+        return
+    }
+    
 
     
-    //index.php/order/book_v2/1565?sub_total=1000&user_id=3&coupon=MAKEMOMHAPPY&cake_egg_eggless=136&cake_weight=144&unit_quantity=2&service_time=11pm-12am&service_date=2015-12-27
+    guard let service_time =   bro4u_DataManager.sharedInstance.selectedTimeSlot else
+    {
+        self.view.makeToast(message:"Please Select Service Time", duration:1.0, position:HRToastPositionDefault)
+        return
+    }
     
-    var params = bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.itemId! + bro4u_DataManager.sharedInstance.userSelectedFilterParams! + "&sub_Total=\(sub_Total)&user_id=\(user_id)&coupon=\(coupon)&service_time=\(service_time)&service_date=\(service_date)"
+    
+    if  let selectedSuggestedPartner =   bro4u_DataManager.sharedInstance.selectedSuggestedPatner
+    {
+        sub_Total = selectedSuggestedPartner.custPrice!
+        itemId = selectedSuggestedPartner.itemId!
+        
+        params =  itemId + filterPareams + "&sub_Total=\(sub_Total)&user_id=\(user_id)&coupon=\(coupon)&service_time=\(service_time)&service_date=\(service_date)"
 
+    }else if let selectedReOrderModel = bro4u_DataManager.sharedInstance.selectedReorderModel
+    {
+        sub_Total = "\(selectedReOrderModel.subTotal!)"
+        itemId = selectedReOrderModel.metaItemReOrder!.first!.itemID!
+        
+        params =  itemId + filterPareams + "?sub_Total=\(sub_Total)&user_id=\(user_id)&coupon=\(coupon)&service_time=\(service_time)&service_date=\(service_date)"
+    }
+    
+    
+    
+
+    
+    
+    // TODO - Mahesh
+    self.addLoadingIndicator()
+    
+    b4u_Utility.sharedInstance.activityIndicator.startAnimating()
     
     b4u_WebApiCallManager.sharedInstance.getApiCall(kGetBookingDetailIndex , params:params, result:{(resultObject) -> Void in
       

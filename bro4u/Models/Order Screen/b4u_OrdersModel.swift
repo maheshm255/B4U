@@ -47,6 +47,11 @@ class b4u_OrdersModel: NSObject {
 
     var paymentGateWayes:[b4u_PaymentGatewayOffersModel]?
     
+    var serviceQuality:String?
+    var rating:String?
+    var feedback:String?
+    var onTime:String?
+    
     init(dataDict:Dictionary<String ,AnyObject>) {
         
         
@@ -83,6 +88,13 @@ class b4u_OrdersModel: NSObject {
         offerPrice = dataDict["offer_price"] as? NSNumber
         finalTotal = dataDict["final_total"] as? NSNumber
         statusNumber = dataDict["status_number"] as? NSNumber
+        
+        serviceQuality = dataDict["service_quality"] as? String
+        rating = dataDict["rating"] as? String
+        feedback = dataDict["feedback"] as? String
+        
+        onTime = dataDict["on_time"] as? String
+
         
         self.metaItemReOrder = Array()
         

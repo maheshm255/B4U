@@ -11,6 +11,10 @@ import UIKit
 class b4u_ReOrderTableViewCell: UITableViewCell {
 
    
+    @IBOutlet weak var btnReOrder: UIButton!
+    @IBOutlet weak var btnViewOrderDetails: UIButton!
+    @IBOutlet weak var btnOrderDelete: UIButton!
+    
     @IBOutlet weak var vendorImageView: UIImageView!
     @IBOutlet var titleLbl: UILabel!
     @IBOutlet var subTitleLbl: UILabel!
@@ -19,13 +23,6 @@ class b4u_ReOrderTableViewCell: UITableViewCell {
     @IBOutlet var timeSlotLbl: UILabel!
     @IBOutlet var amountLbl: UILabel!
     
-    
-    
-    @IBAction func viewDetailAction(sender: AnyObject) {
-    
-
-        
-    }
     
     @IBAction func deleteAction(sender: AnyObject) {
     
@@ -48,8 +45,7 @@ class b4u_ReOrderTableViewCell: UITableViewCell {
 
     }
     
-    @IBAction func reOrderAction(sender: AnyObject) {
-    }
+   
     
     override func awakeFromNib() {
         super.awakeFromNib()

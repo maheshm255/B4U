@@ -139,7 +139,7 @@ let kOfferZoneIndex = "index.php/coupon/offer_zone"
 /****** Order rating and Review ******/
 //1.Rate and review your order
 //index.php/order/add_order_review/14348?user_id=1626&service_quality=good&on_time=yes&rating=4&feedback=34
-let kRateAndReviewOrderIndex = "index.php/order/add_order_review/14348"
+let kRateAndReviewOrderIndex = "index.php/order/add_order_review/"
 
 /****** Login Activity ******/
 

@@ -16,7 +16,8 @@ class b4u_ReOrderViewController: UIViewController {
     
     @IBOutlet weak var viewUserNotLoggedIn: UIView!
    
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"loginDismissed", name:kUserDataReceived, object:nil);
@@ -24,7 +25,7 @@ class b4u_ReOrderViewController: UIViewController {
         self.validateUser()
         
     }
-    
+
     
     func validateUser()
     {
@@ -34,10 +35,12 @@ class b4u_ReOrderViewController: UIViewController {
         
         if let hasLogin:Bool = isUserLoggedIn as? Bool
         {
+           
             if hasLogin
             {
                 self.viewUserNotLoggedIn.hidden = true
                 
+             
                 // Do any additional setup after loading the view.
                 self.addLoadingIndicator()
                 
@@ -65,7 +68,7 @@ class b4u_ReOrderViewController: UIViewController {
         }
 
         
-        let params = "?user_id=\(1626)"
+        let params = "?user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kReOrderIndex , params:params, result:{(resultObject) -> Void in
             
             print(" ReOrder Data Received")
@@ -117,6 +120,10 @@ class b4u_ReOrderViewController: UIViewController {
         
         let reOrderModel:b4u_ReOrderModel = bro4u_DataManager.sharedInstance.myReorderData[indexPath.section]
         
+        cell.btnOrderDelete.tag = indexPath.section
+        cell.btnReOrder.tag = indexPath.section
+        cell.btnViewOrderDetails.tag = indexPath.section
+
         cell.configureData(reOrderModel)
         return cell
     }
@@ -139,33 +146,56 @@ class b4u_ReOrderViewController: UIViewController {
     {
        self.dismissViewControllerAnimated(true, completion:nil)
     }
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 105.0;
-//    }
-    
-    
-//    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-//        
-//        cell.contentView.backgroundColor = UIColor.clearColor()
-//        let whiteRoundedView : UIView = UIView(frame: CGRectMake(0, 10, self.view.frame.size.width, 90))
-//        whiteRoundedView.layer.backgroundColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [1.0, 1.0, 1.0, 1.0])
-//        whiteRoundedView.layer.masksToBounds = false
-//        whiteRoundedView.layer.cornerRadius = 3.0
-//        whiteRoundedView.layer.shadowOffset = CGSizeMake(-1, 1)
-//        whiteRoundedView.layer.shadowOpacity = 0.5
-//        cell.contentView.addSubview(whiteRoundedView)
-//        cell.contentView.sendSubviewToBack(whiteRoundedView)
-//    }
 
-    /*
+
+    
+    @IBAction func orderDeleteBtnPressed(sender: AnyObject)
+    {
+        let reOrderModel:b4u_ReOrderModel = bro4u_DataManager.sharedInstance.myReorderData[sender.tag]
+        
+        let filedName = reOrderModel.orderID!
+        
+        
+        let params = "/\(filedName)"
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kReOrderDeleteIndex, params:params, result:{(resultObject) -> Void in
+            
+            
+        })
+    }
+    
+    @IBAction func viewDetailsBtnPressed(sender: AnyObject)
+    {
+    }
+    
+    
+    
+    @IBAction func reOrderBtnPressed(sender: AnyObject)
+    {
+        
+        let reOrderModel:b4u_ReOrderModel = bro4u_DataManager.sharedInstance.myReorderData[sender.tag]
+
+        bro4u_DataManager.sharedInstance.selectedReorderModel = reOrderModel
+        
+        self.performSegueWithIdentifier("reOrderSegue", sender:reOrderModel)
+    }
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        
+        if segue.identifier == "reOrderSegue"
+        {
+//            let paymetnBaseCtrl =  segue.destinationViewController as! b4u_PaymentBaseViewController
+            
+            
+        }
     }
-    */
+    
 
   func addLoadingIndicator () {
     self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)

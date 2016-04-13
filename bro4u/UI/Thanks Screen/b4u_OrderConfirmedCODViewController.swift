@@ -171,20 +171,25 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
             self.lblOrderedAt.text = "Ordered At \(orderedaAT)"
         }
         
-        whyOnlineText =  bro4u_DataManager.sharedInstance.whyOnlineData[0]
-
-        if let text1 = whyOnlineText!.text1 //Need to check Key
+        
+        if bro4u_DataManager.sharedInstance.whyOnlineData.count > 0
         {
-            self.lblOnlineAdvantage1.text = text1
+            whyOnlineText =  bro4u_DataManager.sharedInstance.whyOnlineData[0]
+            
+            if let text1 = whyOnlineText!.text1 //Need to check Key
+            {
+                self.lblOnlineAdvantage1.text = text1
+            }
+            if let text2 = whyOnlineText!.text2 //Need to check Key
+            {
+                self.lblOnlineAdvantage2.text = text2
+            }
+            if let text3 = whyOnlineText!.text3 //Need to check Key
+            {
+                self.lblOnlineAdvantage3.text = text3
+            }
         }
-        if let text2 = whyOnlineText!.text2 //Need to check Key
-        {
-            self.lblOnlineAdvantage2.text = text2
-        }
-        if let text3 = whyOnlineText!.text3 //Need to check Key
-        {
-            self.lblOnlineAdvantage3.text = text3
-        }
+       
 
     }
 
