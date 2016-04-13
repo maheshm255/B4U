@@ -578,6 +578,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
   func removeController(controller : PGTransactionViewController) -> Void {
     if navigationController != nil {
       navigationController?.popViewControllerAnimated(true)
+      
     }else{
       controller.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -589,7 +590,16 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     let alert = UIAlertController(title: title, message: response.description, preferredStyle: UIAlertControllerStyle.Alert)
     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
     self.presentViewController(alert, animated: true, completion: nil)
-    removeController(controller)
+    
+    let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in
+      //self.removeController(controller)
+      
+      let orderConfirmedViewController = self.storyboard?.instantiateViewControllerWithIdentifier("OrderConfirmedViewControllerID") as? OrderConfirmedViewController
+      self.navigationController?.pushViewController(orderConfirmedViewController!, animated: true)
+      
+    }
+    alert.addAction(OKAction)
+    
     
   }
   
@@ -621,10 +631,15 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
       msg = "UnSuccessful"
     }
     let alert = UIAlertController(title: "Transaction Cancel", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
-    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
     self.presentViewController(alert, animated: true, completion: nil)
     
-    removeController(controller)
+    let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in
+      self.removeController(controller)
+      
+    }
+    alert.addAction(OKAction)
+    
+    //removeController(controller)
   }
   
   func didFinishCASTransaction(controller: PGTransactionViewController!, response: [NSObject : AnyObject]!)

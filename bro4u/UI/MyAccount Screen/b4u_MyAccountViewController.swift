@@ -186,10 +186,11 @@ class b4u_MyAccountViewController: UIViewController {
             // Set the CellID
             switch(indexPath.section){
             case 0:
-                destination = storyboard.instantiateViewControllerWithIdentifier("MyOrderViewControllerID") as! MyOrderViewController
+//                destination = storyboard.instantiateViewControllerWithIdentifier("MyOrderViewControllerID") as! MyOrderViewController
+
+                destination = storyboard.instantiateViewControllerWithIdentifier("OrderConfirmedViewControllerID") as! OrderConfirmedViewController
 
             case 1:
-//                destination = storyboard.instantiateViewControllerWithIdentifier("MyWalletViewControllerID") as! MyWalletViewController
 
                 self.performSegueWithIdentifier("walletCtrlSegue", sender:nil)
 

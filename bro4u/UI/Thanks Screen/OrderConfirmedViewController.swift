@@ -25,35 +25,51 @@ class OrderConfirmedViewController: UIViewController {
   @IBOutlet var amountLbl: UILabel!
   @IBOutlet var lblCallBro4U: UILabel!
   
+  @IBOutlet weak var topView: UIView!
+  @IBOutlet weak var downView: UIView!
+  @IBOutlet weak var btnContinue: UIButton!
+
     var order_id:String?
+    var confirmedOrder:b4u_OrdersModel?
 
   
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-      self.addLoadingIndicator()
+//      self.addLoadingIndicator()
+//      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//      topView.hidden = true
+//      downView.hidden = true
+//      btnContinue.hidden = true
+    
+      serviceStatusLbl.layer.borderWidth = 1.0
+      serviceStatusLbl.layer.borderColor = UIColor.lightGrayColor().CGColor
 
-        self.getData()
+        //self.getData()
         
     }
     
     func getData()
     {
-      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
         var user_id = ""
         
         if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
             
-            user_id = loginInfoData.userId! //Need to use later
+            user_id = loginInfoData.userId!
+            
+        }
+        if let orderID = bro4u_DataManager.sharedInstance.orderId{
+            
+            order_id = "\(orderID)"
             
         }
         
         let params = "?order_id=\(order_id)&user_id=\(user_id)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kOrderConfirmedIndex , params:params, result:{(resultObject) -> Void in
             
-            print(" Order Confirmed  Data Received")
+            print(" Order Confirmed for Online Data Received")
             
             print(resultObject)
             b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
@@ -66,44 +82,49 @@ class OrderConfirmedViewController: UIViewController {
     func congigureUI()
     {
         
-        let currentOrder =  bro4u_DataManager.sharedInstance.orderData[0]
+        confirmedOrder =  bro4u_DataManager.sharedInstance.orderData[0]
 
-        if let vendorName = currentOrder.vendorName
+        topView.hidden = false
+        downView.hidden = false
+        btnContinue.hidden = false
+
+        if let vendorName = confirmedOrder!.vendorName
         {
             self.titleLbl.text = vendorName
         }
-        if let categoryName = currentOrder.catName
+        if let categoryName = confirmedOrder!.catName
         {
             self.subTitleLbl.text = categoryName
         }
-        if let serviceDate = currentOrder.serviceDate
+        if let serviceDate = confirmedOrder!.serviceDate
         {
             self.dateLbl.text = serviceDate
         }
-        if let serviceTime = currentOrder.serviceTime
+        if let serviceTime = confirmedOrder!.serviceTime
         {
             self.timeSlotLbl.text = serviceTime
         }
-        if let serviceTime = currentOrder.serviceTime
-        {
-            self.timeSlotLbl.text = serviceTime
-        }
-        if let vendorImageUrl = currentOrder.profilePic
+        if let vendorImageUrl = confirmedOrder!.profilePic
         {
             self.vendorImageView.downloadedFrom(link:vendorImageUrl, contentMode:UIViewContentMode.ScaleToFill)
         }
-        if let orderID = currentOrder.orderID
+        if let orderID = confirmedOrder!.orderID
         {
             self.orderIDLbl.text = "#\(orderID)"
         }
-        if let orderStatus = currentOrder.statusDesc
+        if let orderStatus = confirmedOrder!.statusDesc
         {
             self.serviceStatusLbl.text = orderStatus
         }
-        if let price = currentOrder.finalTotal //Need to check Key
+        if let price = confirmedOrder!.finalTotal //Need to check Key
         {
             self.amountLbl.text = "Rs. \(price).00"
         }
+        if let orderedAT = confirmedOrder!.timestamp //Need to check Key
+        {
+            self.orderedAtDateLbl.text = "Ordered At \(orderedAT)"
+        }
+
 
     }
 

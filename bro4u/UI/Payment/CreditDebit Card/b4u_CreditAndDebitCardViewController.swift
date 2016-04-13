@@ -35,6 +35,9 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
       //  self.navigationController?.navigationBar.delegate = self
         // Do any additional setup after loading the view.
       
+//      NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_NetBankingViewController.handlePaymentResponse(_:)), name: "paymentResponse", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"handlePaymentResponse:", name: "paymentResponse", object: nil)
+
       
         self.addLoadingIndicator()
         
@@ -50,6 +53,19 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
 
     }
   
+  func handlePaymentResponse(reponseData : AnyObject){
+    
+//    print("response data \(reponseData)")
+//    if let status = reponseData["status"]{
+//      
+//    }
+//    
+//    let orderConfirmedViewController = storyboard?.instantiateViewControllerWithIdentifier("OrderConfirmedViewControllerID") as? OrderConfirmedViewController
+//    navigationController?.pushViewController(orderConfirmedViewController!, animated: true)
+    
+    
+  }
+  
     func configureUI()
     {
       topView.hidden = false
@@ -62,10 +78,10 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
 //      self.expiryDateBtn.setTitle("10/2020", forState: .Normal)
       
         //Set Default Values of Credit Card
-//      self.creditCardNoTextFld.text = "5459648600234794"
-//      self.cvvTextFld.text = "865"
-//      self.expiryDateBtn.setTitle("05/2018", forState: .Normal)
-        
+      self.creditCardNoTextFld.text = "5459648600234794"
+      self.cvvTextFld.text = "865"
+      self.expiryDateBtn.setTitle("05/2018", forState: .Normal)
+      
 
       
       creditCardNoTextFld.keyboardType = .NumberPad
