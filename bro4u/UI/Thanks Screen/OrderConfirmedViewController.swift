@@ -29,7 +29,7 @@ class OrderConfirmedViewController: UIViewController {
   @IBOutlet weak var downView: UIView!
   @IBOutlet weak var btnContinue: UIButton!
 
-    var order_id:String?
+    var order_id:String!
     var confirmedOrder:b4u_OrdersModel?
 
   
@@ -37,16 +37,16 @@ class OrderConfirmedViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-//      self.addLoadingIndicator()
-//      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-//      topView.hidden = true
-//      downView.hidden = true
-//      btnContinue.hidden = true
+      self.addLoadingIndicator()
+      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+      topView.hidden = true
+      downView.hidden = true
+      btnContinue.hidden = true
     
       serviceStatusLbl.layer.borderWidth = 1.0
       serviceStatusLbl.layer.borderColor = UIColor.lightGrayColor().CGColor
 
-        //self.getData()
+      self.getData()
         
     }
     
@@ -66,7 +66,7 @@ class OrderConfirmedViewController: UIViewController {
             
         }
         
-        let params = "?order_id=\(order_id)&user_id=\(user_id)"
+        let params = "?order_id=\(order_id!)&user_id=\(user_id)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kOrderConfirmedIndex , params:params, result:{(resultObject) -> Void in
             
             print(" Order Confirmed for Online Data Received")
