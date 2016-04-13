@@ -6,8 +6,11 @@
 //  Copyright (c) All rights reserved.
 //
 import UIKit
+import CoreLocation
 
-class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate ,locationDelegate{
+class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate ,locationDelegate ,CLLocationManagerDelegate {
+
+    var locationManager:CLLocationManager?
 
     @IBOutlet weak var btnCurrentLocation: UIButton!
     @IBOutlet weak var BtnRightMenu: UIBarButtonItem!
@@ -24,6 +27,7 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
 
         // Do any additional setup after loading the view.
         
+        self.getLocatoin()
         
         self.addLoadingIndicator()
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"pushCategoryScreen", name:kPushServicesScreen, object: nil)
@@ -69,6 +73,17 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     
 
     
+    func getLocatoin()
+    {
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager!.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager!.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.authorizationStatus() == .NotDetermined {
+            locationManager!.requestAlwaysAuthorization()
+        }
+    }
     
     func getData()
     {
@@ -157,8 +172,49 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     {
         return 60.0
     }
+    
+    internal  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        
+        if let currentLocation = bro4u_DataManager.sharedInstance.currenLocation
+        {
+            
+            print(currentLocation.coordinate.latitude)
+            print(currentLocation.coordinate.longitude)
+
+            self.performSegueWithIdentifier("categoryScreenSegue", sender: nil)
+
+        }else
+        {
+            self.showAlertToGetEnbleCurrentLocaion()
+        }
+    }
 
 
+    func  showAlertToGetEnbleCurrentLocaion()
+    {
+        let alertControl = UIAlertController(title:"Location Service Disabled", message:"The location service is off please enable now", preferredStyle:.Alert)
+        
+        
+        //Create and add the Cancel action
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+            //Just dismiss the action sheet
+        }
+        
+        //Create and add the Cancel action
+        let setting: UIAlertAction = UIAlertAction(title: "Setting", style:.Default) { action -> Void in
+            //Just dismiss the action sheet
+            
+            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+
+        }
+        
+        alertControl.addAction(setting)
+        alertControl.addAction(cancelAction)
+        
+        self.presentViewController(alertControl, animated:true, completion: nil)
+        
+    }
     func createImagSlideShowUI()
     {
         let scrollViewWidth:CGFloat = self.scrollView.frame.width
@@ -323,4 +379,66 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
             
         }
     }
+    
+    //MARK: - Location Delegates
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        
+        self.locationManager?.stopUpdatingLocation()
+
+        bro4u_DataManager.sharedInstance.currenLocation = manager.location
+        
+        
+        print("\(manager.location?.coordinate.latitude )  ....  \(manager.location?.coordinate.longitude )")
+        CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error) ->Void in
+            
+            
+            if (error != nil) {
+                print("Reverse geocoder failed with error" + error!.localizedDescription)
+                bro4u_DataManager.sharedInstance.currentLocality = nil
+                return
+            }
+            
+            if placemarks!.count > 0 {
+                let pm = placemarks![0] as CLPlacemark
+                
+                bro4u_DataManager.sharedInstance.currentLocality = pm
+                
+            } else {
+                print("Problem with the data received from geocoder")
+                bro4u_DataManager.sharedInstance.currentLocality = nil
+            }
+        })
+        
+        self.locationManager?.stopUpdatingLocation()
+    }
+    
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("Error while updating location " + error.localizedDescription)
+        
+        bro4u_DataManager.sharedInstance.currenLocation = nil
+    }
+    
+    func displayLocationInfo(placemark: CLPlacemark) {
+        //stop updating location to save battery life
+        locationManager!.stopUpdatingLocation()
+        print(placemark.locality! )
+        print(placemark.postalCode! )
+        print(placemark.administrativeArea! )
+        print(placemark.country! )
+    }
+    
+    func locationManager(manager: CLLocationManager,
+        didChangeAuthorizationStatus status: CLAuthorizationStatus)
+    {
+        if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
+            
+            
+            manager.startUpdatingLocation()
+            // ...
+        }
+    }
+
 }

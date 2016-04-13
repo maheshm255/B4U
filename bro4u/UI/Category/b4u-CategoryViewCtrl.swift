@@ -8,7 +8,7 @@
 
 import UIKit
 
-class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrollViewDelegate {
+class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrollViewDelegate ,categroyTblDelegate{
 
     
     @IBOutlet weak var imgViewIconTop: UIImageView!
@@ -27,6 +27,8 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
     
     
     var selectedMainCategory:bro4u_MainCategory?
+    var selectedCategory:b4u_Category?
+    var attributeOptions:b4u_AttributeOptions?
     
     var currentColor:UIColor!
     
@@ -110,6 +112,8 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
                 
         let vc =  self.storyboard?.instantiateViewControllerWithIdentifier("b4uCategoryTableViewCtrl") as! b4u_CategoryTblViewCtrl1
                 
+                vc.delegate = self
+                
                 vc.categoryAndSubOptions = filteredCategoryData
                 self.createTableViewScroll(vc, title:mainCategoryData.manCatName!, color:UIColor.grayColor())
             }
@@ -154,15 +158,24 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
         selectedIndex = nil
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        
+        if segue.identifier == "interMediateSegue1"
+        {
+            let intermediateCtrl =  segue.destinationViewController as! b4u_IntermediateViewCtrl
+            
+            intermediateCtrl.selectedCategoryObj =  self.selectedCategory
+            intermediateCtrl.selectedAttributeOption = self.attributeOptions
+        }
     }
-    */
+    
 
     
     func createTableViewScroll(vc:b4u_CategoryTblViewCtrl1 , title:NSString , color:UIColor)
@@ -380,6 +393,14 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
         b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
     }
     
+    
+    func didSelecteCategory(selectedCategory:b4u_Category , attributeOptions:b4u_AttributeOptions?)
+    {
+        
+        self.selectedCategory = selectedCategory
+        self.attributeOptions = attributeOptions
+        self.performSegueWithIdentifier("interMediateSegue1", sender:nil)
+    }
 
     
 }

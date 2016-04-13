@@ -8,12 +8,20 @@
 
 import UIKit
 
+
+protocol categroyTblDelegate: NSObjectProtocol
+{
+    func didSelecteCategory(selectedCategory:b4u_Category , attributeOptions:b4u_AttributeOptions?)
+}
+
 class b4u_CategoryTblViewCtrl1: UIViewController,UITableViewDataSource,UITableViewDelegate ,tableViewCustomDelegate {
 
     @IBOutlet weak var tableViewCategory: b4u_CateforyTblView!
     
     var categoryAndSubOptions:[b4u_Category] = Array()
 
+    var delegate:categroyTblDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -135,14 +143,35 @@ class b4u_CategoryTblViewCtrl1: UIViewController,UITableViewDataSource,UITableVi
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        self.performSegueWithIdentifier("interMediateSegue1", sender:indexPath)
+        
+        let categoryObj = self.categoryAndSubOptions[indexPath.section]
+        
+        
+        var attributeOptions:b4u_AttributeOptions?
+        
+        if categoryObj.attributeOptins?.count > 0
+        {
+           attributeOptions = categoryObj.attributeOptins![indexPath.row]
+        }
+        
+        
+        self.delegate?.didSelecteCategory(categoryObj, attributeOptions: attributeOptions)
+        
+        
+//        self.performSegueWithIdentifier("interMediateSegue1", sender:indexPath)
 
         
     }
     
     func didSelectRowAt(section:Int)
     {
-        self.performSegueWithIdentifier("interMediateSegue1", sender:NSIndexPath(forRow:0, inSection:section))
+        
+        let categoryObj = self.categoryAndSubOptions[section]
+        
+        self.delegate?.didSelecteCategory(categoryObj, attributeOptions:nil)
+       
+        
+//        self.performSegueWithIdentifier("interMediateSegue1", sender:NSIndexPath(forRow:0, inSection:section))
 
     }
     

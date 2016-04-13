@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.registerPushNotification()
         self.checkUserAlreadyLogin()
         
+        
+        
         return true
     }
 

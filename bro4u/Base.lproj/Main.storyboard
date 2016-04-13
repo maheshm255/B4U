@@ -334,7 +334,6 @@
                                             <outlet property="imgIcon" destination="B19-3A-fuw" id="XyR-Pl-tTS"/>
                                             <outlet property="lblCategoryDesc" destination="z4Y-gU-eDH" id="Oup-pH-Lti"/>
                                             <outlet property="lblCategoryName" destination="Pp0-Fi-972" id="S1f-aE-fQ1"/>
-                                            <segue destination="OHH-6U-Prw" kind="show" identifier="categoryScreenSegue" id="sCo-cz-5BL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -378,7 +377,7 @@
                         <outlet property="scrollView" destination="KtQ-62-gXU" id="3Mv-vR-c6D"/>
                         <outlet property="tableViewCategory" destination="oPM-kX-56F" id="ds6-nV-SJv"/>
                         <segue destination="OUV-UR-7gT" kind="showDetail" identifier="locationCtrlSegue" id="W5U-K3-ziD"/>
-                        <segue destination="iuA-le-oJX" kind="show" identifier="interMediateSegue1" id="iYf-9b-F9y"/>
+                        <segue destination="OHH-6U-Prw" kind="show" identifier="categoryScreenSegue" id="JOL-H1-Nc6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -463,11 +462,12 @@
                         <outlet property="catTblsScrollView" destination="IHz-w1-skB" id="JuJ-If-Zaq"/>
                         <outlet property="imgViewIconBottom" destination="tvD-Vs-gqE" id="lWh-h6-TpW"/>
                         <outlet property="imgViewIconTop" destination="Yqa-Xt-c8g" id="EWx-aB-ShH"/>
+                        <segue destination="mlp-aw-xAI" kind="show" identifier="interMediateSegue1" id="FFS-5h-qNB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wwt-YP-8Yz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1200" y="1781"/>
+            <point key="canvasLocation" x="1084" y="1839"/>
         </scene>
         <!--4u Category Tbl View Ctrl-->
         <scene sceneID="DMA-WT-gdS">
@@ -517,13 +517,10 @@
                             <outlet property="delegate" destination="A2O-e0-mbw" id="g2f-SH-BjR"/>
                         </connections>
                     </tableView>
-                    <connections>
-                        <segue destination="iuA-le-oJX" kind="show" identifier="interMediateSegue" id="F06-NK-94e"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aAd-Qa-Ml1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1013" y="2436"/>
+            <point key="canvasLocation" x="1225" y="2539"/>
         </scene>
         <!--Search-->
         <scene sceneID="N2Y-cz-wfN">
@@ -1214,14 +1211,7 @@
                             <constraint firstItem="g5S-hb-Sgy" firstAttribute="top" secondItem="Ltd-cj-gFU" secondAttribute="bottom" id="w2A-c1-A3K"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Details" id="UdW-7B-c6x">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="GsX-3I-bs2">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="cancelButttonClicked:" destination="mlp-aw-xAI" id="ncv-gm-309"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Details" id="UdW-7B-c6x"/>
                     <connections>
                         <outlet property="btnTapToCopy" destination="6nH-ao-xHs" id="s6W-AC-RoJ"/>
                         <outlet property="btnTermsAndConditions" destination="RhX-eH-s2P" id="95m-XS-8HW"/>
@@ -1241,7 +1231,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMH-Si-aR3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2450" y="2687"/>
+            <point key="canvasLocation" x="2724" y="2527"/>
         </scene>
         <!--4u Calander View Controller-->
         <scene sceneID="3PY-xt-60t">
@@ -1487,7 +1477,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="urB-94-3Wg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3196" y="2705"/>
+            <point key="canvasLocation" x="3404" y="2587"/>
         </scene>
         <!--Partners-->
         <scene sceneID="gqR-VT-l9J">
@@ -1928,7 +1918,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APL-wG-dOT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3708" y="2494"/>
+            <point key="canvasLocation" x="4100" y="2298"/>
         </scene>
         <!--4u Payment Base View Controller-->
         <scene sceneID="1q3-l1-Tcy">
@@ -2795,37 +2785,11 @@
                     </view>
                     <connections>
                         <outlet property="tableViewCategory" destination="6rS-q1-3yW" id="nh6-66-6ZO"/>
-                        <segue destination="iuA-le-oJX" kind="show" identifier="interMediateSegue1" id="5jU-fL-Els"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UXy-bI-Nen" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1817" y="1580"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="DVA-Z6-EML">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iuA-le-oJX" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aMP-pE-J8A">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.23137254901960785" green="0.74117647058823533" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </textAttributes>
-                        <connections>
-                            <outlet property="delegate" destination="iuA-le-oJX" id="JER-ju-SvI"/>
-                        </connections>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="mlp-aw-xAI" kind="relationship" relationship="rootViewController" id="0BA-FE-PFm"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YJk-Te-lDZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1746" y="2631"/>
+            <point key="canvasLocation" x="1961" y="1424"/>
         </scene>
         <!--4u Payment View Controller-->
         <scene sceneID="cqM-0R-bVE">
@@ -3579,13 +3543,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="11-02-2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0N-gK-5bW">
-                                        <rect key="frame" x="103" y="73" width="70.5" height="16"/>
+                                        <rect key="frame" x="103" y="73" width="71" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="#30432" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTf-0P-vfz">
-                                        <rect key="frame" x="490" y="20" width="84" height="21.5"/>
+                                        <rect key="frame" x="490" y="20" width="84" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="84" id="hvg-7q-08R"/>
                                         </constraints>
@@ -3601,7 +3565,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="10 pm to 12 pm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWo-nU-bXm">
-                                        <rect key="frame" x="487" y="74" width="86.5" height="14.5"/>
+                                        <rect key="frame" x="487" y="74" width="87" height="15"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -3615,7 +3579,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Order Requested" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzk-Yr-pDh">
-                                        <rect key="frame" x="20" y="129.5" width="126" height="19.5"/>
+                                        <rect key="frame" x="20" y="130" width="126" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="126" id="oxW-9t-7KZ"/>
                                         </constraints>
@@ -3625,13 +3589,13 @@
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="PAY ONLINE" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrr-6N-WSk">
-                                        <rect key="frame" x="464" y="186" width="100" height="20.5"/>
+                                        <rect key="frame" x="464" y="186" width="100" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                         <color key="textColor" red="0.031372549020000001" green="0.56078431370000004" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Pay after service" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iT-IV-qBv">
-                                        <rect key="frame" x="447" y="216" width="116.5" height="20.5"/>
+                                        <rect key="frame" x="447" y="216" width="117" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -3660,7 +3624,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call BRO4U" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLL-0s-zOF">
-                                        <rect key="frame" x="56" y="197" width="78.5" height="17"/>
+                                        <rect key="frame" x="56" y="197" width="79" height="17"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -3690,24 +3654,24 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Plumbers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1n-Qq-do7">
-                                        <rect key="frame" x="79" y="47" width="348.5" height="18"/>
+                                        <rect key="frame" x="79" y="47" width="349" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ki3-yL-Sx7">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ki3-yL-Sx7">
                                         <rect key="frame" x="8" y="184" width="275" height="58"/>
                                         <connections>
                                             <action selector="callBro4uAction:" destination="wwg-Fp-Wbt" eventType="touchUpInside" id="hhC-zj-NqJ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8yT-9x-kAv">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8yT-9x-kAv">
                                         <rect key="frame" x="300" y="184" width="274" height="61"/>
                                         <connections>
                                             <action selector="payOnlineAction:" destination="wwg-Fp-Wbt" eventType="touchUpInside" id="P1a-DY-lfA"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rs. 100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TU9-8h-6xx">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Rs. 100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TU9-8h-6xx">
                                         <rect key="frame" x="180" y="135" width="68" height="23"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                         <color key="textColor" red="0.3166087467" green="0.6224398833" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -4173,7 +4137,7 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OngoingOrdersTableViewCellID" rowHeight="250" id="GUK-Si-YaO" customClass="OngoingOrdersTableViewCell" customModule="bro4u">
-                                        <rect key="frame" x="0.0" y="113.5" width="590" height="250"/>
+                                        <rect key="frame" x="0.0" y="114" width="590" height="250"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GUK-Si-YaO" id="98L-mp-x3O">
                                             <rect key="frame" x="0.0" y="0.0" width="590" height="250"/>
@@ -4528,7 +4492,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PastOrdersTableViewCellID" rowHeight="186" id="XgN-w3-kga" customClass="PastOrdersTableViewCell" customModule="bro4u">
-                                        <rect key="frame" x="0.0" y="363.5" width="590" height="186"/>
+                                        <rect key="frame" x="0.0" y="364" width="590" height="186"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XgN-w3-kga" id="CyR-Fu-o4c">
                                             <rect key="frame" x="0.0" y="0.0" width="590" height="186"/>
@@ -7950,7 +7914,7 @@
                                         <color key="textColor" red="0.63921568627450975" green="0.63921568627450975" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKH-uz-Yg7">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKH-uz-Yg7">
                                         <rect key="frame" x="226" y="175" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="0VR-6o-e8U"/>
@@ -7961,7 +7925,7 @@
                                             <action selector="poorBtnPressed:" destination="ABx-uk-JNj" eventType="touchUpInside" id="kWd-zo-7ld"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sqm-Iu-jAq">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sqm-Iu-jAq">
                                         <rect key="frame" x="338" y="175" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="RSh-wc-XY0"/>
@@ -7972,19 +7936,19 @@
                                             <action selector="greatrBtnPressed:" destination="ABx-uk-JNj" eventType="touchUpInside" id="6j3-2I-fwX"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Poor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlV-cI-ZPQ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Poor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlV-cI-ZPQ">
                                         <rect key="frame" x="229" y="221" width="30" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Okay" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmV-wr-zZc">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Okay" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmV-wr-zZc">
                                         <rect key="frame" x="284" y="221" width="33" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Great!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Sc-3r-mUe">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Sc-3r-mUe">
                                         <rect key="frame" x="336" y="221" width="40" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -9306,12 +9270,11 @@
         <image name="thankU" width="320" height="217"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="FFS-5h-qNB"/>
         <segue reference="EWe-mK-kQh"/>
         <segue reference="bLG-nf-drq"/>
         <segue reference="1oG-xt-ZfG"/>
         <segue reference="W5U-K3-ziD"/>
         <segue reference="ZKs-u5-bSL"/>
-        <segue reference="9yL-r3-mwm"/>
-        <segue reference="F06-NK-94e"/>
     </inferredMetricsTieBreakers>
 </document>

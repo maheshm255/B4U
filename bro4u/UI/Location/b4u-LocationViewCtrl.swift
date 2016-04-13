@@ -30,6 +30,10 @@ class b4u_LocationViewCtrl: UIViewController ,UITableViewDelegate,UITableViewDat
     
     var map:MKMapView?
     
+    
+
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
