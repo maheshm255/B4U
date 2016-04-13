@@ -194,7 +194,12 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
             cell.lblActualPrice.text = ""
             
             cell.leadingConstraingDiscounLbl.constant = 0
-            cell.lblDiscount.text = "Rs." + aPatner.offerPrice!
+            
+            if let offerPrice = aPatner.offerPrice
+            {
+                cell.lblDiscount.text = "Rs." + offerPrice
+
+            }
         }
      
 //        cell.contentView.layer.borderColor = UIColor.grayColor().CGColor

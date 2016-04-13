@@ -142,15 +142,25 @@ class MyOrderViewController: UIViewController,UIPopoverPresentationControllerDel
 }
 
 
-/*
+
 // MARK: - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 // Get the new view controller using segue.destinationViewController.
 // Pass the selected object to the new view controller.
+    
+    
+    if segue.identifier == "writeViewSegue"
+    {
+        let reviewCtrl = segue.destinationViewController as! b4u_ReviewServiceViewController
+        
+        reviewCtrl.selectedOrder = sender as? b4u_OrdersModel
+        
+        
+    }
 }
-*/
+
 
 //Tableview Data Source
 
@@ -523,7 +533,9 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     }
     @IBAction func btnWriteReivewPressed(sender: AnyObject) {
         
-        self.performSegueWithIdentifier("writeViewSegue", sender:nil)
+        let selectedOrderObj: b4u_OrdersModel  =  self.pastOrdersArray![sender.tag]
+
+        self.performSegueWithIdentifier("writeViewSegue", sender:selectedOrderObj)
     }
     func didCloseCancelIssue()
     {

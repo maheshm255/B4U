@@ -78,7 +78,18 @@ class b4u_CreateOrder: NSObject {
       user_id = loginInfoData.userId! //Need to use later
     }
     
-    total_cost =  bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!
+    
+    if  let selectedSuggestedPartner =   bro4u_DataManager.sharedInstance.selectedSuggestedPatner
+    {
+        total_cost =  selectedSuggestedPartner.custPrice!
+
+        
+    }else if let selectedReOrderModel = bro4u_DataManager.sharedInstance.selectedReorderModel
+    {
+        total_cost =  "\(selectedReOrderModel.subTotal!)"
+    }
+    
+    
     
     if let couponCode =    bro4u_DataManager.sharedInstance.copiedCopunCode
     {
