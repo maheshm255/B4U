@@ -654,8 +654,8 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         self.servicePatnerAPIRequest(catId!, selectedDate:selectedDate, selectedTimeSlot: selectedTimeSlot)
     }
     
-        
-  func servicePatnerAPIRequest(catId:String ,selectedDate:NSDate ,selectedTimeSlot:String )
+    
+    func servicePatnerAPIRequest(catId:String ,selectedDate:NSDate ,selectedTimeSlot:String )
     {
         let catId = catId
         let latitude =  "12.9718915"

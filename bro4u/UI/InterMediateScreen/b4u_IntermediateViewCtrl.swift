@@ -196,9 +196,14 @@ class b4u_IntermediateViewCtrl: UIViewController {
 
             
             self.lblTitle.text = aDataModel.catName
-            self.lblMessage1.text = aDataModel.interMessges![0]
-            self.lblMessage2.text = aDataModel.interMessges![1]
-            self.lblMessage3.text = aDataModel.interMessges![2]
+            
+            if aDataModel.interMessges?.count > 0
+            {
+                self.lblMessage1.text = aDataModel.interMessges![0]
+                self.lblMessage2.text = aDataModel.interMessges![1]
+                self.lblMessage3.text = aDataModel.interMessges![2]
+            }
+         
             self.lblOffer.text = aDataModel.couponOfferAdHeader
             self.lblOfferMessage.text = aDataModel.couponOfferAdDesc
             
@@ -212,7 +217,7 @@ class b4u_IntermediateViewCtrl: UIViewController {
                 self.btnTermsAndConditions.hidden = true
             }
             
-            if let couponCode = aDataModel.couponCode
+            if let couponCode = aDataModel.couponCode  where couponCode != ""
             {
                 self.lblCoupan.text = couponCode
  

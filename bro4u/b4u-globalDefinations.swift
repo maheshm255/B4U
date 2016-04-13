@@ -212,7 +212,7 @@ let kQuickOrderBook = "/index.php/order/fast_enquiry"
 ///index.php/catalog/browse?cat_id=2&latitude=12.9718915&longitude=77.6411545
 
 //cat_id=2&latitude=12.9718915&longitude=77.6411545
-let kShowServicePatnerApi = "index.php/catalog/browse"
+let kShowServicePatnerApi = "index.php/catalog/browse/"
 
 //2."API for List View / Map View page 2 etc"
 ///index.php/catalog/browse/1?cat_id=2&latitude=12.9718915&longitude=77.6411545
