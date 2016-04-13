@@ -566,8 +566,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
 
   }
   
-// MARK: Paytm Delgates
-  
+    //Paytm Delegates
   func showController(controller : PGTransactionViewController) -> Void {
     if navigationController != nil {
       navigationController?.pushViewController(controller, animated: true)
@@ -586,47 +585,41 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
   }
   
   func didSucceedTransaction(controller: PGTransactionViewController!, response: [NSObject : AnyObject]!) {
-//    let title = "Your order  is completed successfully. \n \(response["ORDERID"])"
+    let title = "Your order  was completed successfully. \n \(response["ORDERID"])"
     
-//    let alert = UIAlertController(title: title, message: response.description, preferredStyle: UIAlertControllerStyle.Alert)
-//    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-//    self.presentViewController(alert, animated: true, completion: nil)
-//    
-//    let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in
+    let alert = UIAlertController(title: title, message: response.description, preferredStyle: UIAlertControllerStyle.Alert)
+    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+    self.presentViewController(alert, animated: true, completion: nil)
+    
+    let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in
       //self.removeController(controller)
       
+      let orderConfirmedViewController = self.storyboard?.instantiateViewControllerWithIdentifier("OrderConfirmedViewControllerID") as? OrderConfirmedViewController
+      self.navigationController?.pushViewController(orderConfirmedViewController!, animated: true)
+      
+    }
+    alert.addAction(OKAction)
     
-//    }
-//    alert.addAction(OKAction)
     
-    let orderConfirmedViewController = self.storyboard?.instantiateViewControllerWithIdentifier("OrderConfirmedViewControllerID") as? OrderConfirmedViewController
-    self.navigationController?.pushViewController(orderConfirmedViewController!, animated: true)
-
   }
   
   func didFailTransaction(controller: PGTransactionViewController!, error: NSError!, response: [NSObject : AnyObject]!) {
     
-    var alert:UIAlertController?
-    
     if response != nil
     {
-      alert = UIAlertController(title: error.localizedDescription, message: response.description, preferredStyle: UIAlertControllerStyle.Alert)
-      self.presentViewController(alert!, animated: true, completion: nil)
-
+      let alert = UIAlertController(title: error.localizedDescription, message: response.description, preferredStyle: UIAlertControllerStyle.Alert)
+      alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+      self.presentViewController(alert, animated: true, completion: nil)
+      
     }
     else if error != nil
     {
-      alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
-      self.presentViewController(alert!, animated: true, completion: nil)
+      let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
+      alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+      self.presentViewController(alert, animated: true, completion: nil)
       
     }
-    
-    let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in
-      self.removeController(controller)
-    }
-    
-    alert!.addAction(OKAction)
-
+    removeController(controller)
   }
   
   func didCancelTransaction(controller: PGTransactionViewController!, error: NSError!, response: [NSObject : AnyObject]!) {
@@ -645,6 +638,8 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
       
     }
     alert.addAction(OKAction)
+    
+    //removeController(controller)
   }
   
   func didFinishCASTransaction(controller: PGTransactionViewController!, response: [NSObject : AnyObject]!)
