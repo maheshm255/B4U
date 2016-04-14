@@ -44,7 +44,9 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     @IBOutlet weak var btnInfo: UIButton!
     @IBOutlet weak var lblAmount: UILabel!
     
+    @IBOutlet weak var lblCouponApplied: UILabel!
     
+    @IBOutlet weak var lblCouponAmt: UILabel!
     override func viewDidLoad() {
         
         
@@ -57,6 +59,10 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         {
             self.lblAmount.text = "  Rs. \(selectedReOrderModel.subTotal!)  "
         }
+        
+        if let copiedCoupon =   bro4u_DataManager.sharedInstance.copiedCopunCode{
+            UIPasteboard.generalPasteboard().string = copiedCoupon
+         }
         
         let tapGesture = UITapGestureRecognizer(target:self, action:"applyCouponCodeViewTaped")
         tapGesture.numberOfTouchesRequired = 1
@@ -88,7 +94,30 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     }
     @IBAction func applyCouponBtnClicked(sender: AnyObject)
     {
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
+        if tfCouponCode.text?.length>0
+        {
+            var user_id = ""
+            
+            if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+                
+                user_id = loginInfoData.userId! //Need to use later
+                
+            }
+            
+            let params = "?coupon_code=\(tfCouponCode.text)&user_id=\(user_id)"
+            
+            
+                b4u_WebApiCallManager.sharedInstance.getApiCall(kCouponCodeValidateIndex , params:params, result:{(resultObject) -> Void in
+                    print(" Coupon Code Appied successfully")
+                    
+                    print(resultObject)
+                    b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+                })
+        }
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
