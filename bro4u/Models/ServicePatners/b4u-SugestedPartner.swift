@@ -18,7 +18,7 @@ class b4u_SugestedPartner: NSObject {
     var catlogMaxOfferAmount:String?
     var custPrice:String?
     var defaultBanner:String?
-    var deliveryCharge:String?
+    var deliveryCharge:NSNumber?
     var distance:String?
     var imgAltText:String?
     var itemDesc:String?
@@ -55,9 +55,8 @@ class b4u_SugestedPartner: NSObject {
     var workingHours:String?
     
     var chargeTitle:String?
-    
-    
     var sortingPrice:String?
+    var averageRatingPercent:NSNumber?
     
     init(sugestedPartnerDetailsDict:Dictionary<String ,AnyObject>) {
         
@@ -69,7 +68,7 @@ class b4u_SugestedPartner: NSObject {
         catlogMaxOfferAmount = sugestedPartnerDetailsDict["catalog_max_offer_amount"] as? String
         custPrice = sugestedPartnerDetailsDict["cust_price"] as? String
         defaultBanner = sugestedPartnerDetailsDict["default_banner"] as? String
-        deliveryCharge = sugestedPartnerDetailsDict["delivery_charge"] as? String
+        deliveryCharge = sugestedPartnerDetailsDict["delivery_charge"] as? NSNumber
         distance = "\(sugestedPartnerDetailsDict["distance"] as! NSNumber)"
         itemDesc = sugestedPartnerDetailsDict["item_desc"] as? String
         imgAltText = sugestedPartnerDetailsDict["image_alt_text"] as? String
@@ -102,6 +101,8 @@ class b4u_SugestedPartner: NSObject {
         
         chargeTitle = sugestedPartnerDetailsDict["charges_title"] as? String
         
+        averageRatingPercent = sugestedPartnerDetailsDict["average_rating_percent"] as? NSNumber
+
         
         if let aOfferPrice = self.offerPrice
         {

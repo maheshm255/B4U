@@ -26,15 +26,20 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     
     var selectedImgSlide:b4u_SliderImage?
 
-    
+    var selectedAttributeOption:b4u_AttributeOptions?
+
     var sectionNumberForRadioInputs = Set<Int>();
 
     
     var selectedIndexPath:Dictionary<String ,[NSIndexPath]> = Dictionary()
+    var textBoxGroupVaues:Dictionary<NSIndexPath ,String> = Dictionary()
+
     var numberOfItems:Int = 0
     
     var hederViews:Dictionary<String ,b4u_ExpandableTblHeaderView> = Dictionary()
 
+    var selectionDict:Dictionary<String , String> = Dictionary()
+    
     var inputArray:[AnyObject]?{
         
         var array:[b4u_CatFilterAttributes] = Array()
@@ -96,8 +101,37 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
             let catId = aSelectedCatObj.catId!
-            let optionId =  aSelectedCatObj.optionId!
-            let filedName = aSelectedCatObj.fieldName!
+            
+            var optionId =  ""
+            var filedName = ""
+            
+            if  let aSelectedAttributeOption = selectedAttributeOption
+            {
+                if let aOptionId = aSelectedAttributeOption.optionId
+                {
+                    optionId = aOptionId
+                }
+                
+                if let aFieldName = aSelectedAttributeOption.fieldName
+                {
+                    filedName = aFieldName
+                    
+                }
+            }else
+            {
+                if let aOptionId = aSelectedCatObj.optionId
+                {
+                    optionId = aOptionId
+                }
+                
+                if let aFieldName = aSelectedCatObj.fieldName
+                {
+                    filedName = aFieldName
+                    
+                }
+            }
+            
+      
             
             
             let params = "?cat_id=\(catId)&option_id=\(optionId)&field_name=\(filedName)"
@@ -202,8 +236,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                 {
                     if (selectedIndexPath["\(indexPath.section)"]!.contains(indexPath)) {
                         cell.iconImgView?.image = UIImage(named:"radioBlue")
-                    }
-                }
+                    }                 }
                 cell.lblTitle?.text =  aItem.optionName
                 
                 
@@ -244,7 +277,18 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                 cell.btnPlus.tag = indexPath.section
                 cell.btnMinus.tag = indexPath.section
                 
-                cell.lblCount.text = "\(numberOfItems)"
+                cell.btnPlus.indexPath = indexPath
+                cell.btnMinus.indexPath = indexPath
+                
+                if let value = self.textBoxGroupVaues[indexPath]
+                {
+                    cell.lblCount.text = value
+
+                }else
+                {
+                    cell.lblCount.text = "0"
+ 
+                }
                 
             }
             return cell
@@ -370,6 +414,9 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                 
                 selectedIndexPath["\(indexPath.section)"] = [indexPath]
             }
+            
+            self.updateHeaderForSection(indexPath.section)
+
         }
         else if catFilterAttributes.inputType == inputType.radio.rawValue
         {
@@ -398,9 +445,11 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                 cell.iconImgView.image = UIImage(named: "radioBlue")
                 selectedIndexPath["\(indexPath.section)"] = [indexPath]
             }
-        }
             
             self.updateHeaderForSection(indexPath.section)
+
+        }
+            
         }
         else
         {
@@ -529,44 +578,88 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
   
     func minusBtnClicked(sender:AnyObject)
     {
-        let btn = sender as! UIButton
+        let btn = sender as! b4u_Button
 
-        if numberOfItems > 0
+        
+        let indexPath = btn.indexPath!
+        
+        
+        let cell = self.expandableTblView.cellForRowAtIndexPath(indexPath) as! b4u_ExpandableTblViewCell
+        
+        
+        var count:Int =  Int(cell.lblCount.text!)!
+        
+        if count > 0
         {
-            numberOfItems -= 1
+            count = count - 1
             
-            self.expandableTblView.reloadData()
+           // self.expandableTblView.reloadData()
+            
+            cell.lblCount.text = "\(count)"
+
+            self.textBoxGroupVaues[indexPath] = cell.lblCount.text
+
+            
         }
-        if numberOfItems == 0
+        if count == 0
         {
-            self.selectedIndexPath.removeValueForKey("\(btn.tag)")
+            cell.lblCount.text = "\(count)"
+        
+            if  self.selectedIndexPath["\(btn.tag)"]?.count > 0
+            {
+                //This is on click of same Cell
+                if (selectedIndexPath["\(indexPath.section)"]!.contains(indexPath)) {
+                    let i = selectedIndexPath["\(indexPath.section)"]?.indexOf(indexPath)
+                    selectedIndexPath["\(indexPath.section)"]?.removeAtIndex(i!)
+                    
+                    self.textBoxGroupVaues.removeValueForKey(indexPath)
+                }
+            }
+                
+          
         }
     }
     
     func plusBtnClicked(sender:AnyObject)
     {
-        let btn = sender as! UIButton
-        numberOfItems += 1
-        
-        self.selectedIndexPath["\(btn.tag)"] = [NSIndexPath(forRow:0, inSection:btn.tag)]
+        let btn = sender as! b4u_Button
+       // numberOfItems += 1
         
         
-//        if  selectedIndexPath["\(btn.tag)"]?.count > 0
-//        {
-//       
-//        }
-//            
-//        else
-//        {
-//            cell.iconImgView.image = UIImage(named: "squareBlue")
-//            
-//            selectedIndexPath["\(indexPath.section)"] = [indexPath]
-//        }
+        let indexPath = btn.indexPath!
 
         
+        let cell = self.expandableTblView.cellForRowAtIndexPath(indexPath) as! b4u_ExpandableTblViewCell
+
+        
+        cell.lblCount.text = "\(Int(cell.lblCount.text!)! + 1)"
+
+        
+            if   self.selectedIndexPath["\(btn.tag)"]?.count > 0
+            {
+                //This is on click of same Cell
+                if (selectedIndexPath["\(indexPath.section)"]!.contains(indexPath)) {
+               
+                    self.textBoxGroupVaues[indexPath] = cell.lblCount.text
+
+                }else
+                {
+                    selectedIndexPath["\(indexPath.section)"]?.append(indexPath)
+                    self.textBoxGroupVaues[indexPath] = cell.lblCount.text
+
+                }
+            }
+                
+            else
+            {
+                selectedIndexPath["\(indexPath.section)"] = [indexPath]
+                self.textBoxGroupVaues[indexPath] = cell.lblCount.text
+            }
         
         
-        self.expandableTblView.reloadData()
+
+        
+//        self.expandableTblView.reloadData()
     }
     
     func btnSelectTimeClicked(sender:AnyObject)
@@ -708,7 +801,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                     
                     let attributeOption:b4u_CatFilterAttributeOptions =  catFilterAttributes.catFilterAttributeOptions![indexPath.row]
                     
-                    params = params + "&\(catFilterAttributes.fieldName!)_\(numberOfItems)=\(attributeOption.optionId!)"
+                    params = params + "&option_\(attributeOption.optionId!)=\(numberOfItems)"
                     
                     
                 }
@@ -743,7 +836,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     {
         b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
 
-        if bro4u_DataManager.sharedInstance.suggestedPatnersResult?.suggestedPatners?.count >= 0
+        if bro4u_DataManager.sharedInstance.suggestedPatnersResult?.suggestedPatners?.count > 0
         {
             self.performSegueWithIdentifier("servicePatnerSegue", sender:nil)
             

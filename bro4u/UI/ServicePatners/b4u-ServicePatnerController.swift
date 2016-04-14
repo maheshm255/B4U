@@ -232,7 +232,14 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
 
         cell.btnViewProfile.layer.borderWidth = 1.0
         
-        if let chargesStr = aPatner.chargeTitle
+        cell.lblVendorFeedBack.text = "\(aPatner.averageRatingPercent!)% Positive"
+        
+        if let deliveryCharge = aPatner.deliveryCharge where Double(deliveryCharge) > 0
+        {
+            cell.lblCharges.text = "Delivery Charge + \(deliveryCharge)"
+            cell.topConstraintChargesLbl.constant = 10
+            
+        }else if let chargesStr = aPatner.chargeTitle where chargesStr != ""
         {
             cell.lblCharges.text = chargesStr
             cell.topConstraintChargesLbl.constant = 10

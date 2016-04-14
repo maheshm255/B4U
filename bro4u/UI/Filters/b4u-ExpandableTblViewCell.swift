@@ -12,7 +12,7 @@ class b4u_ExpandableTblViewCell: UITableViewCell {
     @IBOutlet weak var lblTitle: UILabel!
 
     @IBOutlet weak var lblCount: UILabel!
-    @IBOutlet weak var btnPlus: UIButton!
-    @IBOutlet weak var btnMinus: UIButton!
+    @IBOutlet weak var btnPlus: b4u_Button!
+    @IBOutlet weak var btnMinus: b4u_Button!
     @IBOutlet weak var iconImgView: UIImageView!
 }

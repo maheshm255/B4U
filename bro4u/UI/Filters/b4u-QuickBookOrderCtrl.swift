@@ -39,6 +39,22 @@ class b4u_QuickBookOrderCtrl: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        if  let loginInfo = bro4u_DataManager.sharedInstance.loginInfo
+        {
+            if let phoneNumber = loginInfo.mobile
+            {
+                self.tfMobileNumber.text = phoneNumber
+            }
+            
+            if let name = loginInfo.fullName
+            {
+                self.tfName.text = name
+            }
+        }
+    }
     @IBAction func cancelBtnClicked(sender: AnyObject) {
         
         self.dismissViewControllerAnimated(true, completion:nil)
@@ -49,18 +65,28 @@ class b4u_QuickBookOrderCtrl: UIViewController {
         
         //?name=Harshal&mobile=9740201846&address=kasturi+nagar+bangalore&latitude=33.4534&longitude=23.34434&service_date=21-1-2016&service_time=12PM-2PM&imei=398454&cat_id=12&user_id=3&selection=[{%22field_name%22:%22option_value%22,%22field_name%22:%22option_value%22}]
         
-        let name =   self.tfName.text!
-        let mobileNum =  self.tfMobileNumber.text!
-        let address = "aa"
-        let latt = "17.1"
-        let long = "88.0"
+    
+        guard  let name =   self.tfName.text where name != "" else
+        {
+            self.parentViewController?.view.makeToast(message:"Please Enter Name", duration:1.0, position: HRToastPositionDefault)
+           return
+        }
+        guard let mobileNum =  self.tfMobileNumber.text where mobileNum != "" else
+        {
+            self.parentViewController?.view.makeToast(message:"Please Enter Mobile Number", duration:1.0, position: HRToastPositionDefault)
+            return
+        }
+        let address = "aa" // TO DO
+        let latt = "17.1"  // TO DO
+        let long = "88.0" //  TO DO
         let serviceDate =  NSDate.dateFormat().stringFromDate(bro4u_DataManager.sharedInstance.selectedDate!)
         let serviceTime = bro4u_DataManager.sharedInstance.selectedTimeSlot!
         let imei = b4u_Utility.getUUIDFromVendorIdentifier()
-        let selection = ""
+        let selection = bro4u_DataManager.sharedInstance.userSelectedFilterParams
         
         
         let params = "?name=\(name)&mobile=\(mobileNum)&address=\(address)&latitude=\(latt)&longitude=\(long)&service_date=\(serviceDate)&service_time=\(serviceTime)&imei=\(imei)&selection=\(selection)"
+        
         b4u_WebApiCallManager.sharedInstance.getApiCall(kQuickOrderBook, params:params, result:{(resultObject) -> Void in
             
             self.dismissViewControllerAnimated(true, completion:nil)

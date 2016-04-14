@@ -105,6 +105,8 @@ class b4u_IntermediateViewCtrl: UIViewController {
             filterCtrl.selectedCategoryObj = self.selectedCategoryObj
             
             filterCtrl.selectedImgSlide = self.selectedImgSlide
+            
+            filterCtrl.selectedAttributeOption = self.selectedAttributeOption
         }
     }
     
