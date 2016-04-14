@@ -46,9 +46,9 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
       
       b4u_Utility.sharedInstance.activityIndicator.startAnimating()
       let createOrderObj = b4u_CreateOrder()
+      createOrderObj.paymentType  = kNetBankingPayment
       createOrderObj.delegate = self
       createOrderObj.createOrder()
-      createOrderObj.paymentType  = kNetBankingPayment
 
       topView.hidden = true
       downView.hidden = true

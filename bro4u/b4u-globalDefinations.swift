@@ -311,6 +311,11 @@ let kUpdateOnlineStatuspendingIndex = "index.php/order/update_payment_pending/14
 //index.php/order/update_cod_status/13455
 let kUpdateCODStatuspendingIndex = "index.php/order/update_cod_status/13455"
 
+
+//11.Update Paytm Payment status
+//index.php/order/update_paytm_payment_status?order_id=15000&payment_status=TXN_SUCCESS
+let kUpdatePaytmPaymentStatus = "index.php/order/update_paytm_payment_status"
+
 /****** Thanks Screen ******/
 
 ///index.php/order/view_order?order_id=8765&user_id=15
