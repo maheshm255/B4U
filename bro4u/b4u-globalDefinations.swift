@@ -38,6 +38,9 @@ let b4uBaseUrl:String = "http://v2.20160301.testing.bro4u.com/api_v2/"
 ///index.php/apitoken/add_device?device_id=34234234&gcm_id=23434fser34f&token_request=alsdkfjaklsdjf
 let kSplashIndex = "index.php/apitoken/add_device?"
 
+//?device_id=34234234&gcm_id=23434fser34f&token_request=alsdkfjaklsdjf&device_type=2
+
+let kRegisterPushToken = "/index.php/apitoken/add_device"
 /*************Left Menu**********************/
 
 //1.Fetch Referral Settings

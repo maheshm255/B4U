@@ -44,6 +44,8 @@ class bro4u_DataManager: NSObject {
     
     var selectedReorderModel:b4u_ReOrderModel?
     
+    var selectedFilterSelectionInJsonFormat:String?
+    
     
     var orderId:NSNumber?
     var txnID:String?

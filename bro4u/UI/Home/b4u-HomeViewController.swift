@@ -175,21 +175,21 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     
     internal  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-      self.performSegueWithIdentifier("categoryScreenSegue", sender: nil)
+   //   self.performSegueWithIdentifier("categoryScreenSegue", sender: nil)
 
       
-//        if let currentLocation = bro4u_DataManager.sharedInstance.currenLocation
-//        {
-//            
-//            print(currentLocation.coordinate.latitude)
-//            print(currentLocation.coordinate.longitude)
-//
-//            self.performSegueWithIdentifier("categoryScreenSegue", sender: nil)
-//
-//        }else
-//        {
-//            self.showAlertToGetEnbleCurrentLocaion()
-//        }
+        if let currentLocation = bro4u_DataManager.sharedInstance.currenLocation
+        {
+            
+            print(currentLocation.coordinate.latitude)
+            print(currentLocation.coordinate.longitude)
+
+            self.performSegueWithIdentifier("categoryScreenSegue", sender: nil)
+
+        }else
+        {
+            self.showAlertToGetEnbleCurrentLocaion()
+        }
     }
 
 
@@ -413,6 +413,7 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
             }
         })
         
+        self.userCurrentLocaion()
         self.locationManager?.stopUpdatingLocation()
     }
     

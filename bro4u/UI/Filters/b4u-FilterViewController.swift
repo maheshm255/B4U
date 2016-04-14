@@ -779,7 +779,9 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                     
                     params = params + "&\(catFilterAttributes.fieldName!)[]=\(attributeOption.optionId!)"
                     
-                    print(attributeOption)
+                    let key = "\(catFilterAttributes.fieldName!)_\(attributeOption.optionId!)"
+                    self.selectionDict[key] = "\(attributeOption.optionId!)"
+                    
                 }
             }
             
@@ -791,7 +793,8 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                     
                     params = params + "&\(catFilterAttributes.fieldName!)=\(attributeOption.optionId!)"
                     
-                    
+                    let key = "\(catFilterAttributes.fieldName!)_\(attributeOption.optionId!)"
+                    self.selectionDict[key] = "\(attributeOption.optionId!)"
                 }
             }
             if catFilterAttributes.inputType == inputType.textBoxGroup.rawValue
@@ -801,8 +804,12 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                     
                     let attributeOption:b4u_CatFilterAttributeOptions =  catFilterAttributes.catFilterAttributeOptions![indexPath.row]
                     
-                    params = params + "&option_\(attributeOption.optionId!)=\(numberOfItems)"
+                    let value = self.textBoxGroupVaues[indexPath]
                     
+                    params = params + "&option_\(attributeOption.optionId!)=\(value!)"
+                    
+                    let key = "\(catFilterAttributes.fieldName!)_\(attributeOption.optionId!)"
+                    self.selectionDict[key] = "\(value!))"
                     
                 }
             }
@@ -810,6 +817,21 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         }
       
       
+        
+        do {
+            let jsonData = try NSJSONSerialization.dataWithJSONObject(self.selectionDict, options: NSJSONWritingOptions.PrettyPrinted)
+            // here "jsonData" is the dictionary encoded in JSON data
+            
+            let datastring = NSString(data:jsonData, encoding:NSUTF8StringEncoding) as String?
+            
+            bro4u_DataManager.sharedInstance.selectedFilterSelectionInJsonFormat = datastring
+            
+            
+        } catch let error as NSError {
+            print(error)
+        }
+        
+        
       bro4u_DataManager.sharedInstance.userSelectedFilterParams = params
       
       let dateStr = NSDate.dateFormat().stringFromDate(selectedDate)

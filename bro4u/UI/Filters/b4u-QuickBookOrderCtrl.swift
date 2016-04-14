@@ -68,13 +68,21 @@ class b4u_QuickBookOrderCtrl: UIViewController {
     
         guard  let name =   self.tfName.text where name != "" else
         {
-            self.parentViewController?.view.makeToast(message:"Please Enter Name", duration:1.0, position: HRToastPositionDefault)
+            self.view.makeToast(message:"Please Enter Name", duration:1.0, position: HRToastPositionDefault)
            return
         }
         guard let mobileNum =  self.tfMobileNumber.text where mobileNum != "" else
         {
-            self.parentViewController?.view.makeToast(message:"Please Enter Mobile Number", duration:1.0, position: HRToastPositionDefault)
+            self.view.makeToast(message:"Please Enter Mobile Number", duration:1.0, position: HRToastPositionDefault)
             return
+        }
+        
+        
+        var userId = ""
+        
+        if let userInfor = bro4u_DataManager.sharedInstance.loginInfo
+        {
+            userId = userInfor.userId!
         }
         let address = "aa" // TO DO
         let latt = "17.1"  // TO DO
@@ -82,10 +90,10 @@ class b4u_QuickBookOrderCtrl: UIViewController {
         let serviceDate =  NSDate.dateFormat().stringFromDate(bro4u_DataManager.sharedInstance.selectedDate!)
         let serviceTime = bro4u_DataManager.sharedInstance.selectedTimeSlot!
         let imei = b4u_Utility.getUUIDFromVendorIdentifier()
-        let selection = bro4u_DataManager.sharedInstance.userSelectedFilterParams
+        let selection = bro4u_DataManager.sharedInstance.selectedFilterSelectionInJsonFormat
         
         
-        let params = "?name=\(name)&mobile=\(mobileNum)&address=\(address)&latitude=\(latt)&longitude=\(long)&service_date=\(serviceDate)&service_time=\(serviceTime)&imei=\(imei)&selection=\(selection)"
+        let params = "?name=\(name)&mobile=\(mobileNum)&address=\(address)&latitude=\(latt)&longitude=\(long)&service_date=\(serviceDate)&service_time=\(serviceTime)&imei=\(imei)&user_id=\(userId)&selection=\(selection!)"
         
         b4u_WebApiCallManager.sharedInstance.getApiCall(kQuickOrderBook, params:params, result:{(resultObject) -> Void in
             
