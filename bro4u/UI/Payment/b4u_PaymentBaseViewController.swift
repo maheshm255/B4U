@@ -585,20 +585,20 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
   }
   
   func didSucceedTransaction(controller: PGTransactionViewController!, response: [NSObject : AnyObject]!) {
-    let title = "Your order  was completed successfully. \n \(response["ORDERID"])"
+//    let title = "Your order  was completed successfully. \n \(response["ORDERID"])"
+//    
+//    let alert = UIAlertController(title: title, message: response.description, preferredStyle: UIAlertControllerStyle.Alert)
+//    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+//    self.presentViewController(alert, animated: true, completion: nil)
+//    
+//    let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in
+//      //self.removeController(controller)
     
-    let alert = UIAlertController(title: title, message: response.description, preferredStyle: UIAlertControllerStyle.Alert)
-    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-    self.presentViewController(alert, animated: true, completion: nil)
-    
-    let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in
-      //self.removeController(controller)
-      
       let orderConfirmedViewController = self.storyboard?.instantiateViewControllerWithIdentifier("OrderConfirmedViewControllerID") as? OrderConfirmedViewController
       self.navigationController?.pushViewController(orderConfirmedViewController!, animated: true)
-      
-    }
-    alert.addAction(OKAction)
+//      
+//    }
+//    alert.addAction(OKAction)
     
     
   }
@@ -611,6 +611,12 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
       alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
       self.presentViewController(alert, animated: true, completion: nil)
       
+      
+      let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in
+        self.removeController(controller)
+      }
+      alert.addAction(OKAction)
+
     }
     else if error != nil
     {
@@ -618,26 +624,34 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
       alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
       self.presentViewController(alert, animated: true, completion: nil)
       
+      let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in
+        self.removeController(controller)
+      }
+      alert.addAction(OKAction)
+
     }
-    removeController(controller)
+//    removeController(controller)
   }
   
   func didCancelTransaction(controller: PGTransactionViewController!, error: NSError!, response: [NSObject : AnyObject]!) {
     
-    let msg : String?
-    if  error == nil {
-      msg = "Successful"
-    }else {
-      msg = "UnSuccessful"
-    }
-    let alert = UIAlertController(title: "Transaction Cancel", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
-    self.presentViewController(alert, animated: true, completion: nil)
     
-    let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in
-      self.removeController(controller)
-      
-    }
-    alert.addAction(OKAction)
+    self.removeController(controller)
+
+//    let msg : String?
+//    if  error == nil {
+//      msg = "Successful"
+//    }else {
+//      msg = "UnSuccessful"
+//    }
+//    let alert = UIAlertController(title: "Transaction Cancel", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+//    self.presentViewController(alert, animated: true, completion: nil)
+//    
+//    let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in
+//      self.removeController(controller)
+//      
+//    }
+//    alert.addAction(OKAction)
     
     //removeController(controller)
   }
