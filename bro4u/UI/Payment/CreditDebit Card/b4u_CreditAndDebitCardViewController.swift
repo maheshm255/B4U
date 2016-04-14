@@ -43,9 +43,9 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
         
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         let createOrderObj = b4u_CreateOrder()
+        createOrderObj.paymentType  = kCardPayment
         createOrderObj.delegate = self
         createOrderObj.createOrder()
-        createOrderObj.paymentType  = kCardPayment
       
         topView.hidden = true
         downView.hidden = true
