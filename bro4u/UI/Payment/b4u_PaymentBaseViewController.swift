@@ -341,11 +341,19 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
   func createOrderForPayTm()
   {
     
+    if (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) {
+      bro4u_DataManager.sharedInstance.orderId = b4u_Utility.sharedInstance.getUserDefault("order_id") as? NSNumber
+      self.hasOrderCreated("Success")
+    }
+    else
+    {
+
     b4u_Utility.sharedInstance.activityIndicator.startAnimating()
     let createOrderObj = b4u_CreateOrder()
     createOrderObj.paymentType  = kPaytmPayment
     createOrderObj.delegate = self
     createOrderObj.createOrder()
+    }
 
   }
   
@@ -537,7 +545,12 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     if resultObject == "Success"
     {
       b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-        
+      
+      //Setting Order ID in User Default
+     let orderID = "\(bro4u_DataManager.sharedInstance.orderId!)"
+
+      b4u_Utility.sharedInstance.setUserDefault(orderID, KeyToSave:"Order_id")
+
       let callBackhandler = {(order:PGOrder?, merchantConfiguration :PGMerchantConfiguration?) in
         
         if order != nil{
@@ -551,7 +564,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
       payUMoneyUtil.paytmCallBackHandler = callBackhandler
       payUMoneyUtil.orderID = "\(bro4u_DataManager.sharedInstance.orderId!)"
       payUMoneyUtil.userID = "\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)"
-      payUMoneyUtil.createOrder()
+      payUMoneyUtil.createPaytmConfiguration()
     }
   }
   
@@ -677,6 +690,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
       if resultObject as! String == "Success" && status == "TXN_SUCCESS"
       {
         let orderConfirmedViewController = self.storyboard?.instantiateViewControllerWithIdentifier("OrderConfirmedViewControllerID") as? OrderConfirmedViewController
+
         self.navigationController?.pushViewController(orderConfirmedViewController!, animated: true)
       }else
       {

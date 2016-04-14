@@ -170,7 +170,7 @@
  */
 
 
--(void)createOrder{
+-(void)createPaytmConfiguration{
   
   //Step 1: Create a default merchant config object
   PGMerchantConfiguration *mc = [PGMerchantConfiguration defaultConfiguration];

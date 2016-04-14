@@ -186,9 +186,7 @@ class b4u_MyAccountViewController: UIViewController {
             // Set the CellID
             switch(indexPath.section){
             case 0:
-//                destination = storyboard.instantiateViewControllerWithIdentifier("MyOrderViewControllerID") as! MyOrderViewController
-
-                destination = storyboard.instantiateViewControllerWithIdentifier("OrderConfirmedViewControllerID") as! OrderConfirmedViewController
+                destination = storyboard.instantiateViewControllerWithIdentifier("MyOrderViewControllerID") as! MyOrderViewController
 
             case 1:
 

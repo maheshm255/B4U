@@ -44,14 +44,22 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
       
       self.addLoadingIndicator()
       
-      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-      let createOrderObj = b4u_CreateOrder()
-      createOrderObj.paymentType  = kNetBankingPayment
-      createOrderObj.delegate = self
-      createOrderObj.createOrder()
+      if (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) {
+        bro4u_DataManager.sharedInstance.orderId = b4u_Utility.sharedInstance.getUserDefault("order_id") as? NSNumber
+        self.hasOrderCreated("Success")
+      }
+      else
+      {
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+        let createOrderObj = b4u_CreateOrder()
+        createOrderObj.paymentType  = kNetBankingPayment
+        createOrderObj.delegate = self
+        createOrderObj.createOrder()
+        
+        topView.hidden = true
+        downView.hidden = true
+      }
 
-      topView.hidden = true
-      downView.hidden = true
 
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"handlePaymentResponse:", name: "paymentResponse", object: nil)
@@ -235,6 +243,11 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
       {
         b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
         
+        let orderID = "\(bro4u_DataManager.sharedInstance.orderId)"
+
+        //Setting Order ID in User Default
+        b4u_Utility.sharedInstance.setUserDefault(orderID, KeyToSave:"Order_id")
+
         self.configureUI()
       }
       //      self.getDataOfThanksScreen(resultObject)
