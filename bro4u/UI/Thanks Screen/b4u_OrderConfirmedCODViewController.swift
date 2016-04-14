@@ -46,9 +46,9 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
       
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         let createOrderObj = b4u_CreateOrder()
+        createOrderObj.paymentType  = kCODPayment
         createOrderObj.delegate = self
         createOrderObj.createOrder()
-        createOrderObj.paymentType  = kCODPayment
 
       
         topView.hidden = true
