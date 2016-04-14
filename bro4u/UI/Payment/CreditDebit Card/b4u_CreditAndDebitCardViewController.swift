@@ -40,15 +40,23 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
 
       
         self.addLoadingIndicator()
-        
+      
+      if (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) {
+        bro4u_DataManager.sharedInstance.orderId = b4u_Utility.sharedInstance.getUserDefault("order_id") as? NSNumber
+        self.hasOrderCreated("Success")
+      }
+      else
+      {
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         let createOrderObj = b4u_CreateOrder()
         createOrderObj.paymentType  = kCardPayment
         createOrderObj.delegate = self
         createOrderObj.createOrder()
-      
+        
         topView.hidden = true
         downView.hidden = true
+      }
+
 //        self.hideKeyboardWhenTappedAround()
 
     }
@@ -101,7 +109,7 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
       
       self.amountLbl.text = "Rs. \(bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)"
       self.order_id = "\(bro4u_DataManager.sharedInstance.orderId!)"
-
+      
     }
 
     override func didReceiveMemoryWarning() {
@@ -271,6 +279,9 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
       if resultObject == "Success"
       {
         b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+        
+        //Setting Order ID in User Default
+        b4u_Utility.sharedInstance.setUserDefault(self.order_id, KeyToSave:"Order_id")
 
         self.configureUI()
       }

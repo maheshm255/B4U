@@ -85,7 +85,9 @@ class bro4u_DataManager: NSObject {
         
         return Singleton.instance
     }
-    
+ 
+  
+
 //    
 //    func readLocalFile(fileName:String)
 //    {

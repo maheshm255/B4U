@@ -44,19 +44,23 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
         
         self.addLoadingIndicator()
       
-        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-        let createOrderObj = b4u_CreateOrder()
-        createOrderObj.paymentType  = kCODPayment
-        createOrderObj.delegate = self
-        createOrderObj.createOrder()
+        if (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) {
+          bro4u_DataManager.sharedInstance.orderId = b4u_Utility.sharedInstance.getUserDefault("order_id") as? NSNumber
+          self.getDataOfThanksScreen("Success")
+        }
+        else
+        {
+          b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+          let createOrderObj = b4u_CreateOrder()
+          createOrderObj.paymentType  = kCODPayment
+          createOrderObj.delegate = self
+          createOrderObj.createOrder()
+          topView.hidden = true
+          middleView.hidden = true
+          downView.hidden = true
+          btnContinue.hidden = true
+        }
 
-      
-        topView.hidden = true
-        middleView.hidden = true
-        downView.hidden = true
-        btnContinue.hidden = true
-
-      
         lblServiceStatus.layer.borderWidth = 1.0
         lblServiceStatus.layer.borderColor = UIColor.lightGrayColor().CGColor
 
@@ -85,7 +89,7 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
     {
         if result  == "Success"
         {
-            
+          
             var user_id = ""
             var order_id = ""
 
@@ -99,6 +103,9 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
                 order_id = "\(orderID)"
                 
             }
+          
+            //Setting Order ID in User Default
+            b4u_Utility.sharedInstance.setUserDefault(order_id, KeyToSave:"Order_id")
 
             let params = "?order_id=\(order_id)&user_id=\(user_id)"
             b4u_WebApiCallManager.sharedInstance.getApiCall(kOrderConfirmedIndex , params:params, result:{(resultObject) -> Void in
@@ -193,7 +200,10 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
                 self.lblOnlineAdvantage3.text = text3
             }
         }
-       
+      
+      //Remove Order ID from User Default
+      b4u_Utility.sharedInstance.setUserDefault(nil, KeyToSave:"Order_id")
+
 
     }
 
