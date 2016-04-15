@@ -59,7 +59,52 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         {
             self.lblAmount.text = "  Rs. \(selectedReOrderModel.subTotal!)  "
         }
-        
+      
+        if tfCouponCode.text?.length>0
+        {
+          if let orderDetailModel = bro4u_DataManager.sharedInstance.orderDetailData.first
+          {
+            if let selectionLocal: b4u_SelectionModel =  orderDetailModel.selection?.first{
+              
+              var couponAmount:NSNumber?
+              var walletAmount:NSNumber?
+              var finalAmoutToDeduct:Float?
+              
+              if let coupon = selectionLocal.deductedUsingCoupon
+              {
+                couponAmount = coupon
+              }
+              if let wallet = selectionLocal.deductedFromWallet
+              {
+                walletAmount = wallet
+              }
+              
+              if couponAmount?.floatValue > 0 || walletAmount?.floatValue > 0
+              {
+                finalAmoutToDeduct = (couponAmount?.floatValue)! + (walletAmount?.floatValue)!
+              }
+              
+              if finalAmoutToDeduct > 0
+              {
+                self.lblCouponApplied.hidden = false
+                self.lblCouponAmt.hidden = false
+                
+                self.lblCouponAmt.text = "Rs. \(finalAmoutToDeduct!)"
+                self.lblAmount.text = "Rs. \(selectionLocal.grandTotal!)"
+                
+              }
+              else
+              {
+                self.lblCouponApplied.hidden = true
+                self.lblCouponAmt.hidden = true
+                
+              }
+            }
+          }
+
+        }
+
+
         if let copiedCoupon =   bro4u_DataManager.sharedInstance.copiedCopunCode{
             UIPasteboard.generalPasteboard().string = copiedCoupon
          }
@@ -248,12 +293,17 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
 
     if resultObject == "Success" && codeValidateStatus == "true"
     {
+      
+      let paymentBaseCntl = b4u_PaymentBaseViewController()
+      paymentBaseCntl.getPaymentWays(bro4u_DataManager.sharedInstance.copiedCopunCode!)
       self.view.makeToast(message:codeValidateMessage!, duration:1.0, position:HRToastPositionDefault)
+      self.tfCouponCode.text = ""
+
     }
     else
     {
       self.view.makeToast(message:codeValidateMessage!, duration:1.0, position:HRToastPositionDefault)
-      
+      self.tfCouponCode.text = ""
     }
 
   }
