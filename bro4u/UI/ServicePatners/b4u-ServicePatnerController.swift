@@ -34,7 +34,6 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
 
         self.getAllServicePatners()
         self.checkLoadMoreCondition()
-      b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
 
     }
     
@@ -57,6 +56,7 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         {
             self.allPatners.removeAll()
             self.allPatners = patnersResult.suggestedPatners! + patnersResult.otherPatners!
+            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
 
         }
     }
@@ -66,8 +66,8 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         {
             if patnersResult.pageLoad == "yes"
             {
-                self.btnLoadMore.setTitle("See \(patnersResult.nextPageSize!) more patners"
-, forState:UIControlState.Normal)
+//                self.btnLoadMore.setTitle("See \(patnersResult.nextPageSize!) more patners"
+//, forState:UIControlState.Normal)
             }else
             {
                 self.viewLoadMore.hidden = true;
@@ -100,6 +100,8 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
     func callServicePatnerApi()
     {
 
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
         if let aSelectedCatObj = selectedCategoryObj , patnersResult = bro4u_DataManager.sharedInstance.suggestedPatnersResult
         {
       
@@ -107,6 +109,9 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         }else if let aSelectedImgObj = self.selectedImgSlide , patnersResult = bro4u_DataManager.sharedInstance.suggestedPatnersResult
         {
             self.serviceAPIRequest(aSelectedImgObj.catId!, nextPage:patnersResult.nextPage!)
+            
+            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
 
         }
     }
@@ -149,7 +154,7 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         let aPatner:b4u_SugestedPartner = self.allPatners[indexPath.section]
         
         
-        cell.imgViewProfilePic.downloadedFrom(link:aPatner.profilePic!, contentMode:UIViewContentMode.ScaleAspectFit)
+        cell.imgViewProfilePic.downloadedFrom(link:aPatner.profilePic!, contentMode:UIViewContentMode.ScaleToFill)
         
         cell.lblVendorName.text = aPatner.vendorName
       
@@ -341,7 +346,7 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
     
     internal func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
         {
-         return 182.0
+         return 220.0
     }
     
       func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat

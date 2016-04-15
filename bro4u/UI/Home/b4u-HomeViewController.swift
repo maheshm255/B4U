@@ -28,6 +28,8 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
 
         // Do any additional setup after loading the view.
         
+        self.tableViewCategory.separatorInset = UIEdgeInsetsZero
+        self.tableViewCategory.layoutMargins = UIEdgeInsetsZero
         
         self.viewLocation.layer.cornerRadius = 1.0
         self.tableViewCategory.layer.cornerRadius = 1.0

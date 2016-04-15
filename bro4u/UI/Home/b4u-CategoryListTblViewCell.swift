@@ -27,6 +27,9 @@ class b4u_CategoryListTblViewCell: UITableViewCell {
     
     func configureCellData(dataModel:bro4u_MainCategory)
     {
+        self.separatorInset = UIEdgeInsetsZero
+        self.layoutMargins = UIEdgeInsetsZero
+        
         lblCategoryName.text = dataModel.manCatName
         lblCategoryDesc.text = dataModel.mainCatDesc
         imgIcon.downloadedFrom(link:dataModel.catIcon!, contentMode:UIViewContentMode.ScaleToFill)

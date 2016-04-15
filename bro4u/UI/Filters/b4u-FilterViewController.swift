@@ -6,6 +6,8 @@
 //  Copyright © 2016 AppLearn. All rights reserved.
 //
 
+
+
 import UIKit
 
 enum inputType:String
@@ -554,12 +556,12 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             calendarController.selectedDate = NSDate().dateByAddingTimeInterval(60*60*24*1)
         }
         let popoverMenuViewController = calendarController.popoverPresentationController
-         popoverMenuViewController?.permittedArrowDirections = .Any
+        popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
         popoverMenuViewController?.delegate = self
-        popoverMenuViewController?.sourceView = sender as? UIView
+        popoverMenuViewController?.sourceView = self.view
         popoverMenuViewController?.sourceRect = CGRect(
-            x: CGRectGetMidX(btn.frame),
-            y: CGRectGetMidY(btn.frame),
+            x: CGRectGetMidX(self.view.frame),
+            y: CGRectGetMidY(self.view.frame),
             width: 1,
             height: 1)
         presentViewController(
@@ -586,7 +588,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         let quickBookViewCtrl:b4u_QuickBookOrderCtrl = storyboard.instantiateViewControllerWithIdentifier("quickBookViewCtrl") as! b4u_QuickBookOrderCtrl
         
         quickBookViewCtrl.modalPresentationStyle = .Popover
-        quickBookViewCtrl.preferredContentSize = CGSizeMake(300, 400)
+        quickBookViewCtrl.preferredContentSize = CGSizeMake(300, 360)
        // quickBookViewCtrl.delegate = self
         
         let popoverMenuViewController = quickBookViewCtrl.popoverPresentationController
@@ -712,7 +714,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             //  timeSlotController.delegate = self
             
             let popoverMenuViewController = timeSlotController.popoverPresentationController
-            popoverMenuViewController?.permittedArrowDirections = .Up
+            popoverMenuViewController?.permittedArrowDirections = .Down
             popoverMenuViewController?.delegate = self
             popoverMenuViewController?.sourceView = btn
             popoverMenuViewController?.sourceRect = CGRect(

@@ -174,14 +174,14 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
                 
             }
             
-            self.lblNumberOfProfiles.layer.cornerRadius = 5.0
-            //self.lblNumberOfProfiles.layer.borderWidth = 1.0
-            self.lblNumberOfProfiles.layer.borderColor = UIColor.blackColor().CGColor
+            self.lblNumberOfProfiles.layer.cornerRadius = 1.0
+            self.lblNumberOfProfiles.layer.borderWidth = 1.0
+            self.lblNumberOfProfiles.layer.borderColor = UIColor(red:142.0/255, green: 142.0/255, blue: 142.0/255, alpha:1.0).CGColor
             
             
-            self.lblNumberOfJobDone.layer.cornerRadius = 5.0
-           // self.lblNumberOfJobDone.layer.borderWidth = 1.0
-            self.lblNumberOfJobDone.layer.borderColor = UIColor.blackColor().CGColor
+            self.lblNumberOfJobDone.layer.cornerRadius = 1.0
+            self.lblNumberOfJobDone.layer.borderWidth = 1.0
+            self.lblNumberOfJobDone.layer.borderColor =  UIColor(red:142.0/255, green: 142.0/255, blue: 142.0/255, alpha:1.0).CGColor
             
             
             self.btnReview.setTitle("Reviews(\(profileModelObj.reviewCount!))", forState:UIControlState.Normal)

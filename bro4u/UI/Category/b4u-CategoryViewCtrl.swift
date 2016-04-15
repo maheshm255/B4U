@@ -366,6 +366,7 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
         
         
         UIView.animateWithDuration(0.2, animations: { () -> Void in
+            
             self.indicatorcolor.frame=CGRectMake(self.labels[self.currentPage].frame.origin.x, 55, self.labels[self.currentPage].intrinsicContentSize().width+32, 3)
             //  self.indicatorcolor.backgroundColor= UIColor.blueColor()
             
@@ -375,12 +376,11 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
             self.imgViewIconBottom.downloadedFrom(link:(self.selectedMainCategory?.interBanner)!, contentMode:UIViewContentMode.ScaleToFill)
             self.imgViewIconTop.downloadedFrom(link:(self.selectedMainCategory?.catIcon)!, contentMode:UIViewContentMode.ScaleAspectFit)
             
-            
-            
-        }) { (true) in
-            
-            self.updateLabelColor(self.currentPage)
+            }) {(value: Bool) -> Void in
+        
         }
+        
+   
         
     }
     
