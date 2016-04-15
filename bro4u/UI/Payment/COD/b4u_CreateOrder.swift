@@ -107,7 +107,7 @@ class b4u_CreateOrder: NSObject {
         
         if let deliverChages = selectionLocal.nightCharge
         {
-          night_delivery_charge = deliverChages
+          night_delivery_charge = "\(deliverChages)"
         }
         item_id = selectionLocal.itemId!
         vendor_id = selectionLocal.vendorId!

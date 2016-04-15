@@ -275,7 +275,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
   func proceedToPayment()
   {
     
-    self.getPaymentWays()
+    self.getPaymentWays("")
   
   }
   
@@ -443,7 +443,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
   
   //MARKS:- Get Payement Options
   
-  func getPaymentWays()
+  func getPaymentWays(couponCode : String)
   {
     
 
@@ -470,9 +470,18 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     }
     
     var coupon = ""
-    if let couponCode =    bro4u_DataManager.sharedInstance.copiedCopunCode
+//    if let couponCode =    bro4u_DataManager.sharedInstance.copiedCopunCode
+//    {
+//        coupon = couponCode
+//    }
+    
+    if couponCode.length > 0
     {
-        coupon = couponCode
+       coupon = couponCode
+    }
+    else
+    {
+      coupon = ""
     }
     
     guard let service_date =   bro4u_DataManager.sharedInstance.selectedDate else
