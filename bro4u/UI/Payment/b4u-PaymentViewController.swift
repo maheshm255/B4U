@@ -47,6 +47,9 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     @IBOutlet weak var lblCouponApplied: UILabel!
     @IBOutlet weak var lblCouponAmt: UILabel!
   
+    @IBOutlet weak var lblWalletDiscount: UILabel!
+    
+    
     override func viewDidLoad() {
         
         
