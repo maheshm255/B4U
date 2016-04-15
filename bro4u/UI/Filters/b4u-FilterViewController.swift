@@ -309,6 +309,19 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             self.dateBtn = cell.btnSelectDate
             self.timeBtn = cell.btnSelectTime
             
+            
+            cell.btnSelectDate.layer.cornerRadius = 2.0
+            cell.btnSelectDate.layer.borderColor = UIColor(red:193.0/255, green:195.0/255, blue: 193.0/255, alpha:1.0).CGColor
+            cell.btnSelectDate.layer.borderWidth = 1.0
+            
+            
+            
+            cell.btnSelectTime.layer.cornerRadius = 2.0
+            cell.btnSelectTime.layer.borderColor = UIColor(red:193.0/255, green:195.0/255, blue: 193.0/255, alpha:1.0).CGColor
+
+            cell.btnSelectTime.layer.borderWidth = 1.0
+            
+            
             return cell
 
         }
@@ -319,7 +332,14 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView = b4u_ExpandableTblHeaderView(tableView: self.expandableTblView, section: section)
-        headerView.backgroundColor = UIColor.whiteColor()
+        headerView.backgroundColor = UIColor(red:249.0/255, green:249.0/255, blue: 249.0/255, alpha:1.0)
+        
+        headerView.layer.cornerRadius = 1.0
+        
+        headerView.layer.borderWidth = 1.0
+        
+        headerView.layer.borderColor = UIColor(red:221.0/255, green:221.0/255, blue: 221.0/255, alpha:1.0).CGColor
+
 
 //        let label = UILabel(frame:CGRectMake(10, 0, CGRectGetWidth(headerView.frame)-30,CGRectGetHeight(headerView.frame)))
 //
@@ -458,7 +478,16 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     
     }
     
-    
+   
+     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        
+        if inputArray!.count  == indexPath.section
+        {
+            return 70
+        }
+        return 44.0
+    }
     func updateHeaderForSection(section:Int)
     {
         var indexPaths = self.selectedIndexPath["\(section)"]
@@ -755,13 +784,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         let longitude = "77.6411545"
         
         var params = "?cat_id=\(catId)"
-        
-      
-        
-        
-        print(selectedIndexPath)
-        
-        
+                
         let keys = selectedIndexPath.keys
         
         for (_ , key) in keys.enumerate()

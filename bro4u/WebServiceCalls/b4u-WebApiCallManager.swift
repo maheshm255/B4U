@@ -151,6 +151,9 @@ class b4u_WebApiCallManager: NSObject {
         case kViewProfileIndex:
             self.parseVendorProfileData(dataDict)
             
+        case kGetCities:
+            self.parseCities(dataDict)
+  
         default:
             print(itemName)
         }
@@ -480,5 +483,19 @@ class b4u_WebApiCallManager: NSObject {
         let vendorProfile = b4u_VendorProfileModel(vendorDataDict: dataDict)
         
         bro4u_DataManager.sharedInstance.vendorProfile = vendorProfile
+    }
+    
+    func parseCities(dataDict:Dictionary<String, AnyObject>)
+    {
+        let allCities:[Dictionary<String ,AnyObject>] = dataDict["cities"] as! [Dictionary<String ,AnyObject>]
+        
+        bro4u_DataManager.sharedInstance.cities.removeAll()
+        
+        for (_ ,dataDict) in allCities.enumerate()
+        {
+            let aCity = b4u_Cities(cityDataDict:dataDict)
+            bro4u_DataManager.sharedInstance.cities.append(aCity)
+        }
+        
     }
 }

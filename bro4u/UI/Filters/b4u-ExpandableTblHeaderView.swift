@@ -38,9 +38,8 @@ class b4u_ExpandableTblHeaderView: UIView {
         lblTitle!.frame = CGRectMake(10, 0, CGRectGetWidth(tableView.frame) - 60, height!)
         
         lblTitle!.textAlignment = NSTextAlignment.Left
-        lblTitle!.font = UIFont(name: "HelveticaNeue-neue", size: 14)
-        lblTitle!.textColor = UIColor.blackColor()
-        
+        lblTitle!.font = UIFont(name: "Helvetica", size: 18)
+        lblTitle!.textColor = UIColor(red:45.0/255, green: 45.0/255, blue: 45.0/255, alpha:1.0)
         lblTitle!.backgroundColor = UIColor.clearColor()
         
         self.addSubview(lblTitle!)
@@ -50,8 +49,11 @@ class b4u_ExpandableTblHeaderView: UIView {
         lblSelectedItems!.frame = CGRectMake(10, 30, CGRectGetWidth(tableView.frame) - 60, height!)
         
         lblSelectedItems!.textAlignment = NSTextAlignment.Left
-        lblSelectedItems!.font = UIFont(name: "HelveticaNeue-neue", size: 14)
-        lblSelectedItems!.textColor = UIColor.blackColor()
+        lblSelectedItems!.font = UIFont(name: "Helvetica", size: 14)
+        
+
+        lblSelectedItems!.textColor = UIColor(red:119.0/255, green: 119.0/255, blue: 119.0/255, alpha:1.0)
+
         
         lblSelectedItems!.text = "Selected Items"
         lblSelectedItems!.backgroundColor = UIColor.clearColor()
@@ -69,7 +71,7 @@ class b4u_ExpandableTblHeaderView: UIView {
         self.arrowImgView?.image = UIImage(named:"downArrow")
         self.addSubview(self.arrowImgView!)
         
-        self.seperatorImgView = UIImageView(frame:CGRectMake(CGRectGetWidth(tableView.frame) - 50, 4, 1, height!-8))
+        self.seperatorImgView = UIImageView(frame:CGRectMake(CGRectGetWidth(tableView.frame) - 50, 10, 1, height!-20))
         self.seperatorImgView!.backgroundColor = UIColor.lightGrayColor()
         self.addSubview(self.seperatorImgView!)
         

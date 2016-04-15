@@ -18,12 +18,12 @@ class b4u_AddressDetails: NSObject {
     var currentLocation:CLLocation?
     var curretPlace:String?
 
-    var addressId:NSNumber?
-    var cityId:NSNumber?
+    var addressId:String?
+    var cityId:String?
     var cityName:String?
     var lattitude:String?
     var longitude:String?
-    var userId:NSNumber?
+    var userId:String?
     var locality:String?
     
     override init() {
@@ -31,8 +31,8 @@ class b4u_AddressDetails: NSObject {
     }
     init(addressDataDict:Dictionary<String , AnyObject>) {
         
-        addressId = addressDataDict["address_id"] as? NSNumber
-        cityId = addressDataDict["city_id"] as? NSNumber
+        addressId = addressDataDict["address_id"] as? String
+        cityId = addressDataDict["city_id"] as? String
         cityName = addressDataDict["city_name"] as? String
         email = addressDataDict["email"] as? String
         lattitude = addressDataDict["latitude"] as? String
@@ -43,7 +43,7 @@ class b4u_AddressDetails: NSObject {
         name = addressDataDict["name"] as? String
         curretPlace = addressDataDict["street_name"] as? String
 
-        userId = addressDataDict["user_id"] as? NSNumber
+        userId = addressDataDict["user_id"] as? String
         
         fullAddress = "\(locality!) \(cityName!)"
 

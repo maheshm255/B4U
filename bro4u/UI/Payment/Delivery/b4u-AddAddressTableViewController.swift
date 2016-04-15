@@ -24,8 +24,8 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
     
     
     
-    var addressModel:b4u_AddressDetails?
     
+    var selectedCity:b4u_Cities?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +37,9 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
      
+        self.tfCurrentPlace.enabled = false
+        self.tfCurrentLocation.enabled = false
+        self.getCities()
         
 
     }
@@ -61,6 +64,44 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
         // Dispose of any resources that can be recreated.
     }
 
+    
+    func getCities()
+    {
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kGetCities, params:"", result:{(resultObject) -> Void in
+            
+            print("city received")
+            
+            
+            self.updateUI()
+        })
+    }
+    
+    
+    func updateUI()
+    {
+        if bro4u_DataManager.sharedInstance.cities.count > 0
+        {
+            self.selectedCity = bro4u_DataManager.sharedInstance.cities.first
+            
+            if let logoinInfo = bro4u_DataManager.sharedInstance.loginInfo
+            {
+                if let name = logoinInfo.fullName
+                {
+                    self.tfYourName.text = name
+                }
+                if let phone = logoinInfo.mobile
+                {
+                    self.tfMobileNumber.text = phone
+                }
+                if let email = logoinInfo.email
+                {
+                    self.tfEmail.text = email
+                }
+            }
+            
+            self.tfCurrentPlace.text = self.selectedCity!.cityName!
+        }
+    }
     // MARK: - Table view data source
 
 //    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -135,48 +176,47 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
     @IBAction func BtnSaveAddressPressed(sender: AnyObject)
     {
         
-        addressModel = b4u_AddressDetails()
-        
         var user_id = ""
         if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
             user_id = loginInfoData.userId! //Need to use later
         }
 
-//        let user_id = "1"
+
+        guard let name = tfYourName.text where name != "" else{
+            self.tableView.makeToast(message:"Please Enter Name", duration:1.0, position:HRToastPositionDefault)
+            return
+        }
+      
+        guard let email = tfEmail.text where email != "" else{
+            self.view.makeToast(message:"Please Enter Email Id", duration:1.0, position:HRToastPositionDefault)
+            return
+        }
+        
+        guard let mobile = tfMobileNumber.text where mobile != "" else{
+            self.view.makeToast(message:"Please Enter Mobile Number", duration:1.0, position:HRToastPositionDefault)
+            return
+        }
+        
         let streetName = tfFullAddress.text
         let locality = tfCurrentPlace.text
-        let cityId = "5"
-        let name = tfYourName.text
-        let mobile = tfMobileNumber.text
-        var email = ""
-        
-        if  tfEmail.text!.isEmail
-        {
-            email =  tfEmail.text!
-        }
+        let cityId =  self.selectedCity!.cityId!
         
         var latitude:String = "12.213"
         var longitude:String = "66.234"
-//        if let  currentLocaiton = bro4u_DataManager.sharedInstance.currenLocation
-//        {
-//             latitude = "\(currentLocaiton.coordinate.latitude)"
-//             longitude = "\(currentLocaiton.coordinate.longitude)"
-//            
-//            addressModel?.currentLocation  = currentLocaiton
-//
-//        }
-  
+        //        if let  currentLocaiton = bro4u_DataManager.sharedInstance.currenLocation
+        //        {
+        //             latitude = "\(currentLocaiton.coordinate.latitude)"
+        //             longitude = "\(currentLocaiton.coordinate.longitude)"
+        //
+        //            addressModel?.currentLocation  = currentLocaiton
+        //
+        //        }
         
         
-        addressModel?.name  = name!
-        addressModel?.email  = email
-        addressModel?.phoneNumber  = mobile!
-
-        addressModel?.fullAddress  = streetName!
-        addressModel?.curretPlace  = locality!
+   
         
         
-        let params = "?user_id=\(user_id)&street_name=\(streetName!)&locality=\(locality!)&city_id=\(cityId)&name=\(name!)&latitude=\(latitude)&longitude=\(longitude)&mobile=\(mobile!)&email=\(email)"
+        let params = "?user_id=\(user_id)&street_name=\(streetName!)&locality=\(locality!)&city_id=\(cityId)&name=\(name)&latitude=\(latitude)&longitude=\(longitude)&mobile=\(mobile)&email=\(email)"
         
         b4u_WebApiCallManager.sharedInstance.getApiCall(kSaveAddress, params:params, result:{(resultObject) -> Void in
             
@@ -192,7 +232,6 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
     {
         if result == "Success"
         {
-            bro4u_DataManager.sharedInstance.address.append(self.addressModel!)
             self.dismissViewControllerAnimated(true, completion:nil)
         
         }else
@@ -258,14 +297,11 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
         {
             if let loclity = currentLocality.locality , subLocality = currentLocality.subLocality
             {
-//                self.btnCurrentLocation.setTitle("\(subLocality),\(loclity)", forState:.Normal)
-                
+               self.tfCurrentLocation.text = "\(subLocality),\(loclity)"
             }
-            
         }else
         {
-//            self.btnCurrentLocation.setTitle("Current Location", forState:.Normal)
-            
+            self.tfCurrentLocation.text = "Current Location"
         }
     }
 

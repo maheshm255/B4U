@@ -10,6 +10,7 @@ import CoreLocation
 
 class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate ,locationDelegate ,CLLocationManagerDelegate {
 
+    @IBOutlet weak var viewLocation: UIView!
     var locationManager:CLLocationManager?
 
     @IBOutlet weak var btnCurrentLocation: UIButton!
@@ -26,6 +27,10 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        
+        self.viewLocation.layer.cornerRadius = 1.0
+        self.tableViewCategory.layer.cornerRadius = 1.0
         
         self.getLocatoin()
         
@@ -170,26 +175,26 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     }
      internal func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return 60.0
+        return 65.0
     }
     
     internal  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-   //   self.performSegueWithIdentifier("categoryScreenSegue", sender: nil)
+      self.performSegueWithIdentifier("categoryScreenSegue", sender: nil)
 
       
-        if let currentLocation = bro4u_DataManager.sharedInstance.currenLocation
-        {
-            
-            print(currentLocation.coordinate.latitude)
-            print(currentLocation.coordinate.longitude)
-
-            self.performSegueWithIdentifier("categoryScreenSegue", sender: nil)
-
-        }else
-        {
-            self.showAlertToGetEnbleCurrentLocaion()
-        }
+//        if let currentLocation = bro4u_DataManager.sharedInstance.currenLocation
+//        {
+//            
+//            print(currentLocation.coordinate.latitude)
+//            print(currentLocation.coordinate.longitude)
+//
+//            self.performSegueWithIdentifier("categoryScreenSegue", sender: nil)
+//
+//        }else
+//        {
+//            self.showAlertToGetEnbleCurrentLocaion()
+//        }
     }
 
 
@@ -230,6 +235,9 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
               sliderImg.tag = index
             
             sliderImg.downloadedFrom(link:sliderImageInfoObj.imageName!, contentMode:UIViewContentMode.ScaleAspectFill)
+            
+            sliderImg.layer.cornerRadius = 1.0
+            
             self.scrollView.addSubview(sliderImg)
 
             let slideImgTapGesture:UITapGestureRecognizer = UITapGestureRecognizer(target:self, action:"imageSlideClicked:")

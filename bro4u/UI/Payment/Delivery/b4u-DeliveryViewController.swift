@@ -37,6 +37,7 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
         super.viewDidLoad()
 
         
+        
        if let selectedPartner = bro4u_DataManager.sharedInstance.selectedSuggestedPatner
        {
           self.lblAmount.text = "  Rs. \( selectedPartner.custPrice!)  "
@@ -56,6 +57,7 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
        self.addLoadingIndicator()
 
         self.getData()
+
     }
 
     
@@ -79,7 +81,9 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
     
     override func  viewWillAppear(animated: Bool) {
      super.viewWillAppear(animated)
-        self.tableView.reloadData()
+        
+        self.getData()
+
 
     }
 
@@ -87,6 +91,9 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
     
     func getData()
     {
+        
+        bro4u_DataManager.sharedInstance.address.removeAll()
+
       b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
         var user_id = ""
@@ -179,7 +186,7 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
             {
                 cell.imgViewSelect?.image = UIImage(named:"shareGreen")
 
-                 if bro4u_DataManager.sharedInstance.address.count == 2
+                 if bro4u_DataManager.sharedInstance.address.count >= 2
                  {
                     
                     let addressDetailsModel:b4u_AddressDetails = bro4u_DataManager.sharedInstance.address[1]
@@ -294,7 +301,6 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
     
     func address1Selected()
     {
-        //let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow:0, inSection:1))
         
         self.currentSelectedAddress = bro4u_DataManager.sharedInstance.address[0]
         
@@ -312,14 +318,38 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
     
     func deleteAddress2()
     {
+        self.deleteAddressApiCall(bro4u_DataManager.sharedInstance.address[1])
+
+        
         bro4u_DataManager.sharedInstance.address.removeAtIndex(1)
+        
         self.tableView.reloadData()
     }
     func deleteAddress1()
     {
+        self.deleteAddressApiCall(bro4u_DataManager.sharedInstance.address[0])
+
         bro4u_DataManager.sharedInstance.address.removeAtIndex(0)
         self.tableView.reloadData()
 
+    }
+    
+    func deleteAddressApiCall(address:b4u_AddressDetails)
+    {
+        
+        var user_id = ""
+        if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+            user_id = loginInfoData.userId! //Need to use later
+        }
+        
+        //        let user_id = "1"
+        let params = "?user_id=\(user_id)&address_id=\(address.addressId!)"
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kDeleteAddress, params:params, result:{(resultObject) -> Void in
+            
+            print("address deleted")
+            
+
+        })
     }
     func selectDate(sender: AnyObject)
     {

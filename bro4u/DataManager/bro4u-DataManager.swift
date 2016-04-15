@@ -24,6 +24,9 @@ class bro4u_DataManager: NSObject {
 
     var suggestedPatnersResult:b4u_SuggestedPatnersResult?
 
+    
+    var cities:[b4u_Cities] = Array()
+    
     // User Selected
     var selectedDate:NSDate?
     var selectedTimeSlot:String?

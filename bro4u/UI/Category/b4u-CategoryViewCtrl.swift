@@ -282,8 +282,8 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
         catHorizontalScrollView.translatesAutoresizingMaskIntoConstraints = false
         
         if(titles.count != 0){
-            indicatorcolor.frame=CGRectMake(labels[0].frame.origin.x, 61, labels[0].intrinsicContentSize().width+32, 3)
-            indicatorcolor.backgroundColor = UIColor.blueColor()
+            indicatorcolor.frame=CGRectMake(labels[0].frame.origin.x, 55, labels[0].intrinsicContentSize().width+32, 3)
+            indicatorcolor.backgroundColor = UIColor(red:0.0/255, green:162.0/255, blue:221.0/255, alpha:1.0)
             catHorizontalScrollView.addSubview(indicatorcolor)
         }
         
@@ -304,8 +304,8 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
         self.selectedMainCategory =  bro4u_DataManager.sharedInstance.mainCategories[self.currentPage]
         
         UIView.animateWithDuration(0.2, animations: { () -> Void in
-            self.indicatorcolor.frame=CGRectMake(self.labels[sender.view!.tag-1].frame.origin.x, 61, self.labels[sender.view!.tag-1].intrinsicContentSize().width+32, 3)
-            self.indicatorcolor.backgroundColor=self.currentColor
+            self.indicatorcolor.frame=CGRectMake(self.labels[sender.view!.tag-1].frame.origin.x, 55, self.labels[sender.view!.tag-1].intrinsicContentSize().width+32, 3)
+          //  self.indicatorcolor.backgroundColor
             //                self.categoryScrollView.scrollRectToVisible(self.labels[sender.view!.tag-1].frame, animated: true)
             
             //Center Content
@@ -327,7 +327,10 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
             
             self.imgViewIconBottom.downloadedFrom(link:(self.selectedMainCategory?.interBanner)!, contentMode:UIViewContentMode.ScaleToFill)
             self.imgViewIconTop.downloadedFrom(link:(self.selectedMainCategory?.catIcon)!, contentMode:UIViewContentMode.ScaleAspectFit)
+          
             
+            self.updateLabelColor(self.currentPage)
+
         })
         
     }
@@ -347,9 +350,24 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
         self.currentColor = self.colors[self.currentPage]
         
         self.selectedMainCategory =  bro4u_DataManager.sharedInstance.mainCategories[self.currentPage]
+//        UIView.animateWithDuration(0.2, animations: { () -> Void in
+//            self.indicatorcolor.frame=CGRectMake(self.labels[self.currentPage].frame.origin.x, 55, self.labels[self.currentPage].intrinsicContentSize().width+32, 3)
+//          //  self.indicatorcolor.backgroundColor= UIColor.blueColor()
+//            
+//            //Center Content
+//            self.catHorizontalScrollView.setContentOffset(CGPointMake(-(self.view.center.x-100)+self.labels[self.currentPage].center.x-self.labels[self.currentPage].frame.size.width/2, 0), animated: true)
+//            
+//            self.imgViewIconBottom.downloadedFrom(link:(self.selectedMainCategory?.interBanner)!, contentMode:UIViewContentMode.ScaleToFill)
+//            self.imgViewIconTop.downloadedFrom(link:(self.selectedMainCategory?.catIcon)!, contentMode:UIViewContentMode.ScaleAspectFit)
+//            
+//            
+//
+//        })
+        
+        
         UIView.animateWithDuration(0.2, animations: { () -> Void in
-            self.indicatorcolor.frame=CGRectMake(self.labels[self.currentPage].frame.origin.x, 61, self.labels[self.currentPage].intrinsicContentSize().width+32, 3)
-            self.indicatorcolor.backgroundColor=self.currentColor
+            self.indicatorcolor.frame=CGRectMake(self.labels[self.currentPage].frame.origin.x, 55, self.labels[self.currentPage].intrinsicContentSize().width+32, 3)
+            //  self.indicatorcolor.backgroundColor= UIColor.blueColor()
             
             //Center Content
             self.catHorizontalScrollView.setContentOffset(CGPointMake(-(self.view.center.x-100)+self.labels[self.currentPage].center.x-self.labels[self.currentPage].frame.size.width/2, 0), animated: true)
@@ -357,10 +375,32 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
             self.imgViewIconBottom.downloadedFrom(link:(self.selectedMainCategory?.interBanner)!, contentMode:UIViewContentMode.ScaleToFill)
             self.imgViewIconTop.downloadedFrom(link:(self.selectedMainCategory?.catIcon)!, contentMode:UIViewContentMode.ScaleAspectFit)
             
-        })
+            
+            
+        }) { (true) in
+            
+            self.updateLabelColor(self.currentPage)
+        }
         
     }
     
+    
+    func updateLabelColor(currentPage:Int)
+    {
+        for (index ,  lable) in self.labels.enumerate()
+        {
+            if currentPage == index
+            {
+                lable.textColor = UIColor.whiteColor()
+ 
+            }else
+            {
+                lable.textColor = UIColor(red:242.0/255, green:232.0/255, blue:170.0/255, alpha:1.0)
+            }
+            
+            //242 ,232,170
+        }
+    }
     private func filterContent(mainCategroyModelObj:bro4u_MainCategory) -> [b4u_Category]?
     {
         let filteredItems:[b4u_Category]?

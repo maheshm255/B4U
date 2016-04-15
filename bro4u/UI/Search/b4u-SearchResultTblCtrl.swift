@@ -54,6 +54,7 @@ class b4u_SearchResultTblCtrl: UITableViewController ,UISearchResultsUpdating,UI
             controller.hidesNavigationBarDuringPresentation = false
             controller.searchBar.delegate = self
             controller.searchBar.becomeFirstResponder()
+            controller.searchBar.placeholder = "Search for Services"
             return controller
         })()
         
