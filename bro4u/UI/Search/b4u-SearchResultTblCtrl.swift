@@ -21,6 +21,9 @@ class b4u_SearchResultTblCtrl: UITableViewController ,UISearchResultsUpdating,UI
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        self.tableView.separatorInset = UIEdgeInsetsZero
+        self.tableView.layoutMargins = UIEdgeInsetsZero
+        
         bro4u_DataManager.sharedInstance.searchResult.removeAll()
         
         self.createSearchController()
@@ -111,7 +114,19 @@ class b4u_SearchResultTblCtrl: UITableViewController ,UISearchResultsUpdating,UI
         self.performSegueWithIdentifier("interMediateSegue1", sender:nil)
 
     }
-    /*
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        return 60.0
+    }
+    
+    override  func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
+    {
+        return 0.01;
+
+    }
+    
+       /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.

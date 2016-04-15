@@ -26,6 +26,10 @@ class b4u_SearchResultTblCell: UITableViewCell {
     
     func configureData(aSearchResultObj:b4u_SearchResult)
     {
+        self.separatorInset = UIEdgeInsetsZero
+        self.layoutMargins = UIEdgeInsetsZero
+
+        
        self.lblTitle.text = aSearchResultObj.catName
        
         self.imgViewIcon.downloadedFrom(link:aSearchResultObj.catIcon!, contentMode:UIViewContentMode.ScaleAspectFit)

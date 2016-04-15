@@ -10,6 +10,8 @@ import UIKit
 
 class b4u_CategoryTblViewCell: UITableViewCell {
 
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var iconImgView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +21,9 @@ class b4u_CategoryTblViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        
+        self.separatorInset = UIEdgeInsetsZero
+        self.layoutMargins = UIEdgeInsetsZero
     }
 
 }

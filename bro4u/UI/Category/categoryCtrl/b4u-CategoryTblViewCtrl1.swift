@@ -27,6 +27,9 @@ class b4u_CategoryTblViewCtrl1: UIViewController,UITableViewDataSource,UITableVi
 
         // Do any additional setup after loading the view.
         
+        self.tableViewCategory.separatorInset = UIEdgeInsetsZero
+        self.tableViewCategory.layoutMargins = UIEdgeInsetsZero
+        
         self.tableViewCategory.customTblDelegate = self
     }
 
@@ -99,8 +102,8 @@ class b4u_CategoryTblViewCtrl1: UIViewController,UITableViewDataSource,UITableVi
 
         let attrubuteOption = categoryObj.attributeOptins![indexPath.row]
         
-        cell.imageView?.image = UIImage(named:"downArrow")
-        cell.textLabel?.text = attrubuteOption.optionName
+       // cell.iconImgView?.image = UIImage(named:"downArrow")
+        cell.lblTitle?.text = attrubuteOption.optionName
         
        return cell
     }
@@ -127,7 +130,7 @@ class b4u_CategoryTblViewCtrl1: UIViewController,UITableViewDataSource,UITableVi
         let label = UILabel(frame:CGRectMake(CGRectGetWidth(imgViewIcon.frame) + 30, 0, CGRectGetWidth(headerView.frame),CGRectGetHeight(headerView.frame)))
         
         label.textAlignment = NSTextAlignment.Left
-        label.font = UIFont(name: "HelveticaNeue-neue", size: 14)
+        label.font = UIFont(name: "Helvetica Neue", size: 14)
         label.textColor = UIColor.blackColor()
         
         headerView.addSubview(label)
@@ -160,6 +163,12 @@ class b4u_CategoryTblViewCtrl1: UIViewController,UITableViewDataSource,UITableVi
         
 //        self.performSegueWithIdentifier("interMediateSegue1", sender:indexPath)
 
+        
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
+    {
+        return 0.01;
         
     }
     

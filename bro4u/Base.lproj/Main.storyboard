@@ -569,7 +569,7 @@
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Der-vL-Hlk">
                                             <rect key="frame" x="60" y="20" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -595,6 +595,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Search" id="en6-2e-axn">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bno-A9-wNq">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelBtnClicked:" destination="xSX-dC-1Vc" id="fvO-47-XAZ"/>
                             </connections>
@@ -1278,7 +1279,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZe-Sf-DBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3006" y="1607"/>
+            <point key="canvasLocation" x="2921" y="1730"/>
         </scene>
         <!--Filters-->
         <scene sceneID="tBT-rO-dq2">
@@ -2028,7 +2029,7 @@
                         <viewControllerLayoutGuide type="bottom" id="9g0-rJ-jqR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ARg-bR-Oep">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P9f-JD-O9v">
@@ -2872,7 +2873,32 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O2R-B2-IfV" id="Hqr-Vf-Ojd">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="downArrow" translatesAutoresizingMaskIntoConstraints="NO" id="hDC-vl-2uL">
+                                                    <rect key="frame" x="25" y="18" width="14" height="7"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="14" id="39w-QG-cY0"/>
+                                                        <constraint firstAttribute="height" constant="7" id="a4k-7z-z6B"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thC-Rc-zyZ">
+                                                    <rect key="frame" x="67" y="15" width="30" height="14"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hDC-vl-2uL" firstAttribute="centerY" secondItem="Hqr-Vf-Ojd" secondAttribute="centerY" id="84Q-gJ-n3z"/>
+                                                <constraint firstItem="thC-Rc-zyZ" firstAttribute="centerY" secondItem="hDC-vl-2uL" secondAttribute="centerY" id="Cey-SX-m2F"/>
+                                                <constraint firstItem="hDC-vl-2uL" firstAttribute="leading" secondItem="Hqr-Vf-Ojd" secondAttribute="leadingMargin" constant="17" id="Pyj-hE-nf2"/>
+                                                <constraint firstItem="thC-Rc-zyZ" firstAttribute="leading" secondItem="hDC-vl-2uL" secondAttribute="trailing" constant="28" id="VmV-2T-Xad"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="iconImgView" destination="hDC-vl-2uL" id="4ME-5k-11Y"/>
+                                            <outlet property="lblTitle" destination="thC-Rc-zyZ" id="tY1-38-yuk"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -2895,7 +2921,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UXy-bI-Nen" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1961" y="1424"/>
+            <point key="canvasLocation" x="1892" y="1421"/>
         </scene>
         <!--4u Payment View Controller-->
         <scene sceneID="cqM-0R-bVE">
@@ -7549,7 +7575,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ji5-Ft-8Sk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="w4J-tu-AJI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VNA-HI-oXL">
@@ -7737,7 +7763,7 @@
                         <viewControllerLayoutGuide type="bottom" id="tzs-qa-oas"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jB5-iN-OR8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mme-5T-EOl">
@@ -9454,13 +9480,13 @@
         <image name="thankU" width="320" height="217"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FFS-5h-qNB"/>
+        <segue reference="9yL-r3-mwm"/>
+        <segue reference="ocf-hw-U5o"/>
         <segue reference="63f-2f-9Uz"/>
         <segue reference="EWe-mK-kQh"/>
-        <segue reference="ocf-hw-U5o"/>
-        <segue reference="W5U-K3-ziD"/>
-        <segue reference="nEL-nc-rUf"/>
+        <segue reference="UUI-bn-Yb7"/>
         <segue reference="RR4-6L-WK4"/>
         <segue reference="ZLQ-WV-Fop"/>
+        <segue reference="jRG-hp-ELd"/>
     </inferredMetricsTieBreakers>
 </document>

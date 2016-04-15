@@ -378,6 +378,8 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
             
             }) {(value: Bool) -> Void in
         
+                
+                self.updateLabelColor(self.currentPage)
         }
         
    
