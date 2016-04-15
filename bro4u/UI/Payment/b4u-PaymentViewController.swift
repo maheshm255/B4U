@@ -45,8 +45,8 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     @IBOutlet weak var lblAmount: UILabel!
     
     @IBOutlet weak var lblCouponApplied: UILabel!
-    
     @IBOutlet weak var lblCouponAmt: UILabel!
+  
     override func viewDidLoad() {
         
         
@@ -92,12 +92,14 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         self.btnApply.hidden = false
         self.tfCouponCode.hidden = false
     }
+  
     @IBAction func applyCouponBtnClicked(sender: AnyObject)
     {
-        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
         if tfCouponCode.text?.length>0
         {
+          b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
             var user_id = ""
             
             if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
@@ -106,16 +108,23 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
                 
             }
             
-            let params = "?coupon_code=\(tfCouponCode.text)&user_id=\(user_id)"
+            let params = "?coupon_code=\(tfCouponCode.text!)&user_id=\(user_id)"
             
             
                 b4u_WebApiCallManager.sharedInstance.getApiCall(kCouponCodeValidateIndex , params:params, result:{(resultObject) -> Void in
-                    print(" Coupon Code Appied successfully")
-                    
+                  b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
+                  self.applyReferralCode(resultObject as! String)
+
                     print(resultObject)
-                    b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
                 })
         }
+        else
+        {
+          self.view.makeToast(message:"Please enter coupon code first", duration:1.0, position:HRToastPositionDefault)
+          
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -230,6 +239,24 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         self.delegate?.infoBtnClicked()
         
     }
-    
-    
+  
+  
+  func applyReferralCode(resultObject:String)
+  {
+    let codeValidateStatus = bro4u_DataManager.sharedInstance.couponCodeStatus
+    let codeValidateMessage = bro4u_DataManager.sharedInstance.couponCodeMessage
+
+    if resultObject == "Success" && codeValidateStatus == "true"
+    {
+      self.view.makeToast(message:codeValidateMessage!, duration:1.0, position:HRToastPositionDefault)
+    }
+    else
+    {
+      self.view.makeToast(message:codeValidateMessage!, duration:1.0, position:HRToastPositionDefault)
+      
+    }
+
+  }
+  
+  
 }

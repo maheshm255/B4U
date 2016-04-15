@@ -155,7 +155,7 @@ class MyWalletViewController: UIViewController ,UITextFieldDelegate {
             
                if resultObject as! String == "Success"
                {
-                  self.view.makeToast(message:"Referel code applied successfully", duration:1.0, position:HRToastPositionDefault)
+                  self.view.makeToast(message:"Referrel code applied successfully", duration:1.0, position:HRToastPositionDefault)
                }else
                {
                 self.view.makeToast(message:"Please enter valid code", duration:1.0, position:HRToastPositionDefault)
