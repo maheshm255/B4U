@@ -144,7 +144,10 @@ class b4u_WebApiCallManager: NSObject {
 
         case kPlaceCashOnDeliveryIndex:
             self.parseCODPayment(dataDict)
-          
+        
+        case kCouponCodeValidateIndex:
+          self.parseCouponCodeValidate(dataDict)
+
         case kPlaceOnlineOrderIndex:
           self.parseOnlinePayment(dataDict)
 
@@ -468,6 +471,13 @@ class b4u_WebApiCallManager: NSObject {
         bro4u_DataManager.sharedInstance.orderId = dataDict["order_id"] as? NSNumber
     }
   
+    func parseCouponCodeValidate(dataDict:Dictionary<String, AnyObject>)
+    {
+      bro4u_DataManager.sharedInstance.couponCodeStatus = dataDict["success"] as? String
+      bro4u_DataManager.sharedInstance.couponCodeMessage = dataDict["message"] as? String
+
+    }
+
     func parseOnlinePayment(dataDict:Dictionary<String, AnyObject>)
     {
       bro4u_DataManager.sharedInstance.orderId = dataDict["order_id"] as? NSNumber

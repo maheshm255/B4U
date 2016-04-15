@@ -44,7 +44,9 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     @IBOutlet weak var btnInfo: UIButton!
     @IBOutlet weak var lblAmount: UILabel!
     
-    
+    @IBOutlet weak var lblCouponApplied: UILabel!
+    @IBOutlet weak var lblCouponAmt: UILabel!
+  
     override func viewDidLoad() {
         
         
@@ -57,6 +59,10 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         {
             self.lblAmount.text = "  Rs. \(selectedReOrderModel.subTotal!)  "
         }
+        
+        if let copiedCoupon =   bro4u_DataManager.sharedInstance.copiedCopunCode{
+            UIPasteboard.generalPasteboard().string = copiedCoupon
+         }
         
         let tapGesture = UITapGestureRecognizer(target:self, action:"applyCouponCodeViewTaped")
         tapGesture.numberOfTouchesRequired = 1
@@ -86,9 +92,41 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         self.btnApply.hidden = false
         self.tfCouponCode.hidden = false
     }
+  
     @IBAction func applyCouponBtnClicked(sender: AnyObject)
     {
+
+        if tfCouponCode.text?.length>0
+        {
+          b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
+            var user_id = ""
+            
+            if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+                
+                user_id = loginInfoData.userId! //Need to use later
+                
+            }
+            
+            let params = "?coupon_code=\(tfCouponCode.text!)&user_id=\(user_id)"
+            
+            
+                b4u_WebApiCallManager.sharedInstance.getApiCall(kCouponCodeValidateIndex , params:params, result:{(resultObject) -> Void in
+                  b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
+                  self.applyReferralCode(resultObject as! String)
+
+                    print(resultObject)
+                })
+        }
+        else
+        {
+          self.view.makeToast(message:"Please enter coupon code first", duration:1.0, position:HRToastPositionDefault)
+          
+        }
+
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -201,6 +239,24 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         self.delegate?.infoBtnClicked()
         
     }
-    
-    
+  
+  
+  func applyReferralCode(resultObject:String)
+  {
+    let codeValidateStatus = bro4u_DataManager.sharedInstance.couponCodeStatus
+    let codeValidateMessage = bro4u_DataManager.sharedInstance.couponCodeMessage
+
+    if resultObject == "Success" && codeValidateStatus == "true"
+    {
+      self.view.makeToast(message:codeValidateMessage!, duration:1.0, position:HRToastPositionDefault)
+    }
+    else
+    {
+      self.view.makeToast(message:codeValidateMessage!, duration:1.0, position:HRToastPositionDefault)
+      
+    }
+
+  }
+  
+  
 }
