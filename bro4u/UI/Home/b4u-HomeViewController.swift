@@ -63,6 +63,9 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     
         //self.callInterMediateApi()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
+        //Turn off the automatic gesture to go back a view with a navigation controller
+        self.navigationController?.interactivePopGestureRecognizer?.enabled = false
     }
 
     
@@ -454,4 +457,11 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         }
     }
 
+}
+
+extension b4u_HomeViewController{
+    
+    @IBAction func unwindToHomeView(segue: UIStoryboardSegue) {
+        
+    }
 }

@@ -51,9 +51,7 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     
     
     override func viewDidLoad() {
-        
-        
-        
+
         if  let selectedSuggestedPartner =   bro4u_DataManager.sharedInstance.selectedSuggestedPatner
         {
             self.lblAmount.text = "  Rs. \( selectedSuggestedPartner.custPrice!)  "
@@ -129,6 +127,14 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         self.paymentTableView.layer.shadowOpacity  = 1
         self.paymentTableView.clipsToBounds  = false
         self.paymentTableView.layer.masksToBounds  = false
+        
+        
+        //Text Struck Through
+        
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "Your String here")
+        attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
+        lblWalletDiscount.attributedText = attributeString;
+
     }
     
     

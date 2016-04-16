@@ -131,7 +131,7 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
 
     @IBAction func actioonContinueShopping(sender: AnyObject) {
     
-      self.performSegueWithIdentifier("OrderConfirmToHomeCategoriesID", sender:nil)
+      //self.performSegueWithIdentifier("OrderConfirmToHomeCategoriesID", sender:nil)
 
     }
     
