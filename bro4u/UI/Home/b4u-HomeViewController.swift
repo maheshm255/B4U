@@ -37,7 +37,7 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         self.getLocatoin()
         
         self.addLoadingIndicator()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"pushCategoryScreen", name:kPushServicesScreen, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"pushCategoryScreen:", name:kPushServicesScreen, object: nil)
 
        
         if self.revealViewController() != nil {
@@ -367,9 +367,23 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     }
     
     
-    func pushCategoryScreen()
+    func pushCategoryScreen(notification:NSNotification)
     {
-        self.performSegueWithIdentifier("categoryScreenSegue", sender:nil)
+        if let index = notification.object as? NSIndexPath{
+            print("index \(index.row)")
+            if index.row == 1 {
+                self.performSegueWithIdentifier("categoryScreenSegue", sender:nil)
+            }else if index.row == 2 {
+                self.performSegueWithIdentifier("reOrderID", sender:nil)
+            }else if index.row == 3 {
+                self.performSegueWithIdentifier("myOrderID", sender:nil)
+            }else if index.row == 4 {
+                self.performSegueWithIdentifier("shareAndEarnID", sender:nil)
+            }else if index.row == 5 {
+                self.performSegueWithIdentifier("myAccountID", sender:nil)
+            }
+            
+        }
     }
     
     func addLoadingIndicator () {

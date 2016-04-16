@@ -227,9 +227,9 @@ class b4u_MyAccountViewController: UIViewController {
     //    cell.contentView.sendSubviewToBack(whiteRoundedView)
     //  }
     
-    @IBAction func cancelBtnClicked(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion:nil)
-    }
+//    @IBAction func cancelBtnClicked(sender: AnyObject) {
+//        self.dismissViewControllerAnimated(true, completion:nil)
+//    }
     
     func addLoadingIndicator () {
         self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)

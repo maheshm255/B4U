@@ -125,7 +125,7 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
 
     @IBAction func actionOngoingOrder(sender: AnyObject) {
     
-      self.performSegueWithIdentifier("OrderConfirmToMyOrdersID", sender:nil)
+//      self.performSegueWithIdentifier("OrderConfirmToMyOrdersID", sender:nil)
 
      }
 
