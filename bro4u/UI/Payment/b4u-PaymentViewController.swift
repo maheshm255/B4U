@@ -131,7 +131,7 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         
         //Text Struck Through
         
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "Your String here")
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "Rs. 1800.00")
         attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
         lblWalletDiscount.attributedText = attributeString;
 
@@ -261,17 +261,21 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     
     @IBAction func placeOrder(sender: AnyObject){
         
-        switch radioButtonSelected.row {
-        case 0:
-            delegate?.navigateToPaymentGateWay(paymentOption.kPaytm)
-        case 1:
-            delegate?.navigateToPaymentGateWay(paymentOption.kCCDC)
-        case 2:
-            delegate?.navigateToPaymentGateWay(paymentOption.kNetBanking)
-        case 3:
-            delegate?.navigateToPaymentGateWay(paymentOption.kCOD)
-        default:
-            break
+        if radioButtonSelected.row >= 0 {
+            
+            switch radioButtonSelected.row {
+            case 0:
+               delegate?.navigateToPaymentGateWay(paymentOption.kPaytm)
+            case 1:
+                delegate?.navigateToPaymentGateWay(paymentOption.kCCDC)
+            case 2:
+                delegate?.navigateToPaymentGateWay(paymentOption.kNetBanking)
+            case 3:
+                delegate?.navigateToPaymentGateWay(paymentOption.kCOD)
+            default:
+                break
+            }
+
         }
         
     }
