@@ -86,9 +86,9 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
 //      self.expiryDateBtn.setTitle("10/2020", forState: .Normal)
       
         //Set Default Values of Credit Card
-      self.creditCardNoTextFld.text = "5459648600234794"
-      self.cvvTextFld.text = "865"
-      self.expiryDateBtn.setTitle("05/2018", forState: .Normal)
+//      self.creditCardNoTextFld.text = "5459648600234794"
+//      self.cvvTextFld.text = "865"
+//      self.expiryDateBtn.setTitle("05/2018", forState: .Normal)
       
 
       
