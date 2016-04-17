@@ -181,5 +181,25 @@ class MyInfoViewController: UIViewController ,UITextFieldDelegate {
         
         
     }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        
+        let newLength = text.characters.count + string.characters.count - range.length
+        if textField == self.mobileNoTxtFld{
+            return newLength <= 10 // Bool
+        }
+        
+        return true
+    }
+    
+        
+    /**
+     * Called when the user click on the view (outside the UITextField).
+     */
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
 
 }
