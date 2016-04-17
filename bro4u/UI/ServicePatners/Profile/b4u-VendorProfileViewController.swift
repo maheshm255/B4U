@@ -217,7 +217,7 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
         
         self.heightForReviews = height
         
-        let metricDict = ["w":partnerReviewsCtrl.view.bounds.size.width,"h":height]
+        let metricDict = ["w":partnerReviewsCtrl.view.bounds.size.width - 20,"h":height]
 
         
         
@@ -257,32 +257,34 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
         
         label.translatesAutoresizingMaskIntoConstraints = false
         
+        
+        label.font = UIFont(name:"Helvetica", size:16.0)
+        
+        label.textColor = UIColor.lightGrayColor()
         let width  = UIScreen.mainScreen().bounds.width
 
         
-        let leading = NSLayoutConstraint(item:label, attribute:.Leading, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Leading, multiplier:1.0, constant:2 * width)
+        let leading = NSLayoutConstraint(item:label, attribute:.Leading, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Leading, multiplier:1.0, constant:2 * width - 20)
         
         self.scrollViewDetails.addConstraint(leading)
         
         
-        let top = NSLayoutConstraint(item:label, attribute:.Top, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Top, multiplier:1.0, constant:10)
+        let top = NSLayoutConstraint(item:label, attribute:.Top, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Top, multiplier:1.0, constant:2)
         
         self.scrollViewDetails.addConstraint(top)
         
-        let metricDict = ["w":self.view.bounds.size.width - 40 ,"H":200]
+        let metricDict = ["w":self.view.bounds.size.width - 10 ,"H":300]
 
         
         label.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[view(w)]", options:[], metrics: metricDict, views: ["view":label]))
 
         label.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[view(H)]", options:[], metrics: metricDict, views: ["view":label]))
-
         
+        self.heightForAboutPartner = label.frame.size.height
         
-        self.heightForAboutPartner = 300.0
-        
-//        let tralling = NSLayoutConstraint(item:label, attribute:.Trailing, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Trailing, multiplier:1.0, constant:10.0)
+       let tralling = NSLayoutConstraint(item:label, attribute:.Trailing, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Trailing, multiplier:1.0, constant:10.0)
 //        
-//        self.scrollViewDetails.addConstraint(tralling)
+       self.scrollViewDetails.addConstraint(tralling)
         
      
     }

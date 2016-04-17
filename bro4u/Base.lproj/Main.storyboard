@@ -926,7 +926,7 @@
                         <viewControllerLayoutGuide type="bottom" id="5Wq-A7-LOz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fnQ-Bb-oP2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="LOGIN USING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULH-Ib-tft">
@@ -8305,7 +8305,7 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationAddress" translatesAutoresizingMaskIntoConstraints="NO" id="zv4-oT-DJx">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="locationAddress" translatesAutoresizingMaskIntoConstraints="NO" id="zv4-oT-DJx">
                                         <rect key="frame" x="8" y="184" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="12" id="5Lq-Hr-xf4"/>
@@ -8828,7 +8828,7 @@
         <scene sceneID="hl4-Pf-zQq">
             <objects>
                 <tableViewController storyboardIdentifier="partnerReviewCtrl" id="Pb3-0M-NLj" customClass="b4u_PartnerReviewsTblViewCtrl" customModule="bro4u" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="1" id="nyF-It-UZe">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" id="nyF-It-UZe">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -9124,7 +9124,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbQ-aq-bMH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5330" y="6435"/>
+            <point key="canvasLocation" x="5253" y="6429"/>
         </scene>
         <!--4u Review Read More Ctrl-->
         <scene sceneID="c8E-2A-RWs">
@@ -9342,17 +9342,12 @@
         <image name="thankU" width="320" height="217"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="63f-2f-9Uz"/>
-        <segue reference="ocf-hw-U5o"/>
         <segue reference="W5U-K3-ziD"/>
-        <segue reference="9yL-r3-mwm"/>
-        <segue reference="UUI-bn-Yb7"/>
-=======
-        <segue reference="FFS-5h-qNB"/>
-        <segue reference="ZKs-u5-bSL"/>
         <segue reference="bLG-nf-drq"/>
         <segue reference="RR4-6L-WK4"/>
         <segue reference="ZLQ-WV-Fop"/>
+        <segue reference="FFS-5h-qNB"/>
+        <segue reference="ZKs-u5-bSL"/>
         <segue reference="EWe-mK-kQh"/>
     </inferredMetricsTieBreakers>
 </document>

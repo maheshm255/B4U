@@ -76,6 +76,15 @@ class b4u_PartnerReviewsTblViewCtrl: UITableViewController {
         return 117.0
     }
     
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        
+        if section == 0
+        {
+            return 1.0
+        }
+        return 18.0
+    }
     
     func btnReadMorePressed(sender:AnyObject)
     {
