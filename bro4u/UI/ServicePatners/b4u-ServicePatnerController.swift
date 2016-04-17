@@ -157,7 +157,10 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         let aPatner:b4u_SugestedPartner = self.allPatners[indexPath.section]
         
         
-        cell.imgViewProfilePic.downloadedFrom(link:aPatner.profilePic!, contentMode:UIViewContentMode.ScaleToFill)
+//        cell.imgViewProfilePic.downloadedFrom(link:aPatner.profilePic!, contentMode:UIViewContentMode.ScaleToFill)
+        
+        cell.imgViewProfilePic.layer.cornerRadius = cell.imgViewProfilePic.frame.size.width/2;
+        cell.imgViewProfilePic.layer.masksToBounds = true;
         
         cell.lblVendorName.text = aPatner.vendorName
       

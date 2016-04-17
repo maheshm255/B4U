@@ -341,6 +341,8 @@ let kAboutUsUrl = "http://v2.20160301.testing.bro4u.com/api_v2/index.php/page/ab
 
 let kPushServicesScreen = "categoryScreenPush"
 
+let kRightMenuNotification = "RightMenuNotification"
+
 let kLoginDismissed = "kLoginDismissed"
 
 let kUserDataReceived = "UserDataReceived"
@@ -352,7 +354,11 @@ let kCardPayment = "CardPayment"
 let kPaytmPayment = "PaytmPayment"
 
 
+//storyboard segue ID
 
+let kAboutUSVCID = "aboutUSVCID"
+let kWalletVCID = "walletVCID"
+let kOfferZoneVCID = "offerZoneVCID"
 
 
 

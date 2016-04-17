@@ -46,6 +46,7 @@
 		04FE41611C9E57C800A168FF /* b4u-loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE41601C9E57C800A168FF /* b4u-loginView.swift */; };
 		04FE418F1C9E706B00A168FF /* b4u-loginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FE418E1C9E706B00A168FF /* b4u-loginView.xib */; };
 		520282741CBA667300CD8725 /* PayUMoneyUtilitiy.m in Sources */ = {isa = PBXBuildFile; fileRef = 520282731CBA667300CD8725 /* PayUMoneyUtilitiy.m */; };
+		520CF5CE1CC16CD4009B7EA3 /* ReadmeGoogle in Resources */ = {isa = PBXBuildFile; fileRef = 520CF5CD1CC16CD4009B7EA3 /* ReadmeGoogle */; };
 		522291871CB6384E00392DC0 /* b4u_DismissKeyBoardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522291861CB6384E00392DC0 /* b4u_DismissKeyBoardExtension.swift */; };
 		522291891CB65CBC00392DC0 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522291881CB65CBC00392DC0 /* MonthYearPickerView.swift */; };
 		529F27731CADA84700ABFC9E /* b4u_OrderDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F27721CADA84700ABFC9E /* b4u_OrderDetailModel.swift */; };
@@ -320,6 +321,7 @@
 		4B48C7B178FB5F85A79C9741 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		520282721CBA667300CD8725 /* PayUMoneyUtilitiy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayUMoneyUtilitiy.h; path = bro4u/Helpers/PayUMoneyUtilitiy.h; sourceTree = SOURCE_ROOT; };
 		520282731CBA667300CD8725 /* PayUMoneyUtilitiy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PayUMoneyUtilitiy.m; path = bro4u/Helpers/PayUMoneyUtilitiy.m; sourceTree = SOURCE_ROOT; };
+		520CF5CD1CC16CD4009B7EA3 /* ReadmeGoogle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadmeGoogle; sourceTree = "<group>"; };
 		522291861CB6384E00392DC0 /* b4u_DismissKeyBoardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_DismissKeyBoardExtension.swift; sourceTree = "<group>"; };
 		522291881CB65CBC00392DC0 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		529F27721CADA84700ABFC9E /* b4u_OrderDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_OrderDetailModel.swift; sourceTree = "<group>"; };
@@ -883,6 +885,7 @@
 				6536E0B41C690C6F00B273D6 /* Models */,
 				6536E0931C68F3F000B273D6 /* AppDelegate.swift */,
 				65F8B42D1C70BCD800D158FA /* bro4u-Bridging-Header.h */,
+				520CF5CD1CC16CD4009B7EA3 /* ReadmeGoogle */,
 				65B18A8F1C70BBC1000EDD00 /* b4u-globalDefinations.swift */,
 				6536E0971C68F3F000B273D6 /* Main.storyboard */,
 				6536E09F1C68F3F000B273D6 /* LaunchScreen.storyboard */,
@@ -1642,7 +1645,6 @@
 				TargetAttributes = {
 					6536E08F1C68F3F000B273D6 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 8PLEJYS8H7;
 					};
 				};
 			};
@@ -1728,6 +1730,7 @@
 				B79D48831CB4CA8E0075164C /* diner.png in Resources */,
 				B79D48721CB4CA8E0075164C /* calendar.png in Resources */,
 				B79D48991CB4CA8E0075164C /* l_icon4.png in Resources */,
+				520CF5CE1CC16CD4009B7EA3 /* ReadmeGoogle in Resources */,
 				B79D487E1CB4CA8E0075164C /* CBPassowrdWithIncorrectOTPView.xib in Resources */,
 				B79D487F1CB4CA8E0075164C /* CBRegisterOption.xib in Resources */,
 				B79D48811CB4CA8E0075164C /* citi.png in Resources */,
@@ -2023,7 +2026,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pramod Hegde (55XJM93HHP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pramod Hegde (55XJM93HHP)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2072,7 +2076,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pramod Hegde (55XJM93HHP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pramod Hegde (55XJM93HHP)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -2102,8 +2107,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pramod Hegde (55XJM93HHP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pramod Hegde (55XJM93HHP)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = bro4u/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
@@ -2117,7 +2122,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bro4u.bro4uCom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ade32eef-9942-4277-9f6c-9a9bbc204386";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "bro4u/bro4u-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VALID_ARCHS = "arm64 armv7 armv7s";
@@ -2132,8 +2137,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pramod Hegde (55XJM93HHP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pramod Hegde (55XJM93HHP)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = bro4u/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
@@ -2147,7 +2152,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bro4u.bro4uCom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ade32eef-9942-4277-9f6c-9a9bbc204386";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "bro4u/bro4u-Bridging-Header.h";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};

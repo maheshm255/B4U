@@ -119,9 +119,9 @@ class MyWalletViewController: UIViewController ,UITextFieldDelegate {
         return 95.0
     }
   
-  @IBAction func cancelBtnClicked(sender: AnyObject) {
-    self.dismissViewControllerAnimated(true, completion:nil)
-    }
+//  @IBAction func cancelBtnClicked(sender: AnyObject) {
+//    self.dismissViewControllerAnimated(true, completion:nil)
+//    }
     
     @IBAction func applyBtnAction(sender: AnyObject)
     {

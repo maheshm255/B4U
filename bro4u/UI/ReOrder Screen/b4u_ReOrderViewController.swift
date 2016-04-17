@@ -142,10 +142,10 @@ class b4u_ReOrderViewController: UIViewController {
     }
 
     
-    @IBAction func btnCancelClicked(sender:AnyObject)
-    {
-       self.dismissViewControllerAnimated(true, completion:nil)
-    }
+//    @IBAction func btnCancelClicked(sender:AnyObject)
+//    {
+//       self.dismissViewControllerAnimated(true, completion:nil)
+//    }
 
 
     

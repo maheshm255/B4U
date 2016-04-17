@@ -288,11 +288,11 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
   
   
   
-  @IBAction func cancelBtnClicked(sender: AnyObject) {
-    self.dismissViewControllerAnimated(true, completion:nil)
-    
-
-  }
+//  @IBAction func cancelBtnClicked(sender: AnyObject) {
+//    self.dismissViewControllerAnimated(true, completion:nil)
+//    
+//
+//  }
 
   
   func addLoadingIndicator () {

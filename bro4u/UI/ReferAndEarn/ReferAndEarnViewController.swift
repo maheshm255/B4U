@@ -120,9 +120,9 @@ class ReferAndEarnViewController: UIViewController,UIPopoverPresentationControll
     }
     */
     
-    @IBAction func cancelBtnClicked(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion:nil)
-    }
+//    @IBAction func cancelBtnClicked(sender: AnyObject) {
+//        self.dismissViewControllerAnimated(true, completion:nil)
+//    }
     
     
     

@@ -48,9 +48,9 @@ class b4u_AboutUsViewController: UIViewController {
 
 extension b4u_AboutUsViewController {
     
-    @IBAction func cancelButtonClicked(sender: AnyObject) {
-        navigationController?.dismissViewControllerAnimated(true, completion: nil)
-    }
+//    @IBAction func cancelButtonClicked(sender: AnyObject) {
+//        navigationController?.dismissViewControllerAnimated(true, completion: nil)
+//    }
 }
 
 //MARK:- UIWebView delegate methods

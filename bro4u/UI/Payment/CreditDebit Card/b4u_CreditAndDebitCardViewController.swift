@@ -287,4 +287,13 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
       }
     }
 
+    @IBAction func cancelPaymentButtonPressed(sender: AnyObject) {
+        
+        let alert = UIAlertController(title: "Exit Payment?", message: "Are you sure you want to go back without making the payment?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "YES", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) in
+            self.navigationController?.popViewControllerAnimated(true)
+        }))
+        alert.addAction(UIAlertAction(title: "NO", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
 }

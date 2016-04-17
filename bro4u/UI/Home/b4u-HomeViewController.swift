@@ -37,7 +37,8 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         self.getLocatoin()
         
         self.addLoadingIndicator()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"pushCategoryScreen", name:kPushServicesScreen, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"pushCategoryScreen:", name:kPushServicesScreen, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pushScreenForRightMenu:", name: kRightMenuNotification, object: nil)
 
        
         if self.revealViewController() != nil {
@@ -63,6 +64,9 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     
         //self.callInterMediateApi()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
+        //Turn off the automatic gesture to go back a view with a navigation controller
+        self.navigationController?.interactivePopGestureRecognizer?.enabled = false
     }
 
     
@@ -363,10 +367,35 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         self.performSegueWithIdentifier("locationCtrlSegue", sender:nil)
     }
     
+    func pushScreenForRightMenu(notification:NSNotification){
+        if let index = notification.object as? NSIndexPath{
+            //print("index \(index.row)")
+            if index.row == 2 {
+                self.performSegueWithIdentifier(kAboutUSVCID, sender:nil)
+            }else if index.row == 3 {
+                self.performSegueWithIdentifier(kWalletVCID, sender:nil)
+            }else if index.row == 5 {
+                self.performSegueWithIdentifier(kWalletVCID, sender:nil)
+            }
+        }
+    }
     
-    func pushCategoryScreen()
+    func pushCategoryScreen(notification:NSNotification)
     {
-        self.performSegueWithIdentifier("categoryScreenSegue", sender:nil)
+        if let index = notification.object as? NSIndexPath{
+            if index.row == 1 {
+                self.performSegueWithIdentifier("categoryScreenSegue", sender:nil)
+            }else if index.row == 2 {
+                self.performSegueWithIdentifier("reOrderID", sender:nil)
+            }else if index.row == 3 {
+                self.performSegueWithIdentifier("myOrderID", sender:nil)
+            }else if index.row == 4 {
+                self.performSegueWithIdentifier("shareAndEarnID", sender:nil)
+            }else if index.row == 5 {
+                self.performSegueWithIdentifier("myAccountID", sender:nil)
+            }
+            
+        }
     }
     
     func addLoadingIndicator () {
@@ -467,4 +496,11 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         }
     }
 
+}
+
+extension b4u_HomeViewController{
+    
+    @IBAction func unwindToHomeView(segue: UIStoryboardSegue) {
+        
+    }
 }

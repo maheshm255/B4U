@@ -94,10 +94,10 @@ class b4u_DrawerTableViewController: UITableViewController {
     
     override  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        if indexPath.row == 1
-        {
-            NSNotificationCenter.defaultCenter().postNotificationName(kPushServicesScreen, object:nil)
-            
+        if indexPath.row == 0{
+            return
+        }else {
+            NSNotificationCenter.defaultCenter().postNotificationName(kPushServicesScreen, object:indexPath)
         }
     }
 

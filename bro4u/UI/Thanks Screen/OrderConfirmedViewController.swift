@@ -157,8 +157,6 @@ class OrderConfirmedViewController: UIViewController {
   
   @IBAction func checkOtherServicesAction(sender: AnyObject) {
     
-    self.performSegueWithIdentifier("OrderConfirmToHomeID", sender:nil)
-
   }
 
   
