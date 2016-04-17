@@ -140,6 +140,8 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
             let height  = self.scrollViewDetails.bounds.height
             
             self.scrollViewDetails.contentSize  = CGSizeMake(3 * width,height)
+           
+            self.detailBaseViewHeight.constant = self.heightForDescription + 10
 
             let profileModelObj = bro4u_DataManager.sharedInstance.vendorProfile!
             
@@ -224,7 +226,7 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
         partnerReviewsCtrl.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[view(w)]", options:[], metrics: metricDict, views: ["view":partnerReviewsCtrl.view]))
         
         
-        let width  = UIScreen.mainScreen().bounds.width - 10
+        let width  = UIScreen.mainScreen().bounds.width - 5
 
         
         let leading = NSLayoutConstraint(item:partnerReviewsCtrl.view, attribute:.Leading, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Leading, multiplier:1.0, constant:width)
@@ -347,7 +349,7 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
         self.scrollViewDetails.addSubview(itemDescroptionWebView!)
         self.scrollViewDetails.addSubview(ratingChartWebView!)
         
-        let metricDict = ["w":self.view.bounds.size.width,"h":height]
+        let metricDict = ["w":self.scrollViewDetails.bounds.size.width - 10 ,"h":height]
  
     
         self.itemWebViewHeightConstraint = NSLayoutConstraint(item:self.itemDescroptionWebView!, attribute:NSLayoutAttribute.Height, relatedBy:NSLayoutRelation.Equal, toItem:nil, attribute:.Height, multiplier:1.0, constant:height)

@@ -11,6 +11,7 @@ import UIKit
 class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate ,quantityDelegate,vendorSortDelegate{
 
     @IBOutlet weak var btnLoadMore: UIButton!
+    @IBOutlet weak var lblCurrentLocation: UILabel!
     @IBOutlet weak var viewLoadMore: UIView!
     @IBOutlet weak var viewMap: UIView!
     @IBOutlet weak var viewFilter: UIView!
@@ -41,6 +42,8 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         
         bro4u_DataManager.sharedInstance.selectedQualtity = nil
         bro4u_DataManager.sharedInstance.selectedSuggestedPatner = nil
+        
+        self.userCurrentLocaion()
     }
 
   
@@ -164,6 +167,9 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         cell.lblVendorReiviews.text = "\(aPatner.reviewCount!) Reviews"
         cell.lblVendorDistance.text = "\(aPatner.distance!) Kms away"
         
+        
+        self.navigationItem.title = aPatner.catName!
+
         
         if let offerPreice = aPatner.offerPrice , let price = aPatner.price
         {
@@ -453,4 +459,31 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         
     }
     
+    
+    
+    func userCurrentLocaion()
+    {
+        if let currentLocality = bro4u_DataManager.sharedInstance.currentLocality
+        {
+            
+            if let loclity = currentLocality.locality
+            {
+                if let  subLocality = currentLocality.subLocality
+                {
+                    self.lblCurrentLocation.text = "\(subLocality),\(loclity)"
+                }else
+                {
+                    self.lblCurrentLocation.text = "\(loclity)"
+
+                }
+            }
+            
+    
+            
+        }else
+        {
+            self.lblCurrentLocation.text = "Current Location"
+            
+        }
+    }
 }

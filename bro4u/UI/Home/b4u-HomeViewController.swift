@@ -404,15 +404,25 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
     }
     
+    
     func userCurrentLocaion()
     {
         if let currentLocality = bro4u_DataManager.sharedInstance.currentLocality
         {
-            if let loclity = currentLocality.locality , subLocality = currentLocality.subLocality
+            
+            if let loclity = currentLocality.locality
             {
-                self.btnCurrentLocation.setTitle("\(subLocality),\(loclity)", forState:.Normal)
-                
+                if let  subLocality = currentLocality.subLocality
+                {
+                    self.btnCurrentLocation.setTitle("\(subLocality),\(loclity)", forState:.Normal)
+                }else
+                {
+                    self.btnCurrentLocation.setTitle("\(loclity)", forState:.Normal)
+                    
+                }
             }
+            
+            
             
         }else
         {
@@ -420,6 +430,7 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
             
         }
     }
+
     
     //MARK: - Location Delegates
     
@@ -450,9 +461,11 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
                 print("Problem with the data received from geocoder")
                 bro4u_DataManager.sharedInstance.currentLocality = nil
             }
+            
+            self.userCurrentLocaion()
+
         })
         
-        self.userCurrentLocaion()
         self.locationManager?.stopUpdatingLocation()
     }
     
