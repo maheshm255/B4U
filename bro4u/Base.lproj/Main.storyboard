@@ -7592,7 +7592,13 @@
                             <constraint firstItem="VNA-HI-oXL" firstAttribute="top" secondItem="ZDM-Co-uNN" secondAttribute="bottom" constant="13" id="f5O-rL-Fc3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="CMN-b7-Y4E"/>
+                    <navigationItem key="navigationItem" id="CMN-b7-Y4E">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="7xN-Jb-sru">
+                            <connections>
+                                <action selector="cancelPaymentButtonPressed:" destination="9fE-h3-Ohy" id="zDx-oA-3lg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="amountLbl" destination="r4d-CZ-8LW" id="2i2-DU-Wif"/>
                         <outlet property="continueBtn" destination="j7K-qW-394" id="E69-NI-1g0"/>
@@ -7647,7 +7653,7 @@
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FR0-Pt-E8w">
                                         <rect key="frame" x="10" y="39" width="570" height="1"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="6VO-8r-7gq"/>
                                         </constraints>
@@ -7829,7 +7835,13 @@
                             <constraint firstAttribute="trailing" secondItem="mme-5T-EOl" secondAttribute="trailing" constant="5" id="jTX-9u-69A"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="MNa-ut-k64"/>
+                    <navigationItem key="navigationItem" id="MNa-ut-k64">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="8j6-gE-BO2">
+                            <connections>
+                                <action selector="cancelPaymentButtonPressed:" destination="WBi-Hg-16I" id="Why-qo-CGN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="axisBtn" destination="acp-WU-lgd" id="UZS-jw-DMb"/>
                         <outlet property="continueBtn" destination="8ny-zi-Ibr" id="2TG-RM-aRi"/>
