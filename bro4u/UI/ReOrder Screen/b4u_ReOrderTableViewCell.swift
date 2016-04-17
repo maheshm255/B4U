@@ -61,6 +61,16 @@ class b4u_ReOrderTableViewCell: UITableViewCell {
     
     func configureData(reOrderDataModel:b4u_ReOrderModel)
     {
+        //For UnderLine Button Text
+        
+        let attrs = [NSUnderlineStyleAttributeName : 1]
+        let attributedString = NSMutableAttributedString(string:"")
+
+        let buttonTitleStr = NSMutableAttributedString(string:"View Details", attributes:attrs)
+        attributedString.appendAttributedString(buttonTitleStr)
+        btnViewOrderDetails.setAttributedTitle(attributedString, forState: .Normal)
+
+        
         if let vendorImageUrl = reOrderDataModel.profilePic
         {
             self.vendorImageView.downloadedFrom(link:vendorImageUrl, contentMode:UIViewContentMode.ScaleToFill)
