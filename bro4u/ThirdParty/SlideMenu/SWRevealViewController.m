@@ -746,6 +746,7 @@ const int FrontViewPositionNone = 0xff;
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushCategroyScreen:) name:@"categoryScreenPush" object:nil];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggelRightMenuView) name:@"RightMenuNotification" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginScreenDismissed:) name:@"kLoginDismissed" object:nil];
 }
@@ -967,7 +968,9 @@ const int FrontViewPositionNone = 0xff;
 
 }
 
-
+-(void)toggelRightMenuView{
+    [self rightRevealToggleAnimated:YES];
+}
 
 - (IBAction)rightRevealToggle:(id)sender
 {    

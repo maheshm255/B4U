@@ -122,6 +122,10 @@ class b4u_RightMenuTblCtrl: UITableViewController {
     
     internal override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
+        if indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 5 {
+            NSNotificationCenter.defaultCenter().postNotificationName(kRightMenuNotification, object: indexPath)
+        }
+        
         if indexPath.row == 1
         {
             let url = NSURL(string:"tel://08030323232")!

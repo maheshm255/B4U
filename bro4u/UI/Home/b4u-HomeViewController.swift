@@ -38,6 +38,7 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         
         self.addLoadingIndicator()
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"pushCategoryScreen:", name:kPushServicesScreen, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pushScreenForRightMenu:", name: kRightMenuNotification, object: nil)
 
        
         if self.revealViewController() != nil {
@@ -366,11 +367,22 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         self.performSegueWithIdentifier("locationCtrlSegue", sender:nil)
     }
     
+    func pushScreenForRightMenu(notification:NSNotification){
+        if let index = notification.object as? NSIndexPath{
+            //print("index \(index.row)")
+            if index.row == 2 {
+                self.performSegueWithIdentifier(kAboutUSVCID, sender:nil)
+            }else if index.row == 3 {
+                self.performSegueWithIdentifier(kWalletVCID, sender:nil)
+            }else if index.row == 5 {
+                self.performSegueWithIdentifier(kWalletVCID, sender:nil)
+            }
+        }
+    }
     
     func pushCategoryScreen(notification:NSNotification)
     {
         if let index = notification.object as? NSIndexPath{
-            print("index \(index.row)")
             if index.row == 1 {
                 self.performSegueWithIdentifier("categoryScreenSegue", sender:nil)
             }else if index.row == 2 {
