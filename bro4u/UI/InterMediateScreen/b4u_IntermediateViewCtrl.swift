@@ -10,6 +10,7 @@ import UIKit
 
 class b4u_IntermediateViewCtrl: UIViewController {
     
+    @IBOutlet weak var imgViewHrSep: UIImageView!
     @IBOutlet weak var imgViewBanner: UIImageView!
      @IBOutlet weak var imgViewIcon3: UIImageView!
     @IBOutlet weak var imgViewIcon2: UIImageView!
@@ -221,19 +222,46 @@ class b4u_IntermediateViewCtrl: UIViewController {
             
             self.navigationItem.title = aDataModel.catName
             
+            var showSepLine:Bool = false
+            
             if aDataModel.termsAndConditions?.count <= 0
             {
                 self.btnTermsAndConditions.hidden = true
+            }else
+            {
+                showSepLine = true
             }
             
             if let couponCode = aDataModel.couponCode  where couponCode != ""
             {
                 self.lblCoupan.text = couponCode
- 
+                showSepLine = true
+
             }else
             {
                 self.btnTapToCopy.hidden = true
             }
+            
+            
+            if !showSepLine
+            {
+                self.imgViewHrSep.hidden = true
+            }
+            // TO DO - T&C Underline
+//            
+//            let attributes = [
+//                NSUnderlineStyleAttributeName : 1,
+//                NSForegroundColorAttributeName : UIColor(red:178.0/255, green: 178.0/255, blue: 178.0/255, alpha: 1.0),
+//                NSStrokeWidthAttributeName : 3.0,
+//                NSStrikethroughStyleAttributeName:1
+//            ]
+//            
+//            
+//         let tCText =  NSAttributedString(string:"Terms & Conditons", attributes: attributes) //1
+//
+//            
+//            self.btnTermsAndConditions.setAttributedTitle(tCText, forState:UIControlState.Normal)
+            
         }
     }
     

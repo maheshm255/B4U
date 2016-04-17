@@ -75,7 +75,8 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.addLoadingIndicator()
+        
+    
 
         bro4u_DataManager.sharedInstance.timeSlots = nil
         self.callFilterApi()
@@ -85,6 +86,8 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        
+        self.addLoadingIndicator()
     }
 
    
@@ -135,10 +138,17 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             
       
             
+            self.view.userInteractionEnabled = false
+         //   self.view.alpha = 0.7
+            
             
             let params = "?cat_id=\(catId)&option_id=\(optionId)&field_name=\(filedName)"
             b4u_WebApiCallManager.sharedInstance.getApiCall(filterApi, params:params, result:{(resultObject) -> Void in
                 
+                
+                self.view.userInteractionEnabled = true
+              //  self.view.alpha = 1.0
+
                 self.updateUI()
                 
             })
@@ -149,10 +159,13 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             let catId = aSelectedSlideImg.catId!
             let optionId =  aSelectedSlideImg.optionId!
             
-            
+            self.view.userInteractionEnabled = false
+
             let params = "?cat_id=\(catId)&option_id=\(optionId)"
             b4u_WebApiCallManager.sharedInstance.getApiCall(filterApi, params:params, result:{(resultObject) -> Void in
                 
+                self.view.userInteractionEnabled = true
+
                 self.updateUI()
                 
             })
@@ -162,11 +175,18 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     
     func callTimeSlotApi(selectedDateStr:String)
     {
+        
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
+        self.view.userInteractionEnabled = false
+
             let params = "?date=\(selectedDateStr)"
             b4u_WebApiCallManager.sharedInstance.getApiCall(kTimeSlotApi, params:params, result:{(resultObject) -> Void in
                 
-                
-            
+                self.view.userInteractionEnabled = true
+
+                b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
                 
             })
     }
@@ -230,8 +250,6 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                 let radioBoxIdentifier = "radioCell"
                 
                 cell = tableView.dequeueReusableCellWithIdentifier(radioBoxIdentifier, forIndexPath: indexPath) as! b4u_ExpandableTblViewCell
-                
-                cell.iconImgView?.image = UIImage(named:"radioGray")
                 
                 self.sectionNumberForRadioInputs.insert(indexPath.section)
                 if selectedIndexPath["\(indexPath.section)"]?.count > 0
@@ -490,7 +508,60 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         }
         return 44.0
     }
-    func updateHeaderForSection(section:Int)
+    
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (cell.respondsToSelector("tintColor")) {
+            let cornerRadius: CGFloat = 1.0;
+            cell.backgroundColor = UIColor.clearColor()
+            let layer: CAShapeLayer  = CAShapeLayer()
+            let pathRef: CGMutablePathRef  = CGPathCreateMutable()
+            let bounds: CGRect  = CGRectInset(cell.bounds, 0, 0)
+            var addLine: Bool  = false
+            if (indexPath.row == 0 && indexPath.row == tableView.numberOfRowsInSection(indexPath.section)-1) {
+                CGPathAddRoundedRect(pathRef, nil, bounds, cornerRadius, cornerRadius);
+            } else if (indexPath.row == 0) {
+                CGPathMoveToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMaxY(bounds));
+                CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetMidX(bounds), CGRectGetMinY(bounds), cornerRadius);
+                CGPathAddArcToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds), CGRectGetMaxX(bounds), CGRectGetMidY(bounds), cornerRadius);
+                CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds));
+                addLine = true;
+            } else if (indexPath.row == tableView.numberOfRowsInSection(indexPath.section)-1) {
+                CGPathMoveToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds));
+                CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMaxY(bounds), CGRectGetMidX(bounds), CGRectGetMaxY(bounds), cornerRadius);
+                CGPathAddArcToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds), CGRectGetMaxX(bounds), CGRectGetMidY(bounds), cornerRadius);
+                CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds));
+            } else {
+                CGPathAddRect(pathRef, nil, bounds);
+                addLine = true;
+            }
+            layer.path = pathRef;
+            //CFRelease(pathRef);
+            //set the border color
+            layer.strokeColor = UIColor.lightGrayColor().CGColor;
+            //set the border width
+            layer.lineWidth = 1;
+            layer.fillColor = UIColor(white: 1, alpha: 1.0).CGColor;
+            
+            
+            if (addLine == true) {
+                let lineLayer: CALayer = CALayer();
+                let lineHeight: CGFloat  = (1 / UIScreen.mainScreen().scale);
+                lineLayer.frame = CGRectMake(CGRectGetMinX(bounds), bounds.size.height-lineHeight, bounds.size.width, lineHeight);
+                lineLayer.backgroundColor = tableView.separatorColor!.CGColor;
+                layer.addSublayer(lineLayer);
+            }
+            
+            let testView: UIView = UIView(frame:bounds)
+            testView.layer.insertSublayer(layer, atIndex: 0)
+            testView.backgroundColor = UIColor.clearColor()
+            cell.backgroundView = testView
+        }
+        
+    }
+    
+    
+       func updateHeaderForSection(section:Int)
     {
         var indexPaths = self.selectedIndexPath["\(section)"]
         
@@ -708,7 +779,9 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             let timeSlotController:b4u_TimeSlotViewCtrl = storyboard.instantiateViewControllerWithIdentifier("b4uTimeSlotCtrl") as! b4u_TimeSlotViewCtrl
             
             timeSlotController.modalPresentationStyle = .Popover
-            timeSlotController.preferredContentSize = CGSizeMake(150, 300)
+            
+            let height = (bro4u_DataManager.sharedInstance.timeSlots?.timeSlots?.count)!  * 44
+            timeSlotController.preferredContentSize = CGSizeMake(150, CGFloat(height))
             
             timeSlotController.delegate = self
             //  timeSlotController.delegate = self
@@ -719,7 +792,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             popoverMenuViewController?.sourceView = btn
             popoverMenuViewController?.sourceRect = CGRect(
                 x: CGRectGetMidX(btn.bounds),
-                y: CGRectGetMidY(btn.frame),
+                y: CGRectGetMidY(btn.bounds),
                 width: 1,
                 height: 1)
             presentViewController(
@@ -727,6 +800,9 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                 animated: true,
                 completion: nil)
             
+        }else
+        {
+            self.view.makeToast(message:"Please Select Date First", duration:1.0, position:HRToastPositionDefault)
         }
     }
     @IBAction func clearBtnClicked(sender: AnyObject) {
@@ -872,9 +948,17 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
+        self.view.userInteractionEnabled = false
+
         b4u_WebApiCallManager.sharedInstance.getApiCall(kShowServicePatnerApi, params:params, result:{(resultObject) -> Void in
           
-         self.performSelectorOnMainThread("moveToSuggestedPatner", withObject:nil, waitUntilDone:true)
+            self.view.userInteractionEnabled = true
+
+            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
+            
+            self.moveToSuggestedPatner()
+//         self.performSelectorOnMainThread("moveToSuggestedPatner", withObject:nil, waitUntilDone:true)
             
         })
     }
@@ -957,7 +1041,8 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
 
     }
     
-    func addLoadingIndicator () {
+    func addLoadingIndicator ()
+    {
         self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
         self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
         b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
