@@ -904,7 +904,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             selectedSectons.insert(Int(section)!)
         }
         
-        if  self.sectionNumberForRadioInputs.isSubsetOf(selectedSectons)
+        if self.sectionNumberForRadioInputs.isSubsetOf(selectedSectons)
         {
             self.callServicePatnerApi()
         }else

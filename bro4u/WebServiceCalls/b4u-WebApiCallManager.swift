@@ -395,6 +395,7 @@ class b4u_WebApiCallManager: NSObject {
         
         if let addressDataDict:[Dictionary<String ,AnyObject>] = dataDict["addresses"] as? [Dictionary<String ,AnyObject>]
         {
+            bro4u_DataManager.sharedInstance.address.removeAll()
             
             for (_ ,dataDict) in addressDataDict.enumerate()
             {
