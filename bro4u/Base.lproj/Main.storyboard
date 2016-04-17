@@ -1778,8 +1778,8 @@
                                                         <rect key="frame" x="115" y="96" width="447" height="13"/>
                                                     </variation>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bro4ULogo" translatesAutoresizingMaskIntoConstraints="NO" id="nac-ha-GfJ">
-                                                    <rect key="frame" x="5" y="0.0" width="134" height="160"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thankU" translatesAutoresizingMaskIntoConstraints="NO" id="nac-ha-GfJ">
+                                                    <rect key="frame" x="8" y="18" width="134" height="134"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="8TC-JU-m4M"/>
                                                         <constraint firstAttribute="width" constant="134" id="9f8-Kd-2oN"/>
@@ -1811,15 +1811,15 @@
                                                 <constraint firstItem="LEl-TE-7kU" firstAttribute="leading" secondItem="teW-0D-jhe" secondAttribute="leading" constant="-5" id="Nxe-tK-CCz"/>
                                                 <constraint firstItem="teW-0D-jhe" firstAttribute="leading" secondItem="noK-Jp-Bna" secondAttribute="leading" id="OeH-ee-qfX"/>
                                                 <constraint firstItem="SKK-8O-TbR" firstAttribute="leading" secondItem="teW-0D-jhe" secondAttribute="trailing" constant="10" id="Oy4-To-otd"/>
-                                                <constraint firstItem="BPx-rb-T6H" firstAttribute="leading" secondItem="nac-ha-GfJ" secondAttribute="trailing" constant="10" id="T00-xn-Ksj"/>
-                                                <constraint firstItem="nac-ha-GfJ" firstAttribute="leading" secondItem="omS-VP-TC8" secondAttribute="leading" constant="5" id="T6C-C5-cxi"/>
-                                                <constraint firstItem="Ad0-D6-luu" firstAttribute="top" secondItem="nac-ha-GfJ" secondAttribute="bottom" constant="5" id="Uiq-2e-4p8"/>
+                                                <constraint firstItem="BPx-rb-T6H" firstAttribute="leading" secondItem="nac-ha-GfJ" secondAttribute="trailing" constant="7" id="T00-xn-Ksj"/>
+                                                <constraint firstItem="nac-ha-GfJ" firstAttribute="leading" secondItem="omS-VP-TC8" secondAttribute="leading" constant="8" id="T6C-C5-cxi"/>
+                                                <constraint firstItem="Ad0-D6-luu" firstAttribute="top" secondItem="nac-ha-GfJ" secondAttribute="bottom" constant="13" id="Uiq-2e-4p8"/>
                                                 <constraint firstItem="YwN-lU-cDJ" firstAttribute="leading" secondItem="teW-0D-jhe" secondAttribute="leading" id="VsP-Y5-rh5"/>
                                                 <constraint firstItem="Zjn-jS-kgU" firstAttribute="leading" secondItem="noK-Jp-Bna" secondAttribute="trailing" constant="10" id="Y2w-JT-MoO"/>
                                                 <constraint firstItem="BPx-rb-T6H" firstAttribute="top" secondItem="omS-VP-TC8" secondAttribute="topMargin" constant="10" id="ZIS-ek-les"/>
                                                 <constraint firstAttribute="trailing" secondItem="S6L-2q-gAU" secondAttribute="trailing" id="dEd-XJ-Ftk"/>
                                                 <constraint firstItem="teW-0D-jhe" firstAttribute="top" secondItem="noK-Jp-Bna" secondAttribute="bottom" constant="20" id="fAe-TS-z0v"/>
-                                                <constraint firstItem="nac-ha-GfJ" firstAttribute="top" secondItem="omS-VP-TC8" secondAttribute="top" id="fK0-3I-LQy"/>
+                                                <constraint firstItem="nac-ha-GfJ" firstAttribute="top" secondItem="omS-VP-TC8" secondAttribute="top" constant="18" id="fK0-3I-LQy"/>
                                                 <constraint firstItem="Zjn-jS-kgU" firstAttribute="centerY" secondItem="noK-Jp-Bna" secondAttribute="centerY" id="gWo-hf-Uvb"/>
                                                 <constraint firstItem="noK-Jp-Bna" firstAttribute="leading" secondItem="BPx-rb-T6H" secondAttribute="leading" id="jL4-fM-jPt"/>
                                                 <constraint firstItem="S6L-2q-gAU" firstAttribute="leading" secondItem="omS-VP-TC8" secondAttribute="leading" id="kEP-4y-QGb"/>
@@ -2036,7 +2036,7 @@
                                     <rect key="frame" x="0.0" y="20" width="400" height="40"/>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6OT-HE-AM6">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6OT-HE-AM6">
                                 <rect key="frame" x="0.0" y="104" width="600" height="496"/>
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="0.0" y="60" width="400" height="496"/>
@@ -7583,7 +7583,13 @@
                             <constraint firstItem="VNA-HI-oXL" firstAttribute="top" secondItem="ZDM-Co-uNN" secondAttribute="bottom" constant="13" id="f5O-rL-Fc3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="CMN-b7-Y4E"/>
+                    <navigationItem key="navigationItem" id="CMN-b7-Y4E">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="uzh-T0-NSK">
+                            <connections>
+                                <action selector="cancelPaymentButtonPressed:" destination="9fE-h3-Ohy" id="QOp-Fx-P07"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="amountLbl" destination="r4d-CZ-8LW" id="2i2-DU-Wif"/>
                         <outlet property="continueBtn" destination="j7K-qW-394" id="E69-NI-1g0"/>
@@ -7820,7 +7826,13 @@
                             <constraint firstAttribute="trailing" secondItem="mme-5T-EOl" secondAttribute="trailing" constant="10" id="jTX-9u-69A"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="MNa-ut-k64"/>
+                    <navigationItem key="navigationItem" id="MNa-ut-k64">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="fGq-fC-kFz">
+                            <connections>
+                                <action selector="cancelPaymentButtonPressed:" destination="WBi-Hg-16I" id="Kx0-gK-8cc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="axisBtn" destination="acp-WU-lgd" id="UZS-jw-DMb"/>
                         <outlet property="continueBtn" destination="8ny-zi-Ibr" id="2TG-RM-aRi"/>
@@ -9329,7 +9341,7 @@
         <segue reference="a9E-Wg-4Hc"/>
         <segue reference="ouI-hD-05v"/>
         <segue reference="W5U-K3-ziD"/>
-        <segue reference="bLG-nf-drq"/>
         <segue reference="FFS-5h-qNB"/>
+        <segue reference="UUI-bn-Yb7"/>
     </inferredMetricsTieBreakers>
 </document>
