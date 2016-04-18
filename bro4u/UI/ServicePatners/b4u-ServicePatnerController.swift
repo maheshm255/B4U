@@ -40,6 +40,10 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
     
     override func viewWillAppear(animated: Bool) {
         
+        //Removing Order ID from User Default
+        b4u_Utility.sharedInstance.setUserDefault(nil, KeyToSave:"order_id")
+
+        
         bro4u_DataManager.sharedInstance.selectedQualtity = nil
         bro4u_DataManager.sharedInstance.selectedSuggestedPatner = nil
         

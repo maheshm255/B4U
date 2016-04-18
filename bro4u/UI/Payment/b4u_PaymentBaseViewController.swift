@@ -342,7 +342,11 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
   {
     
     if (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) {
-      bro4u_DataManager.sharedInstance.orderId = b4u_Utility.sharedInstance.getUserDefault("order_id") as? NSNumber
+        
+        let orderID = NSNumber(integer:Int(b4u_Utility.sharedInstance.getUserDefault("order_id") as! String)!)
+        
+        bro4u_DataManager.sharedInstance.orderId = orderID
+
       self.hasOrderCreated("Success")
     }
     else
@@ -558,7 +562,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
       //Setting Order ID in User Default
      let orderID = "\(bro4u_DataManager.sharedInstance.orderId!)"
 
-      b4u_Utility.sharedInstance.setUserDefault(orderID, KeyToSave:"Order_id")
+      b4u_Utility.sharedInstance.setUserDefault(orderID, KeyToSave:"order_id")
 
       let callBackhandler = {(order:PGOrder?, merchantConfiguration :PGMerchantConfiguration?) in
         
