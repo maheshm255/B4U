@@ -42,7 +42,10 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
         self.addLoadingIndicator()
       
       if (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) {
-        bro4u_DataManager.sharedInstance.orderId = b4u_Utility.sharedInstance.getUserDefault("order_id") as? NSNumber
+        let orderID = NSNumber(integer:Int(b4u_Utility.sharedInstance.getUserDefault("order_id") as! String)!)
+        
+        bro4u_DataManager.sharedInstance.orderId = orderID
+                    
         self.hasOrderCreated("Success")
       }
       else
@@ -279,9 +282,10 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
       if resultObject == "Success"
       {
         b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-        
+        self.order_id = "\(bro4u_DataManager.sharedInstance.orderId!)"
+
         //Setting Order ID in User Default
-        b4u_Utility.sharedInstance.setUserDefault(self.order_id, KeyToSave:"Order_id")
+        b4u_Utility.sharedInstance.setUserDefault(self.order_id, KeyToSave:"order_id")
 
         self.configureUI()
       }

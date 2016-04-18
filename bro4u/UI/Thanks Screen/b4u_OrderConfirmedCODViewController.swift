@@ -45,7 +45,10 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
         self.addLoadingIndicator()
       
         if (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) {
-          bro4u_DataManager.sharedInstance.orderId = b4u_Utility.sharedInstance.getUserDefault("order_id") as? NSNumber
+            
+            let orderID = NSNumber(integer:Int(b4u_Utility.sharedInstance.getUserDefault("order_id") as! String)!)
+            bro4u_DataManager.sharedInstance.orderId = orderID
+            
           self.getDataOfThanksScreen("Success")
         }
         else
@@ -105,7 +108,7 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
             }
           
             //Setting Order ID in User Default
-            b4u_Utility.sharedInstance.setUserDefault(order_id, KeyToSave:"Order_id")
+            b4u_Utility.sharedInstance.setUserDefault(order_id, KeyToSave:"order_id")
 
             let params = "?order_id=\(order_id)&user_id=\(user_id)"
             b4u_WebApiCallManager.sharedInstance.getApiCall(kOrderConfirmedIndex , params:params, result:{(resultObject) -> Void in
@@ -202,7 +205,7 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
         }
       
       //Remove Order ID from User Default
-      b4u_Utility.sharedInstance.setUserDefault(nil, KeyToSave:"Order_id")
+      b4u_Utility.sharedInstance.setUserDefault(nil, KeyToSave:"order_id")
 
 
     }

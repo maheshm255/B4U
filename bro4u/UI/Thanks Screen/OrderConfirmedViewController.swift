@@ -126,9 +126,7 @@ class OrderConfirmedViewController: UIViewController {
         }
 
       //Remove Order ID from User Default
-      b4u_Utility.sharedInstance.setUserDefault(nil, KeyToSave:"Order_id")
-
-
+      b4u_Utility.sharedInstance.setUserDefault(nil, KeyToSave:"order_id")
     }
 
     override func didReceiveMemoryWarning() {

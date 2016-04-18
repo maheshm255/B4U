@@ -44,8 +44,13 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
       
       self.addLoadingIndicator()
       
+        
       if (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) {
-        bro4u_DataManager.sharedInstance.orderId = b4u_Utility.sharedInstance.getUserDefault("order_id") as? NSNumber
+        
+        let orderID = NSNumber(integer:Int(b4u_Utility.sharedInstance.getUserDefault("order_id") as! String)!)
+        
+        bro4u_DataManager.sharedInstance.orderId = orderID
+
         self.hasOrderCreated("Success")
       }
       else
@@ -246,7 +251,7 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
         let orderID = "\(bro4u_DataManager.sharedInstance.orderId)"
 
         //Setting Order ID in User Default
-        b4u_Utility.sharedInstance.setUserDefault(orderID, KeyToSave:"Order_id")
+        b4u_Utility.sharedInstance.setUserDefault(orderID, KeyToSave:"order_id")
 
         self.configureUI()
       }
