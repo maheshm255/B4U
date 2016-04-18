@@ -52,7 +52,7 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
         
         get{
             
-            let width = view.bounds.size.width - 10
+            let width = view.bounds.size.width - 20
             let page = Int((self.scrollViewDetails.contentOffset.x / width))
                 return page
         }
@@ -210,9 +210,9 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
         partnerReviewsCtrl.view.translatesAutoresizingMaskIntoConstraints = false
 
         
-       self.detailBaseViewHeight.constant = CGFloat((bro4u_DataManager.sharedInstance.vendorProfile?.reviews?.count)!) * 117.0
+       self.detailBaseViewHeight.constant = CGFloat((bro4u_DataManager.sharedInstance.vendorProfile?.reviews?.count)!) * 117.0 + 165
 
-        let height:CGFloat = CGFloat((bro4u_DataManager.sharedInstance.vendorProfile?.reviews?.count)!) * 117.0
+        let height:CGFloat = CGFloat((bro4u_DataManager.sharedInstance.vendorProfile?.reviews?.count)!) * 117.0 + 165
         
         
         self.heightForReviews = height
@@ -280,7 +280,7 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
 
         label.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[view(H)]", options:[], metrics: metricDict, views: ["view":label]))
         
-        self.heightForAboutPartner = label.frame.size.height
+        self.heightForAboutPartner = 300
         
        let tralling = NSLayoutConstraint(item:label, attribute:.Trailing, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Trailing, multiplier:1.0, constant:10.0)
 //        

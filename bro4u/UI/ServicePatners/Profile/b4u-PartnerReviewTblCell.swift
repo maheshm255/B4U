@@ -10,6 +10,7 @@ import UIKit
 
 class b4u_PartnerReviewTblCell: UITableViewCell {
 
+    @IBOutlet weak var btnReadM: UIButton!
     @IBOutlet weak var btnReadMore: UIButton!
     @IBOutlet weak var imgStar5: UIImageView!
     @IBOutlet weak var imgStar4: UIImageView!

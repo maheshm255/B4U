@@ -291,8 +291,8 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oPM-kX-56F" userLabel="categoryTableViw">
-                                <rect key="frame" x="5" y="314" width="590" height="281"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oPM-kX-56F" userLabel="categoryTableViw">
+                                <rect key="frame" x="5" y="316" width="590" height="281"/>
                                 <color key="backgroundColor" red="0.81029781879999996" green="0.81019295300000005" blue="0.87911598150000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="categoryCell" rowHeight="65" id="vHa-o6-ofK" customClass="b4u_CategoryListTblViewCell" customModule="bro4u" customModuleProvider="target">
@@ -8909,6 +8909,10 @@
                                             <rect key="frame" x="516" y="76" width="74" height="30"/>
                                             <state key="normal" title="Read More"/>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhO-Qi-5Bb">
+                                            <rect key="frame" x="246" y="68" width="46" height="30"/>
+                                            <state key="normal" title="Button"/>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="NXJ-Fg-E8y" firstAttribute="leading" secondItem="hOm-5W-QsK" secondAttribute="leading" id="3dD-xh-KqU"/>
@@ -8936,6 +8940,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="btnReadM" destination="mhO-Qi-5Bb" id="Y0J-sf-oG9"/>
                                     <outlet property="btnReadMore" destination="csw-A0-IcF" id="4Dp-2B-i78"/>
                                     <outlet property="imgStar1" destination="FzE-OY-05t" id="OSK-b6-vt6"/>
                                     <outlet property="imgStar2" destination="31I-qy-Gmb" id="VTR-fM-LXW"/>
@@ -9354,12 +9359,12 @@
         <image name="thankU" width="320" height="217"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZLQ-WV-Fop"/>
-        <segue reference="RR4-6L-WK4"/>
-        <segue reference="bLG-nf-drq"/>
         <segue reference="W5U-K3-ziD"/>
-        <segue reference="ZKs-u5-bSL"/>
+        <segue reference="ouI-hD-05v"/>
+        <segue reference="ocf-hw-U5o"/>
+        <segue reference="a9E-Wg-4Hc"/>
         <segue reference="FFS-5h-qNB"/>
-        <segue reference="EWe-mK-kQh"/>
+        <segue reference="ZLQ-WV-Fop"/>
+        <segue reference="bLG-nf-drq"/>
     </inferredMetricsTieBreakers>
 </document>

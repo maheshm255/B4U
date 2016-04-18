@@ -64,6 +64,9 @@ class b4u_PartnerReviewsTblViewCtrl: UITableViewController {
         cell.btnReadMore.tag = indexPath.section
         
         cell.btnReadMore.addTarget(self, action:"btnReadMorePressed:", forControlEvents:UIControlEvents.TouchUpInside)
+        
+        cell.btnReadM.addTarget(self, action:"btnReadMorePressed:", forControlEvents:UIControlEvents.TouchUpInside)
+
         return cell
     }
     

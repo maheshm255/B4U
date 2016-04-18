@@ -83,18 +83,21 @@ class b4u_PartnerReviewsSummaryTblCell: UITableViewCell {
         }
         
         
-//        var width = CGRectGetWidth(self.imgViewOnTimeBase.bounds)
-//        
-//         var aWidth = ( width * CGFloat(Int(profileModelObj.onTime!)!) ) / 100
-//        
-//        self.constraintLblOnTImeTrailing.constant = aWidth - 10
-//        
-//        
-//         width = CGRectGetWidth(self.imgViewOnTimeBase.bounds)
-//        
-//         aWidth = ( width * CGFloat(Int(profileModelObj.serviceQuality!)!) ) / 100
-//        
-//        self.constraintLblQualityTrailing.constant = aWidth - 10
+        self.imgViewOnTimeBase.layoutIfNeeded()
+        
+        
+        var width = CGRectGetWidth(self.imgViewOnTimeBase.bounds)
+        
+         var aWidth = ( width * CGFloat(Int(profileModelObj.onTime!)!) ) / 100
+        
+        self.constraintLblOnTImeTrailing.constant =  self.constraintLblOnTImeTrailing.constant +  width - aWidth
+        
+        
+         width = CGRectGetWidth(self.imgViewOnTimeBase.bounds)
+        
+         aWidth = ( width * CGFloat(Int(profileModelObj.serviceQuality!)!) ) / 100
+        
+        self.constraintLblQualityTrailing.constant =  self.constraintLblQualityTrailing.constant + width - aWidth
         
     }
 
