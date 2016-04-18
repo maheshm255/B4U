@@ -22,7 +22,7 @@ protocol paymentDelegate
     func navigateToPaymentGateWay(gateWayOpton:paymentOption)
     
 }
-class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate {
+class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate,UITextFieldDelegate {
     
     @IBOutlet weak var paymentTableView: UITableView!
     
@@ -61,8 +61,31 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
             self.lblAmount.text = "  Rs. \(selectedReOrderModel.subTotal!)  "
         }
       
+        if let selectedPartner:b4u_SugestedPartner = bro4u_DataManager.sharedInstance.selectedSuggestedPatner
+        {
+            //Text Struck Through
+        
+            if selectedPartner.custPrice > selectedPartner.offerPrice
+            {
+                let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "Rs. \(selectedPartner.custPrice!)")
+                attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
+                lblWalletDiscount.attributedText = attributeString;
+                self.lblAmount.text = "  Rs. \(selectedPartner.offerPrice!)  "
+
+                lblWalletDiscount.hidden = false
+            }
+            else
+            {
+                lblWalletDiscount.hidden = true
+            }
+            
+         }
+
+        
         if tfCouponCode.text?.length>0
         {
+            lblWalletDiscount.hidden = true
+
           if let orderDetailModel = bro4u_DataManager.sharedInstance.orderDetailData.first
           {
             if let selectionLocal: b4u_SelectionModel =  orderDetailModel.selection?.first{
@@ -127,14 +150,6 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         self.paymentTableView.layer.shadowOpacity  = 1
         self.paymentTableView.clipsToBounds  = false
         self.paymentTableView.layer.masksToBounds  = false
-        
-        
-        //Text Struck Through
-        
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "Rs. 1800.00")
-        attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
-        lblWalletDiscount.attributedText = attributeString;
-
     }
     
     
@@ -321,5 +336,21 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
 
   }
   
+    
+    /**
+     * Called when 'return' key pressed. return NO to ignore.
+     */
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    /**
+     * Called when the user click on the view (outside the UITextField).
+     */
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
   
 }

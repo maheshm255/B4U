@@ -22,6 +22,8 @@ class b4u_OrderDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.congigureUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,6 +41,27 @@ class b4u_OrderDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+    
+    func congigureUI()
+    {
+        
+        
+        if let address:b4u_AddressDetails = bro4u_DataManager.sharedInstance.address[0]{
+            
+            lbluserName.text = address.name!
+            lbluserEmail.text = address.email!
+            lblAddress.text = address.fullAddress!
+        }
+        if let selectedPartner:b4u_SugestedPartner = bro4u_DataManager.sharedInstance.selectedSuggestedPatner{
+            
+            lblVendorDetail.text = selectedPartner.itemName!
+            lblVendorName.text = selectedPartner.vendorName!
+            lblSubTotal.text = selectedPartner.custPrice!
+            lblGrandTotal.text = selectedPartner.offerPrice!
+
+        }
+    }
 
   @IBAction func btnCloseClicked(sender: AnyObject) {
     
