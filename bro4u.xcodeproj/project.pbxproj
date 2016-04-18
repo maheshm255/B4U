@@ -51,6 +51,7 @@
 		522291891CB65CBC00392DC0 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522291881CB65CBC00392DC0 /* MonthYearPickerView.swift */; };
 		529F27731CADA84700ABFC9E /* b4u_OrderDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F27721CADA84700ABFC9E /* b4u_OrderDetailModel.swift */; };
 		529F27751CADA94300ABFC9E /* b4u_SelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F27741CADA94300ABFC9E /* b4u_SelectionModel.swift */; };
+		52A1AE801CC557ED001095B8 /* RadioButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A1AE7F1CC557ED001095B8 /* RadioButtonExtension.swift */; };
 		65264F851C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65264F841C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift */; };
 		65264F871C81D80200859F5A /* b4u-SuggestedPatnersResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65264F861C81D80200859F5A /* b4u-SuggestedPatnersResult.swift */; };
 		65271E4E1C828F5E0022C888 /* b4u-CategoryTblViewCtrl1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65271E4D1C828F5E0022C888 /* b4u-CategoryTblViewCtrl1.swift */; };
@@ -326,6 +327,7 @@
 		522291881CB65CBC00392DC0 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		529F27721CADA84700ABFC9E /* b4u_OrderDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_OrderDetailModel.swift; sourceTree = "<group>"; };
 		529F27741CADA94300ABFC9E /* b4u_SelectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_SelectionModel.swift; sourceTree = "<group>"; };
+		52A1AE7F1CC557ED001095B8 /* RadioButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonExtension.swift; sourceTree = "<group>"; };
 		65264F841C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-ServicePartnerTblViewCell.swift"; sourceTree = "<group>"; };
 		65264F861C81D80200859F5A /* b4u-SuggestedPatnersResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-SuggestedPatnersResult.swift"; sourceTree = "<group>"; };
 		65271E4D1C828F5E0022C888 /* b4u-CategoryTblViewCtrl1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-CategoryTblViewCtrl1.swift"; sourceTree = "<group>"; };
@@ -1322,6 +1324,7 @@
 			isa = PBXGroup;
 			children = (
 				B369398B1CA14446000266A5 /* b4u_PayOnlineOrderViewController.swift */,
+				52A1AE7F1CC557ED001095B8 /* RadioButtonExtension.swift */,
 			);
 			path = "Pay Online";
 			sourceTree = "<group>";
@@ -1917,6 +1920,7 @@
 				65B189B41C6E5CF4000EDD00 /* bro4u-CoreDataManager.swift in Sources */,
 				65271F621C8368280022C888 /* b4u-CommentTableViewCell.swift in Sources */,
 				04E0C44C1C8C99A7006450D1 /* ViewController.swift in Sources */,
+				52A1AE801CC557ED001095B8 /* RadioButtonExtension.swift in Sources */,
 				65B49DBC1C722CC70083942D /* b4u-SliderImage.swift in Sources */,
 				522291871CB6384E00392DC0 /* b4u_DismissKeyBoardExtension.swift in Sources */,
 				B34EAD841C9297FC00FCB0F5 /* b4u_MyWalletModel.swift in Sources */,
