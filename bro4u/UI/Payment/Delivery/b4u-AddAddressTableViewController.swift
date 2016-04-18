@@ -176,6 +176,7 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
     @IBAction func BtnSaveAddressPressed(sender: AnyObject)
     {
         
+        
         var user_id = ""
         if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
             user_id = loginInfoData.userId! //Need to use later
@@ -183,7 +184,7 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
 
 
         guard let name = tfYourName.text where name != "" else{
-            self.tableView.makeToast(message:"Please Enter Name", duration:1.0, position:HRToastPositionDefault)
+            self.view.makeToast(message:"Please Enter Name", duration:1.0, position:HRToastPositionDefault)
             return
         }
       

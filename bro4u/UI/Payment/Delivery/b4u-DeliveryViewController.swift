@@ -420,7 +420,16 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
     
     @IBAction func proceedToPaymetnBtnClicked(sender: AnyObject)
     {
+        
+    
+        guard self.currentSelectedAddress != nil else {
+            
+            self.view.makeToast(message: "Please Select Address", duration:1.0, position: HRToastPositionDefault)
+            return
+        }
+        
         self.delegate?.proceedToPayment()
+
     }
     
     
