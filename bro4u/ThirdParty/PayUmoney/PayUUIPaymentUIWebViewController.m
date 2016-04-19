@@ -115,7 +115,7 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:true];
     
-    [self clickedBackButton];
+//    [self clickedBackButton];
     NSLog(@"Inside viewWillDisappear");
     
     

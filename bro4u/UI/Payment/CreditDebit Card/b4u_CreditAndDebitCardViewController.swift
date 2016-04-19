@@ -66,13 +66,13 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
   
   func handlePaymentResponse(reponseData : AnyObject){
     
-//    print("response data \(reponseData)")
-//    if let status = reponseData["status"]{
-//      
-//    }
-//    
-//    let orderConfirmedViewController = storyboard?.instantiateViewControllerWithIdentifier("OrderConfirmedViewControllerID") as? OrderConfirmedViewController
-//    navigationController?.pushViewController(orderConfirmedViewController!, animated: true)
+    print("response data \(reponseData)")
+    if let status = reponseData["status"]{
+      
+    }
+    
+    let orderConfirmedViewController = storyboard?.instantiateViewControllerWithIdentifier("OrderConfirmedViewControllerID") as? OrderConfirmedViewController
+    navigationController?.pushViewController(orderConfirmedViewController!, animated: true)
     
     
   }
