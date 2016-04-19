@@ -165,6 +165,19 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
             cell.btnSelectTime.addTarget(self, action:"selectTimeSlot:", forControlEvents:UIControlEvents.TouchUpInside)
             
             
+            cell.btnSelectDate.layer.cornerRadius = 2.0
+            cell.btnSelectDate.layer.borderColor = UIColor(red:193.0/255, green:195.0/255, blue: 193.0/255, alpha:1.0).CGColor
+            cell.btnSelectDate.layer.borderWidth = 1.0
+            
+            
+            
+            cell.btnSelectTime.layer.cornerRadius = 2.0
+            cell.btnSelectTime.layer.borderColor = UIColor(red:193.0/255, green:195.0/255, blue: 193.0/255, alpha:1.0).CGColor
+            
+            cell.btnSelectTime.layer.borderWidth = 1.0
+            
+            
+            
             return cell
         case 1:
             let cellIdentifier = "addressCell"
@@ -213,6 +226,10 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
                     {
                         cell.imgViewSelecteAddress2.image = UIImage(named:"radioGray")
                         cell.imgViewSelectAddress1.image = UIImage(named:"radioBlue")
+                    }else
+                    {
+                        cell.imgViewSelecteAddress2.image = UIImage(named:"radioGray")
+                        cell.imgViewSelectAddress1.image = UIImage(named:"radioGray")
                     }
                     
                  }else
@@ -277,7 +294,7 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
         switch indexPath.section
         {
         case 0 :
-            return 90.0
+            return 105.0
 
         case 1:
             return 150.0
@@ -365,19 +382,21 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
         calendarController.delegate = self
         
         let popoverMenuViewController = calendarController.popoverPresentationController
-        popoverMenuViewController?.permittedArrowDirections = .Up
+        popoverMenuViewController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
         popoverMenuViewController?.delegate = self
-        popoverMenuViewController?.sourceView = sender as? UIView
+        popoverMenuViewController?.sourceView = self.view
         popoverMenuViewController?.sourceRect = CGRect(
-            x: CGRectGetMidX(btn.frame),
-            y: CGRectGetMidY(btn.frame),
+            x: CGRectGetMidX(self.view.bounds),
+            y: CGRectGetMidY(self.view.bounds),
             width: 1,
             height: 1)
         presentViewController(
             calendarController,
             animated: true,
             completion: nil)
-    }
+        
+        
+            }
     
     
     func selectTimeSlot(sender: AnyObject)
@@ -395,7 +414,9 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
             let timeSlotController:b4u_TimeSlotViewCtrl = storyboard.instantiateViewControllerWithIdentifier("b4uTimeSlotCtrl") as! b4u_TimeSlotViewCtrl
             
             timeSlotController.modalPresentationStyle = .Popover
-            timeSlotController.preferredContentSize = CGSizeMake(150, 300)
+            
+            let height =  (bro4u_DataManager.sharedInstance.timeSlots?.timeSlots?.count)! * 44
+            timeSlotController.preferredContentSize = CGSizeMake(150, CGFloat(height) )
             
             timeSlotController.delegate = self
             //  timeSlotController.delegate = self
@@ -406,7 +427,7 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
             popoverMenuViewController?.sourceView = btn
             popoverMenuViewController?.sourceRect = CGRect(
                 x: CGRectGetMidX(btn.bounds),
-                y: CGRectGetMidY(btn.frame),
+                y: CGRectGetMidY(btn.bounds),
                 width: 1,
                 height: 1)
             presentViewController(
