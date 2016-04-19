@@ -858,8 +858,17 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     func servicePatnerAPIRequest(catId:String ,selectedDate:NSDate ,selectedTimeSlot:String )
     {
         let catId = catId
-        let latitude =  "12.9718915"
-        let longitude = "77.6411545"
+        
+        var latitude =  "12.9718915"
+        var longitude = "77.6411545"
+        
+        if let currentLocaiotn = bro4u_DataManager.sharedInstance.currenLocation
+        {
+            latitude = "\(currentLocaiotn.coordinate.latitude)"
+            
+            longitude = "\(currentLocaiotn.coordinate.longitude)"
+            
+        }
         
         var params = "?cat_id=\(catId)"
                 

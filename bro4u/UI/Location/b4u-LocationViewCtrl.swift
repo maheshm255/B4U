@@ -38,7 +38,11 @@ class b4u_LocationViewCtrl: UIViewController ,UITableViewDelegate,UITableViewDat
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    
+
+        self.tableView.separatorInset = UIEdgeInsetsZero
+        self.tableView.layoutMargins = UIEdgeInsetsZero
+        
+        self.searchBar.backgroundImage = UIImage()
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager!.desiredAccuracy = kCLLocationAccuracyBest
@@ -139,6 +143,11 @@ class b4u_LocationViewCtrl: UIViewController ,UITableViewDelegate,UITableViewDat
         
         let locationPredictionModel:b4u_LocationSearchModel = bro4u_DataManager.sharedInstance.locationSearchPredictions[indexPath.row]
          cell?.textLabel?.text = locationPredictionModel.lDescription!
+        
+        cell!.separatorInset = UIEdgeInsetsZero
+        cell!.layoutMargins = UIEdgeInsetsZero
+
+        
         return cell!
     }
     
@@ -151,6 +160,13 @@ class b4u_LocationViewCtrl: UIViewController ,UITableViewDelegate,UITableViewDat
         
         self.dismissViewControllerAnimated(true, completion:nil)
  
+    }
+    
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
+    {
+        return 0.01;
+        
     }
     
     
@@ -173,6 +189,7 @@ class b4u_LocationViewCtrl: UIViewController ,UITableViewDelegate,UITableViewDat
         
 
             let input = searchBar.text!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+            
             let latt =  currentLocaiton.coordinate.latitude
             let long = currentLocaiton.coordinate.longitude
             

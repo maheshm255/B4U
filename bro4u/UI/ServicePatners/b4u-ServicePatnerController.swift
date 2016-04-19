@@ -31,7 +31,6 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         
         self.edgesForExtendedLayout = UIRectEdge.None
       self.addLoadingIndicator()
-      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
         self.getAllServicePatners()
         self.checkLoadMoreCondition()
@@ -63,7 +62,6 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         {
             self.allPatners.removeAll()
             self.allPatners = patnersResult.suggestedPatners! + patnersResult.otherPatners!
-            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
 
         }
     }
@@ -129,8 +127,20 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         
        // let catId = catId
 
-        let latitude =  "12.9718915"
-        let longitude = "77.6411545"
+        
+        
+        var latitude =  "12.9718915"
+        var longitude = "77.6411545"
+        
+        if let currentLocaiotn = bro4u_DataManager.sharedInstance.currenLocation
+        {
+            latitude = "\(currentLocaiotn.coordinate.latitude)"
+            
+            longitude = "\(currentLocaiotn.coordinate.longitude)"
+
+        }
+        
+        
         let nextPage = nextPage
         
 //        let params = "/\(nextPage)?cat_id=\(catId)&latitude=\(latitude)&longitude=\(longitude)"

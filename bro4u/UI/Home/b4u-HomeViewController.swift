@@ -142,14 +142,14 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
             let locatinCtrlObj = segue.destinationViewController as! b4u_LocationViewCtrl
 
             locatinCtrlObj.delegate = self
-        }else if segue.identifier == "interMediateSegue1"
+        }else if segue.identifier == "intermediateScreenSegue1"
         {
            
                 let selectedImgSlideObj = sender as! b4u_SliderImage
                 
-                let navCtrl = segue.destinationViewController as! UINavigationController
+              //  let navCtrl = segue.destinationViewController as! UINavigationController
                 
-                let intermediateScreenCtrlObj = navCtrl.topViewController as! b4u_IntermediateViewCtrl
+                let intermediateScreenCtrlObj = segue.destinationViewController as! b4u_IntermediateViewCtrl
             
                 intermediateScreenCtrlObj.selectedImgSlide = selectedImgSlideObj
                 
@@ -283,7 +283,7 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         
         let sliderImgObj:b4u_SliderImage =  bro4u_DataManager.sharedInstance.sliderImages[(gesttureObj.view?.tag)!]
         
-        self.performSegueWithIdentifier("interMediateSegue1", sender: sliderImgObj)
+        self.performSegueWithIdentifier("intermediateScreenSegue1", sender: sliderImgObj)
 
     }
     
