@@ -32,8 +32,17 @@ extension String {
     }
     
     public var validPhoneNumber:Bool {
-        let result = NSTextCheckingResult.phoneNumberCheckingResultWithRange(NSMakeRange(0, self.characters.count), phoneNumber: self)
-        return result.resultType == NSTextCheckingType.PhoneNumber
+
+        if self.length == 10
+        {
+            let charcter  = NSCharacterSet(charactersInString: "+0123456789").invertedSet
+            var filtered:NSString!
+            let inputString:NSArray = self.componentsSeparatedByCharactersInSet(charcter)
+            filtered = inputString.componentsJoinedByString("")
+            return  self == filtered
+        }
+        
+        return false
     }
     
     var isEmail: Bool {

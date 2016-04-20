@@ -27,8 +27,12 @@ class b4u_MyAccountViewController: UIViewController {
         // Do any additional setup after loading the view.
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"loginDismissed", name:kUserDataReceived, object:nil);
 
+     
+        
+        
         self.validateUser()
     }
+   
     
     func validateUser()
     {

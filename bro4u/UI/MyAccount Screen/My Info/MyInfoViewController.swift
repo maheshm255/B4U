@@ -33,6 +33,10 @@ class MyInfoViewController: UIViewController ,UITextFieldDelegate {
         // Do any additional setup after loading the view.
       self.addLoadingIndicator()
 
+        let tapRecognizer = UITapGestureRecognizer()
+        tapRecognizer.addTarget(self, action: "didTapView")
+        self.view.addGestureRecognizer(tapRecognizer)
+        
       self.getData()
 
     }
@@ -57,6 +61,9 @@ class MyInfoViewController: UIViewController ,UITextFieldDelegate {
     }
     
     
+    func didTapView(){
+        self.view.endEditing(true)
+    }
     func updateUI()
     {
         if let myInfoDetailModel = bro4u_DataManager.sharedInstance.myInfoData.first
@@ -150,7 +157,7 @@ class MyInfoViewController: UIViewController ,UITextFieldDelegate {
             return
         }
         
-        guard let phoneNumber = self.mobileNoTxtFld.text where phoneNumber != "" else
+        guard let phoneNumber = self.mobileNoTxtFld.text where phoneNumber.validPhoneNumber  else
         {
             self.view.makeToast(message:"Please enter your mobile number", duration:1.0, position: HRToastPositionDefault)
             return
@@ -190,7 +197,14 @@ class MyInfoViewController: UIViewController ,UITextFieldDelegate {
             return newLength <= 10 // Bool
         }
         
+//        let aSet = NSCharacterSet(charactersInString:"0123456789").invertedSet
+//        let compSepByCharInSet = string.componentsSeparatedByCharactersInSet(aSet)
+//        let numberFiltered = compSepByCharInSet.joinWithSeparator("")
+//        return string == numberFiltered
+        
+        
         return true
+        
     }
     
         
