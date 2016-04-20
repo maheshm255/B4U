@@ -18,28 +18,28 @@ enum inputType:String
 }
 
 class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControllerDelegate , calendarDelegate,timeSlotDelegate {
-
+    
     @IBOutlet weak var expandableTblView: b4u_ExpandableTableView!
-
+    
     var dateBtn:UIButton?
     var timeBtn:UIButton?
     
     var selectedCategoryObj:b4u_Category?
     
     var selectedImgSlide:b4u_SliderImage?
-
+    
     var selectedAttributeOption:b4u_AttributeOptions?
-
+    
     var sectionNumberForRadioInputs = Set<Int>();
-
+    
     
     var selectedIndexPath:Dictionary<String ,[NSIndexPath]> = Dictionary()
     var textBoxGroupVaues:Dictionary<NSIndexPath ,String> = Dictionary()
-
+    
     var numberOfItems:Int = 0
     
     var hederViews:Dictionary<String ,b4u_ExpandableTblHeaderView> = Dictionary()
-
+    
     var selectionDict:Dictionary<String , String> = Dictionary()
     
     var inputArray:[AnyObject]?{
@@ -73,14 +73,16 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
-    
-
+        
+        bro4u_DataManager.sharedInstance.catlogFilterObj = nil
+        
+        
         bro4u_DataManager.sharedInstance.timeSlots = nil
         self.callFilterApi()
-
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -89,9 +91,9 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         
         self.addLoadingIndicator()
     }
-
-   
-
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -104,7 +106,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         if let aSelectedCatObj = selectedCategoryObj
         {
             b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-
+            
             let catId = aSelectedCatObj.catId!
             
             var optionId =  ""
@@ -136,10 +138,10 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                 }
             }
             
-      
+            
             
             self.view.userInteractionEnabled = false
-         //   self.view.alpha = 0.7
+            //   self.view.alpha = 0.7
             
             
             let params = "?cat_id=\(catId)&option_id=\(optionId)&field_name=\(filedName)"
@@ -147,25 +149,25 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                 
                 
                 self.view.userInteractionEnabled = true
-              //  self.view.alpha = 1.0
-
+                //  self.view.alpha = 1.0
+                
                 self.updateUI()
                 
             })
         }else if let aSelectedSlideImg = self.selectedImgSlide
         {
             b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-
+            
             let catId = aSelectedSlideImg.catId!
             let optionId =  aSelectedSlideImg.optionId!
             
             self.view.userInteractionEnabled = false
-
+            
             let params = "?cat_id=\(catId)&option_id=\(optionId)"
             b4u_WebApiCallManager.sharedInstance.getApiCall(filterApi, params:params, result:{(resultObject) -> Void in
                 
                 self.view.userInteractionEnabled = true
-
+                
                 self.updateUI()
                 
             })
@@ -177,28 +179,32 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     {
         
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-
+        
         self.view.userInteractionEnabled = false
-
-            let params = "?date=\(selectedDateStr)"
-            b4u_WebApiCallManager.sharedInstance.getApiCall(kTimeSlotApi, params:params, result:{(resultObject) -> Void in
-                
-                self.view.userInteractionEnabled = true
-
-                b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-
-                
-            })
+        
+        let params = "?date=\(selectedDateStr)"
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kTimeSlotApi, params:params, result:{(resultObject) -> Void in
+            
+            self.view.userInteractionEnabled = true
+            
+            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+            
+            
+        })
     }
     func updateUI()
     {
         b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-
-        self.expandableTblView.reloadData()
         
-        let headerView = self.hederViews["0"]
+        if inputArray?.count > 0
+        {
+            self.expandableTblView.reloadData()
+            
+            let headerView = self.hederViews["0"]
+            
+            headerView?.toggle((headerView?.toggleButton)!)
+       }
         
-        headerView?.toggle((headerView?.toggleButton)!)
     }
     // MARK: UITableViewDataSource
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -211,39 +217,40 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        if section == (inputArray?.count)!
-        {
-            return 1
-        }
-        else
-        {
-            if section <  inputArray?.count
-            {
-            let catFilterAttributes:b4u_CatFilterAttributes = self.inputArray![section] as! b4u_CatFilterAttributes
-            let items = catFilterAttributes.catFilterAttributeOptions
-            if (!items!.isEmpty) {
-                if (self.expandableTblView.sectionOpen != NSNotFound && section == self.expandableTblView.sectionOpen) {
-                    return items!.count
-                }
-            }
-            }else
+        
+            if section == (inputArray?.count)!
             {
                 return 1
             }
-        }
+            else
+            {
+                if section <  inputArray?.count
+                {
+                    let catFilterAttributes:b4u_CatFilterAttributes = self.inputArray![section] as! b4u_CatFilterAttributes
+                    let items = catFilterAttributes.catFilterAttributeOptions
+                    if (!items!.isEmpty) {
+                        if (self.expandableTblView.sectionOpen != NSNotFound && section == self.expandableTblView.sectionOpen) {
+                            return items!.count
+                        }
+                    }
+                }else
+                {
+                    return 1
+                }
+            }
         return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-      
+        
         if indexPath.section  < inputArray?.count
         {
             let catFilterAttributes:b4u_CatFilterAttributes = self.inputArray![indexPath.section] as! b4u_CatFilterAttributes
             let aItem = catFilterAttributes.catFilterAttributeOptions![indexPath.row]
             
             var cell:b4u_ExpandableTblViewCell!
-
+            
             if catFilterAttributes.inputType == inputType.radio.rawValue
             {
                 
@@ -282,7 +289,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             {
                 
                 self.sectionNumberForRadioInputs.insert(indexPath.section)
-
+                
                 let checkBoxCellIdentifier = "textBoxGroupCell"
                 
                 cell = tableView.dequeueReusableCellWithIdentifier(checkBoxCellIdentifier, forIndexPath: indexPath) as! b4u_ExpandableTblViewCell
@@ -303,21 +310,21 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                 if let value = self.textBoxGroupVaues[indexPath]
                 {
                     cell.lblCount.text = value
-
+                    
                 }else
                 {
                     cell.lblCount.text = "0"
- 
+                    
                 }
                 
             }
             return cell
-
+            
         }
         else
         {
             var cell:b4u_DateAndTImeSelectionTblCell!
-
+            
             let dateAndTimeCell = "dateAndTimeCelll"
             
             cell = tableView.dequeueReusableCellWithIdentifier(dateAndTimeCell, forIndexPath: indexPath) as! b4u_DateAndTImeSelectionTblCell
@@ -338,14 +345,14 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             
             cell.btnSelectTime.layer.cornerRadius = 2.0
             cell.btnSelectTime.layer.borderColor = UIColor(red:193.0/255, green:195.0/255, blue: 193.0/255, alpha:1.0).CGColor
-
+            
             cell.btnSelectTime.layer.borderWidth = 1.0
             
             
             return cell
-
+            
         }
-      
+        
     }
     
     // MARK: UITableViewDelegate
@@ -359,42 +366,42 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         headerView.layer.borderWidth = 1.0
         
         headerView.layer.borderColor = UIColor(red:221.0/255, green:221.0/255, blue: 221.0/255, alpha:1.0).CGColor
-
-
-//        let label = UILabel(frame:CGRectMake(10, 0, CGRectGetWidth(headerView.frame)-30,CGRectGetHeight(headerView.frame)))
-//
-//        label.textAlignment = NSTextAlignment.Left
-//        label.font = UIFont(name: "HelveticaNeue-neue", size: 14)
-//        label.textColor = UIColor.blackColor()
-//        
-//        label.backgroundColor = UIColor.blueColor()
-//        
-//        headerView.addSubview(label)
-//        
-//        
-//        
-//        let selectedItems = UILabel(frame:CGRectMake(10, 20, CGRectGetWidth(headerView.frame)-30,CGRectGetHeight(headerView.frame)))
-//        
-//        selectedItems.textAlignment = NSTextAlignment.Left
-//        selectedItems.font = UIFont(name: "HelveticaNeue-neue", size: 14)
-//        selectedItems.textColor = UIColor.blackColor()
-//        
-//        selectedItems.text = "Selected Items"
-//        selectedItems.backgroundColor = UIColor.greenColor()
-//        
-//        headerView.addSubview(selectedItems)
-
-       headerView.lblSelectedItems!.text = ""
-
+        
+        
+        //        let label = UILabel(frame:CGRectMake(10, 0, CGRectGetWidth(headerView.frame)-30,CGRectGetHeight(headerView.frame)))
+        //
+        //        label.textAlignment = NSTextAlignment.Left
+        //        label.font = UIFont(name: "HelveticaNeue-neue", size: 14)
+        //        label.textColor = UIColor.blackColor()
+        //
+        //        label.backgroundColor = UIColor.blueColor()
+        //
+        //        headerView.addSubview(label)
+        //
+        //
+        //
+        //        let selectedItems = UILabel(frame:CGRectMake(10, 20, CGRectGetWidth(headerView.frame)-30,CGRectGetHeight(headerView.frame)))
+        //
+        //        selectedItems.textAlignment = NSTextAlignment.Left
+        //        selectedItems.font = UIFont(name: "HelveticaNeue-neue", size: 14)
+        //        selectedItems.textColor = UIColor.blackColor()
+        //
+        //        selectedItems.text = "Selected Items"
+        //        selectedItems.backgroundColor = UIColor.greenColor()
+        //
+        //        headerView.addSubview(selectedItems)
+        
+        headerView.lblSelectedItems!.text = ""
+        
         
         if section < inputArray?.count
         {
-      
-        let catFilterAttributes:b4u_CatFilterAttributes = self.inputArray![section] as! b4u_CatFilterAttributes
             
-        
-        
-        headerView.lblTitle!.text =  catFilterAttributes.attrName!
+            let catFilterAttributes:b4u_CatFilterAttributes = self.inputArray![section] as! b4u_CatFilterAttributes
+            
+            
+            
+            headerView.lblTitle!.text =  catFilterAttributes.attrName!
             
             
             
@@ -402,7 +409,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             {
                 self.sectionNumberForRadioInputs.insert(section)
             }
-       
+            
         }else
         {
             headerView.lblTitle!.text =  "When do you need service?"
@@ -413,10 +420,10 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         self.hederViews["\(section)"] = headerView
         
         return headerView
-
+        
     }
     
-
+    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
@@ -425,81 +432,81 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         
         if indexPath.section < inputArray?.count
         {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! b4u_ExpandableTblViewCell
-        
-          let catFilterAttributes:b4u_CatFilterAttributes = self.inputArray![indexPath.section] as! b4u_CatFilterAttributes
-        
-    
-        
-        if catFilterAttributes.inputType == inputType.checkBox.rawValue
-        {
-            if  selectedIndexPath["\(indexPath.section)"]?.count > 0
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as! b4u_ExpandableTblViewCell
+            
+            let catFilterAttributes:b4u_CatFilterAttributes = self.inputArray![indexPath.section] as! b4u_CatFilterAttributes
+            
+            
+            
+            if catFilterAttributes.inputType == inputType.checkBox.rawValue
             {
-                //This is on click of same Cell
-                if (selectedIndexPath["\(indexPath.section)"]!.contains(indexPath)) {
-                    let i = selectedIndexPath["\(indexPath.section)"]?.indexOf(indexPath)
-                    selectedIndexPath["\(indexPath.section)"]?.removeAtIndex(i!)
-                    cell.iconImgView.image = UIImage(named: "squareGray")
-                }else
+                if  selectedIndexPath["\(indexPath.section)"]?.count > 0
                 {
-                    cell.iconImgView.image = UIImage(named: "squareBlue")
-                    selectedIndexPath["\(indexPath.section)"]?.append(indexPath)
+                    //This is on click of same Cell
+                    if (selectedIndexPath["\(indexPath.section)"]!.contains(indexPath)) {
+                        let i = selectedIndexPath["\(indexPath.section)"]?.indexOf(indexPath)
+                        selectedIndexPath["\(indexPath.section)"]?.removeAtIndex(i!)
+                        cell.iconImgView.image = UIImage(named: "squareGray")
+                    }else
+                    {
+                        cell.iconImgView.image = UIImage(named: "squareBlue")
+                        selectedIndexPath["\(indexPath.section)"]?.append(indexPath)
+                        
+                    }
+                }
                     
-                }
-            }
-                
-            else
-            {
-                cell.iconImgView.image = UIImage(named: "squareBlue")
-                
-                selectedIndexPath["\(indexPath.section)"] = [indexPath]
-            }
-            
-            self.updateHeaderForSection(indexPath.section)
-
-        }
-        else if catFilterAttributes.inputType == inputType.radio.rawValue
-        {
-            //This is on click of same Cell
-            
-            if  selectedIndexPath["\(indexPath.section)"]?.count > 0
-            {
-                if (selectedIndexPath["\(indexPath.section)"]!.contains(indexPath)) {
-                    let i = selectedIndexPath["\(indexPath.section)"]?.indexOf(indexPath)
-                    selectedIndexPath["\(indexPath.section)"]?.removeAtIndex(i!)
-                    cell.iconImgView.image = UIImage(named: "radioGray")
-                }
                 else
                 {
-                    let i = selectedIndexPath["\(indexPath.section)"]?.first
+                    cell.iconImgView.image = UIImage(named: "squareBlue")
                     
-                    let previosuCell = tableView.cellForRowAtIndexPath(i!) as! b4u_ExpandableTblViewCell
-
-                    previosuCell.iconImgView.image = UIImage(named: "radioGray")
-                    
+                    selectedIndexPath["\(indexPath.section)"] = [indexPath]
+                }
+                
+                self.updateHeaderForSection(indexPath.section)
+                
+            }
+            else if catFilterAttributes.inputType == inputType.radio.rawValue
+            {
+                //This is on click of same Cell
+                
+                if  selectedIndexPath["\(indexPath.section)"]?.count > 0
+                {
+                    if (selectedIndexPath["\(indexPath.section)"]!.contains(indexPath)) {
+                        let i = selectedIndexPath["\(indexPath.section)"]?.indexOf(indexPath)
+                        selectedIndexPath["\(indexPath.section)"]?.removeAtIndex(i!)
+                        cell.iconImgView.image = UIImage(named: "radioGray")
+                    }
+                    else
+                    {
+                        let i = selectedIndexPath["\(indexPath.section)"]?.first
+                        
+                        let previosuCell = tableView.cellForRowAtIndexPath(i!) as! b4u_ExpandableTblViewCell
+                        
+                        previosuCell.iconImgView.image = UIImage(named: "radioGray")
+                        
+                        cell.iconImgView.image = UIImage(named: "radioBlue")
+                        selectedIndexPath["\(indexPath.section)"] = [indexPath]
+                    }
+                }else
+                {
                     cell.iconImgView.image = UIImage(named: "radioBlue")
                     selectedIndexPath["\(indexPath.section)"] = [indexPath]
                 }
-            }else
-            {
-                cell.iconImgView.image = UIImage(named: "radioBlue")
-                selectedIndexPath["\(indexPath.section)"] = [indexPath]
+                
+                self.updateHeaderForSection(indexPath.section)
+                
             }
-            
-            self.updateHeaderForSection(indexPath.section)
-
-        }
             
         }
         else
         {
             
         }
-    
+        
     }
     
-   
-     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
         
         if inputArray!.count  == indexPath.section
@@ -561,14 +568,14 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     }
     
     
-       func updateHeaderForSection(section:Int)
+    func updateHeaderForSection(section:Int)
     {
         var indexPaths = self.selectedIndexPath["\(section)"]
         
-       indexPaths =  indexPaths!.sort { $0.row < $1.row }
-
+        indexPaths =  indexPaths!.sort { $0.row < $1.row }
+        
         let catFilterAttributes:b4u_CatFilterAttributes = self.inputArray![section] as! b4u_CatFilterAttributes
-
+        
         var selectedItems = ""
         for (_,indexPath) in (indexPaths?.enumerate())!
         {
@@ -576,11 +583,11 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             
             if selectedItems == ""
             {
-              selectedItems = selectedItems + attributeOptions.optionName!
+                selectedItems = selectedItems + attributeOptions.optionName!
             }else
             {
                 selectedItems = selectedItems +  " , " + attributeOptions.optionName!
-
+                
             }
         }
         
@@ -606,7 +613,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     
     func btnSelectDateClicked(sender:AnyObject)
     {
-    
+        
         let btn = sender as! UIButton
         
         self.dateBtn = btn
@@ -641,9 +648,9 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             completion: nil)
         
         
-      //  UIPopoverArrowDirection(rawValue: 0)
-
-
+        //  UIPopoverArrowDirection(rawValue: 0)
+        
+        
     }
     
     func adaptivePresentationStyleForPresentationController(
@@ -660,7 +667,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         
         quickBookViewCtrl.modalPresentationStyle = .Popover
         quickBookViewCtrl.preferredContentSize = CGSizeMake(300, 360)
-       // quickBookViewCtrl.delegate = self
+        // quickBookViewCtrl.delegate = self
         
         let popoverMenuViewController = quickBookViewCtrl.popoverPresentationController
         popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
@@ -672,16 +679,16 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             width: 1,
             height: 1)
         presentViewController(
-           quickBookViewCtrl,
+            quickBookViewCtrl,
             animated: true,
             completion: nil)
-
+        
     }
-  
+    
     func minusBtnClicked(sender:AnyObject)
     {
         let btn = sender as! b4u_Button
-
+        
         
         let indexPath = btn.indexPath!
         
@@ -695,18 +702,18 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         {
             count = count - 1
             
-           // self.expandableTblView.reloadData()
+            // self.expandableTblView.reloadData()
             
             cell.lblCount.text = "\(count)"
-
+            
             self.textBoxGroupVaues[indexPath] = cell.lblCount.text
-
+            
             
         }
         if count == 0
         {
             cell.lblCount.text = "\(count)"
-        
+            
             if  self.selectedIndexPath["\(btn.tag)"]?.count > 0
             {
                 //This is on click of same Cell
@@ -717,51 +724,51 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                     self.textBoxGroupVaues.removeValueForKey(indexPath)
                 }
             }
-                
-          
+            
+            
         }
     }
     
     func plusBtnClicked(sender:AnyObject)
     {
         let btn = sender as! b4u_Button
-       // numberOfItems += 1
+        // numberOfItems += 1
         
         
         let indexPath = btn.indexPath!
-
+        
         
         let cell = self.expandableTblView.cellForRowAtIndexPath(indexPath) as! b4u_ExpandableTblViewCell
-
+        
         
         cell.lblCount.text = "\(Int(cell.lblCount.text!)! + 1)"
-
         
-            if   self.selectedIndexPath["\(btn.tag)"]?.count > 0
-            {
-                //This is on click of same Cell
-                if (selectedIndexPath["\(indexPath.section)"]!.contains(indexPath)) {
-               
-                    self.textBoxGroupVaues[indexPath] = cell.lblCount.text
-
-                }else
-                {
-                    selectedIndexPath["\(indexPath.section)"]?.append(indexPath)
-                    self.textBoxGroupVaues[indexPath] = cell.lblCount.text
-
-                }
-            }
+        
+        if   self.selectedIndexPath["\(btn.tag)"]?.count > 0
+        {
+            //This is on click of same Cell
+            if (selectedIndexPath["\(indexPath.section)"]!.contains(indexPath)) {
                 
-            else
-            {
-                selectedIndexPath["\(indexPath.section)"] = [indexPath]
                 self.textBoxGroupVaues[indexPath] = cell.lblCount.text
+                
+            }else
+            {
+                selectedIndexPath["\(indexPath.section)"]?.append(indexPath)
+                self.textBoxGroupVaues[indexPath] = cell.lblCount.text
+                
             }
+        }
+            
+        else
+        {
+            selectedIndexPath["\(indexPath.section)"] = [indexPath]
+            self.textBoxGroupVaues[indexPath] = cell.lblCount.text
+        }
         
         
-
         
-//        self.expandableTblView.reloadData()
+        
+        //        self.expandableTblView.reloadData()
     }
     
     func btnSelectTimeClicked(sender:AnyObject)
@@ -835,12 +842,12 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             print("Select Date And Time")
             
             self.view.makeToast(message:"Please select your preferred time.", duration:1.0 , position: HRToastPositionDefault)
-
+            
             return
         }
         
         
-
+        
         var catId:String?
         if let aSelectedCatObj = selectedCategoryObj
         {
@@ -848,7 +855,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         }else if let aSlidingImgObj = self.selectedImgSlide
         {
             catId = aSlidingImgObj.catId
-
+            
         }
         
         self.servicePatnerAPIRequest(catId!, selectedDate:selectedDate, selectedTimeSlot: selectedTimeSlot)
@@ -871,7 +878,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         }
         
         var params = "?cat_id=\(catId)"
-                
+        
         let keys = selectedIndexPath.keys
         
         for (_ , key) in keys.enumerate()
@@ -925,8 +932,8 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             }
             
         }
-      
-      
+        
+        
         
         do {
             let jsonData = try NSJSONSerialization.dataWithJSONObject(self.selectionDict, options: NSJSONWritingOptions.PrettyPrinted)
@@ -942,32 +949,32 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         }
         
         
-      bro4u_DataManager.sharedInstance.userSelectedFilterParams = params
-      
-      let dateStr = NSDate.dateFormat().stringFromDate(selectedDate)
-      
-      params = params + "&service_date=\(dateStr)"
-      
-      params = params + "&service_time=\(selectedTimeSlot)"
-      
-      params = params + "&latitude=\(latitude)&longitude=\(longitude)"
-      
-      
+        bro4u_DataManager.sharedInstance.userSelectedFilterParams = params
+        
+        let dateStr = NSDate.dateFormat().stringFromDate(selectedDate)
+        
+        params = params + "&service_date=\(dateStr)"
+        
+        params = params + "&service_time=\(selectedTimeSlot)"
+        
+        params = params + "&latitude=\(latitude)&longitude=\(longitude)"
+        
+        
         bro4u_DataManager.sharedInstance.suggestedPatnersResult = nil
         
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-
+        
         self.view.userInteractionEnabled = false
-
+        
         b4u_WebApiCallManager.sharedInstance.getApiCall(kShowServicePatnerApi, params:params, result:{(resultObject) -> Void in
-          
+            
             self.view.userInteractionEnabled = true
-
+            
             b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-
+            
             
             self.moveToSuggestedPatner()
-//         self.performSelectorOnMainThread("moveToSuggestedPatner", withObject:nil, waitUntilDone:true)
+            //         self.performSelectorOnMainThread("moveToSuggestedPatner", withObject:nil, waitUntilDone:true)
             
         })
     }
@@ -975,7 +982,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     func moveToSuggestedPatner()
     {
         b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-
+        
         if bro4u_DataManager.sharedInstance.suggestedPatnersResult?.suggestedPatners?.count > 0
         {
             self.performSegueWithIdentifier("servicePatnerSegue", sender:nil)
@@ -991,7 +998,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     @IBAction func showServicePatnerBtnClicked(sender: AnyObject)
     {
         var selectedSectons = Set<Int>();
-
+        
         for (_ , section) in self.selectedIndexPath.keys.enumerate()
         {
             selectedSectons.insert(Int(section)!)
@@ -1002,18 +1009,18 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             self.callServicePatnerApi()
         }else
         {
-            // TODO 
+            // TODO
             
             print("ALL mandatory radio box are not selected")
             
             self.view.makeToast(message:"Please select all the filters", duration:1.0 , position: HRToastPositionDefault)
-
+            
         }
         
     }
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
@@ -1026,7 +1033,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             servicePatnerCtrl.selectedCategoryObj  = self.selectedCategoryObj
         }
     }
-  
+    
     func didSelectDate(date:NSDate)
     {
         
@@ -1043,11 +1050,11 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             tiemBtn.setTitle("Select Time", forState:UIControlState.Normal)
         }
     }
-
+    
     func didSelectTimeSlot(tiemSlot:String)
     {
         self.timeBtn!.setTitle(tiemSlot, forState:UIControlState.Normal)
-
+        
     }
     
     func addLoadingIndicator ()
@@ -1057,7 +1064,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
     }
     
-
+    
     
     
 }
