@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyInfoViewController: UIViewController ,UITextFieldDelegate {
+class MyInfoViewController: UIViewController ,UITextFieldDelegate ,UIPopoverPresentationControllerDelegate,dateSelectionDelegate{
 
   @IBOutlet var nameTxtFld: UITextField!
   @IBOutlet var mobileNoTxtFld: UITextField!
@@ -34,8 +34,17 @@ class MyInfoViewController: UIViewController ,UITextFieldDelegate {
       self.addLoadingIndicator()
 
         let tapRecognizer = UITapGestureRecognizer()
+        
         tapRecognizer.addTarget(self, action: "didTapView")
+        
+        self.dateBtn.setTitle("Select DOB", forState:UIControlState.Normal)
+
+        
         self.view.addGestureRecognizer(tapRecognizer)
+        
+        self.dateBtn.layer.cornerRadius = 2.0
+        self.dateBtn.layer.borderWidth = 1.0
+        self.dateBtn.layer.borderColor =  UIColor(red:193.0/255, green:195.0/255, blue: 193.0/255, alpha:1.0).CGColor
         
       self.getData()
 
@@ -74,6 +83,8 @@ class MyInfoViewController: UIViewController ,UITextFieldDelegate {
              self.emailTxtFld.text = myInfoDetailModel.email!
              self.userNameLbl.text = myInfoDetailModel.fullName!
             
+            
+            self.didSelecteDate(myInfoDetailModel.dob)
             if let gender = myInfoDetailModel.gender
             {
                 if gender == "male"
@@ -111,6 +122,33 @@ class MyInfoViewController: UIViewController ,UITextFieldDelegate {
     self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
     b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
   }
+    
+    func showDatePicker()
+    {
+        let storyboard : UIStoryboard = self.storyboard!
+        
+        let datePickerCtrl:b4u_DatePickerCtrl = storyboard.instantiateViewControllerWithIdentifier("datePickerCtrl") as! b4u_DatePickerCtrl
+        
+        datePickerCtrl.modalPresentationStyle = .Popover
+        datePickerCtrl.preferredContentSize = CGSizeMake(300, 360)
+        datePickerCtrl.delegate = self
+        
+        let popoverMenuViewController = datePickerCtrl.popoverPresentationController
+        popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
+        popoverMenuViewController?.delegate = self
+        popoverMenuViewController?.sourceView = self.view
+        popoverMenuViewController?.sourceRect = CGRect(
+            x: CGRectGetMidX(self.view.bounds),
+            y: CGRectGetMidY(self.view.bounds),
+            width: 1,
+            height: 1)
+        presentViewController(
+            datePickerCtrl,
+            animated: true,
+            completion: nil)
+        
+    }
+
 
 
     /**
@@ -123,6 +161,8 @@ class MyInfoViewController: UIViewController ,UITextFieldDelegate {
     
     
     @IBAction func dateBtnAction(sender: AnyObject) {
+        
+        self.showDatePicker()
     }
     
     
@@ -169,7 +209,11 @@ class MyInfoViewController: UIViewController ,UITextFieldDelegate {
             return
         }
         
-        let dateOfBirth = ""
+        guard let dateOfBirth = self.dateBtn.titleLabel?.text where dateOfBirth != "Select DOB" else
+        {
+            self.view.makeToast(message:"Please Select Date Of Birth", duration:1.0, position: HRToastPositionDefault)
+            return
+        }
         
         let params = "?user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)&email=\(emailId)&mobile=\(phoneNumber)&name=\(userName)&dob=\(dateOfBirth)&gender=\(gender)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kMyAccountUpdateProfileIndex, params:params, result:{(resultObject) -> Void in
@@ -216,4 +260,22 @@ class MyInfoViewController: UIViewController ,UITextFieldDelegate {
     }
 
 
+    
+    func adaptivePresentationStyleForPresentationController(
+        controller: UIPresentationController) -> UIModalPresentationStyle {
+            return .None
+    }
+    
+    
+    func didSelecteDate(dateStr:String?)
+    {
+        if let dateStr = dateStr where dateStr != ""
+        {
+          self.dateBtn.setTitle(dateStr, forState:UIControlState.Normal)
+        }else
+        {
+            self.dateBtn.setTitle("Select DOB", forState:UIControlState.Normal)
+        }
+    }
+    
 }

@@ -72,11 +72,18 @@ class PastOrdersTableViewCell: UITableViewCell {
         if let orderStatus = orderDataModel.statusDesc
         {
             self.serviceStatusLbl.text = " \(orderStatus) "
+            
+            if orderStatus == "Cancelled"
+            {
+                self.btnWriteReview.hidden = true
+            }
         }
         if let price = orderDataModel.finalTotal //Need to check Key
         {
             self.priceLbl.text = "Rs. \(price).00"
         }
+        
+        
     }
 
 }

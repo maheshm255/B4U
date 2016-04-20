@@ -740,35 +740,34 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         
         let cell = self.expandableTblView.cellForRowAtIndexPath(indexPath) as! b4u_ExpandableTblViewCell
         
+        let value = Int(cell.lblCount.text!)!
         
-        cell.lblCount.text = "\(Int(cell.lblCount.text!)! + 1)"
-        
-        
-        if   self.selectedIndexPath["\(btn.tag)"]?.count > 0
+        if value < 5
         {
-            //This is on click of same Cell
-            if (selectedIndexPath["\(indexPath.section)"]!.contains(indexPath)) {
-                
-                self.textBoxGroupVaues[indexPath] = cell.lblCount.text
-                
-            }else
+            cell.lblCount.text = "\(Int(cell.lblCount.text!)! + 1)"
+            
+            
+            if   self.selectedIndexPath["\(btn.tag)"]?.count > 0
             {
-                selectedIndexPath["\(indexPath.section)"]?.append(indexPath)
-                self.textBoxGroupVaues[indexPath] = cell.lblCount.text
+                //This is on click of same Cell
+                if (selectedIndexPath["\(indexPath.section)"]!.contains(indexPath)) {
+                    
+                    self.textBoxGroupVaues[indexPath] = cell.lblCount.text
+                    
+                }else
+                {
+                    selectedIndexPath["\(indexPath.section)"]?.append(indexPath)
+                    self.textBoxGroupVaues[indexPath] = cell.lblCount.text
+                    
+                }
+            }
                 
+            else
+            {
+                selectedIndexPath["\(indexPath.section)"] = [indexPath]
+                self.textBoxGroupVaues[indexPath] = cell.lblCount.text
             }
         }
-            
-        else
-        {
-            selectedIndexPath["\(indexPath.section)"] = [indexPath]
-            self.textBoxGroupVaues[indexPath] = cell.lblCount.text
-        }
-        
-        
-        
-        
-        //        self.expandableTblView.reloadData()
     }
     
     func btnSelectTimeClicked(sender:AnyObject)
@@ -827,6 +826,8 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         
         self.selectedIndexPath.removeAll()
         
+    
+        self.textBoxGroupVaues.removeAll()
         bro4u_DataManager.sharedInstance.selectedDate = nil
         bro4u_DataManager.sharedInstance.selectedTimeSlot = nil
         
@@ -869,13 +870,15 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         var latitude =  "12.9718915"
         var longitude = "77.6411545"
         
-        if let currentLocaiotn = bro4u_DataManager.sharedInstance.currenLocation
-        {
-            latitude = "\(currentLocaiotn.coordinate.latitude)"
-            
-            longitude = "\(currentLocaiotn.coordinate.longitude)"
-            
-        }
+        //TODO - Uncomment below line for device 
+        
+//        if let currentLocaiotn = bro4u_DataManager.sharedInstance.currenLocation
+//        {
+//            latitude = "\(currentLocaiotn.coordinate.latitude)"
+//            
+//            longitude = "\(currentLocaiotn.coordinate.longitude)"
+//            
+//        }
         
         var params = "?cat_id=\(catId)"
         

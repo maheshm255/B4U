@@ -129,7 +129,12 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
         if self.allWebApiSuccessCount == 3
         {
             self.configureWebViews()
-            self.addReviews()
+            
+            if bro4u_DataManager.sharedInstance.vendorProfile?.reviews?.count > 0
+            {
+                self.addReviews()
+
+            }
             self.configurePartnerUI()
             
             self.scrollViewDetails.pagingEnabled = true
@@ -143,28 +148,34 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
            
             self.detailBaseViewHeight.constant = self.heightForDescription + 10
 
-            let profileModelObj = bro4u_DataManager.sharedInstance.vendorProfile!
-            
-            self.imgViewTopBackground.downloadedFrom(link:profileModelObj.defaultBanner!, contentMode:UIViewContentMode.ScaleToFill)
+            if let profileModelObj = bro4u_DataManager.sharedInstance.vendorProfile
+            {
+                
+                self.imgViewTopBackground.downloadedFrom(link:profileModelObj.defaultBanner!, contentMode:UIViewContentMode.ScaleToFill)
+                
+                
+                self.vendorIcon.downloadedFrom(link:profileModelObj.profilePic!, contentMode:UIViewContentMode.ScaleToFill)
+                
+                self.lblVendorName.text = profileModelObj.vendorName!
+                self.lblVendorType.text = profileModelObj.catName!
+                
+                self.lblNumberOReviews.text = "\(profileModelObj.serviceQuality!) % Positive"
+                
+                self.lblFeedback.text = "(\(profileModelObj.reviewCount!) Reviews)"
+                
+                
+                self.lblTimeSince.text = "Since \(profileModelObj.inBusiness!)"
+                
+                self.lblNumberOfJobDone.text = " \(profileModelObj.completedJob!) "
+                
+                self.lblNumberOfProfiles.text = " \(profileModelObj.profileViews!) "
+                
+                self.lblPrice.text = "  Rs. \( bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)  "
+                
+                self.btnReview.setTitle("Reviews(\(profileModelObj.reviewCount!))", forState:UIControlState.Normal)
 
+            }
             
-            self.vendorIcon.downloadedFrom(link:profileModelObj.profilePic!, contentMode:UIViewContentMode.ScaleToFill)
-            
-            self.lblVendorName.text = profileModelObj.vendorName!
-            self.lblVendorType.text = profileModelObj.catName!
-            
-            self.lblNumberOReviews.text = "\(profileModelObj.serviceQuality!) % Positive"
-
-            self.lblFeedback.text = "(\(profileModelObj.reviewCount!) Reviews)"
-            
-            
-            self.lblTimeSince.text = profileModelObj.inBusiness!
-            
-            self.lblNumberOfJobDone.text = " \(profileModelObj.completedJob!) "
-            
-            self.lblNumberOfProfiles.text = " \(profileModelObj.profileViews!) "
-            
-             self.lblPrice.text = "  Rs. \( bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)  "
             
             
             if bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.premiumPartner! == "yes"
@@ -186,7 +197,6 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
             self.lblNumberOfJobDone.layer.borderColor =  UIColor(red:142.0/255, green: 142.0/255, blue: 142.0/255, alpha:1.0).CGColor
             
             
-            self.btnReview.setTitle("Reviews(\(profileModelObj.reviewCount!))", forState:UIControlState.Normal)
         }
     }
     
@@ -242,49 +252,57 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
     
     func configurePartnerUI()
     {
-        let label = UITextView()
+      
         
-        label.backgroundColor = UIColor.whiteColor()
-        label.text =  "About Us \n" + (bro4u_DataManager.sharedInstance.vendorProfile?.aboutVendor!)!
-        
-        label.layer.cornerRadius = 2.0
-        label.layer.borderColor = UIColor.lightGrayColor().CGColor
-        label.layer.borderWidth = 1.0
-        
-        label.textContainerInset = UIEdgeInsetsMake(10, 0, 10, 0);
+        if let aboutVendor = bro4u_DataManager.sharedInstance.vendorProfile?.aboutVendor
+        {
+            let label = UITextView()
+            
+            label.backgroundColor = UIColor.whiteColor()
+            label.text =  "About Us \n" + aboutVendor
 
-        self.scrollViewDetails.addSubview(label)
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-        label.font = UIFont(name:"Helvetica", size:16.0)
-        
-        label.textColor = UIColor.lightGrayColor()
-        let width  = UIScreen.mainScreen().bounds.width
+            
+            label.layer.cornerRadius = 2.0
+            label.layer.borderColor = UIColor.lightGrayColor().CGColor
+            label.layer.borderWidth = 1.0
+            
+            label.textContainerInset = UIEdgeInsetsMake(10, 0, 10, 0);
+            
+            self.scrollViewDetails.addSubview(label)
+            
+            label.translatesAutoresizingMaskIntoConstraints = false
+            
+            
+            label.font = UIFont(name:"Helvetica", size:16.0)
+            
+            label.textColor = UIColor.lightGrayColor()
+            let width  = UIScreen.mainScreen().bounds.width
+            
+            
+            let leading = NSLayoutConstraint(item:label, attribute:.Leading, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Leading, multiplier:1.0, constant:2 * width - 20)
+            
+            self.scrollViewDetails.addConstraint(leading)
+            
+            
+            let top = NSLayoutConstraint(item:label, attribute:.Top, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Top, multiplier:1.0, constant:2)
+            
+            self.scrollViewDetails.addConstraint(top)
+            
+            let metricDict = ["w":self.view.bounds.size.width - 10 ,"H":300]
+            
+            
+            label.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[view(w)]", options:[], metrics: metricDict, views: ["view":label]))
+            
+            label.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[view(H)]", options:[], metrics: metricDict, views: ["view":label]))
+            
+            self.heightForAboutPartner = 300
+            
+            let tralling = NSLayoutConstraint(item:label, attribute:.Trailing, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Trailing, multiplier:1.0, constant:10.0)
+            //        
+            self.scrollViewDetails.addConstraint(tralling)
 
+        }
         
-        let leading = NSLayoutConstraint(item:label, attribute:.Leading, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Leading, multiplier:1.0, constant:2 * width - 20)
-        
-        self.scrollViewDetails.addConstraint(leading)
-        
-        
-        let top = NSLayoutConstraint(item:label, attribute:.Top, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Top, multiplier:1.0, constant:2)
-        
-        self.scrollViewDetails.addConstraint(top)
-        
-        let metricDict = ["w":self.view.bounds.size.width - 10 ,"H":300]
-
-        
-        label.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[view(w)]", options:[], metrics: metricDict, views: ["view":label]))
-
-        label.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[view(H)]", options:[], metrics: metricDict, views: ["view":label]))
-        
-        self.heightForAboutPartner = 300
-        
-       let tralling = NSLayoutConstraint(item:label, attribute:.Trailing, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Trailing, multiplier:1.0, constant:10.0)
-//        
-       self.scrollViewDetails.addConstraint(tralling)
         
      
     }

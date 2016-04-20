@@ -46,6 +46,9 @@ class b4u_ReviewServiceViewController: UIViewController {
         
         self.partnerCameOnTime = selectedOrder?.onTime
         
+        
+        self.lblVendorName.text = selectedOrder?.vendorName
+        
         self.refreshComeOnTime()
         self.refreshQualityUI()
         self.refreshStarSelection()
@@ -285,6 +288,12 @@ class b4u_ReviewServiceViewController: UIViewController {
             
             
             b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+            
+            self.view.makeToast(message:"Reveiw Submited Successfully", duration:2.0, position:HRToastPositionDefault)
+
+            
+            self.navigationController?.popViewControllerAnimated(true)
+            
             
             
         })

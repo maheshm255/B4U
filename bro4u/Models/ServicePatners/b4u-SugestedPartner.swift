@@ -68,7 +68,21 @@ class b4u_SugestedPartner: NSObject {
         catlogMaxOfferAmount = sugestedPartnerDetailsDict["catalog_max_offer_amount"] as? String
         custPrice = sugestedPartnerDetailsDict["cust_price"] as? String
         defaultBanner = sugestedPartnerDetailsDict["default_banner"] as? String
-        deliveryCharge = sugestedPartnerDetailsDict["delivery_charge"] as? NSNumber
+        
+         let deliveryC = sugestedPartnerDetailsDict["delivery_charge"] as? NSNumber
+        
+            if deliveryC != nil
+            {
+                self.deliveryCharge = deliveryC
+            }
+            else
+            {
+                let deliveryC = sugestedPartnerDetailsDict["delivery_charge"] as? String
+
+                self.deliveryCharge = NSNumber(double:Double(deliveryC!)!)
+
+            }
+        
         distance = "\(sugestedPartnerDetailsDict["distance"] as! NSNumber)"
         itemDesc = sugestedPartnerDetailsDict["item_desc"] as? String
         imgAltText = sugestedPartnerDetailsDict["image_alt_text"] as? String

@@ -9,6 +9,7 @@
 import UIKit
 
 class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate ,quantityDelegate,vendorSortDelegate{
+    @IBOutlet weak var btnSort: UIBarButtonItem!
 
     @IBOutlet weak var btnLoadMore: UIButton!
     @IBOutlet weak var lblCurrentLocation: UILabel!
@@ -63,6 +64,7 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
             self.allPatners.removeAll()
             self.allPatners = patnersResult.suggestedPatners! + patnersResult.otherPatners!
 
+            
         }
     }
     func checkLoadMoreCondition()
@@ -179,11 +181,20 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         cell.lblVendorName.text = aPatner.vendorName
       
         cell.lblVendorReiviews.text = "\(aPatner.reviewCount!) Reviews"
-        cell.lblVendorDistance.text = "\(aPatner.distance!) Kms away"
+        cell.lblVendorDistance.text =  String(format: "%.2@ Kms away",aPatner.distance!)
+         //   "\(aPatner.distance!) Kms away"
         
         
         self.navigationItem.title = aPatner.catName!
 
+        if aPatner.catId! == "3" ||  aPatner.catId! == "4"
+        {
+            self.navigationItem.rightBarButtonItems = [btnSort]
+        }else
+        {
+            self.navigationItem.rightBarButtonItems = []
+
+        }
         
         if let offerPreice = aPatner.offerPrice , let price = aPatner.price
         {
@@ -471,6 +482,9 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
             
         }
         
+        
+        self.tableViewServicePatner.scrollToRowAtIndexPath( NSIndexPath(forRow:0, inSection: 0)
+, atScrollPosition:.Top, animated:true)
     }
     
     

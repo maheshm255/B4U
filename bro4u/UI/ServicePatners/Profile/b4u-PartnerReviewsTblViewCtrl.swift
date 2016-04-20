@@ -30,10 +30,14 @@ class b4u_PartnerReviewsTblViewCtrl: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         
-        if (bro4u_DataManager.sharedInstance.vendorProfile?.reviews?.count)! > 0
+        if let reviews = bro4u_DataManager.sharedInstance.vendorProfile?.reviews
         {
-            return (bro4u_DataManager.sharedInstance.vendorProfile?.reviews?.count)! + 1
+            if reviews.count > 0
+            {
+                return reviews.count + 1
+            }
         }
+       
         return 0
     }
 
@@ -63,7 +67,7 @@ class b4u_PartnerReviewsTblViewCtrl: UITableViewController {
         
         cell.btnReadMore.tag = indexPath.section
         
-//        cell.btnReadMore.addTarget(self, action:"btnReadMorePressed:", forControlEvents:UIControlEvents.TouchUpInside)
+        cell.btnReadMore.addTarget(self, action:"btnReadMorePressed:", forControlEvents:UIControlEvents.TouchUpInside)
 //        
 
         return cell

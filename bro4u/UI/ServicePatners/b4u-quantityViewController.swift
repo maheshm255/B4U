@@ -21,10 +21,16 @@ class b4u_quantityViewController: UIViewController , UIPickerViewDelegate ,UIPic
     var selectedQuantity:String?
     var delegate:quantityDelegate?
     
+    @IBOutlet weak var pickerView: UIPickerView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.pickerView.selectedRowInComponent(0)
+        
+        selectedQuantity = "1"
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,7 +39,6 @@ class b4u_quantityViewController: UIViewController , UIPickerViewDelegate ,UIPic
     }
     
 
-    @IBOutlet weak var pickerView: UIPickerView!
     /*
     // MARK: - Navigation
 
