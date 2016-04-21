@@ -265,6 +265,10 @@ class b4u_IntermediateViewCtrl: UIViewController {
         }
     }
     
+    @IBAction func btnHomePressed(sender: AnyObject) {
+        
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
     
     func addLoadingIndicator () {
         self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)

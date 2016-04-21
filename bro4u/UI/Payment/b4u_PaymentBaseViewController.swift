@@ -712,6 +712,10 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
 
     })
   }
+    @IBAction func homeBtnPressed(sender: AnyObject) {
+        
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
 
 }
 
