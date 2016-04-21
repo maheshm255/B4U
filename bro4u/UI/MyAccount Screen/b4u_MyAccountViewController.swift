@@ -164,9 +164,9 @@ class b4u_MyAccountViewController: UIViewController {
   
   
   
-  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    return 105.0;
-  }
+//  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//    return 105.0;
+//  }
   
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
