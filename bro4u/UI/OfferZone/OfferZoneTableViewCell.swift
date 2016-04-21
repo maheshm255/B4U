@@ -43,6 +43,10 @@ class OfferZoneTableViewCell: UITableViewCell {
         }
         if let couponCode = offerZoneDataModel.couponCode
         {
+            
+            self.offerCodeLbl.layer.borderWidth = 1
+            self.offerCodeLbl.layer.borderColor = UIColor.lightGrayColor().CGColor
+
             self.offerCodeLbl.text = couponCode
         }
     }
