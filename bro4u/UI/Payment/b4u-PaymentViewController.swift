@@ -239,7 +239,7 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         {
             cell.typeLabel.hidden  = false
             cell.typeImageView.hidden = true
-            cell.typeLabel?.text = itemDict[indexPath.row] as! String
+            cell.typeLabel?.text = itemDict[indexPath.row] as? String
             
         }
         cell.infoLabel?.text = PaymentGatewayOffersModel.offerMsg
@@ -276,6 +276,8 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     
     @IBAction func placeOrder(sender: AnyObject){
         
+        if radioButtonSelected != nil
+        {
         if radioButtonSelected.row >= 0 {
             
             switch radioButtonSelected.row {
@@ -291,6 +293,10 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
                 break
             }
 
+        }
+        }else
+        {
+            self.view.makeToast(message:"Please Select Payment Option", duration:1.0, position:HRToastPositionDefault)
         }
         
     }
