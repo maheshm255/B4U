@@ -66,6 +66,9 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
 
         lblServiceStatus.layer.borderWidth = 1.0
         lblServiceStatus.layer.borderColor = UIColor.lightGrayColor().CGColor
+      
+      let backButton = UIBarButtonItem(title: "< Back", style: .Plain, target: self, action:#selector(b4u_OrderConfirmedCODViewController.doneBtnPressed))
+      navigationItem.leftBarButtonItem = backButton
 
 
     }
@@ -85,6 +88,10 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
         // Pass the selected object to the new view controller.
     }
     */
+  
+  func doneBtnPressed() {
+    navigationController?.popToRootViewControllerAnimated(true)
+  }
     
 
   

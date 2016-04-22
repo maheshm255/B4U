@@ -9,7 +9,7 @@
 import UIKit
 
 enum paymentOption: Int{
-    case kPaytm = 0
+    case kPaytm = 1
     case kCCDC
     case kNetBanking
     case kCOD
@@ -18,10 +18,9 @@ enum paymentOption: Int{
 protocol paymentDelegate
 {
     func infoBtnClicked()
-    
     func navigateToPaymentGateWay(gateWayOpton:paymentOption)
-    
 }
+
 class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate,UITextFieldDelegate {
     
     @IBOutlet weak var paymentTableView: UITableView!
@@ -32,7 +31,7 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     
     //Hard Coded for Payment Options
     let itemDict : NSArray = ["paytm","Credit/Debit Card",
-        "Net banking/Credit/Debit",
+        "Net Banking",
         "Cash On Service"]
     
     
