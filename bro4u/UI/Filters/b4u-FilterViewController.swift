@@ -1069,5 +1069,9 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     
     
     
+    @IBAction func homeBtnPressed(sender: AnyObject) {
+        
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
     
 }

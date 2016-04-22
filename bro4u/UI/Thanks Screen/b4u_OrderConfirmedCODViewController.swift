@@ -44,25 +44,43 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
         
         self.addLoadingIndicator()
       
-        if (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) {
-            
-            let orderID = NSNumber(integer:Int(b4u_Utility.sharedInstance.getUserDefault("order_id") as! String)!)
-            bro4u_DataManager.sharedInstance.orderId = orderID
-            
-          self.getDataOfThanksScreen("Success")
-        }
-        else
+        
+        if let orderId = b4u_Utility.sharedInstance.getUserDefault("order_id")
         {
-          b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-          let createOrderObj = b4u_CreateOrder()
-          createOrderObj.paymentType  = kCODPayment
-          createOrderObj.delegate = self
-          createOrderObj.createOrder()
-          topView.hidden = true
-          middleView.hidden = true
-          downView.hidden = true
-          btnContinue.hidden = true
+            
+            let orderID = Int(orderId as! String)
+            bro4u_DataManager.sharedInstance.orderId = NSNumber(integer:orderID!)
+            self.getDataOfThanksScreen("Success")
+
+        }else
+        {
+            b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+            let createOrderObj = b4u_CreateOrder()
+            createOrderObj.paymentType  = kCODPayment
+            createOrderObj.delegate = self
+            createOrderObj.createOrder()
+            topView.hidden = true
+            middleView.hidden = true
+            downView.hidden = true
+            btnContinue.hidden = true
         }
+//        if (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) {
+//            
+//         
+//            
+//        }
+//        else
+//        {
+//          b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//          let createOrderObj = b4u_CreateOrder()
+//          createOrderObj.paymentType  = kCODPayment
+//          createOrderObj.delegate = self
+//          createOrderObj.createOrder()
+//          topView.hidden = true
+//          middleView.hidden = true
+//          downView.hidden = true
+//          btnContinue.hidden = true
+//        }
 
         lblServiceStatus.layer.borderWidth = 1.0
         lblServiceStatus.layer.borderColor = UIColor.lightGrayColor().CGColor

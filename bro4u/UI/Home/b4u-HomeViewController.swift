@@ -375,7 +375,7 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
             }else if index.row == 3 {
                 self.performSegueWithIdentifier(kWalletVCID, sender:nil)
             }else if index.row == 5 {
-                self.performSegueWithIdentifier(kWalletVCID, sender:nil)
+                self.performSegueWithIdentifier(kOfferZoneVCID, sender:nil)
             }
         }
     }

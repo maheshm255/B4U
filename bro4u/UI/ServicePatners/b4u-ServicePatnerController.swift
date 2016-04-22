@@ -11,6 +11,7 @@ import UIKit
 class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate ,quantityDelegate,vendorSortDelegate{
     @IBOutlet weak var btnSort: UIBarButtonItem!
 
+    @IBOutlet weak var btnHome: UIBarButtonItem!
     @IBOutlet weak var btnLoadMore: UIButton!
     @IBOutlet weak var lblCurrentLocation: UILabel!
     @IBOutlet weak var viewLoadMore: UIView!
@@ -189,10 +190,10 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
 
         if aPatner.catId! == "3" ||  aPatner.catId! == "4"
         {
-            self.navigationItem.rightBarButtonItems = [btnSort]
+            self.navigationItem.rightBarButtonItems = [btnSort ,btnHome]
         }else
         {
-            self.navigationItem.rightBarButtonItems = []
+            self.navigationItem.rightBarButtonItems = [btnHome]
 
         }
         
@@ -513,5 +514,10 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
             self.lblCurrentLocation.text = "Current Location"
             
         }
+    }
+    @IBAction func homeBtnPressed(sender: AnyObject) {
+        
+        self.navigationController?.popToRootViewControllerAnimated(true)
+
     }
 }
