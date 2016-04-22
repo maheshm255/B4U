@@ -47,8 +47,14 @@ class OrderConfirmedViewController: UIViewController {
       serviceStatusLbl.layer.borderColor = UIColor.lightGrayColor().CGColor
 
       self.getData()
+      let backButton = UIBarButtonItem(title: "< Back", style: .Plain, target: self, action:#selector(b4u_OrderConfirmedCODViewController.doneBtnPressed))
+      navigationItem.leftBarButtonItem = backButton
         
     }
+  
+  func doneBtnPressed() {
+    navigationController?.popToRootViewControllerAnimated(true)
+  }
     
     func getData()
     {

@@ -47,7 +47,9 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
         bro4u_DataManager.sharedInstance.orderId = orderID
                     
         self.hasOrderCreated("Success")
-      }
+      } else if bro4u_DataManager.sharedInstance.userSelectedOrder != nil {
+        self.hasOrderCreated("Success")
+      }//susmit
       else
       {
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
@@ -110,8 +112,10 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
       self.creditCardNoTextFld.delegate = self
       self.cvvTextFld.delegate = self
       
-      self.amountLbl.text = "Rs. \(bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)"
-      self.order_id = "\(bro4u_DataManager.sharedInstance.orderId!)"
+      self.amountLbl.text = "Rs. \(bro4u_DataManager.sharedInstance.selectedSuggestedPatner != nil ? bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice! : ((bro4u_DataManager.sharedInstance.userSelectedOrder != nil) ? bro4u_DataManager.sharedInstance.userSelectedOrder!.actualPrice! : ""))"//susmit
+      //susmit
+      self.order_id = (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) ? "\(bro4u_DataManager.sharedInstance.orderId!)" : ((bro4u_DataManager.sharedInstance.userSelectedOrder?.orderID?.length)! > 0 ? bro4u_DataManager.sharedInstance.userSelectedOrder?.orderID! : "")
+      //susmit
       
     }
 
@@ -282,7 +286,9 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
       if resultObject == "Success"
       {
         b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-        self.order_id = "\(bro4u_DataManager.sharedInstance.orderId!)"
+        //susmit
+        self.order_id = (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) ? "\(bro4u_DataManager.sharedInstance.orderId!)" : ((bro4u_DataManager.sharedInstance.userSelectedOrder?.orderID?.length)! > 0 ? bro4u_DataManager.sharedInstance.userSelectedOrder?.orderID! : "")
+        //susmit
 
         //Setting Order ID in User Default
         b4u_Utility.sharedInstance.setUserDefault(self.order_id, KeyToSave:"order_id")
@@ -295,6 +301,9 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
         
         let alert = UIAlertController(title: "Exit Payment?", message: "Are you sure you want to go back without making the payment?", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "YES", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) in
+          //Removing Order ID and Order in User Default
+          b4u_Utility.sharedInstance.setUserDefault(nil, KeyToSave:"order_id")
+          bro4u_DataManager.sharedInstance.userSelectedOrder = nil
             self.navigationController?.popViewControllerAnimated(true)
         }))
         alert.addAction(UIAlertAction(title: "NO", style: UIAlertActionStyle.Default, handler: nil))
