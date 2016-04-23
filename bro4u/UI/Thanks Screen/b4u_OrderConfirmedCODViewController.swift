@@ -85,7 +85,11 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
         lblServiceStatus.layer.borderWidth = 1.0
         lblServiceStatus.layer.borderColor = UIColor.lightGrayColor().CGColor
       
-      let backButton = UIBarButtonItem(title: "< Back", style: .Plain, target: self, action:#selector(b4u_OrderConfirmedCODViewController.doneBtnPressed))
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"loginDismissed", name:kUserDataReceived, object:nil);
+
+      let backButton = UIBarButtonItem(title: "< Back", style: .Plain, target: self, action:"doneBtnPressed")
+        
       navigationItem.leftBarButtonItem = backButton
 
 
