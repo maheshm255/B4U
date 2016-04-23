@@ -67,6 +67,10 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         
         //Turn off the automatic gesture to go back a view with a navigation controller
         self.navigationController?.interactivePopGestureRecognizer?.enabled = false
+        
+        
+        //Removing Order ID from User Default
+        b4u_Utility.sharedInstance.setUserDefault(nil, KeyToSave:"order_id")
     }
 
     

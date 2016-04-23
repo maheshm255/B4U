@@ -149,13 +149,13 @@ class b4u_PayOnlineOrderViewController: UIViewController,PGTransactionDelegate {
         
         if order != nil{
          let selectedOrder = bro4u_DataManager.sharedInstance.userSelectedOrder
-          if selectedOrder != nil {
-            order?.orderID = selectedOrder?.orderID
-//            order?.customerID = selectedOrder?.customerName
-//            order?.amount = selectedOrder?.netAmountPaid as? String
-            order?.eMail = selectedOrder?.email
-            order?.mobile = selectedOrder?.mobile
-          }
+//          if selectedOrder != nil {
+//            order?.orderID = selectedOrder?.orderID
+////            order?.customerID = selectedOrder?.customerName
+////            order?.amount = selectedOrder?.netAmountPaid as? String
+//            order?.eMail = selectedOrder?.email
+//            order?.mobile = selectedOrder?.mobile
+//          }
           
           self.laodViewController(order!, merchantConfiguration: merchantConfiguration!)
         }
