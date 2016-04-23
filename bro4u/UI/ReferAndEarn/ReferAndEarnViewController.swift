@@ -107,7 +107,7 @@ class ReferAndEarnViewController: UIViewController,UIPopoverPresentationControll
         attributedString.appendAttributedString(buttonTitleStr)
         btnTandC.setAttributedTitle(attributedString, forState: .Normal)
 
-        codeShareLbl.layer.borderWidth = 1.0
+        codeShareLbl.layer.borderWidth = 2.0
         codeShareLbl.layer.borderColor =
             UIColor(red: 59/255.0, green: 189/255.0, blue: 255/255.0, alpha: 1.0).CGColor
 
