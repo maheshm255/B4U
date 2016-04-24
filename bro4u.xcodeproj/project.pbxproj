@@ -51,6 +51,7 @@
 		520CF5CE1CC16CD4009B7EA3 /* ReadmeGoogle in Resources */ = {isa = PBXBuildFile; fileRef = 520CF5CD1CC16CD4009B7EA3 /* ReadmeGoogle */; };
 		522291871CB6384E00392DC0 /* b4u_DismissKeyBoardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522291861CB6384E00392DC0 /* b4u_DismissKeyBoardExtension.swift */; };
 		522291891CB65CBC00392DC0 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522291881CB65CBC00392DC0 /* MonthYearPickerView.swift */; };
+		529E46061CCD10B300AFD541 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529E46051CCD10B300AFD541 /* QuartzCore.framework */; };
 		529F27731CADA84700ABFC9E /* b4u_OrderDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F27721CADA84700ABFC9E /* b4u_OrderDetailModel.swift */; };
 		529F27751CADA94300ABFC9E /* b4u_SelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F27741CADA94300ABFC9E /* b4u_SelectionModel.swift */; };
 		52A1AE801CC557ED001095B8 /* RadioButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A1AE7F1CC557ED001095B8 /* RadioButtonExtension.swift */; };
@@ -329,6 +330,7 @@
 		520CF5CD1CC16CD4009B7EA3 /* ReadmeGoogle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadmeGoogle; sourceTree = "<group>"; };
 		522291861CB6384E00392DC0 /* b4u_DismissKeyBoardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_DismissKeyBoardExtension.swift; sourceTree = "<group>"; };
 		522291881CB65CBC00392DC0 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
+		529E46051CCD10B300AFD541 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		529F27721CADA84700ABFC9E /* b4u_OrderDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_OrderDetailModel.swift; sourceTree = "<group>"; };
 		529F27741CADA94300ABFC9E /* b4u_SelectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_SelectionModel.swift; sourceTree = "<group>"; };
 		52A1AE7F1CC557ED001095B8 /* RadioButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonExtension.swift; sourceTree = "<group>"; };
@@ -624,6 +626,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				529E46061CCD10B300AFD541 /* QuartzCore.framework in Frameworks */,
 				B7268EAA1CB41B50004C31A1 /* libPayU_iOS_CoreSDK.a in Frameworks */,
 				656412451C88C2B400B8D5D4 /* CoreLocation.framework in Frameworks */,
 				656412431C88C2A300B8D5D4 /* MapKit.framework in Frameworks */,
@@ -754,6 +757,7 @@
 		4ACEA2003FD63043109FEF32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				529E46051CCD10B300AFD541 /* QuartzCore.framework */,
 				656412441C88C2B400B8D5D4 /* CoreLocation.framework */,
 				656412421C88C2A300B8D5D4 /* MapKit.framework */,
 				65DE77221C7869B100017F96 /* libFBSDKCoreKit.a */,

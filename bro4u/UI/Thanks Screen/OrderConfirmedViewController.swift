@@ -115,6 +115,14 @@ class OrderConfirmedViewController: UIViewController {
         if let vendorImageUrl = confirmedOrder!.profilePic
         {
             self.vendorImageView.downloadedFrom(link:vendorImageUrl, contentMode:UIViewContentMode.ScaleToFill)
+            
+            self.vendorImageView.layer.cornerRadius = self.vendorImageView.frame.size.width / 2 ;
+            self.vendorImageView.layer.masksToBounds = false;
+            
+            self.vendorImageView.layer.borderWidth = 0.5;
+            self.vendorImageView.layer.borderColor = UIColor.blackColor().CGColor;
+            self.vendorImageView.clipsToBounds = true
+
         }
         if let orderID = confirmedOrder!.orderID
         {

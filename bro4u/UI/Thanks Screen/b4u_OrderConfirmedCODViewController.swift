@@ -196,6 +196,15 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
         if let vendorImageUrl = confirmedOrder!.profilePic
         {
             self.imgViewServiceProvider.downloadedFrom(link:vendorImageUrl, contentMode:UIViewContentMode.ScaleToFill)
+            
+            
+            self.imgViewServiceProvider.layer.cornerRadius = self.imgViewServiceProvider.frame.size.width / 2 ;
+            self.imgViewServiceProvider.layer.masksToBounds = false;
+            
+            self.imgViewServiceProvider.layer.borderWidth = 0.21;
+            self.imgViewServiceProvider.layer.borderColor = UIColor.blackColor().CGColor;
+            self.imgViewServiceProvider.clipsToBounds = true
+
         }
         if let orderID = confirmedOrder!.orderID
         {
