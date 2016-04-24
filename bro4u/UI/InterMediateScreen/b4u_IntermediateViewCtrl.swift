@@ -29,7 +29,8 @@ class b4u_IntermediateViewCtrl: UIViewController {
     
     @IBOutlet weak var btnTermsAndConditions: UIButton!
     @IBOutlet weak var btnTapToCopy: UIButton!
-    
+    @IBOutlet weak var btnContinue: UIButton!
+
     var selectedCategoryObj:b4u_Category?
     
     var selectedImgSlide:b4u_SliderImage?
@@ -47,6 +48,8 @@ class b4u_IntermediateViewCtrl: UIViewController {
         
         self.btnTapToCopy.layer.shadowColor =  UIColor(red:210.0/255, green: 210.0/255, blue: 210.0/255, alpha: 1.0).CGColor
         
+        scrollView.hidden = true
+        btnContinue.hidden = true
         self.addLoadingIndicator()
 
         self.callInterMediateApi()
@@ -200,6 +203,9 @@ class b4u_IntermediateViewCtrl: UIViewController {
     {
         b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
 
+        scrollView.hidden = false
+        btnContinue.hidden = false
+        
         if let aDataModel = bro4u_DataManager.sharedInstance.interMediateScreenDataObj
         {
             self.scrollView.hidden = false;
