@@ -198,7 +198,6 @@ class b4u_MyAccountViewController: UIViewController {
 
                 return
             case 2:
-//                destination = storyboard.instantiateViewControllerWithIdentifier("MyInfoViewControllerID") as! MyInfoViewController
                 
                 self.performSegueWithIdentifier("myInfoCtrl", sender:nil)
 

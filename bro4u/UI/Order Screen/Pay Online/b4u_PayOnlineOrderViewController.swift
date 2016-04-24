@@ -67,7 +67,7 @@ class b4u_PayOnlineOrderViewController: UIViewController,PGTransactionDelegate {
       
       switch btnSelected {
       case 1:
-        self.dismissViewControllerAnimated(true, completion:nil)
+//        self.dismissViewControllerAnimated(true, completion:nil)
         createOrderForPayTm()
       case 2:
         paymentVC = self.storyboard?.instantiateViewControllerWithIdentifier("CreditAndDebitCardViewControllerID")
@@ -127,7 +127,11 @@ class b4u_PayOnlineOrderViewController: UIViewController,PGTransactionDelegate {
       bro4u_DataManager.sharedInstance.orderId = orderID
       hasOrderCreated("Success")
     } else if bro4u_DataManager.sharedInstance.userSelectedOrder != nil {
-      bro4u_DataManager.sharedInstance.orderId = NSNumber(integer:Int((bro4u_DataManager.sharedInstance.userSelectedOrder?.orderID)!)!)
+      
+        let orderID = NSNumber(integer:Int((bro4u_DataManager.sharedInstance.userSelectedOrder?.orderID!)!)!)
+
+        bro4u_DataManager.sharedInstance.orderId = orderID
+        
       hasOrderCreated("Success")
     }
   }
@@ -135,11 +139,8 @@ class b4u_PayOnlineOrderViewController: UIViewController,PGTransactionDelegate {
   //Call Back for Order Created
   func hasOrderCreated(resultObject:String)
   {
-    
     if resultObject == "Success"
     {
-//      b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-      
       //Setting Order ID in User Default
       let orderID = "\(bro4u_DataManager.sharedInstance.orderId!)"
       
@@ -148,14 +149,6 @@ class b4u_PayOnlineOrderViewController: UIViewController,PGTransactionDelegate {
       let callBackhandler = {(order:PGOrder?, merchantConfiguration :PGMerchantConfiguration?) in
         
         if order != nil{
-         let selectedOrder = bro4u_DataManager.sharedInstance.userSelectedOrder
-//          if selectedOrder != nil {
-//            order?.orderID = selectedOrder?.orderID
-////            order?.customerID = selectedOrder?.customerName
-////            order?.amount = selectedOrder?.netAmountPaid as? String
-//            order?.eMail = selectedOrder?.email
-//            order?.mobile = selectedOrder?.mobile
-//          }
           
           self.laodViewController(order!, merchantConfiguration: merchantConfiguration!)
         }
@@ -171,7 +164,6 @@ class b4u_PayOnlineOrderViewController: UIViewController,PGTransactionDelegate {
     }
   }
   
-  //shahnawaz
   
   func laodViewController(order : PGOrder, merchantConfiguration :PGMerchantConfiguration) -> Void {
     let txnController = PGTransactionViewController(transactionForOrder: order)
@@ -210,7 +202,6 @@ class b4u_PayOnlineOrderViewController: UIViewController,PGTransactionDelegate {
     if response != nil
     {
       let alert = UIAlertController(title: error.localizedDescription, message: response.description, preferredStyle: UIAlertControllerStyle.Alert)
-      alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
       self.presentViewController(alert, animated: true, completion: nil)
       
       
@@ -226,7 +217,6 @@ class b4u_PayOnlineOrderViewController: UIViewController,PGTransactionDelegate {
     else if error != nil
     {
       let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
-      alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
       self.presentViewController(alert, animated: true, completion: nil)
       
       let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in

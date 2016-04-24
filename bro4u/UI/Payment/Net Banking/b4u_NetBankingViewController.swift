@@ -261,15 +261,6 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
             bro4u_DataManager.sharedInstance.orderId = NSNumberFormatter().numberFromString((bro4u_DataManager.sharedInstance.userSelectedOrder?.orderID!)!)
             bro4u_DataManager.sharedInstance.txnID = bro4u_DataManager.sharedInstance.userSelectedOrder?.txnID
         }
-
-        
-        //susmit
-//        let orderID = (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) ? "\(bro4u_DataManager.sharedInstance.orderId!)" : ((bro4u_DataManager.sharedInstance.userSelectedOrder?.orderID?.length)! > 0 ? bro4u_DataManager.sharedInstance.userSelectedOrder?.orderID! : "")
-//        //susmit
-//
-//        //Setting Order ID in User Default
-//        b4u_Utility.sharedInstance.setUserDefault(orderID, KeyToSave:"order_id")
-
         self.configureUI()
       }
       //      self.getDataOfThanksScreen(resultObject)

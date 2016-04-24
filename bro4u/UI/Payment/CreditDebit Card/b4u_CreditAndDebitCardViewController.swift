@@ -305,9 +305,6 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
             b4u_Utility.sharedInstance.setUserDefault(self.order_id, KeyToSave:"order_id")
 
         }
-//        self.order_id = (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) ? "\(bro4u_DataManager.sharedInstance.orderId!)" : ((bro4u_DataManager.sharedInstance.userSelectedOrder?.orderID?.length)! > 0 ? bro4u_DataManager.sharedInstance.userSelectedOrder?.orderID! : "")
-        //susmit
-
 
         self.configureUI()
       }

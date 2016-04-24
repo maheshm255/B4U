@@ -910,7 +910,7 @@
                         <viewControllerLayoutGuide type="bottom" id="5Wq-A7-LOz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fnQ-Bb-oP2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="LOGIN USING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULH-Ib-tft">
@@ -1786,9 +1786,9 @@
                                                 <constraint firstItem="Zjn-jS-kgU" firstAttribute="trailing" secondItem="BPx-rb-T6H" secondAttribute="trailing" constant="-2" id="57d-IK-odJ"/>
                                                 <constraint firstItem="YwN-lU-cDJ" firstAttribute="top" secondItem="SKK-8O-TbR" secondAttribute="bottom" constant="5" id="59g-uY-IO5"/>
                                                 <constraint firstItem="noK-Jp-Bna" firstAttribute="top" secondItem="BPx-rb-T6H" secondAttribute="bottom" constant="8" symbolic="YES" id="6pT-CD-vyg"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="8dS-ii-JWN" secondAttribute="trailing" constant="23" id="8Rz-zE-2f4"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="8dS-ii-JWN" secondAttribute="trailing" constant="16" id="8Rz-zE-2f4"/>
                                                 <constraint firstItem="S6L-2q-gAU" firstAttribute="top" secondItem="Ad0-D6-luu" secondAttribute="bottom" constant="1" id="DZ4-q5-ii1"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="BPx-rb-T6H" secondAttribute="trailing" constant="16" id="Hh9-e0-FF0"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="BPx-rb-T6H" secondAttribute="trailing" id="Hh9-e0-FF0"/>
                                                 <constraint firstItem="LEl-TE-7kU" firstAttribute="leading" secondItem="teW-0D-jhe" secondAttribute="leading" id="Nxe-tK-CCz"/>
                                                 <constraint firstItem="teW-0D-jhe" firstAttribute="leading" secondItem="noK-Jp-Bna" secondAttribute="leading" id="OeH-ee-qfX"/>
                                                 <constraint firstItem="SKK-8O-TbR" firstAttribute="leading" secondItem="teW-0D-jhe" secondAttribute="trailing" constant="8" id="Oy4-To-otd"/>
@@ -9610,10 +9610,10 @@
     <inferredMetricsTieBreakers>
         <segue reference="UUI-bn-Yb7"/>
         <segue reference="FFS-5h-qNB"/>
-        <segue reference="ouI-hD-05v"/>
         <segue reference="W5U-K3-ziD"/>
+        <segue reference="EWe-mK-kQh"/>
+        <segue reference="zl4-3N-4qA"/>
         <segue reference="ZKs-u5-bSL"/>
         <segue reference="RR4-6L-WK4"/>
-        <segue reference="ZLQ-WV-Fop"/>
     </inferredMetricsTieBreakers>
 </document>
