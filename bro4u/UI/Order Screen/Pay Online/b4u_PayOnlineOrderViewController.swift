@@ -57,6 +57,11 @@ class b4u_PayOnlineOrderViewController: UIViewController,PGTransactionDelegate {
   @IBAction func btnCloseClicked(sender: AnyObject) {
     
     self.dismissViewControllerAnimated(true, completion:nil)
+    
+    //Removing Selected Order Object and Order ID in User Default
+    b4u_Utility.sharedInstance.setUserDefault(nil, KeyToSave:"order_id")
+    bro4u_DataManager.sharedInstance.userSelectedOrder = nil
+
   }
   
   //susmit
@@ -81,9 +86,9 @@ class b4u_PayOnlineOrderViewController: UIViewController,PGTransactionDelegate {
     }
     
     if paymentVC != nil {
-      if let navCntrlr = presentingViewController?.childViewControllers[1] as? UINavigationController {
+      if let navCntrlr = self.navigationController {
         navCntrlr.pushViewController(paymentVC!, animated: true)
-        self.dismissViewControllerAnimated(true, completion:nil)
+//        self.dismissViewControllerAnimated(true, completion:nil)
       }
     }
 }
@@ -176,7 +181,7 @@ class b4u_PayOnlineOrderViewController: UIViewController,PGTransactionDelegate {
   
   //Paytm Delegates
   func showController(controller : PGTransactionViewController) -> Void {
-    if let navCntrlr = presentingViewController?.childViewControllers[1] as? UINavigationController {
+    if let navCntrlr = self.navigationController {
       navCntrlr.pushViewController(controller, animated: true)
     } else {
       self.presentViewController(controller, animated: true, completion: nil)

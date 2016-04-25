@@ -271,9 +271,6 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
         
         let alert = UIAlertController(title: "Exit Payment?", message: "Are you sure you want to go back without making the payment?", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "YES", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) in
-            //Removing Order ID and Order in User Default
-            b4u_Utility.sharedInstance.setUserDefault(nil, KeyToSave:"order_id")
-            bro4u_DataManager.sharedInstance.userSelectedOrder = nil
             self.navigationController?.popViewControllerAnimated(true)
         }))
         alert.addAction(UIAlertAction(title: "NO", style: UIAlertActionStyle.Default, handler: nil))

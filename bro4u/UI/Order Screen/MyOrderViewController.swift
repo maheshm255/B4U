@@ -400,9 +400,9 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     }
     else if btnTapped == "PayOnline"{
       
-      let  alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("PayOnlineOrderViewControllerID") as! b4u_PayOnlineOrderViewController
+      let  alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("PayOnlineOrderViewControllerID") as! UINavigationController
       bro4u_DataManager.sharedInstance.userSelectedOrder = selectedOrderObj
-      self.pressentAlertPopUP(alertViewCtrl, size: CGSizeMake(300, 250))
+      self.pressentAlertPopUP(alertViewCtrl, size: CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)))
 
     }
     
@@ -413,7 +413,7 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
      //   self.view.alpha = 0.5
         
         
-        alertViewCtrl!.modalPresentationStyle = .Popover
+        alertViewCtrl!.modalPresentationStyle = .FullScreen
         alertViewCtrl!.preferredContentSize = size
       alertViewCtrl?.definesPresentationContext = true
         
