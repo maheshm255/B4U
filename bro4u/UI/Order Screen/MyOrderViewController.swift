@@ -402,7 +402,9 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       
       let  alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("PayOnlineOrderViewControllerID") as! UINavigationController
       bro4u_DataManager.sharedInstance.userSelectedOrder = selectedOrderObj
-      self.pressentAlertPopUP(alertViewCtrl, size: CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)))
+        self.pressentAlertPopUP(alertViewCtrl, size:CGSizeMake(300, 250))
+
+//        self.pressentAlertPopUP(alertViewCtrl, size: CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)))
 
     }
     
@@ -413,10 +415,9 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
      //   self.view.alpha = 0.5
         
         
-        alertViewCtrl!.modalPresentationStyle = .FullScreen
+        alertViewCtrl!.modalPresentationStyle = .Popover
         alertViewCtrl!.preferredContentSize = size
       alertViewCtrl?.definesPresentationContext = true
-        
         let popoverMenuViewController = alertViewCtrl!.popoverPresentationController
         popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
         popoverMenuViewController?.delegate = self
