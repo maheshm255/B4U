@@ -402,7 +402,17 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       
       let  alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("PayOnlineOrderViewControllerID") as! UINavigationController
       bro4u_DataManager.sharedInstance.userSelectedOrder = selectedOrderObj
-        self.pressentAlertPopUP(alertViewCtrl, size:CGSizeMake(300, 250))
+      
+        self.presentpopupViewController(alertViewCtrl, animationType:.Fade, completion: { () -> Void in
+            
+        })
+
+        
+//        self.presentPopupViewController(alertViewCtrl, animationType: MJPopupViewAnimationFade)
+        
+
+        
+        //        self.pressentAlertPopUP(alertViewCtrl, size:CGSizeMake(300, 250))
 
 //        self.pressentAlertPopUP(alertViewCtrl, size: CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)))
 

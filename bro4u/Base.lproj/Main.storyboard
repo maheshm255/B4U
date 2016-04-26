@@ -9521,8 +9521,10 @@
         <!--Navigation Controller-->
         <scene sceneID="FSh-Di-QXG">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kkw-Oa-9EY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="PayOnlineOrderViewControllerID" automaticallyAdjustsScrollViewInsets="NO" id="nd0-AB-OhB" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ea-g3-H8c">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -9532,7 +9534,6 @@
                         <segue destination="LDM-3v-xqf" kind="relationship" relationship="rootViewController" id="Zuj-p0-yt1"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kkw-Oa-9EY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1951" y="7398"/>
         </scene>
