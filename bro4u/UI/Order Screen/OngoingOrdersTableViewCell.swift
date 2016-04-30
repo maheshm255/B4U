@@ -55,15 +55,15 @@ class OngoingOrdersTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
         
-//        btnCancel.layer.cornerRadius = 5
+//        btnCancel.layer.cornerRadius = 2
 //        btnCancel.layer.borderColor = UIColor.grayColor().CGColor
 //        btnCancel.layer.borderWidth = 1
         
-        btnReshedule.layer.cornerRadius = 5
+        btnReshedule.layer.cornerRadius = 2
         btnReshedule.layer.borderColor = UIColor.grayColor().CGColor
         btnReshedule.layer.borderWidth = 1
         
-        btnTrack.layer.cornerRadius = 5
+        btnTrack.layer.cornerRadius = 2
         btnTrack.layer.borderColor = UIColor.grayColor().CGColor
         btnTrack.layer.borderWidth = 1
         
