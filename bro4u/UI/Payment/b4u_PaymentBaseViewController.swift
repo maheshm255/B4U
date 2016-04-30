@@ -599,6 +599,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     if navigationController != nil {
       navigationController?.pushViewController(controller, animated: true)
     }else{
+        
       self.presentViewController(controller, animated: true, completion: nil)
     }
   }
