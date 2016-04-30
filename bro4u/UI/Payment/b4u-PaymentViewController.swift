@@ -145,10 +145,18 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         //To Give Shadow to tableview
         self.paymentTableView.layer.shadowColor  = UIColor.grayColor().CGColor
         self.paymentTableView.layer.shadowOffset  = CGSizeMake(3.0, 3.0)
-        self.paymentTableView.layer.shadowRadius  = 0.2
-        self.paymentTableView.layer.shadowOpacity  = 1
+        self.paymentTableView.layer.shadowRadius  = 0.1
+        self.paymentTableView.layer.shadowOpacity  = 0.5
         self.paymentTableView.clipsToBounds  = false
         self.paymentTableView.layer.masksToBounds  = false
+        
+//        let shadowPath = UIBezierPath(rect: view.bounds)
+//        self.paymentTableView.layer.masksToBounds = false
+//        self.paymentTableView.layer.shadowColor = UIColor.blackColor().CGColor
+//        self.paymentTableView.layer.shadowOffset = CGSize(width: 0, height: 0.5)
+//        self.paymentTableView.layer.shadowOpacity = 0.2
+//        self.paymentTableView.layer.shadowPath = shadowPath.CGPath
+
     }
     
     
