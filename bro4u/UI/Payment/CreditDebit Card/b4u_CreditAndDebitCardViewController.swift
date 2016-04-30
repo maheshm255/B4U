@@ -47,7 +47,9 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
         bro4u_DataManager.sharedInstance.orderId = orderID
                     
         self.hasOrderCreated("Success")
-      }
+      } else if bro4u_DataManager.sharedInstance.userSelectedOrder != nil {
+        self.hasOrderCreated("Success")
+      }//susmit
       else
       {
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
@@ -110,9 +112,7 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
       self.creditCardNoTextFld.delegate = self
       self.cvvTextFld.delegate = self
       
-      self.amountLbl.text = "Rs. \(bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)"
-      self.order_id = "\(bro4u_DataManager.sharedInstance.orderId!)"
-      
+      self.amountLbl.text = "Rs. \(bro4u_DataManager.sharedInstance.selectedSuggestedPatner != nil ? bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice! : ((bro4u_DataManager.sharedInstance.userSelectedOrder != nil) ? bro4u_DataManager.sharedInstance.userSelectedOrder!.offerPrice! : ""))"//susmit
     }
 
     override func didReceiveMemoryWarning() {
@@ -187,10 +187,15 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
         payUMoneyUtil.CVVNo = cvvTextFld.text
         payUMoneyUtil.callBackHandler = callBackhandler
         payUMoneyUtil.txnID = bro4u_DataManager.sharedInstance.txnID
-        payUMoneyUtil.sURL = bro4u_DataManager.sharedInstance.furl
-        payUMoneyUtil.fURL = bro4u_DataManager.sharedInstance.surl
-        payUMoneyUtil.amount = bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice
-        payUMoneyUtil.productInfo = bro4u_DataManager.sharedInstance.selectedSuggestedPatner?.catName
+        
+        payUMoneyUtil.sURL = (bro4u_DataManager.sharedInstance.surl != nil) ? bro4u_DataManager.sharedInstance.surl:bro4u_DataManager.sharedInstance.userSelectedOrder!.surl
+        
+        payUMoneyUtil.fURL = (bro4u_DataManager.sharedInstance.furl != nil) ? bro4u_DataManager.sharedInstance.furl:bro4u_DataManager.sharedInstance.userSelectedOrder!.furl
+        
+        payUMoneyUtil.amount = (bro4u_DataManager.sharedInstance.selectedSuggestedPatner != nil) ? bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice : "\(bro4u_DataManager.sharedInstance.userSelectedOrder!.offerPrice!)"
+        
+        payUMoneyUtil.productInfo = (bro4u_DataManager.sharedInstance.selectedSuggestedPatner != nil) ? bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.catName : "\(bro4u_DataManager.sharedInstance.userSelectedOrder!.catName!)"
+            
         payUMoneyUtil.firstName = bro4u_DataManager.sharedInstance.loginInfo?.fullName
         payUMoneyUtil.email = bro4u_DataManager.sharedInstance.loginInfo?.email
         payUMoneyUtil.phoneNumber = bro4u_DataManager.sharedInstance.loginInfo?.email
@@ -282,10 +287,20 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
       if resultObject == "Success"
       {
         b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-        self.order_id = "\(bro4u_DataManager.sharedInstance.orderId!)"
+        //susmit
+        
+        if bro4u_DataManager.sharedInstance.userSelectedOrder != nil
+        {
+            self.order_id = "\(bro4u_DataManager.sharedInstance.userSelectedOrder?.orderID!)"
+            bro4u_DataManager.sharedInstance.txnID = bro4u_DataManager.sharedInstance.userSelectedOrder?.txnID
+        }
+        else
+        {
+            self.order_id = "\(bro4u_DataManager.sharedInstance.orderId!)"
+            //Setting Order ID in User Default
+            b4u_Utility.sharedInstance.setUserDefault(self.order_id, KeyToSave:"order_id")
 
-        //Setting Order ID in User Default
-        b4u_Utility.sharedInstance.setUserDefault(self.order_id, KeyToSave:"order_id")
+        }
 
         self.configureUI()
       }

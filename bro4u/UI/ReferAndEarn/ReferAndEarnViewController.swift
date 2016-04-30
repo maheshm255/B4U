@@ -96,6 +96,22 @@ class ReferAndEarnViewController: UIViewController,UIPopoverPresentationControll
     
     func congigureUI()
     {
+        
+        
+        //For UnderLine Button Text
+        
+        let attrs = [NSUnderlineStyleAttributeName : 1]
+        let attributedString = NSMutableAttributedString(string:"")
+        
+        let buttonTitleStr = NSMutableAttributedString(string:"T & C", attributes:attrs)
+        attributedString.appendAttributedString(buttonTitleStr)
+        btnTandC.setAttributedTitle(attributedString, forState: .Normal)
+
+        codeShareLbl.layer.borderWidth = 2.0
+        codeShareLbl.layer.borderColor =
+            UIColor(red: 59/255.0, green: 189/255.0, blue: 255/255.0, alpha: 1.0).CGColor
+
+        
         if let referAndEarnData = bro4u_DataManager.sharedInstance.referAndEarnData
         {
             shareTextLbl.text = "Share this code to gift your friend Rs. \(referAndEarnData.offerAmount!) and you earn Rs. \(referAndEarnData.referralAmount!) on their first service experience. Keep refering to earn a lot of free service"

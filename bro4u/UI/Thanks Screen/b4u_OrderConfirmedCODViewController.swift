@@ -84,6 +84,13 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
 
         lblServiceStatus.layer.borderWidth = 1.0
         lblServiceStatus.layer.borderColor = UIColor.lightGrayColor().CGColor
+      
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"loginDismissed", name:kUserDataReceived, object:nil);
+
+      let backButton = UIBarButtonItem(title: "< Back", style: .Plain, target: self, action:"doneBtnPressed")
+        
+      navigationItem.leftBarButtonItem = backButton
 
 
     }
@@ -103,6 +110,10 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
         // Pass the selected object to the new view controller.
     }
     */
+  
+  func doneBtnPressed() {
+    navigationController?.popToRootViewControllerAnimated(true)
+  }
     
 
   
@@ -185,6 +196,15 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
         if let vendorImageUrl = confirmedOrder!.profilePic
         {
             self.imgViewServiceProvider.downloadedFrom(link:vendorImageUrl, contentMode:UIViewContentMode.ScaleToFill)
+            
+            
+            self.imgViewServiceProvider.layer.cornerRadius = self.imgViewServiceProvider.frame.size.width / 2 ;
+            self.imgViewServiceProvider.layer.masksToBounds = false;
+            
+            self.imgViewServiceProvider.layer.borderWidth = 0.21;
+            self.imgViewServiceProvider.layer.borderColor = UIColor.blackColor().CGColor;
+            self.imgViewServiceProvider.clipsToBounds = true
+
         }
         if let orderID = confirmedOrder!.orderID
         {

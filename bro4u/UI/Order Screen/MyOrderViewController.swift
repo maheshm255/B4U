@@ -353,15 +353,11 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     }
   }
   
-  
   @IBAction func payOnlineAction(sender: AnyObject) {
-  
-
     let selectedOrderObj: b4u_OrdersModel  =  self.onGoingOrderArray![sender.tag]
     self.showAlertView("PayOnline", selectedOrderObj:selectedOrderObj)
 
   }
-  
 
     func showAlertView(btnTapped: String,  selectedOrderObj:b4u_OrdersModel)
   {
@@ -404,8 +400,21 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     }
     else if btnTapped == "PayOnline"{
       
-      let  alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("PayOnlineOrderViewControllerID") as! b4u_PayOnlineOrderViewController
-        self.pressentAlertPopUP(alertViewCtrl, size: CGSizeMake(300, 250))
+      let  alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("PayOnlineOrderViewControllerID") as! UINavigationController
+      bro4u_DataManager.sharedInstance.userSelectedOrder = selectedOrderObj
+      
+        self.presentpopupViewController(alertViewCtrl, animationType:.Fade, completion: { () -> Void in
+            
+        })
+
+        
+//        self.presentPopupViewController(alertViewCtrl, animationType: MJPopupViewAnimationFade)
+        
+
+        
+        //        self.pressentAlertPopUP(alertViewCtrl, size:CGSizeMake(300, 250))
+
+//        self.pressentAlertPopUP(alertViewCtrl, size: CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)))
 
     }
     
@@ -418,7 +427,7 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         alertViewCtrl!.modalPresentationStyle = .Popover
         alertViewCtrl!.preferredContentSize = size
-        
+      alertViewCtrl?.definesPresentationContext = true
         let popoverMenuViewController = alertViewCtrl!.popoverPresentationController
         popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
         popoverMenuViewController?.delegate = self

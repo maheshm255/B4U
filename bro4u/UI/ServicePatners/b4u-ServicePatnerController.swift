@@ -157,6 +157,9 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
             self.getAllServicePatners()
             self.checkLoadMoreCondition()
             self.tableViewServicePatner.reloadData()
+        
+            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
         })
     }
   
@@ -174,11 +177,8 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         let aPatner:b4u_SugestedPartner = self.allPatners[indexPath.section]
         
         
-//        cell.imgViewProfilePic.downloadedFrom(link:aPatner.profilePic!, contentMode:UIViewContentMode.ScaleToFill)
-        
-        cell.imgViewProfilePic.layer.cornerRadius = cell.imgViewProfilePic.frame.size.width/2;
-        cell.imgViewProfilePic.layer.masksToBounds = true;
-        
+        cell.imgViewProfilePic.downloadedFrom(link:aPatner.profilePic!, contentMode:UIViewContentMode.ScaleToFill)
+
         cell.lblVendorName.text = aPatner.vendorName
       
         cell.lblVendorReiviews.text = "\(aPatner.reviewCount!) Reviews"
@@ -201,7 +201,7 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         {
             if Double(offerPreice) > 0  && Double(price) > 0
             {
-                cell.lblDiscount.text = "Rs." + aPatner.offerPrice!
+                cell.lblDiscount.text = "Rs." + aPatner.offerPrice!+"*"
                 
                 //            let shadow : NSShadow = NSShadow()
                 //            shadow.shadowOffset = CGSizeMake(-2.0, -2.0)
@@ -226,7 +226,7 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
                 cell.lblActualPrice.text = ""
                 
                 cell.leadingConstraingDiscounLbl.constant = 0
-                cell.lblDiscount.text = "Rs." + aPatner.offerPrice!
+                cell.lblDiscount.text = "Rs." + aPatner.offerPrice!+"*"
             }
             
         }else
@@ -237,7 +237,7 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
             
             if let offerPrice = aPatner.offerPrice
             {
-                cell.lblDiscount.text = "Rs." + offerPrice
+                cell.lblDiscount.text = "Rs." + offerPrice + "*"
 
             }
         }
@@ -276,12 +276,12 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         
         if let deliveryCharge = aPatner.deliveryCharge where Double(deliveryCharge) > 0
         {
-            cell.lblCharges.text = "Delivery Charge + \(deliveryCharge)"
+            cell.lblCharges.text = "*Delivery Charge + \(deliveryCharge)"
             cell.topConstraintChargesLbl.constant = 10
             
         }else if let chargesStr = aPatner.chargeTitle where chargesStr != ""
         {
-            cell.lblCharges.text = chargesStr
+            cell.lblCharges.text = "*" + chargesStr
             cell.topConstraintChargesLbl.constant = 10
 
         }else

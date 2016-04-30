@@ -45,8 +45,6 @@ class b4u_OrderDetailViewController: UIViewController {
     
     func congigureUI()
     {
-        
-        
         if let address:b4u_AddressDetails = bro4u_DataManager.sharedInstance.address[0]{
             
             lbluserName.text = address.name!
@@ -59,7 +57,6 @@ class b4u_OrderDetailViewController: UIViewController {
             lblVendorName.text = selectedPartner.vendorName!
             lblSubTotal.text = selectedPartner.custPrice!
             lblGrandTotal.text = selectedPartner.offerPrice!
-
         }
     }
 

@@ -51,7 +51,10 @@ class b4u_OrdersModel: NSObject {
     var rating:String?
     var feedback:String?
     var onTime:String?
-    
+    var furl:String?
+    var surl:String?
+    var txnID:String?
+
     init(dataDict:Dictionary<String ,AnyObject>) {
         
         
@@ -94,6 +97,9 @@ class b4u_OrdersModel: NSObject {
         feedback = dataDict["feedback"] as? String
         
         onTime = dataDict["on_time"] as? String
+        furl = dataDict["furl"] as? String
+        surl = dataDict["surl"] as? String
+        txnID = dataDict["txnid"] as? String
 
         
         self.metaItemReOrder = Array()

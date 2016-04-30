@@ -551,6 +551,8 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
   }
  
+    // MARK: Order created
+    
     //Call Back for Order Created
   func hasOrderCreated(resultObject:String)
   {
@@ -581,7 +583,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     }
   }
   
-  //shahnawaz
+//MARK: Paytm Delegates and Methods
   
   func laodViewController(order : PGOrder, merchantConfiguration :PGMerchantConfiguration) -> Void {
     let txnController = PGTransactionViewController(transactionForOrder: order)
@@ -611,20 +613,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
   }
   
   func didSucceedTransaction(controller: PGTransactionViewController!, response: [NSObject : AnyObject]!) {
-//    let title = "Your order  was completed successfully. \n \(response["ORDERID"])"
-//    
-//    let alert = UIAlertController(title: title, message: response.description, preferredStyle: UIAlertControllerStyle.Alert)
-//    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-//    self.presentViewController(alert, animated: true, completion: nil)
-//    
-//    let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in
-//      //self.removeController(controller)
        updatePaytmPaymentStatus("TXN_SUCCESS",orderId: response["ORDERID"] as! String)
-//
-//    }
-//    alert.addAction(OKAction)
-    
-    
   }
   
   func didFailTransaction(controller: PGTransactionViewController!, error: NSError!, response: [NSObject : AnyObject]!) {
@@ -632,7 +621,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     if response != nil
     {
       let alert = UIAlertController(title: error.localizedDescription, message: response.description, preferredStyle: UIAlertControllerStyle.Alert)
-      alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+//      alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
       self.presentViewController(alert, animated: true, completion: nil)
       
       
@@ -648,7 +637,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     else if error != nil
     {
       let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
-      alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+//      alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
       self.presentViewController(alert, animated: true, completion: nil)
       
       let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in
@@ -663,26 +652,9 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
   }
   
   func didCancelTransaction(controller: PGTransactionViewController!, error: NSError!, response: [NSObject : AnyObject]!) {
-    
-    
+
     self.removeController(controller)
 
-//    let msg : String?
-//    if  error == nil {
-//      msg = "Successful"
-//    }else {
-//      msg = "UnSuccessful"
-//    }
-//    let alert = UIAlertController(title: "Transaction Cancel", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
-//    self.presentViewController(alert, animated: true, completion: nil)
-//    
-//    let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in
-//      self.removeController(controller)
-//      
-//    }
-//    alert.addAction(OKAction)
-    
-    //removeController(controller)
   }
   
   func didFinishCASTransaction(controller: PGTransactionViewController!, response: [NSObject : AnyObject]!)
@@ -712,7 +684,8 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
 
     })
   }
-    @IBAction func homeBtnPressed(sender: AnyObject) {
+    
+@IBAction func homeBtnPressed(sender: AnyObject) {
         
         self.navigationController?.popToRootViewControllerAnimated(true)
     }

@@ -52,7 +52,9 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
         bro4u_DataManager.sharedInstance.orderId = orderID
 
         self.hasOrderCreated("Success")
-      }
+      } else if bro4u_DataManager.sharedInstance.userSelectedOrder != nil {
+        self.hasOrderCreated("Success")
+      }//susmit
       else
       {
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
@@ -104,7 +106,7 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
       selectBankBtn.layer.borderWidth = 1.0
       selectBankBtn.layer.borderColor = UIColor.orangeColor().CGColor
       
-      self.totalAmountLbl.text = "Rs. \(bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)"
+      self.totalAmountLbl.text = "Rs. \(bro4u_DataManager.sharedInstance.selectedSuggestedPatner != nil ? bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice! : ((bro4u_DataManager.sharedInstance.userSelectedOrder != nil) ? bro4u_DataManager.sharedInstance.userSelectedOrder!.actualPrice! : ""))"//susmit
 
     }
 
@@ -216,10 +218,16 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
         payUMoneyUtil.selectedBankCode = selectedBankCode
         payUMoneyUtil.callBackHandler = callBackhandler
         payUMoneyUtil.txnID = bro4u_DataManager.sharedInstance.txnID
-        payUMoneyUtil.sURL = bro4u_DataManager.sharedInstance.furl
-        payUMoneyUtil.fURL = bro4u_DataManager.sharedInstance.surl
-        payUMoneyUtil.amount = bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice
-        payUMoneyUtil.productInfo = bro4u_DataManager.sharedInstance.selectedSuggestedPatner?.catName
+        
+        
+        payUMoneyUtil.sURL = (bro4u_DataManager.sharedInstance.surl != nil) ? bro4u_DataManager.sharedInstance.surl:bro4u_DataManager.sharedInstance.userSelectedOrder!.surl
+        
+        payUMoneyUtil.fURL = (bro4u_DataManager.sharedInstance.furl != nil) ? bro4u_DataManager.sharedInstance.furl:bro4u_DataManager.sharedInstance.userSelectedOrder!.furl
+        
+        payUMoneyUtil.amount = (bro4u_DataManager.sharedInstance.selectedSuggestedPatner != nil) ? bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice : "\(bro4u_DataManager.sharedInstance.userSelectedOrder!.offerPrice!)"
+        
+        payUMoneyUtil.productInfo = (bro4u_DataManager.sharedInstance.selectedSuggestedPatner != nil) ? bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.catName : "\(bro4u_DataManager.sharedInstance.userSelectedOrder!.catName!)"
+
         payUMoneyUtil.firstName = bro4u_DataManager.sharedInstance.loginInfo?.fullName
         payUMoneyUtil.email = bro4u_DataManager.sharedInstance.loginInfo?.email
         payUMoneyUtil.phoneNumber = bro4u_DataManager.sharedInstance.loginInfo?.email
@@ -248,11 +256,11 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
       {
         b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
         
-        let orderID = "\(bro4u_DataManager.sharedInstance.orderId)"
-
-        //Setting Order ID in User Default
-        b4u_Utility.sharedInstance.setUserDefault(orderID, KeyToSave:"order_id")
-
+        if bro4u_DataManager.sharedInstance.userSelectedOrder != nil
+        {
+            bro4u_DataManager.sharedInstance.orderId = NSNumberFormatter().numberFromString((bro4u_DataManager.sharedInstance.userSelectedOrder?.orderID!)!)
+            bro4u_DataManager.sharedInstance.txnID = bro4u_DataManager.sharedInstance.userSelectedOrder?.txnID
+        }
         self.configureUI()
       }
       //      self.getDataOfThanksScreen(resultObject)

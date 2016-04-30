@@ -61,7 +61,7 @@ class b4u_CreateOrder: NSObject {
     var customer_name=""
     var vendor_id=""
     var custom_message="ihih"
-    var address_id="1"
+    var address_id=""
     var email=""
     var mobile=""
     var item_id=""

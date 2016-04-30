@@ -164,9 +164,9 @@ class b4u_MyAccountViewController: UIViewController {
   
   
   
-  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    return 105.0;
-  }
+//  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//    return 105.0;
+//  }
   
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
@@ -198,7 +198,6 @@ class b4u_MyAccountViewController: UIViewController {
 
                 return
             case 2:
-//                destination = storyboard.instantiateViewControllerWithIdentifier("MyInfoViewControllerID") as! MyInfoViewController
                 
                 self.performSegueWithIdentifier("myInfoCtrl", sender:nil)
 
