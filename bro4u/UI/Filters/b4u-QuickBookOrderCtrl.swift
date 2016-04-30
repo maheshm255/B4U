@@ -8,11 +8,18 @@
 
 import UIKit
 
+protocol quickBookDelegate: NSObjectProtocol {
+    func quickBookSuccess(isSuccess:Bool)
+}
+
 class b4u_QuickBookOrderCtrl: UIViewController {
 
     @IBOutlet weak var tfName: UITextField!
     @IBOutlet weak var btnBookRequest: UIButton!
     @IBOutlet weak var tfMobileNumber: UITextField!
+    
+    
+    var delegate:quickBookDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +104,7 @@ class b4u_QuickBookOrderCtrl: UIViewController {
         
         b4u_WebApiCallManager.sharedInstance.getApiCall(kQuickOrderBook, params:params, result:{(resultObject) -> Void in
             
+            self.delegate?.quickBookSuccess(true)
             self.dismissViewControllerAnimated(true, completion:nil)
             
         })

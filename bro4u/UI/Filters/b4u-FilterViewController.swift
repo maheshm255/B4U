@@ -17,7 +17,7 @@ enum inputType:String
     case textBoxGroup = "textboxgroup"
 }
 
-class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControllerDelegate , calendarDelegate,timeSlotDelegate {
+class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControllerDelegate , calendarDelegate,timeSlotDelegate ,quickBookDelegate{
     
     @IBOutlet weak var expandableTblView: b4u_ExpandableTableView!
     
@@ -667,7 +667,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         
         quickBookViewCtrl.modalPresentationStyle = .Popover
         quickBookViewCtrl.preferredContentSize = CGSizeMake(300, 360)
-        // quickBookViewCtrl.delegate = self
+        quickBookViewCtrl.delegate = self
         
         let popoverMenuViewController = quickBookViewCtrl.popoverPresentationController
         popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
@@ -872,13 +872,13 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         
         //TODO - Uncomment below line for device 
         
-//        if let currentLocaiotn = bro4u_DataManager.sharedInstance.currenLocation
-//        {
-//            latitude = "\(currentLocaiotn.coordinate.latitude)"
-//            
-//            longitude = "\(currentLocaiotn.coordinate.longitude)"
-//            
-//        }
+        if let currentLocaiotn = bro4u_DataManager.sharedInstance.currenLocation
+        {
+            latitude = "\(currentLocaiotn.coordinate.latitude)"
+            
+            longitude = "\(currentLocaiotn.coordinate.longitude)"
+            
+        }
         
         var params = "?cat_id=\(catId)"
         
@@ -1072,6 +1072,14 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     @IBAction func homeBtnPressed(sender: AnyObject) {
         
         self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
+    func quickBookSuccess(isSuccess:Bool)
+    {
+        
+        let quickBookThanksCtrl = self.storyboard?.instantiateViewControllerWithIdentifier("b4uQuickBookThanksCtrl") as! b4u_QuickBookThanksCtrl
+        
+        self.navigationController?.pushViewController(quickBookThanksCtrl, animated:true)
     }
     
 }
