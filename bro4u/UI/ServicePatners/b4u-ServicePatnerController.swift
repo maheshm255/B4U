@@ -184,7 +184,16 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         cell.lblVendorReiviews.text = "\(aPatner.reviewCount!) Reviews"
         cell.lblVendorDistance.text =  String(format: "%.2@ Kms away",aPatner.distance!)
          //   "\(aPatner.distance!) Kms away"
-        
+        //For Giving Border to button
+        cell.btnViewProfile.layer.cornerRadius = 2
+        cell.btnViewProfile.layer.borderColor = UIColor.grayColor().CGColor
+        cell.btnViewProfile.layer.borderWidth = 1
+
+        //For Giving Border to button
+        cell.btnViewDetails.layer.cornerRadius = 2
+        cell.btnViewDetails.layer.borderColor = UIColor.grayColor().CGColor
+        cell.btnViewDetails.layer.borderWidth = 1
+
         
         self.navigationItem.title = aPatner.catName!
 

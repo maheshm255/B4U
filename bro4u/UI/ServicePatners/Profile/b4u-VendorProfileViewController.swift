@@ -1,4 +1,4 @@
-//
+  //
 //  b4u-VendorProfileViewController.swift
 //  bro4u
 //
@@ -48,6 +48,8 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
     var heightForReviews:CGFloat = 0.0
     var heightForAboutPartner:CGFloat = 0.0
     
+    var partnerReviewsCtrl:b4u_PartnerReviewsTblViewCtrl?
+    
     var currentPage:Int{// The index of the current page (readonly)
         
         get{
@@ -70,6 +72,12 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
 
 
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -207,17 +215,19 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
         self.webViewConstraints(10.0)
 
     }
+    
+    
     func addReviews()
     {
 
         
-        let partnerReviewsCtrl:b4u_PartnerReviewsTblViewCtrl =   self.storyboard?.instantiateViewControllerWithIdentifier("partnerReviewCtrl") as! b4u_PartnerReviewsTblViewCtrl
+        partnerReviewsCtrl =   self.storyboard?.instantiateViewControllerWithIdentifier("partnerReviewCtrl") as! b4u_PartnerReviewsTblViewCtrl
         
-        partnerReviewsCtrl.tableView.scrollEnabled = false
+        partnerReviewsCtrl!.tableView.scrollEnabled = false
         
-        self.scrollViewDetails.addSubview(partnerReviewsCtrl.view)
+        self.scrollViewDetails.addSubview(partnerReviewsCtrl!.view)
 
-        partnerReviewsCtrl.view.translatesAutoresizingMaskIntoConstraints = false
+        partnerReviewsCtrl!.view.translatesAutoresizingMaskIntoConstraints = false
 
         
        self.detailBaseViewHeight.constant = CGFloat((bro4u_DataManager.sharedInstance.vendorProfile?.reviews?.count)!) * 117.0 + 165
@@ -227,24 +237,24 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
         
         self.heightForReviews = height
         
-        let metricDict = ["w":partnerReviewsCtrl.view.bounds.size.width - 20,"h":height]
+        let metricDict = ["w":partnerReviewsCtrl!.view.bounds.size.width - 20,"h":height]
 
         
         
-        partnerReviewsCtrl.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[view(h)]", options:[], metrics: metricDict, views: ["view":partnerReviewsCtrl.view]))
+        partnerReviewsCtrl!.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[view(h)]", options:[], metrics: metricDict, views: ["view":partnerReviewsCtrl!.view]))
         
-        partnerReviewsCtrl.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[view(w)]", options:[], metrics: metricDict, views: ["view":partnerReviewsCtrl.view]))
+        partnerReviewsCtrl!.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[view(w)]", options:[], metrics: metricDict, views: ["view":partnerReviewsCtrl!.view]))
         
         
         let width  = UIScreen.mainScreen().bounds.width - 5
 
         
-        let leading = NSLayoutConstraint(item:partnerReviewsCtrl.view, attribute:.Leading, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Leading, multiplier:1.0, constant:width)
+        let leading = NSLayoutConstraint(item:partnerReviewsCtrl!.view, attribute:.Leading, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Leading, multiplier:1.0, constant:width)
         
         self.scrollViewDetails.addConstraint(leading)
         
       
-        let top = NSLayoutConstraint(item:partnerReviewsCtrl.view, attribute:.Top, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Top, multiplier:1.0, constant:1.0)
+        let top = NSLayoutConstraint(item:partnerReviewsCtrl!.view, attribute:.Top, relatedBy: .Equal, toItem:self.scrollViewDetails, attribute:.Top, multiplier:1.0, constant:1.0)
         
         self.scrollViewDetails.addConstraint(top)
         
@@ -432,7 +442,9 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
         self.detailBaseViewHeight.constant = self.heightForReviews
         
         self.btnDescroption.titleLabel?.textColor = UIColor(red:139.9/255, green:139.0/255, blue:139.0/255, alpha:1.0)
-        self.btnReview.titleLabel?.textColor = UIColor(red:0.0/255, green:141.0/255, blue:181.0/255, alpha:1.0)
+        
+        self.btnReview.setTitleColor(UIColor(red:0.0/255, green:141.0/255, blue:181.0/255, alpha:1.0), forState: .Normal)
+        
         self.btnAbountPartner.titleLabel?.textColor = UIColor(red:139.9/255, green:139.0/255, blue:139.0/255, alpha:1.0)
     }
 
@@ -448,7 +460,8 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
         
         self.btnDescroption.titleLabel?.textColor = UIColor(red:139.9/255, green:139.0/255, blue:139.0/255, alpha:1.0)
         self.btnReview.titleLabel?.textColor = UIColor(red:139.9/255, green:139.0/255, blue:139.0/255, alpha:1.0)
-        self.btnAbountPartner.titleLabel?.textColor = UIColor(red:0.0/255, green:141.0/255, blue:181.0/255, alpha:1.0)
+        self.btnAbountPartner.setTitleColor(UIColor(red:0.0/255, green:141.0/255, blue:181.0/255, alpha:1.0), forState: .Normal)
+
 
     }
     @IBAction func btnDescriptionPressed(sender: AnyObject)
@@ -460,7 +473,8 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
 
         self.detailBaseViewHeight.constant = self.heightForDescription
         
-        self.btnDescroption.titleLabel?.textColor = UIColor(red:0.0/255, green:141.0/255, blue:181.0/255, alpha:1.0)
+        self.btnDescroption.setTitleColor(UIColor(red:0.0/255, green:141.0/255, blue:181.0/255, alpha:1.0), forState: .Normal)
+
         self.btnReview.titleLabel?.textColor = UIColor(red:139.0/255, green:139.0/255, blue:139.0/255, alpha:1.0)
         self.btnAbountPartner.titleLabel?.textColor = UIColor(red:139.9/255, green:139.0/255, blue:139.0/255, alpha:1.0)
         
