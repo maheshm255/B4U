@@ -61,10 +61,11 @@ class b4u_PayOnlineOrderViewController: UIViewController {
   
   
   @IBAction func btnCloseClicked(sender: AnyObject) {
-    self.dismissPopupViewController(.Fade)
     //Removing Selected Order Object and Order ID in User Default
     b4u_Utility.sharedInstance.setUserDefault(nil, KeyToSave:"order_id")
     bro4u_DataManager.sharedInstance.userSelectedOrder = nil
+
+    self.dismissViewControllerAnimated(true, completion:nil)
   }
   
   //susmit

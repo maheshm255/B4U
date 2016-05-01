@@ -24,6 +24,8 @@ class MyOrderViewController: UIViewController,UIPopoverPresentationControllerDel
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"loginDismissed", name:kUserDataReceived, object:nil);
      
+        self.validateUser()
+
     }
     
     
@@ -81,7 +83,6 @@ class MyOrderViewController: UIViewController,UIPopoverPresentationControllerDel
     
     override func viewWillAppear(animated: Bool)
     {
-        self.validateUser()
 
         self.view.alpha = 1.0
     }

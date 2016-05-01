@@ -57,6 +57,7 @@
 		529F27731CADA84700ABFC9E /* b4u_OrderDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F27721CADA84700ABFC9E /* b4u_OrderDetailModel.swift */; };
 		529F27751CADA94300ABFC9E /* b4u_SelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F27741CADA94300ABFC9E /* b4u_SelectionModel.swift */; };
 		52A1AE801CC557ED001095B8 /* RadioButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A1AE7F1CC557ED001095B8 /* RadioButtonExtension.swift */; };
+		52FA8FC81CD5BF62008CA47F /* b4u_ReorderDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FA8FC71CD5BF62008CA47F /* b4u_ReorderDetail.swift */; };
 		65264F851C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65264F841C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift */; };
 		65264F871C81D80200859F5A /* b4u-SuggestedPatnersResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65264F861C81D80200859F5A /* b4u-SuggestedPatnersResult.swift */; };
 		65271E4E1C828F5E0022C888 /* b4u-CategoryTblViewCtrl1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65271E4D1C828F5E0022C888 /* b4u-CategoryTblViewCtrl1.swift */; };
@@ -338,6 +339,7 @@
 		529F27721CADA84700ABFC9E /* b4u_OrderDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_OrderDetailModel.swift; sourceTree = "<group>"; };
 		529F27741CADA94300ABFC9E /* b4u_SelectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_SelectionModel.swift; sourceTree = "<group>"; };
 		52A1AE7F1CC557ED001095B8 /* RadioButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonExtension.swift; sourceTree = "<group>"; };
+		52FA8FC71CD5BF62008CA47F /* b4u_ReorderDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = b4u_ReorderDetail.swift; path = "../../../../../code Backup/B4U/bro4u/UI/ReOrder Screen/b4u_ReorderDetail.swift"; sourceTree = "<group>"; };
 		65264F841C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-ServicePartnerTblViewCell.swift"; sourceTree = "<group>"; };
 		65264F861C81D80200859F5A /* b4u-SuggestedPatnersResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-SuggestedPatnersResult.swift"; sourceTree = "<group>"; };
 		65271E4D1C828F5E0022C888 /* b4u-CategoryTblViewCtrl1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-CategoryTblViewCtrl1.swift"; sourceTree = "<group>"; };
@@ -1484,6 +1486,7 @@
 		B720379C1C93BE3200C1FF50 /* ReOrder Screen */ = {
 			isa = PBXGroup;
 			children = (
+				52FA8FC71CD5BF62008CA47F /* b4u_ReorderDetail.swift */,
 				B720379D1C93BE3200C1FF50 /* b4u_ReOrderTableViewCell.swift */,
 				B720379E1C93BE3200C1FF50 /* b4u_ReOrderViewController.swift */,
 			);
@@ -1949,6 +1952,7 @@
 				B36939881CA1440B000266A5 /* b4u_TrackOrderViewController.swift in Sources */,
 				65B18A801C70BB28000EDD00 /* AFSecurityPolicy.m in Sources */,
 				B3A08DCB1CBB6D71004B3D52 /* b4u_CreateOrder.swift in Sources */,
+				52FA8FC81CD5BF62008CA47F /* b4u_ReorderDetail.swift in Sources */,
 				65DE79651C796AD200017F96 /* b4u_IntermediateScreenDataModel.swift in Sources */,
 				B33666801CA95092007FFD50 /* b4u_CreditAndDebitCardViewController.swift in Sources */,
 				65B18A901C70BBC1000EDD00 /* b4u-globalDefinations.swift in Sources */,

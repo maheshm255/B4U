@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
+        self.animatedSplashScreen()
         self.registerPushNotification()
         self.checkUserAlreadyLogin()
         
@@ -233,7 +233,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
-    
+    func animatedSplashScreen()
+    {
+        // Add imageView overlay with fade out and zoom in animation
+//        UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.window.frame];
+        
+        let imageView:UIImageView = UIImageView()
+        
+        imageView.frame = (self.window?.frame)!
+        imageView.image = UIImage(named:"splashScreen")
+        self.window?.addSubview(imageView)
+        self.window?.bringSubviewToFront(imageView)
+        
+        UIView.transitionWithView(self.window!, duration: 1.75, options:UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
+            
+        imageView.alpha = 0.0
+        imageView.frame = CGRectInset(imageView.frame, -200.0, -200.0);
+
+            }) { (result) -> Void in
+            
+                imageView.removeFromSuperview()
+        }
+        self.window?.makeKeyAndVisible()
+        
+////        imageView.image = [UIImage imageNamed:@"Default"]; // assuming your splash image is "Default.png" or "Default@2x.png"
+////        [self.window addSubview:imageView];
+////        [self.window bringSubviewToFront:imageView];
+//        [UIView transitionWithView:self.window
+//        duration:0.75f
+//        options:UIViewAnimationOptionTransitionNone
+//        animations:^(void){
+//        imageView.alpha = 0.0f;
+//        imageView.frame = CGRectInset(imageView.frame, -100.0f, -100.0f);
+//        }
+//        completion:^(BOOL finished){
+//        [imageView removeFromSuperview];
+//        }];
+////        [imageView release];
+//        
+//        [self.window makeKeyAndVisible];
+//
+    }
     
 }
 
