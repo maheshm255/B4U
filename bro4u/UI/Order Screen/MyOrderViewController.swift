@@ -693,7 +693,7 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
             self.presentViewController(alert, animated: true, completion: nil)
             
             let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in
-                self.updatePaytmPaymentStatus("TXN_FAILURE",orderId: response["ORDERID"] as! String)
+                self.updatePaytmPaymentStatus("TXN_FAILURE",orderId: b4u_Utility.sharedInstance.getUserDefault("order_id") as! String)
                 
                 self.removeController(controller)
             }
