@@ -57,7 +57,6 @@
 		529F27731CADA84700ABFC9E /* b4u_OrderDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F27721CADA84700ABFC9E /* b4u_OrderDetailModel.swift */; };
 		529F27751CADA94300ABFC9E /* b4u_SelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F27741CADA94300ABFC9E /* b4u_SelectionModel.swift */; };
 		52A1AE801CC557ED001095B8 /* RadioButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A1AE7F1CC557ED001095B8 /* RadioButtonExtension.swift */; };
-		52FA8FC81CD5BF62008CA47F /* b4u_ReorderDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FA8FC71CD5BF62008CA47F /* b4u_ReorderDetail.swift */; };
 		65264F851C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65264F841C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift */; };
 		65264F871C81D80200859F5A /* b4u-SuggestedPatnersResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65264F861C81D80200859F5A /* b4u-SuggestedPatnersResult.swift */; };
 		65271E4E1C828F5E0022C888 /* b4u-CategoryTblViewCtrl1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65271E4D1C828F5E0022C888 /* b4u-CategoryTblViewCtrl1.swift */; };
@@ -163,6 +162,7 @@
 		B34EAD961C929A5900FCB0F5 /* b4u_NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD951C929A5900FCB0F5 /* b4u_NotificationModel.swift */; };
 		B34EAD981C929EA000FCB0F5 /* b4u_NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD971C929EA000FCB0F5 /* b4u_NotificationTableViewCell.swift */; };
 		B34EAD9A1C92CBB600FCB0F5 /* b4u_MyAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EAD991C92CBB600FCB0F5 /* b4u_MyAccountModel.swift */; };
+		B3623CB51CD85CD600DC38FD /* b4u_ReorderDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3623CB41CD85CD600DC38FD /* b4u_ReorderDetail.swift */; };
 		B36939861CA143F2000266A5 /* b4u_CancelOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36939851CA143F2000266A5 /* b4u_CancelOrderViewController.swift */; };
 		B36939881CA1440B000266A5 /* b4u_TrackOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36939871CA1440B000266A5 /* b4u_TrackOrderViewController.swift */; };
 		B369398A1CA14423000266A5 /* b4u_RescheduleOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36939891CA14423000266A5 /* b4u_RescheduleOrderViewController.swift */; };
@@ -339,7 +339,6 @@
 		529F27721CADA84700ABFC9E /* b4u_OrderDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_OrderDetailModel.swift; sourceTree = "<group>"; };
 		529F27741CADA94300ABFC9E /* b4u_SelectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_SelectionModel.swift; sourceTree = "<group>"; };
 		52A1AE7F1CC557ED001095B8 /* RadioButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonExtension.swift; sourceTree = "<group>"; };
-		52FA8FC71CD5BF62008CA47F /* b4u_ReorderDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = b4u_ReorderDetail.swift; path = "../../../../../code Backup/B4U/bro4u/UI/ReOrder Screen/b4u_ReorderDetail.swift"; sourceTree = "<group>"; };
 		65264F841C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-ServicePartnerTblViewCell.swift"; sourceTree = "<group>"; };
 		65264F861C81D80200859F5A /* b4u-SuggestedPatnersResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-SuggestedPatnersResult.swift"; sourceTree = "<group>"; };
 		65271E4D1C828F5E0022C888 /* b4u-CategoryTblViewCtrl1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "b4u-CategoryTblViewCtrl1.swift"; sourceTree = "<group>"; };
@@ -478,6 +477,7 @@
 		B34EAD951C929A5900FCB0F5 /* b4u_NotificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_NotificationModel.swift; sourceTree = "<group>"; };
 		B34EAD971C929EA000FCB0F5 /* b4u_NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		B34EAD991C92CBB600FCB0F5 /* b4u_MyAccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = b4u_MyAccountModel.swift; path = "bro4u/Models/My Account/b4u_MyAccountModel.swift"; sourceTree = SOURCE_ROOT; };
+		B3623CB41CD85CD600DC38FD /* b4u_ReorderDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_ReorderDetail.swift; sourceTree = "<group>"; };
 		B36939851CA143F2000266A5 /* b4u_CancelOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_CancelOrderViewController.swift; sourceTree = "<group>"; };
 		B36939871CA1440B000266A5 /* b4u_TrackOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_TrackOrderViewController.swift; sourceTree = "<group>"; };
 		B36939891CA14423000266A5 /* b4u_RescheduleOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_RescheduleOrderViewController.swift; sourceTree = "<group>"; };
@@ -1486,7 +1486,7 @@
 		B720379C1C93BE3200C1FF50 /* ReOrder Screen */ = {
 			isa = PBXGroup;
 			children = (
-				52FA8FC71CD5BF62008CA47F /* b4u_ReorderDetail.swift */,
+				B3623CB41CD85CD600DC38FD /* b4u_ReorderDetail.swift */,
 				B720379D1C93BE3200C1FF50 /* b4u_ReOrderTableViewCell.swift */,
 				B720379E1C93BE3200C1FF50 /* b4u_ReOrderViewController.swift */,
 			);
@@ -1882,6 +1882,7 @@
 				65DE76D31C7777FE00017F96 /* b4u-Category.swift in Sources */,
 				65264F851C81B31400859F5A /* b4u-ServicePartnerTblViewCell.swift in Sources */,
 				B71C28611C8C0C0C00873B5C /* ReferAndEarnViewController.swift in Sources */,
+				B3623CB51CD85CD600DC38FD /* b4u_ReorderDetail.swift in Sources */,
 				656412411C88C1B600B8D5D4 /* b4u_ServicePatnerMapViewCtrl.swift in Sources */,
 				65271F571C831C130022C888 /* b4u-PaymentTblViewCell.swift in Sources */,
 				65FF8CDC1C7B6D73007588D0 /* b4u-ExpandableTableView.swift in Sources */,
@@ -1952,7 +1953,6 @@
 				B36939881CA1440B000266A5 /* b4u_TrackOrderViewController.swift in Sources */,
 				65B18A801C70BB28000EDD00 /* AFSecurityPolicy.m in Sources */,
 				B3A08DCB1CBB6D71004B3D52 /* b4u_CreateOrder.swift in Sources */,
-				52FA8FC81CD5BF62008CA47F /* b4u_ReorderDetail.swift in Sources */,
 				65DE79651C796AD200017F96 /* b4u_IntermediateScreenDataModel.swift in Sources */,
 				B33666801CA95092007FFD50 /* b4u_CreditAndDebitCardViewController.swift in Sources */,
 				65B18A901C70BBC1000EDD00 /* b4u-globalDefinations.swift in Sources */,
