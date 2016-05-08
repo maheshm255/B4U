@@ -318,6 +318,12 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                 }
                 
             }
+            
+            if ((indexPath.row + 1) == catFilterAttributes.catFilterAttributeOptions?.count)
+            {
+                b4u_Utility.shadowEffectToView(cell)
+            }
+
             return cell
             
         }
@@ -348,7 +354,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             
             cell.btnSelectTime.layer.borderWidth = 1.0
             
-            
+            b4u_Utility.shadowEffectToView(cell)
             return cell
             
         }

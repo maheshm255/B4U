@@ -131,6 +131,9 @@ class b4u_ReOrderViewController: UIViewController,UIPopoverPresentationControlle
         cell.btnViewOrderDetails.tag = indexPath.section
 
         cell.configureData(reOrderModel)
+        
+        b4u_Utility.shadowEffectToView(cell)
+
         return cell
     }
     

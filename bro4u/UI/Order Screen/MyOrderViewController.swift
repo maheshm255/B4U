@@ -205,7 +205,8 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         cell.configureData(self.onGoingOrderArray![indexPath.row])
   
         
-        
+//      b4u_Utility.shadowEffectToView(cell)
+  
       return cell
     }
     else{
@@ -216,6 +217,8 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         cell.btnWriteReview.tag = indexPath.row
         
         cell.configureData(self.pastOrdersArray![indexPath.row])
+
+//        b4u_Utility.shadowEffectToView(cell)
 
         return cell
 

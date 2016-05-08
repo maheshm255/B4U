@@ -299,6 +299,9 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
             cell.topConstraintChargesLbl.constant = 0
 
         }
+        
+        b4u_Utility.shadowEffectToView(cell)
+        
         return cell
     }
     internal func numberOfSectionsInTableView(tableView: UITableView) -> Int

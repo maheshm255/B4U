@@ -88,7 +88,7 @@ class b4u_Utility: NSObject {
     object.layer.shadowColor = UIColor.lightGrayColor().CGColor
     object.layer.shadowOpacity = 1
     object.layer.shadowOffset = CGSizeZero
-    object.layer.shadowRadius = 1
+    object.layer.shadowRadius = 2
     object.layer.shadowPath = UIBezierPath(rect: object.bounds).CGPath
     object.layer.shouldRasterize = true
     object.layer.masksToBounds  = false
