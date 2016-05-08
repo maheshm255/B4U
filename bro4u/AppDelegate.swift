@@ -232,8 +232,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().registerForRemoteNotifications()
     }
     
-    
-    
+       
     
 }
 

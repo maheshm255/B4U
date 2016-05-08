@@ -8,7 +8,7 @@
 
 import UIKit
 
-class b4u_PartnerReviewsTblViewCtrl: UITableViewController {
+class b4u_PartnerReviewsTblViewCtrl: UITableViewController,UIPopoverPresentationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,22 +142,25 @@ class b4u_PartnerReviewsTblViewCtrl: UITableViewController {
     */
 
     
-    func showReadMore()
+    func showReadMore(selectedReviewModel:b4u_VendorReviews)
     {
         let storyboard : UIStoryboard = self.storyboard!
         
         let  alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("readMoreCtrl") as! b4u_ReviewReadMoreCtrl
+        
+        alertViewCtrl.reviewsModel = selectedReviewModel
         
         alertViewCtrl.modalPresentationStyle = .Popover
         alertViewCtrl.preferredContentSize = CGSizeMake(300, 400)
         
         let popoverMenuViewController = alertViewCtrl.popoverPresentationController
         popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
-       // popoverMenuViewController?.delegate = self
+        popoverMenuViewController?.delegate = self
         popoverMenuViewController?.sourceView = self.view
         popoverMenuViewController?.sourceRect = CGRect(
-            x: CGRectGetMidX(self.view.frame),
-            y: CGRectGetMidY(self.view.frame),
+            
+            x: CGRectGetMidX(self.view.bounds),
+            y: CGRectGetMidY(self.view.bounds) - 100,
             width: 1,
             height: 1)
         presentViewController(
@@ -170,8 +173,15 @@ class b4u_PartnerReviewsTblViewCtrl: UITableViewController {
     
     @IBAction func btnReadMorePressed(sender: AnyObject)
     {
-        self.showReadMore()
+        let reviewsModel:b4u_VendorReviews = (bro4u_DataManager.sharedInstance.vendorProfile?.reviews![sender.tag])!
+
+        self.showReadMore(reviewsModel)
 
     }
-  
+    
+    func adaptivePresentationStyleForPresentationController(
+        controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .None
+    }
+
 }
