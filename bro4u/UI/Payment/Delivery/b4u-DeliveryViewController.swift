@@ -177,7 +177,8 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
             cell.btnSelectTime.layer.borderWidth = 1.0
             
             
-            
+            b4u_Utility.shadowEffectToView(cell)
+
             return cell
         case 1:
             let cellIdentifier = "addressCell"
@@ -261,6 +262,8 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
 
 
             }
+            
+            b4u_Utility.shadowEffectToView(cell)
             return cell
             
         case 2 :
@@ -272,7 +275,8 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
               cell.textViewComment.delegate = self
             
          
-           
+            b4u_Utility.shadowEffectToView(cell)
+
             return cell
             
         default:
@@ -281,6 +285,8 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
 
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
             
+            b4u_Utility.shadowEffectToView(cell)
+
             return cell
         }
 
