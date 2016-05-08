@@ -8,7 +8,7 @@
 
 import UIKit
 
-class b4u_ReOrderViewController: UIViewController {
+class b4u_ReOrderViewController: UIViewController,UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var reOrderTableView: UITableView!
     
@@ -165,6 +165,27 @@ class b4u_ReOrderViewController: UIViewController {
     
     @IBAction func viewDetailsBtnPressed(sender: AnyObject)
     {
+
+        let storyboard : UIStoryboard = self.storyboard!
+        
+        let reOrderDetailController:b4u_ReOrderDetail = storyboard.instantiateViewControllerWithIdentifier("ReOrderDetailID") as! b4u_ReOrderDetail
+        
+        reOrderDetailController.modalPresentationStyle = .Popover
+        reOrderDetailController.preferredContentSize = CGSizeMake(300, 250)
+        reOrderDetailController.definesPresentationContext = true
+        let popoverMenuViewController = reOrderDetailController.popoverPresentationController
+        popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
+        popoverMenuViewController?.delegate = self
+        popoverMenuViewController?.sourceView = self.view
+        popoverMenuViewController?.sourceRect = CGRect(
+            x: CGRectGetMidX(self.view.bounds),
+            y: CGRectGetMidY(self.view.bounds),
+            width: 1,
+            height: 1)
+        presentViewController(
+            reOrderDetailController,
+            animated: true,
+            completion: nil)
     }
     
     

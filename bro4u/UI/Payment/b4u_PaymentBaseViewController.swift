@@ -637,12 +637,13 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     }
     else if error != nil
     {
+        
       let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
 //      alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
       self.presentViewController(alert, animated: true, completion: nil)
       
       let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in
-        self.updatePaytmPaymentStatus("TXN_FAILURE",orderId: response["ORDERID"] as! String)
+        self.updatePaytmPaymentStatus("TXN_FAILURE",orderId: b4u_Utility.sharedInstance.getUserDefault("order_id") as! String)
 
         self.removeController(controller)
       }

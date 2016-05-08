@@ -353,6 +353,11 @@ let kNetBankingPayment = "NetBankingPayment"
 let kCardPayment = "CardPayment"
 let kPaytmPayment = "PaytmPayment"
 
+//Payment offer Message
+let kPaytmOffer = "paytm"
+let kPayumoneyOffer = "payumoney"
+let kOnlinepayOffer = "onlinepay"
+let kCodOffer = "cod"
 
 //storyboard segue ID
 

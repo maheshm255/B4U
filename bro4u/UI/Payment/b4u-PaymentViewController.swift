@@ -33,7 +33,7 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     let itemDict : NSArray = ["paytm","Credit/Debit Card",
         "Net Banking",
         "Cash On Service"]
-    
+    var offerDict : NSMutableDictionary?
     
     @IBOutlet weak var btnApply: UIButton!
     @IBOutlet weak var tfCouponCode: UITextField!
@@ -156,9 +156,23 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
 //        self.paymentTableView.layer.shadowOffset = CGSize(width: 0, height: 0.5)
 //        self.paymentTableView.layer.shadowOpacity = 0.2
 //        self.paymentTableView.layer.shadowPath = shadowPath.CGPath
+      
+      self.createOfferDict()
 
     }
-    
+  
+  
+    func createOfferDict()
+    {
+      offerDict = NSMutableDictionary()
+      for offer in bro4u_DataManager.sharedInstance.orderDetailData[0].paymentGateWayes!
+      {
+        let PaymentGatewayOffersModel: b4u_PaymentGatewayOffersModel = offer
+        
+        offerDict?.setValue(PaymentGatewayOffersModel.offerMsg, forKey: PaymentGatewayOffersModel.offerFor!)
+        
+      }
+    }
     
     func applyCouponCodeViewTaped()
     {
@@ -249,8 +263,26 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
             cell.typeLabel?.text = itemDict[indexPath.row] as? String
             
         }
-        cell.infoLabel?.text = PaymentGatewayOffersModel.offerMsg
-        
+      
+        if(offerDict?.count > 0)
+        {
+          switch indexPath.row {
+          case 0:
+            cell.infoLabel?.text = offerDict?.objectForKey(kPaytmOffer) as? String
+          case 1:
+            cell.infoLabel?.text = offerDict?.objectForKey(kPayumoneyOffer) as? String
+          case 2:
+            cell.infoLabel?.text = offerDict?.objectForKey(kOnlinepayOffer) as? String
+          case 3:
+            cell.infoLabel?.text = offerDict?.objectForKey(kCodOffer) as? String
+            
+          default:
+            break
+          }
+
+        }
+//        cell.infoLabel?.text = PaymentGatewayOffersModel.offerMsg
+      
         if radioButtonSelected != nil{
             if radioButtonSelected.isEqual(indexPath){
                 cell.radioImageView.image = UIImage(named: "radioBlue")
