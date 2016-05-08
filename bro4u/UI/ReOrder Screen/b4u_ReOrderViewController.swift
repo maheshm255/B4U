@@ -83,12 +83,18 @@ class b4u_ReOrderViewController: UIViewController,UIPopoverPresentationControlle
     
     func congigureUI()
     {
-    
-        reOrderTableView.hidden = false
+        if bro4u_DataManager.sharedInstance.myReorderData.count > 0
+        {
+            reOrderTableView.hidden = false
+            reOrderTableView.reloadData()
 
-    reOrderTableView.reloadData()
-    
-    b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+        }
+        else
+        {
+            self.view.makeToast(message:"No Orders found", duration:1.0, position:HRToastPositionDefault)
+
+        }
+         b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
 
     }
 
