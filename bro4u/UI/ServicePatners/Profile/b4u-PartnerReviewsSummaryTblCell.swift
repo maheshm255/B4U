@@ -44,7 +44,7 @@ class b4u_PartnerReviewsSummaryTblCell: UITableViewCell {
     {
         let profileModelObj = bro4u_DataManager.sharedInstance.vendorProfile!
 
-        self.lblFromRatings.text = "From ratings by \(profileModelObj.reviewCount!) users"
+        self.lblFromRatings.text = "Rated by \(profileModelObj.reviewCount!) users"
         
         self.lblReviewPrecentage.text = profileModelObj.averageRatingPercent!
         
@@ -98,6 +98,15 @@ class b4u_PartnerReviewsSummaryTblCell: UITableViewCell {
          aWidth = ( width * CGFloat(Int(profileModelObj.serviceQuality!)!) ) / 100
         
         self.constraintLblQualityTrailing.constant =  self.constraintLblQualityTrailing.constant + width - aWidth
+        
+        
+        self.imgViewOnTime.layer.cornerRadius = 2.0
+        self.imgViewOnTimeBase.layer.cornerRadius = 2.0
+        self.imgViewQuality.layer.cornerRadius = 2.0
+        self.imgViewQualityBase.layer.cornerRadius = 2.0
+
+        
+        self.layer.cornerRadius = 2.0
         
     }
 

@@ -130,7 +130,7 @@ class b4u_CategoryTblViewCtrl1: UIViewController,UITableViewDataSource,UITableVi
         let label = UILabel(frame:CGRectMake(CGRectGetWidth(imgViewIcon.frame) + 30, 0, CGRectGetWidth(headerView.frame),CGRectGetHeight(headerView.frame)))
         
         label.textAlignment = NSTextAlignment.Left
-        label.font = UIFont(name: "Helvetica Neue", size: 14)
+        label.font = UIFont(name: "Helvetica Neue", size: 19)
         label.textColor = UIColor.blackColor()
         
         headerView.addSubview(label)
