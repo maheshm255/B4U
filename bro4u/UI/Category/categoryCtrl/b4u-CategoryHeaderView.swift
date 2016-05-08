@@ -37,8 +37,8 @@ class b4u_CategoryHeaderView: UIView {
         self.addSubview(toggleButton)
         
         
-        self.arrowImgView = UIImageView(frame:CGRectMake(CGRectGetWidth(tableView.frame)-32, height!/2-3.5, 14, 7))
-        self.arrowImgView?.image = UIImage(named:"downArrow")
+        self.arrowImgView = UIImageView(frame:CGRectMake(CGRectGetWidth(tableView.frame)-32, height!/2-3.5, 7, 7))
+        self.arrowImgView?.image = UIImage(named:"leftArrow")
         self.addSubview(self.arrowImgView!)
         
         self.seperatorImgView = UIImageView(frame:CGRectMake(CGRectGetWidth(tableView.frame) - 50, 4, 1, height!-8))

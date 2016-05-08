@@ -359,6 +359,9 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView = b4u_ExpandableTblHeaderView(tableView: self.expandableTblView, section: section)
+        
+  
+        
         headerView.backgroundColor = UIColor(red:249.0/255, green:249.0/255, blue: 249.0/255, alpha:1.0)
         
         headerView.layer.cornerRadius = 1.0
@@ -368,30 +371,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         headerView.layer.borderColor = UIColor(red:221.0/255, green:221.0/255, blue: 221.0/255, alpha:1.0).CGColor
         
         
-        //        let label = UILabel(frame:CGRectMake(10, 0, CGRectGetWidth(headerView.frame)-30,CGRectGetHeight(headerView.frame)))
-        //
-        //        label.textAlignment = NSTextAlignment.Left
-        //        label.font = UIFont(name: "HelveticaNeue-neue", size: 14)
-        //        label.textColor = UIColor.blackColor()
-        //
-        //        label.backgroundColor = UIColor.blueColor()
-        //
-        //        headerView.addSubview(label)
-        //
-        //
-        //
-        //        let selectedItems = UILabel(frame:CGRectMake(10, 20, CGRectGetWidth(headerView.frame)-30,CGRectGetHeight(headerView.frame)))
-        //
-        //        selectedItems.textAlignment = NSTextAlignment.Left
-        //        selectedItems.font = UIFont(name: "HelveticaNeue-neue", size: 14)
-        //        selectedItems.textColor = UIColor.blackColor()
-        //
-        //        selectedItems.text = "Selected Items"
-        //        selectedItems.backgroundColor = UIColor.greenColor()
-        //
-        //        headerView.addSubview(selectedItems)
-        
-        headerView.lblSelectedItems!.text = ""
+            headerView.lblSelectedItems!.text = ""
         
         
         if section < inputArray?.count
@@ -517,56 +497,56 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     }
     
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if (cell.respondsToSelector("tintColor")) {
-            let cornerRadius: CGFloat = 1.0;
-            cell.backgroundColor = UIColor.clearColor()
-            let layer: CAShapeLayer  = CAShapeLayer()
-            let pathRef: CGMutablePathRef  = CGPathCreateMutable()
-            let bounds: CGRect  = CGRectInset(cell.bounds, 0, 0)
-            var addLine: Bool  = false
-            if (indexPath.row == 0 && indexPath.row == tableView.numberOfRowsInSection(indexPath.section)-1) {
-                CGPathAddRoundedRect(pathRef, nil, bounds, cornerRadius, cornerRadius);
-            } else if (indexPath.row == 0) {
-                CGPathMoveToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMaxY(bounds));
-                CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetMidX(bounds), CGRectGetMinY(bounds), cornerRadius);
-                CGPathAddArcToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds), CGRectGetMaxX(bounds), CGRectGetMidY(bounds), cornerRadius);
-                CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds));
-                addLine = true;
-            } else if (indexPath.row == tableView.numberOfRowsInSection(indexPath.section)-1) {
-                CGPathMoveToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds));
-                CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMaxY(bounds), CGRectGetMidX(bounds), CGRectGetMaxY(bounds), cornerRadius);
-                CGPathAddArcToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds), CGRectGetMaxX(bounds), CGRectGetMidY(bounds), cornerRadius);
-                CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds));
-            } else {
-                CGPathAddRect(pathRef, nil, bounds);
-                addLine = true;
-            }
-            layer.path = pathRef;
-            //CFRelease(pathRef);
-            //set the border color
-            layer.strokeColor = UIColor.lightGrayColor().CGColor;
-            //set the border width
-            layer.lineWidth = 1;
-            layer.fillColor = UIColor(white: 1, alpha: 1.0).CGColor;
-            
-            
-            if (addLine == true) {
-                let lineLayer: CALayer = CALayer();
-                let lineHeight: CGFloat  = (1 / UIScreen.mainScreen().scale);
-                lineLayer.frame = CGRectMake(CGRectGetMinX(bounds), bounds.size.height-lineHeight, bounds.size.width, lineHeight);
-                lineLayer.backgroundColor = tableView.separatorColor!.CGColor;
-                layer.addSublayer(lineLayer);
-            }
-            
-            let testView: UIView = UIView(frame:bounds)
-            testView.layer.insertSublayer(layer, atIndex: 0)
-            testView.backgroundColor = UIColor.clearColor()
-            cell.backgroundView = testView
-        }
-        
-    }
-    
+//    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+//        if (cell.respondsToSelector("tintColor")) {
+//            let cornerRadius: CGFloat = 1.0;
+//            cell.backgroundColor = UIColor.clearColor()
+//            let layer: CAShapeLayer  = CAShapeLayer()
+//            let pathRef: CGMutablePathRef  = CGPathCreateMutable()
+//            let bounds: CGRect  = CGRectInset(cell.bounds, 0, 0)
+//            var addLine: Bool  = false
+//            if (indexPath.row == 0 && indexPath.row == tableView.numberOfRowsInSection(indexPath.section)-1) {
+//                CGPathAddRoundedRect(pathRef, nil, bounds, cornerRadius, cornerRadius);
+//            } else if (indexPath.row == 0) {
+//                CGPathMoveToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMaxY(bounds));
+//                CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetMidX(bounds), CGRectGetMinY(bounds), cornerRadius);
+//                CGPathAddArcToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds), CGRectGetMaxX(bounds), CGRectGetMidY(bounds), cornerRadius);
+//                CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds));
+//                addLine = true;
+//            } else if (indexPath.row == tableView.numberOfRowsInSection(indexPath.section)-1) {
+//                CGPathMoveToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds));
+//                CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMaxY(bounds), CGRectGetMidX(bounds), CGRectGetMaxY(bounds), cornerRadius);
+//                CGPathAddArcToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds), CGRectGetMaxX(bounds), CGRectGetMidY(bounds), cornerRadius);
+//                CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds));
+//            } else {
+//                CGPathAddRect(pathRef, nil, bounds);
+//                addLine = true;
+//            }
+//            layer.path = pathRef;
+//            //CFRelease(pathRef);
+//            //set the border color
+//            layer.strokeColor = UIColor.lightGrayColor().CGColor;
+//            //set the border width
+//            layer.lineWidth = 1;
+//            layer.fillColor = UIColor(white: 1, alpha: 1.0).CGColor;
+//            
+//            
+//            if (addLine == true) {
+//                let lineLayer: CALayer = CALayer();
+//                let lineHeight: CGFloat  = (1 / UIScreen.mainScreen().scale);
+//                lineLayer.frame = CGRectMake(CGRectGetMinX(bounds), bounds.size.height-lineHeight, bounds.size.width, lineHeight);
+//                lineLayer.backgroundColor = tableView.separatorColor!.CGColor;
+//                layer.addSublayer(lineLayer);
+//            }
+//            
+//            let testView: UIView = UIView(frame:bounds)
+//            testView.layer.insertSublayer(layer, atIndex: 0)
+//            testView.backgroundColor = UIColor.clearColor()
+//            cell.backgroundView = testView
+//        }
+//        
+//    }
+//    
     
     func updateHeaderForSection(section:Int)
     {
@@ -871,14 +851,14 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         var longitude = "77.6411545"
         
         //TODO - Uncomment below line for device 
-        
-        if let currentLocaiotn = bro4u_DataManager.sharedInstance.currenLocation
-        {
-            latitude = "\(currentLocaiotn.coordinate.latitude)"
-            
-            longitude = "\(currentLocaiotn.coordinate.longitude)"
-            
-        }
+//        
+//        if let currentLocaiotn = bro4u_DataManager.sharedInstance.currenLocation
+//        {
+//            latitude = "\(currentLocaiotn.coordinate.latitude)"
+//            
+//            longitude = "\(currentLocaiotn.coordinate.longitude)"
+//            
+//        }
         
         var params = "?cat_id=\(catId)"
         

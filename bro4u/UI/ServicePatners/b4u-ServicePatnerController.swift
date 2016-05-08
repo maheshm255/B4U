@@ -390,7 +390,7 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
     
     internal func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
         {
-         return 220.0
+         return 200.0
     }
     
       func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat

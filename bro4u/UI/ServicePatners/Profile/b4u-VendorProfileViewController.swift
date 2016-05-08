@@ -167,9 +167,9 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
                 self.lblVendorName.text = profileModelObj.vendorName!
                 self.lblVendorType.text = profileModelObj.catName!
                 
-                self.lblNumberOReviews.text = "\(profileModelObj.serviceQuality!) % Positive"
+                self.lblNumberOReviews.text = "\(profileModelObj.serviceQuality!)% Positive"
                 
-                self.lblFeedback.text = "(\(profileModelObj.reviewCount!) Reviews)"
+                self.lblFeedback.text = "\(profileModelObj.reviewCount!) Reviews"
                 
                 
                 self.lblTimeSince.text = "Since \(profileModelObj.inBusiness!)"

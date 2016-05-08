@@ -77,7 +77,7 @@ class b4u_PartnerReviewsTblViewCtrl: UITableViewController,UIPopoverPresentation
     {
         if indexPath.section == 0
         {
-            return 165.0
+            return 140.0
         }
         return 117.0
     }
@@ -91,6 +91,54 @@ class b4u_PartnerReviewsTblViewCtrl: UITableViewController,UIPopoverPresentation
         }
         return 18.0
     }
+    
+   override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
+   {
+       return 1.0
+    }
+    // MARK: UITableViewDelegate
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerView = UIView()
+        
+        let height = tableView.delegate?.tableView!(tableView, heightForHeaderInSection: section)
+        
+        let frame = CGRectMake(0, 0, CGRectGetWidth(tableView.frame), height!)
+        
+        headerView.frame = frame
+        
+        
+        headerView.backgroundColor = UIColor(red:249.0/255, green:249.0/255, blue: 249.0/255, alpha:1.0)
+        
+        headerView.layer.cornerRadius = 1.0
+        
+        headerView.layer.borderWidth = 1.0
+        
+        headerView.layer.borderColor = UIColor(red:221.0/255, green:221.0/255, blue: 221.0/255, alpha:1.0).CGColor
+        
+        
+        let label = UILabel()
+        
+        label.center = headerView.center
+        
+        label.sizeToFit()
+        label.textAlignment = NSTextAlignment.Left
+        label.font = UIFont(name: "HelveticaNeue-neue", size: 14)
+        label.textColor = UIColor.blackColor()
+        
+        label.backgroundColor = UIColor.blueColor()
+        
+        label.text = "User Reviews"
+        
+        headerView.addSubview(label)
+   
+        return headerView
+        
+    }
+    
+
+    
+    
     
 //    func btnReadMorePressed(sender:AnyObject)
 //    {
