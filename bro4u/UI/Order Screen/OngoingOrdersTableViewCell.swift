@@ -70,7 +70,8 @@ class OngoingOrdersTableViewCell: UITableViewCell {
         self.statusLbl.layer.borderWidth = 1
         self.statusLbl.layer.borderColor = UIColor.darkGrayColor().CGColor
     }
-    
+  
+  
     func configureData(orderDataModel:b4u_OrdersModel)
     {
         if let vendorImageUrl = orderDataModel.profilePic

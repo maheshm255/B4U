@@ -92,10 +92,7 @@ class OfferZoneViewController: UIViewController,UITableViewDataSource,UITableVie
 
         cell.configureData(offerZoneModel)
 
-        cell.layer.borderWidth = 1.0
-        cell.layer.borderColor = UIColor.grayColor().CGColor
-
-      
+        b4u_Utility.shadowEffectToView(cell)
         return cell
     }
   

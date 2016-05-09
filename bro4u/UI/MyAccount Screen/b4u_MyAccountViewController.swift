@@ -159,6 +159,9 @@ class b4u_MyAccountViewController: UIViewController {
     
     cell.accountItemImageView.image = UIImage(named: (dict.objectForKey("icon") as? String)!)
     
+    b4u_Utility.shadowEffectToView(cell)
+
+    
     return cell
   }
   
@@ -172,7 +175,7 @@ class b4u_MyAccountViewController: UIViewController {
         
         if section == 0
         {
-            return 3.0;
+            return 5.0;
         }
         else
         {

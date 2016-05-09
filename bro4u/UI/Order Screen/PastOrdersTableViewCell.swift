@@ -38,6 +38,7 @@ class PastOrdersTableViewCell: UITableViewCell {
         self.serviceStatusLbl.layer.borderColor = UIColor.grayColor().CGColor
         self.serviceStatusLbl.layer.borderWidth = 1
     }
+  
 
     func configureData(orderDataModel:b4u_OrdersModel)
     {
@@ -85,5 +86,6 @@ class PastOrdersTableViewCell: UITableViewCell {
         
         
     }
+  
 
 }
