@@ -145,15 +145,37 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
                 print(" Order Confirmed  Data Received")
                 
                 print(resultObject)
-                b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+                
+                self.updateCODPaymentStatus(order_id)
+
                 self.configureUI()
                 
+                b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
             })
 
         }
         
     }
 
+
+    func updateCODPaymentStatus(orderId : String)
+    {
+        
+        let params = "/\(orderId)"
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kUpdateCODStatuspendingIndex , params:params, result:{(resultObject) -> Void in
+            
+            
+            if resultObject as! String == "Success"
+            {
+                print(" COD Order Status Updated")
+
+            }else
+            {
+                print("COD Update Status Fail")
+            }
+            
+        })
+    }
 
     @IBAction func actionOngoingOrder(sender: AnyObject) {
     

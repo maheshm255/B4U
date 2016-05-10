@@ -314,7 +314,7 @@ let kUpdateOnlineStatuspendingIndex = "index.php/order/update_payment_pending/14
 
 //10.Update COD status Pending
 //index.php/order/update_cod_status/13455
-let kUpdateCODStatuspendingIndex = "index.php/order/update_cod_status/13455"
+let kUpdateCODStatuspendingIndex = "index.php/order/update_cod_status"
 
 
 //11.Update Paytm Payment status
