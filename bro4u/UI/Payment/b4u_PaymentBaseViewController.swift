@@ -27,6 +27,9 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     
     // Do any additional setup after loading the view.
     
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+
 
     self.cofigureUI()
   }
@@ -43,6 +46,23 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
   }
   
   
+  
+  //To move view Up when Keyboard Appears
+  
+  func keyboardWillShow(notification: NSNotification) {
+    
+    if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+      self.view.frame.origin.y -= 30
+    }
+    
+  }
+  
+  func keyboardWillHide(notification: NSNotification) {
+    if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+      self.view.frame.origin.y += 30
+    }
+  }
+
   func cofigureUI()
   {
     
@@ -299,6 +319,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     topConstraint?.constant = -150
     bottomConstraint?.constant  = 150
   }
+  
   func kbDown(notification:NSNotification)
   {
     topConstraint?.constant = 0
@@ -692,6 +713,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
 
+  
 }
 
 

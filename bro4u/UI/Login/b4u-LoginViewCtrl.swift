@@ -44,12 +44,9 @@ class b4u_LoginViewCtrl: UIViewController ,loginViewDelegate {
         loginView?.setup()
         
         loginView?.delegate = self
-        
-
-        
-
+      
     }
-    
+  
     func loginSuccessFull()
     {
         
@@ -93,8 +90,8 @@ class b4u_LoginViewCtrl: UIViewController ,loginViewDelegate {
 
         self.dismissViewControllerAnimated(true, completion:nil)
     }
-    
-    
+  
+  
     func getData()
     {
         
@@ -143,9 +140,23 @@ class b4u_LoginViewCtrl: UIViewController ,loginViewDelegate {
 
             }
         }
-        
-        
- 
     }
+  
+  
+//  // MARK: Done for numberTextField
+//  
+//  private func addDoneButtonTo(textField: UITextField) {
+////    let flexBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+//    let doneBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "didTapDone:")
+//    let keyboardToolbar = UIToolbar()
+//    keyboardToolbar.sizeToFit()
+//    keyboardToolbar.items = [doneBarButton]
+//    textField.inputAccessoryView = keyboardToolbar
+//  }
+//  
+//  func didTapDone(sender: AnyObject?) {
+//    tfEnerMobileNumber.endEditing(true)
+//  }
+
 }
 

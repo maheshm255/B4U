@@ -69,7 +69,7 @@ class bro4u_DataManager: NSObject {
   //Rahul Added
     var myInfoData:[b4u_MyInfoModel] = Array()
     var myWalletData:[b4u_MyWalletModel] = Array()
-    var walletBalanceData:NSNumber?
+    var walletBalanceData:String?
     var myAccountData:b4u_MyAccountModel?
     var offerZoneData:[b4u_OfferZoneModel] = Array()
     var referAndEarnData:b4u_ReferAndEarnModel?

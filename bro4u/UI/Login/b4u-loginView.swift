@@ -473,4 +473,6 @@ class b4u_loginView: UIView ,FBSDKLoginButtonDelegate ,GIDSignInDelegate,GIDSign
         textField.resignFirstResponder()
         return true
     }
+  
+  
 }

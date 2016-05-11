@@ -313,7 +313,8 @@ class b4u_WebApiCallManager: NSObject {
             let parentObj = b4u_MyWalletModel(dataDict: dataDict)
             bro4u_DataManager.sharedInstance.myWalletData.append(parentObj)
         }
-        bro4u_DataManager.sharedInstance.walletBalanceData = dataDict["wallet_balance"] as? NSNumber
+      
+        bro4u_DataManager.sharedInstance.walletBalanceData = dataDict["wallet_balance"] as? String
     }
     
     func pasrseMyInfoData(dataDict:Dictionary<String, AnyObject>)
