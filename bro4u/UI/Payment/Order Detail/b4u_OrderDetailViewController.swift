@@ -17,6 +17,7 @@ class b4u_OrderDetailViewController: UIViewController {
   @IBOutlet weak var lblAddress: UILabel!
   @IBOutlet weak var lblSubTotal: UILabel!
   @IBOutlet weak var lblGrandTotal: UILabel!
+  @IBOutlet weak var lblPhoneNumber: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,7 @@ class b4u_OrderDetailViewController: UIViewController {
             
             lbluserName.text = address.name!
             lbluserEmail.text = address.email!
+            lblPhoneNumber.text = address.phoneNumber!
             lblAddress.text = address.fullAddress!
         }
         if let selectedPartner:b4u_SugestedPartner = bro4u_DataManager.sharedInstance.selectedSuggestedPatner{

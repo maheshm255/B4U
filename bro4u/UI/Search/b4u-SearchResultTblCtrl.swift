@@ -63,6 +63,7 @@ class b4u_SearchResultTblCtrl: UITableViewController ,UISearchResultsUpdating,UI
         
         self.tableView.tableHeaderView = self.searchController.searchBar
         self.definesPresentationContext = true
+        self.searchController.searchBar.delegate = self;
         
     }
     
@@ -239,4 +240,13 @@ class b4u_SearchResultTblCtrl: UITableViewController ,UISearchResultsUpdating,UI
         }
     }// called when keyboard search button pressed
 
+  
+  //Implimented to remove crash on click of list after cancel
+  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+
+    bro4u_DataManager.sharedInstance.searchResult.removeAll()
+    
+    self.tableView.reloadData()
+
+  }
 }

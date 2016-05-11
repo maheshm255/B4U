@@ -28,16 +28,17 @@ class b4u_termsAndCondViewController: UIViewController {
     {
         if let tAndCOb = bro4u_DataManager.sharedInstance.interMediateScreenDataObj?.termsAndConditions
         {
-            lblCondition1.text = "\\u2022 \(tAndCOb[0]) "
+          let bulletSign = "\u{2022}"
+          lblCondition1.text =  " \(bulletSign) \(tAndCOb[0]) "
             
             if tAndCOb.count > 1
             {
-                lblCondition2.text = tAndCOb[1]
+                lblCondition2.text = " \(bulletSign) \(tAndCOb[1]) "
             }
             
             if tAndCOb.count > 2
             {
-                lblCondition3.text = tAndCOb[2]
+                lblCondition3.text = " \(bulletSign) \(tAndCOb[2]) "
             }
             
             

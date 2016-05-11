@@ -170,7 +170,7 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
             
             if resultObject as! String == "Success"
             {
-                print(" COD Order Status Updated")
+                print(" COD Order Status Updated Successfully")
 
             }else
             {

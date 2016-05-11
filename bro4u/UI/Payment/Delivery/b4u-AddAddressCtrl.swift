@@ -245,6 +245,14 @@ class b4u_AddAddressCtrl: UIViewController,locationDelegate {
             locatinCtrlObj.delegate = self
         }
     }
+      
+    /**
+     * Called when the user click on the view (outside the UITextField).
+     */
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+      self.view.endEditing(true)
+    }
+
 
 
 }

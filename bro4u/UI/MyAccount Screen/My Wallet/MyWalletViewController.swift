@@ -29,7 +29,11 @@ class MyWalletViewController: UIViewController ,UITextFieldDelegate {
       self.addLoadingIndicator()
 
         self.getData()
-        
+      
+      NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+      NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+
+      
       }
     
     func getData()
@@ -191,6 +195,29 @@ class MyWalletViewController: UIViewController ,UITextFieldDelegate {
         return true
     }
   
+  /**
+   * Called when the user click on the view (outside the UITextField).
+   */
+  override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    self.view.endEditing(true)
+  }
+
   
+  //To move view Up when Keyboard Appears
+  
+  func keyboardWillShow(notification: NSNotification) {
+    
+    if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+      self.view.frame.origin.y -= keyboardSize.height - 30
+    }
+    
+  }
+  
+  func keyboardWillHide(notification: NSNotification) {
+    if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+      self.view.frame.origin.y += keyboardSize.height - 30
+    }
+  }
+
 
 }
