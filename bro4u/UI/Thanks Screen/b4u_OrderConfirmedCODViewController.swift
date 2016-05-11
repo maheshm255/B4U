@@ -91,6 +91,9 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
       let backButton = UIBarButtonItem(title: "< Back", style: .Plain, target: self, action:"doneBtnPressed")
         
       navigationItem.leftBarButtonItem = backButton
+      
+      b4u_Utility.shadowEffectToView(middleView)
+      b4u_Utility.shadowEffectToView(downView)
 
 
     }

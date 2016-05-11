@@ -51,7 +51,12 @@ class OrderConfirmedViewController: UIViewController {
         let backButton = UIBarButtonItem(title: "< Back", style: .Plain, target: self, action:"doneBtnPressed")
         
       navigationItem.leftBarButtonItem = backButton
-        
+      
+      
+      b4u_Utility.shadowEffectToView(topView)
+      b4u_Utility.shadowEffectToView(downView)
+
+      
     }
   
   func doneBtnPressed() {
