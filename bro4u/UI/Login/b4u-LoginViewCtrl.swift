@@ -113,9 +113,10 @@ class b4u_LoginViewCtrl: UIViewController ,loginViewDelegate {
                 b4u_WebApiCallManager.sharedInstance.getApiCall(kSocialLogin, params:params, result:{(resultObject) -> Void in
                     
                     print("login user Data Received")
-                    
+                  
+                  
                     NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
-                    
+                  
                   
                     let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(bro4u_DataManager.sharedInstance.loginInfo!)
 

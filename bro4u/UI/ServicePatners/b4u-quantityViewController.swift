@@ -56,9 +56,10 @@ class b4u_quantityViewController: UIViewController , UIPickerViewDelegate ,UIPic
         
         delegate?.selectedQuanitty(self.selectedQuantity)
         self.dismissViewControllerAnimated(true, completion:nil)
+      
     }
-    
-    
+  
+  
     // returns the number of 'columns' to display.
     internal func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int
     {

@@ -14,9 +14,6 @@ class OfferZoneTableViewCell: UITableViewCell {
   @IBOutlet var titleDetailLbl: UILabel!
   @IBOutlet var offerCodeLbl: UILabel!
   
-  @IBAction func tapToCopyBtnAction(sender: AnyObject) {
-  
-  }
   
   
     override func awakeFromNib() {
@@ -50,6 +47,14 @@ class OfferZoneTableViewCell: UITableViewCell {
             self.offerCodeLbl.text = couponCode
         }
     }
+  
+    @IBAction func tapToCopyBtnAction(sender: AnyObject) {
+      
+      bro4u_DataManager.sharedInstance.copiedCopunCode = self.offerCodeLbl.text
+      
+      self.superview!.makeToast(message:"Coupon code is copied", duration:1.0 , position: HRToastPositionDefault)
+      
+    }
 
-
+  
 }

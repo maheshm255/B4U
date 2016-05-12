@@ -73,8 +73,13 @@ class b4u_PayOnlineOrderViewController: UIViewController {
   {
   //  var paymentVC : UIViewController?
     
-    self.dismissViewControllerAnimated(true, completion:nil)
-    self.delegate?.payOrder(btnSelected, selectedOrderObj:bro4u_DataManager.sharedInstance.userSelectedOrder)
+    if btnSelected != nil
+    {
+      self.dismissViewControllerAnimated(true, completion:nil)
+      self.delegate?.payOrder(btnSelected, selectedOrderObj:bro4u_DataManager.sharedInstance.userSelectedOrder)
+
+    }
+    
 //    if btnSelected > 0 {
 //      
 //      switch btnSelected {

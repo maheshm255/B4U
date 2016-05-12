@@ -980,7 +980,7 @@ const int FrontViewPositionNone = 0xff;
 - (void)loginScreenDismissed:(NSNotification *)notification
 {
     [self rightRevealToggleAnimated:YES];
-    
+  
 }
 
 #pragma mark - UserInteractionEnabling

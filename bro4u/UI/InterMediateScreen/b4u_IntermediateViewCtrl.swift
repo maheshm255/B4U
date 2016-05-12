@@ -95,8 +95,6 @@ class b4u_IntermediateViewCtrl: UIViewController {
     
     @IBAction func tapToCopyBtnClicked(sender: AnyObject)
     {
-        //TO DO
-        
         bro4u_DataManager.sharedInstance.copiedCopunCode = self.lblCoupan.text
         
         self.view.makeToast(message:"Coupon code is copied", duration:1.0 , position: HRToastPositionDefault)
