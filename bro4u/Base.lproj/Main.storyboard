@@ -1007,7 +1007,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vf0-2f-RsV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1739" y="3762"/>
+            <point key="canvasLocation" x="1907" y="3750"/>
         </scene>
         <!--Details-->
         <scene sceneID="Cpy-BY-5zh">
@@ -1543,15 +1543,15 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ap9-0a-c50">
                                         <rect key="frame" x="10" y="0.0" width="580" height="40"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationAddress" translatesAutoresizingMaskIntoConstraints="NO" id="lI4-K9-Nyy">
-                                                <rect key="frame" x="10" y="10" width="20" height="20"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationWhite" translatesAutoresizingMaskIntoConstraints="NO" id="lI4-K9-Nyy">
+                                                <rect key="frame" x="20" y="12" width="15" height="15"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="20" id="7sD-Ce-1a5"/>
-                                                    <constraint firstAttribute="height" constant="20" id="h7x-iI-Zk0"/>
+                                                    <constraint firstAttribute="width" constant="15" id="7sD-Ce-1a5"/>
+                                                    <constraint firstAttribute="height" constant="15" id="h7x-iI-Zk0"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Current Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYP-83-Dnl">
-                                                <rect key="frame" x="40" y="13" width="106" height="16"/>
+                                                <rect key="frame" x="40" y="12" width="106" height="16"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="14"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1559,10 +1559,10 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.23137254901960785" green="0.74117647058823533" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="lI4-K9-Nyy" firstAttribute="leading" secondItem="Ap9-0a-c50" secondAttribute="leading" constant="20" id="AQ5-yc-KOA"/>
                                             <constraint firstItem="wYP-83-Dnl" firstAttribute="centerY" secondItem="Ap9-0a-c50" secondAttribute="centerY" id="U1a-Aw-GsX"/>
-                                            <constraint firstItem="lI4-K9-Nyy" firstAttribute="leading" secondItem="Ap9-0a-c50" secondAttribute="leading" constant="10" placeholder="YES" id="UFf-MN-BYt"/>
                                             <constraint firstItem="lI4-K9-Nyy" firstAttribute="centerY" secondItem="Ap9-0a-c50" secondAttribute="centerY" id="mru-fi-ZSl"/>
-                                            <constraint firstItem="wYP-83-Dnl" firstAttribute="leading" secondItem="lI4-K9-Nyy" secondAttribute="trailing" constant="10" id="nbf-1J-j5T"/>
+                                            <constraint firstItem="wYP-83-Dnl" firstAttribute="leading" secondItem="lI4-K9-Nyy" secondAttribute="trailing" constant="5" id="nbf-1J-j5T"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1993,7 +1993,7 @@
                         <viewControllerLayoutGuide type="bottom" id="9g0-rJ-jqR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ARg-bR-Oep">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P9f-JD-O9v">
@@ -7877,7 +7877,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ji5-Ft-8Sk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="w4J-tu-AJI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VNA-HI-oXL">
@@ -8072,7 +8072,7 @@
                         <viewControllerLayoutGuide type="bottom" id="tzs-qa-oas"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jB5-iN-OR8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mme-5T-EOl">
@@ -9291,7 +9291,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aMh-VY-vR1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5164" y="6726"/>
+            <point key="canvasLocation" x="5152" y="6074"/>
         </scene>
         <!--4u Partner Reviews Tbl View Ctrl-->
         <scene sceneID="hl4-Pf-zQq">
@@ -9950,12 +9950,13 @@
         <image name="greenArrow" width="32" height="32"/>
         <image name="greyArrow" width="32" height="32"/>
         <image name="hdfc" width="105" height="34"/>
-        <image name="home" width="32" height="32"/>
+        <image name="home" width="20" height="20"/>
         <image name="icici" width="105" height="34"/>
         <image name="interface" width="24" height="24"/>
         <image name="leftArrow" width="7" height="12"/>
         <image name="like" width="25" height="25"/>
         <image name="locationAddress" width="12" height="19"/>
+        <image name="locationWhite" width="16" height="16"/>
         <image name="loginBackGround" width="320" height="480"/>
         <image name="menu" width="24" height="24"/>
         <image name="minus" width="24" height="24"/>
@@ -9986,12 +9987,12 @@
         <image name="thankU" width="320" height="217"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="a9E-Wg-4Hc"/>
+        <segue reference="UUI-bn-Yb7"/>
+        <segue reference="Yth-Vu-6fA"/>
+        <segue reference="ocf-hw-U5o"/>
         <segue reference="W5U-K3-ziD"/>
+        <segue reference="a9E-Wg-4Hc"/>
         <segue reference="ouI-hD-05v"/>
-        <segue reference="ZKs-u5-bSL"/>
-        <segue reference="9yL-r3-mwm"/>
-        <segue reference="nEL-nc-rUf"/>
         <segue reference="ZLQ-WV-Fop"/>
     </inferredMetricsTieBreakers>
 </document>
