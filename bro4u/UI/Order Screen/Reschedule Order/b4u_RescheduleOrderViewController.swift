@@ -131,7 +131,20 @@ class b4u_RescheduleOrderViewController: UIViewController,
     
     @IBAction func updateBtnClicked(sender: AnyObject)
     {
-        
+      
+      guard let selectedDate = self.btnSelectDate.titleLabel?.text where  selectedDate != "Select Date" else
+      {
+        self.view.makeToast(message:"Please Select Date", duration:1.0, position: HRToastPositionDefault)
+        return
+      }
+      
+      guard let selectedTime = self.btnSelectTime.titleLabel?.text where selectedTime != "Select Time" else
+      {
+        self.view.makeToast(message:"Please Select Time", duration:1.0, position: HRToastPositionDefault)
+        return
+      }
+
+      
         delegate?.updateOreder(selectedOrder!, selectedData:self.btnSelectDate.titleLabel?.text, selectedTimeSlot:self.btnSelectTime.titleLabel?.text)
         
         self.dismissViewControllerAnimated(true, completion:nil)

@@ -85,9 +85,9 @@ class b4u_RasiseIssueController: UIViewController  , UIPopoverPresentationContro
         self.delegate?.raiseIssue(selectedOrder!, selectedIssue:selectedIssue, reason: comments)
         
         self.dismissViewControllerAnimated(true, completion: nil)
-
-        
     }
+  
+  
     @IBAction func btnIssuesPressed(sender: AnyObject)
     {
         self.showIssuesPopUp()

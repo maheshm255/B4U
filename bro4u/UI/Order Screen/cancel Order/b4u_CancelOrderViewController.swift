@@ -97,8 +97,10 @@ class b4u_CancelOrderViewController: UIViewController,singleSelectionDelegate,UI
         self.delegate?.cancelOrder(selectedOrder!, selectedIssue:selectedIssue, reason: comments)
         
         self.dismissViewControllerAnimated(true, completion: nil)
+      
+
     }
-    
+  
   
     @IBAction func btnSelectReasonPressed(sender: AnyObject) {
         self.showIssuesPopUp()

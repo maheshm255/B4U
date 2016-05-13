@@ -243,7 +243,8 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        
+        let rowsAmount: Int =  tableView.numberOfRowsInSection(indexPath.section)
+
         if indexPath.section  < inputArray?.count
         {
             let catFilterAttributes:b4u_CatFilterAttributes = self.inputArray![indexPath.section] as! b4u_CatFilterAttributes
@@ -259,11 +260,15 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                 cell = tableView.dequeueReusableCellWithIdentifier(radioBoxIdentifier, forIndexPath: indexPath) as! b4u_ExpandableTblViewCell
                 
                 self.sectionNumberForRadioInputs.insert(indexPath.section)
+              
+                cell.iconImgView?.image = UIImage(named:"radioGray")
+
                 if selectedIndexPath["\(indexPath.section)"]?.count > 0
                 {
                     if (selectedIndexPath["\(indexPath.section)"]!.contains(indexPath)) {
                         cell.iconImgView?.image = UIImage(named:"radioBlue")
-                    }                 }
+                    }
+                }
                 cell.lblTitle?.text =  aItem.optionName
                 
                 
@@ -285,7 +290,8 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                 cell.lblTitle?.text =  aItem.optionName
                 
                 
-            }else if catFilterAttributes.inputType == inputType.textBoxGroup.rawValue
+            }
+            else if catFilterAttributes.inputType == inputType.textBoxGroup.rawValue
             {
                 
                 self.sectionNumberForRadioInputs.insert(indexPath.section)
@@ -318,11 +324,20 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                 }
                 
             }
-            
-            if ((indexPath.row + 1) == catFilterAttributes.catFilterAttributeOptions?.count)
-            {
-                b4u_Utility.shadowEffectToView(cell)
+          
+            if (indexPath.row == rowsAmount - 1) {
+              b4u_Utility.shadowEffectToView(cell)
             }
+            else
+            {
+              cell.layer.shadowOpacity = 0.0;
+            }
+
+            if  (selectedIndexPath["\(indexPath.section)"]?.count > 0)
+            {
+              self.updateHeaderForSection(indexPath.section)
+            }
+          
 
             return cell
             
@@ -355,6 +370,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             cell.btnSelectTime.layer.borderWidth = 1.0
             
             b4u_Utility.shadowEffectToView(cell)
+          
             return cell
             
         }
@@ -553,7 +569,9 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
 //        
 //    }
 //    
-    
+  
+
+  
     func updateHeaderForSection(section:Int)
     {
         var indexPaths = self.selectedIndexPath["\(section)"]

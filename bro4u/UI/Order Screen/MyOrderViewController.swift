@@ -475,8 +475,11 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
             
             
             b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-            
-            
+          
+          self.view.makeToast(message:"Reschedule Successfully",
+            duration:1.0, position: HRToastPositionDefault)
+
+          
         })
     }
     func didCloseReshedule()
@@ -515,7 +518,9 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
             
             b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
             
-            
+          self.view.makeToast(message:"We have received your issue,we will get back to you shortly",
+            duration:1.0, position: HRToastPositionDefault)
+
         })
 
     }
@@ -539,8 +544,11 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
             
             
             b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-            
-            
+          
+          self.view.makeToast(message:"Order Cancelled",
+            duration:1.0, position: HRToastPositionDefault)
+
+          
         })
     }
     @IBAction func btnPastOrdersRaiseIssuePressed(sender: AnyObject)

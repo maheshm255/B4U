@@ -169,7 +169,7 @@ class OngoingOrdersTableViewCell: UITableViewCell {
         
         if orderDataModel.statusCode == "OACC" || orderDataModel.statusCode == "OPRC" || orderDataModel.statusCode == "OACL"
         {
-            self.lblCallBro4u.text = "Call Service Provider"
+            self.lblCallBro4u.text = "Call Service partner"
 
             self.ViewCallB4u.tag = 2
 

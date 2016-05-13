@@ -85,8 +85,9 @@ class b4u_Utility: NSObject {
    //Shadow Effect
    class func shadowEffectToView(object : AnyObject)
    {
+    
     object.layer.shadowColor = UIColor.lightGrayColor().CGColor
-    object.layer.shadowOpacity = 1
+    object.layer.shadowOpacity = 1.0
     object.layer.shadowOffset = CGSizeZero
     object.layer.shadowRadius = 3
     object.layer.masksToBounds  = false
