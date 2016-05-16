@@ -57,15 +57,81 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
             }
             
         }
-        
+      
+      self.tfFullAddress?.becomeFirstResponder()
+      self.checkAllfieldsHasValueOrNot()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    
-    func getCities()
+    func checkAllfieldsHasValueOrNot()
+    {
+      if (tfYourName.text?.length > 0 && tfEmail.text?.length > 0 && tfMobileNumber.text?.length > 0)
+      {
+        imgViewContactInfoSelected.image = UIImage(named: "shareGreen")
+      }
+      else
+      {
+        imgViewContactInfoSelected.image = UIImage(named: "shareGray")
+      }
+      
+      if (tfFullAddress.text?.length > 0 && tfCurrentLocation.text?.length > 0 && tfCurrentPlace.text?.length > 0)
+      {
+        imgViewAddressSelected.image = UIImage(named: "shareGreen")
+      }
+      else
+      {
+        imgViewAddressSelected.image = UIImage(named: "shareGray")
+        
+      }
+
+    }
+  
+    func checkAllfieldsAfterEditing(range: NSRange, tfString: NSString, forTextField: UITextField)
+      {
+        
+        if(forTextField == tfYourName || forTextField == tfEmail || forTextField == tfMobileNumber)
+        {
+          
+          if (range.location > 0)
+          {
+            imgViewContactInfoSelected.image = UIImage(named: "shareGreen")
+          }
+          else if(range.location == 0 && tfString.length > 0)
+          {
+            imgViewContactInfoSelected.image = UIImage(named: "shareGreen")
+          }
+          else
+          {
+            imgViewContactInfoSelected.image = UIImage(named: "shareGray")
+            
+          }
+        }
+        else
+        {
+          if (range.location > 0)
+          {
+            imgViewAddressSelected.image = UIImage(named: "shareGreen")
+          }
+          else if(range.location == 0 && tfString.length > 0)
+          {
+            imgViewAddressSelected.image = UIImage(named: "shareGreen")
+          }
+          else
+          {
+            imgViewAddressSelected.image = UIImage(named: "shareGray")
+
+          }
+
+        }
+        
+        
+      }
+
+
+   func getCities()
     {
         b4u_WebApiCallManager.sharedInstance.getApiCall(kGetCities, params:"", result:{(resultObject) -> Void in
             
@@ -240,12 +306,19 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
             print("Server Not Able to save the address")
         }
     }
+  
+  
+  
     // MARK: TextField Delegate Methods
-    
+  
+  //this method gets called just before textfield gets active.
+  
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool
     {
         return true
     }
+  
+  //this method gets called when the textfield active.
     func textFieldDidBeginEditing(textField: UITextField)
     {
        if textField == tfCurrentLocation
@@ -254,14 +327,20 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
 
         }
     }
+  
+  //this method gets called before the textfield becomes inactive.
     func textFieldShouldEndEditing(textField: UITextField) -> Bool
     {
         return true
     }
+  
+  //this method gets called when the textfield becomes inactive.
     func textFieldDidEndEditing(textField: UITextField)
     {
         textField.resignFirstResponder()
     }
+  
+  //this method gets called when while typing every single character before its displayed.
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
     {
 //        if (textField.text!.length >= CASE_SUBJECT_MAX_LENGTH && range.length == 0)
@@ -270,23 +349,36 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
 //        }
 //        else
 //        {
+      
+      self.checkAllfieldsAfterEditing(range,tfString: string,forTextField:textField)
+
+      
             return true
        // }
         //return !(string == " ")
     }
+  
+  //this method gets called when the clear button pressed.
     func textFieldShouldClear(textField: UITextField) -> Bool
     {
         return true;
     }
-    func textFieldShouldReturn(textField: UITextField) -> Bool
-    {
-        
-        
-        return true;
-    }
-    
 
-    
+    /**
+     * Called when 'return' key pressed. return NO to ignore.
+     */
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+      textField.resignFirstResponder()
+      return true
+    }
+    /**
+     * Called when the user click on the view (outside the UITextField).
+     */
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+      self.view.endEditing(true)
+    }
+
+  
     func userSelectedLocation(locationStr:String)
     {
         
@@ -320,5 +412,7 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
             locatinCtrlObj.delegate = self
         }
     }
-    
+  
+  
+  
 }
