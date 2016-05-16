@@ -2219,8 +2219,12 @@
                                                         <constraint firstItem="9Iv-B9-jpg" firstAttribute="centerY" secondItem="mlt-ZY-Z07" secondAttribute="centerY" id="y3b-rJ-c7h"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zu4-ck-nAf">
-                                                    <rect key="frame" x="540" y="9" width="22" height="22"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zu4-ck-nAf">
+                                                    <rect key="frame" x="520" y="3" width="48" height="34"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                    <state key="normal" title="+ADD">
+                                                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
                                                     <connections>
                                                         <segue destination="YTE-vg-3UP" kind="showDetail" id="xzv-HZ-Qu0"/>
                                                     </connections>
@@ -2234,7 +2238,7 @@
                                                 <constraint firstItem="O2k-hN-zv7" firstAttribute="leading" secondItem="PxS-wL-RKi" secondAttribute="leading" id="SS6-wf-RYi"/>
                                                 <constraint firstItem="mlt-ZY-Z07" firstAttribute="top" secondItem="O2k-hN-zv7" secondAttribute="bottom" constant="10" id="abU-Mm-PjH"/>
                                                 <constraint firstItem="mlt-ZY-Z07" firstAttribute="height" secondItem="O2k-hN-zv7" secondAttribute="height" id="bjz-c3-Y7c"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="zu4-ck-nAf" secondAttribute="trailing" constant="10" id="f9H-la-gNf"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="zu4-ck-nAf" secondAttribute="trailing" constant="1" id="f9H-la-gNf"/>
                                                 <constraint firstItem="O2k-hN-zv7" firstAttribute="top" secondItem="PxS-wL-RKi" secondAttribute="bottom" constant="7.5" id="fBF-sY-CNJ"/>
                                                 <constraint firstItem="PxS-wL-RKi" firstAttribute="top" secondItem="wYm-ed-wTV" secondAttribute="top" constant="10" id="odg-So-G1i"/>
                                                 <constraint firstItem="zu4-ck-nAf" firstAttribute="centerY" secondItem="Msv-ub-NnC" secondAttribute="centerY" id="vOV-FM-5HI"/>
