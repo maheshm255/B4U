@@ -555,16 +555,83 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
 
       print("Payemtn data receivied")
       self.segmentedControl?.selectedSegmentIndex = 2
-      
+      self.setSelectionData()
       self.addPaymentViewControl()
     })
 
-    
- 
-    
-
   }
-  
+  //Need to change
+  func setSelectionData()
+   {
+    var selectionDict:Dictionary<String , AnyObject> = Dictionary()
+
+    if let orderDetailModel = bro4u_DataManager.sharedInstance.orderDetailData.first
+    {
+        if let selectionLocal: b4u_SelectionModel =  orderDetailModel.selection?.first{
+
+            if let userID = selectionLocal.userId
+            {
+                selectionDict["user_id"] = userID
+            }
+            if let itemID = selectionLocal.itemId
+            {
+                selectionDict["item_id"] = itemID
+            }
+            if let vendorId = selectionLocal.vendorId
+            {
+                selectionDict["vendor_id"] = vendorId
+            }
+            if let unitQuantity = selectionLocal.unitQuantity
+            {
+                selectionDict["unit_quantity"] = unitQuantity
+            }
+            if let cakeEggEggless = selectionLocal.cakeEggEggless
+            {
+                selectionDict["option_112"] = cakeEggEggless
+            }
+            if let cakeWeight = selectionLocal.cakeWeight
+            {
+                selectionDict["option_105"] = cakeWeight
+            }
+            if let subTotal = selectionLocal.subTotal
+            {
+                selectionDict["sub_total"] = subTotal
+            }
+            if let deliveryCharge = selectionLocal.deliveryCharge
+            {
+                selectionDict["delivery_charge"] = deliveryCharge
+            }
+            if let deductedFromWallet = selectionLocal.deductedFromWallet
+            {
+                selectionDict["deducted_from_wallet"] = deductedFromWallet
+            }
+            if let deductedUsingCoupon = selectionLocal.deductedUsingCoupon
+            {
+                selectionDict["deducted_using_coupon"] = deductedUsingCoupon
+            }
+            if let grandTotal = selectionLocal.grandTotal
+            {
+                selectionDict["grand_total"] = grandTotal
+            }
+
+            
+            do {
+                let jsonData = try NSJSONSerialization.dataWithJSONObject(selectionDict, options: NSJSONWritingOptions.PrettyPrinted)
+                // here "jsonData" is the dictionary encoded in JSON data
+                
+                let datastring = NSString(data:jsonData, encoding:NSUTF8StringEncoding) as String?
+                
+                bro4u_DataManager.sharedInstance.selectedFilterSelectionInJsonFormat = datastring
+                
+                
+            } catch let error as NSError {
+                print(error)
+            }
+
+        }
+    }
+
+      }
   
   func addLoadingIndicator () {
     self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)

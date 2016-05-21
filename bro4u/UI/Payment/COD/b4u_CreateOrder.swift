@@ -111,7 +111,7 @@ class b4u_CreateOrder: NSObject {
         }
         item_id = selectionLocal.itemId!
         vendor_id = selectionLocal.vendorId!
-        selection =  ""
+        selection =  bro4u_DataManager.sharedInstance.selectedFilterSelectionInJsonFormat!
       }
       
     }
