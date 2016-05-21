@@ -616,7 +616,11 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
 
             
             do {
-                let jsonData = try NSJSONSerialization.dataWithJSONObject(selectionDict, options: NSJSONWritingOptions.PrettyPrinted)
+                
+                var selectionArray : [Dictionary<String , AnyObject>] = Array()
+                selectionArray.append(selectionDict)
+                let jsonData = try NSJSONSerialization.dataWithJSONObject(selectionArray, options: NSJSONWritingOptions.PrettyPrinted)
+
                 // here "jsonData" is the dictionary encoded in JSON data
                 
                 let datastring = NSString(data:jsonData, encoding:NSUTF8StringEncoding) as String?
