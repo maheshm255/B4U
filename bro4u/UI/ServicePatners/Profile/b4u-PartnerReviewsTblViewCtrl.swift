@@ -59,9 +59,13 @@ class b4u_PartnerReviewsTblViewCtrl: UITableViewController,UIPopoverPresentation
             cell.configureData(reviewsModel)
             return cell
         }
+        
+        // TO DO - Check condition here - crashing for cake option - for legal desk in rental agreement
+        
+    
         let cell = tableView.dequeueReusableCellWithIdentifier("reviewTblCell", forIndexPath: indexPath) as! b4u_PartnerReviewTblCell
         // Configure the cell...
-        let reviewsModel:b4u_VendorReviews = (bro4u_DataManager.sharedInstance.vendorProfile?.reviews![indexPath.section])!
+        let reviewsModel:b4u_VendorReviews = (bro4u_DataManager.sharedInstance.vendorProfile?.reviews![indexPath.section - 1])!
         
         cell.configureData(reviewsModel)
         

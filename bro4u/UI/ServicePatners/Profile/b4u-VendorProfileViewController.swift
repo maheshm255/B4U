@@ -65,6 +65,7 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
 
         // Do any additional setup after loading the view.
         
+       self.scrollViewBase.hidden = true
        self.getItemPriceChart()
        self.getItemDescriptionIndex()
        self.getProfileData()
@@ -136,6 +137,8 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
 
         if self.allWebApiSuccessCount == 3
         {
+            self.scrollViewBase.hidden = false
+
             self.configureWebViews()
             
             if bro4u_DataManager.sharedInstance.vendorProfile?.reviews?.count > 0

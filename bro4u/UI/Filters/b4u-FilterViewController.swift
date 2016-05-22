@@ -876,13 +876,13 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         
     //    TODO - Uncomment below line for device
         
-        if let currentLocaiotn = bro4u_DataManager.sharedInstance.currenLocation
-        {
-            latitude = "\(currentLocaiotn.coordinate.latitude)"
-            
-            longitude = "\(currentLocaiotn.coordinate.longitude)"
-            
-        }
+//        if let currentLocaiotn = bro4u_DataManager.sharedInstance.currenLocation
+//        {
+//            latitude = "\(currentLocaiotn.coordinate.latitude)"
+//            
+//            longitude = "\(currentLocaiotn.coordinate.longitude)"
+//            
+//        }
         
         var params = "?cat_id=\(catId)"
         

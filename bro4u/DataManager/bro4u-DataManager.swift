@@ -39,7 +39,7 @@ class bro4u_DataManager: NSObject {
 
     var userSelectedLocatinStr:String?
     
-    var selectedQualtity:NSString?
+    var selectedQualtity:String?
     
     var address:[b4u_AddressDetails] = Array()
   
