@@ -103,7 +103,7 @@ class b4u_CreateOrder: NSObject {
     {
       if let selectionLocal: b4u_SelectionModel =  orderDetailModel.selection?.first{
         
-        grand_total = "\(selectionLocal.grandTotal)"
+        grand_total = "\(selectionLocal.grandTotal!)"
         
         if let deliverChages = selectionLocal.nightCharge
         {
@@ -111,7 +111,7 @@ class b4u_CreateOrder: NSObject {
         }
         item_id = selectionLocal.itemId!
         vendor_id = selectionLocal.vendorId!
-        selection =  ""
+        selection =  bro4u_DataManager.sharedInstance.selectedFilterSelectionInJsonFormat!
       }
       
     }
