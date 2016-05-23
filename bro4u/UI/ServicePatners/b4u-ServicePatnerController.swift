@@ -418,6 +418,9 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
     func selectedQuanitty(quantity:String?)
     {
         bro4u_DataManager.sharedInstance.selectedQualtity = quantity
+        
+        self.performSegueWithIdentifier("paymentCtrlSegue", sender:nil)
+
     }
   
     internal func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat

@@ -55,7 +55,7 @@ class b4u_CreateOrder: NSObject {
     var total_cost = ""
     var service_time = ""
     var service_date = ""
-    var selection = "[{%22option_112%22%3A%222%22%2C%22option_105%22%3A%221%22%2C%22user_id%22%3A%221626%22%2C%22item_id%22%3A%221928%22%2C%22vendor_id%22%3A%22132%22%2C%22unit_quantity%22%3A%221%22%2C%22grand_total%22%3A98%2C%22sub_total%22%3A98%2C%22delivery_charge%22%3A%220.00%22%2C%22deducted_from_wallet%22%3A0%2C%22deducted_using_coupon%22%3A0}]"
+    var selection = bro4u_DataManager.sharedInstance.selectedFilterSelectionInJsonFormat!
     var grand_total=""
     var night_delivery_charge=""
     var customer_name=""
@@ -96,7 +96,14 @@ class b4u_CreateOrder: NSObject {
       coupon = couponCode
     }
     service_time =   bro4u_DataManager.sharedInstance.selectedTimeSlot!
-    service_date =   "\(bro4u_DataManager.sharedInstance.selectedDate!)"
+   
+    
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    service_date = dateFormatter.stringFromDate(bro4u_DataManager.sharedInstance.selectedDate!)
+    
+    
+        "\(bro4u_DataManager.sharedInstance.selectedDate!)"
     
     
     if let orderDetailModel = bro4u_DataManager.sharedInstance.orderDetailData.first
@@ -111,7 +118,7 @@ class b4u_CreateOrder: NSObject {
         }
         item_id = selectionLocal.itemId!
         vendor_id = selectionLocal.vendorId!
-        selection =  bro4u_DataManager.sharedInstance.selectedFilterSelectionInJsonFormat!
+       // selection =  ""
       }
       
     }

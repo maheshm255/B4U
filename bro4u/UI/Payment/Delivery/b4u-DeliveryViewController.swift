@@ -43,7 +43,7 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
             
             if let quantity = bro4u_DataManager.sharedInstance.selectedQualtity
             {
-                let price = Int(selectedPartner.offerPrice!)! * Int(quantity)!
+                let price = Double(selectedPartner.offerPrice!)! * Double(quantity)!
                 self.lblAmount.text = " Rs.\(price)"
                 
             }else

@@ -917,7 +917,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                     
                     params = params + "&\(catFilterAttributes.fieldName!)=\(attributeOption.optionId!)"
                     
-                    let key = "\(catFilterAttributes.fieldName!)_\(attributeOption.optionId!)"
+                    let key = "\(catFilterAttributes.fieldName!)"
                     self.selectionDict[key] = "\(attributeOption.optionId!)"
                 }
             }
@@ -932,7 +932,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                     
                     params = params + "&option_\(attributeOption.optionId!)=\(value!)"
                     
-                    let key = "\(catFilterAttributes.fieldName!)_\(attributeOption.optionId!)"
+                    let key = "option_\(attributeOption.optionId!)"
                     self.selectionDict[key] = "\(value!))"
                     
                 }
@@ -946,8 +946,10 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             let jsonData = try NSJSONSerialization.dataWithJSONObject(self.selectionDict, options: NSJSONWritingOptions.PrettyPrinted)
             // here "jsonData" is the dictionary encoded in JSON data
             
+            
             let datastring = NSString(data:jsonData, encoding:NSUTF8StringEncoding) as String?
             
+            bro4u_DataManager.sharedInstance.filterSelectionDict = self.selectionDict
             bro4u_DataManager.sharedInstance.selectedFilterSelectionInJsonFormat = datastring
             
             

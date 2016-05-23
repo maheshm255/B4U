@@ -49,6 +49,8 @@ class bro4u_DataManager: NSObject {
     
     var selectedFilterSelectionInJsonFormat:String?
     
+    var filterSelectionDict:Dictionary<String , String> = Dictionary()
+
     
     var orderId:NSNumber?
     var txnID:String?

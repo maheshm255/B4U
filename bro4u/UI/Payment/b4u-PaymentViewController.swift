@@ -53,7 +53,7 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
 
         if  let selectedSuggestedPartner =   bro4u_DataManager.sharedInstance.selectedSuggestedPatner
         {
-            self.lblAmount.text = "  Rs. \( selectedSuggestedPartner.custPrice!)  "
+            self.lblAmount.text = "  Rs. \(self.getTotalPaybleAmount())  "
 
         }else if let selectedReOrderModel = bro4u_DataManager.sharedInstance.selectedReorderModel
         {
@@ -69,7 +69,7 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
                 let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "Rs. \(selectedPartner.custPrice!)")
                 attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
                 lblWalletDiscount.attributedText = attributeString;
-                self.lblAmount.text = "  Rs. \(selectedPartner.offerPrice!)  "
+                self.lblAmount.text = "  Rs. \(self.getTotalPaybleAmount())  "
 
                 lblWalletDiscount.hidden = false
             }
@@ -151,6 +151,27 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
 
     }
   
+    
+    func getTotalPaybleAmount()->Double
+    {
+        var price:Double = 0.0
+        if  let selectedSuggestedPartner =   bro4u_DataManager.sharedInstance.selectedSuggestedPatner
+        {
+            price = Double(selectedSuggestedPartner.offerPrice!)!
+            
+            if let selectedQuantity = bro4u_DataManager.sharedInstance.selectedQualtity
+            {
+                 price = Double(selectedQuantity)! * price
+            }
+            
+            if let deliveryCharge = selectedSuggestedPartner.deliveryCharge
+            {
+              price =   price + deliveryCharge.doubleValue
+            }
+        }
+        
+        return price
+    }
   
     func createOfferDict()
     {

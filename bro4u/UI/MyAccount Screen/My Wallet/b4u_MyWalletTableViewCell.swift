@@ -47,8 +47,23 @@ class b4u_MyWalletTableViewCell: UITableViewCell {
     }
     if let activityType = myWalletDataModel.activityType
     {
-      self.activityTypeBtn.setTitle(activityType, forState: .Normal)
+        self.activityTypeBtn.setTitle(activityType, forState: .Normal)
+        
+        if activityType == "withdraw"
+        {
+            self.activityTypeBtn.setTitle("Debit", forState: .Normal)
+
+            self.activityTypeBtn.backgroundColor = UIColor(red:254/255.0, green:103/255.0, blue:134/255.0, alpha: 1.0)
+        }else{
+            self.activityTypeBtn.setTitle("Credit", forState: .Normal)
+            
+            self.activityTypeBtn.backgroundColor = UIColor(red:0/255.0, green:192/255.0, blue:106/255.0, alpha: 1.0)
+
+
+        }
     }
+    
+    
 
   }
 
