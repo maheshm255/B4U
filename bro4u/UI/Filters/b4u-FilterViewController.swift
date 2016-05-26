@@ -670,7 +670,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         let quickBookViewCtrl:b4u_QuickBookOrderCtrl = storyboard.instantiateViewControllerWithIdentifier("quickBookViewCtrl") as! b4u_QuickBookOrderCtrl
         
         quickBookViewCtrl.modalPresentationStyle = .Popover
-        quickBookViewCtrl.preferredContentSize = CGSizeMake(300, 360)
+        quickBookViewCtrl.preferredContentSize = CGSizeMake(300, 300)
         quickBookViewCtrl.delegate = self
         
         let popoverMenuViewController = quickBookViewCtrl.popoverPresentationController
@@ -678,8 +678,8 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         popoverMenuViewController?.delegate = self
         popoverMenuViewController?.sourceView = self.view
         popoverMenuViewController?.sourceRect = CGRect(
-            x: CGRectGetMidX(self.view.frame),
-            y: CGRectGetMidY(self.view.frame),
+            x: CGRectGetMidX(self.view.bounds),
+            y: CGRectGetMidY(self.view.bounds),
             width: 1,
             height: 1)
         presentViewController(
@@ -874,8 +874,8 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         var latitude =  "12.9718915"
         var longitude = "77.6411545"
         
-        //TODO - Uncomment below line for device 
-//        
+    //    TODO - Uncomment below line for device
+        
 //        if let currentLocaiotn = bro4u_DataManager.sharedInstance.currenLocation
 //        {
 //            latitude = "\(currentLocaiotn.coordinate.latitude)"
@@ -917,7 +917,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                     
                     params = params + "&\(catFilterAttributes.fieldName!)=\(attributeOption.optionId!)"
                     
-                    let key = "\(catFilterAttributes.fieldName!)_\(attributeOption.optionId!)"
+                    let key = "\(catFilterAttributes.fieldName!)"
                     self.selectionDict[key] = "\(attributeOption.optionId!)"
                 }
             }
@@ -932,7 +932,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                     
                     params = params + "&option_\(attributeOption.optionId!)=\(value!)"
                     
-                    let key = "\(catFilterAttributes.fieldName!)_\(attributeOption.optionId!)"
+                    let key = "option_\(attributeOption.optionId!)"
                     self.selectionDict[key] = "\(value!))"
                     
                 }
@@ -946,8 +946,10 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             let jsonData = try NSJSONSerialization.dataWithJSONObject(self.selectionDict, options: NSJSONWritingOptions.PrettyPrinted)
             // here "jsonData" is the dictionary encoded in JSON data
             
+            
             let datastring = NSString(data:jsonData, encoding:NSUTF8StringEncoding) as String?
             
+            bro4u_DataManager.sharedInstance.filterSelectionDict = self.selectionDict
             bro4u_DataManager.sharedInstance.selectedFilterSelectionInJsonFormat = datastring
             
             

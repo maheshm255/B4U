@@ -208,7 +208,7 @@ class b4u_SearchResultTblCtrl: UITableViewController ,UISearchResultsUpdating,UI
     
     internal func updateSearchResultsForSearchController(searchController: UISearchController)
     {
-        bro4u_DataManager.sharedInstance.searchResult.removeAll()
+       // bro4u_DataManager.sharedInstance.searchResult.removeAll()
 
         //let searchString = searchController.searchBar.text;
      

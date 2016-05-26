@@ -182,7 +182,7 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         cell.lblVendorName.text = aPatner.vendorName
       
         cell.lblVendorReiviews.text = "\(aPatner.reviewCount!) Reviews"
-        cell.lblVendorDistance.text =  String(format: "%.2@ Kms away",aPatner.distance!)
+        cell.lblVendorDistance.text =  String(format: "%0.2f Kms away",Double(aPatner.distance!))
          //   "\(aPatner.distance!) Kms away"
         //For Giving Border to button
         cell.btnViewProfile.layer.cornerRadius = 2
@@ -206,11 +206,42 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
 
         }
         
+        var visitingCharge = false
+        
+        
+        if let deliveryCharge = aPatner.deliveryCharge where Double(deliveryCharge) > 0
+        {
+            cell.lblCharges.text = "+ Delivery Charge Rs.\(deliveryCharge)"
+            cell.topConstraintChargesLbl.constant = 10
+            
+        }else if let chargesStr = aPatner.chargeTitle where chargesStr != ""
+        {
+            cell.lblCharges.text = "*" + chargesStr
+            cell.topConstraintChargesLbl.constant = 10
+            
+            visitingCharge = true
+            
+        }else
+        {
+            cell.lblCharges.text = ""
+            cell.topConstraintChargesLbl.constant = 0
+            
+        }
+        
+        
         if let offerPreice = aPatner.offerPrice , let price = aPatner.price
         {
             if Double(offerPreice) > 0  && Double(price) > 0
             {
-                cell.lblDiscount.text = "Rs." + aPatner.offerPrice!+"*"
+                
+                var star = ""
+                
+                if visitingCharge
+                {
+                    star = "*"
+                }
+                cell.lblDiscount.text = "Rs." + aPatner.offerPrice! + star
+                
                 
                 //            let shadow : NSShadow = NSShadow()
                 //            shadow.shadowOffset = CGSizeMake(-2.0, -2.0)
@@ -235,7 +266,14 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
                 cell.lblActualPrice.text = ""
                 
                 cell.leadingConstraingDiscounLbl.constant = 0
-                cell.lblDiscount.text = "Rs." + aPatner.offerPrice!+"*"
+                
+                var star = ""
+                
+                if visitingCharge
+                {
+                    star = "*"
+                }
+                cell.lblDiscount.text = "Rs." + aPatner.offerPrice! + star
             }
             
         }else
@@ -246,8 +284,13 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
             
             if let offerPrice = aPatner.offerPrice
             {
-                cell.lblDiscount.text = "Rs." + offerPrice + "*"
-
+                var star = ""
+                
+                if visitingCharge
+                {
+                    star = "*"
+                }
+                cell.lblDiscount.text = "Rs." + aPatner.offerPrice! + star
             }
         }
      
@@ -283,22 +326,7 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         
         cell.lblVendorFeedBack.text = "\(aPatner.averageRatingPercent!)% Positive"
         
-        if let deliveryCharge = aPatner.deliveryCharge where Double(deliveryCharge) > 0
-        {
-            cell.lblCharges.text = "*Delivery Charge + \(deliveryCharge)"
-            cell.topConstraintChargesLbl.constant = 10
-            
-        }else if let chargesStr = aPatner.chargeTitle where chargesStr != ""
-        {
-            cell.lblCharges.text = "*" + chargesStr
-            cell.topConstraintChargesLbl.constant = 10
-
-        }else
-        {
-            cell.lblCharges.text = ""
-            cell.topConstraintChargesLbl.constant = 0
-
-        }
+      
         
         b4u_Utility.shadowEffectToView(cell)
         
@@ -390,6 +418,9 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
     func selectedQuanitty(quantity:String?)
     {
         bro4u_DataManager.sharedInstance.selectedQualtity = quantity
+        
+        self.performSegueWithIdentifier("paymentCtrlSegue", sender:nil)
+
     }
   
     internal func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat

@@ -72,6 +72,15 @@ class b4u_ReviewReadMoreCtrl: UIViewController {
         
         
     }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        
+        self.lblComments.sizeToFit()
+        print(CGRectGetHeight(self.lblComments.frame))
+        self.preferredContentSize = CGSizeMake(300, CGRectGetHeight(self.lblComments.frame) + 250)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

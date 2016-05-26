@@ -35,12 +35,23 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         
-       if let selectedPartner = bro4u_DataManager.sharedInstance.selectedSuggestedPatner
-       {
-          self.lblAmount.text = "  Rs. \( selectedPartner.custPrice!)  "
+        
+        if let selectedPartner = bro4u_DataManager.sharedInstance.selectedSuggestedPatner
+        {
+            
+            if let quantity = bro4u_DataManager.sharedInstance.selectedQualtity
+            {
+                let price = Double(selectedPartner.offerPrice!)! * Double(quantity)!
+                self.lblAmount.text = " Rs.\(price)"
+                
+            }else
+            {
+                self.lblAmount.text = "  Rs. \( selectedPartner.offerPrice!)  "
+                
+            }
+            
         }else if let selectedReorderModel = bro4u_DataManager.sharedInstance.selectedReorderModel
        {
           //TODO - to check actual field
