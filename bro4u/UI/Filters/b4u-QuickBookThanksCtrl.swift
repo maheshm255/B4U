@@ -50,6 +50,10 @@ class b4u_QuickBookThanksCtrl: UIViewController {
         }
         
         self.lblTime.text = bro4u_DataManager.sharedInstance.selectedTimeSlot
+        
+        self.lblTitle.text = self.selectedCategoryObj?.catName!
+        
+        self.imgViewCenterIcon.downloadedFrom(link:(self.selectedCategoryObj?.catIcon)!, contentMode: .ScaleToFill)
     }
     /*
     // MARK: - Navigation
@@ -64,14 +68,23 @@ class b4u_QuickBookThanksCtrl: UIViewController {
    
     @IBAction func btnCallBro4uPressed(sender: AnyObject)
     {
+        let url = NSURL(string:"tel://08030323232")!
         
+        if UIApplication.sharedApplication().canOpenURL(url)
+        {
+            UIApplication.sharedApplication().openURL(url)
+        }else
+        {
+            print("Call is not supported")
+        }
     }
     @IBAction func btnBackPressed(sender: AnyObject)
     {
-        
+        self.navigationController?.popToRootViewControllerAnimated(true)
+
     }
     @IBAction func btnCheckOtherServicesPressed(sender: AnyObject)
     {
-        
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
 }

@@ -94,6 +94,8 @@ class b4u_QuickBookOrderCtrl: UIViewController {
         let address = "aa" // TO DO
         let latt = "17.1"  // TO DO
         let long = "88.0" //  TO DO
+        
+        
         let serviceDate =  NSDate.dateFormat().stringFromDate(bro4u_DataManager.sharedInstance.selectedDate!)
         let serviceTime = bro4u_DataManager.sharedInstance.selectedTimeSlot!
         let imei = b4u_Utility.getUUIDFromVendorIdentifier()
