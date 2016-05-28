@@ -390,7 +390,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
         let  alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("OrderDetailViewControllerID") as! b4u_OrderDetailViewController
         
         alertViewCtrl.modalPresentationStyle = .Popover
-        alertViewCtrl.preferredContentSize = CGSizeMake(300, 350)
+        alertViewCtrl.preferredContentSize = CGSizeMake(300, 420)
         
         let popoverMenuViewController = alertViewCtrl.popoverPresentationController
         popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
