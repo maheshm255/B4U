@@ -517,61 +517,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         }
         return 44.0
     }
-    
-    
-//    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-//        if (cell.respondsToSelector("tintColor")) {
-//            let cornerRadius: CGFloat = 1.0;
-//            cell.backgroundColor = UIColor.clearColor()
-//            let layer: CAShapeLayer  = CAShapeLayer()
-//            let pathRef: CGMutablePathRef  = CGPathCreateMutable()
-//            let bounds: CGRect  = CGRectInset(cell.bounds, 0, 0)
-//            var addLine: Bool  = false
-//            if (indexPath.row == 0 && indexPath.row == tableView.numberOfRowsInSection(indexPath.section)-1) {
-//                CGPathAddRoundedRect(pathRef, nil, bounds, cornerRadius, cornerRadius);
-//            } else if (indexPath.row == 0) {
-//                CGPathMoveToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMaxY(bounds));
-//                CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetMidX(bounds), CGRectGetMinY(bounds), cornerRadius);
-//                CGPathAddArcToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds), CGRectGetMaxX(bounds), CGRectGetMidY(bounds), cornerRadius);
-//                CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds));
-//                addLine = true;
-//            } else if (indexPath.row == tableView.numberOfRowsInSection(indexPath.section)-1) {
-//                CGPathMoveToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds));
-//                CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMaxY(bounds), CGRectGetMidX(bounds), CGRectGetMaxY(bounds), cornerRadius);
-//                CGPathAddArcToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds), CGRectGetMaxX(bounds), CGRectGetMidY(bounds), cornerRadius);
-//                CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds));
-//            } else {
-//                CGPathAddRect(pathRef, nil, bounds);
-//                addLine = true;
-//            }
-//            layer.path = pathRef;
-//            //CFRelease(pathRef);
-//            //set the border color
-//            layer.strokeColor = UIColor.lightGrayColor().CGColor;
-//            //set the border width
-//            layer.lineWidth = 1;
-//            layer.fillColor = UIColor(white: 1, alpha: 1.0).CGColor;
-//            
-//            
-//            if (addLine == true) {
-//                let lineLayer: CALayer = CALayer();
-//                let lineHeight: CGFloat  = (1 / UIScreen.mainScreen().scale);
-//                lineLayer.frame = CGRectMake(CGRectGetMinX(bounds), bounds.size.height-lineHeight, bounds.size.width, lineHeight);
-//                lineLayer.backgroundColor = tableView.separatorColor!.CGColor;
-//                layer.addSublayer(lineLayer);
-//            }
-//            
-//            let testView: UIView = UIView(frame:bounds)
-//            testView.layer.insertSublayer(layer, atIndex: 0)
-//            testView.backgroundColor = UIColor.clearColor()
-//            cell.backgroundView = testView
-//        }
-//        
-//    }
-//    
-  
-
-  
+      
     func updateHeaderForSection(section:Int)
     {
         var indexPaths = self.selectedIndexPath["\(section)"]
@@ -876,13 +822,13 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         
     //    TODO - Uncomment below line for device
         
-//        if let currentLocaiotn = bro4u_DataManager.sharedInstance.currenLocation
-//        {
-//            latitude = "\(currentLocaiotn.coordinate.latitude)"
-//            
-//            longitude = "\(currentLocaiotn.coordinate.longitude)"
-//            
-//        }
+        if let currentLocaiotn = bro4u_DataManager.sharedInstance.currenLocation
+        {
+            latitude = "\(currentLocaiotn.coordinate.latitude)"
+            
+            longitude = "\(currentLocaiotn.coordinate.longitude)"
+            
+        }
         
         var params = "?cat_id=\(catId)"
         
@@ -1085,6 +1031,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         
         let quickBookThanksCtrl = self.storyboard?.instantiateViewControllerWithIdentifier("b4uQuickBookThanksCtrl") as! b4u_QuickBookThanksCtrl
         
+        quickBookThanksCtrl.selectedCategoryObj = self.selectedCategoryObj
         self.navigationController?.pushViewController(quickBookThanksCtrl, animated:true)
     }
     
