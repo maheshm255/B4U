@@ -332,6 +332,10 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
         self.showQuicBookingView()
     }
     
+    //Delegate from PaymentViewController after applying Coupon Code
+    func couponApplied(couponCode: String) {
+        self.getPaymentWays(couponCode)
+    }
     //Function to Navigate for Payment Screen
     func navigateToPaymentGateWay(gateWayOpton:paymentOption)
     {

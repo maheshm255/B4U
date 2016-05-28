@@ -19,6 +19,8 @@ protocol paymentDelegate
 {
     func infoBtnClicked()
     func navigateToPaymentGateWay(gateWayOpton:paymentOption)
+    func couponApplied(couponCode:String)
+
 }
 
 class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate,UITextFieldDelegate {
@@ -202,14 +204,42 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
           b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
             var user_id = ""
-            
+            var  sub_Total =  ""
+            var itemId = ""
+            var vendorID = ""
+            var categoryID = ""
+
             if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
                 
                 user_id = loginInfoData.userId! //Need to use later
                 
             }
+            let imei = b4u_Utility.getUUIDFromVendorIdentifier()
+            let deviceType = "mobile"
+            if  let selectedSuggestedPartner =   bro4u_DataManager.sharedInstance.selectedSuggestedPatner
+            {
+                sub_Total = selectedSuggestedPartner.custPrice!
+                itemId = selectedSuggestedPartner.itemId!
+            }
+            if let orderDetailModel = bro4u_DataManager.sharedInstance.orderDetailData.first
+            {
+                if let selectionLocal: b4u_SelectionModel =  orderDetailModel.selection?.first{
+                    
+                    if let vendor_ID = selectionLocal.vendorId
+                    {
+                        vendorID = vendor_ID
+                    }
+                }
+            }
             
-            let params = "?coupon_code=\(tfCouponCode.text!)&user_id=\(user_id)"
+            if let catIDData:b4u_OrderDetailModel = bro4u_DataManager.sharedInstance.orderDetailData[0]{
+                
+                categoryID = catIDData.catId!
+            }
+
+
+            
+            let params = "?coupon_code=\(tfCouponCode.text!)&user_id=\(user_id)&imei=\(imei)&bro4u_device_type=\(deviceType)&sub_total=\(sub_Total)&cat_id=\(categoryID)&vendor_id=\(vendorID)&item_id=\(itemId)"
             
             
                 b4u_WebApiCallManager.sharedInstance.getApiCall(kCouponCodeValidateIndex , params:params, result:{(resultObject) -> Void in
@@ -377,12 +407,9 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
 
     if resultObject == "Success" && codeValidateStatus == "true"
     {
-      
-      let paymentBaseCntl = b4u_PaymentBaseViewController()
-      paymentBaseCntl.getPaymentWays(bro4u_DataManager.sharedInstance.copiedCopunCode!)
+      delegate?.couponApplied(self.tfCouponCode.text!)
       self.view.makeToast(message:codeValidateMessage!, duration:1.0, position:HRToastPositionDefault)
       self.tfCouponCode.text = ""
-
     }
     else
     {
