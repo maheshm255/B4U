@@ -389,6 +389,8 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
       self.view.makeToast(message:codeValidateMessage!, duration:1.0, position:HRToastPositionDefault)
       self.tfCouponCode.text = ""
     }
+    
+    self.view.endEditing(true)
 
   }
   
