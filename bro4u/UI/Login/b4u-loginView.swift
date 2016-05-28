@@ -28,21 +28,11 @@ class b4u_loginView: UIView ,FBSDKLoginButtonDelegate ,GIDSignInDelegate,GIDSign
     @IBOutlet weak var goBtnClicked: UIButton!
     
     
+    var loginForm:loginFormScreen?
+    
     var delegate:loginViewDelegate?
-    
-//    var fbLoginBtn:FBSDKLoginButton?
-//    var googleSignBtn:GIDSignInButton?
-//    var otpLoginBtn:UIButton?
-//
-//    
-//    var lblOr:UILabel?
-//    var lblLoginUsing:UILabel?
-//    
-//    var tfEnterMogileNumber:UITextField?
-//    var btnGo:UIButton?
-    
-    
-    
+
+
     override init (frame : CGRect) {
         super.init(frame : frame)
         
@@ -61,6 +51,7 @@ class b4u_loginView: UIView ,FBSDKLoginButtonDelegate ,GIDSignInDelegate,GIDSign
     func setup() {
         
         
+        self.addLoadingIndicator()
         var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
         assert(configureError == nil, "Error configuring Google services: \(configureError)")
@@ -159,141 +150,9 @@ class b4u_loginView: UIView ,FBSDKLoginButtonDelegate ,GIDSignInDelegate,GIDSign
 
     func addBehavior (){
         print("Add all the behavior here")
-        
-     
-        
-        
-//        self.addGoogleSingIn()
-//        self.addFBfbLoginBtn()
-//        self.addLabels()
-//        self.addOTPLoginBtn()
-        
-        
     }
     
-//    func addLabels()
-//    {
-//        lblLoginUsing = UILabel();
-//        lblLoginUsing?.text = "LOGIN USING"
-//        lblLoginUsing?.translatesAutoresizingMaskIntoConstraints = false
-//        self.addSubview(lblLoginUsing!)
-//        
-//        
-//        let horizontalConstraint = NSLayoutConstraint(item: lblLoginUsing!, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem:self, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
-//        self.addConstraint(horizontalConstraint)
-//        
-//        let verticalConstraint = NSLayoutConstraint(item: lblLoginUsing!, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.fbLoginBtn, attribute: NSLayoutAttribute.Top , multiplier:1, constant: -20)
-//        self.addConstraint(verticalConstraint)
-//        
-//
-//        lblOr = UILabel();
-//        lblOr?.text = "OR"
-//        lblOr?.translatesAutoresizingMaskIntoConstraints = false
-//        self.addSubview(lblOr!)
-//        
-//        
-//        let lblhorizontalConstraint = NSLayoutConstraint(item: lblOr!, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem:self, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
-//        self.addConstraint(lblhorizontalConstraint)
-//        
-//        let lblverticalConstraint = NSLayoutConstraint(item: lblOr!, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.googleSignBtn, attribute: NSLayoutAttribute.Bottom , multiplier:1, constant:20)
-//        self.addConstraint(lblverticalConstraint)
-//
-//    }
-//    
-//    func addOTPLoginBtn()
-//    {
-//        otpLoginBtn = UIButton(type: UIButtonType.System)
-//        otpLoginBtn?.setTitle("OTP LOGIN", forState:UIControlState.Normal)
-//        otpLoginBtn?.translatesAutoresizingMaskIntoConstraints = false
-//        otpLoginBtn?.addTarget(self, action:"otpBtnClicked", forControlEvents:UIControlEvents.TouchUpInside)
-//        self.addSubview(otpLoginBtn!)
-//        
-//        
-//        let horizontalConstraint = NSLayoutConstraint(item: otpLoginBtn!, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem:self, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
-//        self.addConstraint(horizontalConstraint)
-//        
-//        let verticalConstraint = NSLayoutConstraint(item: otpLoginBtn!, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.googleSignBtn, attribute: NSLayoutAttribute.Bottom , multiplier:1, constant: 20)
-//        self.addConstraint(verticalConstraint)
-//        
-//        let widthConstraint = NSLayoutConstraint(item: otpLoginBtn!, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 250)
-//        self.addConstraint(widthConstraint)
-//        
-//        let heightConstraint = NSLayoutConstraint(item: otpLoginBtn!, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 40)
-//        self.addConstraint(heightConstraint)
-//        
-//        
-//        
-////        tfEnterMogileNumber = UITextField()
-////        tfEnterMogileNumber?.placeholder = "Enter mobile number"
-////        
-////        tfEnterMogileNumber?.translatesAutoresizingMaskIntoConstraints = false
-//        
-//    
-//    }
-//    
-//    func otpBtnClicked()
-//    {
-//        
-//    }
-//    func addGoogleSingIn()
-//    {
-//        googleSignBtn = GIDSignInButton()
-//        
-//        googleSignBtn!.translatesAutoresizingMaskIntoConstraints = false
-//        
-//        self.addSubview(googleSignBtn!);
-//        
-//        var configureError: NSError?
-//        GGLContext.sharedInstance().configureWithError(&configureError)
-//        assert(configureError == nil, "Error configuring Google services: \(configureError)")
-//        
-//        GIDSignIn.sharedInstance().delegate = self
-//        
-//        GIDSignIn.sharedInstance().uiDelegate = self
-//        
-//        
-//        
-//        let horizontalConstraint = NSLayoutConstraint(item: googleSignBtn!, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem:self, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
-//        self.addConstraint(horizontalConstraint)
-//        
-//        let verticalConstraint = NSLayoutConstraint(item: googleSignBtn!, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
-//        self.addConstraint(verticalConstraint)
-//        
-//        let widthConstraint = NSLayoutConstraint(item: googleSignBtn!, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 250)
-//        self.addConstraint(widthConstraint)
-//        
-//        let heightConstraint = NSLayoutConstraint(item: googleSignBtn!, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 40)
-//        self.addConstraint(heightConstraint)
-//        
-//    }
-//    func addFBfbLoginBtn()
-//    {
-//       fbLoginBtn  = FBSDKLoginButton(type:UIButtonType.System)
-//        
-//        fbLoginBtn!.translatesAutoresizingMaskIntoConstraints = false
-//        
-//        self.addSubview(fbLoginBtn!);
-//        
-//        
-//        
-//        let horizontalConstraint = NSLayoutConstraint(item: fbLoginBtn!, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem:self, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
-//        self.addConstraint(horizontalConstraint)
-//        
-//        let verticalConstraint = NSLayoutConstraint(item: fbLoginBtn!, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.googleSignBtn, attribute: NSLayoutAttribute.Top, multiplier: 1, constant:-20)
-//        self.addConstraint(verticalConstraint)
-//        
-//        let widthConstraint = NSLayoutConstraint(item: fbLoginBtn!, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 250)
-//        self.addConstraint(widthConstraint)
-//        
-//        let heightConstraint = NSLayoutConstraint(item: fbLoginBtn!, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 40)
-//        self.addConstraint(heightConstraint)
-//        
-//        
-//        FBSDKSettings.setAppID("194765280880394")
-//        
-//        fbLoginBtn!.delegate = self
-//        fbLoginBtn!.readPermissions = ["public_profile"]
-//    }
+
     
     //MARKS: FB Delegates
     func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
@@ -371,8 +230,11 @@ class b4u_loginView: UIView ,FBSDKLoginButtonDelegate ,GIDSignInDelegate,GIDSign
             if (error == nil) {
                 // Perform any operations on signed in user here.
                 
-                
                 let url = NSURL(string:  "https://www.googleapis.com/oauth2/v3/userinfo?access_token=\(user.authentication.accessToken)")
+                
+                
+                b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
                 let session = NSURLSession.sharedSession()
                 session.dataTaskWithURL(url!) {(data, response, error) -> Void in
                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
@@ -395,7 +257,6 @@ class b4u_loginView: UIView ,FBSDKLoginButtonDelegate ,GIDSignInDelegate,GIDSign
                         so in my case:
                         */
                         let loginInfoObj = b4u_LoginInfo()
-                        
                         loginInfoObj.userId = user.userID
                         loginInfoObj.googleAuthToken = user.authentication.idToken
                         loginInfoObj.fullName = user.profile.name
@@ -407,8 +268,11 @@ class b4u_loginView: UIView ,FBSDKLoginButtonDelegate ,GIDSignInDelegate,GIDSign
                         
                         bro4u_DataManager.sharedInstance.loginInfo = loginInfoObj
                         
-                        
                         self.delegate?.loginSuccessFull()
+                        
+                        
+                        b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
                         
                     } catch {
                         NSLog("Account Information could not be loaded")
@@ -416,6 +280,9 @@ class b4u_loginView: UIView ,FBSDKLoginButtonDelegate ,GIDSignInDelegate,GIDSign
                         bro4u_DataManager.sharedInstance.loginInfo = nil
                         NSUserDefaults.standardUserDefaults().setBool(true, forKey:"False")
                         self.delegate?.loginFailed()
+                        
+                        b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+
 
                     }
                     }.resume()
@@ -475,4 +342,11 @@ class b4u_loginView: UIView ,FBSDKLoginButtonDelegate ,GIDSignInDelegate,GIDSign
     }
   
   
+    
+    func addLoadingIndicator () {
+        self.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+        self.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+        b4u_Utility.sharedInstance.activityIndicator.center = self.center
+    }
+    
 }

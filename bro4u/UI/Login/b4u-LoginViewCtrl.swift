@@ -22,6 +22,7 @@ class b4u_LoginViewCtrl: UIViewController ,loginViewDelegate {
 
    
     @IBOutlet var fbLoginButton: FBSDKLoginButton!
+    @IBOutlet weak var btnOTPLogin: UIButton!
 
     var loginForm:loginFormScreen = loginFormScreen.kNone
     var delegate:loginDelegate?
@@ -41,28 +42,17 @@ class b4u_LoginViewCtrl: UIViewController ,loginViewDelegate {
         
         self.view.addSubview(loginView!)
         
+        loginView?.loginForm = self.loginForm
+
+        
         loginView?.setup()
+        
+
         
         loginView?.delegate = self
       
     }
-  
-    func loginSuccessFull()
-    {
-        
-        self.getData()
-    
-    }
-    func loginFailed()
-    {
-        NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
 
-        self.dismissViewControllerAnimated(true, completion:nil)
-
-    }
-    @IBOutlet weak var btnOTPLogin: UIButton!
-
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -86,17 +76,31 @@ class b4u_LoginViewCtrl: UIViewController ,loginViewDelegate {
 
     @IBAction func btnCancelClicked(sender: AnyObject) {
         
+        if self.loginForm == .kRightMenu
+        {
         NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
-
+        }
         self.dismissViewControllerAnimated(true, completion:nil)
     }
   
-  
+    
+    func loginSuccessFull()
+    {
+        self.getData()
+    }
+    func loginFailed()
+    {
+        if self.loginForm == .kRightMenu
+        {
+        NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
+        }
+        self.dismissViewControllerAnimated(true, completion:nil)
+        
+    }
+    
     func getData()
     {
-        
-        //?req_id=3&email=harshal.zope1990%40gmail.com&first_name=Harshal&last_name=Zope&image=%22https%3A%2F%2Fgraph.facebook.com%2F836148279808264%2Fpicture%3Ftype%3Dlarge%22
-
+    
         if let loginInfoObj = bro4u_DataManager.sharedInstance.loginInfo
         {
             if loginInfoObj.loginType != "OTP"
@@ -115,15 +119,18 @@ class b4u_LoginViewCtrl: UIViewController ,loginViewDelegate {
                     print("login user Data Received")
                   
                   
-                    NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
-                  
+                    
+                  if self.loginForm == .kRightMenu
+                  {
+                     NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
+                  }
                   
                     let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(bro4u_DataManager.sharedInstance.loginInfo!)
 
                     
-                NSUserDefaults.standardUserDefaults().setObject(archivedObject, forKey:"loginInfo")
+                    NSUserDefaults.standardUserDefaults().setObject(archivedObject, forKey:"loginInfo")
                     
-                NSUserDefaults.standardUserDefaults().setBool(true, forKey:"isUserLogined")
+                    NSUserDefaults.standardUserDefaults().setBool(true, forKey:"isUserLogined")
 
                     NSNotificationCenter.defaultCenter().postNotificationName(kUserDataReceived, object:nil)
 
@@ -134,30 +141,15 @@ class b4u_LoginViewCtrl: UIViewController ,loginViewDelegate {
             {
                 NSNotificationCenter.defaultCenter().postNotificationName(kUserDataReceived, object:nil)
 
-                
+                if self.loginForm == .kRightMenu
+                {
                 NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
-
+                }
                 self.dismissViewControllerAnimated(true, completion:nil)
 
             }
         }
     }
   
-  
-//  // MARK: Done for numberTextField
-//  
-//  private func addDoneButtonTo(textField: UITextField) {
-////    let flexBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-//    let doneBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "didTapDone:")
-//    let keyboardToolbar = UIToolbar()
-//    keyboardToolbar.sizeToFit()
-//    keyboardToolbar.items = [doneBarButton]
-//    textField.inputAccessoryView = keyboardToolbar
-//  }
-//  
-//  func didTapDone(sender: AnyObject?) {
-//    tfEnerMobileNumber.endEditing(true)
-//  }
-
 }
 
