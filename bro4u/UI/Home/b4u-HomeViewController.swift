@@ -411,28 +411,34 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     
     func userCurrentLocaion()
     {
-        if let currentLocality = bro4u_DataManager.sharedInstance.currentLocality
+        
+        if let lastSearchedLocation = NSUserDefaults.standardUserDefaults().objectForKey("customLocation")
         {
+            self.btnCurrentLocation.setTitle(lastSearchedLocation as? String, forState:.Normal)
             
-            if let loclity = currentLocality.locality
+            bro4u_DataManager.sharedInstance.userSelectedLocatinStr = lastSearchedLocation as! String
+
+        }else{
+            if let currentLocality = bro4u_DataManager.sharedInstance.currentLocality
             {
-                if let  subLocality = currentLocality.subLocality
+                
+                if let loclity = currentLocality.locality
                 {
-                    self.btnCurrentLocation.setTitle("\(subLocality),\(loclity)", forState:.Normal)
-                }else
-                {
-                    self.btnCurrentLocation.setTitle("\(loclity)", forState:.Normal)
-                    
+                    if let  subLocality = currentLocality.subLocality
+                    {
+                        self.btnCurrentLocation.setTitle("\(subLocality),\(loclity)", forState:.Normal)
+                    }else
+                    {
+                        self.btnCurrentLocation.setTitle("\(loclity)", forState:.Normal)
+                        
+                    }
                 }
+            }else
+            {
+                self.btnCurrentLocation.setTitle("Current Location", forState:.Normal)
             }
-            
-            
-            
-        }else
-        {
-            self.btnCurrentLocation.setTitle("Current Location", forState:.Normal)
-            
         }
+       
     }
 
     

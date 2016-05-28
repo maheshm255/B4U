@@ -436,7 +436,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
                     
                     print("login user Data Received")
                     
-                     NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
+                   //  NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
                     
                     
                     let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(bro4u_DataManager.sharedInstance.loginInfo!)
@@ -456,7 +456,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
                 NSNotificationCenter.defaultCenter().postNotificationName(kUserDataReceived, object:nil)
                 
                 
-                NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
+              //  NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
                 
                 self.dismissViewControllerAnimated(true, completion:nil)
                 

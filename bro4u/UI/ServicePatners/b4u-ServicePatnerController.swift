@@ -527,37 +527,46 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
             
         }
         
-        
         self.tableViewServicePatner.scrollToRowAtIndexPath( NSIndexPath(forRow:0, inSection: 0)
-, atScrollPosition:.Top, animated:true)
+            , atScrollPosition:.Top, animated:true)
     }
     
     
     
     func userCurrentLocaion()
     {
-        if let currentLocality = bro4u_DataManager.sharedInstance.currentLocality
+        
+        if let customLocaitonStr = bro4u_DataManager.sharedInstance.userSelectedLocatinStr
         {
             
-            if let loclity = currentLocality.locality
+             self.lblCurrentLocation.text = customLocaitonStr
+        }else{
+            
+            if let currentLocality = bro4u_DataManager.sharedInstance.currentLocality
             {
-                if let  subLocality = currentLocality.subLocality
+                
+                if let loclity = currentLocality.locality
                 {
-                    self.lblCurrentLocation.text = "\(subLocality),\(loclity)"
-                }else
-                {
-                    self.lblCurrentLocation.text = "\(loclity)"
-
+                    if let  subLocality = currentLocality.subLocality
+                    {
+                        self.lblCurrentLocation.text = "\(subLocality),\(loclity)"
+                    }else
+                    {
+                        self.lblCurrentLocation.text = "\(loclity)"
+                        
+                    }
                 }
+                
+                
+                
+            }else
+            {
+                self.lblCurrentLocation.text = "Current Location"
+                
             }
-            
-    
-            
-        }else
-        {
-            self.lblCurrentLocation.text = "Current Location"
-            
+
         }
+
     }
     @IBAction func homeBtnPressed(sender: AnyObject) {
         

@@ -156,6 +156,11 @@ class b4u_LocationViewCtrl: UIViewController ,UITableViewDelegate,UITableViewDat
         let locationPredictionModel:b4u_LocationSearchModel = bro4u_DataManager.sharedInstance.locationSearchPredictions[indexPath.row]
 
         bro4u_DataManager.sharedInstance.userSelectedLocatinStr = locationPredictionModel.lDescription
+        
+        
+        NSUserDefaults.standardUserDefaults().setObject(locationPredictionModel.lDescription, forKey:"customLocation")
+
+        
         delegate!.userSelectedLocation(locationPredictionModel.lDescription!)
         
         self.dismissViewControllerAnimated(true, completion:nil)
@@ -186,8 +191,6 @@ class b4u_LocationViewCtrl: UIViewController ,UITableViewDelegate,UITableViewDat
         {
             // input=New&location=12.96,77.563123&
         
-        
-
             let input = searchBar.text!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
             
             let latt =  currentLocaiton.coordinate.latitude
