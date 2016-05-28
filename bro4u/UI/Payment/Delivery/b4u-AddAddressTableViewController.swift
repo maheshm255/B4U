@@ -38,7 +38,7 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
         
      
         self.tfCurrentPlace.enabled = false
-        self.tfCurrentLocation.enabled = false
+        self.tfCurrentLocation.enabled = true
         self.getCities()
         
 
@@ -48,12 +48,20 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
     override func viewWillAppear(animated: Bool) {
         
         super.viewWillAppear(animated)
+       
         if let placeObj = bro4u_DataManager.sharedInstance.currentLocality
         {
             if let locality = placeObj.locality , subLocality = placeObj.subLocality
-            {
-                tfCurrentLocation.text  = locality
+            {                
                 tfCurrentPlace.text  =   subLocality
+                if let customAddress =  bro4u_DataManager.sharedInstance.userSelectedLocatinStr
+                {
+                   tfCurrentLocation.text  =   customAddress
+                    
+                }else{
+                    
+
+                }
             }
             
         }
@@ -265,22 +273,17 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
         }
         
         let streetName = tfFullAddress.text
-        let locality = tfCurrentPlace.text
+        let locality = tfCurrentLocation.text
         let cityId =  self.selectedCity!.cityId!
         
         var latitude:String = "12.213"
         var longitude:String = "66.234"
-        //        if let  currentLocaiton = bro4u_DataManager.sharedInstance.currenLocation
-        //        {
-        //             latitude = "\(currentLocaiton.coordinate.latitude)"
-        //             longitude = "\(currentLocaiton.coordinate.longitude)"
-        //
-        //            addressModel?.currentLocation  = currentLocaiton
-        //
-        //        }
-        
-        
-   
+        if let  currentLocaiton = bro4u_DataManager.sharedInstance.currenLocation
+        {
+            latitude = "\(currentLocaiton.coordinate.latitude)"
+            longitude = "\(currentLocaiton.coordinate.longitude)"
+
+        }
         
         
         let params = "?user_id=\(user_id)&street_name=\(streetName!)&locality=\(locality!)&city_id=\(cityId)&name=\(name)&latitude=\(latitude)&longitude=\(longitude)&mobile=\(mobile)&email=\(email)"

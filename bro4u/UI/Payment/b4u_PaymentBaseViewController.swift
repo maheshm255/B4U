@@ -15,7 +15,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     @IBOutlet weak var viewParent: UIView!
     let segmentTitles = ["LOGIN", "DELIVERY", "PAYMENT"]
     
-    var loginViewCtrl:b4u_LoginViewCtrl?
+    
     var deliveryViewCtrl:b4u_DeliveryViewController?
     var paymentViewCtrl:b4u_PaymentViewController?
     
@@ -457,8 +457,11 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
                 
                 
               //  NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
-                
-                self.dismissViewControllerAnimated(true, completion:nil)
+                self.segmentedControl?.selectedSegmentIndex = 1
+
+                self.addDeliveryViewControl()
+
+             //   self.dismissViewControllerAnimated(true, completion:nil)
                 
             }
         }

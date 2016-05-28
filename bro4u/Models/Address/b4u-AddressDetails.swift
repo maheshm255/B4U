@@ -45,7 +45,7 @@ class b4u_AddressDetails: NSObject {
 
         userId = addressDataDict["user_id"] as? String
         
-        fullAddress = "\(locality!) \(cityName!)"
+        fullAddress = "\(curretPlace!) \(cityName!)"
 
     }
 }

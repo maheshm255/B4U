@@ -300,12 +300,12 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
 //        cell.contentView.layer.shadowOpacity = 0.1
         
         
-        if aPatner.premiumPartner != "yes"
-        {
-            cell.btnKing.hidden = false
-        }else
+        if aPatner.premiumPartner == "no"
         {
             cell.btnKing.hidden = true
+        }else
+        {
+            cell.btnKing.hidden = false
  
         }
         
