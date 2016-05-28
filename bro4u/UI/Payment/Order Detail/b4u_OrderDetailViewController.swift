@@ -77,24 +77,23 @@ class b4u_OrderDetailViewController: UIViewController {
                     
                     if let subTotal = selectionLocal.subTotal
                     {
-                        lblSubTotal.text = "\(subTotal)"
+                        lblSubTotal.text = "Rs. \(subTotal).00"
                     }
                     if let deliveryCharge = selectionLocal.deliveryCharge
                     {
-                        lblDeliveryCharges.text = "+ \(deliveryCharge)"
+                        lblDeliveryCharges.text = "+ Rs. \(deliveryCharge).00"
                     }
                     if let nightCharge = selectionLocal.nightCharge
                     {
-                        lblNightDeliveryCharge.text = " + \(nightCharge)"
-
+                        lblNightDeliveryCharge.text = " + Rs. \(nightCharge).00"
                     }
                     if let deductedFromWallet = selectionLocal.deductedFromWallet,deductedUsingCoupon = selectionLocal.deductedUsingCoupon
                     {
-                        lblWalletCouponOffers.text = " - \(deductedFromWallet.integerValue + deductedUsingCoupon.integerValue)"
+                        lblWalletCouponOffers.text = " - Rs. \(deductedFromWallet.integerValue + deductedUsingCoupon.integerValue).00"
                     }
                     if let grandTotal = selectionLocal.grandTotal
                     {
-                        lblGrandTotal.text = "\(grandTotal)"
+                        lblGrandTotal.text = "Rs. \(grandTotal).00"
                     }
 
 
