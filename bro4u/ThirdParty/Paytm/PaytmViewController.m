@@ -1,241 +1,241 @@
+////
+////  PaytmViewController.m
+////  SegmentControlDemo
+////
+////  Created by Rahul on 27/02/16.
+////  Copyright © 2016 MSP-User3. All rights reserved.
+////
 //
-//  PaytmViewController.m
-//  SegmentControlDemo
+//#import "PaytmViewController.h"
 //
-//  Created by Rahul on 27/02/16.
-//  Copyright © 2016 MSP-User3. All rights reserved.
+//@interface PaytmViewController ()
 //
-
-#import "PaytmViewController.h"
-
-@interface PaytmViewController ()
-
-
-@end
-
-@implementation PaytmViewController
-
-
-+(NSString*)generateOrderIDWithPrefix:(NSString *)prefix
-{
-    srand ( (unsigned)time(NULL) );
-    int randomNo = rand(); //just randomizing the number
-    NSString *orderID = [NSString stringWithFormat:@"%@%d", prefix, randomNo];
-    return orderID;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    [self createOrder];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
--(void)showController:(PGTransactionViewController *)controller
-{
-    if (self.navigationController != nil)
-        [self.navigationController pushViewController:controller animated:YES];
-    else
-        [self presentViewController:controller animated:YES
-                         completion:^{
-                             
-                         }];
-}
-
--(void)removeController:(PGTransactionViewController *)controller
-{
-    if (self.navigationController != nil)
-        [self.navigationController popViewControllerAnimated:YES];
-    else
-        [controller dismissViewControllerAnimated:YES
-                                       completion:^{
-                                       }];
-}
-
--(void)createOrder{
-    
-        //Step 1: Create a default merchant config object
-        PGMerchantConfiguration *mc = [PGMerchantConfiguration defaultConfiguration];
-    
-        //Step 2: If you have your own checksum generation and validation url set this here. Otherwise use the default Paytm urls
-        mc.checksumGenerationURL = @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/paytm_checksum_generation";
-        mc.checksumValidationURL = @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/paytm_checksum_validation";
-    
-        //Step 3: Create the order with whatever params you want to add. But make sure that you include the merchant mandatory params
-        NSMutableDictionary *orderDict = [NSMutableDictionary new];
-        //Merchant configuration in the order object
-        orderDict[@"MID"] = @"NquJkw58790567615778";
-        orderDict[@"CHANNEL_ID"] = @"WAP";
-        orderDict[@"INDUSTRY_TYPE_ID"] = @"Retail110";
-        orderDict[@"WEBSITE"] = @"brofouruwap";
-        //Order configuration in the order object
-        orderDict[@"TXN_AMOUNT"] = @"1";
-        orderDict[@"ORDER_ID"] = [PaytmViewController generateOrderIDWithPrefix:@""];
-        // orderDict[@"REQUEST_TYPE"] = @"DEFAULT";
-        orderDict[@"CUST_ID"] = @"1234567890";
-    
-    
-        //    //Step 2: If you have your own checksum generation and validation url set this here. Otherwise use the default Paytm urls
-        //    mc.checksumGenerationURL = @"https://pguat.paytm.com/paytmchecksum/paytmCheckSumGenerator.jsp";
-        //    mc.checksumValidationURL = @"https://pguat.paytm.com/paytmchecksum/paytmCheckSumVerify.jsp";
-        //
-        //    //Step 3: Create the order with whatever params you want to add. But make sure that you include the merchant mandatory params
-        //    NSMutableDictionary *orderDict = [NSMutableDictionary new];
-        //    //Merchant configuration in the order object
-        //    orderDict[@"MID"] = @"WorldP64425807474247";
-        //    orderDict[@"CHANNEL_ID"] = @"WAP";
-        //    orderDict[@"INDUSTRY_TYPE_ID"] = @"Retail";
-        //    orderDict[@"WEBSITE"] = @"worldpressplg";
-        //    //Order configuration in the order object
-        //    orderDict[@"TXN_AMOUNT"] = @"1";
-        //    orderDict[@"ORDER_ID"] = [ViewController generateOrderIDWithPrefix:@""];
-        //    orderDict[@"REQUEST_TYPE"] = @"DEFAULT";
-        //    orderDict[@"CUST_ID"] = @"1234567890";
-    
-        PGOrder *order = [PGOrder orderWithParams:orderDict];
-    
-        //Step 4: Choose the PG server. In your production build dont call selectServerDialog. Just create a instance of the
-        //PGTransactionViewController and set the serverType to eServerTypeProduction
-    
-        PGTransactionViewController *txnController = [[PGTransactionViewController alloc] initTransactionForOrder:order];
-        txnController.serverType = eServerTypeProduction;
-        txnController.merchant = mc;
-        txnController.delegate = self;
-        [self showController:txnController];
-    
-        //    [PGServerEnvironment selectServerDialog:self.view completionHandler:^(ServerType type)
-        //     {
-        //         PGTransactionViewController *txnController = [[PGTransactionViewController alloc] initTransactionForOrder:order];
-        //         if (type != eServerTypeNone) {
-        //             txnController.serverType = type;
-        //             txnController.merchant = mc;
-        //             txnController.delegate = self;
-        //             [self showController:txnController];
-        //         }
-        //     }];
-
-}
-
-//-(IBAction)testPayment:(id)sender
+//
+//@end
+//
+//@implementation PaytmViewController
+//
+//
+//+(NSString*)generateOrderIDWithPrefix:(NSString *)prefix
 //{
-//    //Step 1: Create a default merchant config object
-//    PGMerchantConfiguration *mc = [PGMerchantConfiguration defaultConfiguration];
-//    
-//    //Step 2: If you have your own checksum generation and validation url set this here. Otherwise use the default Paytm urls
-//    mc.checksumGenerationURL = @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/paytm_checksum_generation";
-//    mc.checksumValidationURL = @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/paytm_checksum_validation";
-//    
-//    //Step 3: Create the order with whatever params you want to add. But make sure that you include the merchant mandatory params
-//    NSMutableDictionary *orderDict = [NSMutableDictionary new];
-//    //Merchant configuration in the order object
-//    orderDict[@"MID"] = @"NquJkw58790567615778";
-//    orderDict[@"CHANNEL_ID"] = @"WAP";
-//    orderDict[@"INDUSTRY_TYPE_ID"] = @"Retail110";
-//    orderDict[@"WEBSITE"] = @"brofouruwap";
-//    //Order configuration in the order object
-//    orderDict[@"TXN_AMOUNT"] = @"1";
-//    orderDict[@"ORDER_ID"] = [ViewController generateOrderIDWithPrefix:@""];
-//    // orderDict[@"REQUEST_TYPE"] = @"DEFAULT";
-//    orderDict[@"CUST_ID"] = @"1234567890";
-//    
-//    
-//    //    //Step 2: If you have your own checksum generation and validation url set this here. Otherwise use the default Paytm urls
-//    //    mc.checksumGenerationURL = @"https://pguat.paytm.com/paytmchecksum/paytmCheckSumGenerator.jsp";
-//    //    mc.checksumValidationURL = @"https://pguat.paytm.com/paytmchecksum/paytmCheckSumVerify.jsp";
-//    //
-//    //    //Step 3: Create the order with whatever params you want to add. But make sure that you include the merchant mandatory params
-//    //    NSMutableDictionary *orderDict = [NSMutableDictionary new];
-//    //    //Merchant configuration in the order object
-//    //    orderDict[@"MID"] = @"WorldP64425807474247";
-//    //    orderDict[@"CHANNEL_ID"] = @"WAP";
-//    //    orderDict[@"INDUSTRY_TYPE_ID"] = @"Retail";
-//    //    orderDict[@"WEBSITE"] = @"worldpressplg";
-//    //    //Order configuration in the order object
-//    //    orderDict[@"TXN_AMOUNT"] = @"1";
-//    //    orderDict[@"ORDER_ID"] = [ViewController generateOrderIDWithPrefix:@""];
-//    //    orderDict[@"REQUEST_TYPE"] = @"DEFAULT";
-//    //    orderDict[@"CUST_ID"] = @"1234567890";
-//    
-//    PGOrder *order = [PGOrder orderWithParams:orderDict];
-//    
-//    //Step 4: Choose the PG server. In your production build dont call selectServerDialog. Just create a instance of the
-//    //PGTransactionViewController and set the serverType to eServerTypeProduction
-//    
-//    PGTransactionViewController *txnController = [[PGTransactionViewController alloc] initTransactionForOrder:order];
-//    txnController.serverType = eServerTypeProduction;
-//    txnController.merchant = mc;
-//    txnController.delegate = self;
-//    [self showController:txnController];
-//    
-//    //    [PGServerEnvironment selectServerDialog:self.view completionHandler:^(ServerType type)
-//    //     {
-//    //         PGTransactionViewController *txnController = [[PGTransactionViewController alloc] initTransactionForOrder:order];
-//    //         if (type != eServerTypeNone) {
-//    //             txnController.serverType = type;
-//    //             txnController.merchant = mc;
-//    //             txnController.delegate = self;
-//    //             [self showController:txnController];
-//    //         }
-//    //     }];
+//    srand ( (unsigned)time(NULL) );
+//    int randomNo = rand(); //just randomizing the number
+//    NSString *orderID = [NSString stringWithFormat:@"%@%d", prefix, randomNo];
+//    return orderID;
 //}
-
-
-#pragma mark PGTransactionViewController delegate
-
-- (void)didSucceedTransaction:(PGTransactionViewController *)controller
-                     response:(NSDictionary *)response
-{
-    DEBUGLOG(@"ViewController::didSucceedTransactionresponse= %@", response);
-    NSString *title = [NSString stringWithFormat:@"Your order  was completed successfully. \n %@", response[@"ORDERID"]];
-    [[[UIAlertView alloc] initWithTitle:title message:[response description] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-    
-    [self removeController:controller];
-}
-
-- (void)didFailTransaction:(PGTransactionViewController *)controller error:(NSError *)error response:(NSDictionary *)response
-{
-    DEBUGLOG(@"ViewController::didFailTransaction error = %@ response= %@", error, response);
-    if (response)
-    {
-        [[[UIAlertView alloc] initWithTitle:error.localizedDescription message:[response description] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-    }
-    else if (error)
-    {
-        [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-    }
-    [self removeController:controller];
-}
-
-- (void)didCancelTransaction:(PGTransactionViewController *)controller error:(NSError*)error response:(NSDictionary *)response
-{
-    DEBUGLOG(@"ViewController::didCancelTransaction error = %@ response= %@", error, response);
-    NSString *msg = nil;
-    if (!error) msg = [NSString stringWithFormat:@"Successful"];
-    else msg = [NSString stringWithFormat:@"UnSuccessful"];
-    
-    [[[UIAlertView alloc] initWithTitle:@"Transaction Cancel" message:msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-    [self removeController:controller];
-}
-
-- (void)didFinishCASTransaction:(PGTransactionViewController *)controller response:(NSDictionary *)response
-{
-    DEBUGLOG(@"ViewController::didFinishCASTransaction:response = %@", response);
-}
-
-
-@end
+//
+//- (void)viewDidLoad {
+//    [super viewDidLoad];
+//    // Do any additional setup after loading the view.
+//    
+//    [self createOrder];
+//}
+//
+//- (void)didReceiveMemoryWarning {
+//    [super didReceiveMemoryWarning];
+//    // Dispose of any resources that can be recreated.
+//}
+//
+///*
+//#pragma mark - Navigation
+//
+//// In a storyboard-based application, you will often want to do a little preparation before navigation
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    // Get the new view controller using [segue destinationViewController].
+//    // Pass the selected object to the new view controller.
+//}
+//*/
+//
+//-(void)showController:(PGTransactionViewController *)controller
+//{
+//    if (self.navigationController != nil)
+//        [self.navigationController pushViewController:controller animated:YES];
+//    else
+//        [self presentViewController:controller animated:YES
+//                         completion:^{
+//                             
+//                         }];
+//}
+//
+//-(void)removeController:(PGTransactionViewController *)controller
+//{
+//    if (self.navigationController != nil)
+//        [self.navigationController popViewControllerAnimated:YES];
+//    else
+//        [controller dismissViewControllerAnimated:YES
+//                                       completion:^{
+//                                       }];
+//}
+//
+//-(void)createOrder{
+//    
+//        //Step 1: Create a default merchant config object
+//        PGMerchantConfiguration *mc = [PGMerchantConfiguration defaultConfiguration];
+//    
+//        //Step 2: If you have your own checksum generation and validation url set this here. Otherwise use the default Paytm urls
+//        mc.checksumGenerationURL = @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/paytm_checksum_generation";
+//        mc.checksumValidationURL = @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/paytm_checksum_validation";
+//    
+//        //Step 3: Create the order with whatever params you want to add. But make sure that you include the merchant mandatory params
+//        NSMutableDictionary *orderDict = [NSMutableDictionary new];
+//        //Merchant configuration in the order object
+//        orderDict[@"MID"] = @"NquJkw58790567615778";
+//        orderDict[@"CHANNEL_ID"] = @"WAP";
+//        orderDict[@"INDUSTRY_TYPE_ID"] = @"Retail110";
+//        orderDict[@"WEBSITE"] = @"brofouruwap";
+//        //Order configuration in the order object
+//        orderDict[@"TXN_AMOUNT"] = @"1";
+//        orderDict[@"ORDER_ID"] = [PaytmViewController generateOrderIDWithPrefix:@""];
+//        // orderDict[@"REQUEST_TYPE"] = @"DEFAULT";
+//        orderDict[@"CUST_ID"] = @"1234567890";
+//    
+//    
+//        //    //Step 2: If you have your own checksum generation and validation url set this here. Otherwise use the default Paytm urls
+////    mc.checksumGenerationURL = @"https://pguat.paytm.com/paytmchecksum/paytmCheckSumGenerator.jsp";
+////    mc.checksumValidationURL = @"https://pguat.paytm.com/paytmchecksum/paytmCheckSumVerify.jsp";
+////        //
+////        //    //Step 3: Create the order with whatever params you want to add. But make sure that you include the merchant mandatory params
+////            NSMutableDictionary *orderDict = [NSMutableDictionary new];
+////        //    //Merchant configuration in the order object
+////            orderDict[@"MID"] = @"WorldP64425807474247";
+////            orderDict[@"CHANNEL_ID"] = @"WAP";
+////            orderDict[@"INDUSTRY_TYPE_ID"] = @"Retail";
+////            orderDict[@"WEBSITE"] = @"worldpressplg";
+////            //Order configuration in the order object
+////            orderDict[@"TXN_AMOUNT"] = @"1";
+////            orderDict[@"ORDER_ID"] = [PaytmViewController generateOrderIDWithPrefix:@""];
+////            orderDict[@"REQUEST_TYPE"] = @"DEFAULT";
+////            orderDict[@"CUST_ID"] = @"1234567890";
+//    
+//        PGOrder *order = [PGOrder orderWithParams:orderDict];
+//    
+//        //Step 4: Choose the PG server. In your production build dont call selectServerDialog. Just create a instance of the
+//        //PGTransactionViewController and set the serverType to eServerTypeProduction
+//    
+//        PGTransactionViewController *txnController = [[PGTransactionViewController alloc] initTransactionForOrder:order];
+//        txnController.serverType = eServerTypeProduction;
+//        txnController.merchant = mc;
+//        txnController.delegate = self;
+//        [self showController:txnController];
+//    
+//        //    [PGServerEnvironment selectServerDialog:self.view completionHandler:^(ServerType type)
+//        //     {
+//        //         PGTransactionViewController *txnController = [[PGTransactionViewController alloc] initTransactionForOrder:order];
+//        //         if (type != eServerTypeNone) {
+//        //             txnController.serverType = type;
+//        //             txnController.merchant = mc;
+//        //             txnController.delegate = self;
+//        //             [self showController:txnController];
+//        //         }
+//        //     }];
+//
+//}
+//
+////-(IBAction)testPayment:(id)sender
+////{
+////    //Step 1: Create a default merchant config object
+////    PGMerchantConfiguration *mc = [PGMerchantConfiguration defaultConfiguration];
+////    
+////    //Step 2: If you have your own checksum generation and validation url set this here. Otherwise use the default Paytm urls
+////    mc.checksumGenerationURL = @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/paytm_checksum_generation";
+////    mc.checksumValidationURL = @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/paytm_checksum_validation";
+////    
+////    //Step 3: Create the order with whatever params you want to add. But make sure that you include the merchant mandatory params
+////    NSMutableDictionary *orderDict = [NSMutableDictionary new];
+////    //Merchant configuration in the order object
+////    orderDict[@"MID"] = @"NquJkw58790567615778";
+////    orderDict[@"CHANNEL_ID"] = @"WAP";
+////    orderDict[@"INDUSTRY_TYPE_ID"] = @"Retail110";
+////    orderDict[@"WEBSITE"] = @"brofouruwap";
+////    //Order configuration in the order object
+////    orderDict[@"TXN_AMOUNT"] = @"1";
+////    orderDict[@"ORDER_ID"] = [ViewController generateOrderIDWithPrefix:@""];
+////    // orderDict[@"REQUEST_TYPE"] = @"DEFAULT";
+////    orderDict[@"CUST_ID"] = @"1234567890";
+////    
+////    
+////    //    //Step 2: If you have your own checksum generation and validation url set this here. Otherwise use the default Paytm urls
+////    //    mc.checksumGenerationURL = @"https://pguat.paytm.com/paytmchecksum/paytmCheckSumGenerator.jsp";
+////    //    mc.checksumValidationURL = @"https://pguat.paytm.com/paytmchecksum/paytmCheckSumVerify.jsp";
+////    //
+////    //    //Step 3: Create the order with whatever params you want to add. But make sure that you include the merchant mandatory params
+////    //    NSMutableDictionary *orderDict = [NSMutableDictionary new];
+////    //    //Merchant configuration in the order object
+////    //    orderDict[@"MID"] = @"WorldP64425807474247";
+////    //    orderDict[@"CHANNEL_ID"] = @"WAP";
+////    //    orderDict[@"INDUSTRY_TYPE_ID"] = @"Retail";
+////    //    orderDict[@"WEBSITE"] = @"worldpressplg";
+////    //    //Order configuration in the order object
+////    //    orderDict[@"TXN_AMOUNT"] = @"1";
+////    //    orderDict[@"ORDER_ID"] = [ViewController generateOrderIDWithPrefix:@""];
+////    //    orderDict[@"REQUEST_TYPE"] = @"DEFAULT";
+////    //    orderDict[@"CUST_ID"] = @"1234567890";
+////    
+////    PGOrder *order = [PGOrder orderWithParams:orderDict];
+////    
+////    //Step 4: Choose the PG server. In your production build dont call selectServerDialog. Just create a instance of the
+////    //PGTransactionViewController and set the serverType to eServerTypeProduction
+////    
+////    PGTransactionViewController *txnController = [[PGTransactionViewController alloc] initTransactionForOrder:order];
+////    txnController.serverType = eServerTypeProduction;
+////    txnController.merchant = mc;
+////    txnController.delegate = self;
+////    [self showController:txnController];
+////    
+////    //    [PGServerEnvironment selectServerDialog:self.view completionHandler:^(ServerType type)
+////    //     {
+////    //         PGTransactionViewController *txnController = [[PGTransactionViewController alloc] initTransactionForOrder:order];
+////    //         if (type != eServerTypeNone) {
+////    //             txnController.serverType = type;
+////    //             txnController.merchant = mc;
+////    //             txnController.delegate = self;
+////    //             [self showController:txnController];
+////    //         }
+////    //     }];
+////}
+//
+//
+//#pragma mark PGTransactionViewController delegate
+//
+//- (void)didSucceedTransaction:(PGTransactionViewController *)controller
+//                     response:(NSDictionary *)response
+//{
+//    DEBUGLOG(@"ViewController::didSucceedTransactionresponse= %@", response);
+//    NSString *title = [NSString stringWithFormat:@"Your order  was completed successfully. \n %@", response[@"ORDERID"]];
+//    [[[UIAlertView alloc] initWithTitle:title message:[response description] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+//    
+//    [self removeController:controller];
+//}
+//
+//- (void)didFailTransaction:(PGTransactionViewController *)controller error:(NSError *)error response:(NSDictionary *)response
+//{
+//    DEBUGLOG(@"ViewController::didFailTransaction error = %@ response= %@", error, response);
+//    if (response)
+//    {
+//        [[[UIAlertView alloc] initWithTitle:error.localizedDescription message:[response description] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+//    }
+//    else if (error)
+//    {
+//        [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+//    }
+//    [self removeController:controller];
+//}
+//
+//- (void)didCancelTransaction:(PGTransactionViewController *)controller error:(NSError*)error response:(NSDictionary *)response
+//{
+//    DEBUGLOG(@"ViewController::didCancelTransaction error = %@ response= %@", error, response);
+//    NSString *msg = nil;
+//    if (!error) msg = [NSString stringWithFormat:@"Successful"];
+//    else msg = [NSString stringWithFormat:@"UnSuccessful"];
+//    
+//    [[[UIAlertView alloc] initWithTitle:@"Transaction Cancel" message:msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+//    [self removeController:controller];
+//}
+//
+//- (void)didFinishCASTransaction:(PGTransactionViewController *)controller response:(NSDictionary *)response
+//{
+//    DEBUGLOG(@"ViewController::didFinishCASTransaction:response = %@", response);
+//}
+//
+//
+//@end

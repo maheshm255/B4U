@@ -268,7 +268,7 @@ let kGetCities = "index.php/location/get_cities"
 /****** CheckOut Screen ******/
 
 //1.Coupon code validate
-//index.php/coupon/ajax_validate_coupon?coupon_code=APP100&user_id=1
+//index.php/coupon/ajax_validate_coupon?coupon_code=APP100&user_id=1&imei=APP100&bro4u_device_type=mobile&sub_total=APP100&cat_id=1&vendor_id=APP100&item_id=1
 let kCouponCodeValidateIndex = "index.php/coupon/ajax_validate_coupon"
 
 //2.API to Get booking details & payment methods offers
