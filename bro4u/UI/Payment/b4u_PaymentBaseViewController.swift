@@ -238,6 +238,8 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
         if let aPaymentCtrl = self.paymentViewCtrl
         {
             self.viewParent.bringSubviewToFront(aPaymentCtrl.view)
+            self.paymentViewCtrl?.loadAmountPayable()
+            
         }else
         {
             paymentViewCtrl = self.storyboard?.instantiateViewControllerWithIdentifier("paymentViewCtrl") as? b4u_PaymentViewController

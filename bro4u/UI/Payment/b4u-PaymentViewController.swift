@@ -27,7 +27,7 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     
     @IBOutlet weak var paymentTableView: UITableView!
     
-    var radioButtonSelected:NSIndexPath!
+    var radioButtonSelected:Int?
     
     var delegate:paymentDelegate?
     
@@ -36,7 +36,7 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         "Net Banking",
         "Cash On Service"]
     var offerDict : NSMutableDictionary?
-    
+
     @IBOutlet weak var btnApply: UIButton!
     @IBOutlet weak var tfCouponCode: UITextField!
     @IBOutlet weak var imgViewDonwArrow: UIImageView!
@@ -48,86 +48,11 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     @IBOutlet weak var lblCouponApplied: UILabel!
     @IBOutlet weak var lblCouponAmt: UILabel!
   
-    @IBOutlet weak var lblWalletDiscount: UILabel!
     
     
     override func viewDidLoad() {
 
-        if  let selectedSuggestedPartner =   bro4u_DataManager.sharedInstance.selectedSuggestedPatner
-        {
-            self.lblAmount.text = "  Rs. \(self.getTotalPaybleAmount())  "
-
-        }else if let selectedReOrderModel = bro4u_DataManager.sharedInstance.selectedReorderModel
-        {
-            self.lblAmount.text = "  Rs. \(selectedReOrderModel.subTotal!)  "
-        }
-      
-        if let selectedPartner:b4u_SugestedPartner = bro4u_DataManager.sharedInstance.selectedSuggestedPatner
-        {
-            //Text Struck Through
-        
-            if selectedPartner.custPrice > selectedPartner.offerPrice
-            {
-                let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "Rs. \(selectedPartner.custPrice!)")
-                attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
-                lblWalletDiscount.attributedText = attributeString;
-                self.lblAmount.text = "  Rs. \(self.getTotalPaybleAmount())  "
-
-                lblWalletDiscount.hidden = false
-            }
-            else
-            {
-                lblWalletDiscount.hidden = true
-            }
-            
-         }
-
-        
-        if tfCouponCode.text?.length>0
-        {
-            lblWalletDiscount.hidden = true
-
-          if let orderDetailModel = bro4u_DataManager.sharedInstance.orderDetailData.first
-          {
-            if let selectionLocal: b4u_SelectionModel =  orderDetailModel.selection?.first{
-              
-              var couponAmount:NSNumber?
-              var walletAmount:NSNumber?
-              var finalAmoutToDeduct:Float?
-              
-              if let coupon = selectionLocal.deductedUsingCoupon
-              {
-                couponAmount = coupon
-              }
-              if let wallet = selectionLocal.deductedFromWallet
-              {
-                walletAmount = wallet
-              }
-              
-              if couponAmount?.floatValue > 0 || walletAmount?.floatValue > 0
-              {
-                finalAmoutToDeduct = (couponAmount?.floatValue)! + (walletAmount?.floatValue)!
-              }
-              
-              if finalAmoutToDeduct > 0
-              {
-                self.lblCouponApplied.hidden = false
-                self.lblCouponAmt.hidden = false
-                
-                self.lblCouponAmt.text = "Rs. \(finalAmoutToDeduct!)"
-                self.lblAmount.text = "Rs. \(selectionLocal.grandTotal!)"
-                
-              }
-              else
-              {
-                self.lblCouponApplied.hidden = true
-                self.lblCouponAmt.hidden = true
-                
-              }
-            }
-          }
-
-        }
+        self.loadAmountPayable()
 
 
         if let copiedCoupon =   bro4u_DataManager.sharedInstance.copiedCopunCode{
@@ -152,39 +77,148 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
       self.createOfferDict()
 
     }
-  
     
-    func getTotalPaybleAmount()->Double
+    func loadAmountPayable()
     {
-        var price:Double = 0.0
-        if  let selectedSuggestedPartner =   bro4u_DataManager.sharedInstance.selectedSuggestedPatner
+        if let orderDetailModel = bro4u_DataManager.sharedInstance.orderDetailData.first
         {
-            price = Double(selectedSuggestedPartner.offerPrice!)!
-            
-            if let selectedQuantity = bro4u_DataManager.sharedInstance.selectedQualtity
-            {
-                 price = Double(selectedQuantity)! * price
+            if let selectionLocal: b4u_SelectionModel =  orderDetailModel.selection?.first{
+                self.lblAmount.text = "  Rs. \(selectionLocal.grandTotal!).00"
+                
+                self.lblCouponApplied.hidden = true
+                
+//                var couponAmount:NSNumber?
+//                var walletAmount:NSNumber?
+                var finalAmoutToDeduct:Int?
+                
+                if let coupon = selectionLocal.deductedUsingCoupon where Int(coupon) > 0
+                {
+                    if let wallet = selectionLocal.deductedFromWallet where Int(wallet) > 0
+                    {
+                        finalAmoutToDeduct = (coupon.integerValue) + (wallet.integerValue)
+                    }
+                    else
+                    {
+                        finalAmoutToDeduct = (coupon.integerValue)
+                    }
+
+                }
+                else if let wallet = selectionLocal.deductedFromWallet where Int(wallet) > 0
+                {
+                    finalAmoutToDeduct = (wallet.integerValue)
+                }
+                
+                if finalAmoutToDeduct > 0
+                {
+                    self.lblCouponApplied.hidden = false
+                    self.lblCouponAmt.hidden = false
+                    
+                    self.lblCouponAmt.text = "Rs. \(finalAmoutToDeduct!).00"
+                }
+                else
+                {
+                    self.lblCouponApplied.hidden = true
+                    self.lblCouponAmt.hidden = true
+                    
+                }
+                
             }
             
-            if let deliveryCharge = selectedSuggestedPartner.deliveryCharge
-            {
-              price =   price + deliveryCharge.doubleValue
-            }
+            
+            
         }
         
-        return price
+        //        if  let selectedSuggestedPartner =   bro4u_DataManager.sharedInstance.selectedSuggestedPatner
+        //        {
+        //            self.lblAmount.text = "  Rs. \(self.getTotalPaybleAmount())  "
+        //
+        //        }else if let selectedReOrderModel = bro4u_DataManager.sharedInstance.selectedReorderModel
+        //        {
+        //            self.lblAmount.text = "  Rs. \(selectedReOrderModel.subTotal!)  "
+        //        }
+        
+//        if let selectedPartner:b4u_SugestedPartner = bro4u_DataManager.sharedInstance.selectedSuggestedPatner
+//        {
+//            //Text Struck Through
+//            
+//            if selectedPartner.custPrice > selectedPartner.offerPrice
+//            {
+//                let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "Rs. \(selectedPartner.custPrice!)")
+//                attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
+//                lblWalletDiscount.attributedText = attributeString;
+//                //                self.lblAmount.text = "  Rs. \(self.getTotalPaybleAmount())  "
+//                
+//                lblWalletDiscount.hidden = false
+//            }
+//            else
+//            {
+//                lblWalletDiscount.hidden = true
+//            }
+//            
+//        }
+        
+        
+
     }
+  
+    
+//    func getTotalPaybleAmount()->Double
+//    {
+//        var price:Double = 0.0
+//        if  let selectedSuggestedPartner =   bro4u_DataManager.sharedInstance.selectedSuggestedPatner
+//        {
+//            price = Double(selectedSuggestedPartner.offerPrice!)!
+//            
+//            if let selectedQuantity = bro4u_DataManager.sharedInstance.selectedQualtity
+//            {
+//                 price = Double(selectedQuantity)! * price
+//            }
+//            
+//            if let deliveryCharge = selectedSuggestedPartner.deliveryCharge
+//            {
+//              price =   price + deliveryCharge.doubleValue
+//            }
+//        }
+//        
+//        return price
+//    }
   
     func createOfferDict()
     {
       offerDict = NSMutableDictionary()
-      for offer in bro4u_DataManager.sharedInstance.orderDetailData[0].paymentGateWayes!
-      {
-        let PaymentGatewayOffersModel: b4u_PaymentGatewayOffersModel = offer
         
-        offerDict?.setValue(PaymentGatewayOffersModel.offerMsg, forKey: PaymentGatewayOffersModel.offerFor!)
-        
-      }
+      let paymentMethod = bro4u_DataManager.sharedInstance.orderDetailData[0].paymentMethod!
+        if paymentMethod == "both"
+        {
+            for offer in bro4u_DataManager.sharedInstance.orderDetailData[0].paymentGateWayes!
+            {
+                let PaymentGatewayOffersModel: b4u_PaymentGatewayOffersModel = offer
+                
+                offerDict?.setValue(PaymentGatewayOffersModel.offerMsg, forKey: PaymentGatewayOffersModel.offerFor!)
+                
+            }
+
+        }
+        else if paymentMethod == "online"
+        {
+            
+            for offer in bro4u_DataManager.sharedInstance.orderDetailData[0].paymentGateWayes!
+            {
+                let PaymentGatewayOffersModel: b4u_PaymentGatewayOffersModel = offer
+                if PaymentGatewayOffersModel.offerFor != "cod"
+                {
+                    offerDict?.setValue(PaymentGatewayOffersModel.offerMsg, forKey: PaymentGatewayOffersModel.offerFor!)
+                }
+            }
+
+        }
+        else if paymentMethod == "cod"
+        {
+            let PaymentGatewayOffersModel: b4u_PaymentGatewayOffersModel = bro4u_DataManager.sharedInstance.orderDetailData[0].paymentGateWayes![3]
+            offerDict?.setValue(PaymentGatewayOffersModel.offerMsg, forKey: PaymentGatewayOffersModel.offerFor!)
+
+        }
+
     }
     
     func applyCouponCodeViewTaped()
@@ -282,7 +316,9 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return bro4u_DataManager.sharedInstance.orderDetailData[0].paymentGateWayes!.count
+//        return bro4u_DataManager.sharedInstance.orderDetailData[0].paymentGateWayes!.count
+        return offerDict!.count
+
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -290,42 +326,94 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         let cellIdentifier = "paymentSelectionTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! b4u_PaymentTblViewCell
         
-        let PaymentGatewayOffersModel: b4u_PaymentGatewayOffersModel   = bro4u_DataManager.sharedInstance.orderDetailData[0].paymentGateWayes![indexPath.row]
+//        let PaymentGatewayOffersModel: b4u_PaymentGatewayOffersModel   = bro4u_DataManager.sharedInstance.orderDetailData[0].paymentGateWayes![indexPath.row]
         
-        if(indexPath.row == 0){
-            cell.typeLabel.hidden  = true
-            cell.typeImageView.hidden = false
-            cell.typeImageView.image = UIImage(named:itemDict[0] as! String)
-        }
-        else
+        if offerDict!.count == 1
         {
             cell.typeLabel.hidden  = false
             cell.typeImageView.hidden = true
-            cell.typeLabel?.text = itemDict[indexPath.row] as? String
-            
-        }
-      
-        if(offerDict?.count > 0)
-        {
-          switch indexPath.row {
-          case 0:
-            cell.infoLabel?.text = offerDict?.objectForKey(kPaytmOffer) as? String
-          case 1:
-            cell.infoLabel?.text = offerDict?.objectForKey(kPayumoneyOffer) as? String
-          case 2:
-            cell.infoLabel?.text = offerDict?.objectForKey(kOnlinepayOffer) as? String
-          case 3:
+            cell.typeLabel?.text = itemDict[3] as? String
             cell.infoLabel?.text = offerDict?.objectForKey(kCodOffer) as? String
-            
-          default:
-            break
-          }
+            cell.tag = 3
 
         }
+        else
+        {
+            if(indexPath.row == 0){
+                cell.typeLabel.hidden  = true
+                cell.typeImageView.hidden = false
+                cell.typeImageView.image = UIImage(named:itemDict[0] as! String)
+            }
+            else
+            {
+                cell.typeLabel.hidden  = false
+                cell.typeImageView.hidden = true
+                cell.typeLabel?.text = itemDict[indexPath.row] as? String
+                
+            }
+            var offerStr:String?
+            
+            switch  indexPath.row
+            {
+            case 0:
+                offerStr = offerDict?.objectForKey(kPaytmOffer) as? String
+                break;
+            case 1:
+                offerStr = offerDict?.objectForKey(kOnlinepayOffer) as? String
+
+                break;
+            case 2:
+                offerStr = offerDict?.objectForKey(kPayumoneyOffer) as? String
+
+                break;
+            case 3:
+                offerStr = offerDict?.objectForKey(kCodOffer) as? String
+
+                break;
+            default:
+                break;
+
+                
+            }
+            cell.infoLabel?.text = offerStr
+            cell.tag = indexPath.row
+
+        }
+        
+//        if(indexPath.row == 0){
+//            cell.typeLabel.hidden  = true
+//            cell.typeImageView.hidden = false
+//            cell.typeImageView.image = UIImage(named:itemDict[0] as! String)
+//        }
+//        else
+//        {
+//            cell.typeLabel.hidden  = false
+//            cell.typeImageView.hidden = true
+//            cell.typeLabel?.text = itemDict[indexPath.row] as? String
+//            
+//        }
+      
+//        if(offerDict?.count > 0)
+//        {
+//          switch indexPath.row {
+//          case 0:
+//            cell.infoLabel?.text = offerDict?.objectForKey(kPaytmOffer) as? String
+//          case 1:
+//            cell.infoLabel?.text = offerDict?.objectForKey(kPayumoneyOffer) as? String
+//          case 2:
+//            cell.infoLabel?.text = offerDict?.objectForKey(kOnlinepayOffer) as? String
+//          case 3:
+//            cell.infoLabel?.text = offerDict?.objectForKey(kCodOffer) as? String
+//            
+//          default:
+//            break
+//          }
+//
+//        }
 //        cell.infoLabel?.text = PaymentGatewayOffersModel.offerMsg
       
         if radioButtonSelected != nil{
-            if radioButtonSelected.isEqual(indexPath){
+            if radioButtonSelected == indexPath.row{
                 cell.radioImageView.image = UIImage(named: "radioBlue")
             }
             else
@@ -346,21 +434,22 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! b4u_PaymentTblViewCell
         if radioButtonSelected != nil
         {
-            let selectedcell = tableView.cellForRowAtIndexPath(radioButtonSelected) as! b4u_PaymentTblViewCell
+            let indexPath = NSIndexPath(forRow:radioButtonSelected!, inSection: 0)
+
+            let selectedcell = tableView.cellForRowAtIndexPath(indexPath) as! b4u_PaymentTblViewCell
             selectedcell.radioImageView.image = UIImage(named: "radioGray")
         }
         cell.radioImageView.image = UIImage(named: "radioBlue")
-        radioButtonSelected = indexPath
-        
+        radioButtonSelected = cell.tag
     }
     
     @IBAction func placeOrder(sender: AnyObject){
         
         if radioButtonSelected != nil
         {
-        if radioButtonSelected.row >= 0 {
+        if radioButtonSelected >= 0 {
             
-            switch radioButtonSelected.row {
+            switch radioButtonSelected! {
             case 0:
                delegate?.navigateToPaymentGateWay(paymentOption.kPaytm)
             case 1:
@@ -417,6 +506,13 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
       self.tfCouponCode.text = ""
     }
     
+    
+    if let orderDetailModel = bro4u_DataManager.sharedInstance.orderDetailData.first
+    {
+        if let selectionLocal: b4u_SelectionModel =  orderDetailModel.selection?.first{
+            self.lblAmount.text = "  Rs. \(selectionLocal.grandTotal!).00"
+        }
+    }
     self.view.endEditing(true)
 
   }

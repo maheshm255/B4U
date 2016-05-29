@@ -112,7 +112,18 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
       self.creditCardNoTextFld.delegate = self
       self.cvvTextFld.delegate = self
       
-      self.amountLbl.text = "Rs. \(bro4u_DataManager.sharedInstance.selectedSuggestedPatner != nil ? bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice! : ((bro4u_DataManager.sharedInstance.userSelectedOrder != nil) ? bro4u_DataManager.sharedInstance.userSelectedOrder!.offerPrice! : ""))"//susmit
+    if let orderDetailModel = bro4u_DataManager.sharedInstance.orderDetailData.first
+    {
+        if let selectionLocal: b4u_SelectionModel =  orderDetailModel.selection?.first{
+            
+            if let grandTotal = selectionLocal.grandTotal
+            {
+                self.amountLbl.text = "Rs. \(grandTotal).00"
+            }
+        }
+    }
+
+//      self.amountLbl.text = "Rs. \(bro4u_DataManager.sharedInstance.selectedSuggestedPatner != nil ? bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice! : ((bro4u_DataManager.sharedInstance.userSelectedOrder != nil) ? bro4u_DataManager.sharedInstance.userSelectedOrder!.offerPrice! : ""))"//susmit
     }
 
     override func didReceiveMemoryWarning() {

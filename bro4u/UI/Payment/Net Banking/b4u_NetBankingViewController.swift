@@ -106,7 +106,19 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
       selectBankBtn.layer.borderWidth = 1.0
       selectBankBtn.layer.borderColor = UIColor.orangeColor().CGColor
       
-      self.totalAmountLbl.text = "Rs. \(bro4u_DataManager.sharedInstance.selectedSuggestedPatner != nil ? bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice! : ((bro4u_DataManager.sharedInstance.userSelectedOrder != nil) ? bro4u_DataManager.sharedInstance.userSelectedOrder!.actualPrice! : ""))"//susmit
+        
+        if let orderDetailModel = bro4u_DataManager.sharedInstance.orderDetailData.first
+        {
+            if let selectionLocal: b4u_SelectionModel =  orderDetailModel.selection?.first{
+                
+                if let grandTotal = selectionLocal.grandTotal
+                {
+                    self.totalAmountLbl.text = "Rs. \(grandTotal).00"
+                }
+            }
+        }
+
+//      self.totalAmountLbl.text = "Rs. \(bro4u_DataManager.sharedInstance.selectedSuggestedPatner != nil ? bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice! : ((bro4u_DataManager.sharedInstance.userSelectedOrder != nil) ? bro4u_DataManager.sharedInstance.userSelectedOrder!.actualPrice! : ""))"//susmit
 
     }
 

@@ -180,8 +180,13 @@ class b4u_CreateOrder: NSObject {
       b4u_WebApiCallManager.sharedInstance.getApiCall(kPlaceOnlineOrderIndex , params:params, result:{(resultObject) -> Void in
         print(" Online Order Data Received")
         // self.getDataOfThanksScreen(resultObject as! String)
+        if resultObject.isKindOfClass(NSError){
         
-        self.delegate?.hasOrderCreated(resultObject as! String)
+        }
+        else
+        {
+            self.delegate?.hasOrderCreated(resultObject as! String)
+        }
         
         print(resultObject)
       })
@@ -190,6 +195,14 @@ class b4u_CreateOrder: NSObject {
 
   }
 
-
+//func paymentErrorAlert()
+//{
+//    let alert = UIAlertController(title: "Exit Payment?", message: "Are you sure you want to go back without making the payment?", preferredStyle: UIAlertControllerStyle.Alert)
+//    alert.addAction(UIAlertAction(title: "YES", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) in
+//    }))
+//    alert.addAction(UIAlertAction(title: "NO", style: UIAlertActionStyle.Default, handler: nil))
+//    self.superclass().presentViewController(alert, animated: true, completion: nil)
+//
+//    }
 
 }
