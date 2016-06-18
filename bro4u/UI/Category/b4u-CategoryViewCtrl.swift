@@ -78,8 +78,9 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
     func getCategoryData()
     {
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+        let params = "?\(kAppendURLWithApiToken)"
 
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kCategoryAndSubOptions, params:"", result:{(resultObject) -> Void in
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kCategoryAndSubOptions, params:params, result:{(resultObject) -> Void in
             
             print("Category Data Received")
             

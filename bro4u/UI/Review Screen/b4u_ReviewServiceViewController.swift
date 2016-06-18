@@ -282,7 +282,7 @@ class b4u_ReviewServiceViewController: UIViewController {
         }
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         
-        let params = "\(self.selectedOrder!.orderID!)?user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)&service_quality=\(serviceQuality)&on_time=\(onTime)&feedback=\(comments)&rating=\(selectedRating)"
+        let params = "\(self.selectedOrder!.orderID!)?user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)&service_quality=\(serviceQuality)&on_time=\(onTime)&feedback=\(comments)&rating=\(selectedRating)&\(kAppendURLWithApiToken)"
         
         b4u_WebApiCallManager.sharedInstance.getApiCall(kRateAndReviewOrderIndex, params:params, result:{(resultObject) -> Void in
             

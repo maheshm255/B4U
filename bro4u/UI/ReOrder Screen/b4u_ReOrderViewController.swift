@@ -68,7 +68,7 @@ class b4u_ReOrderViewController: UIViewController,UIPopoverPresentationControlle
         }
 
         
-        let params = "?user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)"
+        let params = "?user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kReOrderIndex , params:params, result:{(resultObject) -> Void in
             
             print(" ReOrder Data Received")
@@ -165,7 +165,7 @@ class b4u_ReOrderViewController: UIViewController,UIPopoverPresentationControlle
         let filedName = reOrderModel.orderID!
         
         
-        let params = "/\(filedName)"
+        let params = "/\(filedName)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kReOrderDeleteIndex, params:params, result:{(resultObject) -> Void in
             
             

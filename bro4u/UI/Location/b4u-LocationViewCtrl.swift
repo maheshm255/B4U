@@ -196,7 +196,7 @@ class b4u_LocationViewCtrl: UIViewController ,UITableViewDelegate,UITableViewDat
             let latt =  currentLocaiton.coordinate.latitude
             let long = currentLocaiton.coordinate.longitude
             
-            let params = "&input=\(input)&location=\(latt),\(long)"
+            let params = "&input=\(input)&location=\(latt),\(long)&\(kAppendURLWithApiToken)"
             
             b4u_WebApiCallManager.sharedInstance.getApiCall(kLocationSearchUrl, params:params, result:{(resultObject) -> Void in
                 
@@ -227,7 +227,7 @@ class b4u_LocationViewCtrl: UIViewController ,UITableViewDelegate,UITableViewDat
             let latt =  currentLocaiton.coordinate.latitude
             let long = currentLocaiton.coordinate.longitude
             
-            let params = "&input=\(input)&location=\(latt),\(long)"
+            let params = "&input=\(input)&location=\(latt),\(long)&\(kAppendURLWithApiToken)"
             
             b4u_WebApiCallManager.sharedInstance.getApiCall(kLocationSearchUrl, params:params, result:{(resultObject) -> Void in
                 

@@ -80,7 +80,7 @@ class b4u_MyAccountViewController: UIViewController {
       
 //        user_id = "8"
 
-      let params = "?user_id=\(user_id)"
+      let params = "?user_id=\(user_id)&\(kAppendURLWithApiToken)"
 
         b4u_WebApiCallManager.sharedInstance.getApiCall(kMyAccountIndex, params:params, result:{(resultObject) -> Void in
             

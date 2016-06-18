@@ -86,7 +86,7 @@ class b4u_loginView: UIView ,FBSDKLoginButtonDelegate ,GIDSignInDelegate,GIDSign
                 
                 let deviceId = b4u_Utility.getUUIDFromVendorIdentifier
                 
-                let params =  "?req_id=\(reqId)&device_id=\(deviceId)&mobile=\(phoneNo)"
+                let params =  "?req_id=\(reqId)&device_id=\(deviceId)&mobile=\(phoneNo)&\(kAppendURLWithApiToken)"
                 
                 b4u_WebApiCallManager.sharedInstance.getApiCall(kOTPlogin, params:params, result:{(resultObject) -> Void in
                     

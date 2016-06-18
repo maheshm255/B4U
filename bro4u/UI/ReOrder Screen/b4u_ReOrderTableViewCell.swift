@@ -37,7 +37,7 @@ class b4u_ReOrderTableViewCell: UITableViewCell {
         let filedName = reOrderModel.orderID!
         
         
-        let params = "/\(filedName)"
+        let params = "/\(filedName)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kReOrderDeleteIndex, params:params, result:{(resultObject) -> Void in
             
             

@@ -138,7 +138,7 @@ class b4u_IntermediateViewCtrl: UIViewController {
 //            let user_id = "15" //TODO
             let deviceId = b4u_Utility.getUUIDFromVendorIdentifier()
             
-            var params = "?cat_id=\(catId)&user_id=\(user_id)&device_id=\(deviceId)"
+            var params = "?cat_id=\(catId)&user_id=\(user_id)&device_id=\(deviceId)&\(kAppendURLWithApiToken)"
             
             if  let aSelectedAttributeOption = selectedAttributeOption
             {
@@ -182,7 +182,7 @@ class b4u_IntermediateViewCtrl: UIViewController {
 //            let user_id = "15" //TODO
             let deviceId = b4u_Utility.getUUIDFromVendorIdentifier()
             
-            let params = "?cat_id=\(catId)&user_id=\(user_id)&device_id=\(deviceId)"
+            let params = "?cat_id=\(catId)&user_id=\(user_id)&device_id=\(deviceId)&\(kAppendURLWithApiToken)"
             
             b4u_WebApiCallManager.sharedInstance.getApiCall(intermediateScreenAPi, params:params, result:{(resultObject) -> Void in
                 

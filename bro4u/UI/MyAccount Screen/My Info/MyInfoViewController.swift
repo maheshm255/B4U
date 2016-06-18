@@ -57,7 +57,7 @@ class MyInfoViewController: UIViewController ,UITextFieldDelegate ,UIPopoverPres
         
         let userId = bro4u_DataManager.sharedInstance.loginInfo!.userId!
         
-        let params = "?user_id=\(userId)"
+        let params = "?user_id=\(userId)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kMyInfoIndex, params:params, result:{(resultObject) -> Void in
             
             print("My Info Data Received")
@@ -215,7 +215,7 @@ class MyInfoViewController: UIViewController ,UITextFieldDelegate ,UIPopoverPres
             return
         }
         
-        let params = "?user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)&email=\(emailId)&mobile=\(phoneNumber)&name=\(userName)&dob=\(dateOfBirth)&gender=\(gender)"
+        let params = "?user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)&email=\(emailId)&mobile=\(phoneNumber)&name=\(userName)&dob=\(dateOfBirth)&gender=\(gender)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kMyAccountUpdateProfileIndex, params:params, result:{(resultObject) -> Void in
             
             

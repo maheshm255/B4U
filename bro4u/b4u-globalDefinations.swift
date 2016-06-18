@@ -366,5 +366,8 @@ let kWalletVCID = "walletVCID"
 let kOfferZoneVCID = "offerZoneVCID"
 
 
+//append URL
+
+let kAppendURLWithApiToken = "api_token=bro4u"
 
 

@@ -103,7 +103,8 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     func getData()
     {
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kHomeSCategory, params:"", result:{(resultObject) -> Void in
+        let params = "?\(kAppendURLWithApiToken)"
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kHomeSCategory, params:params, result:{(resultObject) -> Void in
             
             print("Category Data Received")
             

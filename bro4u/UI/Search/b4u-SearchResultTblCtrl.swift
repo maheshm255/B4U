@@ -76,7 +76,7 @@ class b4u_SearchResultTblCtrl: UITableViewController ,UISearchResultsUpdating,UI
         let long = 77.6411545
         let searchStr = searchKeyword.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
 
-        let params = "?latitude=\(latt)&longitude=\(long)&search_keyword=\(searchStr)"
+        let params = "?latitude=\(latt)&longitude=\(long)&search_keyword=\(searchStr)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kSearchApi, params:params, result:{(resultObject) -> Void in
             
             

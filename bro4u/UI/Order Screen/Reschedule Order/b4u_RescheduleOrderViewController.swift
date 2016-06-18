@@ -179,7 +179,7 @@ class b4u_RescheduleOrderViewController: UIViewController,
     {
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
-        let params = "?date=\(selectedDateStr)"
+        let params = "?date=\(selectedDateStr)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kTimeSlotApi, params:params, result:{(resultObject) -> Void in
             
             

@@ -142,7 +142,7 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
             //Setting Order ID in User Default
             b4u_Utility.sharedInstance.setUserDefault(order_id, KeyToSave:"order_id")
 
-            let params = "?order_id=\(order_id)&user_id=\(user_id)"
+            let params = "?order_id=\(order_id)&user_id=\(user_id)&\(kAppendURLWithApiToken)"
             b4u_WebApiCallManager.sharedInstance.getApiCall(kOrderConfirmedIndex , params:params, result:{(resultObject) -> Void in
                 
                 print(" Order Confirmed  Data Received")
@@ -164,7 +164,7 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
     func updateCODPaymentStatus(orderId : String)
     {
         
-        let params = "/\(orderId)"
+        let params = "/\(orderId)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kUpdateCODStatuspendingIndex , params:params, result:{(resultObject) -> Void in
             
             

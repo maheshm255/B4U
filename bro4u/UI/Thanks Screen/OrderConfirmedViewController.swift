@@ -79,7 +79,7 @@ class OrderConfirmedViewController: UIViewController {
             
         }
         
-        let params = "?order_id=\(order_id!)&user_id=\(user_id)"
+        let params = "?order_id=\(order_id!)&user_id=\(user_id)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kOrderConfirmedIndex , params:params, result:{(resultObject) -> Void in
             
             print(" Order Confirmed for Online Data Received")

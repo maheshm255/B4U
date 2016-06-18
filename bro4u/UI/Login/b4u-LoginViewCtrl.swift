@@ -112,7 +112,7 @@ class b4u_LoginViewCtrl: UIViewController ,loginViewDelegate {
                 let lastName =   loginInfoObj.lastName
                 let image = ""
                 
-                let params = "?req_id=\(reqId)&email=\(email!)&first_name=\(firstName!)&last_name=\(lastName!)&image=\(image)"
+                let params = "?req_id=\(reqId)&email=\(email!)&first_name=\(firstName!)&last_name=\(lastName!)&image=\(image)&\(kAppendURLWithApiToken)"
                 
                 b4u_WebApiCallManager.sharedInstance.getApiCall(kSocialLogin, params:params, result:{(resultObject) -> Void in
                     

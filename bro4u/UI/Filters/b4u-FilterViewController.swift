@@ -144,7 +144,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             //   self.view.alpha = 0.7
             
             
-            let params = "?cat_id=\(catId)&option_id=\(optionId)&field_name=\(filedName)"
+            let params = "?cat_id=\(catId)&option_id=\(optionId)&field_name=\(filedName)&\(kAppendURLWithApiToken)"
             b4u_WebApiCallManager.sharedInstance.getApiCall(filterApi, params:params, result:{(resultObject) -> Void in
                 
                 
@@ -163,7 +163,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             
             self.view.userInteractionEnabled = false
             
-            let params = "?cat_id=\(catId)&option_id=\(optionId)"
+            let params = "?cat_id=\(catId)&option_id=\(optionId)&\(kAppendURLWithApiToken)"
             b4u_WebApiCallManager.sharedInstance.getApiCall(filterApi, params:params, result:{(resultObject) -> Void in
                 
                 self.view.userInteractionEnabled = true
@@ -182,7 +182,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         
         self.view.userInteractionEnabled = false
         
-        let params = "?date=\(selectedDateStr)"
+        let params = "?date=\(selectedDateStr)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kTimeSlotApi, params:params, result:{(resultObject) -> Void in
             
             self.view.userInteractionEnabled = true
@@ -830,7 +830,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             
         }
         
-        var params = "?cat_id=\(catId)"
+        var params = "?cat_id=\(catId)&\(kAppendURLWithApiToken)"
         
         let keys = selectedIndexPath.keys
         
@@ -912,7 +912,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         
         params = params + "&service_time=\(selectedTimeSlot)"
         
-        params = params + "&latitude=\(latitude)&longitude=\(longitude)"
+        params = params + "&latitude=\(latitude)&longitude=\(longitude)&\(kAppendURLWithApiToken)"
         
         
         bro4u_DataManager.sharedInstance.suggestedPatnersResult = nil

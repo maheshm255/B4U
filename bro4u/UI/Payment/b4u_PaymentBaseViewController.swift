@@ -436,7 +436,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
                 let lastName =   loginInfoObj.lastName
                 let image = ""
                 
-                let params = "?req_id=\(reqId)&email=\(email!)&first_name=\(firstName!)&last_name=\(lastName!)&image=\(image)"
+                let params = "?req_id=\(reqId)&email=\(email!)&first_name=\(firstName!)&last_name=\(lastName!)&image=\(image)&\(kAppendURLWithApiToken)"
                 
                 b4u_WebApiCallManager.sharedInstance.getApiCall(kSocialLogin, params:params, result:{(resultObject) -> Void in
                     
@@ -538,14 +538,14 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
             sub_Total = selectedSuggestedPartner.custPrice!
             itemId = selectedSuggestedPartner.itemId!
             
-            params =  itemId + filterPareams + "&sub_Total=\(sub_Total)&user_id=\(user_id)&coupon=\(coupon)&service_time=\(service_time)&service_date=\(service_date)"
+            params =  itemId + filterPareams + "&sub_Total=\(sub_Total)&user_id=\(user_id)&coupon=\(coupon)&service_time=\(service_time)&service_date=\(service_date)&\(kAppendURLWithApiToken)"
             
         }else if let selectedReOrderModel = bro4u_DataManager.sharedInstance.selectedReorderModel
         {
             sub_Total = "\(selectedReOrderModel.subTotal!)"
             itemId = selectedReOrderModel.metaItemReOrder!.first!.itemID!
             
-            params =  itemId + filterPareams + "?sub_Total=\(sub_Total)&user_id=\(user_id)&coupon=\(coupon)&service_time=\(service_time)&service_date=\(service_date)&unit_quantity=\(bro4u_DataManager.sharedInstance.selectedQualtity)"
+            params =  itemId + filterPareams + "?sub_Total=\(sub_Total)&user_id=\(user_id)&coupon=\(coupon)&service_time=\(service_time)&service_date=\(service_date)&unit_quantity=\(bro4u_DataManager.sharedInstance.selectedQualtity)&\(kAppendURLWithApiToken)"
         }
         
         
@@ -704,7 +704,7 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     func updatePaytmPaymentStatus(status : String,orderId : String)
     {
         
-        let params = "?order_id=\(orderId)&payment_status=\(status)"
+        let params = "?order_id=\(orderId)&payment_status=\(status)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kUpdatePaytmPaymentStatus , params:params, result:{(resultObject) -> Void in
             
             print(" Paytm Order Status Updated")

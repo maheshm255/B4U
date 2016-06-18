@@ -68,7 +68,7 @@ class MyOrderViewController: UIViewController,UIPopoverPresentationControllerDel
         
         //user_id = "1"
         
-        let params = "?user_id=\(user_id)"
+        let params = "?user_id=\(user_id)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kMyOrdersIndex , params:params, result:{(resultObject) -> Void in
             
             print(" Orders Data Received")
@@ -469,7 +469,7 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         }
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         
-        let params = "?order_id=\(order.orderID!) &user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)&date=\(selectedDate)&service_time=\(aSelectedTiemSlot)"
+        let params = "?order_id=\(order.orderID!) &user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)&date=\(selectedDate)&service_time=\(aSelectedTiemSlot)&\(kAppendURLWithApiToken)"
         
         b4u_WebApiCallManager.sharedInstance.getApiCall(kReScheduleOrderApi, params:params, result:{(resultObject) -> Void in
             
@@ -511,7 +511,7 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         
-        let params = "?order_id=\(order.orderID!) &user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)&issue_type=\(orderRaiseIssueReasons[selectedIssue]!)&message=\(reason)"
+        let params = "?order_id=\(order.orderID!) &user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)&issue_type=\(orderRaiseIssueReasons[selectedIssue]!)&message=\(reason)&\(kAppendURLWithApiToken)"
         
         b4u_WebApiCallManager.sharedInstance.getApiCall(kOrderRaiseIssueApi, params:params, result:{(resultObject) -> Void in
             
@@ -538,7 +538,7 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         
-        let params = "?order_id=\(order.orderID!) &user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)&vendor_id=\(order.vendorID!)&issue_type=\(orderCancelReasons[selectedIssue]!)&cancel_message=\(reason)&cancel_reason=\(selectedIssue)"
+        let params = "?order_id=\(order.orderID!) &user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)&vendor_id=\(order.vendorID!)&issue_type=\(orderCancelReasons[selectedIssue]!)&cancel_message=\(reason)&cancel_reason=\(selectedIssue)&\(kAppendURLWithApiToken)"
         
         b4u_WebApiCallManager.sharedInstance.getApiCall(kCancelOrderIndex, params:params, result:{(resultObject) -> Void in
             
@@ -730,7 +730,7 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     func updatePaytmPaymentStatus(status : String,orderId : String)
     {
         
-        let params = "?order_id=\(orderId)&payment_status=\(status)"
+        let params = "?order_id=\(orderId)&payment_status=\(status)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kUpdatePaytmPaymentStatus , params:params, result:{(resultObject) -> Void in
             
             print(" Paytm Order Status Updated")

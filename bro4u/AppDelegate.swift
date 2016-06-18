@@ -75,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        // device_id=34234234&gcm_id=23434fser34f&token_request=alsdkfjaklsdjf&device_type=2
         
         let tokenReques = ""
-        let params = "?device_id=\(b4u_Utility.getUUIDFromVendorIdentifier())&gcm_id=\(tokenString)&token_request=\(tokenReques)&device_type=2"
+        let params = "?device_id=\(b4u_Utility.getUUIDFromVendorIdentifier())&gcm_id=\(tokenString)&token_request=\(tokenReques)&device_type=2&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kRegisterPushToken, params:params, result:{(resultObject) -> Void in
             
             

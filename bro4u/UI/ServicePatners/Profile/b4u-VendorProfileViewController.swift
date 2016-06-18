@@ -91,7 +91,7 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
     func getItemPriceChart()
     {
         let itemId = bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.itemId!
-        let params = "?item_id=\(itemId)"
+        let params = "?item_id=\(itemId)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kPriceChartIndex, params:params, result:{(resultObject) -> Void in
             
             self.allWebApiSuccessCount++
@@ -105,7 +105,7 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
     {
         
         let itemId = bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.itemId!
-        let params = "?item_id=\(itemId)"
+        let params = "?item_id=\(itemId)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kItemDescriptionIndex, params:params, result:{(resultObject) -> Void in
             
             self.allWebApiSuccessCount++
@@ -122,7 +122,7 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
         
         let selectedTime = bro4u_DataManager.sharedInstance.selectedTimeSlot!
         
-        let params = "/\(bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.itemId!)\(bro4u_DataManager.sharedInstance.userSelectedFilterParams!)&service_time=\(selectedDate)&service_time=\(selectedTime)"
+        let params = "/\(bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.itemId!)\(bro4u_DataManager.sharedInstance.userSelectedFilterParams!)&service_time=\(selectedDate)&service_time=\(selectedTime)&\(kAppendURLWithApiToken)"
         
         b4u_WebApiCallManager.sharedInstance.getApiCall(kViewProfileIndex, params:params, result:{(resultObject) -> Void in
             

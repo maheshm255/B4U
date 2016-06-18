@@ -113,7 +113,7 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
         }
 
 //        let user_id = "1"
-        let params = "?user_id=\(user_id)"
+        let params = "?user_id=\(user_id)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kGetAddress, params:params, result:{(resultObject) -> Void in
             
             print("address Received")
@@ -377,7 +377,7 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
         }
         
         //        let user_id = "1"
-        let params = "?user_id=\(user_id)&address_id=\(address.addressId!)"
+        let params = "?user_id=\(user_id)&address_id=\(address.addressId!)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kDeleteAddress, params:params, result:{(resultObject) -> Void in
             
             print("address deleted")
@@ -507,7 +507,7 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
     
     func callTimeSlotApi(selectedDateStr:String)
     {
-        let params = "?date=\(selectedDateStr)"
+        let params = "?date=\(selectedDateStr)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kTimeSlotApi, params:params, result:{(resultObject) -> Void in
             
             

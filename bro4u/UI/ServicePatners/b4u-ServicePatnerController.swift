@@ -148,7 +148,7 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
         
 //        let params = "/\(nextPage)?cat_id=\(catId)&latitude=\(latitude)&longitude=\(longitude)"
         
-        let params = "/\(nextPage)\(bro4u_DataManager.sharedInstance.userSelectedFilterParams!)&latitude=\(latitude)&longitude=\(longitude)&service_date=\(bro4u_DataManager.sharedInstance.selectedDate!)&service_time=\(bro4u_DataManager.sharedInstance.selectedTimeSlot!)"
+        let params = "/\(nextPage)\(bro4u_DataManager.sharedInstance.userSelectedFilterParams!)&latitude=\(latitude)&longitude=\(longitude)&service_date=\(bro4u_DataManager.sharedInstance.selectedDate!)&service_time=\(bro4u_DataManager.sharedInstance.selectedTimeSlot!)&\(kAppendURLWithApiToken)"
 
         
         

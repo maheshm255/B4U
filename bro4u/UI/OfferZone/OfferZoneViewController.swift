@@ -37,7 +37,7 @@ class OfferZoneViewController: UIViewController,UITableViewDataSource,UITableVie
         //user_id = "1"
         let deviceID = "kdsflasdf"
         
-        let params = "?device_id=\(deviceID)&user_id=\(user_id)"
+        let params = "?device_id=\(deviceID)&user_id=\(user_id)&\(kAppendURLWithApiToken)"
         
         b4u_WebApiCallManager.sharedInstance.getApiCall(kOfferZoneIndex , params:params, result:{(resultObject) -> Void in
             

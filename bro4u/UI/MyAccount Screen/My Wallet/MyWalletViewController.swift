@@ -51,7 +51,7 @@ class MyWalletViewController: UIViewController ,UITextFieldDelegate {
         //user_id = "1"
         
         
-        let params = "?user_id=\(user_id)"
+        let params = "?user_id=\(user_id)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kMyWalletIndex , params:params, result:{(resultObject) -> Void in
             
             print(" Wallet Balance Data Received")
@@ -148,7 +148,7 @@ class MyWalletViewController: UIViewController ,UITextFieldDelegate {
         //user_id = "1"
         
         
-        let params = "?user_id=\(user_id)&device_id=\(b4u_Utility.getUUIDFromVendorIdentifier())&referral_code=\(referelCode)"
+        let params = "?user_id=\(user_id)&device_id=\(b4u_Utility.getUUIDFromVendorIdentifier())&referral_code=\(referelCode)&\(kAppendURLWithApiToken)"
         
         b4u_WebApiCallManager.sharedInstance.getApiCall(kApplyWalletCouponIndex , params:params, result:{(resultObject) -> Void in
             

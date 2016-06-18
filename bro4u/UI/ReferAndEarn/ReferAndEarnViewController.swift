@@ -78,7 +78,7 @@ class ReferAndEarnViewController: UIViewController,UIPopoverPresentationControll
         
         //user_id = "1"
         
-        let params = "?user_id=\(user_id)"
+        let params = "?user_id=\(user_id)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kReferAndEarnIndex , params:params, result:{(resultObject) -> Void in
             
             print(" Refer And Earn Data Received")

@@ -41,7 +41,7 @@ class b4u_NotificationViewController: UIViewController ,UITableViewDelegate,UITa
         let deviceID = "asdkfi"
         //user_id = "1626"
 
-        let params = "?device_id=\(deviceID)&user_id=\(user_id)"
+        let params = "?device_id=\(deviceID)&user_id=\(user_id)&\(kAppendURLWithApiToken)"
 
         b4u_WebApiCallManager.sharedInstance.getApiCall(kOrderNotificationIndex , params:params, result:{(resultObject) -> Void in
             

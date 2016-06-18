@@ -273,7 +273,7 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
 
 
             
-            let params = "?coupon_code=\(tfCouponCode.text!)&user_id=\(user_id)&imei=\(imei)&bro4u_device_type=\(deviceType)&sub_total=\(sub_Total)&cat_id=\(categoryID)&vendor_id=\(vendorID)&item_id=\(itemId)"
+            let params = "?coupon_code=\(tfCouponCode.text!)&user_id=\(user_id)&imei=\(imei)&bro4u_device_type=\(deviceType)&sub_total=\(sub_Total)&cat_id=\(categoryID)&vendor_id=\(vendorID)&item_id=\(itemId)&\(kAppendURLWithApiToken)"
             
             
                 b4u_WebApiCallManager.sharedInstance.getApiCall(kCouponCodeValidateIndex , params:params, result:{(resultObject) -> Void in
