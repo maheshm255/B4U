@@ -68,6 +68,7 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
        self.addLoadingIndicator()
 
         self.getData()
+        
 
     }
 
@@ -285,7 +286,9 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
             
               cell.textViewComment.delegate = self
             
-         
+            cell.textViewComment.text = "Special Comments"
+            cell.textViewComment.textColor = UIColor.lightGrayColor()
+
             b4u_Utility.shadowEffectToView(cell)
 
             return cell
@@ -525,6 +528,7 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
     // MARK:  UITextView delegages
     
     
+    
     func textViewShouldBeginEditing(textView: UITextView) -> Bool
     {
         
@@ -541,6 +545,9 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
             textView.textColor = UIColor.blackColor()
         }
     }
+    
+    
+    
     func textViewDidEndEditing(textView: UITextView)
     {
         if textView.text.isEmpty {

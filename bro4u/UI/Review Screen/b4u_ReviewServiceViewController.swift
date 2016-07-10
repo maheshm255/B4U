@@ -299,4 +299,41 @@ class b4u_ReviewServiceViewController: UIViewController {
         })
         
     }
+    
+    
+   //MARK: TextField Delegates
+    
+    func animateTextField(textField: UITextField, up: Bool) {
+        let movementDistance:CGFloat = -230
+        let movementDuration: Double = 0.3
+        
+        var movement:CGFloat = 0
+        if up {
+            movement = movementDistance
+        }
+        else {
+            movement = -movementDistance
+        }
+        UIView.beginAnimations("animateTextField", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration)
+        self.view.frame = CGRectOffset(self.view.frame, 0, movement)
+        UIView.commitAnimations()
+    }
+    
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        self.animateTextField(textField, up:true)
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        self.animateTextField(textField, up:false)
+        textField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true;
+    }
+    
 }

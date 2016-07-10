@@ -112,7 +112,8 @@ class b4u_RescheduleOrderViewController: UIViewController,
         calendarController.modalPresentationStyle = .Popover
         calendarController.preferredContentSize = CGSizeMake(300, 400)
         calendarController.delegate = self
-        
+        calendarController.selectedDate = NSDate()
+
         let popoverMenuViewController = calendarController.popoverPresentationController
         popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
         popoverMenuViewController?.delegate = self
