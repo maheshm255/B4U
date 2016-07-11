@@ -650,6 +650,9 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     
     func didSucceedTransaction(controller: PGTransactionViewController!, response: [NSObject : AnyObject]!) {
         updatePaytmPaymentStatus("TXN_SUCCESS",orderId: response["ORDERID"] as! String)
+        
+        NSLog("ViewController::didSucceedTransactionresponse= %@", response);
+
     }
     
     func didFailTransaction(controller: PGTransactionViewController!, error: NSError!, response: [NSObject : AnyObject]!) {
@@ -690,13 +693,32 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     
     func didCancelTransaction(controller: PGTransactionViewController!, error: NSError!, response: [NSObject : AnyObject]!) {
         
-        self.removeController(controller)
         
+        NSLog("ViewController::didCancelTransaction error = %@ response= %@", error, response);
+        
+        var msg:String!
+        
+        if((error == nil)){
+            msg = "Successful"
+        }
+        else{
+            msg = "UnSuccessful"
+        }
+        
+        
+        let alert = UIAlertController(title: "Error", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+        //      alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        let OKAction = UIAlertAction(title: "Transaction Cancel", style: .Default) { (action:UIAlertAction!) in
+            self.removeController(controller)
+        }
+        alert.addAction(OKAction)
     }
     
     func didFinishCASTransaction(controller: PGTransactionViewController!, response: [NSObject : AnyObject]!)
     {
-        
+        NSLog("ViewController::didFinishCASTransaction:response = %@", response);
     }
     
     

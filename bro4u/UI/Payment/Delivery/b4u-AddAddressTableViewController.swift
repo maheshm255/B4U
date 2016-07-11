@@ -142,7 +142,7 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
    func getCities()
     {
         let params = "?\(kAppendURLWithApiToken)"
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kGetCities, params:"", result:{(resultObject) -> Void in
+        b4u_WebApiCallManager.sharedInstance.getApiCall(kGetCities, params:params, result:{(resultObject) -> Void in
             
             print("city received")
             

@@ -23,7 +23,7 @@ class b4u_ExpandableTableView: UITableView ,ExpandableTblHeaderViewDelegate {
         let numberOfRows = self.dataSource?.tableView(self, numberOfRowsInSection: section)
         var indexesPathToInsert:[NSIndexPath] = []
         
-        for var i = 0; i < numberOfRows; i++ {
+        for var i = 0; i < numberOfRows; i += 1 {
             indexesPathToInsert.append(NSIndexPath(forRow: i, inSection: section))
         }
         
@@ -40,7 +40,7 @@ class b4u_ExpandableTableView: UITableView ,ExpandableTblHeaderViewDelegate {
         var indexesPathToDelete:[NSIndexPath] = []
         self.sectionOpen = NSNotFound
         
-        for var i = 0 ; i < numberOfRows; i++ {
+        for var i = 0 ; i < numberOfRows; i += 1 {
             indexesPathToDelete.append(NSIndexPath(forRow: i, inSection: section))
         }
         

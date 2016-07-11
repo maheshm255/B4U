@@ -165,7 +165,7 @@ class b4u_ReOrderViewController: UIViewController,UIPopoverPresentationControlle
         let filedName = reOrderModel.orderID!
         
         
-        let params = "/\(filedName)&\(kAppendURLWithApiToken)"
+        let params = "/\(filedName)?\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kReOrderDeleteIndex, params:params, result:{(resultObject) -> Void in
             
             print(resultObject)

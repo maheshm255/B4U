@@ -240,7 +240,7 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
         x=0;y=0;buffer=10
         
         
-        for var i=0; i < titles.count; i++ {
+        for var i=0; i < titles.count; i += 1 {
             
             var titleLabel:UILabel!
             var bottomView:UIView!

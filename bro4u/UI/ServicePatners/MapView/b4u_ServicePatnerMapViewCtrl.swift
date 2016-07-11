@@ -75,7 +75,7 @@ class b4u_ServicePatnerMapViewCtrl: UIViewController ,MKMapViewDelegate{
                 information.coordinate = location
                 information.title = "titrle"
                 annotations.append(information)
-                annotationTag++
+                annotationTag += 1
             }
         }
         

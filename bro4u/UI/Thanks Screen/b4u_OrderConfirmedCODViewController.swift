@@ -164,7 +164,7 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
     func updateCODPaymentStatus(orderId : String)
     {
         
-        let params = "/\(orderId)&\(kAppendURLWithApiToken)"
+        let params = "/\(orderId)?\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kUpdateCODStatuspendingIndex , params:params, result:{(resultObject) -> Void in
             
             
