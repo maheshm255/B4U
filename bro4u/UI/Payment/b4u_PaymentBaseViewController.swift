@@ -318,8 +318,8 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
         let keyboardFrame:NSValue = userInfo.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
         let keyboardRectangle = keyboardFrame.CGRectValue()
         let keyboardHeight = keyboardRectangle.height
-        topConstraint?.constant = -150
-        bottomConstraint?.constant  = 150
+        topConstraint?.constant = -175
+        bottomConstraint?.constant  = 175
     }
     
     func kbDown(notification:NSNotification)

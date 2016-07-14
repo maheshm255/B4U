@@ -344,23 +344,34 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
         textField.resignFirstResponder()
     }
   
-  //this method gets called when while typing every single character before its displayed.
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
-    {
-//        if (textField.text!.length >= CASE_SUBJECT_MAX_LENGTH && range.length == 0)
-//        {
-//            return false // return NO to not change text
-//        }
-//        else
-//        {
-      
-      self.checkAllfieldsAfterEditing(range,tfString: string,forTextField:textField)
+//  //this method gets called when while typing every single character before its displayed.
+//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
+//    {
+////        if (textField.text!.length >= CASE_SUBJECT_MAX_LENGTH && range.length == 0)
+////        {
+////            return false // return NO to not change text
+////        }
+////        else
+////        {
+//      
+//      self.checkAllfieldsAfterEditing(range,tfString: string,forTextField:textField)
+//
+//      
+//            return true
+//       // }
+//        //return !(string == " ")
+//    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        
+        let newLength = text.characters.count + string.characters.count - range.length
+        self.checkAllfieldsAfterEditing(range,tfString: string,forTextField:textField)
 
-      
-            return true
-       // }
-        //return !(string == " ")
+        
+        return newLength <= 10 // Bool
     }
+
   
   //this method gets called when the clear button pressed.
     func textFieldShouldClear(textField: UITextField) -> Bool

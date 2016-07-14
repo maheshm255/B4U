@@ -82,7 +82,7 @@ class b4u_IntermediateViewCtrl: UIViewController {
         alerController.setValue(controller, forKey:"contentViewController")
         
         
-        let alertAction = UIAlertAction(title:"Got IT!", style:UIAlertActionStyle.Default, handler: {(alertAction)-> Void in
+        let alertAction = UIAlertAction(title:"Got It!", style:UIAlertActionStyle.Default, handler: {(alertAction)-> Void in
             
             
             alerController.dismissViewControllerAnimated(true, completion:nil)
