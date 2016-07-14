@@ -180,7 +180,21 @@ class b4u_RescheduleOrderViewController: UIViewController,
     {
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
-        let params = "?date=\(selectedDateStr)&\(kAppendURLWithApiToken)"
+        var selectedCategoryObj:b4u_Category?
+        
+        var catId:String?
+        
+        
+        selectedCategoryObj = bro4u_DataManager.sharedInstance.categoryAndSubOptions[0]
+        
+        if let aSelectedCatObj = selectedCategoryObj
+        {
+            
+            catId = aSelectedCatObj.catId!
+        }
+        
+        let params = "/\(catId!)?date=\(selectedDateStr)&\(kAppendURLWithApiToken)"
+
         b4u_WebApiCallManager.sharedInstance.getApiCall(kTimeSlotApi, params:params, result:{(resultObject) -> Void in
             
             

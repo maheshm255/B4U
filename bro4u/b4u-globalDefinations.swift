@@ -204,7 +204,7 @@ let filterApi = "index.php/catalog/filter_v2"
 //2."Category Timeslots send cat_id Example: 3"
 ///index.php/categories/get_category_timeslots/3?date=29-01-2016
 //date = 29-01-2016
-let kTimeSlotApi = "index.php/categories/get_category_timeslots/3"
+let kTimeSlotApi = "index.php/categories/get_category_timeslots"
 
 
 //3.Custom Enquiry API - Used when no results on applying filters

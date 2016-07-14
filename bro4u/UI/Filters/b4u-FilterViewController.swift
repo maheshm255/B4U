@@ -182,7 +182,15 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         
         self.view.userInteractionEnabled = false
         
-        let params = "?date=\(selectedDateStr)&\(kAppendURLWithApiToken)"
+        var catId:String?
+        
+        if let aSelectedCatObj = selectedCategoryObj
+        {
+            
+            catId = aSelectedCatObj.catId!
+        }
+        
+        let params = "/\(catId!)?date=\(selectedDateStr)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kTimeSlotApi, params:params, result:{(resultObject) -> Void in
             
             self.view.userInteractionEnabled = true
