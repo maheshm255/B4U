@@ -69,7 +69,7 @@ class b4u_PartnerReviewsTblViewCtrl: UITableViewController,UIPopoverPresentation
         
         cell.configureData(reviewsModel)
         
-        cell.btnReadMore.tag = indexPath.section
+        cell.btnReadMore.tag = indexPath.section-1 //To come correct Vendor Detail in Read More CLick
         
         cell.btnReadMore.addTarget(self, action:"btnReadMorePressed:", forControlEvents:UIControlEvents.TouchUpInside)
 //        

@@ -363,13 +363,21 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
 //    }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text else { return true }
         
-        let newLength = text.characters.count + string.characters.count - range.length
-        self.checkAllfieldsAfterEditing(range,tfString: string,forTextField:textField)
+        if textField == tfMobileNumber{
+            guard let text = textField.text else { return true }
+            
+            let newLength = text.characters.count + string.characters.count - range.length
+            
+            
+            return newLength <= 10 // Bool
 
-        
-        return newLength <= 10 // Bool
+        }
+        else
+        {
+            self.checkAllfieldsAfterEditing(range,tfString: string,forTextField:textField)
+            return true
+        }
     }
 
   

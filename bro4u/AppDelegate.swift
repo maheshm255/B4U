@@ -15,18 +15,89 @@ import FBSDKLoginKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    
+    var objNetworkStatusView : UIView! = nil
+
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
       //  self.animatedSplashScreen()
+        
+        // SETUP AFNETWORKING's NETWORK INDICATOR AND REACHABILITY
+        
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector:"isNetworkRechable", name: AFNetworkingReachabilityDidChangeNotification, object: nil);
+//        AFNetworkActivityIndicatorManager.sharedManager().enabled = true
+//        AFNetworkReachabilityManager.sharedManager().startMonitoring()
+//        self.performSelector("isNetworkRechable", withObject: nil, afterDelay: 0.6)
+
+//        if (AFNetworkReachabilityManager.sharedManager().reachable){
+//            self.registerPushNotification()
+//            self.checkUserAlreadyLogin()
+//        }
+//        else{
+//            self.window?.rootViewController?.view.makeToast(message:"No Internet Connection", duration:1.0, position:HRToastPositionDefault)
+//
+//        }
+        
         self.registerPushNotification()
         self.checkUserAlreadyLogin()
+
+        //To change all the Navigation Bar Item in white color
+        if UINavigationBar.conformsToProtocol(UIAppearanceContainer){
+            UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        }
         
-        
-        
+
         return true
     }
+    
+    
+    
+//    func isNetworkRechable() -> Bool{
+//        
+//        if AFNetworkReachabilityManager.sharedManager().reachable{
+//            if (AFNetworkReachabilityManager.sharedManager().reachableViaWiFi)
+//            {
+//                print("Network reachable via WWAN")
+//            }
+//            else{
+//                print("Network reachable via Wifi")
+//            }
+//            
+//            self.registerPushNotification()
+//            self.checkUserAlreadyLogin()
+//
+//            return true
+//        }
+//        else{
+//            print("Network is not reachable")
+//            
+//            self.window?.rootViewController?.view.makeToast(message:"No Internet Connection", duration:1.0, position:HRToastPositionDefault)
+//
+//            return false
+//        }
+//    }
+    
+//    func checkNetworkStatus()
+//    {
+//        networkStatus = reachability.currentReachabilityStatus
+//        
+//        if (networkStatus == Reachability.NetworkStatus.NotReachable)
+//        {
+//            print("Not Reachable")
+//            objNetworkStatusView = NetworkStatusView(frame:CGRectMake(0, 0, self.window!.frame.size.width, self.window!.frame.size.height))
+//            UIApplication.sharedApplication().keyWindow?.addSubview(objNetworkStatusView)
+//            UIApplication.sharedApplication().keyWindow?.bringSubviewToFront(objNetworkStatusView)
+//        }
+//        else
+//        {
+//            print("Reachable")
+//            if((objNetworkStatusView) != nil)
+//            {
+//                objNetworkStatusView.removeFromSuperview()
+//            }
+//        }
+//    }
+
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

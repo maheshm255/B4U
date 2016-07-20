@@ -510,4 +510,24 @@ class b4u_WebApiCallManager: NSObject {
         }
         
     }
-}
+    
+    func isNetworkRechable() -> Bool{
+        
+        if AFNetworkReachabilityManager.sharedManager().reachable{
+            if (AFNetworkReachabilityManager.sharedManager().reachableViaWiFi)
+            {
+               print("Network reachable via WWAN")
+            }
+            else{
+                print("Network reachable via Wifi")
+            }
+            
+            return true
+        }
+        else{
+            print("Network is not reachable")
+
+            return false
+        }
+    }
+ }
