@@ -924,7 +924,7 @@
                         <viewControllerLayoutGuide type="bottom" id="5Wq-A7-LOz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fnQ-Bb-oP2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="LOGIN USING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULH-Ib-tft">
@@ -2004,7 +2004,7 @@
                         <viewControllerLayoutGuide type="bottom" id="9g0-rJ-jqR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ARg-bR-Oep">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P9f-JD-O9v">
@@ -5539,19 +5539,19 @@
                                                             <rect key="frame" x="0.0" y="2" width="92" height="75"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myOrder" translatesAutoresizingMaskIntoConstraints="NO" id="uFr-wZ-rCP">
-                                                                    <rect key="frame" x="36" y="19" width="21" height="28"/>
+                                                                    <rect key="frame" x="36" y="19" width="26" height="26"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="28" id="cIo-dd-Gu7"/>
-                                                                        <constraint firstAttribute="width" constant="21" id="e5r-x2-zTk"/>
+                                                                        <constraint firstAttribute="height" constant="26" id="cIo-dd-Gu7"/>
+                                                                        <constraint firstAttribute="width" constant="26" id="e5r-x2-zTk"/>
                                                                     </constraints>
                                                                 </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="75" id="154-N2-18N"/>
-                                                                <constraint firstItem="uFr-wZ-rCP" firstAttribute="centerY" secondItem="oUD-8q-kdA" secondAttribute="centerY" constant="-4.5" id="HM4-Ud-g37"/>
+                                                                <constraint firstItem="uFr-wZ-rCP" firstAttribute="centerY" secondItem="oUD-8q-kdA" secondAttribute="centerY" constant="-5.5" id="HM4-Ud-g37"/>
                                                                 <constraint firstAttribute="width" constant="92" id="mne-C1-ZmQ"/>
-                                                                <constraint firstItem="uFr-wZ-rCP" firstAttribute="centerX" secondItem="oUD-8q-kdA" secondAttribute="centerX" id="p6d-Us-QQ9"/>
+                                                                <constraint firstItem="uFr-wZ-rCP" firstAttribute="centerX" secondItem="oUD-8q-kdA" secondAttribute="centerX" constant="3" id="p6d-Us-QQ9"/>
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage, Track, cancel &amp; More" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c35-Mt-O7X">
@@ -7876,7 +7876,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ji5-Ft-8Sk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="w4J-tu-AJI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VNA-HI-oXL">
@@ -8071,7 +8071,7 @@
                         <viewControllerLayoutGuide type="bottom" id="tzs-qa-oas"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jB5-iN-OR8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mme-5T-EOl">
@@ -10050,12 +10050,12 @@
         <image name="thankU" width="320" height="217"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="a9E-Wg-4Hc"/>
-        <segue reference="W5U-K3-ziD"/>
+        <segue reference="UUI-bn-Yb7"/>
+        <segue reference="Yth-Vu-6fA"/>
         <segue reference="ouI-hD-05v"/>
-        <segue reference="ZLQ-WV-Fop"/>
-        <segue reference="FFS-5h-qNB"/>
-        <segue reference="ZKs-u5-bSL"/>
-        <segue reference="nEL-nc-rUf"/>
+        <segue reference="a9E-Wg-4Hc"/>
+        <segue reference="ocf-hw-U5o"/>
+        <segue reference="W5U-K3-ziD"/>
+        <segue reference="zl4-3N-4qA"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -389,7 +389,9 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     {
         if let index = notification.object as? NSIndexPath{
             if index.row == 1 {
-                self.performSegueWithIdentifier("categoryScreenSegue", sender:nil)
+                //Modified for Home Screen Navigation after click on Sevices
+                self.navigationController?.popToRootViewControllerAnimated(true)
+//                self.performSegueWithIdentifier("categoryScreenSegue", sender:nil)
             }else if index.row == 2 {
                 self.performSegueWithIdentifier("reOrderID", sender:nil)
             }else if index.row == 3 {

@@ -122,7 +122,7 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
         
         let selectedTime = bro4u_DataManager.sharedInstance.selectedTimeSlot!
         
-        let params = "/\(bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.itemId!)\(bro4u_DataManager.sharedInstance.userSelectedFilterParams!)&service_time=\(selectedDate)&service_time=\(selectedTime)&\(kAppendURLWithApiToken)"
+        let params = "/\(bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.itemId!)\(bro4u_DataManager.sharedInstance.userSelectedFilterParams!)&service_date=\(selectedDate)&service_time=\(selectedTime)&\(kAppendURLWithApiToken)"
         
         b4u_WebApiCallManager.sharedInstance.getApiCall(kViewProfileIndex, params:params, result:{(resultObject) -> Void in
             
