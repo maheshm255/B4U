@@ -408,20 +408,7 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
      alertViewCtrl.delegate = self
       bro4u_DataManager.sharedInstance.userSelectedOrder = selectedOrderObj
-//
-//        self.presentpopupViewController(alertViewCtrl, animationType:.Fade, completion: { () -> Void in
-//            
-//        })
-
-        
-
-        
-
-        
     self.pressentAlertPopUP(alertViewCtrl, size:CGSizeMake(300, 250))
-
-//        self.pressentAlertPopUP(alertViewCtrl, size: CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)))
-
     }
     
   }

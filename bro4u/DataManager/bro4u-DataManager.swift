@@ -58,6 +58,8 @@ class bro4u_DataManager: NSObject {
     var furl:String?
     var couponCodeStatus:String?
     var couponCodeMessage:String?
+    var walletCouponCodeStatus:String?
+    var walletCouponCodeMessage:String?
 
 
     var vendorProfile:b4u_VendorProfileModel?

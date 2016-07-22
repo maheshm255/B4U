@@ -154,15 +154,18 @@ class MyWalletViewController: UIViewController ,UITextFieldDelegate {
             
               b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
 
+              self.applyReferralCode(resultObject as! String)
             
-               if resultObject as! String == "Success"
-               {
-                  self.view.makeToast(message:"Referrel code applied successfully", duration:1.0, position:HRToastPositionDefault)
-               }else
-               {
-                self.view.makeToast(message:"Please enter valid code", duration:1.0, position:HRToastPositionDefault)
+               print(resultObject)
 
-              }
+            
+//               if resultObject as! String == "Success"
+//               {
+//                  self.view.makeToast(message:"Referrel code applied successfully", duration:1.0, position:HRToastPositionDefault)
+//               }else
+//               {
+//                self.view.makeToast(message:"Please enter valid code", duration:1.0, position:HRToastPositionDefault)
+//               }
             
         })
         
@@ -172,6 +175,35 @@ class MyWalletViewController: UIViewController ,UITextFieldDelegate {
     self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
     b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
   }
+
+    
+    func applyReferralCode(resultObject:String)
+    {
+        let codeValidateStatus = bro4u_DataManager.sharedInstance.walletCouponCodeStatus
+        let codeValidateMessage = bro4u_DataManager.sharedInstance.walletCouponCodeMessage
+        
+        if resultObject == "Success" && codeValidateStatus == "true"
+        {
+//            delegate?.couponApplied(self.couponcodeTxtFld.text!)
+            self.view.makeToast(message:codeValidateMessage!, duration:1.0, position:HRToastPositionDefault)
+            self.couponcodeTxtFld.text = ""
+        }
+        else
+        {
+            self.view.makeToast(message:codeValidateMessage!, duration:1.0, position:HRToastPositionDefault)
+            self.couponcodeTxtFld.text = ""
+        }
+        
+        
+//        if let orderDetailModel = bro4u_DataManager.sharedInstance.orderDetailData.first
+//        {
+//            if let selectionLocal: b4u_SelectionModel =  orderDetailModel.selection?.first{
+//                self.lblAmount.text = "  Rs. \(selectionLocal.grandTotal!).00"
+//            }
+//        }
+        self.view.endEditing(true)
+        
+    }
 
   func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     

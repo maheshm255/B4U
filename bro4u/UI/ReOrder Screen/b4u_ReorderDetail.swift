@@ -15,6 +15,7 @@ class b4u_ReOrderDetail: UIViewController {
     @IBOutlet weak var lblCategory: UILabel!
     
     @IBOutlet weak var lblSubTotal: UILabel!
+    var selectedReorderTag:Int?
     
     override func viewDidLoad()
     {
@@ -36,12 +37,12 @@ class b4u_ReOrderDetail: UIViewController {
     
     func congigureUI()
     {
-        
-        if let selectedPartner:b4u_SugestedPartner = bro4u_DataManager.sharedInstance.selectedSuggestedPatner{
+
+        if let reOrderModel:b4u_ReOrderModel = bro4u_DataManager.sharedInstance.myReorderData[selectedReorderTag!]{
             
-            lblCategoryDetail.text = selectedPartner.itemName!
-            lblCategory.text = selectedPartner.vendorName!
-            lblSubTotal.text = selectedPartner.custPrice!
+            lblCategoryDetail.text = reOrderModel.itemName!
+            lblCategory.text = reOrderModel.vendorName!
+            lblSubTotal.text = "\(reOrderModel.subTotal!)"
         }
     }
 

@@ -179,12 +179,12 @@ class b4u_ReOrderViewController: UIViewController,UIPopoverPresentationControlle
         let storyboard : UIStoryboard = self.storyboard!
         
         let reOrderDetailController:b4u_ReOrderDetail = storyboard.instantiateViewControllerWithIdentifier("ReOrderDetailID") as! b4u_ReOrderDetail
-        
-        reOrderDetailController.modalPresentationStyle = .Popover
+        reOrderDetailController.selectedReorderTag = sender.tag
+        reOrderDetailController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
         reOrderDetailController.preferredContentSize = CGSizeMake(300, 250)
         reOrderDetailController.definesPresentationContext = true
         let popoverMenuViewController = reOrderDetailController.popoverPresentationController
-        popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
+        popoverMenuViewController?.permittedArrowDirections = .Any
         popoverMenuViewController?.delegate = self
         popoverMenuViewController?.sourceView = self.view
         popoverMenuViewController?.sourceRect = CGRect(
