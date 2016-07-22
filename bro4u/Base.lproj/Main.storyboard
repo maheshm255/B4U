@@ -924,7 +924,7 @@
                         <viewControllerLayoutGuide type="bottom" id="5Wq-A7-LOz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fnQ-Bb-oP2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="LOGIN USING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULH-Ib-tft">
@@ -5148,7 +5148,7 @@
                                                         <constraint firstAttribute="width" constant="120" id="AJh-NF-Fvo"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                                    <state key="normal" title="WRITE REVIEW">
+                                                    <state key="normal">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
@@ -8623,6 +8623,7 @@
                                     <constraint firstItem="brM-kX-JXd" firstAttribute="leading" secondItem="J5d-q9-LLl" secondAttribute="trailing" constant="20" id="Fgs-VV-b7R"/>
                                     <constraint firstItem="xeR-HH-0HT" firstAttribute="leading" secondItem="J1o-NM-5pg" secondAttribute="trailing" constant="20" id="J5k-J0-wu9"/>
                                     <constraint firstItem="Dab-fc-qHN" firstAttribute="centerX" secondItem="PGg-Fu-OSq" secondAttribute="centerX" id="Mbh-MR-8jE"/>
+                                    <constraint firstItem="pUC-ih-h47" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gPa-31-0m4" secondAttribute="bottom" constant="10" id="OfB-Me-jlw"/>
                                     <constraint firstItem="LZ7-C3-ZQV" firstAttribute="top" secondItem="PGg-Fu-OSq" secondAttribute="top" constant="15" id="WxP-01-Juh"/>
                                     <constraint firstItem="brM-kX-JXd" firstAttribute="centerY" secondItem="J1o-NM-5pg" secondAttribute="centerY" id="X5v-HF-ZA8"/>
                                     <constraint firstItem="J5d-q9-LLl" firstAttribute="centerY" secondItem="J1o-NM-5pg" secondAttribute="centerY" id="bIU-EI-rcB"/>
@@ -10056,6 +10057,6 @@
         <segue reference="Yth-Vu-6fA"/>
         <segue reference="ocf-hw-U5o"/>
         <segue reference="W5U-K3-ziD"/>
-        <segue reference="1oG-xt-ZfG"/>
+        <segue reference="ZLQ-WV-Fop"/>
     </inferredMetricsTieBreakers>
 </document>

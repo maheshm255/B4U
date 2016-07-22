@@ -84,6 +84,17 @@ class PastOrdersTableViewCell: UITableViewCell {
             self.priceLbl.text = "Rs. \(price).00"
         }
         
+        if orderDataModel.onTime! == "yes" || (orderDataModel.serviceQuality?.characters.count)! > 0 ||
+        orderDataModel.rating != "0" || (orderDataModel.feedback?.characters.count)! > 0 {
+        
+            self.btnWriteReview.setTitle("EDIT REVIEW", forState: UIControlState.Normal)
+ 
+        }
+        else{
+            self.btnWriteReview.setTitle("WRITE REVIEW", forState: UIControlState.Normal)
+
+        }
+        
         
     }
   

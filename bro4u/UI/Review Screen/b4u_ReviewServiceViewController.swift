@@ -55,7 +55,6 @@ class b4u_ReviewServiceViewController: UIViewController {
     }
 
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -126,7 +125,7 @@ class b4u_ReviewServiceViewController: UIViewController {
             case "1" :
                 print("One Star")
                 
-                self.btnStr1.setImage(UIImage(named:"star"), forState:.Normal)
+                self.btnStr1.setImage(UIImage(named:"starYellow"), forState:.Normal)
                 self.btnStar2.setImage(UIImage(named:"starGrey"), forState:.Normal)
                 self.btnStar3.setImage(UIImage(named:"starGrey"), forState:.Normal)
                 self.btnStar4.setImage(UIImage(named:"starGrey"), forState:.Normal)
@@ -135,33 +134,33 @@ class b4u_ReviewServiceViewController: UIViewController {
             case "2" :
                 print("One Star")
                 
-                self.btnStr1.setImage(UIImage(named:"star"), forState:.Normal)
-                self.btnStar2.setImage(UIImage(named:"star"), forState:.Normal)
+                self.btnStr1.setImage(UIImage(named:"starYellow"), forState:.Normal)
+                self.btnStar2.setImage(UIImage(named:"starYellow"), forState:.Normal)
                 self.btnStar3.setImage(UIImage(named:"starGrey"), forState:.Normal)
                 self.btnStar4.setImage(UIImage(named:"starGrey"), forState:.Normal)
                 self.btnStar5.setImage(UIImage(named:"starGrey"), forState:.Normal)
 
             case "3" :
                 print("One Star")
-                self.btnStr1.setImage(UIImage(named:"star"), forState:.Normal)
-                self.btnStar2.setImage(UIImage(named:"star"), forState:.Normal)
-                self.btnStar3.setImage(UIImage(named:"star"), forState:.Normal)
+                self.btnStr1.setImage(UIImage(named:"starYellow"), forState:.Normal)
+                self.btnStar2.setImage(UIImage(named:"starYellow"), forState:.Normal)
+                self.btnStar3.setImage(UIImage(named:"starYellow"), forState:.Normal)
                 self.btnStar4.setImage(UIImage(named:"starGrey"), forState:.Normal)
                 self.btnStar5.setImage(UIImage(named:"starGrey"), forState:.Normal)
             case "4" :
                 print("One Star")
-                self.btnStr1.setImage(UIImage(named:"star"), forState:.Normal)
-                self.btnStar2.setImage(UIImage(named:"star"), forState:.Normal)
-                self.btnStar3.setImage(UIImage(named:"star"), forState:.Normal)
-                self.btnStar4.setImage(UIImage(named:"star"), forState:.Normal)
+                self.btnStr1.setImage(UIImage(named:"starYellow"), forState:.Normal)
+                self.btnStar2.setImage(UIImage(named:"starYellow"), forState:.Normal)
+                self.btnStar3.setImage(UIImage(named:"starYellow"), forState:.Normal)
+                self.btnStar4.setImage(UIImage(named:"starYellow"), forState:.Normal)
                 self.btnStar5.setImage(UIImage(named:"starGrey"), forState:.Normal)
             case "5" :
                 print("One Star")
-                self.btnStr1.setImage(UIImage(named:"star"), forState:.Normal)
-                self.btnStar2.setImage(UIImage(named:"star"), forState:.Normal)
-                self.btnStar3.setImage(UIImage(named:"star"), forState:.Normal)
-                self.btnStar4.setImage(UIImage(named:"star"), forState:.Normal)
-                self.btnStar5.setImage(UIImage(named:"star"), forState:.Normal)
+                self.btnStr1.setImage(UIImage(named:"starYellow"), forState:.Normal)
+                self.btnStar2.setImage(UIImage(named:"starYellow"), forState:.Normal)
+                self.btnStar3.setImage(UIImage(named:"starYellow"), forState:.Normal)
+                self.btnStar4.setImage(UIImage(named:"starYellow"), forState:.Normal)
+                self.btnStar5.setImage(UIImage(named:"starYellow"), forState:.Normal)
             default :
                 print("no star")
             }

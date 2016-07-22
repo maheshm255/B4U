@@ -95,8 +95,6 @@ class b4u_OrderDetailViewController: UIViewController {
                     {
                         lblGrandTotal.text = "Rs. \(grandTotal).00"
                     }
-
-
                 }
             }
 
