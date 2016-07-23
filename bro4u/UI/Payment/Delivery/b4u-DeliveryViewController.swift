@@ -402,7 +402,8 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
         calendarController.modalPresentationStyle = .Popover
         calendarController.preferredContentSize = CGSizeMake(300, 400)
         calendarController.delegate = self
-        
+        calendarController.selectedDate = NSDate()
+
         let popoverMenuViewController = calendarController.popoverPresentationController
         popoverMenuViewController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
         popoverMenuViewController?.delegate = self
@@ -517,13 +518,23 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
 
         var catId:String?
         
-
-        selectedCategoryObj = bro4u_DataManager.sharedInstance.categoryAndSubOptions[0]
-        
-        if let aSelectedCatObj = selectedCategoryObj
+        if (bro4u_DataManager.sharedInstance.categoryAndSubOptions.count > 0 )
         {
+            selectedCategoryObj = bro4u_DataManager.sharedInstance.categoryAndSubOptions[0]
             
-            catId = aSelectedCatObj.catId!
+            if let aSelectedCatObj = selectedCategoryObj
+            {
+                
+                catId = aSelectedCatObj.catId!
+            }
+
+        }
+        else{
+            
+            let reOrderModel:b4u_ReOrderModel = bro4u_DataManager.sharedInstance.selectedReorderModel!
+            
+            catId = reOrderModel.catID
+
         }
         
         let params = "/\(catId!)?date=\(selectedDateStr)&\(kAppendURLWithApiToken)"

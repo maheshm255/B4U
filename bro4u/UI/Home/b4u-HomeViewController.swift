@@ -58,9 +58,11 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         self.revealViewController().rearViewRevealWidth = 108
         
         self.revealViewController().rightViewRevealWidth = 170
-
         
-         self.getData()
+        //1. To delay for Network Test
+        self.performSelector("getData", withObject: nil, afterDelay: 0.1)
+
+//         self.getData()
     
         //self.callInterMediateApi()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
@@ -100,8 +102,30 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         }
     }
     
+    
     func getData()
     {
+        //2. Checking for Network reachability
+
+        if(b4u_WebApiCallManager.sharedInstance.isNetworkRechable()){
+            
+        }else{
+            //3. First Remove any existing Observer 
+            //Add Observer for No network Connection
+
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_HomeViewController.getData), name: "NoNetworkConnectionNotification", object: nil)
+            
+            //4.Adding View for Retry
+            let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+            self.view.addSubview(noNetworkView)
+
+            return
+        }
+        
+        //5.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         let params = "?\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kHomeSCategory, params:params, result:{(resultObject) -> Void in

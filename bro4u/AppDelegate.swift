@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        AFNetworkActivityIndicatorManager.sharedManager().enabled = true
+        AFNetworkReachabilityManager.sharedManager().startMonitoring()
         // Override point for customization after application launch.
       //  self.animatedSplashScreen()
         
@@ -134,6 +137,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        
         
         let tokenChars = UnsafePointer<CChar>(deviceToken.bytes)
         var tokenString = ""

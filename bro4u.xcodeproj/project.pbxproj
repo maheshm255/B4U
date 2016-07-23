@@ -54,6 +54,8 @@
 		522291871CB6384E00392DC0 /* b4u_DismissKeyBoardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522291861CB6384E00392DC0 /* b4u_DismissKeyBoardExtension.swift */; };
 		522291891CB65CBC00392DC0 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522291881CB65CBC00392DC0 /* MonthYearPickerView.swift */; };
 		523252631CCFE4D600E8AE75 /* UIVViewController-SLPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523252621CCFE4D600E8AE75 /* UIVViewController-SLPopup.swift */; };
+		525A53E31D43539F005E95DA /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525A53E21D43539F005E95DA /* AFNetworking.framework */; };
+		525A53E51D435961005E95DA /* NoNetworkConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525A53E41D435961005E95DA /* NoNetworkConnectionView.swift */; };
 		529E46061CCD10B300AFD541 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529E46051CCD10B300AFD541 /* QuartzCore.framework */; };
 		529F27731CADA84700ABFC9E /* b4u_OrderDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F27721CADA84700ABFC9E /* b4u_OrderDetailModel.swift */; };
 		529F27751CADA94300ABFC9E /* b4u_SelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F27741CADA94300ABFC9E /* b4u_SelectionModel.swift */; };
@@ -337,6 +339,8 @@
 		522291861CB6384E00392DC0 /* b4u_DismissKeyBoardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_DismissKeyBoardExtension.swift; sourceTree = "<group>"; };
 		522291881CB65CBC00392DC0 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		523252621CCFE4D600E8AE75 /* UIVViewController-SLPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIVViewController-SLPopup.swift"; sourceTree = "<group>"; };
+		525A53E21D43539F005E95DA /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "../../../../../../Users/macbookpro/Library/Developer/Xcode/DerivedData/bro4u-hhpwlrzwiqgyshcwmlqkguqnwemr/Build/Products/Debug-iphoneos/AFNetworking.framework"; sourceTree = "<group>"; };
+		525A53E41D435961005E95DA /* NoNetworkConnectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoNetworkConnectionView.swift; sourceTree = "<group>"; };
 		529E46051CCD10B300AFD541 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		529F27721CADA84700ABFC9E /* b4u_OrderDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_OrderDetailModel.swift; sourceTree = "<group>"; };
 		529F27741CADA94300ABFC9E /* b4u_SelectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = b4u_SelectionModel.swift; sourceTree = "<group>"; };
@@ -634,6 +638,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				525A53E31D43539F005E95DA /* AFNetworking.framework in Frameworks */,
 				529E46061CCD10B300AFD541 /* QuartzCore.framework in Frameworks */,
 				B7268EAA1CB41B50004C31A1 /* libPayU_iOS_CoreSDK.a in Frameworks */,
 				656412451C88C2B400B8D5D4 /* CoreLocation.framework in Frameworks */,
@@ -765,6 +770,7 @@
 		4ACEA2003FD63043109FEF32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				525A53E21D43539F005E95DA /* AFNetworking.framework */,
 				529E46051CCD10B300AFD541 /* QuartzCore.framework */,
 				656412441C88C2B400B8D5D4 /* CoreLocation.framework */,
 				656412421C88C2A300B8D5D4 /* MapKit.framework */,
@@ -808,7 +814,6 @@
 		65271E591C83056F0022C888 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
-				B3A08DCC1CBB86D0004B3D52 /* Paytm Order */,
 				B7182E8A1CB1015500935087 /* COD */,
 				B336667B1CA94979007FFD50 /* CreditDebit Card */,
 				B336667A1CA9494E007FFD50 /* Net Banking */,
@@ -1170,6 +1175,7 @@
 		65F8B42E1C70BE6200D158FA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				525A53E41D435961005E95DA /* NoNetworkConnectionView.swift */,
 				523252621CCFE4D600E8AE75 /* UIVViewController-SLPopup.swift */,
 				520282721CBA667300CD8725 /* PayUMoneyUtilitiy.h */,
 				520282731CBA667300CD8725 /* PayUMoneyUtilitiy.m */,
@@ -1363,13 +1369,6 @@
 				B36939911CA175F9000266A5 /* b4u_OrderDetailViewController.swift */,
 			);
 			path = "Order Detail";
-			sourceTree = "<group>";
-		};
-		B3A08DCC1CBB86D0004B3D52 /* Paytm Order */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Paytm Order";
 			sourceTree = "<group>";
 		};
 		B3A08DCF1CBBA600004B3D52 /* Online Order */ = {
@@ -1953,6 +1952,7 @@
 				529F27731CADA84700ABFC9E /* b4u_OrderDetailModel.swift in Sources */,
 				65B18A4E1C70BA51000EDD00 /* b4u-WebApiCallManager.swift in Sources */,
 				B36939881CA1440B000266A5 /* b4u_TrackOrderViewController.swift in Sources */,
+				525A53E51D435961005E95DA /* NoNetworkConnectionView.swift in Sources */,
 				65B18A801C70BB28000EDD00 /* AFSecurityPolicy.m in Sources */,
 				B3A08DCB1CBB6D71004B3D52 /* b4u_CreateOrder.swift in Sources */,
 				65DE79651C796AD200017F96 /* b4u_IntermediateScreenDataModel.swift in Sources */,
@@ -2143,6 +2143,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Pramod Hegde (55XJM93HHP)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pramod Hegde (55XJM93HHP)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = bro4u/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -2173,6 +2174,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Pramod Hegde (55XJM93HHP)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pramod Hegde (55XJM93HHP)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = bro4u/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

@@ -4,25 +4,26 @@
 //
 //  Created by MACBookPro on 4/10/16.
 //  Copyright © 2016 AppLearn. All rights reserved.
+// Paytm COnfiguration
 //
 
 #import "PayUMoneyUtilitiy.h"
 #import <CommonCrypto/CommonDigest.h>
 //Need to open for Production
-//#define ChecksumGenerationURL              @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/paytm_checksum_generation"
-//#define ChecksumValidationURL              @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/paytm_checksum_validation"
-//#define MerchantID                          @"NquJkw58790567615778"
-//#define CHANNELID                          @"WAP"
-//#define INDUSTRYTYPEID                    @"Retail110"
-//#define WEBSITE                             @"brofouruwap"
+#define ChecksumGenerationURL              @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/paytm_checksum_generation"
+#define ChecksumValidationURL              @"http://v2.20160301.testing.bro4u.com/api_v2/index.php/order/paytm_checksum_validation"
+#define MerchantID                          @"NquJkw58790567615778"
+#define CHANNELID                          @"WAP"
+#define INDUSTRYTYPEID                    @"Retail110"
+#define WEBSITE                             @"brofouruwap"
 
 //Testing from Paytm
-#define ChecksumGenerationURL              @"https://pguat.paytm.com/paytmchecksum/paytmCheckSumGenerator.jsp"
-#define ChecksumValidationURL              @"https://pguat.paytm.com/paytmchecksum/paytmCheckSumVerify.jsp"
-#define MerchantID                          @"WorldP64425807474247"
-#define CHANNELID                          @"WAP"
-#define INDUSTRYTYPEID                    @"Retail"
-#define WEBSITE                             @"worldpressplg"
+//#define ChecksumGenerationURL              @"https://pguat.paytm.com/paytmchecksum/paytmCheckSumGenerator.jsp"
+//#define ChecksumValidationURL              @"https://pguat.paytm.com/paytmchecksum/paytmCheckSumVerify.jsp"
+//#define MerchantID                          @"WorldP64425807474247"
+//#define CHANNELID                          @"WAP"
+//#define INDUSTRYTYPEID                    @"Retail"
+//#define WEBSITE                             @"worldpressplg"
 
 @interface PayUMoneyUtilitiy ()
 

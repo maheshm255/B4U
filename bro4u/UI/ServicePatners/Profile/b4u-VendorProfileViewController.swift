@@ -182,6 +182,9 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
                 self.lblNumberOfProfiles.text = " \(profileModelObj.profileViews!) "
                 
                 self.lblPrice.text = "  Rs. \( bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)  "
+                //Modified after One Bug
+//                self.lblPrice.text = "  Rs. \( bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.priceBoost!)  "
+
                 
                 self.btnReview.setTitle("Reviews(\(profileModelObj.reviewCount!))", forState:UIControlState.Normal)
 

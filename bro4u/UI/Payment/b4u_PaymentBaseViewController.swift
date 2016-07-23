@@ -622,7 +622,8 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     
     func laodViewController(order : PGOrder, merchantConfiguration :PGMerchantConfiguration) -> Void {
         let txnController = PGTransactionViewController(transactionForOrder: order)
-        txnController.serverType = eServerTypeStaging;
+//        txnController.serverType = eServerTypeStaging;
+        txnController.serverType = eServerTypeProduction;
         txnController.merchant = merchantConfiguration;
         txnController.delegate = self;
         showController(txnController)
@@ -691,10 +692,13 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
         //    removeController(controller)
     }
     
-    func didCancelTransaction(controller: PGTransactionViewController!, error: NSError!, response: [NSObject : AnyObject]!) {
+    func didCancelTransaction(controller: PGTransactionViewController!, error: NSError?, response: [NSObject : AnyObject]?) {
         
+        if (error != nil && response != nil){
+            
+            print("ViewController::didCancelTransaction error = %@ response= %@", error, response);
+         }
         
-        NSLog("ViewController::didCancelTransaction error = %@ response= %@", error, response);
         
         var msg:String!
         
