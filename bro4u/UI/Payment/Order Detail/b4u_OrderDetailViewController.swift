@@ -104,7 +104,7 @@ class b4u_OrderDetailViewController: UIViewController {
             
             lblVendorDetail.text = selectedReorderModel.itemName!
             lblVendorName.text = selectedReorderModel.vendorName!
-            lblSubTotal.text = selectedReorderModel.custPrice!
+//            lblSubTotal.text = selectedReorderModel.custPrice!
 
                 if let subTotal = selectedReorderModel.subTotal
                 {
