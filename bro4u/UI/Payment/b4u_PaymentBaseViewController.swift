@@ -647,6 +647,9 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
         }else{
             controller.dismissViewControllerAnimated(true, completion: nil)
         }
+        
+        self.view.makeToast(message:"Payment failed, Please try again ", duration:1.0 , position: HRToastPositionDefault)
+
     }
     
     func didSucceedTransaction(controller: PGTransactionViewController!, response: [NSObject : AnyObject]!) {

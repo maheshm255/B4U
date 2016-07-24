@@ -180,17 +180,17 @@ class b4u_RescheduleOrderViewController: UIViewController,
     {
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
 
-        var selectedCategoryObj:b4u_Category?
+        //Modified as it was crashing for No Categories selected
         
+//        var selectedCategoryObj:b4u_OrdersModel?
+//        selectedCategoryObj = bro4u_DataManager.sharedInstance.categoryAndSubOptions[0]
+
         var catId:String?
-        
-        
-        selectedCategoryObj = bro4u_DataManager.sharedInstance.categoryAndSubOptions[0]
-        
-        if let aSelectedCatObj = selectedCategoryObj
+
+        if let aSelectedCatObj = self.selectedOrder
         {
             
-            catId = aSelectedCatObj.catId!
+            catId = aSelectedCatObj.catID!
         }
         
         let params = "/\(catId!)?date=\(selectedDateStr)&\(kAppendURLWithApiToken)"

@@ -189,6 +189,14 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             
             catId = aSelectedCatObj.catId!
         }
+        else if bro4u_DataManager.sharedInstance.interMediateScreenDataObj != nil{
+            
+            let interScreenModel:b4u_IntermediateScreenDataModel = bro4u_DataManager.sharedInstance.interMediateScreenDataObj!
+            
+            catId = interScreenModel.catID
+            
+        }
+
         
         let params = "/\(catId!)?date=\(selectedDateStr)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kTimeSlotApi, params:params, result:{(resultObject) -> Void in

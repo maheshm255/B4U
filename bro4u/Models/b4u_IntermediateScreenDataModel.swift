@@ -10,7 +10,7 @@ import UIKit
 
 class b4u_IntermediateScreenDataModel: NSObject {
 
-    
+    var catID:String?
     var couponCode:String?
     var couponOfferAdDesc:String?
     var couponOfferAdHeader:String?
@@ -23,6 +23,7 @@ class b4u_IntermediateScreenDataModel: NSObject {
         
         interMessges = Array()
         termsAndConditions = Array()
+        catID = interMediateInfoDataDict["cat_id"] as? String
         couponCode = interMediateInfoDataDict["coupon_code"] as? String
         couponOfferAdDesc = interMediateInfoDataDict["coupon_offer"]!["AD"]!!["description"] as? String
         
