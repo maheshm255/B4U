@@ -181,7 +181,7 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
                 
                 self.lblNumberOfProfiles.text = " \(profileModelObj.profileViews!) "
                 
-                self.lblPrice.text = "  Rs. \( bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice!)  "
+                self.lblPrice.text = "  Rs. \( bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.offerPrice!)  "
                 //Modified after One Bug
 //                self.lblPrice.text = "  Rs. \( bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.priceBoost!)  "
 
