@@ -99,30 +99,29 @@ class b4u_OrderDetailViewController: UIViewController {
             }
 
         }
-        else if let selectedReorderModel = bro4u_DataManager.sharedInstance.selectedReorderModel
-        {
+        else if let selectedReorderModel:b4u_OrderDetailModel = bro4u_DataManager.sharedInstance.orderDetailData.first{
             
             lblVendorDetail.text = selectedReorderModel.itemName!
             lblVendorName.text = selectedReorderModel.vendorName!
 //            lblSubTotal.text = selectedReorderModel.custPrice!
 
-                if let subTotal = selectedReorderModel.subTotal
+                if let subTotal = selectedReorderModel.selection![0].subTotal
                 {
                     lblSubTotal.text = "Rs. \(subTotal).00"
                 }
-                if let deliveryCharge = selectedReorderModel.metaItemReOrder?.first?.deliveryCharge
+                if let deliveryCharge = selectedReorderModel.selection![0].deliveryCharge
                 {
                     lblDeliveryCharges.text = "+ Rs. \(deliveryCharge).00"
                 }
-                if let nightCharge = selectedReorderModel.metaItemReOrder?.first?.nightDeliveryCharge
+                if let nightCharge = selectedReorderModel.selection![0].nightCharge
                 {
                     lblNightDeliveryCharge.text = " + Rs. \(nightCharge).00"
                 }
-                if let deductedFromWallet = selectedReorderModel.metaItemReOrder?.first?.deductedFromWallet,deductedUsingCoupon = selectedReorderModel.metaItemReOrder?.first?.deductedUsingCoupon
+                if let deductedFromWallet = selectedReorderModel.selection![0].deductedFromWallet,deductedUsingCoupon = selectedReorderModel.selection![0].deductedUsingCoupon
                 {
                     lblWalletCouponOffers.text = " - Rs. \(deductedFromWallet.integerValue + deductedUsingCoupon.integerValue).00"
                 }
-                if let grandTotal = selectedReorderModel.metaItemReOrder?.first?.grandTotal
+                if let grandTotal = selectedReorderModel.selection![0].grandTotal
                 {
                     lblGrandTotal.text = "Rs. \(grandTotal).00"
                 }

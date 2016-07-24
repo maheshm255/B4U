@@ -31,7 +31,8 @@ class b4u_CategoryTableViewCell: UITableViewCell {
     
     func configureData1(categoryObject:b4u_Category)
     {
-        lblCategoryName.text = categoryObject.catName
+        lblCategoryName.text = "\(categoryObject.catName)\(categoryObject.catDesc)" 
+            
         imgIcon.downloadedFrom(link:categoryObject.catIcon!, contentMode:UIViewContentMode.ScaleAspectFill)
     }
 

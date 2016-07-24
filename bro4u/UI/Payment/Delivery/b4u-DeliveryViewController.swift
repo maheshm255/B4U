@@ -165,6 +165,7 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
 
             if let selectedDate = bro4u_DataManager.sharedInstance.selectedDate
             {
+                
                cell.btnSelectDate.setTitle(NSDate.dateFormat().stringFromDate(selectedDate), forState:UIControlState.Normal)
             }
             

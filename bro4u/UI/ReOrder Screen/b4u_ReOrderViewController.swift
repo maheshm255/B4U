@@ -25,6 +25,19 @@ class b4u_ReOrderViewController: UIViewController,UIPopoverPresentationControlle
         self.validateUser()
         
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.cleanSelection()
+    }
+    
+    func cleanSelection()
+    {
+        bro4u_DataManager.sharedInstance.selectedDate = nil
+        bro4u_DataManager.sharedInstance.selectedTimeSlot = nil
+        bro4u_DataManager.sharedInstance.userSelectedFilterParams = nil
+    }
 
     
     func validateUser()

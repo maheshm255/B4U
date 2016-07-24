@@ -538,14 +538,14 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
             sub_Total = selectedSuggestedPartner.custPrice!
             itemId = selectedSuggestedPartner.itemId!
             
-            params =  itemId + filterPareams + "&sub_Total=\(sub_Total)&user_id=\(user_id)&coupon=\(coupon)&service_time=\(service_time)&service_date=\(service_date)&\(kAppendURLWithApiToken)"
+            params =  itemId + filterPareams + "&sub_Total=\(sub_Total)&user_id=\(user_id)&coupon=\(coupon)&service_time=\(service_time)&service_date=\((NSDate.dateFormat().stringFromDate(service_date)))&\(kAppendURLWithApiToken)"
             
         }else if let selectedReOrderModel = bro4u_DataManager.sharedInstance.selectedReorderModel
         {
             sub_Total = "\(selectedReOrderModel.subTotal!)"
             itemId = selectedReOrderModel.metaItemReOrder!.first!.itemID!
             
-            params =  itemId + filterPareams + "?sub_Total=\(sub_Total)&user_id=\(user_id)&coupon=\(coupon)&service_time=\(service_time)&service_date=\(service_date)&unit_quantity=\(bro4u_DataManager.sharedInstance.selectedQualtity)&\(kAppendURLWithApiToken)"
+            params =  itemId + filterPareams + "?sub_Total=\(sub_Total)&user_id=\(user_id)&coupon=\(coupon)&service_time=\(service_time)&service_date=\(NSDate.dateFormat().stringFromDate(service_date))&unit_quantity=1&\(kAppendURLWithApiToken)"
         }
         
         
