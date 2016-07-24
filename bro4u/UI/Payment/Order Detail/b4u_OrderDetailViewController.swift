@@ -99,6 +99,34 @@ class b4u_OrderDetailViewController: UIViewController {
             }
 
         }
+        else if let selectedReorderModel = bro4u_DataManager.sharedInstance.selectedReorderModel
+        {
+            
+            lblVendorDetail.text = selectedReorderModel.itemName!
+            lblVendorName.text = selectedReorderModel.vendorName!
+            lblSubTotal.text = selectedReorderModel.custPrice!
+
+                if let subTotal = selectedReorderModel.subTotal
+                {
+                    lblSubTotal.text = "Rs. \(subTotal).00"
+                }
+                if let deliveryCharge = selectedReorderModel.metaItemReOrder?.first?.deliveryCharge
+                {
+                    lblDeliveryCharges.text = "+ Rs. \(deliveryCharge).00"
+                }
+                if let nightCharge = selectedReorderModel.metaItemReOrder?.first?.nightDeliveryCharge
+                {
+                    lblNightDeliveryCharge.text = " + Rs. \(nightCharge).00"
+                }
+                if let deductedFromWallet = selectedReorderModel.metaItemReOrder?.first?.deductedFromWallet,deductedUsingCoupon = selectedReorderModel.metaItemReOrder?.first?.deductedUsingCoupon
+                {
+                    lblWalletCouponOffers.text = " - Rs. \(deductedFromWallet.integerValue + deductedUsingCoupon.integerValue).00"
+                }
+                if let grandTotal = selectedReorderModel.metaItemReOrder?.first?.grandTotal
+                {
+                    lblGrandTotal.text = "Rs. \(grandTotal).00"
+                }
+        }
     }
 
   @IBAction func btnCloseClicked(sender: AnyObject) {
