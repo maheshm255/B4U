@@ -200,6 +200,8 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("categoryCell", forIndexPath: indexPath) as! b4u_CategoryListTblViewCell
         
         cell.configureCellData(bro4u_DataManager.sharedInstance.mainCategories[indexPath.row])
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+
         return cell
 
     }
@@ -215,6 +217,18 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     
     internal  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
+        //Modified for Toggle on click of any Main Category
+        if self.revealViewController().frontViewPosition == FrontViewPosition.Right
+        {
+            NSNotificationCenter.defaultCenter().postNotificationName(kPushServicesScreen, object:indexPath)
+
+        }
+        else if self.revealViewController().frontViewPosition == FrontViewPosition.LeftSide
+        {
+            NSNotificationCenter.defaultCenter().postNotificationName(kRightMenuNotification, object: indexPath)
+        }
+
+
       self.performSegueWithIdentifier("categoryScreenSegue", sender: nil)
 
       
