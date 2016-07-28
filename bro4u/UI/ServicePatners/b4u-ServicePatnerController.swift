@@ -246,16 +246,21 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
                 //            let shadow : NSShadow = NSShadow()
                 //            shadow.shadowOffset = CGSizeMake(-2.0, -2.0)
                 
-                let attributes = [
-                    NSUnderlineStyleAttributeName : 1,
-                    NSForegroundColorAttributeName : UIColor(red:178.0/255, green: 178.0/255, blue: 178.0/255, alpha: 1.0),
-                    NSStrokeWidthAttributeName : 3.0,
-                    //NSShadowAttributeName : shadow,
-                    NSStrikethroughStyleAttributeName:1
-                ]
+//                let attributes = [
+//                    NSUnderlineStyleAttributeName : 1,
+//                    NSForegroundColorAttributeName : UIColor(red:178.0/255, green: 178.0/255, blue: 178.0/255, alpha: 1.0),
+//                    NSStrokeWidthAttributeName : 1.0,
+//                    //NSShadowAttributeName : shadow,
+//                    NSStrikethroughStyleAttributeName:1
+//                ]
+//                let price = NSAttributedString(string:"Rs. \(aPatner.price!)", attributes: attributes) //1
+              
+                let price: NSMutableAttributedString =  NSMutableAttributedString(string: "Rs. \(aPatner.price!)")
+                price.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, price.length))
+              
+
                 
-                let price = NSAttributedString(string:"Rs. \(aPatner.price!)", attributes: attributes) //1
-                
+              
                 
                 cell.lblActualPrice.attributedText = price
                 
@@ -536,40 +541,64 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
     func userCurrentLocaion()
     {
         
-        if let customLocaitonStr = bro4u_DataManager.sharedInstance.userSelectedLocatinStr
+//        if let customLocaitonStr = bro4u_DataManager.sharedInstance.userSelectedLocatinStr
+//        {
+//            
+//             self.lblCurrentLocation.text = customLocaitonStr
+//        }else{
+//            
+//            if let currentLocality = bro4u_DataManager.sharedInstance.currentLocality
+//            {
+//                
+//                if let loclity = currentLocality.locality
+//                {
+//                    if let  subLocality = currentLocality.subLocality
+//                    {
+//                        self.lblCurrentLocation.text = "\(subLocality),\(loclity)"
+//                    }else
+//                    {
+//                        self.lblCurrentLocation.text = "\(loclity)"
+//                        
+//                    }
+//                }
+//                
+//                
+//                
+//            }else
+//            {
+//                self.lblCurrentLocation.text = "Current Location"
+//                
+//            }
+//
+//        }
+      
+      if let currentLocality = bro4u_DataManager.sharedInstance.currentLocality
+      {
+        
+        if let loclity = currentLocality.locality
         {
+          if let  subLocality = currentLocality.subLocality
+          {
+            self.lblCurrentLocation.text = "\(subLocality),\(loclity)"
+          }else
+          {
+            self.lblCurrentLocation.text = "\(loclity)"
             
-             self.lblCurrentLocation.text = customLocaitonStr
-        }else{
-            
-            if let currentLocality = bro4u_DataManager.sharedInstance.currentLocality
-            {
-                
-                if let loclity = currentLocality.locality
-                {
-                    if let  subLocality = currentLocality.subLocality
-                    {
-                        self.lblCurrentLocation.text = "\(subLocality),\(loclity)"
-                    }else
-                    {
-                        self.lblCurrentLocation.text = "\(loclity)"
-                        
-                    }
-                }
-                
-                
-                
-            }else
-            {
-                self.lblCurrentLocation.text = "Current Location"
-                
-            }
-
+          }
         }
+        
+        
+        
+      }else
+      {
+        self.lblCurrentLocation.text = "Current Location"
+        
+      }
+
 
     }
     @IBAction func homeBtnPressed(sender: AnyObject) {
-        
+      
         self.navigationController?.popToRootViewControllerAnimated(true)
 
     }

@@ -846,7 +846,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             longitude = "\(currentLocaiotn.coordinate.longitude)"
             
         }
-        
+      
         var params = "?cat_id=\(catId)&\(kAppendURLWithApiToken)"
         
         let keys = selectedIndexPath.keys

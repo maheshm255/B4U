@@ -453,16 +453,36 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     func userCurrentLocaion()
     {
         
-        if let lastSearchedLocation = NSUserDefaults.standardUserDefaults().objectForKey("customLocation")
-        {
-            self.btnCurrentLocation.setTitle(lastSearchedLocation as? String, forState:.Normal)
-            
-            bro4u_DataManager.sharedInstance.userSelectedLocatinStr = lastSearchedLocation as! String
-
-        }else{
+//        if let lastSearchedLocation = NSUserDefaults.standardUserDefaults().objectForKey("customLocation")
+//        {
+//            self.btnCurrentLocation.setTitle(lastSearchedLocation as? String, forState:.Normal)
+//            
+//            bro4u_DataManager.sharedInstance.userSelectedLocatinStr = lastSearchedLocation as! String
+//
+//        }else{
+//            if let currentLocality = bro4u_DataManager.sharedInstance.currentLocality
+//            {
+//                
+//                if let loclity = currentLocality.locality
+//                {
+//                    if let  subLocality = currentLocality.subLocality
+//                    {
+//                        self.btnCurrentLocation.setTitle("\(subLocality),\(loclity)", forState:.Normal)
+//                    }else
+//                    {
+//                        self.btnCurrentLocation.setTitle("\(loclity)", forState:.Normal)
+//                        
+//                    }
+//                }
+//            }else
+//            {
+//                self.btnCurrentLocation.setTitle("Current Location", forState:.Normal)
+//            }
+//        }
+      
             if let currentLocality = bro4u_DataManager.sharedInstance.currentLocality
             {
-                
+
                 if let loclity = currentLocality.locality
                 {
                     if let  subLocality = currentLocality.subLocality
@@ -471,31 +491,31 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
                     }else
                     {
                         self.btnCurrentLocation.setTitle("\(loclity)", forState:.Normal)
-                        
+
                     }
                 }
             }else
             {
                 self.btnCurrentLocation.setTitle("Current Location", forState:.Normal)
             }
-        }
-       
+
+      
     }
 
-    
+  
     //MARK: - Location Delegates
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         
-        self.locationManager?.stopUpdatingLocation()
+        self.locationManager?.startUpdatingLocation()
 
         bro4u_DataManager.sharedInstance.currenLocation = manager.location
         
         
         print("\(manager.location?.coordinate.latitude )  ....  \(manager.location?.coordinate.longitude )")
-        CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error) ->Void in
-            
+        CLGeocoder().reverseGeocodeLocation((manager.location)!, completionHandler: {(placemarks, error) ->Void in
+          
             
             if (error != nil) {
                 print("Reverse geocoder failed with error" + error!.localizedDescription)
