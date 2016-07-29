@@ -102,7 +102,7 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         }
     }
     
-    
+    //Network Reachable Test
     func getData()
     {
         //2. Checking for Network reachability

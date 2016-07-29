@@ -498,30 +498,85 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     
     @IBAction func placeOrder(sender: AnyObject){
         
-        if radioButtonSelected != nil
-        {
-        if radioButtonSelected >= 0 {
-            
-            switch radioButtonSelected! {
-            case 0:
-               delegate?.navigateToPaymentGateWay(paymentOption.kPaytm)
-            case 1:
-                delegate?.navigateToPaymentGateWay(paymentOption.kCCDC)
-            case 2:
-                delegate?.navigateToPaymentGateWay(paymentOption.kNetBanking)
-            case 3:
-                delegate?.navigateToPaymentGateWay(paymentOption.kCOD)
-            default:
-                break
-            }
-
-        }
-        }else
-        {
-            self.view.makeToast(message:"Please Select Payment Option", duration:1.0, position:HRToastPositionDefault)
-        }
+        self.placeOrderData()
         
     }
+    
+//    func placeOrderData(){
+//        
+//        if radioButtonSelected != nil
+//        {
+//            if radioButtonSelected >= 0 {
+//                
+//                switch radioButtonSelected! {
+//                case 0:
+//                    delegate?.navigateToPaymentGateWay(paymentOption.kPaytm)
+//                case 1:
+//                    delegate?.navigateToPaymentGateWay(paymentOption.kCCDC)
+//                case 2:
+//                    delegate?.navigateToPaymentGateWay(paymentOption.kNetBanking)
+//                case 3:
+//                    delegate?.navigateToPaymentGateWay(paymentOption.kCOD)
+//                default:
+//                    break
+//                }
+//                
+//            }
+//        }else
+//        {
+//            self.view.makeToast(message:"Please Select Payment Option", duration:1.0, position:HRToastPositionDefault)
+//        }
+//    }
+    
+    //Network Reachable Test
+    func placeOrderData()
+    {
+        //2. Checking for Network reachability
+        
+        if(AFNetworkReachabilityManager.sharedManager().reachable){
+            
+            if radioButtonSelected != nil
+            {
+                if radioButtonSelected >= 0 {
+                    
+                    switch radioButtonSelected! {
+                    case 0:
+                        delegate?.navigateToPaymentGateWay(paymentOption.kPaytm)
+                    case 1:
+                        delegate?.navigateToPaymentGateWay(paymentOption.kCCDC)
+                    case 2:
+                        delegate?.navigateToPaymentGateWay(paymentOption.kNetBanking)
+                    case 3:
+                        delegate?.navigateToPaymentGateWay(paymentOption.kCOD)
+                    default:
+                        break
+                    }
+                    
+                }
+            }else
+            {
+                self.view.makeToast(message:"Please Select Payment Option", duration:1.0, position:HRToastPositionDefault)
+            }
+            //5.Remove observer if any remain
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+            
+        }else{
+            //3. First Remove any existing Observer
+            //Add Observer for No network Connection
+            
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_PaymentViewController.placeOrderData), name: "NoNetworkConnectionNotification", object: nil)
+            
+            //4.Adding View for Retry
+            let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+            self.view.addSubview(noNetworkView)
+            
+            return
+        }
+        
+        
+    }
+
     
     func addLoadingIndicator () {
         self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
