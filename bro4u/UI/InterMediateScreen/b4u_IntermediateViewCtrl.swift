@@ -122,77 +122,167 @@ class b4u_IntermediateViewCtrl: UIViewController {
     
     
     
+//    func callInterMediateApi()
+//    {
+//        
+//        if let aSelectedCatObj = selectedCategoryObj
+//        {
+//            b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//
+//            var user_id = ""
+//            if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+//                user_id = loginInfoData.userId! //Need to use later
+//            }
+//
+//            let catId = aSelectedCatObj.catId!
+////            let user_id = "15" //TODO
+//            let deviceId = b4u_Utility.getUUIDFromVendorIdentifier()
+//            
+//            var params = "?cat_id=\(catId)&user_id=\(user_id)&device_id=\(deviceId)&\(kAppendURLWithApiToken)"
+//            
+//            if  let aSelectedAttributeOption = selectedAttributeOption
+//            {
+//                if let optionId = aSelectedAttributeOption.optionId
+//                {
+//                    params = params + "&option_id=\(optionId)"
+//                }
+//                
+//                if let fieldName = aSelectedAttributeOption.fieldName
+//                {
+//                    params = params + "&field_name=\(fieldName)"
+//                    
+//                }
+//            }else
+//            {
+//                if let optionId = aSelectedCatObj.optionId
+//                {
+//                    params = params + "&option_id=\(optionId)"
+//                }
+//                
+//                if let fieldName = aSelectedCatObj.fieldName
+//                {
+//                    params = params + "&field_name=\(fieldName)"
+//                    
+//                }
+//            }
+//            b4u_WebApiCallManager.sharedInstance.getApiCall(intermediateScreenAPi, params:params, result:{(resultObject) -> Void in
+//                
+//                self.performSelectorOnMainThread("updateUI", withObject:nil, waitUntilDone:true)
+//            })
+//        }else if let aSelectedImgObj = self.selectedImgSlide
+//        {
+//            
+//            b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//            var user_id = ""
+//            if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+//                user_id = loginInfoData.userId! //Need to use later
+//            }
+//
+//            let catId = aSelectedImgObj.catId!
+////            let user_id = "15" //TODO
+//            let deviceId = b4u_Utility.getUUIDFromVendorIdentifier()
+//            
+//            let params = "?cat_id=\(catId)&user_id=\(user_id)&device_id=\(deviceId)&\(kAppendURLWithApiToken)"
+//            
+//            b4u_WebApiCallManager.sharedInstance.getApiCall(intermediateScreenAPi, params:params, result:{(resultObject) -> Void in
+//                
+//                self.performSelectorOnMainThread("updateUI", withObject:nil, waitUntilDone:true)
+//            })
+//        }
+//        
+//    }
+  
+  
     func callInterMediateApi()
     {
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
         
         if let aSelectedCatObj = selectedCategoryObj
         {
-            b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-
-            var user_id = ""
-            if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
-                user_id = loginInfoData.userId! //Need to use later
-            }
-
-            let catId = aSelectedCatObj.catId!
-//            let user_id = "15" //TODO
-            let deviceId = b4u_Utility.getUUIDFromVendorIdentifier()
-            
-            var params = "?cat_id=\(catId)&user_id=\(user_id)&device_id=\(deviceId)&\(kAppendURLWithApiToken)"
-            
-            if  let aSelectedAttributeOption = selectedAttributeOption
+          b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+          
+          var user_id = ""
+          if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+            user_id = loginInfoData.userId! //Need to use later
+          }
+          
+          let catId = aSelectedCatObj.catId!
+          //            let user_id = "15" //TODO
+          let deviceId = b4u_Utility.getUUIDFromVendorIdentifier()
+          
+          var params = "?cat_id=\(catId)&user_id=\(user_id)&device_id=\(deviceId)&\(kAppendURLWithApiToken)"
+          
+          if  let aSelectedAttributeOption = selectedAttributeOption
+          {
+            if let optionId = aSelectedAttributeOption.optionId
             {
-                if let optionId = aSelectedAttributeOption.optionId
-                {
-                    params = params + "&option_id=\(optionId)"
-                }
-                
-                if let fieldName = aSelectedAttributeOption.fieldName
-                {
-                    params = params + "&field_name=\(fieldName)"
-                    
-                }
-            }else
-            {
-                if let optionId = aSelectedCatObj.optionId
-                {
-                    params = params + "&option_id=\(optionId)"
-                }
-                
-                if let fieldName = aSelectedCatObj.fieldName
-                {
-                    params = params + "&field_name=\(fieldName)"
-                    
-                }
+              params = params + "&option_id=\(optionId)"
             }
-            b4u_WebApiCallManager.sharedInstance.getApiCall(intermediateScreenAPi, params:params, result:{(resultObject) -> Void in
-                
-                self.performSelectorOnMainThread("updateUI", withObject:nil, waitUntilDone:true)
-            })
+            
+            if let fieldName = aSelectedAttributeOption.fieldName
+            {
+              params = params + "&field_name=\(fieldName)"
+              
+            }
+          }else
+          {
+            if let optionId = aSelectedCatObj.optionId
+            {
+              params = params + "&option_id=\(optionId)"
+            }
+            
+            if let fieldName = aSelectedCatObj.fieldName
+            {
+              params = params + "&field_name=\(fieldName)"
+              
+            }
+          }
+          b4u_WebApiCallManager.sharedInstance.getApiCall(intermediateScreenAPi, params:params, result:{(resultObject) -> Void in
+            
+            self.performSelectorOnMainThread("updateUI", withObject:nil, waitUntilDone:true)
+          })
         }else if let aSelectedImgObj = self.selectedImgSlide
         {
+          
+          b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+          var user_id = ""
+          if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+            user_id = loginInfoData.userId! //Need to use later
+          }
+          
+          let catId = aSelectedImgObj.catId!
+          //            let user_id = "15" //TODO
+          let deviceId = b4u_Utility.getUUIDFromVendorIdentifier()
+          
+          let params = "?cat_id=\(catId)&user_id=\(user_id)&device_id=\(deviceId)&\(kAppendURLWithApiToken)"
+          
+          b4u_WebApiCallManager.sharedInstance.getApiCall(intermediateScreenAPi, params:params, result:{(resultObject) -> Void in
             
-            b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-            var user_id = ""
-            if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
-                user_id = loginInfoData.userId! //Need to use later
-            }
-
-            let catId = aSelectedImgObj.catId!
-//            let user_id = "15" //TODO
-            let deviceId = b4u_Utility.getUUIDFromVendorIdentifier()
-            
-            let params = "?cat_id=\(catId)&user_id=\(user_id)&device_id=\(deviceId)&\(kAppendURLWithApiToken)"
-            
-            b4u_WebApiCallManager.sharedInstance.getApiCall(intermediateScreenAPi, params:params, result:{(resultObject) -> Void in
-                
-                self.performSelectorOnMainThread("updateUI", withObject:nil, waitUntilDone:true)
-            })
+            self.performSelectorOnMainThread("updateUI", withObject:nil, waitUntilDone:true)
+          })
         }
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
         
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_IntermediateViewCtrl.callInterMediateApi), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
     }
+  
     @IBAction func cancelButttonClicked(sender: AnyObject) {
-        
+      
         self.dismissViewControllerAnimated(true, completion:nil)
     }
     

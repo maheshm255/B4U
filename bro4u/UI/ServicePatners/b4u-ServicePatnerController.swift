@@ -105,33 +105,71 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
     //cat_id=2&latitude=12.9718915&longitude=77.6411545
 
     
+//    func callServicePatnerApi()
+//    {
+//
+//        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//
+//        if let aSelectedCatObj = selectedCategoryObj , patnersResult = bro4u_DataManager.sharedInstance.suggestedPatnersResult
+//        {
+//      
+//            self.serviceAPIRequest(aSelectedCatObj.catId!, nextPage:patnersResult.nextPage!)
+//        }else if let aSelectedImgObj = self.selectedImgSlide , patnersResult = bro4u_DataManager.sharedInstance.suggestedPatnersResult
+//        {
+//            self.serviceAPIRequest(aSelectedImgObj.catId!, nextPage:patnersResult.nextPage!)
+//            
+//            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+//
+//
+//        }
+//    }
+  
     func callServicePatnerApi()
     {
-
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
+        
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-
+        
         if let aSelectedCatObj = selectedCategoryObj , patnersResult = bro4u_DataManager.sharedInstance.suggestedPatnersResult
         {
-      
-            self.serviceAPIRequest(aSelectedCatObj.catId!, nextPage:patnersResult.nextPage!)
+          
+          self.serviceAPIRequest(aSelectedCatObj.catId!, nextPage:patnersResult.nextPage!)
         }else if let aSelectedImgObj = self.selectedImgSlide , patnersResult = bro4u_DataManager.sharedInstance.suggestedPatnersResult
         {
-            self.serviceAPIRequest(aSelectedImgObj.catId!, nextPage:patnersResult.nextPage!)
-            
-            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-
-
+          self.serviceAPIRequest(aSelectedImgObj.catId!, nextPage:patnersResult.nextPage!)
+          
+          b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+          
+          
         }
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_ServicePatnerController.callServicePatnerApi), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
     }
-    
-    
+  
+  
     func serviceAPIRequest(catId:String , nextPage:NSNumber)
     {
-        
+      
        // let catId = catId
 
-        
-        
+      
+      
         var latitude =  "12.9718915"
         var longitude = "77.6411545"
         

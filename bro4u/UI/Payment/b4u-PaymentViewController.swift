@@ -51,13 +51,50 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     
     
     override func viewDidLoad() {
+      self.showPaymentOptions()
 
+    }
+  
+//    func showPaymentOptions()
+//    {
+//      self.loadAmountPayable()
+//      
+//      
+//      if let copiedCoupon =   bro4u_DataManager.sharedInstance.copiedCopunCode{
+//        UIPasteboard.generalPasteboard().string = copiedCoupon
+//      }
+//      
+//      let tapGesture = UITapGestureRecognizer(target:self, action:"applyCouponCodeViewTaped")
+//      tapGesture.numberOfTouchesRequired = 1
+//      self.viewCouponCode.addGestureRecognizer(tapGesture)
+//      self.addLoadingIndicator()
+//      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//      super.viewDidLoad()
+//      b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+//      
+//      // Do any additional setup after loading the view.
+//      
+//      //To Give Shadow to Views
+//      b4u_Utility.shadowEffectToView(viewCouponCode)
+//      
+//      b4u_Utility.shadowEffectToView(paymentTableView)
+//      
+//      self.createOfferDict()
+//    }
+  
+  
+    func showPaymentOptions()
+    {
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
+        
         self.loadAmountPayable()
-
-
+        
+        
         if let copiedCoupon =   bro4u_DataManager.sharedInstance.copiedCopunCode{
-            UIPasteboard.generalPasteboard().string = copiedCoupon
-         }
+          UIPasteboard.generalPasteboard().string = copiedCoupon
+        }
         
         let tapGesture = UITapGestureRecognizer(target:self, action:"applyCouponCodeViewTaped")
         tapGesture.numberOfTouchesRequired = 1
@@ -71,13 +108,29 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         
         //To Give Shadow to Views
         b4u_Utility.shadowEffectToView(viewCouponCode)
-
+        
         b4u_Utility.shadowEffectToView(paymentTableView)
         
-      self.createOfferDict()
-
+        self.createOfferDict()
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_PaymentViewController.showPaymentOptions), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
     }
-    
+  
+  
     func loadAmountPayable()
     {
         if let orderDetailModel = bro4u_DataManager.sharedInstance.orderDetailData.first

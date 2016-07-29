@@ -32,6 +32,8 @@ class b4u_AddAddressCtrl: UIViewController,locationDelegate {
         
         self.tfCurrentPlace.enabled = false
         self.tfCurrentLocation.enabled = false
+      
+      
         self.getCities()
     }
 
@@ -56,21 +58,56 @@ class b4u_AddAddressCtrl: UIViewController,locationDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    
+  
+  
+  
+//    func getCities()
+//    {
+//        let params = "?\(kAppendURLWithApiToken)"
+//
+//        b4u_WebApiCallManager.sharedInstance.getApiCall(kGetCities, params:params, result:{(resultObject) -> Void in
+//            
+//            print("city received")
+//            
+//            
+//            self.updateUI()
+//        })
+//    }
+    //Network Reachability Code
     func getCities()
     {
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
+        
         let params = "?\(kAppendURLWithApiToken)"
-
+        
         b4u_WebApiCallManager.sharedInstance.getApiCall(kGetCities, params:params, result:{(resultObject) -> Void in
-            
-            print("city received")
-            
-            
-            self.updateUI()
+          
+          print("city received")
+          
+          
+          self.updateUI()
         })
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_AddAddressCtrl.getCities), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
     }
-    
-    
+  
+  
     func updateUI()
     {
         if bro4u_DataManager.sharedInstance.cities.count > 0
@@ -101,29 +138,31 @@ class b4u_AddAddressCtrl: UIViewController,locationDelegate {
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+  
+  
     @IBAction func BtnSaveAddressPressed(sender: AnyObject)
     {
-        
-        
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
+      
         var user_id = ""
         if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
-            user_id = loginInfoData.userId! //Need to use later
+          user_id = loginInfoData.userId! //Need to use later
         }
         
         
         guard let name = tfYourName.text where name != "" else{
-            self.view.makeToast(message:"Please Enter Name", duration:1.0, position:HRToastPositionDefault)
-            return
+          self.view.makeToast(message:"Please Enter Name", duration:1.0, position:HRToastPositionDefault)
+          return
         }
         
         guard let email = tfEmail.text where email != "" else{
-            self.view.makeToast(message:"Please Enter Email Id", duration:1.0, position:HRToastPositionDefault)
-            return
+          self.view.makeToast(message:"Please Enter Email Id", duration:1.0, position:HRToastPositionDefault)
+          return
         }
         
         guard let mobile = tfMobileNumber.text where mobile != "" else{
-            self.view.makeToast(message:"Please Enter Mobile Number", duration:1.0, position:HRToastPositionDefault)
-            return
+          self.view.makeToast(message:"Please Enter Mobile Number", duration:1.0, position:HRToastPositionDefault)
+          return
         }
         
         let streetName = tfFullAddress.text
@@ -148,15 +187,31 @@ class b4u_AddAddressCtrl: UIViewController,locationDelegate {
         let params = "?user_id=\(user_id)&street_name=\(streetName!)&locality=\(locality!)&city_id=\(cityId)&name=\(name)&latitude=\(latitude)&longitude=\(longitude)&mobile=\(mobile)&email=\(email)&\(kAppendURLWithApiToken)"
         
         b4u_WebApiCallManager.sharedInstance.getApiCall(kSaveAddress, params:params, result:{(resultObject) -> Void in
+          
+          dispatch_async(dispatch_get_main_queue(), {
             
-            dispatch_async(dispatch_get_main_queue(), {
-                
-                self.updateUI(resultObject as! String)
-            })
-            
+            self.updateUI(resultObject as! String)
+          })
+          
         })
+      }
+      else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_AddAddressCtrl.BtnSaveAddressPressed), name: "NoNetworkConnectionNotification", object: self)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
+
+      
     }
-    
+  
     func updateUI(result:String)
     {
         if result == "Success"

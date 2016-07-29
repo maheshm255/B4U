@@ -22,16 +22,49 @@ class OfferZoneViewController: UIViewController,UITableViewDataSource,UITableVie
         
     }
     
+//    func getData()
+//    {
+//        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//
+//        var user_id = ""
+//        
+//        if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+//            
+//            user_id = loginInfoData.userId! //Need to use later
+//            
+//        }
+//        
+//        //user_id = "1"
+//        let deviceID = "kdsflasdf"
+//        
+//        let params = "?device_id=\(deviceID)&user_id=\(user_id)&\(kAppendURLWithApiToken)"
+//        
+//        b4u_WebApiCallManager.sharedInstance.getApiCall(kOfferZoneIndex , params:params, result:{(resultObject) -> Void in
+//            
+//            print(" Offer Zone Data Received")
+//            
+//            print(resultObject)
+//            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+//            self.congigureUI()
+//            
+//        })
+//    }
+  
+  
     func getData()
     {
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
+        
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-
+        
         var user_id = ""
         
         if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
-            
-            user_id = loginInfoData.userId! //Need to use later
-            
+          
+          user_id = loginInfoData.userId! //Need to use later
+          
         }
         
         //user_id = "1"
@@ -40,22 +73,37 @@ class OfferZoneViewController: UIViewController,UITableViewDataSource,UITableVie
         let params = "?device_id=\(deviceID)&user_id=\(user_id)&\(kAppendURLWithApiToken)"
         
         b4u_WebApiCallManager.sharedInstance.getApiCall(kOfferZoneIndex , params:params, result:{(resultObject) -> Void in
-            
-            print(" Offer Zone Data Received")
-            
-            print(resultObject)
-            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-            self.congigureUI()
-            
+          
+          print(" Offer Zone Data Received")
+          
+          print(resultObject)
+          b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+          self.congigureUI()
+          
         })
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(OfferZoneViewController.getData), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
     }
-    
-    
+  
     func congigureUI()
     {
         offerZoneTableView.reloadData()
     }
-    
+  
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

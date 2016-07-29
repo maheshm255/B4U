@@ -41,62 +41,126 @@ class b4u_OrderConfirmedCODViewController: UIViewController  , createOrderDelega
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        self.addLoadingIndicator()
       
+       self.orderConfirmedCOD()
         
-        if let orderId = b4u_Utility.sharedInstance.getUserDefault("order_id")
-        {
-            
-            let orderID = Int(orderId as! String)
-            bro4u_DataManager.sharedInstance.orderId = NSNumber(integer:orderID!)
-            self.getDataOfThanksScreen("Success")
-
-        }else
-        {
-            b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-            let createOrderObj = b4u_CreateOrder()
-            createOrderObj.paymentType  = kCODPayment
-            createOrderObj.delegate = self
-            createOrderObj.createOrder()
-            topView.hidden = true
-            middleView.hidden = true
-            downView.hidden = true
-            btnContinue.hidden = true
-        }
-//        if (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) {
-//            
-//         
-//            
-//        }
-//        else
+//        self.addLoadingIndicator()
+//      
+//        
+//        if let orderId = b4u_Utility.sharedInstance.getUserDefault("order_id")
 //        {
-//          b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-//          let createOrderObj = b4u_CreateOrder()
-//          createOrderObj.paymentType  = kCODPayment
-//          createOrderObj.delegate = self
-//          createOrderObj.createOrder()
-//          topView.hidden = true
-//          middleView.hidden = true
-//          downView.hidden = true
-//          btnContinue.hidden = true
+//            
+//            let orderID = Int(orderId as! String)
+//            bro4u_DataManager.sharedInstance.orderId = NSNumber(integer:orderID!)
+//            self.getDataOfThanksScreen("Success")
+//
+//        }else
+//        {
+//            b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//            let createOrderObj = b4u_CreateOrder()
+//            createOrderObj.paymentType  = kCODPayment
+//            createOrderObj.delegate = self
+//            createOrderObj.createOrder()
+//            topView.hidden = true
+//            middleView.hidden = true
+//            downView.hidden = true
+//            btnContinue.hidden = true
 //        }
-
-        lblServiceStatus.layer.borderWidth = 1.0
-        lblServiceStatus.layer.borderColor = UIColor.lightGrayColor().CGColor
-      
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"loginDismissed", name:kUserDataReceived, object:nil);
-
-      let backButton = UIBarButtonItem(title: "< Back", style: .Plain, target: self, action:"doneBtnPressed")
-        
-      navigationItem.leftBarButtonItem = backButton
-      
-      b4u_Utility.shadowEffectToView(middleView)
-      b4u_Utility.shadowEffectToView(downView)
+////        if (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) {
+////            
+////         
+////            
+////        }
+////        else
+////        {
+////          b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+////          let createOrderObj = b4u_CreateOrder()
+////          createOrderObj.paymentType  = kCODPayment
+////          createOrderObj.delegate = self
+////          createOrderObj.createOrder()
+////          topView.hidden = true
+////          middleView.hidden = true
+////          downView.hidden = true
+////          btnContinue.hidden = true
+////        }
+//
+//        lblServiceStatus.layer.borderWidth = 1.0
+//        lblServiceStatus.layer.borderColor = UIColor.lightGrayColor().CGColor
+//      
+//        
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector:"loginDismissed", name:kUserDataReceived, object:nil);
+//
+//      let backButton = UIBarButtonItem(title: "< Back", style: .Plain, target: self, action:"doneBtnPressed")
+//        
+//      navigationItem.leftBarButtonItem = backButton
+//      
+//      b4u_Utility.shadowEffectToView(middleView)
+//      b4u_Utility.shadowEffectToView(downView)
 
 
     }
+  
+  
+    //Network Reachability Code
+    func orderConfirmedCOD()
+    {
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
+        
+        self.addLoadingIndicator()
+        
+        
+        if let orderId = b4u_Utility.sharedInstance.getUserDefault("order_id")
+        {
+          
+          let orderID = Int(orderId as! String)
+          bro4u_DataManager.sharedInstance.orderId = NSNumber(integer:orderID!)
+          self.getDataOfThanksScreen("Success")
+          
+        }else
+        {
+          b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+          let createOrderObj = b4u_CreateOrder()
+          createOrderObj.paymentType  = kCODPayment
+          createOrderObj.delegate = self
+          createOrderObj.createOrder()
+          topView.hidden = true
+          middleView.hidden = true
+          downView.hidden = true
+          btnContinue.hidden = true
+        }
+        
+        lblServiceStatus.layer.borderWidth = 1.0
+        lblServiceStatus.layer.borderColor = UIColor.lightGrayColor().CGColor
+        
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"loginDismissed", name:kUserDataReceived, object:nil);
+        
+        let backButton = UIBarButtonItem(title: "< Back", style: .Plain, target: self, action:"doneBtnPressed")
+        
+        navigationItem.leftBarButtonItem = backButton
+        
+        b4u_Utility.shadowEffectToView(middleView)
+        b4u_Utility.shadowEffectToView(downView)
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_OrderConfirmedCODViewController.orderConfirmedCOD), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

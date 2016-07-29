@@ -54,33 +54,82 @@ class MyOrderViewController: UIViewController,UIPopoverPresentationControllerDel
         
     }
   
-    func getData()
-    {
+//    func getData()
+//    {
+//      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//
+//        var user_id = ""
+//        
+//        if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+//            
+//            user_id = loginInfoData.userId! //Need to use later
+//            
+//        }
+//        
+//        //user_id = "1"
+//        
+//        let params = "?user_id=\(user_id)&\(kAppendURLWithApiToken)"
+//        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyOrdersIndex , params:params, result:{(resultObject) -> Void in
+//            
+//            print(" Orders Data Received")
+//            
+//            print(resultObject)
+//            
+//            self.congigureUI()
+//            
+//        })
+//    }
+  
+  
+  func getData()
+  {
+    //2. Checking for Network reachability
+    
+    if(AFNetworkReachabilityManager.sharedManager().reachable){
+      
       b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-
-        var user_id = ""
+      
+      var user_id = ""
+      
+      if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
         
-        if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
-            
-            user_id = loginInfoData.userId! //Need to use later
-            
-        }
+        user_id = loginInfoData.userId! //Need to use later
         
-        //user_id = "1"
+      }
+      
+      //user_id = "1"
+      
+      let params = "?user_id=\(user_id)&\(kAppendURLWithApiToken)"
+      b4u_WebApiCallManager.sharedInstance.getApiCall(kMyOrdersIndex , params:params, result:{(resultObject) -> Void in
         
-        let params = "?user_id=\(user_id)&\(kAppendURLWithApiToken)"
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyOrdersIndex , params:params, result:{(resultObject) -> Void in
-            
-            print(" Orders Data Received")
-            
-            print(resultObject)
-            
-            self.congigureUI()
-            
-        })
+        print(" Orders Data Received")
+        
+        print(resultObject)
+        
+        self.congigureUI()
+        
+      })
+      //3.Remove observer if any remain
+      NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+      
+    }else{
+      //4. First Remove any existing Observer
+      //Add Observer for No network Connection
+      
+      NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+      NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyOrderViewController.getData), name: "NoNetworkConnectionNotification", object: nil)
+      
+      //5.Adding View for Retry
+      let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+      self.view.addSubview(noNetworkView)
+      
+      return
     }
     
     
+  }
+  
+  
     override func viewWillAppear(animated: Bool)
     {
 
@@ -88,7 +137,7 @@ class MyOrderViewController: UIViewController,UIPopoverPresentationControllerDel
         self.validateUser()
 
     }
-    
+  
 
     func congigureUI()
     {

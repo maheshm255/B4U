@@ -50,26 +50,66 @@ class MyInfoViewController: UIViewController ,UITextFieldDelegate ,UIPopoverPres
 
     }
   
+//    func getData()
+//    {
+//      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//
+//        
+//        let userId = bro4u_DataManager.sharedInstance.loginInfo!.userId!
+//        
+//        let params = "?user_id=\(userId)&\(kAppendURLWithApiToken)"
+//        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyInfoIndex, params:params, result:{(resultObject) -> Void in
+//            
+//            print("My Info Data Received")
+//            
+//            print(resultObject)
+//            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+//
+//            self.updateUI()
+//        })
+//    }
+  
     func getData()
     {
-      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
+        
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+        
         
         let userId = bro4u_DataManager.sharedInstance.loginInfo!.userId!
         
         let params = "?user_id=\(userId)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kMyInfoIndex, params:params, result:{(resultObject) -> Void in
-            
-            print("My Info Data Received")
-            
-            print(resultObject)
-            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-
-            self.updateUI()
+          
+          print("My Info Data Received")
+          
+          print(resultObject)
+          b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+          
+          self.updateUI()
         })
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyInfoViewController.getData), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
+      
+      
     }
-    
-    
+  
     func didTapView(){
         self.view.endEditing(true)
     }

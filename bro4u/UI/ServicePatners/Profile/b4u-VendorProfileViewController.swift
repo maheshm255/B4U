@@ -88,35 +88,120 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
     
 
     
+//    func getItemPriceChart()
+//    {
+//        let itemId = bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.itemId!
+//        let params = "?item_id=\(itemId)&\(kAppendURLWithApiToken)"
+//        b4u_WebApiCallManager.sharedInstance.getApiCall(kPriceChartIndex, params:params, result:{(resultObject) -> Void in
+//            
+//            self.allWebApiSuccessCount++
+//
+//            self.configureUI()
+//            
+//        })
+//    }
+//    
+//    func getItemDescriptionIndex()
+//    {
+//        
+//        let itemId = bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.itemId!
+//        let params = "?item_id=\(itemId)&\(kAppendURLWithApiToken)"
+//        b4u_WebApiCallManager.sharedInstance.getApiCall(kItemDescriptionIndex, params:params, result:{(resultObject) -> Void in
+//            
+//            self.allWebApiSuccessCount++
+//            
+//            self.configureUI()
+//        })
+//    }
+//    
+//    
+//    func getProfileData()
+//    {
+//        
+//        let selectedDate = NSDate.dateFormat().stringFromDate(bro4u_DataManager.sharedInstance.selectedDate!)
+//        
+//        let selectedTime = bro4u_DataManager.sharedInstance.selectedTimeSlot!
+//        
+//        let params = "/\(bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.itemId!)\(bro4u_DataManager.sharedInstance.userSelectedFilterParams!)&service_date=\(selectedDate)&service_time=\(selectedTime)&\(kAppendURLWithApiToken)"
+//        
+//        b4u_WebApiCallManager.sharedInstance.getApiCall(kViewProfileIndex, params:params, result:{(resultObject) -> Void in
+//            
+//            self.allWebApiSuccessCount++
+//            self.configureUI()
+//        })
+//    }
+  
+  
     func getItemPriceChart()
     {
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
+        
         let itemId = bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.itemId!
         let params = "?item_id=\(itemId)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kPriceChartIndex, params:params, result:{(resultObject) -> Void in
-            
-            self.allWebApiSuccessCount++
-
-            self.configureUI()
-            
+          
+          self.allWebApiSuccessCount++
+          
+          self.configureUI()
+          
         })
+        //5.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        
+      }else{
+        //3. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_VendorProfileViewController.getItemPriceChart), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //4.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
     }
-    
+
     func getItemDescriptionIndex()
     {
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
         
         let itemId = bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.itemId!
         let params = "?item_id=\(itemId)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kItemDescriptionIndex, params:params, result:{(resultObject) -> Void in
-            
-            self.allWebApiSuccessCount++
-            
-            self.configureUI()
+          
+          self.allWebApiSuccessCount++
+          
+          self.configureUI()
         })
+        //5.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        
+      }else{
+        //3. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_VendorProfileViewController.getItemDescriptionIndex), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //4.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
     }
-    
-    
+
     func getProfileData()
     {
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
         
         let selectedDate = NSDate.dateFormat().stringFromDate(bro4u_DataManager.sharedInstance.selectedDate!)
         
@@ -125,13 +210,29 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
         let params = "/\(bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.itemId!)\(bro4u_DataManager.sharedInstance.userSelectedFilterParams!)&service_date=\(selectedDate)&service_time=\(selectedTime)&\(kAppendURLWithApiToken)"
         
         b4u_WebApiCallManager.sharedInstance.getApiCall(kViewProfileIndex, params:params, result:{(resultObject) -> Void in
-            
-            self.allWebApiSuccessCount++
-            self.configureUI()
+          
+          self.allWebApiSuccessCount++
+          self.configureUI()
         })
+        //5.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        
+      }else{
+        //3. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_VendorProfileViewController.getProfileData), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //4.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
     }
-    
-    
+
+  
     func configureUI()
     {
 

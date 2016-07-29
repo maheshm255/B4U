@@ -62,8 +62,45 @@ class ReferAndEarnViewController: UIViewController,UIPopoverPresentationControll
         self.btnReferFriends.hidden = isHide
         
     }
+//    func getData()
+//    {
+//        self.hideElements(false)
+//        self.addLoadingIndicator()
+//        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//        
+//        var user_id = ""
+//        
+//        if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+//            
+//            user_id = loginInfoData.userId! //Need to use later
+//            
+//        }
+//        
+//        //user_id = "1"
+//        
+//        let params = "?user_id=\(user_id)&\(kAppendURLWithApiToken)"
+//        b4u_WebApiCallManager.sharedInstance.getApiCall(kReferAndEarnIndex , params:params, result:{(resultObject) -> Void in
+//            
+//            print(" Refer And Earn Data Received")
+//            
+//            print(resultObject)
+//            
+//            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+//            
+//            self.congigureUI()
+//            
+//        })
+//        
+//        
+//    }
+  
+  
     func getData()
     {
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
+        
         self.hideElements(false)
         self.addLoadingIndicator()
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
@@ -71,35 +108,49 @@ class ReferAndEarnViewController: UIViewController,UIPopoverPresentationControll
         var user_id = ""
         
         if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
-            
-            user_id = loginInfoData.userId! //Need to use later
-            
+          
+          user_id = loginInfoData.userId! //Need to use later
+          
         }
         
         //user_id = "1"
         
         let params = "?user_id=\(user_id)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kReferAndEarnIndex , params:params, result:{(resultObject) -> Void in
-            
-            print(" Refer And Earn Data Received")
-            
-            print(resultObject)
-            
-            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-            
-            self.congigureUI()
-            
+          
+          print(" Refer And Earn Data Received")
+          
+          print(resultObject)
+          
+          b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+          
+          self.congigureUI()
+          
         })
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
         
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
         
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_HomeViewController.getData), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
     }
-    
+  
     func congigureUI()
     {
-        
-        
+      
+      
         //For UnderLine Button Text
-        
+      
         let attrs = [NSUnderlineStyleAttributeName : 1]
         let attributedString = NSMutableAttributedString(string:"")
         

@@ -63,38 +63,84 @@ class OrderConfirmedViewController: UIViewController {
     navigationController?.popToRootViewControllerAnimated(true)
   }
     
+//    func getData()
+//    {
+//
+//        var user_id = ""
+//        
+//        if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+//            
+//            user_id = loginInfoData.userId!
+//            
+//        }
+//        if let orderID = bro4u_DataManager.sharedInstance.orderId{
+//            
+//            order_id = "\(orderID)"
+//            
+//        }
+//        
+//        let params = "?order_id=\(order_id!)&user_id=\(user_id)&\(kAppendURLWithApiToken)"
+//        b4u_WebApiCallManager.sharedInstance.getApiCall(kOrderConfirmedIndex , params:params, result:{(resultObject) -> Void in
+//            
+//            print(" Order Confirmed for Online Data Received")
+//            
+//            print(resultObject)
+//            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+//            self.congigureUI()
+//            
+//        })
+//    }
+  
     func getData()
     {
-
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
+        
         var user_id = ""
         
         if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
-            
-            user_id = loginInfoData.userId!
-            
+          
+          user_id = loginInfoData.userId!
+          
         }
         if let orderID = bro4u_DataManager.sharedInstance.orderId{
-            
-            order_id = "\(orderID)"
-            
+          
+          order_id = "\(orderID)"
+          
         }
         
         let params = "?order_id=\(order_id!)&user_id=\(user_id)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kOrderConfirmedIndex , params:params, result:{(resultObject) -> Void in
-            
-            print(" Order Confirmed for Online Data Received")
-            
-            print(resultObject)
-            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-            self.congigureUI()
-            
+          
+          print(" Order Confirmed for Online Data Received")
+          
+          print(resultObject)
+          b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+          self.congigureUI()
+          
         })
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(OrderConfirmedViewController.getData), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
     }
-    
-    
+  
     func congigureUI()
     {
-        
+      
         confirmedOrder =  bro4u_DataManager.sharedInstance.orderData[0]
 
         topView.hidden = false

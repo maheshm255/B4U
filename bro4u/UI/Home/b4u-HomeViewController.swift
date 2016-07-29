@@ -60,7 +60,7 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         self.revealViewController().rightViewRevealWidth = 170
         
         //1. To delay for Network Test
-        self.performSelector("getData", withObject: nil, afterDelay: 0.1)
+        self.performSelector("getData", withObject: nil, afterDelay: 0.2)
 
 //         self.getData()
     
@@ -107,15 +107,33 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     {
         //2. Checking for Network reachability
 
-        if(b4u_WebApiCallManager.sharedInstance.isNetworkRechable()){
+        if(AFNetworkReachabilityManager.sharedManager().reachable){
+          
+          b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+          let params = "?\(kAppendURLWithApiToken)"
+          b4u_WebApiCallManager.sharedInstance.getApiCall(kHomeSCategory, params:params, result:{(resultObject) -> Void in
             
+            print("Category Data Received")
+            
+            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+            
+            self.tableViewCategory.backgroundColor = UIColor.whiteColor()
+            print(resultObject)
+            self.createImagSlideShowUI()
+            
+            self.tableViewCategory.reloadData()
+            
+          })
+          //5.Remove observer if any remain
+          NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+
         }else{
             //3. First Remove any existing Observer 
             //Add Observer for No network Connection
 
             NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
             NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_HomeViewController.getData), name: "NoNetworkConnectionNotification", object: nil)
-            
+          
             //4.Adding View for Retry
             let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
             self.view.addSubview(noNetworkView)
@@ -123,26 +141,9 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
             return
         }
         
-        //5.Remove observer if any remain
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
-        
-        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-        let params = "?\(kAppendURLWithApiToken)"
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kHomeSCategory, params:params, result:{(resultObject) -> Void in
-            
-            print("Category Data Received")
-            
-            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-
-            self.tableViewCategory.backgroundColor = UIColor.whiteColor()
-            print(resultObject)
-            self.createImagSlideShowUI()
-
-            self.tableViewCategory.reloadData()
-            
-        })
+      
     }
-    
+      
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

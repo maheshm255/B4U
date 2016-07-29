@@ -35,20 +35,22 @@ class NoNetworkConnectionView: UIView {
     
     func addNoNetworkView(){
         
-        let dummyLabel = UILabel(frame: CGRectMake(0, 10, self.frame.size.width, 42))
-        dummyLabel.text = "No Network, Please check your internet connection!"
-        dummyLabel.textAlignment = .Center
-        dummyLabel.numberOfLines = 2
+        let dummyLabel = UILabel(frame: CGRectMake(8, 5, self.frame.size.width/2, 40))
+        dummyLabel.text = "No Connection"
+        dummyLabel.textColor = UIColor.whiteColor()
+//        dummyLabel.textAlignment = .Center
+//        dummyLabel.numberOfLines = 2
         dummyLabel.lineBreakMode = .ByWordWrapping
         
         let okButton = UIButton(type: .System)
-        okButton.frame = CGRectMake(75,100, 200, 30)
-        okButton.setTitle("Try Again!", forState: .Normal)
+        okButton.frame = CGRectMake(self.frame.size.width/2+5,5, self.frame.size.width/2, 40)
+        okButton.setTitle("RETRY", forState: .Normal)
+        okButton.setTitleColor(UIColor.yellowColor(), forState: .Normal)
         okButton.addTarget(self, action: "handleNoNetworkCase", forControlEvents: .TouchUpInside)
         
         
-        objNetworkStatusView = UIView(frame:CGRectMake(0, 400, self.frame.size.width, self.frame.size.height))
-        objNetworkStatusView?.backgroundColor = UIColor.lightGrayColor()
+        objNetworkStatusView = UIView(frame:CGRectMake(0, self.frame.size.height-50, self.frame.size.width, 50))
+        objNetworkStatusView?.backgroundColor = UIColor.darkGrayColor()
         objNetworkStatusView!.tag = 1111
         
         objNetworkStatusView?.addSubview(dummyLabel)

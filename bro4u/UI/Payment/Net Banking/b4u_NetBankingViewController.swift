@@ -42,37 +42,94 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
 
         // Do any additional setup after loading the view.
       
-      self.addLoadingIndicator()
+      self.orderCreateNetBanking()
+      
+//      self.addLoadingIndicator()
       
         
-      if (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) {
-        
-        let orderID = NSNumber(integer:Int(b4u_Utility.sharedInstance.getUserDefault("order_id") as! String)!)
-        
-        bro4u_DataManager.sharedInstance.orderId = orderID
-
-        self.hasOrderCreated("Success")
-      } else if bro4u_DataManager.sharedInstance.userSelectedOrder != nil {
-        self.hasOrderCreated("Success")
-      }//susmit
-      else
-      {
-        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-        let createOrderObj = b4u_CreateOrder()
-        createOrderObj.paymentType  = kNetBankingPayment
-        createOrderObj.delegate = self
-        createOrderObj.createOrder()
-        
-        topView.hidden = true
-        downView.hidden = true
-      }
-
-
-
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"handlePaymentResponse:", name: "paymentResponse", object: nil)
+//      if (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) {
+//        
+//        let orderID = NSNumber(integer:Int(b4u_Utility.sharedInstance.getUserDefault("order_id") as! String)!)
+//        
+//        bro4u_DataManager.sharedInstance.orderId = orderID
+//
+//        self.hasOrderCreated("Success")
+//      } else if bro4u_DataManager.sharedInstance.userSelectedOrder != nil {
+//        self.hasOrderCreated("Success")
+//      }//susmit
+//      else
+//      {
+//        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//        let createOrderObj = b4u_CreateOrder()
+//        createOrderObj.paymentType  = kNetBankingPayment
+//        createOrderObj.delegate = self
+//        createOrderObj.createOrder()
+//        
+//        topView.hidden = true
+//        downView.hidden = true
+//      }
+//
+//
+//
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector:"handlePaymentResponse:", name: "paymentResponse", object: nil)
       
     }
 
+  
+    func orderCreateNetBanking()
+    {
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
+        
+        self.addLoadingIndicator()
+        
+        
+        if (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) {
+          
+          let orderID = NSNumber(integer:Int(b4u_Utility.sharedInstance.getUserDefault("order_id") as! String)!)
+          
+          bro4u_DataManager.sharedInstance.orderId = orderID
+          
+          self.hasOrderCreated("Success")
+        } else if bro4u_DataManager.sharedInstance.userSelectedOrder != nil {
+          self.hasOrderCreated("Success")
+        }//susmit
+        else
+        {
+          b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+          let createOrderObj = b4u_CreateOrder()
+          createOrderObj.paymentType  = kNetBankingPayment
+          createOrderObj.delegate = self
+          createOrderObj.createOrder()
+          
+          topView.hidden = true
+          downView.hidden = true
+        }
+        
+        
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"handlePaymentResponse:", name: "paymentResponse", object: nil)
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_NetBankingViewController.orderCreateNetBanking), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
+      
+      
+    }
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

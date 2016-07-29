@@ -100,84 +100,180 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     }
     
     
+//    func callFilterApi()
+//    {
+//        
+//        if let aSelectedCatObj = selectedCategoryObj
+//        {
+//            b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//            
+//            let catId = aSelectedCatObj.catId!
+//            
+//            var optionId =  ""
+//            var filedName = ""
+//            
+//            if  let aSelectedAttributeOption = selectedAttributeOption
+//            {
+//                if let aOptionId = aSelectedAttributeOption.optionId
+//                {
+//                    optionId = aOptionId
+//                }
+//                
+//                if let aFieldName = aSelectedAttributeOption.fieldName
+//                {
+//                    filedName = aFieldName
+//                    
+//                }
+//            }else
+//            {
+//                if let aOptionId = aSelectedCatObj.optionId
+//                {
+//                    optionId = aOptionId
+//                }
+//                
+//                if let aFieldName = aSelectedCatObj.fieldName
+//                {
+//                    filedName = aFieldName
+//                    
+//                }
+//            }
+//            
+//            
+//            
+//            self.view.userInteractionEnabled = false
+//            //   self.view.alpha = 0.7
+//            
+//            
+//            let params = "?cat_id=\(catId)&option_id=\(optionId)&field_name=\(filedName)&\(kAppendURLWithApiToken)"
+//            b4u_WebApiCallManager.sharedInstance.getApiCall(filterApi, params:params, result:{(resultObject) -> Void in
+//                
+//                
+//                self.view.userInteractionEnabled = true
+//                //  self.view.alpha = 1.0
+//                
+//                self.updateUI()
+//                
+//            })
+//        }else if let aSelectedSlideImg = self.selectedImgSlide
+//        {
+//            b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//            
+//            let catId = aSelectedSlideImg.catId!
+//            let optionId =  aSelectedSlideImg.optionId!
+//            
+//            self.view.userInteractionEnabled = false
+//            
+//            let params = "?cat_id=\(catId)&option_id=\(optionId)&\(kAppendURLWithApiToken)"
+//            b4u_WebApiCallManager.sharedInstance.getApiCall(filterApi, params:params, result:{(resultObject) -> Void in
+//                
+//                self.view.userInteractionEnabled = true
+//                
+//                self.updateUI()
+//                
+//            })
+//        }
+//        
+//    }
+  
+    //Network Reachability Change
     func callFilterApi()
     {
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
         
         if let aSelectedCatObj = selectedCategoryObj
         {
-            b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-            
-            let catId = aSelectedCatObj.catId!
-            
-            var optionId =  ""
-            var filedName = ""
-            
-            if  let aSelectedAttributeOption = selectedAttributeOption
+          b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+          
+          let catId = aSelectedCatObj.catId!
+          
+          var optionId =  ""
+          var filedName = ""
+          
+          if  let aSelectedAttributeOption = selectedAttributeOption
+          {
+            if let aOptionId = aSelectedAttributeOption.optionId
             {
-                if let aOptionId = aSelectedAttributeOption.optionId
-                {
-                    optionId = aOptionId
-                }
-                
-                if let aFieldName = aSelectedAttributeOption.fieldName
-                {
-                    filedName = aFieldName
-                    
-                }
-            }else
-            {
-                if let aOptionId = aSelectedCatObj.optionId
-                {
-                    optionId = aOptionId
-                }
-                
-                if let aFieldName = aSelectedCatObj.fieldName
-                {
-                    filedName = aFieldName
-                    
-                }
+              optionId = aOptionId
             }
             
+            if let aFieldName = aSelectedAttributeOption.fieldName
+            {
+              filedName = aFieldName
+              
+            }
+          }else
+          {
+            if let aOptionId = aSelectedCatObj.optionId
+            {
+              optionId = aOptionId
+            }
+            
+            if let aFieldName = aSelectedCatObj.fieldName
+            {
+              filedName = aFieldName
+              
+            }
+          }
+          
+          
+          
+          self.view.userInteractionEnabled = false
+          //   self.view.alpha = 0.7
+          
+          
+          let params = "?cat_id=\(catId)&option_id=\(optionId)&field_name=\(filedName)&\(kAppendURLWithApiToken)"
+          b4u_WebApiCallManager.sharedInstance.getApiCall(filterApi, params:params, result:{(resultObject) -> Void in
             
             
-            self.view.userInteractionEnabled = false
-            //   self.view.alpha = 0.7
+            self.view.userInteractionEnabled = true
+            //  self.view.alpha = 1.0
             
+            self.updateUI()
             
-            let params = "?cat_id=\(catId)&option_id=\(optionId)&field_name=\(filedName)&\(kAppendURLWithApiToken)"
-            b4u_WebApiCallManager.sharedInstance.getApiCall(filterApi, params:params, result:{(resultObject) -> Void in
-                
-                
-                self.view.userInteractionEnabled = true
-                //  self.view.alpha = 1.0
-                
-                self.updateUI()
-                
-            })
+          })
         }else if let aSelectedSlideImg = self.selectedImgSlide
         {
-            b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+          b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+          
+          let catId = aSelectedSlideImg.catId!
+          let optionId =  aSelectedSlideImg.optionId!
+          
+          self.view.userInteractionEnabled = false
+          
+          let params = "?cat_id=\(catId)&option_id=\(optionId)&\(kAppendURLWithApiToken)"
+          b4u_WebApiCallManager.sharedInstance.getApiCall(filterApi, params:params, result:{(resultObject) -> Void in
             
-            let catId = aSelectedSlideImg.catId!
-            let optionId =  aSelectedSlideImg.optionId!
+            self.view.userInteractionEnabled = true
             
-            self.view.userInteractionEnabled = false
+            self.updateUI()
             
-            let params = "?cat_id=\(catId)&option_id=\(optionId)&\(kAppendURLWithApiToken)"
-            b4u_WebApiCallManager.sharedInstance.getApiCall(filterApi, params:params, result:{(resultObject) -> Void in
-                
-                self.view.userInteractionEnabled = true
-                
-                self.updateUI()
-                
-            })
+          })
         }
         
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_FilterViewController.callFilterApi), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
     }
-    
+
+  
     func callTimeSlotApi(selectedDateStr:String)
     {
-        
+      
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         
         self.view.userInteractionEnabled = false
@@ -208,6 +304,7 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
             
         })
     }
+  
     func updateUI()
     {
         b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
@@ -802,16 +899,47 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
     }
     
     
+//    func callServicePatnerApi()
+//    {
+//        
+//        guard let selectedDate = bro4u_DataManager.sharedInstance.selectedDate , let selectedTimeSlot = bro4u_DataManager.sharedInstance.selectedTimeSlot else
+//        {
+//            print("Select Date And Time")
+//            
+//            self.view.makeToast(message:"Please select your preferred time.", duration:1.0 , position: HRToastPositionDefault)
+//            
+//            return
+//        }
+//        
+//        
+//        
+//        var catId:String?
+//        if let aSelectedCatObj = selectedCategoryObj
+//        {
+//            catId = aSelectedCatObj.catId
+//        }else if let aSlidingImgObj = self.selectedImgSlide
+//        {
+//            catId = aSlidingImgObj.catId
+//            
+//        }
+//        
+//        self.servicePatnerAPIRequest(catId!, selectedDate:selectedDate, selectedTimeSlot: selectedTimeSlot)
+//    }
+  
+  
     func callServicePatnerApi()
     {
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
         
         guard let selectedDate = bro4u_DataManager.sharedInstance.selectedDate , let selectedTimeSlot = bro4u_DataManager.sharedInstance.selectedTimeSlot else
         {
-            print("Select Date And Time")
-            
-            self.view.makeToast(message:"Please select your preferred time.", duration:1.0 , position: HRToastPositionDefault)
-            
-            return
+          print("Select Date And Time")
+          
+          self.view.makeToast(message:"Please select your preferred time.", duration:1.0 , position: HRToastPositionDefault)
+          
+          return
         }
         
         
@@ -819,17 +947,32 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         var catId:String?
         if let aSelectedCatObj = selectedCategoryObj
         {
-            catId = aSelectedCatObj.catId
+          catId = aSelectedCatObj.catId
         }else if let aSlidingImgObj = self.selectedImgSlide
         {
-            catId = aSlidingImgObj.catId
-            
+          catId = aSlidingImgObj.catId
+          
         }
         
         self.servicePatnerAPIRequest(catId!, selectedDate:selectedDate, selectedTimeSlot: selectedTimeSlot)
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_FilterViewController.callServicePatnerApi), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
     }
-    
-    
+  
     func servicePatnerAPIRequest(catId:String ,selectedDate:NSDate ,selectedTimeSlot:String )
     {
         let catId = catId
@@ -839,13 +982,13 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         
     //    TODO - Uncomment below line for device
         
-        if let currentLocaiotn = bro4u_DataManager.sharedInstance.currenLocation
-        {
-            latitude = "\(currentLocaiotn.coordinate.latitude)"
-            
-            longitude = "\(currentLocaiotn.coordinate.longitude)"
-            
-        }
+//        if let currentLocaiotn = bro4u_DataManager.sharedInstance.currenLocation
+//        {
+//            latitude = "\(currentLocaiotn.coordinate.latitude)"
+//            
+//            longitude = "\(currentLocaiotn.coordinate.longitude)"
+//            
+//        }
       
         var params = "?cat_id=\(catId)&\(kAppendURLWithApiToken)"
         

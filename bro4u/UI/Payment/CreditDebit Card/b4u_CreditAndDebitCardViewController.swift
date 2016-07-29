@@ -35,35 +35,88 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
       //  self.navigationController?.navigationBar.delegate = self
         // Do any additional setup after loading the view.
       
+      self.orderCreateDebitAndCredit()
 //      NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_NetBankingViewController.handlePaymentResponse(_:)), name: "paymentResponse", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"handlePaymentResponse:", name: "paymentResponse", object: nil)
-
-      
-        self.addLoadingIndicator()
-      
-      if (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) {
-        let orderID = NSNumber(integer:Int(b4u_Utility.sharedInstance.getUserDefault("order_id") as! String)!)
-        
-        bro4u_DataManager.sharedInstance.orderId = orderID
-                    
-        self.hasOrderCreated("Success")
-      } else if bro4u_DataManager.sharedInstance.userSelectedOrder != nil {
-        self.hasOrderCreated("Success")
-      }//susmit
-      else
-      {
-        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-        let createOrderObj = b4u_CreateOrder()
-        createOrderObj.paymentType  = kCardPayment
-        createOrderObj.delegate = self
-        createOrderObj.createOrder()
-        
-        topView.hidden = true
-        downView.hidden = true
-      }
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector:"handlePaymentResponse:", name: "paymentResponse", object: nil)
+//
+//      
+//        self.addLoadingIndicator()
+//      
+//      if (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) {
+//        let orderID = NSNumber(integer:Int(b4u_Utility.sharedInstance.getUserDefault("order_id") as! String)!)
+//        
+//        bro4u_DataManager.sharedInstance.orderId = orderID
+//                    
+//        self.hasOrderCreated("Success")
+//      } else if bro4u_DataManager.sharedInstance.userSelectedOrder != nil {
+//        self.hasOrderCreated("Success")
+//      }//susmit
+//      else
+//      {
+//        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//        let createOrderObj = b4u_CreateOrder()
+//        createOrderObj.paymentType  = kCardPayment
+//        createOrderObj.delegate = self
+//        createOrderObj.createOrder()
+//        
+//        topView.hidden = true
+//        downView.hidden = true
+//      }
 
 //        self.hideKeyboardWhenTappedAround()
 
+    }
+  
+    func orderCreateDebitAndCredit()
+    {
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"handlePaymentResponse:", name: "paymentResponse", object: nil)
+        
+        
+        self.addLoadingIndicator()
+        
+        if (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) {
+          let orderID = NSNumber(integer:Int(b4u_Utility.sharedInstance.getUserDefault("order_id") as! String)!)
+          
+          bro4u_DataManager.sharedInstance.orderId = orderID
+          
+          self.hasOrderCreated("Success")
+        } else if bro4u_DataManager.sharedInstance.userSelectedOrder != nil {
+          self.hasOrderCreated("Success")
+        }//susmit
+        else
+        {
+          b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+          let createOrderObj = b4u_CreateOrder()
+          createOrderObj.paymentType  = kCardPayment
+          createOrderObj.delegate = self
+          createOrderObj.createOrder()
+          
+          topView.hidden = true
+          downView.hidden = true
+        }
+        
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_CreditAndDebitCardViewController.orderCreateDebitAndCredit), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
+      
+      
     }
   
   func handlePaymentResponse(reponseData : AnyObject){

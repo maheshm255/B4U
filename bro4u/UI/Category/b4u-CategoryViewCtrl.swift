@@ -75,32 +75,74 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
     }
     
     
+//    func getCategoryData()
+//    {
+//        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//        let params = "?\(kAppendURLWithApiToken)"
+//
+//        b4u_WebApiCallManager.sharedInstance.getApiCall(kCategoryAndSubOptions, params:params, result:{(resultObject) -> Void in
+//            
+//            print("Category Data Received")
+//            
+//            print(resultObject)
+//            
+//            dispatch_async(dispatch_get_main_queue(), {
+//                
+//                b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+//
+//                self.congigureUI()
+//
+//            })
+//            
+//            
+//        })
+//    }
+   //Network Reachability Change
     func getCategoryData()
     {
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
+        
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         let params = "?\(kAppendURLWithApiToken)"
-
+        
         b4u_WebApiCallManager.sharedInstance.getApiCall(kCategoryAndSubOptions, params:params, result:{(resultObject) -> Void in
+          
+          print("Category Data Received")
+          
+          print(resultObject)
+          
+          dispatch_async(dispatch_get_main_queue(), {
             
-            print("Category Data Received")
+            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
             
-            print(resultObject)
+            self.congigureUI()
             
-            dispatch_async(dispatch_get_main_queue(), {
-                
-                b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-
-                self.congigureUI()
-
-            })
-            
-            
+          })
         })
+        
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_CategoryViewCtrl.getCategoryData), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
     }
 
     func congigureUI()
     {
-        
+      
         indicatorcolor=UIView();
 
        for (_ , mainCategoryData) in bro4u_DataManager.sharedInstance.mainCategories.enumerate()

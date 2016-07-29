@@ -69,31 +69,76 @@ class b4u_ReOrderViewController: UIViewController,UIPopoverPresentationControlle
 
     
     
+//    func getData()
+//    {
+//        
+//        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//
+//        if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+//            
+//            var filedName = loginInfoData.userId! //Need to use later
+//            
+//        }
+//
+//        
+//        let params = "?user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)&\(kAppendURLWithApiToken)"
+//        b4u_WebApiCallManager.sharedInstance.getApiCall(kReOrderIndex , params:params, result:{(resultObject) -> Void in
+//            
+//            print(" ReOrder Data Received")
+//            
+//            print(resultObject)
+//            
+//            self.congigureUI()
+//
+//        })
+//    }
+  
+  
     func getData()
     {
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
         
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-
+        
         if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
-            
-            var filedName = loginInfoData.userId! //Need to use later
-            
+          
+          var filedName = loginInfoData.userId! //Need to use later
+          
         }
-
+        
         
         let params = "?user_id=\(bro4u_DataManager.sharedInstance.loginInfo!.userId!)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kReOrderIndex , params:params, result:{(resultObject) -> Void in
-            
-            print(" ReOrder Data Received")
-            
-            print(resultObject)
-            
-            self.congigureUI()
-
+          
+          print(" ReOrder Data Received")
+          
+          print(resultObject)
+          
+          self.congigureUI()
+          
         })
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_ReOrderViewController.getData), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
+      
+      
     }
-    
-    
+  
     func congigureUI()
     {
         if bro4u_DataManager.sharedInstance.myReorderData.count > 0

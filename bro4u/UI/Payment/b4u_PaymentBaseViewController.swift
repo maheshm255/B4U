@@ -27,11 +27,11 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
         
         // Do any additional setup after loading the view.
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+      
         
-        
-        self.cofigureUI()
+        self.getPaymentType()
     }
     
     
@@ -63,19 +63,50 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
         }
     }
     
-    func cofigureUI()
+//    func getData()
+//    {
+//      
+//      NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+//      NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+//
+//        self.addSegmentControl()
+//    }
+  
+  
+    func getPaymentType()
     {
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
         
         self.addSegmentControl()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+        
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_PaymentBaseViewController.getPaymentType), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
     }
-    
-    
-    
+  
+  
     func addSegmentControl()
     {
         let viewWidth = CGRectGetWidth(self.view.frame)
-        
-        
+      
+      
         self.segmentedControl = HMSegmentedControl()
         
         
@@ -294,22 +325,48 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     
     //MARKS: Delivery Delegate
     
+//    func proceedToPayment()
+//    {
+//        
+//        self.getPaymentWays("")
+//        
+//    }
+  
+  
     func proceedToPayment()
     {
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
         
         self.getPaymentWays("")
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
         
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_PaymentBaseViewController.proceedToPayment), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
     }
-    
+  
     func loginSuccessFull()
     {
-        
+      
         self.getData()
-        
+      
     }
     func loginFailed()
     {
-        
+      
     }
     
     func kbUP(notification:NSNotification)
@@ -365,34 +422,76 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     }
     
     //Paytm Order
+//    func createOrderForPayTm()
+//    {
+//        
+//        if (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) {
+//            
+//            let orderID = NSNumber(integer:Int(b4u_Utility.sharedInstance.getUserDefault("order_id") as! String)!)
+//            
+//            bro4u_DataManager.sharedInstance.orderId = orderID
+//            
+//            self.hasOrderCreated("Success")
+//        }
+//        else
+//        {
+//            
+//            b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//            let createOrderObj = b4u_CreateOrder()
+//            createOrderObj.paymentType  = kPaytmPayment
+//            createOrderObj.delegate = self
+//            createOrderObj.createOrder()
+//        }
+//        
+//    }
+  
+    //Network Reachability Code
     func createOrderForPayTm()
     {
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
         
         if (b4u_Utility.sharedInstance.getUserDefault("order_id") != nil) {
-            
-            let orderID = NSNumber(integer:Int(b4u_Utility.sharedInstance.getUserDefault("order_id") as! String)!)
-            
-            bro4u_DataManager.sharedInstance.orderId = orderID
-            
-            self.hasOrderCreated("Success")
+          
+          let orderID = NSNumber(integer:Int(b4u_Utility.sharedInstance.getUserDefault("order_id") as! String)!)
+          
+          bro4u_DataManager.sharedInstance.orderId = orderID
+          
+          self.hasOrderCreated("Success")
         }
         else
         {
-            
-            b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-            let createOrderObj = b4u_CreateOrder()
-            createOrderObj.paymentType  = kPaytmPayment
-            createOrderObj.delegate = self
-            createOrderObj.createOrder()
+          
+          b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+          let createOrderObj = b4u_CreateOrder()
+          createOrderObj.paymentType  = kPaytmPayment
+          createOrderObj.delegate = self
+          createOrderObj.createOrder()
         }
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
         
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_PaymentBaseViewController.createOrderForPayTm), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
     }
-    
-    
+  
+  
     func showQuicBookingView()
     {
         let storyboard : UIStoryboard = self.storyboard!
-        
+      
         let  alertViewCtrl = storyboard.instantiateViewControllerWithIdentifier("OrderDetailViewControllerID") as! b4u_OrderDetailViewController
         
         alertViewCtrl.modalPresentationStyle = .Popover
@@ -420,63 +519,134 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     }
     
     
+//    func getData()
+//    {
+//        
+//        //?req_id=3&email=harshal.zope1990%40gmail.com&first_name=Harshal&last_name=Zope&image=%22https%3A%2F%2Fgraph.facebook.com%2F836148279808264%2Fpicture%3Ftype%3Dlarge%22
+//        
+//        if let loginInfoObj = bro4u_DataManager.sharedInstance.loginInfo
+//        {
+//            if loginInfoObj.loginType != "OTP"
+//            {
+//                
+//                let reqId =   "3"
+//                let email =   loginInfoObj.email
+//                let firstName  = loginInfoObj.firstName
+//                let lastName =   loginInfoObj.lastName
+//                let image = ""
+//                
+//                let params = "?req_id=\(reqId)&email=\(email!)&first_name=\(firstName!)&last_name=\(lastName!)&image=\(image)&\(kAppendURLWithApiToken)"
+//                
+//                b4u_WebApiCallManager.sharedInstance.getApiCall(kSocialLogin, params:params, result:{(resultObject) -> Void in
+//                    
+//                    print("login user Data Received")
+//                    
+//                   //  NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
+//                    
+//                    
+//                    let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(bro4u_DataManager.sharedInstance.loginInfo!)
+//                    
+//                    
+//                    NSUserDefaults.standardUserDefaults().setObject(archivedObject, forKey:"loginInfo")
+//                    
+//                    NSUserDefaults.standardUserDefaults().setBool(true, forKey:"isUserLogined")
+//                    
+//                    NSNotificationCenter.defaultCenter().postNotificationName(kUserDataReceived, object:nil)
+//                    
+//                    self.segmentedControl?.selectedSegmentIndex = 1
+//                    self.addDeliveryViewControl()
+//                })
+//            }else
+//            {
+//                NSNotificationCenter.defaultCenter().postNotificationName(kUserDataReceived, object:nil)
+//                
+//                
+//              //  NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
+//                self.segmentedControl?.selectedSegmentIndex = 1
+//
+//                self.addDeliveryViewControl()
+//
+//             //   self.dismissViewControllerAnimated(true, completion:nil)
+//                
+//            }
+//        }
+//        
+//    }
+  
     func getData()
     {
-        
-        //?req_id=3&email=harshal.zope1990%40gmail.com&first_name=Harshal&last_name=Zope&image=%22https%3A%2F%2Fgraph.facebook.com%2F836148279808264%2Fpicture%3Ftype%3Dlarge%22
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
         
         if let loginInfoObj = bro4u_DataManager.sharedInstance.loginInfo
         {
-            if loginInfoObj.loginType != "OTP"
-            {
-                
-                let reqId =   "3"
-                let email =   loginInfoObj.email
-                let firstName  = loginInfoObj.firstName
-                let lastName =   loginInfoObj.lastName
-                let image = ""
-                
-                let params = "?req_id=\(reqId)&email=\(email!)&first_name=\(firstName!)&last_name=\(lastName!)&image=\(image)&\(kAppendURLWithApiToken)"
-                
-                b4u_WebApiCallManager.sharedInstance.getApiCall(kSocialLogin, params:params, result:{(resultObject) -> Void in
-                    
-                    print("login user Data Received")
-                    
-                   //  NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
-                    
-                    
-                    let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(bro4u_DataManager.sharedInstance.loginInfo!)
-                    
-                    
-                    NSUserDefaults.standardUserDefaults().setObject(archivedObject, forKey:"loginInfo")
-                    
-                    NSUserDefaults.standardUserDefaults().setBool(true, forKey:"isUserLogined")
-                    
-                    NSNotificationCenter.defaultCenter().postNotificationName(kUserDataReceived, object:nil)
-                    
-                    self.segmentedControl?.selectedSegmentIndex = 1
-                    self.addDeliveryViewControl()
-                })
-            }else
-            {
-                NSNotificationCenter.defaultCenter().postNotificationName(kUserDataReceived, object:nil)
-                
-                
+          if loginInfoObj.loginType != "OTP"
+          {
+            
+            let reqId =   "3"
+            let email =   loginInfoObj.email
+            let firstName  = loginInfoObj.firstName
+            let lastName =   loginInfoObj.lastName
+            let image = ""
+            
+            let params = "?req_id=\(reqId)&email=\(email!)&first_name=\(firstName!)&last_name=\(lastName!)&image=\(image)&\(kAppendURLWithApiToken)"
+            
+            b4u_WebApiCallManager.sharedInstance.getApiCall(kSocialLogin, params:params, result:{(resultObject) -> Void in
+              
+              print("login user Data Received")
+              
               //  NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
-                self.segmentedControl?.selectedSegmentIndex = 1
-
-                self.addDeliveryViewControl()
-
-             //   self.dismissViewControllerAnimated(true, completion:nil)
-                
-            }
+              
+              
+              let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(bro4u_DataManager.sharedInstance.loginInfo!)
+              
+              
+              NSUserDefaults.standardUserDefaults().setObject(archivedObject, forKey:"loginInfo")
+              
+              NSUserDefaults.standardUserDefaults().setBool(true, forKey:"isUserLogined")
+              
+              NSNotificationCenter.defaultCenter().postNotificationName(kUserDataReceived, object:nil)
+              
+              self.segmentedControl?.selectedSegmentIndex = 1
+              self.addDeliveryViewControl()
+            })
+          }else
+          {
+            NSNotificationCenter.defaultCenter().postNotificationName(kUserDataReceived, object:nil)
+            
+            
+            //  NSNotificationCenter.defaultCenter().postNotificationName(kLoginDismissed, object:nil)
+            self.segmentedControl?.selectedSegmentIndex = 1
+            
+            self.addDeliveryViewControl()
+            
+            //   self.dismissViewControllerAnimated(true, completion:nil)
+            
+          }
         }
         
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_PaymentBaseViewController.getData), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
     }
-    
-    
+
+  
     //MARKS:- Get Payement Options
-    
+  
     func getPaymentWays(couponCode : String)
     {
         
@@ -572,11 +742,6 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
             
             self.addPaymentViewControl()
         })
-        
-        
-        
-        
-        
     }
     
     

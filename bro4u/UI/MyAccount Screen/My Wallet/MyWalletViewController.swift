@@ -36,16 +36,52 @@ class MyWalletViewController: UIViewController ,UITextFieldDelegate {
       
       }
     
+//    func getData()
+//    {
+//      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//
+//        var user_id = ""
+//        
+//        if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+//            
+//            user_id = loginInfoData.userId! //Need to use later
+//            
+//        }
+//        
+//        //user_id = "1"
+//        
+//        
+//        let params = "?user_id=\(user_id)&\(kAppendURLWithApiToken)"
+//        b4u_WebApiCallManager.sharedInstance.getApiCall(kMyWalletIndex , params:params, result:{(resultObject) -> Void in
+//            
+//            print(" Wallet Balance Data Received")
+//            
+//            print(resultObject)
+//            
+//            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+//            
+//            self.congigureUI()
+//            
+//        })
+//        
+//        
+//   }
+
+  
     func getData()
     {
-      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
+        
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+        
         var user_id = ""
         
         if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
-            
-            user_id = loginInfoData.userId! //Need to use later
-            
+          
+          user_id = loginInfoData.userId! //Need to use later
+          
         }
         
         //user_id = "1"
@@ -53,24 +89,39 @@ class MyWalletViewController: UIViewController ,UITextFieldDelegate {
         
         let params = "?user_id=\(user_id)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kMyWalletIndex , params:params, result:{(resultObject) -> Void in
-            
-            print(" Wallet Balance Data Received")
-            
-            print(resultObject)
-            
-            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-            
-            self.congigureUI()
-            
+          
+          print(" Wallet Balance Data Received")
+          
+          print(resultObject)
+          
+          b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+          
+          self.congigureUI()
+          
         })
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
         
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
         
-   }
-
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyWalletViewController.getData), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
+    }
+  
+  
     func congigureUI()
     {
        walletBalanceTableView .reloadData()
-        
+      
         if let walletBalance =   bro4u_DataManager.sharedInstance.walletBalanceData
         {
             self.walletMoneyLbl.text = "\(walletBalance)"

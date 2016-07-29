@@ -103,30 +103,77 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
 
     
     
+//    func getData()
+//    {
+//        
+//        bro4u_DataManager.sharedInstance.address.removeAll()
+//
+//      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//
+//        var user_id = ""
+//        if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+//            user_id = loginInfoData.userId! //Need to use later
+//        }
+//
+////        let user_id = "1"
+//        let params = "?user_id=\(user_id)&\(kAppendURLWithApiToken)"
+//        b4u_WebApiCallManager.sharedInstance.getApiCall(kGetAddress, params:params, result:{(resultObject) -> Void in
+//            
+//            print("address Received")
+//       
+//            
+//            self.tableView.reloadData()
+//          b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+//
+//        })
+//    }
+  
+    //Network Reachability Change
     func getData()
     {
+      //2. Checking for Network reachability
+      
+      if(AFNetworkReachabilityManager.sharedManager().reachable){
         
         bro4u_DataManager.sharedInstance.address.removeAll()
-
-      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-
+        
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+        
         var user_id = ""
         if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
-            user_id = loginInfoData.userId! //Need to use later
+          user_id = loginInfoData.userId! //Need to use later
         }
-
-//        let user_id = "1"
+        
+        //        let user_id = "1"
         let params = "?user_id=\(user_id)&\(kAppendURLWithApiToken)"
         b4u_WebApiCallManager.sharedInstance.getApiCall(kGetAddress, params:params, result:{(resultObject) -> Void in
-            
-            print("address Received")
-       
-            
-            self.tableView.reloadData()
+          
+          print("address Received")
+          
+          
+          self.tableView.reloadData()
           b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
-
+          
         })
+        
+        //3.Remove observer if any remain
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        
+      }else{
+        //4. First Remove any existing Observer
+        //Add Observer for No network Connection
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_DeliveryViewController.getData), name: "NoNetworkConnectionNotification", object: nil)
+        
+        //5.Adding View for Retry
+        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+        self.view.addSubview(noNetworkView)
+        
+        return
+      }
     }
+
     /*
     // MARK: - Navigation
 

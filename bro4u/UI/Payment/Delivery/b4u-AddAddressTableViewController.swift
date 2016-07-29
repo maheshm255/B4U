@@ -248,6 +248,7 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+  
     @IBAction func BtnSaveAddressPressed(sender: AnyObject)
     {
         
@@ -298,7 +299,7 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
     
         })
     }
-    
+  
     func updateUI(result:String)
     {
         if result == "Success"
