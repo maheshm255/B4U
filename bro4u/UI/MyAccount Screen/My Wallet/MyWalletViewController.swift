@@ -24,14 +24,14 @@ class MyWalletViewController: UIViewController ,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.couponcodeTxtFld.delegate = self
-        // Do any additional setup after loading the view.
-      self.addLoadingIndicator()
+//        self.couponcodeTxtFld.delegate = self
+//        // Do any additional setup after loading the view.
+//      self.addLoadingIndicator()
 
         self.getData()
       
-      NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
-      NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+//      NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+//      NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
 
       
       }
@@ -74,6 +74,13 @@ class MyWalletViewController: UIViewController ,UITextFieldDelegate {
       
       if(AFNetworkReachabilityManager.sharedManager().reachable){
         
+        self.couponcodeTxtFld.delegate = self
+        // Do any additional setup after loading the view.
+        self.addLoadingIndicator()
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         
         var user_id = ""

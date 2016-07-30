@@ -23,8 +23,8 @@ class NoNetworkConnectionView: UIView {
     
     override init (frame : CGRect) {
         super.init(frame : frame)
-        self.backgroundColor = UIColor.blackColor()
-        self.alpha = 0.5
+        self.backgroundColor = UIColor.grayColor()
+        self.alpha = 0.7
         addNoNetworkView()
      }
 
@@ -50,7 +50,9 @@ class NoNetworkConnectionView: UIView {
         
         
         objNetworkStatusView = UIView(frame:CGRectMake(0, self.frame.size.height-50, self.frame.size.width, 50))
-        objNetworkStatusView?.backgroundColor = UIColor.darkGrayColor()
+        objNetworkStatusView?.backgroundColor = UIColor.blackColor()
+        objNetworkStatusView?.alpha = 1.0
+//        objNetworkStatusView?.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 128.0, alpha: 1.0)
         objNetworkStatusView!.tag = 1111
         
         objNetworkStatusView?.addSubview(dummyLabel)

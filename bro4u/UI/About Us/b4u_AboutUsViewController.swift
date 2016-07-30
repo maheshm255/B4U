@@ -16,13 +16,54 @@ class b4u_AboutUsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-      self.addLoadingIndicator()
-      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//      self.addLoadingIndicator()
+//      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//
+//        aboutWebView.loadRequest(NSURLRequest(URL: NSURL(string: kAboutUsUrl)!))
+//        MBProgressHUD.showHUDAddedTo(navigationController?.view, animated: true)
+//      b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
 
-        aboutWebView.loadRequest(NSURLRequest(URL: NSURL(string: kAboutUsUrl)!))
-        MBProgressHUD.showHUDAddedTo(navigationController?.view, animated: true)
-      b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+    }
+    
+//    func loadAboutUs(){
+//        self.addLoadingIndicator()
+//        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+//        
+//        aboutWebView.loadRequest(NSURLRequest(URL: NSURL(string: kAboutUsUrl)!))
+//        MBProgressHUD.showHUDAddedTo(navigationController?.view, animated: true)
+//        b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+//
+//    }
 
+    //Network Reachable Test
+    func loadAboutUs()
+    {
+        //2. Checking for Network reachability
+        
+        if(AFNetworkReachabilityManager.sharedManager().reachable){
+            
+            self.addLoadingIndicator()
+            b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+            
+            aboutWebView.loadRequest(NSURLRequest(URL: NSURL(string: kAboutUsUrl)!))
+            MBProgressHUD.showHUDAddedTo(navigationController?.view, animated: true)
+            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+            //5.Remove observer if any remain
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+            
+        }else{
+            //3. First Remove any existing Observer
+            //Add Observer for No network Connection
+            
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_AboutUsViewController.loadAboutUs), name: "NoNetworkConnectionNotification", object: nil)
+            
+            //4.Adding View for Retry
+            let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+            self.view.addSubview(noNetworkView)
+            
+            return
+        }
     }
 
     override func didReceiveMemoryWarning() {
