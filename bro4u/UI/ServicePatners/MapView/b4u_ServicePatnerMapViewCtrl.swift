@@ -33,12 +33,6 @@ class b4u_ServicePatnerMapViewCtrl: UIViewController ,MKMapViewDelegate{
             self.mapView.addAnnotations(annotations)
 
             })
-        
-      
-        
-
-        
-    
     }
 
     override func didReceiveMemoryWarning() {

@@ -77,10 +77,6 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         // Do any additional setup after loading the view.
         
         
-        bro4u_DataManager.sharedInstance.catlogFilterObj = nil
-        
-        
-        bro4u_DataManager.sharedInstance.timeSlots = nil
         self.callFilterApi()
         
     }
@@ -182,6 +178,9 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
       
       if(AFNetworkReachabilityManager.sharedManager().reachable){
         
+        bro4u_DataManager.sharedInstance.catlogFilterObj = nil
+        bro4u_DataManager.sharedInstance.timeSlots = nil
+
         if let aSelectedCatObj = selectedCategoryObj
         {
           b4u_Utility.sharedInstance.activityIndicator.startAnimating()

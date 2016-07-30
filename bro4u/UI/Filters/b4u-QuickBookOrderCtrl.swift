@@ -62,6 +62,7 @@ class b4u_QuickBookOrderCtrl: UIViewController {
             }
         }
     }
+    
     @IBAction func cancelBtnClicked(sender: AnyObject) {
         
         self.dismissViewControllerAnimated(true, completion:nil)
@@ -71,44 +72,69 @@ class b4u_QuickBookOrderCtrl: UIViewController {
     {
         
         //?name=Harshal&mobile=9740201846&address=kasturi+nagar+bangalore&latitude=33.4534&longitude=23.34434&service_date=21-1-2016&service_time=12PM-2PM&imei=398454&cat_id=12&user_id=3&selection=[{%22field_name%22:%22option_value%22,%22field_name%22:%22option_value%22}]
-        
+        self.bookRequest()
     
-        guard  let name =   self.tfName.text where name != "" else
-        {
-            self.view.makeToast(message:"Please Enter Name", duration:1.0, position: HRToastPositionDefault)
-           return
-        }
-        guard let mobileNum =  self.tfMobileNumber.text where mobileNum != "" else
-        {
-            self.view.makeToast(message:"Please Enter Mobile Number", duration:1.0, position: HRToastPositionDefault)
+    }
+    
+    func bookRequest()
+    {
+        //2. Checking for Network reachability
+        
+        if(AFNetworkReachabilityManager.sharedManager().reachable){
+            
+            guard  let name =   self.tfName.text where name != "" else
+            {
+                self.view.makeToast(message:"Please Enter Name", duration:1.0, position: HRToastPositionDefault)
+                return
+            }
+            guard let mobileNum =  self.tfMobileNumber.text where mobileNum != "" else
+            {
+                self.view.makeToast(message:"Please Enter Mobile Number", duration:1.0, position: HRToastPositionDefault)
+                return
+            }
+            
+            
+            var userId = ""
+            
+            if let userInfor = bro4u_DataManager.sharedInstance.loginInfo
+            {
+                userId = userInfor.userId!
+            }
+            let address = "aa" // TO DO
+            let latt = "17.1"  // TO DO
+            let long = "88.0" //  TO DO
+            
+            
+            let serviceDate =  NSDate.dateFormat().stringFromDate(bro4u_DataManager.sharedInstance.selectedDate!)
+            let serviceTime = bro4u_DataManager.sharedInstance.selectedTimeSlot!
+            let imei = b4u_Utility.getUUIDFromVendorIdentifier()
+            let selection = bro4u_DataManager.sharedInstance.selectedFilterSelectionInJsonFormat
+            
+            
+            let params = "?name=\(name)&mobile=\(mobileNum)&address=\(address)&latitude=\(latt)&longitude=\(long)&service_date=\(serviceDate)&service_time=\(serviceTime)&imei=\(imei)&user_id=\(userId)&selection=\(selection!)&\(kAppendURLWithApiToken)"
+            
+            b4u_WebApiCallManager.sharedInstance.getApiCall(kQuickOrderBook, params:params, result:{(resultObject) -> Void in
+                
+                self.delegate?.quickBookSuccess(true)
+                self.dismissViewControllerAnimated(true, completion:nil)
+                
+            })
+            //3.Remove observer if any remain
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+            
+        }else{
+            //4. First Remove any existing Observer
+            //Add Observer for No network Connection
+            
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_QuickBookOrderCtrl.bookRequest), name: "NoNetworkConnectionNotification", object: nil)
+            
+            //5.Adding View for Retry
+            let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+            self.view.addSubview(noNetworkView)
+            
             return
         }
-        
-        
-        var userId = ""
-        
-        if let userInfor = bro4u_DataManager.sharedInstance.loginInfo
-        {
-            userId = userInfor.userId!
-        }
-        let address = "aa" // TO DO
-        let latt = "17.1"  // TO DO
-        let long = "88.0" //  TO DO
-        
-        
-        let serviceDate =  NSDate.dateFormat().stringFromDate(bro4u_DataManager.sharedInstance.selectedDate!)
-        let serviceTime = bro4u_DataManager.sharedInstance.selectedTimeSlot!
-        let imei = b4u_Utility.getUUIDFromVendorIdentifier()
-        let selection = bro4u_DataManager.sharedInstance.selectedFilterSelectionInJsonFormat
-        
-        
-        let params = "?name=\(name)&mobile=\(mobileNum)&address=\(address)&latitude=\(latt)&longitude=\(long)&service_date=\(serviceDate)&service_time=\(serviceTime)&imei=\(imei)&user_id=\(userId)&selection=\(selection!)&\(kAppendURLWithApiToken)"
-        
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kQuickOrderBook, params:params, result:{(resultObject) -> Void in
-            
-            self.delegate?.quickBookSuccess(true)
-            self.dismissViewControllerAnimated(true, completion:nil)
-            
-        })
     }
+
 }

@@ -37,37 +37,6 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        if let selectedPartner = bro4u_DataManager.sharedInstance.selectedSuggestedPatner
-        {
-            
-            if let quantity = bro4u_DataManager.sharedInstance.selectedQualtity
-            {
-                let price = Double(selectedPartner.offerPrice!)! * Double(quantity)!
-                self.lblAmount.text = " Rs.\(price)"
-                
-            }else
-            {
-                self.lblAmount.text = "  Rs. \( selectedPartner.offerPrice!)  "
-                
-            }
-            
-        }else if let selectedReorderModel = bro4u_DataManager.sharedInstance.selectedReorderModel
-       {
-          //TODO - to check actual field
-           self.lblAmount.text = "  Rs. \( selectedReorderModel.subTotal!)  "
-
-        }
-        // Do any additional setup after loading the view.
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keybShow:",
-            name: UIKeyboardWillShowNotification, object: nil)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keybHide:",
-            name: UIKeyboardWillHideNotification, object: nil)
-        
-       self.addLoadingIndicator()
 
         self.getData()
         
@@ -135,6 +104,36 @@ class b4u_DeliveryViewController: UIViewController ,UITableViewDelegate,UITableV
       
       if(AFNetworkReachabilityManager.sharedManager().reachable){
         
+        
+        if let selectedPartner = bro4u_DataManager.sharedInstance.selectedSuggestedPatner
+        {
+            
+            if let quantity = bro4u_DataManager.sharedInstance.selectedQualtity
+            {
+                let price = Double(selectedPartner.offerPrice!)! * Double(quantity)!
+                self.lblAmount.text = " Rs.\(price)"
+                
+            }else
+            {
+                self.lblAmount.text = "  Rs. \( selectedPartner.offerPrice!)  "
+                
+            }
+            
+        }else if let selectedReorderModel = bro4u_DataManager.sharedInstance.selectedReorderModel
+        {
+            //TODO - to check actual field
+            self.lblAmount.text = "  Rs. \( selectedReorderModel.subTotal!)  "
+            
+        }
+        // Do any additional setup after loading the view.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keybShow:",
+                                                         name: UIKeyboardWillShowNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keybHide:",
+                                                         name: UIKeyboardWillHideNotification, object: nil)
+        
+        self.addLoadingIndicator()
+
         bro4u_DataManager.sharedInstance.address.removeAll()
         
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()

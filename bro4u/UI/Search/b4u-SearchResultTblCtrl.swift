@@ -21,10 +21,6 @@ class b4u_SearchResultTblCtrl: UITableViewController ,UISearchResultsUpdating,UI
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        self.tableView.separatorInset = UIEdgeInsetsZero
-        self.tableView.layoutMargins = UIEdgeInsetsZero
-        
-        bro4u_DataManager.sharedInstance.searchResult.removeAll()
         
         self.createSearchController()
     }
@@ -43,29 +39,79 @@ class b4u_SearchResultTblCtrl: UITableViewController ,UISearchResultsUpdating,UI
     @This function create searchContrller Oject and do necessary setting to searchController
     
     */
-    private func createSearchController()
+//    private func createSearchController()
+//    {
+//        self.searchController = ({
+//            // Setup One: This setup present the results in the current view.
+//            let controller = UISearchController(searchResultsController:nil)
+//            controller.searchResultsUpdater = self
+//            controller.dimsBackgroundDuringPresentation = false
+//            controller.searchBar.sizeToFit()
+//            controller.searchBar.barStyle = UIBarStyle.Black
+//            controller.searchBar.barTintColor = UIColor.whiteColor()
+//            controller.searchBar.backgroundColor = UIColor.clearColor()
+//            controller.hidesNavigationBarDuringPresentation = false
+//            controller.searchBar.delegate = self
+//            controller.searchBar.becomeFirstResponder()
+//            controller.searchBar.placeholder = "Search for Services"
+//            return controller
+//        })()
+//        
+//        self.tableView.tableHeaderView = self.searchController.searchBar
+//        self.definesPresentationContext = true
+//        self.searchController.searchBar.delegate = self;
+//        
+//    }
+    
+    
+    func createSearchController()
     {
-        self.searchController = ({
-            // Setup One: This setup present the results in the current view.
-            let controller = UISearchController(searchResultsController:nil)
-            controller.searchResultsUpdater = self
-            controller.dimsBackgroundDuringPresentation = false
-            controller.searchBar.sizeToFit()
-            controller.searchBar.barStyle = UIBarStyle.Black
-            controller.searchBar.barTintColor = UIColor.whiteColor()
-            controller.searchBar.backgroundColor = UIColor.clearColor()
-            controller.hidesNavigationBarDuringPresentation = false
-            controller.searchBar.delegate = self
-            controller.searchBar.becomeFirstResponder()
-            controller.searchBar.placeholder = "Search for Services"
-            return controller
-        })()
+        //2. Checking for Network reachability
         
-        self.tableView.tableHeaderView = self.searchController.searchBar
-        self.definesPresentationContext = true
-        self.searchController.searchBar.delegate = self;
-        
+        if(AFNetworkReachabilityManager.sharedManager().reachable){
+            
+            self.tableView.separatorInset = UIEdgeInsetsZero
+            self.tableView.layoutMargins = UIEdgeInsetsZero
+            
+            bro4u_DataManager.sharedInstance.searchResult.removeAll()
+
+            self.searchController = ({
+                // Setup One: This setup present the results in the current view.
+                let controller = UISearchController(searchResultsController:nil)
+                controller.searchResultsUpdater = self
+                controller.dimsBackgroundDuringPresentation = false
+                controller.searchBar.sizeToFit()
+                controller.searchBar.barStyle = UIBarStyle.Black
+                controller.searchBar.barTintColor = UIColor.whiteColor()
+                controller.searchBar.backgroundColor = UIColor.clearColor()
+                controller.hidesNavigationBarDuringPresentation = false
+                controller.searchBar.delegate = self
+                controller.searchBar.becomeFirstResponder()
+                controller.searchBar.placeholder = "Search for Services"
+                return controller
+            })()
+            
+            self.tableView.tableHeaderView = self.searchController.searchBar
+            self.definesPresentationContext = true
+            self.searchController.searchBar.delegate = self;
+            //3.Remove observer if any remain
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+            
+        }else{
+            //4. First Remove any existing Observer
+            //Add Observer for No network Connection
+            
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_SearchResultTblCtrl.createSearchController), name: "NoNetworkConnectionNotification", object: nil)
+            
+            //5.Adding View for Retry
+            let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+            self.view.addSubview(noNetworkView)
+            
+            return
+        }
     }
+
     
     //MARK:- Private funcitons
     

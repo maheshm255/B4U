@@ -33,18 +33,6 @@ class MyInfoViewController: UIViewController ,UITextFieldDelegate ,UIPopoverPres
         // Do any additional setup after loading the view.
       self.addLoadingIndicator()
 
-        let tapRecognizer = UITapGestureRecognizer()
-        
-        tapRecognizer.addTarget(self, action: "didTapView")
-        
-        self.dateBtn.setTitle("Select DOB", forState:UIControlState.Normal)
-
-        
-        self.view.addGestureRecognizer(tapRecognizer)
-        
-        self.dateBtn.layer.cornerRadius = 2.0
-        self.dateBtn.layer.borderWidth = 1.0
-        self.dateBtn.layer.borderColor =  UIColor(red:193.0/255, green:195.0/255, blue: 193.0/255, alpha:1.0).CGColor
         
       self.getData()
 
@@ -75,6 +63,20 @@ class MyInfoViewController: UIViewController ,UITextFieldDelegate ,UIPopoverPres
       
       if(AFNetworkReachabilityManager.sharedManager().reachable){
         
+        
+        let tapRecognizer = UITapGestureRecognizer()
+        
+        tapRecognizer.addTarget(self, action: "didTapView")
+        
+        self.dateBtn.setTitle("Select DOB", forState:UIControlState.Normal)
+        
+        
+        self.view.addGestureRecognizer(tapRecognizer)
+        
+        self.dateBtn.layer.cornerRadius = 2.0
+        self.dateBtn.layer.borderWidth = 1.0
+        self.dateBtn.layer.borderColor =  UIColor(red:193.0/255, green:195.0/255, blue: 193.0/255, alpha:1.0).CGColor
+
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         
         

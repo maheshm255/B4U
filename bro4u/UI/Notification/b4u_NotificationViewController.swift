@@ -17,9 +17,6 @@ class b4u_NotificationViewController: UIViewController ,UITableViewDelegate,UITa
     // Do any additional setup after loading the view.
     
     self.title = "Notification"
-    mainTableView.rowHeight = UITableViewAutomaticDimension
-    mainTableView.estimatedRowHeight = 160.0
-    self.addLoadingIndicator()
 
     self.getData()
 
@@ -61,6 +58,10 @@ class b4u_NotificationViewController: UIViewController ,UITableViewDelegate,UITa
       
       if(AFNetworkReachabilityManager.sharedManager().reachable){
         
+        mainTableView.rowHeight = UITableViewAutomaticDimension
+        mainTableView.estimatedRowHeight = 160.0
+        self.addLoadingIndicator()
+
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         
         var user_id = ""

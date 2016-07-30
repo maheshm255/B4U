@@ -62,7 +62,6 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
         // Do any additional setup after loading the view.
        // selectedIndex = 0
         
-        self.addLoadingIndicator()
 
         self.getCategoryData()
       
@@ -104,6 +103,8 @@ class b4u_CategoryViewCtrl: UIViewController,UIGestureRecognizerDelegate,UIScrol
       
       if(AFNetworkReachabilityManager.sharedManager().reachable){
         
+        self.addLoadingIndicator()
+
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         let params = "?\(kAppendURLWithApiToken)"
         

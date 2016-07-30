@@ -23,6 +23,7 @@ class b4u_AboutUsViewController: UIViewController {
 //        MBProgressHUD.showHUDAddedTo(navigationController?.view, animated: true)
 //      b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
 
+        self.loadAboutUs()
     }
     
 //    func loadAboutUs(){

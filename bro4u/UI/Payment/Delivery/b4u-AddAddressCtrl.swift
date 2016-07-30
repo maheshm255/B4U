@@ -29,11 +29,6 @@ class b4u_AddAddressCtrl: UIViewController,locationDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        self.tfCurrentPlace.enabled = false
-        self.tfCurrentLocation.enabled = false
-      
-      
         self.getCities()
     }
 
@@ -80,6 +75,9 @@ class b4u_AddAddressCtrl: UIViewController,locationDelegate {
       
       if(AFNetworkReachabilityManager.sharedManager().reachable){
         
+        self.tfCurrentPlace.enabled = false
+        self.tfCurrentLocation.enabled = false
+
         let params = "?\(kAppendURLWithApiToken)"
         
         b4u_WebApiCallManager.sharedInstance.getApiCall(kGetCities, params:params, result:{(resultObject) -> Void in
@@ -142,74 +140,78 @@ class b4u_AddAddressCtrl: UIViewController,locationDelegate {
   
     @IBAction func BtnSaveAddressPressed(sender: AnyObject)
     {
-      if(AFNetworkReachabilityManager.sharedManager().reachable){
-      
-        var user_id = ""
-        if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
-          user_id = loginInfoData.userId! //Need to use later
-        }
         
+        self.saveAddress()
+    }
+    
+    func saveAddress(){
         
-        guard let name = tfYourName.text where name != "" else{
-          self.view.makeToast(message:"Please Enter Name", duration:1.0, position:HRToastPositionDefault)
-          return
-        }
-        
-        guard let email = tfEmail.text where email != "" else{
-          self.view.makeToast(message:"Please Enter Email Id", duration:1.0, position:HRToastPositionDefault)
-          return
-        }
-        
-        guard let mobile = tfMobileNumber.text where mobile != "" else{
-          self.view.makeToast(message:"Please Enter Mobile Number", duration:1.0, position:HRToastPositionDefault)
-          return
-        }
-        
-        let streetName = tfFullAddress.text
-        let locality = tfCurrentPlace.text
-        let cityId =  self.selectedCity!.cityId!
-        
-        var latitude:String = "12.213"
-        var longitude:String = "66.234"
-        //        if let  currentLocaiton = bro4u_DataManager.sharedInstance.currenLocation
-        //        {
-        //             latitude = "\(currentLocaiton.coordinate.latitude)"
-        //             longitude = "\(currentLocaiton.coordinate.longitude)"
-        //
-        //            addressModel?.currentLocation  = currentLocaiton
-        //
-        //        }
-        
-        
-        
-        
-        
-        let params = "?user_id=\(user_id)&street_name=\(streetName!)&locality=\(locality!)&city_id=\(cityId)&name=\(name)&latitude=\(latitude)&longitude=\(longitude)&mobile=\(mobile)&email=\(email)&\(kAppendURLWithApiToken)"
-        
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kSaveAddress, params:params, result:{(resultObject) -> Void in
-          
-          dispatch_async(dispatch_get_main_queue(), {
+        if(AFNetworkReachabilityManager.sharedManager().reachable){
             
-            self.updateUI(resultObject as! String)
-          })
-          
-        })
-      }
-      else{
-        //4. First Remove any existing Observer
-        //Add Observer for No network Connection
-        
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_AddAddressCtrl.BtnSaveAddressPressed), name: "NoNetworkConnectionNotification", object: self)
-        
-        //5.Adding View for Retry
-        let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
-        self.view.addSubview(noNetworkView)
-        
-        return
-      }
-
-      
+            var user_id = ""
+            if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{
+                user_id = loginInfoData.userId! //Need to use later
+            }
+            
+            
+            guard let name = tfYourName.text where name != "" else{
+                self.view.makeToast(message:"Please Enter Name", duration:1.0, position:HRToastPositionDefault)
+                return
+            }
+            
+            guard let email = tfEmail.text where email != "" else{
+                self.view.makeToast(message:"Please Enter Email Id", duration:1.0, position:HRToastPositionDefault)
+                return
+            }
+            
+            guard let mobile = tfMobileNumber.text where mobile != "" else{
+                self.view.makeToast(message:"Please Enter Mobile Number", duration:1.0, position:HRToastPositionDefault)
+                return
+            }
+            
+            let streetName = tfFullAddress.text
+            let locality = tfCurrentPlace.text
+            let cityId =  self.selectedCity!.cityId!
+            
+            var latitude:String = "12.213"
+            var longitude:String = "66.234"
+            //        if let  currentLocaiton = bro4u_DataManager.sharedInstance.currenLocation
+            //        {
+            //             latitude = "\(currentLocaiton.coordinate.latitude)"
+            //             longitude = "\(currentLocaiton.coordinate.longitude)"
+            //
+            //            addressModel?.currentLocation  = currentLocaiton
+            //
+            //        }
+            
+            
+            
+            
+            
+            let params = "?user_id=\(user_id)&street_name=\(streetName!)&locality=\(locality!)&city_id=\(cityId)&name=\(name)&latitude=\(latitude)&longitude=\(longitude)&mobile=\(mobile)&email=\(email)&\(kAppendURLWithApiToken)"
+            
+            b4u_WebApiCallManager.sharedInstance.getApiCall(kSaveAddress, params:params, result:{(resultObject) -> Void in
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    
+                    self.updateUI(resultObject as! String)
+                })
+                
+            })
+        }
+        else{
+            //4. First Remove any existing Observer
+            //Add Observer for No network Connection
+            
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_AddAddressCtrl.saveAddress), name: "NoNetworkConnectionNotification", object: nil)
+            
+            //5.Adding View for Retry
+            let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+            self.view.addSubview(noNetworkView)
+            
+            return
+        }
     }
   
     func updateUI(result:String)

@@ -16,7 +16,6 @@ class OfferZoneViewController: UIViewController,UITableViewDataSource,UITableVie
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-      self.addLoadingIndicator()
 
         self.getData()
         
@@ -57,6 +56,8 @@ class OfferZoneViewController: UIViewController,UITableViewDataSource,UITableVie
       
       if(AFNetworkReachabilityManager.sharedManager().reachable){
         
+        self.addLoadingIndicator()
+
         b4u_Utility.sharedInstance.activityIndicator.startAnimating()
         
         var user_id = ""

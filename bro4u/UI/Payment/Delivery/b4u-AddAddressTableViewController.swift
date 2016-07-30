@@ -37,8 +37,6 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
      
-        self.tfCurrentPlace.enabled = false
-        self.tfCurrentLocation.enabled = true
         self.getCities()
         
 
@@ -139,19 +137,58 @@ class b4u_AddAddressTableViewController: UITableViewController ,locationDelegate
       }
 
 
-   func getCities()
+//   func getCities()
+//    {
+//        
+//        self.tfCurrentPlace.enabled = false
+//        self.tfCurrentLocation.enabled = true
+//
+//        let params = "?\(kAppendURLWithApiToken)"
+//        b4u_WebApiCallManager.sharedInstance.getApiCall(kGetCities, params:params, result:{(resultObject) -> Void in
+//            
+//            print("city received")
+//            
+//            
+//            self.updateUI()
+//        })
+//    }
+    
+    //Network Reachability Code
+    func getCities()
     {
-        let params = "?\(kAppendURLWithApiToken)"
-        b4u_WebApiCallManager.sharedInstance.getApiCall(kGetCities, params:params, result:{(resultObject) -> Void in
+        //2. Checking for Network reachability
+        
+        if(AFNetworkReachabilityManager.sharedManager().reachable){
             
-            print("city received")
+            self.tfCurrentPlace.enabled = false
+            self.tfCurrentLocation.enabled = true
             
+            let params = "?\(kAppendURLWithApiToken)"
+            b4u_WebApiCallManager.sharedInstance.getApiCall(kGetCities, params:params, result:{(resultObject) -> Void in
+                
+                print("city received")
+                
+                
+                self.updateUI()
+            })
+            //3.Remove observer if any remain
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
             
-            self.updateUI()
-        })
+        }else{
+            //4. First Remove any existing Observer
+            //Add Observer for No network Connection
+            
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(b4u_AddAddressTableViewController.getCities), name: "NoNetworkConnectionNotification", object: nil)
+            
+            //5.Adding View for Retry
+            let noNetworkView = NoNetworkConnectionView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.height))
+            self.view.addSubview(noNetworkView)
+            
+            return
+        }
     }
-    
-    
+
     func updateUI()
     {
         if bro4u_DataManager.sharedInstance.cities.count > 0

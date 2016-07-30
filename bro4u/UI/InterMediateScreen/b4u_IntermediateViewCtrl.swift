@@ -42,15 +42,6 @@ class b4u_IntermediateViewCtrl: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        self.btnTapToCopy.layer.cornerRadius = 2.0
-        self.btnTapToCopy.layer.borderColor = UIColor(red:210.0/255, green: 210.0/255, blue: 210.0/255, alpha: 1.0).CGColor
-        self.btnTapToCopy.layer.borderWidth = 1.0
-        
-        self.btnTapToCopy.layer.shadowColor =  UIColor(red:210.0/255, green: 210.0/255, blue: 210.0/255, alpha: 1.0).CGColor
-        
-        scrollView.hidden = true
-        btnContinue.hidden = true
-        self.addLoadingIndicator()
 
         self.callInterMediateApi()
     }
@@ -199,6 +190,16 @@ class b4u_IntermediateViewCtrl: UIViewController {
       
       if(AFNetworkReachabilityManager.sharedManager().reachable){
         
+        self.btnTapToCopy.layer.cornerRadius = 2.0
+        self.btnTapToCopy.layer.borderColor = UIColor(red:210.0/255, green: 210.0/255, blue: 210.0/255, alpha: 1.0).CGColor
+        self.btnTapToCopy.layer.borderWidth = 1.0
+        
+        self.btnTapToCopy.layer.shadowColor =  UIColor(red:210.0/255, green: 210.0/255, blue: 210.0/255, alpha: 1.0).CGColor
+        
+        scrollView.hidden = true
+        btnContinue.hidden = true
+        self.addLoadingIndicator()
+
         if let aSelectedCatObj = selectedCategoryObj
         {
           b4u_Utility.sharedInstance.activityIndicator.startAnimating()

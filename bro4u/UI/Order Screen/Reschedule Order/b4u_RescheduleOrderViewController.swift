@@ -203,6 +203,8 @@ class b4u_RescheduleOrderViewController: UIViewController,
         })
     }
     
+    
+    
     func didSelectTimeSlot(tiemSlot:String)
     {
         self.btnSelectTime!.setTitle(tiemSlot, forState:UIControlState.Normal)

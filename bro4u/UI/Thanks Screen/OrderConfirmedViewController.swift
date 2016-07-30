@@ -37,14 +37,6 @@ class OrderConfirmedViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-      self.addLoadingIndicator()
-      b4u_Utility.sharedInstance.activityIndicator.startAnimating()
-      topView.hidden = true
-      downView.hidden = true
-      btnContinue.hidden = true
-    
-      serviceStatusLbl.layer.borderWidth = 1.0
-      serviceStatusLbl.layer.borderColor = UIColor.lightGrayColor().CGColor
 
       self.getData()
 
@@ -97,6 +89,15 @@ class OrderConfirmedViewController: UIViewController {
       
       if(AFNetworkReachabilityManager.sharedManager().reachable){
         
+        self.addLoadingIndicator()
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+        topView.hidden = true
+        downView.hidden = true
+        btnContinue.hidden = true
+        
+        serviceStatusLbl.layer.borderWidth = 1.0
+        serviceStatusLbl.layer.borderColor = UIColor.lightGrayColor().CGColor
+
         var user_id = ""
         
         if let loginInfoData:b4u_LoginInfo = bro4u_DataManager.sharedInstance.loginInfo{

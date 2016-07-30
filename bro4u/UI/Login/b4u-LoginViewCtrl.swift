@@ -44,10 +44,7 @@ class b4u_LoginViewCtrl: UIViewController ,loginViewDelegate {
         
         loginView?.loginForm = self.loginForm
 
-        
         loginView?.setup()
-        
-
         
         loginView?.delegate = self
       

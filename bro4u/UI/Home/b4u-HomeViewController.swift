@@ -28,36 +28,6 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
 
         // Do any additional setup after loading the view.
         
-        self.tableViewCategory.separatorInset = UIEdgeInsetsZero
-        self.tableViewCategory.layoutMargins = UIEdgeInsetsZero
-        
-        self.viewLocation.layer.cornerRadius = 1.0
-        self.tableViewCategory.layer.cornerRadius = 1.0
-        
-        self.getLocatoin()
-        
-        self.addLoadingIndicator()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"pushCategoryScreen:", name:kPushServicesScreen, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pushScreenForRightMenu:", name: kRightMenuNotification, object: nil)
-
-       
-        if self.revealViewController() != nil {
-            menuButton.target = self.revealViewController()
-            menuButton.action = "revealToggle:"
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            
-            
-            BtnRightMenu.target = self.revealViewController()
-            BtnRightMenu.action = "rightRevealToggle:"
-            
-            //self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            
-
-        }
-        
-        self.revealViewController().rearViewRevealWidth = 108
-        
-        self.revealViewController().rightViewRevealWidth = 170
         
         //1. To delay for Network Test
         self.performSelector("getData", withObject: nil, afterDelay: 0.2)
@@ -65,14 +35,6 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
 //         self.getData()
     
         //self.callInterMediateApi()
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        
-        //Turn off the automatic gesture to go back a view with a navigation controller
-        self.navigationController?.interactivePopGestureRecognizer?.enabled = false
-        
-        
-        //Removing Order ID from User Default
-        b4u_Utility.sharedInstance.setUserDefault(nil, KeyToSave:"order_id")
     }
 
     
@@ -109,7 +71,40 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
 
         if(AFNetworkReachabilityManager.sharedManager().reachable){
           
-          b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+            self.tableViewCategory.separatorInset = UIEdgeInsetsZero
+            self.tableViewCategory.layoutMargins = UIEdgeInsetsZero
+            
+            self.viewLocation.layer.cornerRadius = 1.0
+            self.tableViewCategory.layer.cornerRadius = 1.0
+            
+            self.getLocatoin()
+            
+            self.addLoadingIndicator()
+            NSNotificationCenter.defaultCenter().addObserver(self, selector:"pushCategoryScreen:", name:kPushServicesScreen, object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "pushScreenForRightMenu:", name: kRightMenuNotification, object: nil)
+            
+            
+            if self.revealViewController() != nil {
+                menuButton.target = self.revealViewController()
+                menuButton.action = "revealToggle:"
+                self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+                
+                
+                BtnRightMenu.target = self.revealViewController()
+                BtnRightMenu.action = "rightRevealToggle:"
+                
+                //self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+                
+                
+            }
+            
+            self.revealViewController().rearViewRevealWidth = 108
+            
+            self.revealViewController().rightViewRevealWidth = 170
+
+          
+            
+            b4u_Utility.sharedInstance.activityIndicator.startAnimating()
           let params = "?\(kAppendURLWithApiToken)"
           b4u_WebApiCallManager.sharedInstance.getApiCall(kHomeSCategory, params:params, result:{(resultObject) -> Void in
             
@@ -122,6 +117,16 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
             self.createImagSlideShowUI()
             
             self.tableViewCategory.reloadData()
+            
+            self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+            
+            //Turn off the automatic gesture to go back a view with a navigation controller
+            self.navigationController?.interactivePopGestureRecognizer?.enabled = false
+            
+            
+            //Removing Order ID from User Default
+            b4u_Utility.sharedInstance.setUserDefault(nil, KeyToSave:"order_id")
+
             
           })
           //5.Remove observer if any remain
