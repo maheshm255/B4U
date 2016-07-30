@@ -980,14 +980,17 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
         var longitude = "77.6411545"
         
     //    TODO - Uncomment below line for device
-        
-//        if let currentLocaiotn = bro4u_DataManager.sharedInstance.currenLocation
-//        {
-//            latitude = "\(currentLocaiotn.coordinate.latitude)"
-//            
-//            longitude = "\(currentLocaiotn.coordinate.longitude)"
-//            
-//        }
+        #if !(arch(i386) || arch(x86_64)) && os(iOS)
+            
+        if let currentLocaiotn = bro4u_DataManager.sharedInstance.currenLocation
+        {
+            latitude = "\(currentLocaiotn.coordinate.latitude)"
+
+            longitude = "\(currentLocaiotn.coordinate.longitude)"
+            
+        }
+
+        #endif
       
         var params = "?cat_id=\(catId)&\(kAppendURLWithApiToken)"
         
@@ -1019,8 +1022,13 @@ class b4u_FilterViewController: UIViewController ,UIPopoverPresentationControlle
                 for (_ , indexPath) in (selectedIndexPath[key]?.enumerate())!
                 {
                     let attributeOption:b4u_CatFilterAttributeOptions =  catFilterAttributes.catFilterAttributeOptions![indexPath.row]
-                    
-                    params = params + "&\(catFilterAttributes.fieldName!)=\(attributeOption.optionId!)"
+                    if (catFilterAttributes.fieldName == "yoga_program_needed"){
+                        params = params + "&\(catFilterAttributes.fieldName!)[]=\(attributeOption.optionId!)"
+                    }
+                    else{
+                        params = params + "&\(catFilterAttributes.fieldName!)=\(attributeOption.optionId!)"
+
+                    }
                     
                     let key = "\(catFilterAttributes.fieldName!)"
                     self.selectionDict[key] = "\(attributeOption.optionId!)"
