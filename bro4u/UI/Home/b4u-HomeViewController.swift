@@ -328,6 +328,18 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
     
     func imageSlideClicked(gesttureObj:UITapGestureRecognizer)
     {
+        
+        //Modified for Toggle on click of any Main Category
+        if self.revealViewController().frontViewPosition == FrontViewPosition.Right
+        {
+            NSNotificationCenter.defaultCenter().postNotificationName(kPushServicesScreen, object:nil)
+            
+        }
+        else if self.revealViewController().frontViewPosition == FrontViewPosition.LeftSide
+        {
+            NSNotificationCenter.defaultCenter().postNotificationName(kRightMenuNotification, object: nil)
+        }
+
         print(gesttureObj.view?.tag)
         
         let sliderImgObj:b4u_SliderImage =  bro4u_DataManager.sharedInstance.sliderImages[(gesttureObj.view?.tag)!]
