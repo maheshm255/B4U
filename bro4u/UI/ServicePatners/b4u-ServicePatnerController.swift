@@ -367,7 +367,13 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
 
         cell.btnViewProfile.layer.borderWidth = 1.0
         
-        cell.lblVendorFeedBack.text = "\(aPatner.averageRatingPercent!)% Positive"
+        if (aPatner.averageRatingPercent?.integerValue > 0){
+            
+            cell.lblVendorFeedBack.text = "\(aPatner.averageRatingPercent!)% Positive"
+        }
+        else{
+            cell.lblVendorFeedBack.text = "New to Bro4u"
+        }
         
       
         

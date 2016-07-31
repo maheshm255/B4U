@@ -197,12 +197,22 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
       }
     }
 
+    func addLoadingIndicator () {
+        self.view.addSubview(b4u_Utility.sharedInstance.activityIndicator)
+        self.view.bringSubviewToFront(b4u_Utility.sharedInstance.activityIndicator)
+        b4u_Utility.sharedInstance.activityIndicator.center = self.view.center
+    }
+
+    
     func getProfileData()
     {
       //2. Checking for Network reachability
       
       if(AFNetworkReachabilityManager.sharedManager().reachable){
         
+        self.addLoadingIndicator()
+        b4u_Utility.sharedInstance.activityIndicator.startAnimating()
+
         let selectedDate = NSDate.dateFormat().stringFromDate(bro4u_DataManager.sharedInstance.selectedDate!)
         
         let selectedTime = bro4u_DataManager.sharedInstance.selectedTimeSlot!
@@ -213,6 +223,7 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
           
           self.allWebApiSuccessCount++
           self.configureUI()
+          b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
         })
         //5.Remove observer if any remain
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
@@ -271,7 +282,12 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
                 self.lblVendorName.text = profileModelObj.vendorName!
                 self.lblVendorType.text = profileModelObj.catName!
                 
-                self.lblNumberOReviews.text = "\(profileModelObj.averageRatingPercent!) Positive"
+                if (profileModelObj.averageRatingPercent! != "0%"){
+                    self.lblNumberOReviews.text = "\(profileModelObj.averageRatingPercent!) Positive"
+                }else{
+                    self.lblNumberOReviews.text = "New to Bro4u"
+
+                }
                 
                 self.lblFeedback.text = "\(profileModelObj.reviewCount!) Reviews"
                 
@@ -313,6 +329,8 @@ class b4u_VendorProfileViewController: UIViewController , UIWebViewDelegate ,UIS
             
             
         }
+        
+        
     }
     
     func configureWebViews()
