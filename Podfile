@@ -1,7 +1,12 @@
 use_frameworks!
-pod 'Google/SignIn'
-pod 'FBSDKCoreKit'
-pod 'FBSDKLoginKit'
-pod 'FBSDKShareKit'
 
-pod 'OHHTTPStubs', '~> 4.3'
+
+target 'bro4u' do
+  pod 'Google/SignIn'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKShareKit'
+  
+  pod 'OHHTTPStubs', '~> 4.3'
+  pod 'Google/CloudMessaging'
+  end
