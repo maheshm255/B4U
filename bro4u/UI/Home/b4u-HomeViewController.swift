@@ -30,7 +30,7 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         
         
         //1. To delay for Network Test
-        self.performSelector("getData", withObject: nil, afterDelay: 0.2)
+        self.performSelector("getData", withObject: nil, afterDelay: 0.3)
 
 //         self.getData()
     
@@ -70,6 +70,12 @@ class b4u_HomeViewController: UIViewController ,UITableViewDataSource,UITableVie
         //2. Checking for Network reachability
 
         if(AFNetworkReachabilityManager.sharedManager().reachable){
+          
+            var myDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            myDelegate.registerPushNotification()
+            myDelegate.checkUserAlreadyLogin()
+
+
           
             self.tableViewCategory.separatorInset = UIEdgeInsetsZero
             self.tableViewCategory.layoutMargins = UIEdgeInsetsZero
