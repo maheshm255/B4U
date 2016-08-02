@@ -585,59 +585,56 @@ class b4u_ServicePatnerController: UIViewController ,UITableViewDataSource,UITab
     func userCurrentLocaion()
     {
         
-//        if let customLocaitonStr = bro4u_DataManager.sharedInstance.userSelectedLocatinStr
-//        {
-//            
-//             self.lblCurrentLocation.text = customLocaitonStr
-//        }else{
-//            
-//            if let currentLocality = bro4u_DataManager.sharedInstance.currentLocality
-//            {
-//                
-//                if let loclity = currentLocality.locality
-//                {
-//                    if let  subLocality = currentLocality.subLocality
-//                    {
-//                        self.lblCurrentLocation.text = "\(subLocality),\(loclity)"
-//                    }else
-//                    {
-//                        self.lblCurrentLocation.text = "\(loclity)"
-//                        
-//                    }
-//                }
-//                
-//                
-//                
-//            }else
-//            {
-//                self.lblCurrentLocation.text = "Current Location"
-//                
-//            }
-//
-//        }
-      
-      if let currentLocality = bro4u_DataManager.sharedInstance.currentLocality
-      {
-        
-        if let loclity = currentLocality.locality
+        if let customLocaitonStr = bro4u_DataManager.sharedInstance.userSelectedLocatinStr
         {
-          if let  subLocality = currentLocality.subLocality
-          {
-            self.lblCurrentLocation.text = "\(subLocality),\(loclity)"
-          }else
-          {
-            self.lblCurrentLocation.text = "\(loclity)"
             
-          }
+             self.lblCurrentLocation.text = customLocaitonStr
+        }else{
+            
+            if let currentLocality = bro4u_DataManager.sharedInstance.currentLocality
+            {
+                
+                if let loclity = currentLocality.locality
+                {
+                    if let  subLocality = currentLocality.subLocality
+                    {
+                        self.lblCurrentLocation.text = "\(subLocality),\(loclity)"
+                    }else
+                    {
+                        self.lblCurrentLocation.text = "\(loclity)"
+                        
+                    }
+                }
+            }else
+            {
+                self.lblCurrentLocation.text = "Current Location"
+                
+            }
+
         }
-        
-        
-        
-      }else
-      {
-        self.lblCurrentLocation.text = "Current Location"
-        
-      }
+      
+//      if let currentLocality = bro4u_DataManager.sharedInstance.currentLocality
+//      {
+//        
+//        if let loclity = currentLocality.locality
+//        {
+//          if let  subLocality = currentLocality.subLocality
+//          {
+//            self.lblCurrentLocation.text = "\(subLocality),\(loclity)"
+//          }else
+//          {
+//            self.lblCurrentLocation.text = "\(loclity)"
+//            
+//          }
+//        }
+//        
+//        
+//        
+//      }else
+//      {
+//        self.lblCurrentLocation.text = "Current Location"
+//        
+//      }
 
 
     }

@@ -8,5 +8,4 @@ target 'bro4u' do
   pod 'FBSDKShareKit'
   pod 'AFNetworking'
   pod 'OHHTTPStubs', '~> 4.3'
-  pod 'Google/CloudMessaging'
   end
