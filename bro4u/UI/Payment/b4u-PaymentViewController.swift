@@ -485,7 +485,7 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! b4u_PaymentTblViewCell
-        if radioButtonSelected != nil
+        if radioButtonSelected != nil && offerDict!.count != 1
         {
             let indexPath = NSIndexPath(forRow:radioButtonSelected!, inSection: 0)
 
