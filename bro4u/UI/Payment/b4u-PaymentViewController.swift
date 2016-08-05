@@ -585,8 +585,9 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
     }
     
     @IBAction func showDetailBtnClicked(sender: AnyObject) {
-        
         self.showAlertView()
+      self.view.endEditing(true)
+
     }
     
     
@@ -630,8 +631,8 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
      * Called when 'return' key pressed. return NO to ignore.
      */
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+      self.view.endEditing(true)
+      return false
     }
     
     /**
@@ -639,6 +640,7 @@ class b4u_PaymentViewController: UIViewController ,UITableViewDataSource,UITable
      */
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
+
     }
 
   

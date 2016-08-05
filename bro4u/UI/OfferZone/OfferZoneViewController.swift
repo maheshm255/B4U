@@ -69,7 +69,8 @@ class OfferZoneViewController: UIViewController,UITableViewDataSource,UITableVie
         }
         
         //user_id = "1"
-        let deviceID = "kdsflasdf"
+        let deviceID = b4u_Utility.getUUIDFromVendorIdentifier
+
         
         let params = "?device_id=\(deviceID)&user_id=\(user_id)&\(kAppendURLWithApiToken)"
         

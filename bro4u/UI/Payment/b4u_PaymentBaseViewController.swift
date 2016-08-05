@@ -993,11 +993,27 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
         }
         
     }
-    
+  
+  /**
+   * Called when 'return' key pressed. return NO to ignore.
+   */
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    self.view.endEditing(true)
+    return false
+  }
+  
+  /**
+   * Called when the user click on the view (outside the UITextField).
+   */
+  override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    self.view.endEditing(true)
+  }
+
+  
 }
 
 extension Dictionary {
-    
+  
     mutating func unionInPlace(dictionary: Dictionary) {
         dictionary.forEach { self.updateValue($1, forKey: $0) }
     }

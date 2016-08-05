@@ -72,8 +72,10 @@ class b4u_NotificationViewController: UIViewController ,UITableViewDelegate,UITa
           
         }
         
-        let deviceID = "asdkfi"
+//        let deviceID = "asdkfi"
         //user_id = "1626"
+        let deviceID = b4u_Utility.getUUIDFromVendorIdentifier()
+
         
         let params = "?device_id=\(deviceID)&user_id=\(user_id)&\(kAppendURLWithApiToken)"
         

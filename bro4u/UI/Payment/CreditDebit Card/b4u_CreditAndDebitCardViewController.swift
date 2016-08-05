@@ -175,6 +175,11 @@ class b4u_CreditAndDebitCardViewController: UIViewController,UITextFieldDelegate
             }
         }
     }
+    else if let grandTotal  = bro4u_DataManager.sharedInstance.userSelectedOrder?.finalTotal
+    {
+      self.amountLbl.text = "Rs. \(grandTotal).00"
+    }
+
 
 //      self.amountLbl.text = "Rs. \(bro4u_DataManager.sharedInstance.selectedSuggestedPatner != nil ? bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice! : ((bro4u_DataManager.sharedInstance.userSelectedOrder != nil) ? bro4u_DataManager.sharedInstance.userSelectedOrder!.offerPrice! : ""))"//susmit
     }

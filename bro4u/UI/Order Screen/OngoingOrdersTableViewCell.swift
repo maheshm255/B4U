@@ -174,7 +174,12 @@ class OngoingOrdersTableViewCell: UITableViewCell {
             self.ViewCallB4u.tag = 2
 
         }
-        
+        if orderDataModel.statusCode == "OPRC"
+        {
+          self.viewPayOnLine.hidden = true
+        }
+
+      
 
     }
   

@@ -174,6 +174,10 @@ class b4u_NetBankingViewController: UIViewController,UIPopoverPresentationContro
                 }
             }
         }
+        else if let grandTotal  = bro4u_DataManager.sharedInstance.userSelectedOrder?.finalTotal
+        {
+          self.totalAmountLbl.text = "Rs. \(grandTotal).00"
+        }
 
 //      self.totalAmountLbl.text = "Rs. \(bro4u_DataManager.sharedInstance.selectedSuggestedPatner != nil ? bro4u_DataManager.sharedInstance.selectedSuggestedPatner!.custPrice! : ((bro4u_DataManager.sharedInstance.userSelectedOrder != nil) ? bro4u_DataManager.sharedInstance.userSelectedOrder!.actualPrice! : ""))"//susmit
 
