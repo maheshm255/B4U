@@ -174,7 +174,7 @@ class MyInfoViewController: UIViewController ,UITextFieldDelegate ,UIPopoverPres
         datePickerCtrl.modalPresentationStyle = .Popover
         datePickerCtrl.preferredContentSize = CGSizeMake(300, 360)
         datePickerCtrl.delegate = self
-        
+
         let popoverMenuViewController = datePickerCtrl.popoverPresentationController
         popoverMenuViewController?.permittedArrowDirections =  UIPopoverArrowDirection(rawValue: 0)
         popoverMenuViewController?.delegate = self
@@ -189,6 +189,8 @@ class MyInfoViewController: UIViewController ,UITextFieldDelegate ,UIPopoverPres
             animated: true,
             completion: nil)
         
+        datePickerCtrl.myDatePicker.maximumDate = NSDate()
+
     }
 
 

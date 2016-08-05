@@ -80,8 +80,8 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
       if(AFNetworkReachabilityManager.sharedManager().reachable){
         
         self.addSegmentControl()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
         
         //3.Remove observer if any remain
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "NoNetworkConnectionNotification", object: nil)
@@ -371,18 +371,18 @@ class b4u_PaymentBaseViewController: UIViewController ,deliveryViewDelegate ,log
     
     func kbUP(notification:NSNotification)
     {
-        let userInfo:NSDictionary = notification.userInfo!
-        let keyboardFrame:NSValue = userInfo.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
-        let keyboardRectangle = keyboardFrame.CGRectValue()
-        let keyboardHeight = keyboardRectangle.height
-        topConstraint?.constant = -175
-        bottomConstraint?.constant  = 175
+//        let userInfo:NSDictionary = notification.userInfo!
+//        let keyboardFrame:NSValue = userInfo.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
+//        let keyboardRectangle = keyboardFrame.CGRectValue()
+//        let keyboardHeight = keyboardRectangle.height
+//        topConstraint?.constant = -175
+//        bottomConstraint?.constant  = 175
     }
     
     func kbDown(notification:NSNotification)
     {
-        topConstraint?.constant = 0
-        bottomConstraint?.constant  = 0
+//        topConstraint?.constant = 0
+//        bottomConstraint?.constant  = 0
     }
     
     

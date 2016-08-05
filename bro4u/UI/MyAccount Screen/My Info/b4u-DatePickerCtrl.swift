@@ -23,7 +23,6 @@ class b4u_DatePickerCtrl: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 

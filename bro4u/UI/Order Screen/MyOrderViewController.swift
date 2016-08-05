@@ -582,12 +582,12 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         b4u_WebApiCallManager.sharedInstance.getApiCall(kCancelOrderIndex, params:params, result:{(resultObject) -> Void in
             
             
-            b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
+          self.getData()
+//          b4u_Utility.sharedInstance.activityIndicator.stopAnimating()
           
           self.view.makeToast(message:"Order Cancelled",
             duration:1.0, position: HRToastPositionDefault)
 
-          
         })
     }
     @IBAction func btnPastOrdersRaiseIssuePressed(sender: AnyObject)

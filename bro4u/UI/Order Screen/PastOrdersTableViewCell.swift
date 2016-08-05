@@ -78,6 +78,9 @@ class PastOrdersTableViewCell: UITableViewCell {
             {
                 self.btnWriteReview.hidden = true
             }
+            else{
+                self.btnWriteReview.hidden = false
+            }
         }
         if let price = orderDataModel.finalTotal //Need to check Key
         {

@@ -233,10 +233,14 @@ extension UIView {
     }
     
     func handleToastTapped(recognizer: UITapGestureRecognizer) {
-        let timer = objc_getAssociatedObject(self, &HRToastTimer) as! NSTimer
-        timer.invalidate()
-        
-        self.hideToast(toast: recognizer.view!)
+        if objc_getAssociatedObject(self, &HRToastTimer) != nil {
+            
+            let timer = objc_getAssociatedObject(self, &HRToastTimer) as! NSTimer
+            timer.invalidate()
+            
+            self.hideToast(toast: recognizer.view!)
+
+        }
     }
     
     func centerPointForPosition(position: AnyObject, toast: UIView) -> CGPoint {
